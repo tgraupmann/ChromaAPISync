@@ -80,6 +80,11 @@ namespace ChromaAPISync
         private static bool GetMethodName(string line, out string methodName)
         {
             int indexPlugin = line.IndexOf(TOKEN_PLUGIN);
+            if (indexPlugin <= 0)
+            {
+                methodName = "";
+                return false;
+            }
             string temp = line.Substring(indexPlugin + TOKEN_PLUGIN.Length);
             int indexParens = temp.IndexOf("(");
             if (indexParens <= 0)
@@ -92,11 +97,69 @@ namespace ChromaAPISync
             return true;
         }
 
+        private static bool GetArgs(string line, out string args)
+        {
+            int indexPlugin = line.IndexOf(TOKEN_PLUGIN);
+            if (indexPlugin <= 0)
+            {
+                args = "";
+                return false;
+            }
+            string temp = line.Substring(indexPlugin + TOKEN_PLUGIN.Length);
+            int indexParens = temp.IndexOf("(");
+            if (indexParens <= 0)
+            {
+                args = "";
+                return false;
+            }
+            temp = temp.Substring(indexParens+1);
+
+            indexParens = temp.IndexOf(")");
+            if (indexParens < 0)
+            {
+                args = "";
+                return false;
+            }
+
+            args = temp.Substring(0, indexParens);
+            return true;
+        }
+
+        const string TOKEN_EXPORT_API = "EXPORT_API";
+
+        private static bool GetReturnType(string line, out string returnType)
+        {
+            int indexPlugin = line.IndexOf(TOKEN_PLUGIN);
+            if (indexPlugin <= 0)
+            {
+                returnType = "";
+                return false;
+            }
+            string temp = line.Substring(0, indexPlugin);
+            int indexExport = temp.IndexOf(TOKEN_EXPORT_API);
+            if (indexExport < 0)
+            {
+                returnType = "";
+                return false;
+            }
+            returnType = temp.Substring(indexExport + TOKEN_EXPORT_API.Length).Trim();
+
+            return true;
+        }
+
+        class MetaMethodInfo
+        {
+            public string Name = string.Empty;
+            public string ReturnType = string.Empty;
+            public string Line = string.Empty;
+            public string Args = string.Empty;
+        }
+
         static void ProcessHeader(string filename, StreamWriter sw)
         {
             try
             {
-                SortedList<string, string> methods = new SortedList<string, string>();
+                SortedList<string, MetaMethodInfo> methods = new SortedList<string, MetaMethodInfo>();
                 using (FileStream fs = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     using (StreamReader sr = new StreamReader(fs))
@@ -116,7 +179,7 @@ namespace ChromaAPISync
                             {
                                 continue;
                             }
-                            if (!line.StartsWith("EXPORT_API"))
+                            if (!line.StartsWith(TOKEN_EXPORT_API))
                             {
                                 continue;
                             }
@@ -126,20 +189,28 @@ namespace ChromaAPISync
                             }
                             //Console.WriteLine("{0}", line);
 
-                            int indexPlugin = line.IndexOf(TOKEN_PLUGIN);
-                            string temp = line.Substring(indexPlugin + TOKEN_PLUGIN.Length);
-                            int indexParens = temp.IndexOf("(");
-                            if (indexParens <= 0)
+                            MetaMethodInfo methodInfo = new MetaMethodInfo();
+
+                            if (!GetMethodName(line, out methodInfo.Name))
                             {
                                 continue;
                             }
-                            string methodName;
-                            if (!GetMethodName(line, out methodName))
+                            //Console.WriteLine("Method: {0}", methodInfo.Name);
+                            methodInfo.Line = line;
+                            methods[methodInfo.Name] = methodInfo;
+
+                            if (!GetReturnType(line, out methodInfo.ReturnType))
                             {
                                 continue;
                             }
-                            //Console.WriteLine("Method: {0}", methodName);
-                            methods[methodName] = line;
+                            //Console.WriteLine("Returns: {0}", methodInfo.ReturnType);
+
+                            if (!GetArgs(line, out methodInfo.Args))
+                            {
+                                continue;
+                            }
+                            //Console.WriteLine("Args: {0}", methodInfo.Args);
+
                             if (true)
                             {
                                 continue;
@@ -152,9 +223,11 @@ namespace ChromaAPISync
                     }
                 }
 
-                foreach (KeyValuePair<string, string> method in methods)
+                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
-                    Console.WriteLine("Method: {0}", method.Key);
+                    MetaMethodInfo methodInfo = method.Value;
+                    Console.WriteLine("Returns: {0} Method: {1} Args: {2}", 
+                        methodInfo.ReturnType, methodInfo.Name, methodInfo.Args);
                 }
 
                 if (true)
