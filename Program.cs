@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChromaAPISync
+﻿namespace ChromaAPISync
 {
     class Program
     {
         static void Main(string[] args)
         {
+            const string headerStdafx = @"C:\Razer\CChromaEditor\CChromaEditorLibrary\stdafx.h";
+            Converter.ConvertExportsToClass(headerStdafx, "ChromaAnimationAPI.h");
         }
     }
 }
