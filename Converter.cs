@@ -125,6 +125,21 @@ namespace ChromaAPISync
             return true;
         }
 
+        private static string GetCamelUnderscore(string original)
+        {
+            string result = string.Empty;
+            foreach (char c in original)
+            {
+                if (!string.IsNullOrEmpty(result) &&
+                    char.IsUpper(c))
+                {
+                    result += "_";
+                }
+                result += char.ToUpper(c);
+            }
+            return result;
+        }
+
         const string TOKEN_EXPORT_API = "EXPORT_API";
 
         private static bool GetReturnType(string line, out string returnType)
@@ -226,8 +241,11 @@ namespace ChromaAPISync
                 foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
-                    Console.WriteLine("Returns: {0} Method: {1} Args: {2}", 
-                        methodInfo.ReturnType, methodInfo.Name, methodInfo.Args);
+                    //Console.WriteLine("Returns: {0} Method: {1} Args: {2}", 
+                    //    methodInfo.ReturnType, methodInfo.Name, methodInfo.Args);
+
+                    Console.WriteLine("typedef {0}\t(*PLUGIN_{1})({2});",
+                            methodInfo.ReturnType, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
                 }
 
                 if (true)
