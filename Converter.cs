@@ -270,6 +270,20 @@ namespace ChromaAPISync
                         methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
                 }
 
+                Console.WriteLine();
+                sw.WriteLine();
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
+                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
+
+                    sw.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
+                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
+                }
+
                 sw.Flush();
                 sw.Close();
 
