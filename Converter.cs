@@ -162,10 +162,27 @@ namespace ChromaAPISync
             return true;
         }
 
+        private static string GetTabs(string returnType)
+        {
+            if (returnType.Length < 4)
+            {
+                return "\t\t\t";
+            }
+            else if (returnType.Length < 8)
+            {
+                return "\t\t";
+            }
+            else
+            {
+                return "\t";
+            }
+        }
+
         class MetaMethodInfo
         {
             public string Name = string.Empty;
             public string ReturnType = string.Empty;
+            public string Tabs = string.Empty;
             public string Line = string.Empty;
             public string Args = string.Empty;
         }
@@ -220,6 +237,8 @@ namespace ChromaAPISync
                             }
                             //Console.WriteLine("Returns: {0}", methodInfo.ReturnType);
 
+                            methodInfo.Tabs = GetTabs(methodInfo.ReturnType);
+
                             if (!GetArgs(line, out methodInfo.Args))
                             {
                                 continue;
@@ -244,9 +263,15 @@ namespace ChromaAPISync
                     //Console.WriteLine("Returns: {0} Method: {1} Args: {2}", 
                     //    methodInfo.ReturnType, methodInfo.Name, methodInfo.Args);
 
-                    Console.WriteLine("typedef {0}\t(*PLUGIN_{1})({2});",
-                            methodInfo.ReturnType, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
+                    Console.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
+                        methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
+
+                    sw.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
+                        methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
                 }
+
+                sw.Flush();
+                sw.Close();
 
                 if (true)
                 {
