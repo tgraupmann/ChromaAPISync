@@ -135,18 +135,46 @@ namespace ChromaAPISync
             return true;
         }
 
+        const string TOKEN_NAME = "NAME";
+        const string TOKEN_NAME_D = "NAME_D";
+
+        private static bool ReplaceUnderscoreSuffix(ref string name, string token)
+        {
+            if (name.EndsWith(token))
+            {
+                int indexName = name.LastIndexOf(token);
+                if (indexName > 1)
+                {
+                    if (name[indexName - 1] != '_')
+                    {
+                        name = name.Substring(0, indexName) + "_" + token;
+                    }
+                }
+            }
+            return false;
+        }
+
         private static string GetCamelUnderscore(string original)
         {
             string result = string.Empty;
+            bool hadUpper = false;
+            bool hadDigit = false;
             foreach (char c in original)
             {
                 if (!string.IsNullOrEmpty(result) &&
+                    (!hadUpper && !hadDigit) &&
                     char.IsUpper(c))
                 {
                     result += "_";
                 }
                 result += char.ToUpper(c);
+                hadUpper = char.IsUpper(c);
+                hadDigit = char.IsDigit(c);
             }
+            Replace(ref result, "RGBNAME", "RGB_NAME");
+            Replace(ref result, "RGBCOLORS", "RGB_COLORS");
+            Replace(ref result, "1D", "_1D_");
+            Replace(ref result, "2D", "_2D_");
             return result;
         }
 
