@@ -175,6 +175,7 @@ namespace ChromaAPISync
             Replace(ref result, "RGBCOLORS", "RGB_COLORS");
             Replace(ref result, "1D", "_1D_");
             Replace(ref result, "2D", "_2D_");
+            Replace(ref result, "UN_INIT", "UNINIT");
             return result;
         }
 
