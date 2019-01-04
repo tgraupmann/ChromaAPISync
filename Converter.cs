@@ -216,11 +216,6 @@ namespace ChromaAPISync
                                 break;
                             }
                             line = line.TrimStart();
-                            if (line.Contains("Dialog") ||
-                                line.Contains("PluginSetLogDelegate"))
-                            {
-                                continue;
-                            }
                             if (!line.StartsWith(TOKEN_EXPORT_API))
                             {
                                 continue;
