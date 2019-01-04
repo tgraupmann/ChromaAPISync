@@ -282,6 +282,7 @@ namespace ChromaAPISync
                     }
                 }
 
+                swHeader.WriteLine("#pragma region API typedefs");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
@@ -294,10 +295,12 @@ namespace ChromaAPISync
                     swHeader.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
                         methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
                 }
+                swHeader.WriteLine("#pragma endregion");
 
                 Console.WriteLine();
                 swHeader.WriteLine();
 
+                swHeader.WriteLine("#pragma region API declare prototypes");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
@@ -308,12 +311,14 @@ namespace ChromaAPISync
                     swHeader.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
+                swHeader.WriteLine("#pragma endregion");
 
                 swHeader.Flush();
                 swHeader.Close();
 
                 Console.WriteLine();
 
+                swImplementation.WriteLine("#pragma region API declare assignments");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
@@ -324,10 +329,12 @@ namespace ChromaAPISync
                     swImplementation.WriteLine("CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
+                swImplementation.WriteLine("#pragma endregion");
 
                 Console.WriteLine();
                 swImplementation.WriteLine();
 
+                swImplementation.WriteLine("#pragma region API validation");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
@@ -338,6 +345,7 @@ namespace ChromaAPISync
                     swImplementation.WriteLine("CHROMASDK_VALIDATE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
+                swImplementation.WriteLine("#pragma endregion");
 
                 swImplementation.Flush();
                 swImplementation.Close();
