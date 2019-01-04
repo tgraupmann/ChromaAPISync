@@ -8,22 +8,32 @@ namespace ChromaAPISync
 {
     class Converter
     {
-        public static void ConvertExportsToClass(string input, string header)
+        public static void ConvertExportsToClass(string input, string outputHeader, string outputImplementation)
         {
-            ConvertHeader(input, header);
+            OpenClassFiles(input, outputHeader, outputImplementation);
         }
 
-        private static void ConvertHeader(string input, string outputFile)
+        private static void OpenClassFiles(string input, string fileHeader, string fileImplementation)
         {
-            if (File.Exists(outputFile))
+            if (File.Exists(fileHeader))
             {
-                File.Delete(outputFile);
+                File.Delete(fileHeader);
             }
-            using (FileStream fs = File.Open(outputFile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            if (File.Exists(fileImplementation))
             {
-                using (StreamWriter sw = new StreamWriter(fs))
+                File.Delete(fileImplementation);
+            }
+            using (FileStream fsHeader = File.Open(fileHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (FileStream fsImplementation = File.Open(fileImplementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
                 {
-                    ProcessHeader(input, sw);
+                    using (StreamWriter swHeader = new StreamWriter(fsHeader))
+                    {
+                        using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
+                        {
+                            ProcessStdafx(input, swHeader, swImplementation);
+                        }
+                    }
                 }
             }
         }
@@ -187,12 +197,12 @@ namespace ChromaAPISync
             public string Args = string.Empty;
         }
 
-        static void ProcessHeader(string filename, StreamWriter sw)
+        static void ProcessStdafx(string fileInput, StreamWriter swHeader, StreamWriter swImplementation)
         {
             try
             {
                 SortedList<string, MetaMethodInfo> methods = new SortedList<string, MetaMethodInfo>();
-                using (FileStream fs = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (FileStream fs = File.Open(fileInput, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     using (StreamReader sr = new StreamReader(fs))
                     {
@@ -244,14 +254,6 @@ namespace ChromaAPISync
                                 continue;
                             }
                             //Console.WriteLine("Args: {0}", methodInfo.Args);
-
-                            if (true)
-                            {
-                                continue;
-                            }                            
-
-                            Console.WriteLine("{0}", line);
-                            sw.WriteLine(line);
                         }
                         while (line != null);
                     }
@@ -266,12 +268,12 @@ namespace ChromaAPISync
                     Console.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
                         methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
 
-                    sw.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
+                    swHeader.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
                         methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
                 }
 
                 Console.WriteLine();
-                sw.WriteLine();
+                swHeader.WriteLine();
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
                 {
@@ -280,12 +282,42 @@ namespace ChromaAPISync
                     Console.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
 
-                    sw.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
+                    swHeader.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
 
-                sw.Flush();
-                sw.Close();
+                swHeader.Flush();
+                swHeader.Close();
+
+                Console.WriteLine();
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine("CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_{0}, {1});",
+                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
+
+                    swImplementation.WriteLine("CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_{0}, {1});",
+                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
+                }
+
+                Console.WriteLine();
+                swImplementation.WriteLine();
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine("CHROMASDK_VALIDATE_METHOD(PLUGIN_{0}, {1});",
+                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
+
+                    swImplementation.WriteLine("CHROMASDK_VALIDATE_METHOD(PLUGIN_{0}, {1});",
+                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
+                }
+
+                swImplementation.Flush();
+                swImplementation.Close();
 
                 if (true)
                 {
@@ -294,7 +326,7 @@ namespace ChromaAPISync
             }
             catch (Exception)
             {
-                Console.Error.WriteLine("Failed to process file: {0}", filename);
+                Console.Error.WriteLine("Failed to process file: {0}", fileInput);
             }
         }
     }
