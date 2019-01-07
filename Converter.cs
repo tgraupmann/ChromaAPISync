@@ -8,12 +8,14 @@ namespace ChromaAPISync
 {
     class Converter
     {
-        public static void ConvertExportsToClass(string input, string outputHeader, string outputImplementation, string outputDocs)
+        public static void ConvertExportsToClass(string input, string outputHeader, string outputImplementation, string outputDocs,
+            string outputSortInput)
         {
-            OpenClassFiles(input, outputHeader, outputImplementation, outputDocs);
+            OpenClassFiles(input, outputHeader, outputImplementation, outputDocs, outputSortInput);
         }
 
-        private static void OpenClassFiles(string input, string fileHeader, string fileImplementation, string fileDocs)
+        private static void OpenClassFiles(string input, string fileHeader, string fileImplementation, string fileDocs,
+            string fileSortInput)
         {
             if (File.Exists(input))
             {
@@ -62,6 +64,21 @@ namespace ChromaAPISync
                 using (StreamWriter swDocs = new StreamWriter(fsDocs))
                 {
                     if (!WriteDocs(swDocs))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileSortInput))
+            {
+                File.Delete(fileSortInput);
+            }
+            using (FileStream fsSortInput = File.Open(fileSortInput, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swSortInput = new StreamWriter(fsSortInput))
+                {
+                    if (!WriteSortInput(swSortInput))
                     {
                         return;
                     }
@@ -467,6 +484,35 @@ namespace ChromaAPISync
 
                     Console.WriteLine();
                     swDocs.WriteLine();
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write docs!");
+                return false;
+            }
+        }
+
+        static bool WriteSortInput(StreamWriter swSortInput)
+        {
+            try
+            {
+                Console.WriteLine();
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+                    swSortInput.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
                 }
 
                 return true;
