@@ -8,31 +8,62 @@ namespace ChromaAPISync
 {
     class Converter
     {
-        public static void ConvertExportsToClass(string input, string outputHeader, string outputImplementation)
+        public static void ConvertExportsToClass(string input, string outputHeader, string outputImplementation, string outputDocs)
         {
-            OpenClassFiles(input, outputHeader, outputImplementation);
+            OpenClassFiles(input, outputHeader, outputImplementation, outputDocs);
         }
 
-        private static void OpenClassFiles(string input, string fileHeader, string fileImplementation)
+        private static void OpenClassFiles(string input, string fileHeader, string fileImplementation, string fileDocs)
         {
+            if (File.Exists(input))
+            {
+                if (!ProcessStdafx(input))
+                {
+                    return;
+                }
+            }
+
             if (File.Exists(fileHeader))
             {
                 File.Delete(fileHeader);
             }
+            using (FileStream fsHeader = File.Open(fileHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swHeader = new StreamWriter(fsHeader))
+                {
+                    if (!WriteHeader(swHeader))
+                    {
+                        return;
+                    }
+                }
+            }
+
             if (File.Exists(fileImplementation))
             {
                 File.Delete(fileImplementation);
             }
-            using (FileStream fsHeader = File.Open(fileHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            using (FileStream fsImplementation = File.Open(fileImplementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
             {
-                using (FileStream fsImplementation = File.Open(fileImplementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+                using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
                 {
-                    using (StreamWriter swHeader = new StreamWriter(fsHeader))
+                    if (!WriteHeader(swImplementation))
                     {
-                        using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
-                        {
-                            ProcessStdafx(input, swHeader, swImplementation);
-                        }
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileDocs))
+            {
+                File.Delete(fileDocs);
+            }
+            using (FileStream fsDocs = File.Open(fileDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swDocs = new StreamWriter(fsDocs))
+                {
+                    if (!WriteDocs(swDocs))
+                    {
+                        return;
                     }
                 }
             }
@@ -226,11 +257,14 @@ namespace ChromaAPISync
             public string Args = string.Empty;
         }
 
-        static void ProcessStdafx(string fileInput, StreamWriter swHeader, StreamWriter swImplementation)
+        static SortedList<string, MetaMethodInfo> _sMethods = new SortedList<string, MetaMethodInfo>();
+
+        static bool ProcessStdafx(string fileInput)
         {
             try
             {
-                SortedList<string, MetaMethodInfo> methods = new SortedList<string, MetaMethodInfo>();
+                _sMethods.Clear();
+
                 using (FileStream fs = File.Open(fileInput, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     using (StreamReader sr = new StreamReader(fs))
@@ -263,7 +297,7 @@ namespace ChromaAPISync
                             }
                             //Console.WriteLine("Method: {0}", methodInfo.Name);
                             methodInfo.Line = line;
-                            methods[methodInfo.Name] = methodInfo;
+                            _sMethods[methodInfo.Name] = methodInfo;
 
                             if (!GetReturnType(line, out methodInfo.ReturnType))
                             {
@@ -283,8 +317,21 @@ namespace ChromaAPISync
                     }
                 }
 
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to process file: {0}", fileInput);
+                return false;
+            }
+        }
+
+        static bool WriteHeader(StreamWriter swHeader)
+        {
+            try
+            {
                 swHeader.WriteLine("#pragma region API typedefs");
-                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
                     //Console.WriteLine("Returns: {0} Method: {1} Args: {2}", 
@@ -302,7 +349,7 @@ namespace ChromaAPISync
                 swHeader.WriteLine();
 
                 swHeader.WriteLine("#pragma region API declare prototypes");
-                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
@@ -317,10 +364,23 @@ namespace ChromaAPISync
                 swHeader.Flush();
                 swHeader.Close();
 
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write header!");
+                return false;
+            }
+        }
+
+        static bool WriteImplementation(StreamWriter swImplementation)
+        {
+            try
+            {
                 Console.WriteLine();
 
                 swImplementation.WriteLine("#pragma region API declare assignments");
-                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
@@ -336,7 +396,7 @@ namespace ChromaAPISync
                 swImplementation.WriteLine();
 
                 swImplementation.WriteLine("#pragma region API validation");
-                foreach (KeyValuePair<string, MetaMethodInfo> method in methods)
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
@@ -351,14 +411,70 @@ namespace ChromaAPISync
                 swImplementation.Flush();
                 swImplementation.Close();
 
-                if (true)
-                {
-
-                }
+                return true;
             }
             catch (Exception)
             {
-                Console.Error.WriteLine("Failed to process file: {0}", fileInput);
+                Console.Error.WriteLine("Failed to write implementation!");
+                return false;
+            }
+        }
+
+        static bool WriteDocs(StreamWriter swDocs)
+        {
+            try
+            {
+                Console.WriteLine();
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine("* [Plugin{0}](#Plugin{0})", methodInfo.Name);
+                    swDocs.WriteLine("* [Plugin{0}](#Plugin{0})", methodInfo.Name);
+                }
+
+                Console.WriteLine();
+                swDocs.WriteLine();
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine(@"<a name=""Plugin{0}""></a>", methodInfo.Name);
+                    swDocs.WriteLine(@"<a name=""Plugin{0}""></a>", methodInfo.Name);
+
+                    Console.WriteLine("**Plugin{0}**", methodInfo.Name);
+                    swDocs.WriteLine("**Plugin{0}**", methodInfo.Name);
+
+                    Console.WriteLine();
+                    swDocs.WriteLine();
+
+                    Console.WriteLine("```C++", methodInfo.Name);
+                    swDocs.WriteLine("```C++", methodInfo.Name);
+
+                    Console.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+                    swDocs.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+
+                    Console.WriteLine("```", methodInfo.Name);
+                    swDocs.WriteLine("```", methodInfo.Name);
+
+                    Console.WriteLine();
+                    swDocs.WriteLine();
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write docs!");
+                return false;
             }
         }
     }
