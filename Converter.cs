@@ -500,14 +500,28 @@ namespace ChromaAPISync
                     Console.WriteLine("```C++", methodInfo.Name);
                     swDocs.WriteLine("```C++", methodInfo.Name);
 
-                    Console.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
-                        methodInfo.ReturnType,
-                        methodInfo.Name,
-                        SplitLongLines(methodInfo.Args));
-                    swDocs.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
-                        methodInfo.ReturnType,
-                        methodInfo.Name,
-                        SplitLongLines(methodInfo.Args));
+                    if (methodInfo.Args.Length < 20)
+                    {
+                        Console.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                            methodInfo.ReturnType,
+                            methodInfo.Name,
+                            methodInfo.Args);
+                        swDocs.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                            methodInfo.ReturnType,
+                            methodInfo.Name,
+                            methodInfo.Args);
+                    }
+                    else
+                    {
+                        Console.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
+                            methodInfo.ReturnType,
+                            methodInfo.Name,
+                            SplitLongLines(methodInfo.Args));
+                        swDocs.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
+                            methodInfo.ReturnType,
+                            methodInfo.Name,
+                            SplitLongLines(methodInfo.Args));
+                    }
 
                     Console.WriteLine("```", methodInfo.Name);
                     swDocs.WriteLine("```", methodInfo.Name);
