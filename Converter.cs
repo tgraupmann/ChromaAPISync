@@ -284,7 +284,7 @@ namespace ChromaAPISync
                     ignoreWhiteSpace = false;
                 }
                 if (c == ',' &&
-                    j > 80)
+                    j > 70)
                 {
                     returnStr += "\r\n\t"; //insert line
                     j = 0;
