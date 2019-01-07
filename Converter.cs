@@ -265,6 +265,36 @@ namespace ChromaAPISync
             }
         }
 
+        private static string SplitLongLines(string line)
+        {
+            string returnStr = "";
+            int j = 0;
+            bool ignoreWhiteSpace = false;
+            for (int i = 0; i < line.Length; ++i)
+            {
+                char c = line[i];
+                if (ignoreWhiteSpace &&
+                    char.IsWhiteSpace(c))
+                {
+
+                }
+                else
+                {
+                    returnStr += c;
+                    ignoreWhiteSpace = false;
+                }
+                if (c == ',' &&
+                    j > 80)
+                {
+                    returnStr += "\r\n\t"; //insert line
+                    j = 0;
+                    ignoreWhiteSpace = true;
+                }
+                ++j;
+            }
+            return returnStr;
+        }
+
         class MetaMethodInfo
         {
             public string Name = string.Empty;
@@ -470,14 +500,14 @@ namespace ChromaAPISync
                     Console.WriteLine("```C++", methodInfo.Name);
                     swDocs.WriteLine("```C++", methodInfo.Name);
 
-                    Console.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                    Console.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
-                        methodInfo.Args);
-                    swDocs.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                        SplitLongLines(methodInfo.Args));
+                    swDocs.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
-                        methodInfo.Args);
+                        SplitLongLines(methodInfo.Args));
 
                     Console.WriteLine("```", methodInfo.Name);
                     swDocs.WriteLine("```", methodInfo.Name);
