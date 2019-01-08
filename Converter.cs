@@ -313,7 +313,7 @@ namespace ChromaAPISync
                 }
                 ++j;
             }
-            return returnStr;
+            return returnStr.TrimEnd();
         }
 
         class MetaMethodInfo
