@@ -297,7 +297,7 @@ namespace ChromaAPISync
             return returnStr;
         }
 
-        private static string SplitLongComments(string comment)
+        private static string SplitLongComments(string comment, string indent)
         {
             string returnStr = "";
             int j = 0;
@@ -308,7 +308,7 @@ namespace ChromaAPISync
                 if (char.IsWhiteSpace(c) &&
                     j > 70)
                 {
-                    returnStr += "\r\n\t\t"; //insert line
+                    returnStr += "\r\n" + indent; //insert line
                     j = 0;
                 }
                 ++j;
@@ -545,6 +545,15 @@ namespace ChromaAPISync
                     Console.WriteLine();
                     swDocs.WriteLine();
 
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Console.WriteLine("{0}", SplitLongComments(methodInfo.Comments, ""));
+                        swDocs.WriteLine("{0}", SplitLongComments(methodInfo.Comments, ""));
+
+                        Console.WriteLine();
+                        swDocs.WriteLine();
+                    }
+
                     Console.WriteLine("```C++", methodInfo.Name);
                     swDocs.WriteLine("```C++", methodInfo.Name);
 
@@ -605,8 +614,8 @@ namespace ChromaAPISync
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Console.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments));
-                        swSortInput.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments));
+                        Console.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
+                        swSortInput.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
                     }
 
                     Console.WriteLine("\t*/");
