@@ -429,8 +429,18 @@ namespace ChromaAPISync
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
-                    //Console.WriteLine("Returns: {0} Method: {1} Args: {2}", 
-                    //    methodInfo.ReturnType, methodInfo.Name, methodInfo.Args);
+
+                    Console.WriteLine("/*");
+                    swHeader.WriteLine("/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Console.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                        swHeader.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                    }
+
+                    Console.WriteLine("*/");
+                    swHeader.WriteLine("*/");
 
                     Console.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
                         methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
@@ -447,6 +457,18 @@ namespace ChromaAPISync
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
+
+                    Console.WriteLine("/*");
+                    swHeader.WriteLine("/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Console.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                        swHeader.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                    }
+
+                    Console.WriteLine("*/");
+                    swHeader.WriteLine("*/");
 
                     Console.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
