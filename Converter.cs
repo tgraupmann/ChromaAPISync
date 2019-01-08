@@ -301,26 +301,15 @@ namespace ChromaAPISync
         {
             string returnStr = "";
             int j = 0;
-            bool ignoreWhiteSpace = false;
             for (int i = 0; i < comment.Length; ++i)
             {
                 char c = comment[i];
-                if (ignoreWhiteSpace &&
-                    char.IsWhiteSpace(c))
-                {
-
-                }
-                else
-                {
-                    returnStr += c;
-                    ignoreWhiteSpace = false;
-                }
+                returnStr += c;
                 if (char.IsWhiteSpace(c) &&
                     j > 70)
                 {
                     returnStr += "\r\n\t\t"; //insert line
                     j = 0;
-                    ignoreWhiteSpace = true;
                 }
                 ++j;
             }
@@ -379,7 +368,7 @@ namespace ChromaAPISync
                             }
                             if (readComments)
                             {
-                                comments += line;
+                                comments += line + " ";
                                 continue;
                             }
                             if (!line.StartsWith(TOKEN_EXPORT_API))
