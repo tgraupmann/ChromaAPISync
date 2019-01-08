@@ -228,6 +228,8 @@ namespace ChromaAPISync
         }
 
         const string TOKEN_EXPORT_API = "EXPORT_API";
+        const string TOKEN_COMMENT_START = "/*";
+        const string TOKEN_COMMENT_STOP = "*/";
 
         private static bool GetReturnType(string line, out string returnType)
         {
@@ -316,7 +318,7 @@ namespace ChromaAPISync
                 if (char.IsWhiteSpace(c) &&
                     j > 70)
                 {
-                    returnStr += "\r\n\t"; //insert line
+                    returnStr += "\r\n\t\t"; //insert line
                     j = 0;
                     ignoreWhiteSpace = true;
                 }
@@ -348,6 +350,8 @@ namespace ChromaAPISync
                     using (StreamReader sr = new StreamReader(fs))
                     {
                         string line;
+                        bool readComments = false;
+                        string comments = string.Empty;
                         do
                         {
                             line = sr.ReadLine();
@@ -357,6 +361,27 @@ namespace ChromaAPISync
                                 break;
                             }
                             line = line.TrimStart();
+                            bool detectedCommentBlock = false;
+                            if (line.StartsWith(TOKEN_COMMENT_START))
+                            {
+                                readComments = true;
+                                detectedCommentBlock = true;
+                                comments = string.Empty;
+                            }
+                            if (line.Contains(TOKEN_COMMENT_STOP))
+                            {
+                                readComments = false;
+                                detectedCommentBlock = true;
+                            }
+                            if (detectedCommentBlock)
+                            {
+                                continue;
+                            }
+                            if (readComments)
+                            {
+                                comments += line;
+                                continue;
+                            }
                             if (!line.StartsWith(TOKEN_EXPORT_API))
                             {
                                 continue;
@@ -368,6 +393,9 @@ namespace ChromaAPISync
                             //Console.WriteLine("{0}", line);
 
                             MetaMethodInfo methodInfo = new MetaMethodInfo();
+
+                            methodInfo.Comments = comments;
+                            comments = string.Empty;
 
                             if (!GetMethodName(line, out methodInfo.Name))
                             {
@@ -585,8 +613,8 @@ namespace ChromaAPISync
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Console.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments));
-                        swSortInput.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments));
+                        Console.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments));
+                        swSortInput.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments));
                     }
 
                     Console.WriteLine("\t*/");
