@@ -536,6 +536,9 @@ namespace ChromaAPISync
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
+                    Console.WriteLine("---");
+                    swDocs.WriteLine("---");
+
                     Console.WriteLine(@"<a name=""Plugin{0}""></a>", methodInfo.Name);
                     swDocs.WriteLine(@"<a name=""Plugin{0}""></a>", methodInfo.Name);
 
@@ -556,6 +559,9 @@ namespace ChromaAPISync
 
                     Console.WriteLine("```C++", methodInfo.Name);
                     swDocs.WriteLine("```C++", methodInfo.Name);
+
+                    Console.WriteLine("// DLL Interface", methodInfo.Name);
+                    swDocs.WriteLine("// DLL Interface", methodInfo.Name);
 
                     if (methodInfo.Args.Length < 20)
                     {
@@ -578,6 +584,59 @@ namespace ChromaAPISync
                             methodInfo.ReturnType,
                             methodInfo.Name,
                             SplitLongLines(methodInfo.Args));
+                    }
+
+                    Console.WriteLine();
+                    swDocs.WriteLine();
+
+                    Console.WriteLine("// Class Plugin", methodInfo.Name);
+                    swDocs.WriteLine("// Class Plugin", methodInfo.Name);
+
+                    if (methodInfo.ReturnType == "void")
+                    {
+                        if (methodInfo.Args.Length < 20)
+                        {
+                            Console.WriteLine("ChromaAnimationAPI::{0}({1});",
+                                methodInfo.Name,
+                                methodInfo.Args);
+                            swDocs.WriteLine("ChromaAnimationAPI::{0}({1});",
+                                methodInfo.Name,
+                                methodInfo.Args);
+                        }
+                        else
+                        {
+                            Console.WriteLine("ChromaAnimationAPI::{0}(\r\n\t{1});",
+                                methodInfo.Name,
+                                SplitLongLines(methodInfo.Args));
+                            swDocs.WriteLine("ChromaAnimationAPI::{0}(\r\n\t{1});",
+                                methodInfo.Name,
+                                SplitLongLines(methodInfo.Args));
+                        }
+                    }
+                    else
+                    {
+                        if (methodInfo.Args.Length < 20)
+                        {
+                            Console.WriteLine("{0} result = ChromaAnimationAPI::{1}({2});",
+                                methodInfo.ReturnType,
+                                methodInfo.Name,
+                                methodInfo.Args);
+                            swDocs.WriteLine("{0} result = ChromaAnimationAPI::{1}({2});",
+                                methodInfo.ReturnType,
+                                methodInfo.Name,
+                                methodInfo.Args);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} result = ChromaAnimationAPI::{1}(\r\n\t{2});",
+                                methodInfo.ReturnType,
+                                methodInfo.Name,
+                                SplitLongLines(methodInfo.Args));
+                            swDocs.WriteLine("{0} result = ChromaAnimationAPI::{1}(\r\n\t{2});",
+                                methodInfo.ReturnType,
+                                methodInfo.Name,
+                                SplitLongLines(methodInfo.Args));
+                        }
                     }
 
                     Console.WriteLine("```", methodInfo.Name);
