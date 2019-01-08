@@ -295,6 +295,36 @@ namespace ChromaAPISync
             return returnStr;
         }
 
+        private static string SplitLongComments(string comment)
+        {
+            string returnStr = "";
+            int j = 0;
+            bool ignoreWhiteSpace = false;
+            for (int i = 0; i < comment.Length; ++i)
+            {
+                char c = comment[i];
+                if (ignoreWhiteSpace &&
+                    char.IsWhiteSpace(c))
+                {
+
+                }
+                else
+                {
+                    returnStr += c;
+                    ignoreWhiteSpace = false;
+                }
+                if (char.IsWhiteSpace(c) &&
+                    j > 70)
+                {
+                    returnStr += "\r\n\t"; //insert line
+                    j = 0;
+                    ignoreWhiteSpace = true;
+                }
+                ++j;
+            }
+            return returnStr;
+        }
+
         class MetaMethodInfo
         {
             public string Name = string.Empty;
@@ -302,6 +332,7 @@ namespace ChromaAPISync
             public string Tabs = string.Empty;
             public string Line = string.Empty;
             public string Args = string.Empty;
+            public string Comments = string.Empty;
         }
 
         static SortedList<string, MetaMethodInfo> _sMethods = new SortedList<string, MetaMethodInfo>();
@@ -549,11 +580,23 @@ namespace ChromaAPISync
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                    Console.WriteLine("\t/*");
+                    swSortInput.WriteLine("\t/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Console.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments));
+                        swSortInput.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments));
+                    }
+
+                    Console.WriteLine("\t*/");
+                    swSortInput.WriteLine("\t*/");
+
+                    Console.WriteLine("\tEXPORT_API {0} Plugin{1}({2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
                         methodInfo.Args);
-                    swSortInput.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                    swSortInput.WriteLine("\tEXPORT_API {0} Plugin{1}({2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
                         methodInfo.Args);
