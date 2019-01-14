@@ -8,13 +8,29 @@ namespace ChromaAPISync
 {
     class Converter
     {
-        public static void ConvertExportsToClass(string input, string outputHeader, string outputImplementation, string outputDocs,
+        public static void ConvertExportsToClass(string input,
+            string outputHeader, string outputImplementation,
+            string outputDocs,
+            string outputUnity,
             string outputSortInput)
         {
-            OpenClassFiles(input, outputHeader, outputImplementation, outputDocs, outputSortInput);
+            OpenClassFiles(input,
+                outputHeader, outputImplementation,
+                outputDocs,
+                outputUnity,
+                outputSortInput);
         }
 
-        private static void OpenClassFiles(string input, string fileHeader, string fileImplementation, string fileDocs,
+        private static void Output(StreamWriter sw, string msg, params object[] args)
+        {
+            Console.WriteLine(msg, args);
+            sw.WriteLine(msg, args);
+        }
+
+        private static void OpenClassFiles(string input,
+            string fileHeader, string fileImplementation,
+            string fileDocs,
+            string fileUnity,
             string fileSortInput)
         {
             if (File.Exists(input))
@@ -64,6 +80,21 @@ namespace ChromaAPISync
                 using (StreamWriter swDocs = new StreamWriter(fsDocs))
                 {
                     if (!WriteDocs(swDocs))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileUnity))
+            {
+                File.Delete(fileUnity);
+            }
+            using (FileStream fsUnity = File.Open(fileUnity, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swUnity = new StreamWriter(fsUnity))
+                {
+                    if (!WriteUnity(swUnity))
                     {
                         return;
                     }
@@ -425,58 +456,45 @@ namespace ChromaAPISync
         {
             try
             {
-                swHeader.WriteLine("#pragma region API typedefs");
+                Output(swHeader, "#pragma region API typedefs");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("/*");
-                    swHeader.WriteLine("/*");
+                    Output(swHeader, "/*");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Console.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
-                        swHeader.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                        Output(swHeader, "\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
                     }
 
-                    Console.WriteLine("*/");
-                    swHeader.WriteLine("*/");
+                    Output(swHeader, "*/");
 
-                    Console.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
-                        methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
-
-                    swHeader.WriteLine("typedef {0}{1}(*PLUGIN_{2})({3});",
+                    Output(swHeader, "typedef {0}{1}(*PLUGIN_{2})({3});",
                         methodInfo.ReturnType, methodInfo.Tabs, GetCamelUnderscore(methodInfo.Name), methodInfo.Args);
                 }
-                swHeader.WriteLine("#pragma endregion");
+                Output(swHeader, "#pragma endregion");
 
-                Console.WriteLine();
-                swHeader.WriteLine();
+                Output(swHeader, "");
 
-                swHeader.WriteLine("#pragma region API declare prototypes");
+                Output(swHeader, "#pragma region API declare prototypes");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("/*");
-                    swHeader.WriteLine("/*");
+                    Output(swHeader, "/*");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Console.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
-                        swHeader.WriteLine("\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                        Output(swHeader, "\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
                     }
 
-                    Console.WriteLine("*/");
-                    swHeader.WriteLine("*/");
+                    Output(swHeader, "*/");
 
-                    Console.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
-                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
-
-                    swHeader.WriteLine("CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
+                    Output(swHeader, "CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
-                swHeader.WriteLine("#pragma endregion");
+                Output(swHeader, "#pragma endregion");
 
                 swHeader.Flush();
                 swHeader.Close();
@@ -496,34 +514,27 @@ namespace ChromaAPISync
             {
                 Console.WriteLine();
 
-                swImplementation.WriteLine("#pragma region API declare assignments");
+                Output(swImplementation, "#pragma region API declare assignments");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_{0}, {1});",
-                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
-
-                    swImplementation.WriteLine("CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_{0}, {1});",
+                    Output(swImplementation, "CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
-                swImplementation.WriteLine("#pragma endregion");
+                Output(swImplementation, "#pragma endregion");
 
-                Console.WriteLine();
-                swImplementation.WriteLine();
+                Output(swImplementation, "");
 
-                swImplementation.WriteLine("#pragma region API validation");
+                Output(swImplementation, "#pragma region API validation");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("CHROMASDK_VALIDATE_METHOD(PLUGIN_{0}, {1});",
-                        GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
-
-                    swImplementation.WriteLine("CHROMASDK_VALIDATE_METHOD(PLUGIN_{0}, {1});",
+                    Output(swImplementation, "CHROMASDK_VALIDATE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
-                swImplementation.WriteLine("#pragma endregion");
+                Output(swImplementation, "#pragma endregion");
 
                 swImplementation.Flush();
                 swImplementation.Close();
@@ -547,90 +558,64 @@ namespace ChromaAPISync
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("* [Plugin{0}](#Plugin{0})", methodInfo.Name);
-                    swDocs.WriteLine("* [Plugin{0}](#Plugin{0})", methodInfo.Name);
+                    Output(swDocs, "* [Plugin{0}](#Plugin{0})", methodInfo.Name);
                 }
 
-                Console.WriteLine();
-                swDocs.WriteLine();
+                Output(swDocs, "");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("---");
-                    swDocs.WriteLine("---");
+                    Output(swDocs, "---");
 
-                    Console.WriteLine(@"<a name=""Plugin{0}""></a>", methodInfo.Name);
-                    swDocs.WriteLine(@"<a name=""Plugin{0}""></a>", methodInfo.Name);
+                    Output(swDocs, @"<a name=""Plugin{0}""></a>", methodInfo.Name);
 
-                    Console.WriteLine("**Plugin{0}**", methodInfo.Name);
-                    swDocs.WriteLine("**Plugin{0}**", methodInfo.Name);
+                    Output(swDocs, "**Plugin{0}**", methodInfo.Name);
 
-                    Console.WriteLine();
-                    swDocs.WriteLine();
+                    Output(swDocs, "");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Console.WriteLine("{0}", SplitLongComments(methodInfo.Comments, ""));
-                        swDocs.WriteLine("{0}", SplitLongComments(methodInfo.Comments, ""));
+                        Output(swDocs, "{0}", SplitLongComments(methodInfo.Comments, ""));
 
-                        Console.WriteLine();
-                        swDocs.WriteLine();
+                        Output(swDocs, "");
                     }
 
-                    Console.WriteLine("```C++", methodInfo.Name);
-                    swDocs.WriteLine("```C++", methodInfo.Name);
+                    Output(swDocs, "```C++", methodInfo.Name);
 
-                    Console.WriteLine("// DLL Interface", methodInfo.Name);
-                    swDocs.WriteLine("// DLL Interface", methodInfo.Name);
+                    Output(swDocs, "// DLL Interface", methodInfo.Name);
 
                     if (methodInfo.Args.Length < 20)
                     {
-                        Console.WriteLine("EXPORT_API {0} Plugin{1}({2});",
-                            methodInfo.ReturnType,
-                            methodInfo.Name,
-                            methodInfo.Args);
-                        swDocs.WriteLine("EXPORT_API {0} Plugin{1}({2});",
+                        Output(swDocs, "EXPORT_API {0} Plugin{1}({2});",
                             methodInfo.ReturnType,
                             methodInfo.Name,
                             methodInfo.Args);
                     }
                     else
                     {
-                        Console.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
-                            methodInfo.ReturnType,
-                            methodInfo.Name,
-                            SplitLongLines(methodInfo.Args));
-                        swDocs.WriteLine("EXPORT_API {0} Plugin{1}(\r\n\t{2});",
+                        Output(swDocs, "EXPORT_API {0} Plugin{1}(\r\n\t{2});",
                             methodInfo.ReturnType,
                             methodInfo.Name,
                             SplitLongLines(methodInfo.Args));
                     }
 
-                    Console.WriteLine();
-                    swDocs.WriteLine();
+                    Output(swDocs, "");
 
-                    Console.WriteLine("// Class Plugin", methodInfo.Name);
-                    swDocs.WriteLine("// Class Plugin", methodInfo.Name);
+                    Output(swDocs, "// Class Plugin", methodInfo.Name);
 
                     if (methodInfo.ReturnType == "void")
                     {
                         if (methodInfo.Args.Length < 20)
                         {
-                            Console.WriteLine("ChromaAnimationAPI::{0}({1});",
-                                methodInfo.Name,
-                                methodInfo.Args);
-                            swDocs.WriteLine("ChromaAnimationAPI::{0}({1});",
+                            Output(swDocs, "ChromaAnimationAPI::{0}({1});",
                                 methodInfo.Name,
                                 methodInfo.Args);
                         }
                         else
                         {
-                            Console.WriteLine("ChromaAnimationAPI::{0}(\r\n\t{1});",
-                                methodInfo.Name,
-                                SplitLongLines(methodInfo.Args));
-                            swDocs.WriteLine("ChromaAnimationAPI::{0}(\r\n\t{1});",
+                            Output(swDocs, "ChromaAnimationAPI::{0}(\r\n\t{1});",
                                 methodInfo.Name,
                                 SplitLongLines(methodInfo.Args));
                         }
@@ -639,33 +624,23 @@ namespace ChromaAPISync
                     {
                         if (methodInfo.Args.Length < 20)
                         {
-                            Console.WriteLine("{0} result = ChromaAnimationAPI::{1}({2});",
-                                methodInfo.ReturnType,
-                                methodInfo.Name,
-                                methodInfo.Args);
-                            swDocs.WriteLine("{0} result = ChromaAnimationAPI::{1}({2});",
+                            Output(swDocs, "{0} result = ChromaAnimationAPI::{1}({2});",
                                 methodInfo.ReturnType,
                                 methodInfo.Name,
                                 methodInfo.Args);
                         }
                         else
                         {
-                            Console.WriteLine("{0} result = ChromaAnimationAPI::{1}(\r\n\t{2});",
-                                methodInfo.ReturnType,
-                                methodInfo.Name,
-                                SplitLongLines(methodInfo.Args));
-                            swDocs.WriteLine("{0} result = ChromaAnimationAPI::{1}(\r\n\t{2});",
+                            Output(swDocs, "{0} result = ChromaAnimationAPI::{1}(\r\n\t{2});",
                                 methodInfo.ReturnType,
                                 methodInfo.Name,
                                 SplitLongLines(methodInfo.Args));
                         }
                     }
 
-                    Console.WriteLine("```", methodInfo.Name);
-                    swDocs.WriteLine("```", methodInfo.Name);
+                    Output(swDocs, "```", methodInfo.Name);
 
-                    Console.WriteLine();
-                    swDocs.WriteLine();
+                    Output(swDocs, "");
                 }
 
                 return true;
@@ -683,43 +658,74 @@ namespace ChromaAPISync
             {
                 Console.WriteLine();
 
-                Console.WriteLine("#pragma region Source of autogenerated APIs and documentation");
-                swSortInput.WriteLine("#pragma region Source of autogenerated APIs and documentation");
+                Output(swSortInput, "#pragma region Source of autogenerated APIs and documentation");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Console.WriteLine("\t/*");
-                    swSortInput.WriteLine("\t/*");
+                    Output(swSortInput, "\t/*");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Console.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
-                        swSortInput.WriteLine("\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
+                        Output(swSortInput, "\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
                     }
 
-                    Console.WriteLine("\t*/");
-                    swSortInput.WriteLine("\t*/");
+                    Output(swSortInput, "\t*/");
 
-                    Console.WriteLine("\tEXPORT_API {0} Plugin{1}({2});",
-                        methodInfo.ReturnType,
-                        methodInfo.Name,
-                        methodInfo.Args);
-                    swSortInput.WriteLine("\tEXPORT_API {0} Plugin{1}({2});",
+                    Output(swSortInput, "\tEXPORT_API {0} Plugin{1}({2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
                         methodInfo.Args);
                 }
 
-                Console.WriteLine("#pragma endregion");
-                swSortInput.WriteLine("#pragma endregion");
+                Output(swSortInput, "#pragma endregion");
 
                 return true;
             }
             catch (Exception)
             {
-                Console.Error.WriteLine("Failed to write docs!");
+                Console.Error.WriteLine("Failed to write sorted file!");
+                return false;
+            }
+        }
+
+        static bool WriteUnity(StreamWriter swUnity)
+        {
+            try
+            {
+                Console.WriteLine();
+
+                Output(swUnity, "#region Source of autogenerated APIs and documentation");
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swUnity, "\t/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swUnity, "\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
+                    }
+
+                    Output(swUnity, "\t*/");
+
+                    /*
+                    Output(swUnity, "\tEXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+                    */
+                }
+
+                Output(swUnity, "#endregion");
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write unity!");
                 return false;
             }
         }
