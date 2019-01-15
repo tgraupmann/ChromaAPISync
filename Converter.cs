@@ -347,6 +347,26 @@ namespace ChromaAPISync
             return returnStr.TrimEnd();
         }
 
+        private static string RemoveArgTypes(string args)
+        {
+            string[] parts = args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].TrimEnd();
+                string[] innerParts = part.Split(" ".ToCharArray());
+                string name = innerParts[innerParts.Length - 1].Trim();
+                if (i == 0)
+                {
+                    parts[i] = name;
+                }
+                else
+                {
+                    parts[i] = " " + name;
+                }
+            }
+            return string.Join(",", parts);
+        }
+
         class MetaMethodInfo
         {
             public string Name = string.Empty;
@@ -721,13 +741,13 @@ namespace ChromaAPISync
                     {
                         Output(swUnity, "\t\tPlugin{0}({1});",
                             methodInfo.Name,
-                            methodInfo.Args);
+                            RemoveArgTypes(methodInfo.Args));
                     }
                     else
                     {
                         Output(swUnity, "\t\treturn Plugin{0}({1});",
                             methodInfo.Name,
-                            methodInfo.Args);
+                            RemoveArgTypes(methodInfo.Args));
                     }
                     Output(swUnity, "\t{0}", "}");
                 }
