@@ -353,27 +353,25 @@ namespace ChromaAPISync
             for (int i = 0; i < parts.Length; ++i)
             {
                 string part = parts[i].TrimEnd();
-                string[] innerParts = part.Split(" ".ToCharArray());
-                string name = innerParts[innerParts.Length - 1].Trim();
-                if (i == 0)
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
                 {
+                    string name = part.Substring(indexName + 1);
                     parts[i] = name;
-                }
-                else
-                {
-                    parts[i] = " " + name;
                 }
             }
             return string.Join(",", parts);
         }
 
-        private static int GetLastWhitespace(string str)
+        private static int GetIndexArgumentBeforeName(string str)
         {
             int index = -1;
             int j = 0;
             foreach (char c in str)
             {
-                if (char.IsWhiteSpace(c))
+                if (c == '&' ||
+                    c == '*' ||
+                    char.IsWhiteSpace(c))
                 {
                     index = j;
                 }
@@ -384,44 +382,136 @@ namespace ChromaAPISync
 
         private static string ChangeToManagedImportType(string strType)
         {
-            string result = strType;
-            if (strType == "int*")
+            string result = TrimArgType(strType);
+            if (result == "int*")
             {
                 result = "int[]";
             }
-            else if (strType == "const int*")
+            else if (result == "const int*")
             {
                 result = "int[]";
             }
-            else if (strType == "const char*")
+            else if (result == "const char*")
             {
                 result = "IntPtr";
             }
-            else if (strType == "RZRESULT")
+            else if (result == "RZRESULT")
             {
                 result = "int";
+            }
+            else if (result == "ChromaSDK::ChromaLink::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Headset::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Keyboard::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Keypad::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Mouse::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Mousepad::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
+            {
+            }
+            else if (result == "const ChromaSDK::FChromaSDKGuid&")
+            {
+                result = "System.Guid";
             }
             return result;
         }
 
         private static string ChangeToManagedType(string strType)
         {
-            string result = strType;
-            if (strType == "int*")
+            string result = TrimArgType(strType);
+            if (result == "int*")
             {
                 result = "int[]";
             }
-            else if (strType == "const int*")
+            else if (result == "const int*")
             {
                 result = "int[]";
             }
-            else if (strType == "const char*")
+            else if (result == "const char*")
             {
                 result = "string";
             }
-            else if (strType == "RZRESULT")
+            else if (result == "RZRESULT")
             {
                 result = "int";
+            }
+            else if (result == "ChromaSDK::ChromaLink::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Headset::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Keyboard::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Keypad::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Mouse::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Mousepad::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
+            {
+            }
+            else if (result == "const ChromaSDK::FChromaSDKGuid&")
+            {
+                result = "System.Guid";
+            }
+            return result;
+        }
+
+        private static string TrimArgType(string argType)
+        {
+            string result = "";
+            bool hadWhitespace = false;
+            foreach (char c in argType)
+            {
+                if (c == '&' ||
+                    c == '*' ||
+                    c == ':' ||
+                    c == '_')
+                {
+                    result += c;
+                }
+                else if (char.IsLetterOrDigit(c))
+                {
+                    if (hadWhitespace)
+                    {
+                        hadWhitespace = false;
+                        result += " ";
+                    }
+                    result += c;
+                }
+                else if (char.IsWhiteSpace(c))
+                {
+                    hadWhitespace = true;
+                }
             }
             return result;
         }
@@ -432,18 +522,20 @@ namespace ChromaAPISync
             for (int i = 0; i < parts.Length; ++i)
             {
                 string part = parts[i].Trim();
-                int lastWhitespace = GetLastWhitespace(part);
-                if (lastWhitespace > 0)
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
                 {
-                    string strType = ChangeToManagedType(part.Substring(0, lastWhitespace).Trim());
+                    string strType = part.Substring(0, indexName + 1).Trim();
+                    strType = ChangeToManagedType(strType);
+                    string name = part.Substring(indexName + 1).Trim();
 
                     if (i == 0)
                     {
-                        parts[i] = strType + part.Substring(lastWhitespace);
+                        parts[i] = strType + " " + name;
                     }
                     else
                     {
-                        parts[i] = " " + strType + part.Substring(lastWhitespace);
+                        parts[i] = " " + strType + " " + name;
 
                     }
                 }
@@ -457,18 +549,19 @@ namespace ChromaAPISync
             for (int i = 0; i < parts.Length; ++i)
             {
                 string part = parts[i].Trim();
-                int lastWhitespace = GetLastWhitespace(part);
-                if (lastWhitespace > 0)
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
                 {
-                    string strType = ChangeToManagedImportType(part.Substring(0, lastWhitespace).Trim());
+                    string strType = ChangeToManagedImportType(part.Substring(0, indexName).Trim());
+                    string name = part.Substring(indexName + 1).Trim();
 
                     if (i == 0)
                     {
-                        parts[i] = strType + part.Substring(lastWhitespace);
+                        parts[i] = strType + " " + name;
                     }
                     else
                     {
-                        parts[i] = " " + strType + part.Substring(lastWhitespace);
+                        parts[i] = " " + strType + " " + name;
 
                     }
                 }
