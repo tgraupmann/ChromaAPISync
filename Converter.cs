@@ -971,6 +971,11 @@ namespace ChromaAPISync
                         Output(swUnity, "\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
                     }
 
+                    Output(swUnity, "\t\tEXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+
                     Output(swUnity, "\t*/");
 
                     Output(swUnity, "\t{0}", "[DllImport(DLL_NAME)]");

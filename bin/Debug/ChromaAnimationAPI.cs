@@ -3754,23 +3754,27 @@
 		the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
 		size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
 		success. Returns -1 upon failure.
+		EXPORT_API int PluginAddFrame(int animationId, float duration, int* colors, int length);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginAddFrame(int animationId, float duration, int[] colors, int length);
 	/*
 		Add source color to target where color is not black for all frames, reference 
 		source and target by id.
+		EXPORT_API void PluginAddNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Add source color to target where color is not black for all frames, reference 
 		source and target by name.
+		EXPORT_API void PluginAddNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAddNonZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAddNonZeroAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -3778,6 +3782,7 @@
 		Add source color to target where color is not black for all frames starting 
 		at offset for the length of the source, reference source and target by 
 		id.
+		EXPORT_API void PluginAddNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -3785,45 +3790,53 @@
 		Add source color to target where color is not black for all frames starting 
 		at offset for the length of the source, reference source and target by 
 		name.
+		EXPORT_API void PluginAddNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAddNonZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAddNonZeroAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
 	/*
 		Add source color to target where color is not black for the source frame 
 		and target offset frame, reference source and target by id.
+		EXPORT_API void PluginAddNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	/*
 		Add source color to target where color is not black for the source frame 
 		and target offset frame, reference source and target by name.
+		EXPORT_API void PluginAddNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroAllKeysOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAddNonZeroAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAddNonZeroAllKeysOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double offset);
 	/*
 		Add source color to target where the target color is not black for all frames, 
 		reference source and target by id.
+		EXPORT_API void PluginAddNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Add source color to target where the target color is not black for all frames, 
 		reference source and target by name.
+		EXPORT_API void PluginAddNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroTargetAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAddNonZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAddNonZeroTargetAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -3831,6 +3844,7 @@
 		Add source color to target where the target color is not black for all frames 
 		starting at offset for the length of the source, reference source and target 
 		by id.
+		EXPORT_API void PluginAddNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -3838,61 +3852,72 @@
 		Add source color to target where the target color is not black for all frames 
 		starting at offset for the length of the source, reference source and target 
 		by name.
+		EXPORT_API void PluginAddNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroTargetAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAddNonZeroTargetAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAddNonZeroTargetAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
 	/*
 		Add source color to target where target color is not blank from the source 
 		frame to the target offset frame, reference source and target by id.
+		EXPORT_API void PluginAddNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	/*
 		Add source color to target where target color is not blank from the source 
 		frame to the target offset frame, reference source and target by name.
+		EXPORT_API void PluginAddNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAddNonZeroTargetAllKeysOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAddNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAddNonZeroTargetAllKeysOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double offset);
 	/*
 		Append all source frames to the target animation, reference source and target 
 		by id.
+		EXPORT_API void PluginAppendAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAppendAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Append all source frames to the target animation, reference source and target 
 		by name.
+		EXPORT_API void PluginAppendAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginAppendAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginAppendAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginAppendAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		`PluginClearAll` will issue a `CLEAR` effect for all devices.
+		EXPORT_API void PluginClearAll();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginClearAll();
 	/*
 		`PluginClearAnimationType` will issue a `CLEAR` effect for the given device.
+		EXPORT_API void PluginClearAnimationType(int deviceType, int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginClearAnimationType(int deviceType, int device);
 	/*
 		`PluginCloseAll` closes all open animations so they can be reloaded from 
 		disk. The set of animations will be stopped if playing.
+		EXPORT_API void PluginCloseAll();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCloseAll();
@@ -3901,107 +3926,126 @@
 		the animation id upon success. Returns -1 upon failure. This might be used 
 		while authoring effects if there was a change necessitating re-opening 
 		the animation. The animation id can no longer be used once closed.
+		EXPORT_API int PluginCloseAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCloseAnimation(int animationId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCloseAnimationD(double animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCloseAnimationD(double animationId);
 	/*
 		Closes the `Chroma` animation referenced by name so that the animation can 
 		be reloaded from disk.
+		EXPORT_API void PluginCloseAnimationName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCloseAnimationName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCloseAnimationNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCloseAnimationNameD(IntPtr path);
 	/*
 		`PluginCloseComposite` closes a set of animations so they can be reloaded 
 		from disk. The set of animations will be stopped if playing.
+		EXPORT_API void PluginCloseComposite(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCloseComposite(IntPtr name);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCloseCompositeD(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCloseCompositeD(IntPtr name);
 	/*
 		Copy animation to named target animation in memory. If target animation 
 		exists, close first. Source is referenced by id.
+		EXPORT_API int PluginCopyAnimation(int sourceAnimationId, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCopyAnimation(int sourceAnimationId, IntPtr targetAnimation);
 	/*
 		Copy animation to named target animation in memory. If target animation 
 		exists, close first. Source is referenced by name.
+		EXPORT_API void PluginCopyAnimationName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyAnimationName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyAnimationNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyAnimationNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		Copy blue channel to other channels for all frames. Intensity range is 0.0 
 		to 1.0. Reference the animation by id.
+		EXPORT_API void PluginCopyBlueChannelAllFrames(int animationId, float redIntensity, float greenIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyBlueChannelAllFrames(int animationId, float redIntensity, float greenIntensity);
 	/*
 		Copy blue channel to other channels for all frames. Intensity range is 0.0 
 		to 1.0. Reference the animation by name.
+		EXPORT_API void PluginCopyBlueChannelAllFramesName(const char* path, float redIntensity, float greenIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyBlueChannelAllFramesName(IntPtr path, float redIntensity, float greenIntensity);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyBlueChannelAllFramesNameD(const char* path, double redIntensity, double greenIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyBlueChannelAllFramesNameD(IntPtr path, double redIntensity, double greenIntensity);
 	/*
 		Copy green channel to other channels for all frames. Intensity range is 
 		0.0 to 1.0. Reference the animation by id.
+		EXPORT_API void PluginCopyGreenChannelAllFrames(int animationId, float redIntensity, float blueIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyGreenChannelAllFrames(int animationId, float redIntensity, float blueIntensity);
 	/*
 		Copy green channel to other channels for all frames. Intensity range is 
 		0.0 to 1.0. Reference the animation by name.
+		EXPORT_API void PluginCopyGreenChannelAllFramesName(const char* path, float redIntensity, float blueIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyGreenChannelAllFramesName(IntPtr path, float redIntensity, float blueIntensity);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyGreenChannelAllFramesNameD(const char* path, double redIntensity, double blueIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyGreenChannelAllFramesNameD(IntPtr path, double redIntensity, double blueIntensity);
 	/*
 		Copy animation key color from the source animation to the target animation 
 		for the given frame. Reference the source and target by id.
+		EXPORT_API void PluginCopyKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 	/*
 		Copy animation key color from the source animation to the target animation 
 		for all frames. Reference the source and target by id.
+		EXPORT_API void PluginCopyKeyColorAllFrames(int sourceAnimationId, int targetAnimationId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyKeyColorAllFrames(int sourceAnimationId, int targetAnimationId, int rzkey);
 	/*
 		Copy animation key color from the source animation to the target animation 
 		for all frames. Reference the source and target by name.
+		EXPORT_API void PluginCopyKeyColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyKeyColorAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation, int rzkey);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyKeyColorAllFramesNameD(const char* sourceAnimation, const char* targetAnimation, double rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyKeyColorAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double rzkey);
@@ -4009,6 +4053,7 @@
 		Copy animation key color from the source animation to the target animation 
 		for all frames, starting at the offset for the length of the source animation. 
 		Source and target are referenced by id.
+		EXPORT_API void PluginCopyKeyColorAllFramesOffset(int sourceAnimationId, int targetAnimationId, int rzkey, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyKeyColorAllFramesOffset(int sourceAnimationId, int targetAnimationId, int rzkey, int offset);
@@ -4016,45 +4061,53 @@
 		Copy animation key color from the source animation to the target animation 
 		for all frames, starting at the offset for the length of the source animation. 
 		Source and target are referenced by name.
+		EXPORT_API void PluginCopyKeyColorAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int rzkey, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyKeyColorAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int rzkey, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyKeyColorAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double rzkey, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyKeyColorAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double rzkey, double offset);
 	/*
 		Copy animation key color from the source animation to the target animation 
 		for the given frame.
+		EXPORT_API void PluginCopyKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyKeyColorName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int rzkey);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyKeyColorNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyKeyColorNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double rzkey);
 	/*
 		Copy source animation to target animation for the given frame. Source and 
 		target are referenced by id.
+		EXPORT_API void PluginCopyNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 	/*
 		Copy nonzero colors from a source animation to a target animation for all 
 		frames. Reference source and target by id.
+		EXPORT_API void PluginCopyNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Copy nonzero colors from a source animation to a target animation for all 
 		frames. Reference source and target by name.
+		EXPORT_API void PluginCopyNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -4062,6 +4115,7 @@
 		Copy nonzero colors from a source animation to a target animation for all 
 		frames starting at the offset for the length of the source animation. The 
 		source and target are referenced by id.
+		EXPORT_API void PluginCopyNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -4069,22 +4123,26 @@
 		Copy nonzero colors from a source animation to a target animation for all 
 		frames starting at the offset for the length of the source animation. The 
 		source and target are referenced by name.
+		EXPORT_API void PluginCopyNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
 	/*
 		Copy nonzero colors from source animation to target animation for the specified 
 		frame. Source and target are referenced by id.
+		EXPORT_API void PluginCopyNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroAllKeysNameD(const char* sourceAnimation, const char* targetAnimation, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroAllKeysNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId);
@@ -4092,6 +4150,7 @@
 		Copy nonzero colors from the source animation to the target animation from 
 		the source frame to the target offset frame. Source and target are referenced 
 		by id.
+		EXPORT_API void PluginCopyNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
@@ -4099,28 +4158,33 @@
 		Copy nonzero colors from the source animation to the target animation from 
 		the source frame to the target offset frame. Source and target are referenced 
 		by name.
+		EXPORT_API void PluginCopyNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroAllKeysOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroAllKeysOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double offset);
 	/*
 		Copy animation key color from the source animation to the target animation 
 		for the given frame where color is not zero.
+		EXPORT_API void PluginCopyNonZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 	/*
 		Copy animation key color from the source animation to the target animation 
 		for the given frame where color is not zero.
+		EXPORT_API void PluginCopyNonZeroKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroKeyColorName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int rzkey);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroKeyColorNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroKeyColorNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double rzkey);
@@ -4128,6 +4192,7 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for the specified frame. Source and target 
 		are referenced by id.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
@@ -4135,6 +4200,7 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for all frames. Source and target are referenced 
 		by id.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
@@ -4142,11 +4208,13 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for all frames. Source and target are referenced 
 		by name.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroTargetAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -4154,6 +4222,7 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for all frames. Source and target are referenced 
 		by name.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -4162,11 +4231,13 @@
 		the target color is nonzero for all frames starting at the target offset 
 		for the length of the source animation. Source and target animations are 
 		referenced by name.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroTargetAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroTargetAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
@@ -4174,11 +4245,13 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for the specified frame. The source and target 
 		are referenced by name.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroTargetAllKeysNameD(const char* sourceAnimation, const char* targetAnimation, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroTargetAllKeysNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId);
@@ -4186,6 +4259,7 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for the specified source frame and target offset 
 		frame. The source and target are referenced by id.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
@@ -4193,45 +4267,53 @@
 		Copy nonzero colors from the source animation to the target animation where 
 		the target color is nonzero for the specified source frame and target offset 
 		frame. The source and target are referenced by name.
+		EXPORT_API void PluginCopyNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyNonZeroTargetAllKeysOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyNonZeroTargetAllKeysOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double offset);
 	/*
 		Copy red channel to other channels for all frames. Intensity range is 0.0 
 		to 1.0. Reference the animation by id.
+		EXPORT_API void PluginCopyRedChannelAllFrames(int animationId, float greenIntensity, float blueIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyRedChannelAllFrames(int animationId, float greenIntensity, float blueIntensity);
 	/*
 		Copy green channel to other channels for all frames. Intensity range is 
 		0.0 to 1.0. Reference the animation by name.
+		EXPORT_API void PluginCopyRedChannelAllFramesName(const char* path, float greenIntensity, float blueIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyRedChannelAllFramesName(IntPtr path, float greenIntensity, float blueIntensity);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyRedChannelAllFramesNameD(const char* path, double greenIntensity, double blueIntensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyRedChannelAllFramesNameD(IntPtr path, double greenIntensity, double blueIntensity);
 	/*
 		Copy zero colors from source animation to target animation for all frames. 
 		Source and target are referenced by id.
+		EXPORT_API void PluginCopyZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Copy zero colors from source animation to target animation for all frames. 
 		Source and target are referenced by name.
+		EXPORT_API void PluginCopyZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyZeroAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -4239,6 +4321,7 @@
 		Copy zero colors from source animation to target animation for all frames 
 		starting at the target offset for the length of the source animation. Source 
 		and target are referenced by id.
+		EXPORT_API void PluginCopyZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -4246,105 +4329,125 @@
 		Copy zero colors from source animation to target animation for all frames 
 		starting at the target offset for the length of the source animation. Source 
 		and target are referenced by name.
+		EXPORT_API void PluginCopyZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyZeroAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
 	/*
 		Copy zero key color from source animation to target animation for the specified 
 		frame. Source and target are referenced by id.
+		EXPORT_API void PluginCopyZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 	/*
 		Copy zero key color from source animation to target animation for the specified 
 		frame. Source and target are referenced by name.
+		EXPORT_API void PluginCopyZeroKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroKeyColorName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int rzkey);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyZeroKeyColorNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyZeroKeyColorNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double rzkey);
 	/*
 		Copy nonzero color from source animation to target animation where target 
 		is zero for all frames. Source and target are referenced by id.
+		EXPORT_API void PluginCopyZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Copy nonzero color from source animation to target animation where target 
 		is zero for all frames. Source and target are referenced by name.
+		EXPORT_API void PluginCopyZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginCopyZeroTargetAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginCopyZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginCopyZeroTargetAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateChromaLinkEffect(ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateChromaLinkEffect(int Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateHeadsetEffect(ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateHeadsetEffect(int Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateKeyboardEffect(ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateKeyboardEffect(int Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateKeypadEffect(ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateKeypadEffect(int Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateMouseEffect(ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateMouseEffect(int Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreCreateMousepadEffect(ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreCreateMousepadEffect(int Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreDeleteEffect(RZEFFECTID EffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreDeleteEffect(RZEFFECTID EffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreInit();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreInit();
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE &DeviceInfo);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE DeviceInfo);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreSetEffect(RZEFFECTID EffectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreSetEffect(RZEFFECTID EffectId);
 	/*
 		Direct access to low level API.
+		EXPORT_API RZRESULT PluginCoreUnInit();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCoreUnInit();
@@ -4356,6 +4459,7 @@
 		upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
 		at the given path. Returns the animation id upon success. Returns -1 upon 
 		failure.
+		EXPORT_API int PluginCreateAnimation(const char* path, int deviceType, int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCreateAnimation(IntPtr path, int deviceType, int device);
@@ -4366,33 +4470,39 @@
 		respective to the `deviceType`. Returns the animation id upon success. 
 		Returns -1 upon failure. Returns the animation id upon success. Returns 
 		-1 upon failure.
+		EXPORT_API int PluginCreateAnimationInMemory(int deviceType, int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCreateAnimationInMemory(int deviceType, int device);
 	/*
 		Create a device specific effect.
+		EXPORT_API RZRESULT PluginCreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int* colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginCreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int[] colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
 	/*
 		Delete an effect given the effect id.
+		EXPORT_API RZRESULT PluginDeleteEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginDeleteEffect(System.Guid effectId);
 	/*
 		Duplicate the first animation frame so that the animation length matches 
 		the frame count. Animation is referenced by id.
+		EXPORT_API void PluginDuplicateFirstFrame(int animationId, int frameCount);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginDuplicateFirstFrame(int animationId, int frameCount);
 	/*
 		Duplicate the first animation frame so that the animation length matches 
 		the frame count. Animation is referenced by name.
+		EXPORT_API void PluginDuplicateFirstFrameName(const char* path, int frameCount);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginDuplicateFirstFrameName(IntPtr path, int frameCount);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginDuplicateFirstFrameNameD(const char* path, double frameCount);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginDuplicateFirstFrameNameD(IntPtr path, double frameCount);
@@ -4400,6 +4510,7 @@
 		Duplicate all the frames of the animation to double the animation length. 
 		Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 		The animation is referenced by id.
+		EXPORT_API void PluginDuplicateFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginDuplicateFrames(int animationId);
@@ -4407,130 +4518,153 @@
 		Duplicate all the frames of the animation to double the animation length. 
 		Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 		The animation is referenced by name.
+		EXPORT_API void PluginDuplicateFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginDuplicateFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginDuplicateFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginDuplicateFramesNameD(IntPtr path);
 	/*
 		Duplicate all the animation frames in reverse so that the animation plays 
 		forwards and backwards. Animation is referenced by id.
+		EXPORT_API void PluginDuplicateMirrorFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginDuplicateMirrorFrames(int animationId);
 	/*
 		Duplicate all the animation frames in reverse so that the animation plays 
 		forwards and backwards. Animation is referenced by name.
+		EXPORT_API void PluginDuplicateMirrorFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginDuplicateMirrorFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginDuplicateMirrorFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginDuplicateMirrorFramesNameD(IntPtr path);
 	/*
 		Fade the animation to black starting at the fade frame index to the end 
 		of the animation. Animation is referenced by id.
+		EXPORT_API void PluginFadeEndFrames(int animationId, int fade);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFadeEndFrames(int animationId, int fade);
 	/*
 		Fade the animation to black starting at the fade frame index to the end 
 		of the animation. Animation is referenced by name.
+		EXPORT_API void PluginFadeEndFramesName(const char* path, int fade);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFadeEndFramesName(IntPtr path, int fade);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFadeEndFramesNameD(const char* path, double fade);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFadeEndFramesNameD(IntPtr path, double fade);
 	/*
 		Fade the animation from black to full color starting at 0 to the fade frame 
 		index. Animation is referenced by id.
+		EXPORT_API void PluginFadeStartFrames(int animationId, int fade);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFadeStartFrames(int animationId, int fade);
 	/*
 		Fade the animation from black to full color starting at 0 to the fade frame 
 		index. Animation is referenced by name.
+		EXPORT_API void PluginFadeStartFramesName(const char* path, int fade);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFadeStartFramesName(IntPtr path, int fade);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFadeStartFramesNameD(const char* path, double fade);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFadeStartFramesNameD(IntPtr path, double fade);
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
 		by id.
+		EXPORT_API void PluginFillColor(int animationId, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColor(int animationId, int frameId, int color);
 	/*
 		Set the RGB value for all colors for all frames. Animation is referenced 
 		by id.
+		EXPORT_API void PluginFillColorAllFrames(int animationId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorAllFrames(int animationId, int color);
 	/*
 		Set the RGB value for all colors for all frames. Animation is referenced 
 		by name.
+		EXPORT_API void PluginFillColorAllFramesName(const char* path, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorAllFramesName(IntPtr path, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillColorAllFramesNameD(const char* path, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillColorAllFramesNameD(IntPtr path, double color);
 	/*
 		Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 		for red, green, and blue parameters. Animation is referenced by id.
+		EXPORT_API void PluginFillColorAllFramesRGB(int animationId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorAllFramesRGB(int animationId, int red, int green, int blue);
 	/*
 		Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 		for red, green, and blue parameters. Animation is referenced by name.
+		EXPORT_API void PluginFillColorAllFramesRGBName(const char* path, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorAllFramesRGBName(IntPtr path, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillColorAllFramesRGBNameD(const char* path, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillColorAllFramesRGBNameD(IntPtr path, double red, double green, double blue);
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
 		by name.
+		EXPORT_API void PluginFillColorName(const char* path, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorName(IntPtr path, int frameId, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillColorNameD(const char* path, double frameId, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillColorNameD(IntPtr path, double frameId, double color);
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
 		by id.
+		EXPORT_API void PluginFillColorRGB(int animationId, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorRGB(int animationId, int frameId, int red, int green, int blue);
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
 		by name.
+		EXPORT_API void PluginFillColorRGBName(const char* path, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillColorRGBName(IntPtr path, int frameId, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillColorRGBNameD(const char* path, double frameId, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillColorRGBNameD(IntPtr path, double frameId, double red, double green, double blue);
@@ -4538,6 +4672,7 @@
 		This method will only update colors in the animation that are not already 
 		set to black. Set the RGB value for a subset of colors in the specified 
 		frame. Animation is referenced by id.
+		EXPORT_API void PluginFillNonZeroColor(int animationId, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColor(int animationId, int frameId, int color);
@@ -4545,6 +4680,7 @@
 		This method will only update colors in the animation that are not already 
 		set to black. Set the RGB value for a subset of colors for all frames. 
 		Animation is referenced by id.
+		EXPORT_API void PluginFillNonZeroColorAllFrames(int animationId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorAllFrames(int animationId, int color);
@@ -4552,11 +4688,13 @@
 		This method will only update colors in the animation that are not already 
 		set to black. Set the RGB value for a subset of colors for all frames. 
 		Animation is referenced by name.
+		EXPORT_API void PluginFillNonZeroColorAllFramesName(const char* path, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorAllFramesName(IntPtr path, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillNonZeroColorAllFramesNameD(const char* path, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillNonZeroColorAllFramesNameD(IntPtr path, double color);
@@ -4565,6 +4703,7 @@
 		set to black. Set the RGB value for a subset of colors for all frames. 
 		Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 		is referenced by id.
+		EXPORT_API void PluginFillNonZeroColorAllFramesRGB(int animationId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorAllFramesRGB(int animationId, int red, int green, int blue);
@@ -4573,11 +4712,13 @@
 		set to black. Set the RGB value for a subset of colors for all frames. 
 		Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 		is referenced by name.
+		EXPORT_API void PluginFillNonZeroColorAllFramesRGBName(const char* path, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorAllFramesRGBName(IntPtr path, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillNonZeroColorAllFramesRGBNameD(const char* path, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillNonZeroColorAllFramesRGBNameD(IntPtr path, double red, double green, double blue);
@@ -4585,11 +4726,13 @@
 		This method will only update colors in the animation that are not already 
 		set to black. Set the RGB value for a subset of colors in the specified 
 		frame. Animation is referenced by name.
+		EXPORT_API void PluginFillNonZeroColorName(const char* path, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorName(IntPtr path, int frameId, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillNonZeroColorNameD(const char* path, double frameId, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillNonZeroColorNameD(IntPtr path, double frameId, double color);
@@ -4598,6 +4741,7 @@
 		set to black. Set the RGB value for a subset of colors in the specified 
 		frame. Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 		is referenced by id.
+		EXPORT_API void PluginFillNonZeroColorRGB(int animationId, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorRGB(int animationId, int frameId, int red, int green, int blue);
@@ -4606,119 +4750,140 @@
 		set to black. Set the RGB value for a subset of colors in the specified 
 		frame. Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 		is referenced by name.
+		EXPORT_API void PluginFillNonZeroColorRGBName(const char* path, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillNonZeroColorRGBName(IntPtr path, int frameId, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillNonZeroColorRGBNameD(const char* path, double frameId, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillNonZeroColorRGBNameD(IntPtr path, double frameId, double red, double green, double blue);
 	/*
 		Fill the frame with random RGB values for the given frame. Animation is 
 		referenced by id.
+		EXPORT_API void PluginFillRandomColors(int animationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColors(int animationId, int frameId);
 	/*
 		Fill the frame with random RGB values for all frames. Animation is referenced 
 		by id.
+		EXPORT_API void PluginFillRandomColorsAllFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsAllFrames(int animationId);
 	/*
 		Fill the frame with random RGB values for all frames. Animation is referenced 
 		by name.
+		EXPORT_API void PluginFillRandomColorsAllFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsAllFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillRandomColorsAllFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillRandomColorsAllFramesNameD(IntPtr path);
 	/*
 		Fill the frame with random black and white values for the specified frame. 
 		Animation is referenced by id.
+		EXPORT_API void PluginFillRandomColorsBlackAndWhite(int animationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsBlackAndWhite(int animationId, int frameId);
 	/*
 		Fill the frame with random black and white values for all frames. Animation 
 		is referenced by id.
+		EXPORT_API void PluginFillRandomColorsBlackAndWhiteAllFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsBlackAndWhiteAllFrames(int animationId);
 	/*
 		Fill the frame with random black and white values for all frames. Animation 
 		is referenced by name.
+		EXPORT_API void PluginFillRandomColorsBlackAndWhiteAllFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsBlackAndWhiteAllFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillRandomColorsBlackAndWhiteAllFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillRandomColorsBlackAndWhiteAllFramesNameD(IntPtr path);
 	/*
 		Fill the frame with random black and white values for the specified frame. 
 		Animation is referenced by name.
+		EXPORT_API void PluginFillRandomColorsBlackAndWhiteName(const char* path, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsBlackAndWhiteName(IntPtr path, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillRandomColorsBlackAndWhiteNameD(const char* path, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillRandomColorsBlackAndWhiteNameD(IntPtr path, double frameId);
 	/*
 		Fill the frame with random RGB values for the given frame. Animation is 
 		referenced by name.
+		EXPORT_API void PluginFillRandomColorsName(const char* path, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillRandomColorsName(IntPtr path, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillRandomColorsNameD(const char* path, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillRandomColorsNameD(IntPtr path, double frameId);
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
 		than the RGB threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdColors(int animationId, int frameId, int threshold, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColors(int animationId, int frameId, int threshold, int color);
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
 		RGB threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdColorsAllFrames(int animationId, int threshold, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsAllFrames(int animationId, int threshold, int color);
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
 		RGB threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdColorsAllFramesName(const char* path, int threshold, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsAllFramesName(IntPtr path, int threshold, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdColorsAllFramesNameD(const char* path, double threshold, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdColorsAllFramesNameD(IntPtr path, double threshold, double color);
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
 		threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdColorsAllFramesRGB(int animationId, int threshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsAllFramesRGB(int animationId, int threshold, int red, int green, int blue);
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
 		threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdColorsAllFramesRGBName(const char* path, int threshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsAllFramesRGBName(IntPtr path, int threshold, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdColorsAllFramesRGBNameD(const char* path, double threshold, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdColorsAllFramesRGBNameD(IntPtr path, double threshold, double red, double green, double blue);
@@ -4726,6 +4891,7 @@
 		Fill all frames with the min RGB color where the animation color is less 
 		than the min threshold AND with the max RGB color where the animation is 
 		more than the max threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdColorsMinMaxAllFramesRGB(int animationId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsMinMaxAllFramesRGB(int animationId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
@@ -4733,11 +4899,13 @@
 		Fill all frames with the min RGB color where the animation color is less 
 		than the min threshold AND with the max RGB color where the animation is 
 		more than the max threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdColorsMinMaxAllFramesRGBName(const char* path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsMinMaxAllFramesRGBName(IntPtr path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdColorsMinMaxAllFramesRGBNameD(const char* path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdColorsMinMaxAllFramesRGBNameD(IntPtr path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
@@ -4745,6 +4913,7 @@
 		Fill the specified frame with the min RGB color where the animation color 
 		is less than the min threshold AND with the max RGB color where the animation 
 		is more than the max threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdColorsMinMaxRGB(int animationId, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsMinMaxRGB(int animationId, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
@@ -4752,141 +4921,166 @@
 		Fill the specified frame with the min RGB color where the animation color 
 		is less than the min threshold AND with the max RGB color where the animation 
 		is more than the max threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdColorsMinMaxRGBName(const char* path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsMinMaxRGBName(IntPtr path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdColorsMinMaxRGBNameD(const char* path, double frameId, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdColorsMinMaxRGBNameD(IntPtr path, double frameId, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
 		than the RGB threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdColorsName(const char* path, int frameId, int threshold, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsName(IntPtr path, int frameId, int threshold, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdColorsNameD(const char* path, double frameId, double threshold, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdColorsNameD(IntPtr path, double frameId, double threshold, double color);
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
 		than the RGB threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdColorsRGB(int animationId, int frameId, int threshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsRGB(int animationId, int frameId, int threshold, int red, int green, int blue);
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
 		than the RGB threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdColorsRGBName(const char* path, int frameId, int threshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdColorsRGBName(IntPtr path, int frameId, int threshold, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdColorsRGBNameD(const char* path, double frameId, double threshold, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdColorsRGBNameD(IntPtr path, double frameId, double threshold, double red, double green, double blue);
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
 		RGB threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdRGBColorsAllFramesRGB(int animationId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdRGBColorsAllFramesRGB(int animationId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
 		RGB threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdRGBColorsAllFramesRGBName(const char* path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdRGBColorsAllFramesRGBName(IntPtr path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdRGBColorsAllFramesRGBNameD(const char* path, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdRGBColorsAllFramesRGBNameD(IntPtr path, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue);
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
 		than the RGB threshold. Animation is referenced by id.
+		EXPORT_API void PluginFillThresholdRGBColorsRGB(int animationId, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdRGBColorsRGB(int animationId, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
 		than the RGB threshold. Animation is referenced by name.
+		EXPORT_API void PluginFillThresholdRGBColorsRGBName(const char* path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillThresholdRGBColorsRGBName(IntPtr path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillThresholdRGBColorsRGBNameD(const char* path, double frameId, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillThresholdRGBColorsRGBNameD(IntPtr path, double frameId, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue);
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
 		Animation is referenced by id.
+		EXPORT_API void PluginFillZeroColor(int animationId, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColor(int animationId, int frameId, int color);
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
 		is referenced by id.
+		EXPORT_API void PluginFillZeroColorAllFrames(int animationId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorAllFrames(int animationId, int color);
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
 		is referenced by name.
+		EXPORT_API void PluginFillZeroColorAllFramesName(const char* path, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorAllFramesName(IntPtr path, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillZeroColorAllFramesNameD(const char* path, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillZeroColorAllFramesNameD(IntPtr path, double color);
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
 		is referenced by id.
+		EXPORT_API void PluginFillZeroColorAllFramesRGB(int animationId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorAllFramesRGB(int animationId, int red, int green, int blue);
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
 		is referenced by name.
+		EXPORT_API void PluginFillZeroColorAllFramesRGBName(const char* path, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorAllFramesRGBName(IntPtr path, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillZeroColorAllFramesRGBNameD(const char* path, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillZeroColorAllFramesRGBNameD(IntPtr path, double red, double green, double blue);
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
 		Animation is referenced by name.
+		EXPORT_API void PluginFillZeroColorName(const char* path, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorName(IntPtr path, int frameId, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillZeroColorNameD(const char* path, double frameId, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillZeroColorNameD(IntPtr path, double frameId, double color);
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
 		Animation is referenced by id.
+		EXPORT_API void PluginFillZeroColorRGB(int animationId, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorRGB(int animationId, int frameId, int red, int green, int blue);
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
 		Animation is referenced by name.
+		EXPORT_API void PluginFillZeroColorRGBName(const char* path, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginFillZeroColorRGBName(IntPtr path, int frameId, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginFillZeroColorRGBNameD(const char* path, double frameId, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginFillZeroColorRGBNameD(IntPtr path, double frameId, double red, double green, double blue);
@@ -4894,6 +5088,7 @@
 		Get the animation color for a frame given the `1D` `led`. The `led` should 
 		be greater than or equal to 0 and less than the `MaxLeds`. Animation is 
 		referenced by id.
+		EXPORT_API int PluginGet1DColor(int animationId, int frameId, int led);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGet1DColor(int animationId, int frameId, int led);
@@ -4901,11 +5096,13 @@
 		Get the animation color for a frame given the `1D` `led`. The `led` should 
 		be greater than or equal to 0 and less than the `MaxLeds`. Animation is 
 		referenced by name.
+		EXPORT_API int PluginGet1DColorName(const char* path, int frameId, int led);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGet1DColorName(IntPtr path, int frameId, int led);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGet1DColorNameD(const char* path, double frameId, double led);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGet1DColorNameD(IntPtr path, double frameId, double led);
@@ -4914,6 +5111,7 @@
 		`row` should be greater than or equal to 0 and less than the `MaxRow`. 
 		The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 		Animation is referenced by id.
+		EXPORT_API int PluginGet2DColor(int animationId, int frameId, int row, int column);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGet2DColor(int animationId, int frameId, int row, int column);
@@ -4922,26 +5120,31 @@
 		`row` should be greater than or equal to 0 and less than the `MaxRow`. 
 		The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 		Animation is referenced by name.
+		EXPORT_API int PluginGet2DColorName(const char* path, int frameId, int row, int column);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGet2DColorName(IntPtr path, int frameId, int row, int column);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGet2DColorNameD(const char* path, double frameId, double row, double column);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGet2DColorNameD(IntPtr path, double frameId, double row, double column);
 	/*
 		Get the animation id for the named animation.
+		EXPORT_API int PluginGetAnimation(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetAnimation(IntPtr name);
 	/*
 		`PluginGetAnimationCount` will return the number of loaded animations.
+		EXPORT_API int PluginGetAnimationCount();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetAnimationCount();
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetAnimationD(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetAnimationD(IntPtr name);
@@ -4950,6 +5153,7 @@
 		the loaded animation. The `index` is zero-based and less than the number 
 		returned by `PluginGetAnimationCount`. Use `PluginGetAnimationName` to 
 		get the name of the animation.
+		EXPORT_API int PluginGetAnimationId(int index);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetAnimationId(int index);
@@ -4957,21 +5161,25 @@
 		`PluginGetAnimationName` takes an `animationId` and returns the name of 
 		the animation of the `.chroma` animation file. If a name is not available 
 		then an empty string will be returned.
+		EXPORT_API const char* PluginGetAnimationName(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern IntPtr PluginGetAnimationName(int animationId);
 	/*
 		Get the current frame of the animation referenced by id.
+		EXPORT_API int PluginGetCurrentFrame(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetCurrentFrame(int animationId);
 	/*
 		Get the current frame of the animation referenced by name.
+		EXPORT_API int PluginGetCurrentFrameName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetCurrentFrameName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetCurrentFrameNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetCurrentFrameNameD(IntPtr path);
@@ -4979,6 +5187,7 @@
 		Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 		animation respective to the `deviceType`, as an integer upon success. Returns 
 		-1 upon failure.
+		EXPORT_API int PluginGetDevice(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetDevice(int animationId);
@@ -4986,28 +5195,33 @@
 		Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 		animation respective to the `deviceType`, as an integer upon success. Returns 
 		-1 upon failure.
+		EXPORT_API int PluginGetDeviceName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetDeviceName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetDeviceNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetDeviceNameD(IntPtr path);
 	/*
 		Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
 		upon success. Returns -1 upon failure.
+		EXPORT_API int PluginGetDeviceType(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetDeviceType(int animationId);
 	/*
 		Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
 		upon success. Returns -1 upon failure.
+		EXPORT_API int PluginGetDeviceTypeName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetDeviceTypeName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetDeviceTypeNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetDeviceTypeNameD(IntPtr path);
@@ -5018,76 +5232,90 @@
 		array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
 		For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
 		COLUMN`. Returns the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginGetFrame(int animationId, int frameIndex, float* duration, int* colors, int length);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetFrame(int animationId, int frameIndex, float* duration, int[] colors, int length);
 	/*
 		Returns the frame count of a `Chroma` animation upon success. Returns -1 
 		upon failure.
+		EXPORT_API int PluginGetFrameCount(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetFrameCount(int animationId);
 	/*
 		Returns the frame count of a `Chroma` animation upon success. Returns -1 
 		upon failure.
+		EXPORT_API int PluginGetFrameCountName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetFrameCountName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetFrameCountNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetFrameCountNameD(IntPtr path);
 	/*
 		Get the color of an animation key for the given frame referenced by id.
+		EXPORT_API int PluginGetKeyColor(int animationId, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetKeyColor(int animationId, int frameId, int rzkey);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetKeyColorD(const char* path, double frameId, double rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetKeyColorD(IntPtr path, double frameId, double rzkey);
 	/*
 		Get the color of an animation key for the given frame referenced by name.
+		EXPORT_API int PluginGetKeyColorName(const char* path, int frameId, int rzkey);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetKeyColorName(IntPtr path, int frameId, int rzkey);
 	/*
 		Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
 		integer upon success. Returns -1 upon failure.
+		EXPORT_API int PluginGetMaxColumn(int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetMaxColumn(int device);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetMaxColumnD(double device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetMaxColumnD(double device);
 	/*
 		Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
 		upon success. Returns -1 upon failure.
+		EXPORT_API int PluginGetMaxLeds(int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetMaxLeds(int device);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetMaxLedsD(double device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetMaxLedsD(double device);
 	/*
 		Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
 		upon success. Returns -1 upon failure.
+		EXPORT_API int PluginGetMaxRow(int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetMaxRow(int device);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetMaxRowD(double device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetMaxRowD(double device);
 	/*
 		`PluginGetPlayingAnimationCount` will return the number of playing animations.
+		EXPORT_API int PluginGetPlayingAnimationCount();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetPlayingAnimationCount();
@@ -5096,155 +5324,184 @@
 		of the playing animation. The `index` is zero-based and less than the number 
 		returned by `PluginGetPlayingAnimationCount`. Use `PluginGetAnimationName` 
 		to get the name of the animation.
+		EXPORT_API int PluginGetPlayingAnimationId(int index);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetPlayingAnimationId(int index);
 	/*
 		Get the RGB color given red, green, and blue.
+		EXPORT_API int PluginGetRGB(int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginGetRGB(int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginGetRGBD(double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginGetRGBD(double red, double green, double blue);
 	/*
 		Check if the animation has loop enabled referenced by id.
+		EXPORT_API bool PluginHasAnimationLoop(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginHasAnimationLoop(int animationId);
 	/*
 		Check if the animation has loop enabled referenced by name.
+		EXPORT_API bool PluginHasAnimationLoopName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginHasAnimationLoopName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginHasAnimationLoopNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginHasAnimationLoopNameD(IntPtr path);
 	/*
 		Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
 		API methods auto initialize the ChromaSDK if not already initialized.
+		EXPORT_API int PluginInit();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginInit();
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginInitD();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginInitD();
 	/*
 		Insert an animation delay by duplicating the frame by the delay number of 
 		times. Animation is referenced by id.
+		EXPORT_API void PluginInsertDelay(int animationId, int frameId, int delay);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInsertDelay(int animationId, int frameId, int delay);
 	/*
 		Insert an animation delay by duplicating the frame by the delay number of 
 		times. Animation is referenced by name.
+		EXPORT_API void PluginInsertDelayName(const char* path, int frameId, int delay);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInsertDelayName(IntPtr path, int frameId, int delay);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginInsertDelayNameD(const char* path, double frameId, double delay);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginInsertDelayNameD(IntPtr path, double frameId, double delay);
 	/*
 		Duplicate the source frame index at the target frame index. Animation is 
 		referenced by id.
+		EXPORT_API void PluginInsertFrame(int animationId, int sourceFrame, int targetFrame);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInsertFrame(int animationId, int sourceFrame, int targetFrame);
 	/*
 		Duplicate the source frame index at the target frame index. Animation is 
 		referenced by name.
+		EXPORT_API void PluginInsertFrameName(const char* path, int sourceFrame, int targetFrame);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInsertFrameName(IntPtr path, int sourceFrame, int targetFrame);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginInsertFrameNameD(const char* path, double sourceFrame, double targetFrame);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginInsertFrameNameD(IntPtr path, double sourceFrame, double targetFrame);
 	/*
 		Invert all the colors at the specified frame. Animation is referenced by 
 		id.
+		EXPORT_API void PluginInvertColors(int animationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInvertColors(int animationId, int frameId);
 	/*
 		Invert all the colors for all frames. Animation is referenced by id.
+		EXPORT_API void PluginInvertColorsAllFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInvertColorsAllFrames(int animationId);
 	/*
 		Invert all the colors for all frames. Animation is referenced by name.
+		EXPORT_API void PluginInvertColorsAllFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInvertColorsAllFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginInvertColorsAllFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginInvertColorsAllFramesNameD(IntPtr path);
 	/*
 		Invert all the colors at the specified frame. Animation is referenced by 
 		name.
+		EXPORT_API void PluginInvertColorsName(const char* path, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginInvertColorsName(IntPtr path, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginInvertColorsNameD(const char* path, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginInvertColorsNameD(IntPtr path, double frameId);
 	/*
 		Check if the animation is paused referenced by id.
+		EXPORT_API bool PluginIsAnimationPaused(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsAnimationPaused(int animationId);
 	/*
 		Check if the animation is paused referenced by name.
+		EXPORT_API bool PluginIsAnimationPausedName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsAnimationPausedName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsAnimationPausedNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsAnimationPausedNameD(IntPtr path);
 	/*
 		The editor dialog is a non-blocking modal window, this method returns true 
 		if the modal window is open, otherwise false.
+		EXPORT_API bool PluginIsDialogOpen();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsDialogOpen();
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsDialogOpenD();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsDialogOpenD();
 	/*
 		Returns true if the plugin has been initialized. Returns false if the plugin 
 		is uninitialized.
+		EXPORT_API bool PluginIsInitialized();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsInitialized();
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsInitializedD();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsInitializedD();
 	/*
 		If the method can be invoked the method returns true.
+		EXPORT_API bool PluginIsPlatformSupported();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsPlatformSupported();
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsPlatformSupportedD();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsPlatformSupportedD();
@@ -5253,11 +5510,13 @@
 		The named `.chroma` animation file will be automatically opened. The method 
 		will return whether the animation is playing or not. Animation is referenced 
 		by id.
+		EXPORT_API bool PluginIsPlaying(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsPlaying(int animationId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsPlayingD(double animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsPlayingD(double animationId);
@@ -5266,11 +5525,13 @@
 		The named `.chroma` animation file will be automatically opened. The method 
 		will return whether the animation is playing or not. Animation is referenced 
 		by name.
+		EXPORT_API bool PluginIsPlayingName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsPlayingName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsPlayingNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsPlayingNameD(IntPtr path);
@@ -5278,42 +5539,50 @@
 		`PluginIsPlayingType` automatically handles initializing the `ChromaSDK`. 
 		If any animation is playing for the `deviceType` and `device` combination, 
 		the method will return true, otherwise false.
+		EXPORT_API bool PluginIsPlayingType(int deviceType, int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern bool PluginIsPlayingType(int deviceType, int device);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginIsPlayingTypeD(double deviceType, double device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginIsPlayingTypeD(double deviceType, double device);
 	/*
 		Do a lerp math operation on a float.
+		EXPORT_API float PluginLerp(float start, float end, float amt);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern float PluginLerp(float start, float end, float amt);
 	/*
 		Lerp from one color to another given t in the range 0.0 to 1.0.
+		EXPORT_API int PluginLerpColor(int from, int to, float t);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginLerpColor(int from, int to, float t);
 	/*
 		Loads `Chroma` effects so that the animation can be played immediately. 
 		Returns the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginLoadAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginLoadAnimation(int animationId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginLoadAnimationD(double animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginLoadAnimationD(double animationId);
 	/*
 		Load the named animation.
+		EXPORT_API void PluginLoadAnimationName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginLoadAnimationName(IntPtr path);
 	/*
 		Load a composite set of animations.
+		EXPORT_API void PluginLoadComposite(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginLoadComposite(IntPtr name);
@@ -5321,6 +5590,7 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color defaults to color. Animation 
 		is referenced by id.
+		EXPORT_API void PluginMakeBlankFrames(int animationId, int frameCount, float duration, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFrames(int animationId, int frameCount, float duration, int color);
@@ -5328,11 +5598,13 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color defaults to color. Animation 
 		is referenced by name.
+		EXPORT_API void PluginMakeBlankFramesName(const char* path, int frameCount, float duration, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesName(IntPtr path, int frameCount, float duration, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMakeBlankFramesNameD(const char* path, double frameCount, double duration, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMakeBlankFramesNameD(IntPtr path, double frameCount, double duration, double color);
@@ -5340,6 +5612,7 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color is random. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMakeBlankFramesRandom(int animationId, int frameCount, float duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesRandom(int animationId, int frameCount, float duration);
@@ -5347,6 +5620,7 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color is random black and white. Animation 
 		is referenced by id.
+		EXPORT_API void PluginMakeBlankFramesRandomBlackAndWhite(int animationId, int frameCount, float duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesRandomBlackAndWhite(int animationId, int frameCount, float duration);
@@ -5354,11 +5628,13 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color is random black and white. Animation 
 		is referenced by name.
+		EXPORT_API void PluginMakeBlankFramesRandomBlackAndWhiteName(const char* path, int frameCount, float duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesRandomBlackAndWhiteName(IntPtr path, int frameCount, float duration);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMakeBlankFramesRandomBlackAndWhiteNameD(const char* path, double frameCount, double duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMakeBlankFramesRandomBlackAndWhiteNameD(IntPtr path, double frameCount, double duration);
@@ -5366,11 +5642,13 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color is random. Animation is referenced 
 		by name.
+		EXPORT_API void PluginMakeBlankFramesRandomName(const char* path, int frameCount, float duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesRandomName(IntPtr path, int frameCount, float duration);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMakeBlankFramesRandomNameD(const char* path, double frameCount, double duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMakeBlankFramesRandomNameD(IntPtr path, double frameCount, double duration);
@@ -5378,6 +5656,7 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color defaults to color. Animation 
 		is referenced by id.
+		EXPORT_API void PluginMakeBlankFramesRGB(int animationId, int frameCount, float duration, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesRGB(int animationId, int frameCount, float duration, int red, int green, int blue);
@@ -5385,17 +5664,20 @@
 		Make a blank animation for the length of the frame count. Frame duration 
 		defaults to the duration. The frame color defaults to color. Animation 
 		is referenced by name.
+		EXPORT_API void PluginMakeBlankFramesRGBName(const char* path, int frameCount, float duration, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMakeBlankFramesRGBName(IntPtr path, int frameCount, float duration, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMakeBlankFramesRGBNameD(const char* path, double frameCount, double duration, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMakeBlankFramesRGBNameD(IntPtr path, double frameCount, double duration, double red, double green, double blue);
 	/*
 		Flips the color grid horizontally for all `Chroma` animation frames. Returns 
 		the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginMirrorHorizontally(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginMirrorHorizontally(int animationId);
@@ -5403,6 +5685,7 @@
 		Flips the color grid vertically for all `Chroma` animation frames. This 
 		method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
 		animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginMirrorVertically(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginMirrorVertically(int animationId);
@@ -5410,6 +5693,7 @@
 		Multiply the color intensity with the lerp result from color 1 to color 
 		2 using the frame index divided by the frame count for the `t` parameter. 
 		Animation is referenced in id.
+		EXPORT_API void PluginMultiplyColorLerpAllFrames(int animationId, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyColorLerpAllFrames(int animationId, int color1, int color2);
@@ -5417,11 +5701,13 @@
 		Multiply the color intensity with the lerp result from color 1 to color 
 		2 using the frame index divided by the frame count for the `t` parameter. 
 		Animation is referenced in name.
+		EXPORT_API void PluginMultiplyColorLerpAllFramesName(const char* path, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyColorLerpAllFramesName(IntPtr path, int color1, int color2);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyColorLerpAllFramesNameD(const char* path, double color1, double color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyColorLerpAllFramesNameD(IntPtr path, double color1, double color2);
@@ -5430,6 +5716,7 @@
 		intensity range is from 0.0 to 255.0. RGB components are multiplied equally. 
 		An intensity of 0.5 would half the color value. Black colors in the frame 
 		will not be affected by this method.
+		EXPORT_API void PluginMultiplyIntensity(int animationId, int frameId, float intensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensity(int animationId, int frameId, float intensity);
@@ -5438,6 +5725,7 @@
 		the intensity range is from 0.0 to 255.0. RGB components are multiplied 
 		equally. An intensity of 0.5 would half the color value. Black colors in 
 		the frame will not be affected by this method.
+		EXPORT_API void PluginMultiplyIntensityAllFrames(int animationId, float intensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityAllFrames(int animationId, float intensity);
@@ -5446,62 +5734,73 @@
 		the intensity range is from 0.0 to 255.0. RGB components are multiplied 
 		equally. An intensity of 0.5 would half the color value. Black colors in 
 		the frame will not be affected by this method.
+		EXPORT_API void PluginMultiplyIntensityAllFramesName(const char* path, float intensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityAllFramesName(IntPtr path, float intensity);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyIntensityAllFramesNameD(const char* path, double intensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyIntensityAllFramesNameD(IntPtr path, double intensity);
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMultiplyIntensityAllFramesRGB(int animationId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityAllFramesRGB(int animationId, int red, int green, int blue);
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
 		by name.
+		EXPORT_API void PluginMultiplyIntensityAllFramesRGBName(const char* path, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityAllFramesRGBName(IntPtr path, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyIntensityAllFramesRGBNameD(const char* path, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyIntensityAllFramesRGBNameD(IntPtr path, double red, double green, double blue);
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMultiplyIntensityColor(int animationId, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityColor(int animationId, int frameId, int color);
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMultiplyIntensityColorAllFrames(int animationId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityColorAllFrames(int animationId, int color);
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
 		by name.
+		EXPORT_API void PluginMultiplyIntensityColorAllFramesName(const char* path, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityColorAllFramesName(IntPtr path, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyIntensityColorAllFramesNameD(const char* path, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyIntensityColorAllFramesNameD(IntPtr path, double color);
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
 		by name.
+		EXPORT_API void PluginMultiplyIntensityColorName(const char* path, int frameId, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityColorName(IntPtr path, int frameId, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyIntensityColorNameD(const char* path, double frameId, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyIntensityColorNameD(IntPtr path, double frameId, double color);
@@ -5510,28 +5809,33 @@
 		intensity range is from 0.0 to 255.0. RGB components are multiplied equally. 
 		An intensity of 0.5 would half the color value. Black colors in the frame 
 		will not be affected by this method.
+		EXPORT_API void PluginMultiplyIntensityName(const char* path, int frameId, float intensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityName(IntPtr path, int frameId, float intensity);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyIntensityNameD(const char* path, double frameId, double intensity);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyIntensityNameD(IntPtr path, double frameId, double intensity);
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMultiplyIntensityRGB(int animationId, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityRGB(int animationId, int frameId, int red, int green, int blue);
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
 		by name.
+		EXPORT_API void PluginMultiplyIntensityRGBName(const char* path, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyIntensityRGBName(IntPtr path, int frameId, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyIntensityRGBNameD(const char* path, double frameId, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyIntensityRGBNameD(IntPtr path, double frameId, double red, double green, double blue);
@@ -5539,23 +5843,27 @@
 		Multiply the specific frame by the color lerp result between color 1 and 
 		2 using the frame color value as the `t` value. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMultiplyNonZeroTargetColorLerp(int animationId, int frameId, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyNonZeroTargetColorLerp(int animationId, int frameId, int color1, int color2);
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
 		the frame color value as the `t` value. Animation is referenced by id.
+		EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFrames(int animationId, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyNonZeroTargetColorLerpAllFrames(int animationId, int color1, int color2);
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
 		the frame color value as the `t` value. Animation is referenced by name.
+		EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFramesName(const char* path, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyNonZeroTargetColorLerpAllFramesName(IntPtr path, int color1, int color2);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyNonZeroTargetColorLerpAllFramesNameD(const char* path, double color1, double color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyNonZeroTargetColorLerpAllFramesNameD(IntPtr path, double color1, double color2);
@@ -5563,6 +5871,7 @@
 		Multiply the specific frame by the color lerp result between RGB 1 and 2 
 		using the frame color value as the `t` value. Animation is referenced by 
 		id.
+		EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2);
@@ -5570,11 +5879,13 @@
 		Multiply the specific frame by the color lerp result between RGB 1 and 2 
 		using the frame color value as the `t` value. Animation is referenced by 
 		name.
+		EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(const char* path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(IntPtr path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(const char* path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(IntPtr path, double red1, double green1, double blue1, double red2, double green2, double blue2);
@@ -5582,40 +5893,47 @@
 		Multiply the specific frame by the color lerp result between color 1 and 
 		2 using the frame color value as the `t` value. Animation is referenced 
 		by id.
+		EXPORT_API void PluginMultiplyTargetColorLerp(int animationId, int frameId, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyTargetColorLerp(int animationId, int frameId, int color1, int color2);
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
 		the frame color value as the `t` value. Animation is referenced by id.
+		EXPORT_API void PluginMultiplyTargetColorLerpAllFrames(int animationId, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyTargetColorLerpAllFrames(int animationId, int color1, int color2);
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
 		the frame color value as the `t` value. Animation is referenced by name.
+		EXPORT_API void PluginMultiplyTargetColorLerpAllFramesName(const char* path, int color1, int color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyTargetColorLerpAllFramesName(IntPtr path, int color1, int color2);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyTargetColorLerpAllFramesNameD(const char* path, double color1, double color2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyTargetColorLerpAllFramesNameD(IntPtr path, double color1, double color2);
 	/*
 		Multiply all frames by the color lerp result between RGB 1 and 2 using the 
 		frame color value as the `t` value. Animation is referenced by id.
+		EXPORT_API void PluginMultiplyTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	/*
 		Multiply all frames by the color lerp result between RGB 1 and 2 using the 
 		frame color value as the `t` value. Animation is referenced by name.
+		EXPORT_API void PluginMultiplyTargetColorLerpAllFramesRGBName(const char* path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginMultiplyTargetColorLerpAllFramesRGBName(IntPtr path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginMultiplyTargetColorLerpAllFramesRGBNameD(const char* path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginMultiplyTargetColorLerpAllFramesRGBNameD(IntPtr path, double red1, double green1, double blue1, double red2, double green2, double blue2);
@@ -5623,6 +5941,7 @@
 		Offset all colors in the frame using the RGB offset. Use the range of -255 
 		to 255 for red, green, and blue parameters. Negative values remove color. 
 		Positive values add color.
+		EXPORT_API void PluginOffsetColors(int animationId, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetColors(int animationId, int frameId, int red, int green, int blue);
@@ -5630,6 +5949,7 @@
 		Offset all colors for all frames using the RGB offset. Use the range of 
 		-255 to 255 for red, green, and blue parameters. Negative values remove 
 		color. Positive values add color.
+		EXPORT_API void PluginOffsetColorsAllFrames(int animationId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetColorsAllFrames(int animationId, int red, int green, int blue);
@@ -5637,11 +5957,13 @@
 		Offset all colors for all frames using the RGB offset. Use the range of 
 		-255 to 255 for red, green, and blue parameters. Negative values remove 
 		color. Positive values add color.
+		EXPORT_API void PluginOffsetColorsAllFramesName(const char* path, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetColorsAllFramesName(IntPtr path, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOffsetColorsAllFramesNameD(const char* path, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOffsetColorsAllFramesNameD(IntPtr path, double red, double green, double blue);
@@ -5649,11 +5971,13 @@
 		Offset all colors in the frame using the RGB offset. Use the range of -255 
 		to 255 for red, green, and blue parameters. Negative values remove color. 
 		Positive values add color.
+		EXPORT_API void PluginOffsetColorsName(const char* path, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetColorsName(IntPtr path, int frameId, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOffsetColorsNameD(const char* path, double frameId, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOffsetColorsNameD(IntPtr path, double frameId, double red, double green, double blue);
@@ -5662,6 +5986,7 @@
 		set to black. Offset a subset of colors in the frame using the RGB offset. 
 		Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 		values remove color. Positive values add color.
+		EXPORT_API void PluginOffsetNonZeroColors(int animationId, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetNonZeroColors(int animationId, int frameId, int red, int green, int blue);
@@ -5670,6 +5995,7 @@
 		set to black. Offset a subset of colors for all frames using the RGB offset. 
 		Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 		values remove color. Positive values add color.
+		EXPORT_API void PluginOffsetNonZeroColorsAllFrames(int animationId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetNonZeroColorsAllFrames(int animationId, int red, int green, int blue);
@@ -5678,11 +6004,13 @@
 		set to black. Offset a subset of colors for all frames using the RGB offset. 
 		Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 		values remove color. Positive values add color.
+		EXPORT_API void PluginOffsetNonZeroColorsAllFramesName(const char* path, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetNonZeroColorsAllFramesName(IntPtr path, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOffsetNonZeroColorsAllFramesNameD(const char* path, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOffsetNonZeroColorsAllFramesNameD(IntPtr path, double red, double green, double blue);
@@ -5691,11 +6019,13 @@
 		set to black. Offset a subset of colors in the frame using the RGB offset. 
 		Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 		values remove color. Positive values add color.
+		EXPORT_API void PluginOffsetNonZeroColorsName(const char* path, int frameId, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOffsetNonZeroColorsName(IntPtr path, int frameId, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOffsetNonZeroColorsNameD(const char* path, double frameId, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOffsetNonZeroColorsNameD(IntPtr path, double frameId, double red, double green, double blue);
@@ -5703,76 +6033,90 @@
 		Opens a `Chroma` animation file so that it can be played. Returns an animation 
 		id >= 0 upon success. Returns -1 if there was a failure. The animation 
 		id is used in most of the API methods.
+		EXPORT_API int PluginOpenAnimation(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginOpenAnimation(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOpenAnimationD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOpenAnimationD(IntPtr path);
 	/*
 		Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 		upon success. Returns -1 if there was a failure.
+		EXPORT_API int PluginOpenEditorDialog(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginOpenEditorDialog(IntPtr path);
 	/*
 		Open the named animation in the editor dialog and play the animation at 
 		start.
+		EXPORT_API int PluginOpenEditorDialogAndPlay(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginOpenEditorDialogAndPlay(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOpenEditorDialogAndPlayD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOpenEditorDialogAndPlayD(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOpenEditorDialogD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOpenEditorDialogD(IntPtr path);
 	/*
 		Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
 		parameter. Returns the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginOverrideFrameDuration(int animationId, float duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginOverrideFrameDuration(int animationId, float duration);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginOverrideFrameDurationD(double animationId, double duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginOverrideFrameDurationD(double animationId, double duration);
 	/*
 		Override the duration of all frames with the `duration` value. Animation 
 		is referenced by name.
+		EXPORT_API void PluginOverrideFrameDurationName(const char* path, float duration);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginOverrideFrameDurationName(IntPtr path, float duration);
 	/*
 		Pause the current animation referenced by id.
+		EXPORT_API void PluginPauseAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPauseAnimation(int animationId);
 	/*
 		Pause the current animation referenced by name.
+		EXPORT_API void PluginPauseAnimationName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPauseAnimationName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginPauseAnimationNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginPauseAnimationNameD(IntPtr path);
 	/*
 		Plays the `Chroma` animation. This will load the animation, if not loaded 
 		previously. Returns the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginPlayAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginPlayAnimation(int animationId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginPlayAnimationD(double animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginPlayAnimationD(double animationId);
@@ -5780,6 +6124,7 @@
 		`PluginPlayAnimationFrame` automatically handles initializing the `ChromaSDK`. 
 		The method will play the animation given the `animationId` with looping 
 		`on` or `off` starting at the `frameId`.
+		EXPORT_API void PluginPlayAnimationFrame(int animationId, int frameId, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPlayAnimationFrame(int animationId, int frameId, bool loop);
@@ -5787,11 +6132,13 @@
 		`PluginPlayAnimationFrameName` automatically handles initializing the `ChromaSDK`. 
 		The named `.chroma` animation file will be automatically opened. The animation 
 		will play with looping `on` or `off` starting at the `frameId`.
+		EXPORT_API void PluginPlayAnimationFrameName(const char* path, int frameId, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPlayAnimationFrameName(IntPtr path, int frameId, bool loop);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginPlayAnimationFrameNameD(const char* path, double frameId, double loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginPlayAnimationFrameNameD(IntPtr path, double frameId, double loop);
@@ -5799,6 +6146,7 @@
 		`PluginPlayAnimationLoop` automatically handles initializing the `ChromaSDK`. 
 		The method will play the animation given the `animationId` with looping 
 		`on` or `off`.
+		EXPORT_API void PluginPlayAnimationLoop(int animationId, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPlayAnimationLoop(int animationId, bool loop);
@@ -5806,11 +6154,13 @@
 		`PluginPlayAnimationName` automatically handles initializing the `ChromaSDK`. 
 		The named `.chroma` animation file will be automatically opened. The animation 
 		will play with looping `on` or `off`.
+		EXPORT_API void PluginPlayAnimationName(const char* path, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPlayAnimationName(IntPtr path, bool loop);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginPlayAnimationNameD(const char* path, double loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginPlayAnimationNameD(IntPtr path, double loop);
@@ -5818,66 +6168,78 @@
 		`PluginPlayComposite` automatically handles initializing the `ChromaSDK`. 
 		The named animation files for the `.chroma` set will be automatically opened. 
 		The set of animations will play with looping `on` or `off`.
+		EXPORT_API void PluginPlayComposite(const char* name, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPlayComposite(IntPtr name, bool loop);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginPlayCompositeD(const char* name, double loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginPlayCompositeD(IntPtr name, double loop);
 	/*
 		Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 		Returns the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginPreviewFrame(int animationId, int frameIndex);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginPreviewFrame(int animationId, int frameIndex);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginPreviewFrameD(double animationId, double frameIndex);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginPreviewFrameD(double animationId, double frameIndex);
 	/*
 		Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 		Animaton is referenced by name.
+		EXPORT_API void PluginPreviewFrameName(const char* path, int frameIndex);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginPreviewFrameName(IntPtr path, int frameIndex);
 	/*
 		Reduce the frames of the animation by removing every nth element. Animation 
 		is referenced by id.
+		EXPORT_API void PluginReduceFrames(int animationId, int n);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginReduceFrames(int animationId, int n);
 	/*
 		Reduce the frames of the animation by removing every nth element. Animation 
 		is referenced by name.
+		EXPORT_API void PluginReduceFramesName(const char* path, int n);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginReduceFramesName(IntPtr path, int n);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginReduceFramesNameD(const char* path, double n);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginReduceFramesNameD(IntPtr path, double n);
 	/*
 		Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
 		upon success. Returns -1 upon failure.
+		EXPORT_API int PluginResetAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginResetAnimation(int animationId);
 	/*
 		Resume the animation with loop `ON` or `OFF` referenced by id.
+		EXPORT_API void PluginResumeAnimation(int animationId, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginResumeAnimation(int animationId, bool loop);
 	/*
 		Resume the animation with loop `ON` or `OFF` referenced by name.
+		EXPORT_API void PluginResumeAnimationName(const char* path, bool loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginResumeAnimationName(IntPtr path, bool loop);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginResumeAnimationNameD(const char* path, double loop);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginResumeAnimationNameD(IntPtr path, double loop);
@@ -5885,33 +6247,39 @@
 		Reverse the animation frame order of the `Chroma` animation. Returns the 
 		animation id upon success. Returns -1 upon failure. Animation is referenced 
 		by id.
+		EXPORT_API int PluginReverse(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginReverse(int animationId);
 	/*
 		Reverse the animation frame order of the `Chroma` animation. Animation is 
 		referenced by id.
+		EXPORT_API void PluginReverseAllFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginReverseAllFrames(int animationId);
 	/*
 		Reverse the animation frame order of the `Chroma` animation. Animation is 
 		referenced by name.
+		EXPORT_API void PluginReverseAllFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginReverseAllFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginReverseAllFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginReverseAllFramesNameD(IntPtr path);
 	/*
 		Save the animation referenced by id to the path specified.
+		EXPORT_API int PluginSaveAnimation(int animationId, const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginSaveAnimation(int animationId, IntPtr path);
 	/*
 		Save the named animation to the target path specified.
+		EXPORT_API int PluginSaveAnimationName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginSaveAnimationName(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -5919,6 +6287,7 @@
 		Set the animation color for a frame given the `1D` `led`. The `led` should 
 		be greater than or equal to 0 and less than the `MaxLeds`. The animation 
 		is referenced by id.
+		EXPORT_API void PluginSet1DColor(int animationId, int frameId, int led, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSet1DColor(int animationId, int frameId, int led, int color);
@@ -5926,11 +6295,13 @@
 		Set the animation color for a frame given the `1D` `led`. The `led` should 
 		be greater than or equal to 0 and less than the `MaxLeds`. The animation 
 		is referenced by name.
+		EXPORT_API void PluginSet1DColorName(const char* path, int frameId, int led, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSet1DColorName(IntPtr path, int frameId, int led, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSet1DColorNameD(const char* path, double frameId, double led, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSet1DColorNameD(IntPtr path, double frameId, double led, double color);
@@ -5939,6 +6310,7 @@
 		`row` should be greater than or equal to 0 and less than the `MaxRow`. 
 		The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 		The animation is referenced by id.
+		EXPORT_API void PluginSet2DColor(int animationId, int frameId, int row, int column, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSet2DColor(int animationId, int frameId, int row, int column, int color);
@@ -5947,28 +6319,33 @@
 		`row` should be greater than or equal to 0 and less than the `MaxRow`. 
 		The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 		The animation is referenced by name.
+		EXPORT_API void PluginSet2DColorName(const char* path, int frameId, int row, int column, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSet2DColorName(IntPtr path, int frameId, int row, int column, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSet2DColorNameD(const char* path, double frameId, double rowColumnIndex, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSet2DColorNameD(IntPtr path, double frameId, double rowColumnIndex, double color);
 	/*
 		When custom color is set, the custom key mode will be used. The animation 
 		is referenced by id.
+		EXPORT_API void PluginSetChromaCustomColorAllFrames(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetChromaCustomColorAllFrames(int animationId);
 	/*
 		When custom color is set, the custom key mode will be used. The animation 
 		is referenced by name.
+		EXPORT_API void PluginSetChromaCustomColorAllFramesName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetChromaCustomColorAllFramesName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetChromaCustomColorAllFramesNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetChromaCustomColorAllFramesNameD(IntPtr path);
@@ -5976,6 +6353,7 @@
 		Set the Chroma custom key color flag on all frames. `True` changes the layout 
 		from grid to key. `True` changes the layout from key to grid. Animation 
 		is referenced by id.
+		EXPORT_API void PluginSetChromaCustomFlag(int animationId, bool flag);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetChromaCustomFlag(int animationId, bool flag);
@@ -5983,26 +6361,31 @@
 		Set the Chroma custom key color flag on all frames. `True` changes the layout 
 		from grid to key. `True` changes the layout from key to grid. Animation 
 		is referenced by name.
+		EXPORT_API void PluginSetChromaCustomFlagName(const char* path, bool flag);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetChromaCustomFlagName(IntPtr path, bool flag);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetChromaCustomFlagNameD(const char* path, double flag);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetChromaCustomFlagNameD(IntPtr path, double flag);
 	/*
 		Set the current frame of the animation referenced by id.
+		EXPORT_API void PluginSetCurrentFrame(int animationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetCurrentFrame(int animationId, int frameId);
 	/*
 		Set the current frame of the animation referenced by name.
+		EXPORT_API void PluginSetCurrentFrameName(const char* path, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetCurrentFrameName(IntPtr path, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetCurrentFrameNameD(const char* path, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetCurrentFrameNameD(IntPtr path, double frameId);
@@ -6010,276 +6393,324 @@
 		Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 		is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 		the animation id upon success. Returns -1 upon failure.
+		EXPORT_API int PluginSetDevice(int animationId, int deviceType, int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginSetDevice(int animationId, int deviceType, int device);
 	/*
 		SetEffect will display the referenced effect id.
+		EXPORT_API RZRESULT PluginSetEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginSetEffect(System.Guid effectId);
 	/*
 		Set animation key to a static color for the given frame.
+		EXPORT_API void PluginSetKeyColor(int animationId, int frameId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColor(int animationId, int frameId, int rzkey, int color);
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
 		by id.
+		EXPORT_API void PluginSetKeyColorAllFrames(int animationId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorAllFrames(int animationId, int rzkey, int color);
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
 		by name.
+		EXPORT_API void PluginSetKeyColorAllFramesName(const char* path, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorAllFramesName(IntPtr path, int rzkey, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyColorAllFramesNameD(const char* path, double rzkey, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyColorAllFramesNameD(IntPtr path, double rzkey, double color);
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
 		by id.
+		EXPORT_API void PluginSetKeyColorAllFramesRGB(int animationId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorAllFramesRGB(int animationId, int rzkey, int red, int green, int blue);
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
 		by name.
+		EXPORT_API void PluginSetKeyColorAllFramesRGBName(const char* path, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorAllFramesRGBName(IntPtr path, int rzkey, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyColorAllFramesRGBNameD(const char* path, double rzkey, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyColorAllFramesRGBNameD(IntPtr path, double rzkey, double red, double green, double blue);
 	/*
 		Set animation key to a static color for the given frame.
+		EXPORT_API void PluginSetKeyColorName(const char* path, int frameId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorName(IntPtr path, int frameId, int rzkey, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyColorNameD(const char* path, double frameId, double rzkey, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyColorNameD(IntPtr path, double frameId, double rzkey, double color);
 	/*
 		Set the key to the specified key color for the specified frame. Animation 
 		is referenced by id.
+		EXPORT_API void PluginSetKeyColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 	/*
 		Set the key to the specified key color for the specified frame. Animation 
 		is referenced by name.
+		EXPORT_API void PluginSetKeyColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyColorRGBName(IntPtr path, int frameId, int rzkey, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyColorRGBNameD(const char* path, double frameId, double rzkey, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyColorRGBNameD(IntPtr path, double frameId, double rzkey, double red, double green, double blue);
 	/*
 		Set animation key to a static color for the given frame if the existing 
 		color is not already black.
+		EXPORT_API void PluginSetKeyNonZeroColor(int animationId, int frameId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyNonZeroColor(int animationId, int frameId, int rzkey, int color);
 	/*
 		Set animation key to a static color for the given frame if the existing 
 		color is not already black.
+		EXPORT_API void PluginSetKeyNonZeroColorName(const char* path, int frameId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyNonZeroColorName(IntPtr path, int frameId, int rzkey, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyNonZeroColorNameD(const char* path, double frameId, double rzkey, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyNonZeroColorNameD(IntPtr path, double frameId, double rzkey, double color);
 	/*
 		Set the key to the specified key color for the specified frame where color 
 		is not black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeyNonZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyNonZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 	/*
 		Set the key to the specified key color for the specified frame where color 
 		is not black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeyNonZeroColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyNonZeroColorRGBName(IntPtr path, int frameId, int rzkey, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyNonZeroColorRGBNameD(const char* path, double frameId, double rzkey, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyNonZeroColorRGBNameD(IntPtr path, double frameId, double rzkey, double red, double green, double blue);
 	/*
 		Set an array of animation keys to a static color for the given frame. Animation 
 		is referenced by id.
+		EXPORT_API void PluginSetKeysColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColor(int animationId, int frameId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
 		is referenced by id.
+		EXPORT_API void PluginSetKeysColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorAllFrames(int animationId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
 		is referenced by name.
+		EXPORT_API void PluginSetKeysColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorAllFramesName(IntPtr path, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
 		is referenced by id.
+		EXPORT_API void PluginSetKeysColorAllFramesRGB(int animationId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorAllFramesRGB(int animationId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
 		is referenced by name.
+		EXPORT_API void PluginSetKeysColorAllFramesRGBName(const char* path, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorAllFramesRGBName(IntPtr path, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame.
+		EXPORT_API void PluginSetKeysColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorName(IntPtr path, int frameId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for the given frame. Animation 
 		is referenced by id.
+		EXPORT_API void PluginSetKeysColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorRGB(int animationId, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame. Animation 
 		is referenced by name.
+		EXPORT_API void PluginSetKeysColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysColorRGBName(IntPtr path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame if 
 		the existing color is not already black.
+		EXPORT_API void PluginSetKeysNonZeroColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysNonZeroColor(int animationId, int frameId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is not black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeysNonZeroColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysNonZeroColorAllFrames(int animationId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames if the existing 
 		color is not already black. Reference animation by name.
+		EXPORT_API void PluginSetKeysNonZeroColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysNonZeroColorAllFramesName(IntPtr path, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for the given frame if 
 		the existing color is not already black. Reference animation by name.
+		EXPORT_API void PluginSetKeysNonZeroColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysNonZeroColorName(IntPtr path, int frameId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is not black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeysNonZeroColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysNonZeroColorRGB(int animationId, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is not black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeysNonZeroColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysNonZeroColorRGBName(IntPtr path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeysZeroColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColor(int animationId, int frameId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames where the 
 		color is black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeysZeroColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorAllFrames(int animationId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames where the 
 		color is black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeysZeroColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorAllFramesName(IntPtr path, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for all frames where the 
 		color is black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeysZeroColorAllFramesRGB(int animationId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorAllFramesRGB(int animationId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for all frames where the 
 		color is black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeysZeroColorAllFramesRGBName(const char* path, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorAllFramesRGBName(IntPtr path, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeysZeroColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorName(IntPtr path, int frameId, int[] rzkeys, int keyCount, int color);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeysZeroColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorRGB(int animationId, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set an array of animation keys to a static color for the given frame where 
 		the color is black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeysZeroColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeysZeroColorRGBName(IntPtr path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue);
 	/*
 		Set animation key to a static color for the given frame where the color 
 		is black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeyZeroColor(int animationId, int frameId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyZeroColor(int animationId, int frameId, int rzkey, int color);
 	/*
 		Set animation key to a static color for the given frame where the color 
 		is black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeyZeroColorName(const char* path, int frameId, int rzkey, int color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyZeroColorName(IntPtr path, int frameId, int rzkey, int color);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyZeroColorNameD(const char* path, double frameId, double rzkey, double color);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyZeroColorNameD(IntPtr path, double frameId, double rzkey, double color);
 	/*
 		Set animation key to a static color for the given frame where the color 
 		is black. Animation is referenced by id.
+		EXPORT_API void PluginSetKeyZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 	/*
 		Set animation key to a static color for the given frame where the color 
 		is black. Animation is referenced by name.
+		EXPORT_API void PluginSetKeyZeroColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetKeyZeroColorRGBName(IntPtr path, int frameId, int rzkey, int red, int green, int blue);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSetKeyZeroColorRGBNameD(const char* path, double frameId, double rzkey, double red, double green, double blue);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSetKeyZeroColorRGBNameD(IntPtr path, double frameId, double rzkey, double red, double green, double blue);
@@ -6287,22 +6718,26 @@
 		Invokes the setup for a debug logging callback so that `stdout` is redirected 
 		to the callback. This is used by `Unity` so that debug messages can appear 
 		in the console window.
+		EXPORT_API void PluginSetLogDelegate(DebugLogPtr fp);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSetLogDelegate(DebugLogPtr fp);
 	/*
 		`PluginStopAll` will automatically stop all animations that are playing.
+		EXPORT_API void PluginStopAll();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginStopAll();
 	/*
 		Stops animation playback if in progress. Returns the animation id upon success. 
 		Returns -1 upon failure.
+		EXPORT_API int PluginStopAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginStopAnimation(int animationId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginStopAnimationD(double animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginStopAnimationD(double animationId);
@@ -6310,11 +6745,13 @@
 		`PluginStopAnimationName` automatically handles initializing the `ChromaSDK`. 
 		The named `.chroma` animation file will be automatically opened. The animation 
 		will stop if playing.
+		EXPORT_API void PluginStopAnimationName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginStopAnimationName(IntPtr path);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginStopAnimationNameD(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginStopAnimationNameD(IntPtr path);
@@ -6322,11 +6759,13 @@
 		`PluginStopAnimationType` automatically handles initializing the `ChromaSDK`. 
 		If any animation is playing for the `deviceType` and `device` combination, 
 		it will be stopped.
+		EXPORT_API void PluginStopAnimationType(int deviceType, int device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginStopAnimationType(int deviceType, int device);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginStopAnimationTypeD(double deviceType, double device);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginStopAnimationTypeD(double deviceType, double device);
@@ -6334,28 +6773,33 @@
 		`PluginStopComposite` automatically handles initializing the `ChromaSDK`. 
 		The named animation files for the `.chroma` set will be automatically opened. 
 		The set of animations will be stopped if playing.
+		EXPORT_API void PluginStopComposite(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginStopComposite(IntPtr name);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginStopCompositeD(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginStopCompositeD(IntPtr name);
 	/*
 		Subtract the source color from the target color for all frames where the 
 		target color is not black. Source and target are referenced by id.
+		EXPORT_API void PluginSubtractNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Subtract the source color from the target color for all frames where the 
 		target color is not black. Source and target are referenced by name.
+		EXPORT_API void PluginSubtractNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSubtractNonZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSubtractNonZeroAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -6363,6 +6807,7 @@
 		Subtract the source color from the target color for all frames where the 
 		target color is not black starting at offset for the length of the source. 
 		Source and target are referenced by id.
+		EXPORT_API void PluginSubtractNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -6370,45 +6815,53 @@
 		Subtract the source color from the target color for all frames where the 
 		target color is not black starting at offset for the length of the source. 
 		Source and target are referenced by name.
+		EXPORT_API void PluginSubtractNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
 	/*
 		Subtract the source color from the target where color is not black for the 
 		source frame and target offset frame, reference source and target by id.
+		EXPORT_API void PluginSubtractNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	/*
 		Subtract the source color from the target where color is not black for the 
 		source frame and target offset frame, reference source and target by name.
+		EXPORT_API void PluginSubtractNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroAllKeysOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSubtractNonZeroAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSubtractNonZeroAllKeysOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double offset);
 	/*
 		Subtract the source color from the target color where the target color is 
 		not black for all frames. Reference source and target by id.
+		EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 	/*
 		Subtract the source color from the target color where the target color is 
 		not black for all frames. Reference source and target by name.
+		EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroTargetAllKeysAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSubtractNonZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSubtractNonZeroTargetAllKeysAllFramesNameD(IntPtr sourceAnimation, IntPtr targetAnimation);
@@ -6416,6 +6869,7 @@
 		Subtract the source color from the target color where the target color is 
 		not black for all frames starting at the target offset for the length of 
 		the source. Reference source and target by id.
+		EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
@@ -6423,11 +6877,13 @@
 		Subtract the source color from the target color where the target color is 
 		not black for all frames starting at the target offset for the length of 
 		the source. Reference source and target by name.
+		EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double offset);
@@ -6435,6 +6891,7 @@
 		Subtract the source color from the target color where the target color is 
 		not black from the source frame to the target offset frame. Reference source 
 		and target by id.
+		EXPORT_API void PluginSubtractNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
@@ -6442,92 +6899,109 @@
 		Subtract the source color from the target color where the target color is 
 		not black from the source frame to the target offset frame. Reference source 
 		and target by name.
+		EXPORT_API void PluginSubtractNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginSubtractNonZeroTargetAllKeysOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int offset);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginSubtractNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginSubtractNonZeroTargetAllKeysOffsetNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double offset);
 	/*
 		Trim the end of the animation. The length of the animation will be the lastFrameId 
 		+ 1. Reference the animation by id.
+		EXPORT_API void PluginTrimEndFrames(int animationId, int lastFrameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginTrimEndFrames(int animationId, int lastFrameId);
 	/*
 		Trim the end of the animation. The length of the animation will be the lastFrameId 
 		+ 1. Reference the animation by name.
+		EXPORT_API void PluginTrimEndFramesName(const char* path, int lastFrameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginTrimEndFramesName(IntPtr path, int lastFrameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginTrimEndFramesNameD(const char* path, double lastFrameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginTrimEndFramesNameD(IntPtr path, double lastFrameId);
 	/*
 		Remove the frame from the animation. Reference animation by id.
+		EXPORT_API void PluginTrimFrame(int animationId, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginTrimFrame(int animationId, int frameId);
 	/*
 		Remove the frame from the animation. Reference animation by name.
+		EXPORT_API void PluginTrimFrameName(const char* path, int frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginTrimFrameName(IntPtr path, int frameId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginTrimFrameNameD(const char* path, double frameId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginTrimFrameNameD(IntPtr path, double frameId);
 	/*
 		Trim the start of the animation starting at frame 0 for the number of frames. 
 		Reference the animation by id.
+		EXPORT_API void PluginTrimStartFrames(int animationId, int numberOfFrames);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginTrimStartFrames(int animationId, int numberOfFrames);
 	/*
 		Trim the start of the animation starting at frame 0 for the number of frames. 
 		Reference the animation by name.
+		EXPORT_API void PluginTrimStartFramesName(const char* path, int numberOfFrames);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginTrimStartFramesName(IntPtr path, int numberOfFrames);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginTrimStartFramesNameD(const char* path, double numberOfFrames);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginTrimStartFramesNameD(IntPtr path, double numberOfFrames);
 	/*
 		Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
+		EXPORT_API int PluginUninit();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginUninit();
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginUninitD();
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginUninitD();
 	/*
 		Unloads `Chroma` effects to free up resources. Returns the animation id 
 		upon success. Returns -1 upon failure. Reference the animation by id.
+		EXPORT_API int PluginUnloadAnimation(int animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginUnloadAnimation(int animationId);
 	/*
 		D suffix for limited data types.
+		EXPORT_API double PluginUnloadAnimationD(double animationId);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern double PluginUnloadAnimationD(double animationId);
 	/*
 		Unload the animation effects. Reference the animation by name.
+		EXPORT_API void PluginUnloadAnimationName(const char* path);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginUnloadAnimationName(IntPtr path);
 	/*
 		Unload the the composite set of animation effects. Reference the animation 
 		by name.
+		EXPORT_API void PluginUnloadComposite(const char* name);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern void PluginUnloadComposite(IntPtr name);
@@ -6539,6 +7013,7 @@
 		LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
 		* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
 		failure.
+		EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length);
 	*/
 	[DllImport(DLL_NAME)]
 	private static extern int PluginUpdateFrame(int animationId, int frameIndex, float duration, int[] colors, int length);
