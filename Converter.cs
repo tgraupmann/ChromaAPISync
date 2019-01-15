@@ -367,6 +367,115 @@ namespace ChromaAPISync
             return string.Join(",", parts);
         }
 
+        private static int GetLastWhitespace(string str)
+        {
+            int index = -1;
+            int j = 0;
+            foreach (char c in str)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    index = j;
+                }
+                ++j;
+            }
+            return index;
+        }
+
+        private static string ChangeToManagedImportType(string strType)
+        {
+            string result = strType;
+            if (strType == "int*")
+            {
+                result = "int[]";
+            }
+            else if (strType == "const int*")
+            {
+                result = "int[]";
+            }
+            else if (strType == "const char*")
+            {
+                result = "IntPtr";
+            }
+            else if (strType == "RZRESULT")
+            {
+                result = "int";
+            }
+            return result;
+        }
+
+        private static string ChangeToManagedType(string strType)
+        {
+            string result = strType;
+            if (strType == "int*")
+            {
+                result = "int[]";
+            }
+            else if (strType == "const int*")
+            {
+                result = "int[]";
+            }
+            else if (strType == "const char*")
+            {
+                result = "string";
+            }
+            else if (strType == "RZRESULT")
+            {
+                result = "int";
+            }
+            return result;
+        }
+
+        private static string ChangeArgsToManagedTypes(string args)
+        {
+            string[] parts = args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].Trim();
+                int lastWhitespace = GetLastWhitespace(part);
+                if (lastWhitespace > 0)
+                {
+                    string strType = ChangeToManagedType(part.Substring(0, lastWhitespace).Trim());
+
+                    if (i == 0)
+                    {
+                        parts[i] = strType + part.Substring(lastWhitespace);
+                    }
+                    else
+                    {
+                        parts[i] = " " + strType + part.Substring(lastWhitespace);
+
+                    }
+                }
+            }
+            return string.Join(",", parts);
+        }
+
+        private static string ChangeArgsToManagedImportTypes(string args)
+        {
+            string[] parts = args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].Trim();
+                int lastWhitespace = GetLastWhitespace(part);
+                if (lastWhitespace > 0)
+                {
+                    string strType = ChangeToManagedImportType(part.Substring(0, lastWhitespace).Trim());
+
+                    if (i == 0)
+                    {
+                        parts[i] = strType + part.Substring(lastWhitespace);
+                    }
+                    else
+                    {
+                        parts[i] = " " + strType + part.Substring(lastWhitespace);
+
+                    }
+                }
+            }
+            return string.Join(",", parts);
+        }
+
         class MetaMethodInfo
         {
             public string Name = string.Empty;
@@ -732,9 +841,9 @@ namespace ChromaAPISync
                     Output(swUnity, "\t*/");
 
                     Output(swUnity, "\tpublic static {0} {1}({2})",
-                        methodInfo.ReturnType,
+                        ChangeToManagedType(methodInfo.ReturnType),
                         methodInfo.Name,
-                        methodInfo.Args);
+                        ChangeArgsToManagedTypes(methodInfo.Args));
 
                     Output(swUnity, "\t{0}", "{");
                     if (methodInfo.ReturnType == "void")
@@ -774,9 +883,9 @@ namespace ChromaAPISync
                     Output(swUnity, "\t{0}", "[DllImport(DLL_NAME)]");
 
                     Output(swUnity, "\tprivate static extern {0} Plugin{1}({2});",
-                        methodInfo.ReturnType,
+                        ChangeToManagedImportType(methodInfo.ReturnType),
                         methodInfo.Name,
-                        methodInfo.Args);
+                        ChangeArgsToManagedImportTypes(methodInfo.Args));
                 }
 
                 Output(swUnity, "#endregion");
