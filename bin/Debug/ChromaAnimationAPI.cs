@@ -7,6 +7,13 @@ using UnityEngine;
 
 namespace ChromaSDK
 {
+    [StructLayout(LayoutKind.Sequential)]
+    struct DEVICE_INFO_TYPE
+    {
+        int DeviceType;
+        uint Connected;
+    }
+
     public class ChromaAnimationAPI
     {
 #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
@@ -1331,7 +1338,7 @@ namespace ChromaSDK
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static int CoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
+		public static int CoreCreateEffect(Guid DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 		{
 			int result = PluginCoreCreateEffect(DeviceId, Effect, pParam, pEffectId);
 			return result;
@@ -1395,9 +1402,9 @@ namespace ChromaSDK
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static int CoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo)
+		public static int CoreQueryDevice(Guid DeviceId, out ChromSDK.DEVICE_INFO_TYPE DeviceInfo)
 		{
-			int result = PluginCoreQueryDevice(DeviceId, DeviceInfo);
+			int result = PluginCoreQueryDevice(DeviceId, out DeviceInfo);
 			return result;
 		}
 		/// <summary>
@@ -1449,7 +1456,7 @@ namespace ChromaSDK
 		/// <summary>
 		/// Create a device specific effect.
 		/// </summary>
-		public static int CreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int[] colors, int size, ChromaSDK::FChromaSDKGuid* effectId)
+		public static int CreateEffect(Guid deviceId, ChromaSDK::EFFECT_TYPE effect, int[] colors, int size, ChromaSDK::FChromaSDKGuid* effectId)
 		{
 			int result = PluginCreateEffect(deviceId, effect, colors, size, effectId);
 			return result;
@@ -1457,7 +1464,7 @@ namespace ChromaSDK
 		/// <summary>
 		/// Delete an effect given the effect id.
 		/// </summary>
-		public static int DeleteEffect(System.Guid effectId)
+		public static int DeleteEffect(Guid effectId)
 		{
 			int result = PluginDeleteEffect(effectId);
 			return result;
@@ -4296,7 +4303,7 @@ namespace ChromaSDK
 		/// <summary>
 		/// SetEffect will display the referenced effect id.
 		/// </summary>
-		public static int SetEffect(System.Guid effectId)
+		public static int SetEffect(Guid effectId)
 		{
 			int result = PluginSetEffect(effectId);
 			return result;
@@ -5873,7 +5880,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
+		private static extern int PluginCoreCreateEffect(Guid DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateHeadsetEffect(ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
@@ -5921,7 +5928,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE &DeviceInfo);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE DeviceInfo);
+		private static extern int PluginCoreQueryDevice(Guid DeviceId, out ChromSDK.DEVICE_INFO_TYPE DeviceInfo);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreSetEffect(RZEFFECTID EffectId);
@@ -5962,13 +5969,13 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginCreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int* colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginCreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int[] colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
+		private static extern int PluginCreateEffect(Guid deviceId, ChromaSDK::EFFECT_TYPE effect, int[] colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
 		/// <summary>
 		/// Delete an effect given the effect id.
 		/// EXPORT_API RZRESULT PluginDeleteEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginDeleteEffect(System.Guid effectId);
+		private static extern int PluginDeleteEffect(Guid effectId);
 		/// <summary>
 		/// Duplicate the first animation frame so that the animation length matches 
 		/// the frame count. Animation is referenced by id.
@@ -7895,7 +7902,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginSetEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginSetEffect(System.Guid effectId);
+		private static extern int PluginSetEffect(Guid effectId);
 		/// <summary>
 		/// Set animation key to a static color for the given frame.
 		/// EXPORT_API void PluginSetKeyColor(int animationId, int frameId, int rzkey, int color);

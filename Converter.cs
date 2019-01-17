@@ -220,6 +220,7 @@ namespace ChromaAPISync
             public string ArgName = string.Empty;
             public string OverrideType = string.Empty;
             public string CastType = string.Empty;
+            public bool UseOut = false;
         }
 
         private static readonly MetaOverride[] _sUnityOverrides =
@@ -227,6 +228,7 @@ namespace ChromaAPISync
             new MetaOverride() { MethodName="GetMaxLeds", ArgName="device", OverrideType="Device1D", CastType="int"},
             new MetaOverride() { MethodName="GetMaxRow", ArgName="device", OverrideType="Device2D", CastType="int"},
             new MetaOverride() { MethodName="GetMaxColumn", ArgName="device", OverrideType="Device2D", CastType="int"},
+            new MetaOverride() { MethodName="CoreQueryDevice", ArgName="DeviceInfo", OverrideType="", CastType="", UseOut=true},
         };
 
         private static bool GetArgsTypes(MetaMethodInfo methodInfo)
@@ -248,10 +250,9 @@ namespace ChromaAPISync
                     foreach (MetaOverride metaOverride in _sUnityOverrides)
                     {
                         if (info.MethodInfo.Name == metaOverride.MethodName &&
-                        info.Name == metaOverride.ArgName)
+                            info.Name == metaOverride.ArgName)
                         {
-                            info.OverrideType = metaOverride.OverrideType;
-                            info.CastType = metaOverride.CastType;
+                            info.OverrideInfo = metaOverride;
                         }
                     }
                     methodInfo.DetailArgs.Add(info);
@@ -410,9 +411,20 @@ namespace ChromaAPISync
                         string lpArg = string.Format("lp{0}", UppercaseFirstLetter(name));
                         name = lpArg;
                     }
-                    if (!string.IsNullOrEmpty(argInfo.OverrideType))
+                    if (null != argInfo.OverrideInfo)
                     {
-                        name = string.Format("({0}){1}", argInfo.CastType, name);
+                        if (argInfo.OverrideInfo.UseOut)
+                        {
+                            name = "out " + name;
+                        }
+                        else if (!string.IsNullOrEmpty(argInfo.OverrideInfo.OverrideType))
+                        {
+                            name = string.Format("{0}{1}{2}{3}",
+                                string.IsNullOrEmpty(argInfo.OverrideInfo.CastType) ? "" : "(",
+                                argInfo.OverrideInfo.CastType,
+                                string.IsNullOrEmpty(argInfo.OverrideInfo.CastType) ? "" : ")",
+                                name);
+                        }
                     }
                     if (i > 0)
                     {
@@ -484,12 +496,17 @@ namespace ChromaAPISync
             {
                 result = "int";
             }
-            else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
+            else if (result == "ChromaSDK::DEVICE_INFO_TYPE")
             {
+                result = "out ChromSDK.DEVICE_INFO_TYPE";
             }
             else if (result == "const ChromaSDK::FChromaSDKGuid&")
             {
-                result = "System.Guid";
+                result = "Guid";
+            }
+            else if (result == "RZDEVICEID")
+            {
+                result = "Guid";
             }
             return result;
         }
@@ -539,10 +556,15 @@ namespace ChromaAPISync
             }
             else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
             {
+                result = "out ChromSDK.DEVICE_INFO_TYPE";
             }
             else if (result == "const ChromaSDK::FChromaSDKGuid&")
             {
-                result = "System.Guid";
+                result = "Guid";
+            }
+            else if (result == "RZDEVICEID")
+            {
+                result = "Guid";
             }
             return result;
         }
@@ -590,9 +612,10 @@ namespace ChromaAPISync
                     strType = ChangeToManagedType(strType);
                     string name = part.Substring(indexName + 1).Trim();
                     MetaArgInfo argInfo = methodInfo.DetailArgs[i];
-                    if (!string.IsNullOrEmpty(argInfo.OverrideType))
+                    if (null != argInfo.OverrideInfo &&
+                        !string.IsNullOrEmpty(argInfo.OverrideInfo.OverrideType))
                     {
-                        strType = argInfo.OverrideType;
+                        strType = argInfo.OverrideInfo.OverrideType;
                     }
 
                     if (i == 0)
@@ -638,10 +661,9 @@ namespace ChromaAPISync
         class MetaArgInfo
         {
             public MetaMethodInfo MethodInfo;
+            public MetaOverride OverrideInfo = null;
             public string Name = string.Empty;
             public string StrType = string.Empty;
-            public string CastType = string.Empty;
-            public string OverrideType = string.Empty;
         }
 
         class MetaMethodInfo
@@ -1017,6 +1039,13 @@ using UnityEngine;
 
 namespace ChromaSDK
 {
+    [StructLayout(LayoutKind.Sequential)]
+    struct DEVICE_INFO_TYPE
+    {
+        int DeviceType;
+        uint Connected;
+    }
+
     public class ChromaAnimationAPI
     {
 #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
