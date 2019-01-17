@@ -47,9 +47,19 @@ namespace ChromaSDK
                 Marshal.FreeHGlobal(lpData);
             }
         }
+
+        /// <summary>
+        /// Get the streaming path for the animation given the relative path from Assets/StreamingAssets
+        /// </summary>
+        /// <param name="animation"></param>
+        /// <returns></returns>
+        public static string GetStreamingPath(string animation)
+        {
+            return string.Format("{0}/{1}", Application.streamingAssetsPath, animation);
+        }
 #endregion
 
-#region Public API Methods
+		#region Public API Methods
 		/// <summary>
 		/// Adds a frame to the `Chroma` animation and sets the `duration` (in seconds). 
 		/// The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
@@ -5034,9 +5044,9 @@ namespace ChromaSDK
 			int result = PluginUpdateFrame(animationId, frameIndex, duration, colors, length);
 			return result;
 		}
-#endregion
+		#endregion
 
-#region Private DLL Hooks
+		#region Private DLL Hooks
 		/// <summary>
 		/// Adds a frame to the `Chroma` animation and sets the `duration` (in seconds). 
 		/// The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
@@ -8323,7 +8333,7 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int PluginUpdateFrame(int animationId, int frameIndex, float duration, int[] colors, int length);
-#endregion
+		#endregion
   }
 }
 
