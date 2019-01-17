@@ -1019,6 +1019,16 @@ namespace ChromaSDK
                 Marshal.FreeHGlobal(lpData);
             }
         }
+
+        /// <summary>
+        /// Get the streaming path for the animation given the relative path from Assets/StreamingAssets
+        /// </summary>
+        /// <param name=""animation""></param>
+        /// <returns></returns>
+        public static string GetStreamingPath(string animation)
+        {
+            return string.Format(""{0}/{1}"", Application.streamingAssetsPath, animation);
+        }
 #endregion";
 
         private const string FOOTER_UNITY =
@@ -1034,7 +1044,7 @@ namespace ChromaSDK
 
                 Output(swUnity, "");
 
-                Output(swUnity, "#region Public API Methods");
+                Output(swUnity, "\t\t#region Public API Methods");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
@@ -1106,11 +1116,11 @@ namespace ChromaSDK
                     Output(swUnity, "\t\t{0}", "}");
                 }
 
-                Output(swUnity, "#endregion");
+                Output(swUnity, "\t\t#endregion");
 
                 Output(swUnity, "");
 
-                Output(swUnity, "#region Private DLL Hooks");
+                Output(swUnity, "\t\t#region Private DLL Hooks");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
@@ -1138,7 +1148,7 @@ namespace ChromaSDK
                         ChangeArgsToManagedImportTypes(methodInfo.Args));
                 }
 
-                Output(swUnity, "#endregion");
+                Output(swUnity, "\t\t#endregion");
 
                 Output(swUnity, "{0}", FOOTER_UNITY);
 
