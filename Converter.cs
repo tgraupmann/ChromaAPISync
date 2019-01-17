@@ -969,11 +969,70 @@ namespace ChromaAPISync
             }
         }
 
+        private const string HEADER_UNITY =
+@"using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using UnityEngine;
+
+namespace ChromaSDK
+{
+    public class UnityNativeChromaSDK
+    {
+#if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
+        const string DLL_NAME = ""UnityNativeChromaSDK3"";
+
+#else
+        const string DLL_NAME = ""UnityNativeChromaSDK"";
+#endif
+
+        #region Helpers (handle path conversions)
+
+        /// <summary>
+        /// Helper to convert string to IntPtr
+        /// </summary>
+        /// <param name=""path""></param>
+        /// <returns></returns>
+        private static IntPtr GetIntPtr(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return IntPtr.Zero;
+            }
+            FileInfo fi = new FileInfo(path);
+            byte[] array = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ""\0"");
+            IntPtr lpData = Marshal.AllocHGlobal(array.Length);
+            Marshal.Copy(array, 0, lpData, array.Length);
+            return lpData;
+        }
+
+        /// <summary>
+        /// Helper to recycle the IntPtr
+        /// </summary>
+        /// <param name=""lpData""></param>
+        private static void FreeIntPtr(IntPtr lpData)
+        {
+            if (lpData != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(lpData);
+            }
+        }
+#endregion";
+
+        private const string FOOTER_UNITY =
+@"  }
+}
+";
+
         static bool WriteUnity(StreamWriter swUnity)
         {
             try
             {
-                Console.WriteLine();
+                Output(swUnity, "{0}", HEADER_UNITY);
+
+                Output(swUnity, "");
 
                 Output(swUnity, "#region Public API Methods");
 
@@ -981,33 +1040,33 @@ namespace ChromaAPISync
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Output(swUnity, "\t/*");
+                    Output(swUnity, "\t\t{0}", "/// <summary>");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Output(swUnity, "\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
+                        Output(swUnity, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
                     }
 
-                    Output(swUnity, "\t*/");
+                    Output(swUnity, "\t\t{0}", "/// </summary>");
 
-                    Output(swUnity, "\tpublic static {0} {1}({2})",
+                    Output(swUnity, "\t\tpublic static {0} {1}({2})",
                         ChangeToManagedType(methodInfo.ReturnType),
                         methodInfo.Name,
                         ChangeArgsToManagedTypes(methodInfo.Args));
 
-                    Output(swUnity, "\t{0}", "{");
+                    Output(swUnity, "\t\t{0}", "{");
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
                     {
                         if (argInfo.StrType == "const char*" ||
                             argInfo.StrType == "char*")
                         {
                             string pathArg = string.Format("path{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swUnity, "\t\tstring {0} = GetStreamingPath({1});",
+                            Output(swUnity, "\t\t\tstring {0} = GetStreamingPath({1});",
                                 pathArg,
                                 argInfo.Name);
   
                             string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swUnity, "\t\tIntPtr {0} = GetIntPtr({1});",
+                            Output(swUnity, "\t\t\tIntPtr {0} = GetIntPtr({1});",
                                 lpArg,
                                 pathArg);
 
@@ -1015,13 +1074,13 @@ namespace ChromaAPISync
                     }
                     if (methodInfo.ReturnType == "void")
                     {
-                        Output(swUnity, "\t\tPlugin{0}({1});",
+                        Output(swUnity, "\t\t\tPlugin{0}({1});",
                             methodInfo.Name,
                             RemoveArgTypes(methodInfo.Args, methodInfo.DetailArgs));
                     }
                     else
                     {
-                        Output(swUnity, "\t\t{0} result = Plugin{1}({2});",
+                        Output(swUnity, "\t\t\t{0} result = Plugin{1}({2});",
                             ChangeToManagedType(methodInfo.ReturnType),
                             methodInfo.Name,
                             RemoveArgTypes(methodInfo.Args, methodInfo.DetailArgs));
@@ -1033,7 +1092,7 @@ namespace ChromaAPISync
                             argInfo.StrType == "char*")
                         {
                             string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swUnity, "\t\tFreeIntPtr({0});",
+                            Output(swUnity, "\t\t\tFreeIntPtr({0});",
                                 lpArg);
 
                         }
@@ -1041,10 +1100,10 @@ namespace ChromaAPISync
 
                     if (methodInfo.ReturnType != "void")
                     {
-                        Output(swUnity, "\t\treturn result;");
+                        Output(swUnity, "\t\t\treturn result;");
                     }
 
-                    Output(swUnity, "\t{0}", "}");
+                    Output(swUnity, "\t\t{0}", "}");
                 }
 
                 Output(swUnity, "#endregion");
@@ -1057,29 +1116,34 @@ namespace ChromaAPISync
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Output(swUnity, "\t/*");
+                    Output(swUnity, "\t\t{0}", "/// <summary>");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Output(swUnity, "\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
+                        Output(swUnity, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
                     }
 
-                    Output(swUnity, "\t\tEXPORT_API {0} Plugin{1}({2});",
+                    Output(swUnity, "\t\t/// EXPORT_API {0} Plugin{1}({2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
                         methodInfo.Args);
 
-                    Output(swUnity, "\t*/");
+                    Output(swUnity, "\t\t{0}", "/// </summary>");
 
-                    Output(swUnity, "\t{0}", "[DllImport(DLL_NAME)]");
+                    Output(swUnity, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
 
-                    Output(swUnity, "\tprivate static extern {0} Plugin{1}({2});",
+                    Output(swUnity, "\t\tprivate static extern {0} Plugin{1}({2});",
                         ChangeToManagedImportType(methodInfo.ReturnType),
                         methodInfo.Name,
                         ChangeArgsToManagedImportTypes(methodInfo.Args));
                 }
 
                 Output(swUnity, "#endregion");
+
+                Output(swUnity, "{0}", FOOTER_UNITY);
+
+                swUnity.Flush();
+                swUnity.Close();
 
                 return true;
             }
