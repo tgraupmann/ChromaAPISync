@@ -9,7 +9,8 @@
 	*/
 	public static int AddFrame(int animationId, float duration, int[] colors, int length)
 	{
-		return PluginAddFrame(animationId,duration,colors,length);
+		int result = PluginAddFrame(animationId, duration, colors, length);
+		return result;
 	}
 	/*
 		Add source color to target where color is not black for all frames, reference 
@@ -17,7 +18,7 @@
 	*/
 	public static void AddNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginAddNonZeroAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginAddNonZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Add source color to target where color is not black for all frames, reference 
@@ -25,14 +26,27 @@
 	*/
 	public static void AddNonZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginAddNonZeroAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAddNonZeroAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AddNonZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginAddNonZeroAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAddNonZeroAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Add source color to target where color is not black for all frames starting 
@@ -41,7 +55,7 @@
 	*/
 	public static void AddNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginAddNonZeroAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginAddNonZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Add source color to target where color is not black for all frames starting 
@@ -50,14 +64,27 @@
 	*/
 	public static void AddNonZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginAddNonZeroAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAddNonZeroAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AddNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginAddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAddNonZeroAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Add source color to target where color is not black for the source frame 
@@ -65,7 +92,7 @@
 	*/
 	public static void AddNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
 	{
-		PluginAddNonZeroAllKeysOffset(sourceAnimationId,targetAnimationId,frameId,offset);
+		PluginAddNonZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 	}
 	/*
 		Add source color to target where color is not black for the source frame 
@@ -73,14 +100,27 @@
 	*/
 	public static void AddNonZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 	{
-		PluginAddNonZeroAllKeysOffsetName(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAddNonZeroAllKeysOffsetName(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AddNonZeroAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 	{
-		return PluginAddNonZeroAllKeysOffsetNameD(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAddNonZeroAllKeysOffsetNameD(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Add source color to target where the target color is not black for all frames, 
@@ -88,7 +128,7 @@
 	*/
 	public static void AddNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginAddNonZeroTargetAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginAddNonZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Add source color to target where the target color is not black for all frames, 
@@ -96,14 +136,27 @@
 	*/
 	public static void AddNonZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginAddNonZeroTargetAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAddNonZeroTargetAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AddNonZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginAddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAddNonZeroTargetAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Add source color to target where the target color is not black for all frames 
@@ -112,7 +165,7 @@
 	*/
 	public static void AddNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginAddNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginAddNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Add source color to target where the target color is not black for all frames 
@@ -121,14 +174,27 @@
 	*/
 	public static void AddNonZeroTargetAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginAddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAddNonZeroTargetAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AddNonZeroTargetAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginAddNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAddNonZeroTargetAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Add source color to target where target color is not blank from the source 
@@ -136,7 +202,7 @@
 	*/
 	public static void AddNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
 	{
-		PluginAddNonZeroTargetAllKeysOffset(sourceAnimationId,targetAnimationId,frameId,offset);
+		PluginAddNonZeroTargetAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 	}
 	/*
 		Add source color to target where target color is not blank from the source 
@@ -144,14 +210,27 @@
 	*/
 	public static void AddNonZeroTargetAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 	{
-		PluginAddNonZeroTargetAllKeysOffsetName(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAddNonZeroTargetAllKeysOffsetName(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AddNonZeroTargetAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 	{
-		return PluginAddNonZeroTargetAllKeysOffsetNameD(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAddNonZeroTargetAllKeysOffsetNameD(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Append all source frames to the target animation, reference source and target 
@@ -159,7 +238,7 @@
 	*/
 	public static void AppendAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginAppendAllFrames(sourceAnimationId,targetAnimationId);
+		PluginAppendAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Append all source frames to the target animation, reference source and target 
@@ -167,14 +246,27 @@
 	*/
 	public static void AppendAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginAppendAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginAppendAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double AppendAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginAppendAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginAppendAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		`PluginClearAll` will issue a `CLEAR` effect for all devices.
@@ -188,7 +280,7 @@
 	*/
 	public static void ClearAnimationType(int deviceType, int device)
 	{
-		PluginClearAnimationType(deviceType,device);
+		PluginClearAnimationType(deviceType, device);
 	}
 	/*
 		`PluginCloseAll` closes all open animations so they can be reloaded from 
@@ -206,14 +298,16 @@
 	*/
 	public static int CloseAnimation(int animationId)
 	{
-		return PluginCloseAnimation(animationId);
+		int result = PluginCloseAnimation(animationId);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CloseAnimationD(double animationId)
 	{
-		return PluginCloseAnimationD(animationId);
+		double result = PluginCloseAnimationD(animationId);
+		return result;
 	}
 	/*
 		Closes the `Chroma` animation referenced by name so that the animation can 
@@ -221,14 +315,21 @@
 	*/
 	public static void CloseAnimationName(string path)
 	{
-		PluginCloseAnimationName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginCloseAnimationName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CloseAnimationNameD(string path)
 	{
-		return PluginCloseAnimationNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginCloseAnimationNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		`PluginCloseComposite` closes a set of animations so they can be reloaded 
@@ -236,14 +337,21 @@
 	*/
 	public static void CloseComposite(string name)
 	{
-		PluginCloseComposite(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		PluginCloseComposite(lpName);
+		FreeIntPtr(lpName);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CloseCompositeD(string name)
 	{
-		return PluginCloseCompositeD(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		double result = PluginCloseCompositeD(lpName);
+		FreeIntPtr(lpName);
+		return result;
 	}
 	/*
 		Copy animation to named target animation in memory. If target animation 
@@ -251,7 +359,11 @@
 	*/
 	public static int CopyAnimation(int sourceAnimationId, string targetAnimation)
 	{
-		return PluginCopyAnimation(sourceAnimationId,targetAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		int result = PluginCopyAnimation(sourceAnimationId, lpTargetAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy animation to named target animation in memory. If target animation 
@@ -259,14 +371,27 @@
 	*/
 	public static void CopyAnimationName(string sourceAnimation, string targetAnimation)
 	{
-		PluginCopyAnimationName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyAnimationName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyAnimationNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginCopyAnimationNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyAnimationNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy blue channel to other channels for all frames. Intensity range is 0.0 
@@ -274,7 +399,7 @@
 	*/
 	public static void CopyBlueChannelAllFrames(int animationId, float redIntensity, float greenIntensity)
 	{
-		PluginCopyBlueChannelAllFrames(animationId,redIntensity,greenIntensity);
+		PluginCopyBlueChannelAllFrames(animationId, redIntensity, greenIntensity);
 	}
 	/*
 		Copy blue channel to other channels for all frames. Intensity range is 0.0 
@@ -282,14 +407,21 @@
 	*/
 	public static void CopyBlueChannelAllFramesName(string path, float redIntensity, float greenIntensity)
 	{
-		PluginCopyBlueChannelAllFramesName(path,redIntensity,greenIntensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginCopyBlueChannelAllFramesName(lpPath, redIntensity, greenIntensity);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyBlueChannelAllFramesNameD(string path, double redIntensity, double greenIntensity)
 	{
-		return PluginCopyBlueChannelAllFramesNameD(path,redIntensity,greenIntensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginCopyBlueChannelAllFramesNameD(lpPath, redIntensity, greenIntensity);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Copy green channel to other channels for all frames. Intensity range is 
@@ -297,7 +429,7 @@
 	*/
 	public static void CopyGreenChannelAllFrames(int animationId, float redIntensity, float blueIntensity)
 	{
-		PluginCopyGreenChannelAllFrames(animationId,redIntensity,blueIntensity);
+		PluginCopyGreenChannelAllFrames(animationId, redIntensity, blueIntensity);
 	}
 	/*
 		Copy green channel to other channels for all frames. Intensity range is 
@@ -305,14 +437,21 @@
 	*/
 	public static void CopyGreenChannelAllFramesName(string path, float redIntensity, float blueIntensity)
 	{
-		PluginCopyGreenChannelAllFramesName(path,redIntensity,blueIntensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginCopyGreenChannelAllFramesName(lpPath, redIntensity, blueIntensity);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyGreenChannelAllFramesNameD(string path, double redIntensity, double blueIntensity)
 	{
-		return PluginCopyGreenChannelAllFramesNameD(path,redIntensity,blueIntensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginCopyGreenChannelAllFramesNameD(lpPath, redIntensity, blueIntensity);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -320,7 +459,7 @@
 	*/
 	public static void CopyKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey)
 	{
-		PluginCopyKeyColor(sourceAnimationId,targetAnimationId,frameId,rzkey);
+		PluginCopyKeyColor(sourceAnimationId, targetAnimationId, frameId, rzkey);
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -328,7 +467,7 @@
 	*/
 	public static void CopyKeyColorAllFrames(int sourceAnimationId, int targetAnimationId, int rzkey)
 	{
-		PluginCopyKeyColorAllFrames(sourceAnimationId,targetAnimationId,rzkey);
+		PluginCopyKeyColorAllFrames(sourceAnimationId, targetAnimationId, rzkey);
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -336,14 +475,27 @@
 	*/
 	public static void CopyKeyColorAllFramesName(string sourceAnimation, string targetAnimation, int rzkey)
 	{
-		PluginCopyKeyColorAllFramesName(sourceAnimation,targetAnimation,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyKeyColorAllFramesName(lpSourceAnimation, lpTargetAnimation, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyKeyColorAllFramesNameD(string sourceAnimation, string targetAnimation, double rzkey)
 	{
-		return PluginCopyKeyColorAllFramesNameD(sourceAnimation,targetAnimation,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyKeyColorAllFramesNameD(lpSourceAnimation, lpTargetAnimation, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -352,7 +504,7 @@
 	*/
 	public static void CopyKeyColorAllFramesOffset(int sourceAnimationId, int targetAnimationId, int rzkey, int offset)
 	{
-		PluginCopyKeyColorAllFramesOffset(sourceAnimationId,targetAnimationId,rzkey,offset);
+		PluginCopyKeyColorAllFramesOffset(sourceAnimationId, targetAnimationId, rzkey, offset);
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -361,14 +513,27 @@
 	*/
 	public static void CopyKeyColorAllFramesOffsetName(string sourceAnimation, string targetAnimation, int rzkey, int offset)
 	{
-		PluginCopyKeyColorAllFramesOffsetName(sourceAnimation,targetAnimation,rzkey,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyKeyColorAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, rzkey, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyKeyColorAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double rzkey, double offset)
 	{
-		return PluginCopyKeyColorAllFramesOffsetNameD(sourceAnimation,targetAnimation,rzkey,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyKeyColorAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, rzkey, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -376,14 +541,27 @@
 	*/
 	public static void CopyKeyColorName(string sourceAnimation, string targetAnimation, int frameId, int rzkey)
 	{
-		PluginCopyKeyColorName(sourceAnimation,targetAnimation,frameId,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyKeyColorName(lpSourceAnimation, lpTargetAnimation, frameId, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyKeyColorNameD(string sourceAnimation, string targetAnimation, double frameId, double rzkey)
 	{
-		return PluginCopyKeyColorNameD(sourceAnimation,targetAnimation,frameId,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyKeyColorNameD(lpSourceAnimation, lpTargetAnimation, frameId, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy source animation to target animation for the given frame. Source and 
@@ -391,7 +569,7 @@
 	*/
 	public static void CopyNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
 	{
-		PluginCopyNonZeroAllKeys(sourceAnimationId,targetAnimationId,frameId);
+		PluginCopyNonZeroAllKeys(sourceAnimationId, targetAnimationId, frameId);
 	}
 	/*
 		Copy nonzero colors from a source animation to a target animation for all 
@@ -399,7 +577,7 @@
 	*/
 	public static void CopyNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginCopyNonZeroAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginCopyNonZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Copy nonzero colors from a source animation to a target animation for all 
@@ -407,14 +585,27 @@
 	*/
 	public static void CopyNonZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginCopyNonZeroAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginCopyNonZeroAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from a source animation to a target animation for all 
@@ -423,7 +614,7 @@
 	*/
 	public static void CopyNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginCopyNonZeroAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginCopyNonZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Copy nonzero colors from a source animation to a target animation for all 
@@ -432,14 +623,27 @@
 	*/
 	public static void CopyNonZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginCopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginCopyNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from source animation to target animation for the specified 
@@ -447,14 +651,27 @@
 	*/
 	public static void CopyNonZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 	{
-		PluginCopyNonZeroAllKeysName(sourceAnimation,targetAnimation,frameId);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroAllKeysName(lpSourceAnimation, lpTargetAnimation, frameId);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroAllKeysNameD(string sourceAnimation, string targetAnimation, double frameId)
 	{
-		return PluginCopyNonZeroAllKeysNameD(sourceAnimation,targetAnimation,frameId);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroAllKeysNameD(lpSourceAnimation, lpTargetAnimation, frameId);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation from 
@@ -463,7 +680,7 @@
 	*/
 	public static void CopyNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
 	{
-		PluginCopyNonZeroAllKeysOffset(sourceAnimationId,targetAnimationId,frameId,offset);
+		PluginCopyNonZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation from 
@@ -472,14 +689,27 @@
 	*/
 	public static void CopyNonZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 	{
-		PluginCopyNonZeroAllKeysOffsetName(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroAllKeysOffsetName(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 	{
-		return PluginCopyNonZeroAllKeysOffsetNameD(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroAllKeysOffsetNameD(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -487,7 +717,7 @@
 	*/
 	public static void CopyNonZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey)
 	{
-		PluginCopyNonZeroKeyColor(sourceAnimationId,targetAnimationId,frameId,rzkey);
+		PluginCopyNonZeroKeyColor(sourceAnimationId, targetAnimationId, frameId, rzkey);
 	}
 	/*
 		Copy animation key color from the source animation to the target animation 
@@ -495,14 +725,27 @@
 	*/
 	public static void CopyNonZeroKeyColorName(string sourceAnimation, string targetAnimation, int frameId, int rzkey)
 	{
-		PluginCopyNonZeroKeyColorName(sourceAnimation,targetAnimation,frameId,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroKeyColorName(lpSourceAnimation, lpTargetAnimation, frameId, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroKeyColorNameD(string sourceAnimation, string targetAnimation, double frameId, double rzkey)
 	{
-		return PluginCopyNonZeroKeyColorNameD(sourceAnimation,targetAnimation,frameId,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroKeyColorNameD(lpSourceAnimation, lpTargetAnimation, frameId, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -511,7 +754,7 @@
 	*/
 	public static void CopyNonZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
 	{
-		PluginCopyNonZeroTargetAllKeys(sourceAnimationId,targetAnimationId,frameId);
+		PluginCopyNonZeroTargetAllKeys(sourceAnimationId, targetAnimationId, frameId);
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -520,7 +763,7 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginCopyNonZeroTargetAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginCopyNonZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -529,14 +772,27 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginCopyNonZeroTargetAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroTargetAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginCopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroTargetAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -545,7 +801,7 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginCopyNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginCopyNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -555,14 +811,27 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroTargetAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginCopyNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroTargetAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -571,14 +840,27 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 	{
-		PluginCopyNonZeroTargetAllKeysName(sourceAnimation,targetAnimation,frameId);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroTargetAllKeysName(lpSourceAnimation, lpTargetAnimation, frameId);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroTargetAllKeysNameD(string sourceAnimation, string targetAnimation, double frameId)
 	{
-		return PluginCopyNonZeroTargetAllKeysNameD(sourceAnimation,targetAnimation,frameId);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroTargetAllKeysNameD(lpSourceAnimation, lpTargetAnimation, frameId);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -587,7 +869,7 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
 	{
-		PluginCopyNonZeroTargetAllKeysOffset(sourceAnimationId,targetAnimationId,frameId,offset);
+		PluginCopyNonZeroTargetAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 	}
 	/*
 		Copy nonzero colors from the source animation to the target animation where 
@@ -596,14 +878,27 @@
 	*/
 	public static void CopyNonZeroTargetAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 	{
-		PluginCopyNonZeroTargetAllKeysOffsetName(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyNonZeroTargetAllKeysOffsetName(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyNonZeroTargetAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 	{
-		return PluginCopyNonZeroTargetAllKeysOffsetNameD(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyNonZeroTargetAllKeysOffsetNameD(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy red channel to other channels for all frames. Intensity range is 0.0 
@@ -611,7 +906,7 @@
 	*/
 	public static void CopyRedChannelAllFrames(int animationId, float greenIntensity, float blueIntensity)
 	{
-		PluginCopyRedChannelAllFrames(animationId,greenIntensity,blueIntensity);
+		PluginCopyRedChannelAllFrames(animationId, greenIntensity, blueIntensity);
 	}
 	/*
 		Copy green channel to other channels for all frames. Intensity range is 
@@ -619,14 +914,21 @@
 	*/
 	public static void CopyRedChannelAllFramesName(string path, float greenIntensity, float blueIntensity)
 	{
-		PluginCopyRedChannelAllFramesName(path,greenIntensity,blueIntensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginCopyRedChannelAllFramesName(lpPath, greenIntensity, blueIntensity);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyRedChannelAllFramesNameD(string path, double greenIntensity, double blueIntensity)
 	{
-		return PluginCopyRedChannelAllFramesNameD(path,greenIntensity,blueIntensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginCopyRedChannelAllFramesNameD(lpPath, greenIntensity, blueIntensity);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Copy zero colors from source animation to target animation for all frames. 
@@ -634,7 +936,7 @@
 	*/
 	public static void CopyZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginCopyZeroAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginCopyZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Copy zero colors from source animation to target animation for all frames. 
@@ -642,14 +944,27 @@
 	*/
 	public static void CopyZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginCopyZeroAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyZeroAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginCopyZeroAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyZeroAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy zero colors from source animation to target animation for all frames 
@@ -658,7 +973,7 @@
 	*/
 	public static void CopyZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginCopyZeroAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginCopyZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Copy zero colors from source animation to target animation for all frames 
@@ -667,14 +982,27 @@
 	*/
 	public static void CopyZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginCopyZeroAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyZeroAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginCopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyZeroAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy zero key color from source animation to target animation for the specified 
@@ -682,7 +1010,7 @@
 	*/
 	public static void CopyZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey)
 	{
-		PluginCopyZeroKeyColor(sourceAnimationId,targetAnimationId,frameId,rzkey);
+		PluginCopyZeroKeyColor(sourceAnimationId, targetAnimationId, frameId, rzkey);
 	}
 	/*
 		Copy zero key color from source animation to target animation for the specified 
@@ -690,14 +1018,27 @@
 	*/
 	public static void CopyZeroKeyColorName(string sourceAnimation, string targetAnimation, int frameId, int rzkey)
 	{
-		PluginCopyZeroKeyColorName(sourceAnimation,targetAnimation,frameId,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyZeroKeyColorName(lpSourceAnimation, lpTargetAnimation, frameId, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyZeroKeyColorNameD(string sourceAnimation, string targetAnimation, double frameId, double rzkey)
 	{
-		return PluginCopyZeroKeyColorNameD(sourceAnimation,targetAnimation,frameId,rzkey);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyZeroKeyColorNameD(lpSourceAnimation, lpTargetAnimation, frameId, rzkey);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Copy nonzero color from source animation to target animation where target 
@@ -705,7 +1046,7 @@
 	*/
 	public static void CopyZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginCopyZeroTargetAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginCopyZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Copy nonzero color from source animation to target animation where target 
@@ -713,98 +1054,123 @@
 	*/
 	public static void CopyZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginCopyZeroTargetAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginCopyZeroTargetAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double CopyZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginCopyZeroTargetAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginCopyZeroTargetAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateChromaLinkEffect(int Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateChromaLinkEffect(Effect,pParam,pEffectId);
+		int result = PluginCoreCreateChromaLinkEffect(Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateEffect(DeviceId,Effect,pParam,pEffectId);
+		int result = PluginCoreCreateEffect(DeviceId, Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateHeadsetEffect(int Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateHeadsetEffect(Effect,pParam,pEffectId);
+		int result = PluginCoreCreateHeadsetEffect(Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateKeyboardEffect(int Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateKeyboardEffect(Effect,pParam,pEffectId);
+		int result = PluginCoreCreateKeyboardEffect(Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateKeypadEffect(int Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateKeypadEffect(Effect,pParam,pEffectId);
+		int result = PluginCoreCreateKeypadEffect(Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateMouseEffect(int Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateMouseEffect(Effect,pParam,pEffectId);
+		int result = PluginCoreCreateMouseEffect(Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreCreateMousepadEffect(int Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 	{
-		return PluginCoreCreateMousepadEffect(Effect,pParam,pEffectId);
+		int result = PluginCoreCreateMousepadEffect(Effect, pParam, pEffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreDeleteEffect(RZEFFECTID EffectId)
 	{
-		return PluginCoreDeleteEffect(EffectId);
+		int result = PluginCoreDeleteEffect(EffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreInit()
 	{
-		return PluginCoreInit();
+		int result = PluginCoreInit();
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo)
 	{
-		return PluginCoreQueryDevice(DeviceId,DeviceInfo);
+		int result = PluginCoreQueryDevice(DeviceId, DeviceInfo);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreSetEffect(RZEFFECTID EffectId)
 	{
-		return PluginCoreSetEffect(EffectId);
+		int result = PluginCoreSetEffect(EffectId);
+		return result;
 	}
 	/*
 		Direct access to low level API.
 	*/
 	public static int CoreUnInit()
 	{
-		return PluginCoreUnInit();
+		int result = PluginCoreUnInit();
+		return result;
 	}
 	/*
 		Creates a `Chroma` animation at the given path. The `deviceType` parameter 
@@ -817,7 +1183,11 @@
 	*/
 	public static int CreateAnimation(string path, int deviceType, int device)
 	{
-		return PluginCreateAnimation(path,deviceType,device);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginCreateAnimation(lpPath, deviceType, device);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Creates a `Chroma` animation in memory without creating a file. The `deviceType` 
@@ -829,21 +1199,24 @@
 	*/
 	public static int CreateAnimationInMemory(int deviceType, int device)
 	{
-		return PluginCreateAnimationInMemory(deviceType,device);
+		int result = PluginCreateAnimationInMemory(deviceType, device);
+		return result;
 	}
 	/*
 		Create a device specific effect.
 	*/
 	public static int CreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int[] colors, int size, ChromaSDK::FChromaSDKGuid* effectId)
 	{
-		return PluginCreateEffect(deviceId,effect,colors,size,effectId);
+		int result = PluginCreateEffect(deviceId, effect, colors, size, effectId);
+		return result;
 	}
 	/*
 		Delete an effect given the effect id.
 	*/
 	public static int DeleteEffect(System.Guid effectId)
 	{
-		return PluginDeleteEffect(effectId);
+		int result = PluginDeleteEffect(effectId);
+		return result;
 	}
 	/*
 		Duplicate the first animation frame so that the animation length matches 
@@ -851,7 +1224,7 @@
 	*/
 	public static void DuplicateFirstFrame(int animationId, int frameCount)
 	{
-		PluginDuplicateFirstFrame(animationId,frameCount);
+		PluginDuplicateFirstFrame(animationId, frameCount);
 	}
 	/*
 		Duplicate the first animation frame so that the animation length matches 
@@ -859,14 +1232,21 @@
 	*/
 	public static void DuplicateFirstFrameName(string path, int frameCount)
 	{
-		PluginDuplicateFirstFrameName(path,frameCount);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginDuplicateFirstFrameName(lpPath, frameCount);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double DuplicateFirstFrameNameD(string path, double frameCount)
 	{
-		return PluginDuplicateFirstFrameNameD(path,frameCount);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginDuplicateFirstFrameNameD(lpPath, frameCount);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Duplicate all the frames of the animation to double the animation length. 
@@ -884,14 +1264,21 @@
 	*/
 	public static void DuplicateFramesName(string path)
 	{
-		PluginDuplicateFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginDuplicateFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double DuplicateFramesNameD(string path)
 	{
-		return PluginDuplicateFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginDuplicateFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Duplicate all the animation frames in reverse so that the animation plays 
@@ -907,14 +1294,21 @@
 	*/
 	public static void DuplicateMirrorFramesName(string path)
 	{
-		PluginDuplicateMirrorFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginDuplicateMirrorFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double DuplicateMirrorFramesNameD(string path)
 	{
-		return PluginDuplicateMirrorFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginDuplicateMirrorFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fade the animation to black starting at the fade frame index to the end 
@@ -922,7 +1316,7 @@
 	*/
 	public static void FadeEndFrames(int animationId, int fade)
 	{
-		PluginFadeEndFrames(animationId,fade);
+		PluginFadeEndFrames(animationId, fade);
 	}
 	/*
 		Fade the animation to black starting at the fade frame index to the end 
@@ -930,14 +1324,21 @@
 	*/
 	public static void FadeEndFramesName(string path, int fade)
 	{
-		PluginFadeEndFramesName(path,fade);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFadeEndFramesName(lpPath, fade);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FadeEndFramesNameD(string path, double fade)
 	{
-		return PluginFadeEndFramesNameD(path,fade);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFadeEndFramesNameD(lpPath, fade);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fade the animation from black to full color starting at 0 to the fade frame 
@@ -945,7 +1346,7 @@
 	*/
 	public static void FadeStartFrames(int animationId, int fade)
 	{
-		PluginFadeStartFrames(animationId,fade);
+		PluginFadeStartFrames(animationId, fade);
 	}
 	/*
 		Fade the animation from black to full color starting at 0 to the fade frame 
@@ -953,14 +1354,21 @@
 	*/
 	public static void FadeStartFramesName(string path, int fade)
 	{
-		PluginFadeStartFramesName(path,fade);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFadeStartFramesName(lpPath, fade);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FadeStartFramesNameD(string path, double fade)
 	{
-		return PluginFadeStartFramesNameD(path,fade);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFadeStartFramesNameD(lpPath, fade);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
@@ -968,7 +1376,7 @@
 	*/
 	public static void FillColor(int animationId, int frameId, int color)
 	{
-		PluginFillColor(animationId,frameId,color);
+		PluginFillColor(animationId, frameId, color);
 	}
 	/*
 		Set the RGB value for all colors for all frames. Animation is referenced 
@@ -976,7 +1384,7 @@
 	*/
 	public static void FillColorAllFrames(int animationId, int color)
 	{
-		PluginFillColorAllFrames(animationId,color);
+		PluginFillColorAllFrames(animationId, color);
 	}
 	/*
 		Set the RGB value for all colors for all frames. Animation is referenced 
@@ -984,14 +1392,21 @@
 	*/
 	public static void FillColorAllFramesName(string path, int color)
 	{
-		PluginFillColorAllFramesName(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillColorAllFramesName(lpPath, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillColorAllFramesNameD(string path, double color)
 	{
-		return PluginFillColorAllFramesNameD(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillColorAllFramesNameD(lpPath, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the RGB value for all colors for all frames. Use the range of 0 to 255 
@@ -999,7 +1414,7 @@
 	*/
 	public static void FillColorAllFramesRGB(int animationId, int red, int green, int blue)
 	{
-		PluginFillColorAllFramesRGB(animationId,red,green,blue);
+		PluginFillColorAllFramesRGB(animationId, red, green, blue);
 	}
 	/*
 		Set the RGB value for all colors for all frames. Use the range of 0 to 255 
@@ -1007,14 +1422,21 @@
 	*/
 	public static void FillColorAllFramesRGBName(string path, int red, int green, int blue)
 	{
-		PluginFillColorAllFramesRGBName(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillColorAllFramesRGBName(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillColorAllFramesRGBNameD(string path, double red, double green, double blue)
 	{
-		return PluginFillColorAllFramesRGBNameD(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillColorAllFramesRGBNameD(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
@@ -1022,14 +1444,21 @@
 	*/
 	public static void FillColorName(string path, int frameId, int color)
 	{
-		PluginFillColorName(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillColorName(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillColorNameD(string path, double frameId, double color)
 	{
-		return PluginFillColorNameD(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillColorNameD(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
@@ -1037,7 +1466,7 @@
 	*/
 	public static void FillColorRGB(int animationId, int frameId, int red, int green, int blue)
 	{
-		PluginFillColorRGB(animationId,frameId,red,green,blue);
+		PluginFillColorRGB(animationId, frameId, red, green, blue);
 	}
 	/*
 		Set the RGB value for all colors in the specified frame. Animation is referenced 
@@ -1045,14 +1474,21 @@
 	*/
 	public static void FillColorRGBName(string path, int frameId, int red, int green, int blue)
 	{
-		PluginFillColorRGBName(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillColorRGBName(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillColorRGBNameD(string path, double frameId, double red, double green, double blue)
 	{
-		return PluginFillColorRGBNameD(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillColorRGBNameD(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1061,7 +1497,7 @@
 	*/
 	public static void FillNonZeroColor(int animationId, int frameId, int color)
 	{
-		PluginFillNonZeroColor(animationId,frameId,color);
+		PluginFillNonZeroColor(animationId, frameId, color);
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1070,7 +1506,7 @@
 	*/
 	public static void FillNonZeroColorAllFrames(int animationId, int color)
 	{
-		PluginFillNonZeroColorAllFrames(animationId,color);
+		PluginFillNonZeroColorAllFrames(animationId, color);
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1079,14 +1515,21 @@
 	*/
 	public static void FillNonZeroColorAllFramesName(string path, int color)
 	{
-		PluginFillNonZeroColorAllFramesName(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillNonZeroColorAllFramesName(lpPath, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillNonZeroColorAllFramesNameD(string path, double color)
 	{
-		return PluginFillNonZeroColorAllFramesNameD(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillNonZeroColorAllFramesNameD(lpPath, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1096,7 +1539,7 @@
 	*/
 	public static void FillNonZeroColorAllFramesRGB(int animationId, int red, int green, int blue)
 	{
-		PluginFillNonZeroColorAllFramesRGB(animationId,red,green,blue);
+		PluginFillNonZeroColorAllFramesRGB(animationId, red, green, blue);
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1106,14 +1549,21 @@
 	*/
 	public static void FillNonZeroColorAllFramesRGBName(string path, int red, int green, int blue)
 	{
-		PluginFillNonZeroColorAllFramesRGBName(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillNonZeroColorAllFramesRGBName(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillNonZeroColorAllFramesRGBNameD(string path, double red, double green, double blue)
 	{
-		return PluginFillNonZeroColorAllFramesRGBNameD(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillNonZeroColorAllFramesRGBNameD(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1122,14 +1572,21 @@
 	*/
 	public static void FillNonZeroColorName(string path, int frameId, int color)
 	{
-		PluginFillNonZeroColorName(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillNonZeroColorName(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillNonZeroColorNameD(string path, double frameId, double color)
 	{
-		return PluginFillNonZeroColorNameD(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillNonZeroColorNameD(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1139,7 +1596,7 @@
 	*/
 	public static void FillNonZeroColorRGB(int animationId, int frameId, int red, int green, int blue)
 	{
-		PluginFillNonZeroColorRGB(animationId,frameId,red,green,blue);
+		PluginFillNonZeroColorRGB(animationId, frameId, red, green, blue);
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -1149,14 +1606,21 @@
 	*/
 	public static void FillNonZeroColorRGBName(string path, int frameId, int red, int green, int blue)
 	{
-		PluginFillNonZeroColorRGBName(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillNonZeroColorRGBName(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillNonZeroColorRGBNameD(string path, double frameId, double red, double green, double blue)
 	{
-		return PluginFillNonZeroColorRGBNameD(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillNonZeroColorRGBNameD(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the frame with random RGB values for the given frame. Animation is 
@@ -1164,7 +1628,7 @@
 	*/
 	public static void FillRandomColors(int animationId, int frameId)
 	{
-		PluginFillRandomColors(animationId,frameId);
+		PluginFillRandomColors(animationId, frameId);
 	}
 	/*
 		Fill the frame with random RGB values for all frames. Animation is referenced 
@@ -1180,14 +1644,21 @@
 	*/
 	public static void FillRandomColorsAllFramesName(string path)
 	{
-		PluginFillRandomColorsAllFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillRandomColorsAllFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillRandomColorsAllFramesNameD(string path)
 	{
-		return PluginFillRandomColorsAllFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillRandomColorsAllFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the frame with random black and white values for the specified frame. 
@@ -1195,7 +1666,7 @@
 	*/
 	public static void FillRandomColorsBlackAndWhite(int animationId, int frameId)
 	{
-		PluginFillRandomColorsBlackAndWhite(animationId,frameId);
+		PluginFillRandomColorsBlackAndWhite(animationId, frameId);
 	}
 	/*
 		Fill the frame with random black and white values for all frames. Animation 
@@ -1211,14 +1682,21 @@
 	*/
 	public static void FillRandomColorsBlackAndWhiteAllFramesName(string path)
 	{
-		PluginFillRandomColorsBlackAndWhiteAllFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillRandomColorsBlackAndWhiteAllFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillRandomColorsBlackAndWhiteAllFramesNameD(string path)
 	{
-		return PluginFillRandomColorsBlackAndWhiteAllFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillRandomColorsBlackAndWhiteAllFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the frame with random black and white values for the specified frame. 
@@ -1226,14 +1704,21 @@
 	*/
 	public static void FillRandomColorsBlackAndWhiteName(string path, int frameId)
 	{
-		PluginFillRandomColorsBlackAndWhiteName(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillRandomColorsBlackAndWhiteName(lpPath, frameId);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillRandomColorsBlackAndWhiteNameD(string path, double frameId)
 	{
-		return PluginFillRandomColorsBlackAndWhiteNameD(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillRandomColorsBlackAndWhiteNameD(lpPath, frameId);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the frame with random RGB values for the given frame. Animation is 
@@ -1241,14 +1726,21 @@
 	*/
 	public static void FillRandomColorsName(string path, int frameId)
 	{
-		PluginFillRandomColorsName(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillRandomColorsName(lpPath, frameId);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillRandomColorsNameD(string path, double frameId)
 	{
-		return PluginFillRandomColorsNameD(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillRandomColorsNameD(lpPath, frameId);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
@@ -1256,7 +1748,7 @@
 	*/
 	public static void FillThresholdColors(int animationId, int frameId, int threshold, int color)
 	{
-		PluginFillThresholdColors(animationId,frameId,threshold,color);
+		PluginFillThresholdColors(animationId, frameId, threshold, color);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
@@ -1264,7 +1756,7 @@
 	*/
 	public static void FillThresholdColorsAllFrames(int animationId, int threshold, int color)
 	{
-		PluginFillThresholdColorsAllFrames(animationId,threshold,color);
+		PluginFillThresholdColorsAllFrames(animationId, threshold, color);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
@@ -1272,14 +1764,21 @@
 	*/
 	public static void FillThresholdColorsAllFramesName(string path, int threshold, int color)
 	{
-		PluginFillThresholdColorsAllFramesName(path,threshold,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdColorsAllFramesName(lpPath, threshold, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdColorsAllFramesNameD(string path, double threshold, double color)
 	{
-		return PluginFillThresholdColorsAllFramesNameD(path,threshold,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdColorsAllFramesNameD(lpPath, threshold, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
@@ -1287,7 +1786,7 @@
 	*/
 	public static void FillThresholdColorsAllFramesRGB(int animationId, int threshold, int red, int green, int blue)
 	{
-		PluginFillThresholdColorsAllFramesRGB(animationId,threshold,red,green,blue);
+		PluginFillThresholdColorsAllFramesRGB(animationId, threshold, red, green, blue);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
@@ -1295,14 +1794,21 @@
 	*/
 	public static void FillThresholdColorsAllFramesRGBName(string path, int threshold, int red, int green, int blue)
 	{
-		PluginFillThresholdColorsAllFramesRGBName(path,threshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdColorsAllFramesRGBName(lpPath, threshold, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdColorsAllFramesRGBNameD(string path, double threshold, double red, double green, double blue)
 	{
-		return PluginFillThresholdColorsAllFramesRGBNameD(path,threshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdColorsAllFramesRGBNameD(lpPath, threshold, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill all frames with the min RGB color where the animation color is less 
@@ -1311,7 +1817,7 @@
 	*/
 	public static void FillThresholdColorsMinMaxAllFramesRGB(int animationId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 	{
-		PluginFillThresholdColorsMinMaxAllFramesRGB(animationId,minThreshold,minRed,minGreen,minBlue,maxThreshold,maxRed,maxGreen,maxBlue);
+		PluginFillThresholdColorsMinMaxAllFramesRGB(animationId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 	}
 	/*
 		Fill all frames with the min RGB color where the animation color is less 
@@ -1320,14 +1826,21 @@
 	*/
 	public static void FillThresholdColorsMinMaxAllFramesRGBName(string path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 	{
-		PluginFillThresholdColorsMinMaxAllFramesRGBName(path,minThreshold,minRed,minGreen,minBlue,maxThreshold,maxRed,maxGreen,maxBlue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdColorsMinMaxAllFramesRGBName(lpPath, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdColorsMinMaxAllFramesRGBNameD(string path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 	{
-		return PluginFillThresholdColorsMinMaxAllFramesRGBNameD(path,minThreshold,minRed,minGreen,minBlue,maxThreshold,maxRed,maxGreen,maxBlue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdColorsMinMaxAllFramesRGBNameD(lpPath, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with the min RGB color where the animation color 
@@ -1336,7 +1849,7 @@
 	*/
 	public static void FillThresholdColorsMinMaxRGB(int animationId, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 	{
-		PluginFillThresholdColorsMinMaxRGB(animationId,frameId,minThreshold,minRed,minGreen,minBlue,maxThreshold,maxRed,maxGreen,maxBlue);
+		PluginFillThresholdColorsMinMaxRGB(animationId, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 	}
 	/*
 		Fill the specified frame with the min RGB color where the animation color 
@@ -1345,14 +1858,21 @@
 	*/
 	public static void FillThresholdColorsMinMaxRGBName(string path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 	{
-		PluginFillThresholdColorsMinMaxRGBName(path,frameId,minThreshold,minRed,minGreen,minBlue,maxThreshold,maxRed,maxGreen,maxBlue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdColorsMinMaxRGBName(lpPath, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdColorsMinMaxRGBNameD(string path, double frameId, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 	{
-		return PluginFillThresholdColorsMinMaxRGBNameD(path,frameId,minThreshold,minRed,minGreen,minBlue,maxThreshold,maxRed,maxGreen,maxBlue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdColorsMinMaxRGBNameD(lpPath, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
@@ -1360,14 +1880,21 @@
 	*/
 	public static void FillThresholdColorsName(string path, int frameId, int threshold, int color)
 	{
-		PluginFillThresholdColorsName(path,frameId,threshold,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdColorsName(lpPath, frameId, threshold, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdColorsNameD(string path, double frameId, double threshold, double color)
 	{
-		return PluginFillThresholdColorsNameD(path,frameId,threshold,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdColorsNameD(lpPath, frameId, threshold, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
@@ -1375,7 +1902,7 @@
 	*/
 	public static void FillThresholdColorsRGB(int animationId, int frameId, int threshold, int red, int green, int blue)
 	{
-		PluginFillThresholdColorsRGB(animationId,frameId,threshold,red,green,blue);
+		PluginFillThresholdColorsRGB(animationId, frameId, threshold, red, green, blue);
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
@@ -1383,14 +1910,21 @@
 	*/
 	public static void FillThresholdColorsRGBName(string path, int frameId, int threshold, int red, int green, int blue)
 	{
-		PluginFillThresholdColorsRGBName(path,frameId,threshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdColorsRGBName(lpPath, frameId, threshold, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdColorsRGBNameD(string path, double frameId, double threshold, double red, double green, double blue)
 	{
-		return PluginFillThresholdColorsRGBNameD(path,frameId,threshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdColorsRGBNameD(lpPath, frameId, threshold, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
@@ -1398,7 +1932,7 @@
 	*/
 	public static void FillThresholdRGBColorsAllFramesRGB(int animationId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 	{
-		PluginFillThresholdRGBColorsAllFramesRGB(animationId,redThreshold,greenThreshold,blueThreshold,red,green,blue);
+		PluginFillThresholdRGBColorsAllFramesRGB(animationId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is less than the 
@@ -1406,14 +1940,21 @@
 	*/
 	public static void FillThresholdRGBColorsAllFramesRGBName(string path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 	{
-		PluginFillThresholdRGBColorsAllFramesRGBName(path,redThreshold,greenThreshold,blueThreshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdRGBColorsAllFramesRGBName(lpPath, redThreshold, greenThreshold, blueThreshold, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdRGBColorsAllFramesRGBNameD(string path, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue)
 	{
-		return PluginFillThresholdRGBColorsAllFramesRGBNameD(path,redThreshold,greenThreshold,blueThreshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdRGBColorsAllFramesRGBNameD(lpPath, redThreshold, greenThreshold, blueThreshold, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
@@ -1421,7 +1962,7 @@
 	*/
 	public static void FillThresholdRGBColorsRGB(int animationId, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 	{
-		PluginFillThresholdRGBColorsRGB(animationId,frameId,redThreshold,greenThreshold,blueThreshold,red,green,blue);
+		PluginFillThresholdRGBColorsRGB(animationId, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is less 
@@ -1429,14 +1970,21 @@
 	*/
 	public static void FillThresholdRGBColorsRGBName(string path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 	{
-		PluginFillThresholdRGBColorsRGBName(path,frameId,redThreshold,greenThreshold,blueThreshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillThresholdRGBColorsRGBName(lpPath, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillThresholdRGBColorsRGBNameD(string path, double frameId, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue)
 	{
-		return PluginFillThresholdRGBColorsRGBNameD(path,frameId,redThreshold,greenThreshold,blueThreshold,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillThresholdRGBColorsRGBNameD(lpPath, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
@@ -1444,7 +1992,7 @@
 	*/
 	public static void FillZeroColor(int animationId, int frameId, int color)
 	{
-		PluginFillZeroColor(animationId,frameId,color);
+		PluginFillZeroColor(animationId, frameId, color);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
@@ -1452,7 +2000,7 @@
 	*/
 	public static void FillZeroColorAllFrames(int animationId, int color)
 	{
-		PluginFillZeroColorAllFrames(animationId,color);
+		PluginFillZeroColorAllFrames(animationId, color);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
@@ -1460,14 +2008,21 @@
 	*/
 	public static void FillZeroColorAllFramesName(string path, int color)
 	{
-		PluginFillZeroColorAllFramesName(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillZeroColorAllFramesName(lpPath, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillZeroColorAllFramesNameD(string path, double color)
 	{
-		return PluginFillZeroColorAllFramesNameD(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillZeroColorAllFramesNameD(lpPath, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
@@ -1475,7 +2030,7 @@
 	*/
 	public static void FillZeroColorAllFramesRGB(int animationId, int red, int green, int blue)
 	{
-		PluginFillZeroColorAllFramesRGB(animationId,red,green,blue);
+		PluginFillZeroColorAllFramesRGB(animationId, red, green, blue);
 	}
 	/*
 		Fill all frames with RGB color where the animation color is zero. Animation 
@@ -1483,14 +2038,21 @@
 	*/
 	public static void FillZeroColorAllFramesRGBName(string path, int red, int green, int blue)
 	{
-		PluginFillZeroColorAllFramesRGBName(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillZeroColorAllFramesRGBName(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillZeroColorAllFramesRGBNameD(string path, double red, double green, double blue)
 	{
-		return PluginFillZeroColorAllFramesRGBNameD(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillZeroColorAllFramesRGBNameD(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
@@ -1498,14 +2060,21 @@
 	*/
 	public static void FillZeroColorName(string path, int frameId, int color)
 	{
-		PluginFillZeroColorName(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillZeroColorName(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillZeroColorNameD(string path, double frameId, double color)
 	{
-		return PluginFillZeroColorNameD(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillZeroColorNameD(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
@@ -1513,7 +2082,7 @@
 	*/
 	public static void FillZeroColorRGB(int animationId, int frameId, int red, int green, int blue)
 	{
-		PluginFillZeroColorRGB(animationId,frameId,red,green,blue);
+		PluginFillZeroColorRGB(animationId, frameId, red, green, blue);
 	}
 	/*
 		Fill the specified frame with RGB color where the animation color is zero. 
@@ -1521,14 +2090,21 @@
 	*/
 	public static void FillZeroColorRGBName(string path, int frameId, int red, int green, int blue)
 	{
-		PluginFillZeroColorRGBName(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginFillZeroColorRGBName(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double FillZeroColorRGBNameD(string path, double frameId, double red, double green, double blue)
 	{
-		return PluginFillZeroColorRGBNameD(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginFillZeroColorRGBNameD(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Get the animation color for a frame given the `1D` `led`. The `led` should 
@@ -1537,7 +2113,8 @@
 	*/
 	public static int Get1DColor(int animationId, int frameId, int led)
 	{
-		return PluginGet1DColor(animationId,frameId,led);
+		int result = PluginGet1DColor(animationId, frameId, led);
+		return result;
 	}
 	/*
 		Get the animation color for a frame given the `1D` `led`. The `led` should 
@@ -1546,14 +2123,22 @@
 	*/
 	public static int Get1DColorName(string path, int frameId, int led)
 	{
-		return PluginGet1DColorName(path,frameId,led);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGet1DColorName(lpPath, frameId, led);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double Get1DColorNameD(string path, double frameId, double led)
 	{
-		return PluginGet1DColorNameD(path,frameId,led);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGet1DColorNameD(lpPath, frameId, led);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Get the animation color for a frame given the `2D` `row` and `column`. The 
@@ -1563,7 +2148,8 @@
 	*/
 	public static int Get2DColor(int animationId, int frameId, int row, int column)
 	{
-		return PluginGet2DColor(animationId,frameId,row,column);
+		int result = PluginGet2DColor(animationId, frameId, row, column);
+		return result;
 	}
 	/*
 		Get the animation color for a frame given the `2D` `row` and `column`. The 
@@ -1573,35 +2159,52 @@
 	*/
 	public static int Get2DColorName(string path, int frameId, int row, int column)
 	{
-		return PluginGet2DColorName(path,frameId,row,column);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGet2DColorName(lpPath, frameId, row, column);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double Get2DColorNameD(string path, double frameId, double row, double column)
 	{
-		return PluginGet2DColorNameD(path,frameId,row,column);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGet2DColorNameD(lpPath, frameId, row, column);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Get the animation id for the named animation.
 	*/
 	public static int GetAnimation(string name)
 	{
-		return PluginGetAnimation(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		int result = PluginGetAnimation(lpName);
+		FreeIntPtr(lpName);
+		return result;
 	}
 	/*
 		`PluginGetAnimationCount` will return the number of loaded animations.
 	*/
 	public static int GetAnimationCount()
 	{
-		return PluginGetAnimationCount();
+		int result = PluginGetAnimationCount();
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetAnimationD(string name)
 	{
-		return PluginGetAnimationD(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		double result = PluginGetAnimationD(lpName);
+		FreeIntPtr(lpName);
+		return result;
 	}
 	/*
 		`PluginGetAnimationId` will return the `animationId` given the `index` of 
@@ -1611,7 +2214,8 @@
 	*/
 	public static int GetAnimationId(int index)
 	{
-		return PluginGetAnimationId(index);
+		int result = PluginGetAnimationId(index);
+		return result;
 	}
 	/*
 		`PluginGetAnimationName` takes an `animationId` and returns the name of 
@@ -1620,28 +2224,38 @@
 	*/
 	public static string GetAnimationName(int animationId)
 	{
-		return PluginGetAnimationName(animationId);
+		string result = PluginGetAnimationName(animationId);
+		return result;
 	}
 	/*
 		Get the current frame of the animation referenced by id.
 	*/
 	public static int GetCurrentFrame(int animationId)
 	{
-		return PluginGetCurrentFrame(animationId);
+		int result = PluginGetCurrentFrame(animationId);
+		return result;
 	}
 	/*
 		Get the current frame of the animation referenced by name.
 	*/
 	public static int GetCurrentFrameName(string path)
 	{
-		return PluginGetCurrentFrameName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGetCurrentFrameName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetCurrentFrameNameD(string path)
 	{
-		return PluginGetCurrentFrameNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGetCurrentFrameNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
@@ -1650,7 +2264,8 @@
 	*/
 	public static int GetDevice(int animationId)
 	{
-		return PluginGetDevice(animationId);
+		int result = PluginGetDevice(animationId);
+		return result;
 	}
 	/*
 		Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
@@ -1659,14 +2274,22 @@
 	*/
 	public static int GetDeviceName(string path)
 	{
-		return PluginGetDeviceName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGetDeviceName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetDeviceNameD(string path)
 	{
-		return PluginGetDeviceNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGetDeviceNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
@@ -1674,7 +2297,8 @@
 	*/
 	public static int GetDeviceType(int animationId)
 	{
-		return PluginGetDeviceType(animationId);
+		int result = PluginGetDeviceType(animationId);
+		return result;
 	}
 	/*
 		Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
@@ -1682,14 +2306,22 @@
 	*/
 	public static int GetDeviceTypeName(string path)
 	{
-		return PluginGetDeviceTypeName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGetDeviceTypeName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetDeviceTypeNameD(string path)
 	{
-		return PluginGetDeviceTypeNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGetDeviceTypeNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
@@ -1701,7 +2333,8 @@
 	*/
 	public static int GetFrame(int animationId, int frameIndex, float* duration, int[] colors, int length)
 	{
-		return PluginGetFrame(animationId,frameIndex,duration,colors,length);
+		int result = PluginGetFrame(animationId, frameIndex, duration, colors, length);
+		return result;
 	}
 	/*
 		Returns the frame count of a `Chroma` animation upon success. Returns -1 
@@ -1709,7 +2342,8 @@
 	*/
 	public static int GetFrameCount(int animationId)
 	{
-		return PluginGetFrameCount(animationId);
+		int result = PluginGetFrameCount(animationId);
+		return result;
 	}
 	/*
 		Returns the frame count of a `Chroma` animation upon success. Returns -1 
@@ -1717,35 +2351,52 @@
 	*/
 	public static int GetFrameCountName(string path)
 	{
-		return PluginGetFrameCountName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGetFrameCountName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetFrameCountNameD(string path)
 	{
-		return PluginGetFrameCountNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGetFrameCountNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Get the color of an animation key for the given frame referenced by id.
 	*/
 	public static int GetKeyColor(int animationId, int frameId, int rzkey)
 	{
-		return PluginGetKeyColor(animationId,frameId,rzkey);
+		int result = PluginGetKeyColor(animationId, frameId, rzkey);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetKeyColorD(string path, double frameId, double rzkey)
 	{
-		return PluginGetKeyColorD(path,frameId,rzkey);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginGetKeyColorD(lpPath, frameId, rzkey);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Get the color of an animation key for the given frame referenced by name.
 	*/
 	public static int GetKeyColorName(string path, int frameId, int rzkey)
 	{
-		return PluginGetKeyColorName(path,frameId,rzkey);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginGetKeyColorName(lpPath, frameId, rzkey);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
@@ -1753,14 +2404,16 @@
 	*/
 	public static int GetMaxColumn(int device)
 	{
-		return PluginGetMaxColumn(device);
+		int result = PluginGetMaxColumn(device);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetMaxColumnD(double device)
 	{
-		return PluginGetMaxColumnD(device);
+		double result = PluginGetMaxColumnD(device);
+		return result;
 	}
 	/*
 		Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
@@ -1768,14 +2421,16 @@
 	*/
 	public static int GetMaxLeds(int device)
 	{
-		return PluginGetMaxLeds(device);
+		int result = PluginGetMaxLeds(device);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetMaxLedsD(double device)
 	{
-		return PluginGetMaxLedsD(device);
+		double result = PluginGetMaxLedsD(device);
+		return result;
 	}
 	/*
 		Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
@@ -1783,21 +2438,24 @@
 	*/
 	public static int GetMaxRow(int device)
 	{
-		return PluginGetMaxRow(device);
+		int result = PluginGetMaxRow(device);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetMaxRowD(double device)
 	{
-		return PluginGetMaxRowD(device);
+		double result = PluginGetMaxRowD(device);
+		return result;
 	}
 	/*
 		`PluginGetPlayingAnimationCount` will return the number of playing animations.
 	*/
 	public static int GetPlayingAnimationCount()
 	{
-		return PluginGetPlayingAnimationCount();
+		int result = PluginGetPlayingAnimationCount();
+		return result;
 	}
 	/*
 		`PluginGetPlayingAnimationId` will return the `animationId` given the `index` 
@@ -1807,42 +2465,54 @@
 	*/
 	public static int GetPlayingAnimationId(int index)
 	{
-		return PluginGetPlayingAnimationId(index);
+		int result = PluginGetPlayingAnimationId(index);
+		return result;
 	}
 	/*
 		Get the RGB color given red, green, and blue.
 	*/
 	public static int GetRGB(int red, int green, int blue)
 	{
-		return PluginGetRGB(red,green,blue);
+		int result = PluginGetRGB(red, green, blue);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double GetRGBD(double red, double green, double blue)
 	{
-		return PluginGetRGBD(red,green,blue);
+		double result = PluginGetRGBD(red, green, blue);
+		return result;
 	}
 	/*
 		Check if the animation has loop enabled referenced by id.
 	*/
 	public static bool HasAnimationLoop(int animationId)
 	{
-		return PluginHasAnimationLoop(animationId);
+		bool result = PluginHasAnimationLoop(animationId);
+		return result;
 	}
 	/*
 		Check if the animation has loop enabled referenced by name.
 	*/
 	public static bool HasAnimationLoopName(string path)
 	{
-		return PluginHasAnimationLoopName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		bool result = PluginHasAnimationLoopName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double HasAnimationLoopNameD(string path)
 	{
-		return PluginHasAnimationLoopNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginHasAnimationLoopNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
@@ -1850,14 +2520,16 @@
 	*/
 	public static int Init()
 	{
-		return PluginInit();
+		int result = PluginInit();
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double InitD()
 	{
-		return PluginInitD();
+		double result = PluginInitD();
+		return result;
 	}
 	/*
 		Insert an animation delay by duplicating the frame by the delay number of 
@@ -1865,7 +2537,7 @@
 	*/
 	public static void InsertDelay(int animationId, int frameId, int delay)
 	{
-		PluginInsertDelay(animationId,frameId,delay);
+		PluginInsertDelay(animationId, frameId, delay);
 	}
 	/*
 		Insert an animation delay by duplicating the frame by the delay number of 
@@ -1873,14 +2545,21 @@
 	*/
 	public static void InsertDelayName(string path, int frameId, int delay)
 	{
-		PluginInsertDelayName(path,frameId,delay);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginInsertDelayName(lpPath, frameId, delay);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double InsertDelayNameD(string path, double frameId, double delay)
 	{
-		return PluginInsertDelayNameD(path,frameId,delay);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginInsertDelayNameD(lpPath, frameId, delay);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Duplicate the source frame index at the target frame index. Animation is 
@@ -1888,7 +2567,7 @@
 	*/
 	public static void InsertFrame(int animationId, int sourceFrame, int targetFrame)
 	{
-		PluginInsertFrame(animationId,sourceFrame,targetFrame);
+		PluginInsertFrame(animationId, sourceFrame, targetFrame);
 	}
 	/*
 		Duplicate the source frame index at the target frame index. Animation is 
@@ -1896,14 +2575,21 @@
 	*/
 	public static void InsertFrameName(string path, int sourceFrame, int targetFrame)
 	{
-		PluginInsertFrameName(path,sourceFrame,targetFrame);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginInsertFrameName(lpPath, sourceFrame, targetFrame);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double InsertFrameNameD(string path, double sourceFrame, double targetFrame)
 	{
-		return PluginInsertFrameNameD(path,sourceFrame,targetFrame);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginInsertFrameNameD(lpPath, sourceFrame, targetFrame);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Invert all the colors at the specified frame. Animation is referenced by 
@@ -1911,7 +2597,7 @@
 	*/
 	public static void InvertColors(int animationId, int frameId)
 	{
-		PluginInvertColors(animationId,frameId);
+		PluginInvertColors(animationId, frameId);
 	}
 	/*
 		Invert all the colors for all frames. Animation is referenced by id.
@@ -1925,14 +2611,21 @@
 	*/
 	public static void InvertColorsAllFramesName(string path)
 	{
-		PluginInvertColorsAllFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginInvertColorsAllFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double InvertColorsAllFramesNameD(string path)
 	{
-		return PluginInvertColorsAllFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginInvertColorsAllFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Invert all the colors at the specified frame. Animation is referenced by 
@@ -1940,35 +2633,51 @@
 	*/
 	public static void InvertColorsName(string path, int frameId)
 	{
-		PluginInvertColorsName(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginInvertColorsName(lpPath, frameId);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double InvertColorsNameD(string path, double frameId)
 	{
-		return PluginInvertColorsNameD(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginInvertColorsNameD(lpPath, frameId);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Check if the animation is paused referenced by id.
 	*/
 	public static bool IsAnimationPaused(int animationId)
 	{
-		return PluginIsAnimationPaused(animationId);
+		bool result = PluginIsAnimationPaused(animationId);
+		return result;
 	}
 	/*
 		Check if the animation is paused referenced by name.
 	*/
 	public static bool IsAnimationPausedName(string path)
 	{
-		return PluginIsAnimationPausedName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		bool result = PluginIsAnimationPausedName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsAnimationPausedNameD(string path)
 	{
-		return PluginIsAnimationPausedNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginIsAnimationPausedNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		The editor dialog is a non-blocking modal window, this method returns true 
@@ -1976,14 +2685,16 @@
 	*/
 	public static bool IsDialogOpen()
 	{
-		return PluginIsDialogOpen();
+		bool result = PluginIsDialogOpen();
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsDialogOpenD()
 	{
-		return PluginIsDialogOpenD();
+		double result = PluginIsDialogOpenD();
+		return result;
 	}
 	/*
 		Returns true if the plugin has been initialized. Returns false if the plugin 
@@ -1991,28 +2702,32 @@
 	*/
 	public static bool IsInitialized()
 	{
-		return PluginIsInitialized();
+		bool result = PluginIsInitialized();
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsInitializedD()
 	{
-		return PluginIsInitializedD();
+		double result = PluginIsInitializedD();
+		return result;
 	}
 	/*
 		If the method can be invoked the method returns true.
 	*/
 	public static bool IsPlatformSupported()
 	{
-		return PluginIsPlatformSupported();
+		bool result = PluginIsPlatformSupported();
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsPlatformSupportedD()
 	{
-		return PluginIsPlatformSupportedD();
+		double result = PluginIsPlatformSupportedD();
+		return result;
 	}
 	/*
 		`PluginIsPlayingName` automatically handles initializing the `ChromaSDK`. 
@@ -2022,14 +2737,16 @@
 	*/
 	public static bool IsPlaying(int animationId)
 	{
-		return PluginIsPlaying(animationId);
+		bool result = PluginIsPlaying(animationId);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsPlayingD(double animationId)
 	{
-		return PluginIsPlayingD(animationId);
+		double result = PluginIsPlayingD(animationId);
+		return result;
 	}
 	/*
 		`PluginIsPlayingName` automatically handles initializing the `ChromaSDK`. 
@@ -2039,14 +2756,22 @@
 	*/
 	public static bool IsPlayingName(string path)
 	{
-		return PluginIsPlayingName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		bool result = PluginIsPlayingName(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsPlayingNameD(string path)
 	{
-		return PluginIsPlayingNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginIsPlayingNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		`PluginIsPlayingType` automatically handles initializing the `ChromaSDK`. 
@@ -2055,28 +2780,32 @@
 	*/
 	public static bool IsPlayingType(int deviceType, int device)
 	{
-		return PluginIsPlayingType(deviceType,device);
+		bool result = PluginIsPlayingType(deviceType, device);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double IsPlayingTypeD(double deviceType, double device)
 	{
-		return PluginIsPlayingTypeD(deviceType,device);
+		double result = PluginIsPlayingTypeD(deviceType, device);
+		return result;
 	}
 	/*
 		Do a lerp math operation on a float.
 	*/
 	public static float Lerp(float start, float end, float amt)
 	{
-		return PluginLerp(start,end,amt);
+		float result = PluginLerp(start, end, amt);
+		return result;
 	}
 	/*
 		Lerp from one color to another given t in the range 0.0 to 1.0.
 	*/
 	public static int LerpColor(int from, int to, float t)
 	{
-		return PluginLerpColor(from,to,t);
+		int result = PluginLerpColor(from, to, t);
+		return result;
 	}
 	/*
 		Loads `Chroma` effects so that the animation can be played immediately. 
@@ -2084,28 +2813,36 @@
 	*/
 	public static int LoadAnimation(int animationId)
 	{
-		return PluginLoadAnimation(animationId);
+		int result = PluginLoadAnimation(animationId);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double LoadAnimationD(double animationId)
 	{
-		return PluginLoadAnimationD(animationId);
+		double result = PluginLoadAnimationD(animationId);
+		return result;
 	}
 	/*
 		Load the named animation.
 	*/
 	public static void LoadAnimationName(string path)
 	{
-		PluginLoadAnimationName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginLoadAnimationName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Load a composite set of animations.
 	*/
 	public static void LoadComposite(string name)
 	{
-		PluginLoadComposite(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		PluginLoadComposite(lpName);
+		FreeIntPtr(lpName);
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2114,7 +2851,7 @@
 	*/
 	public static void MakeBlankFrames(int animationId, int frameCount, float duration, int color)
 	{
-		PluginMakeBlankFrames(animationId,frameCount,duration,color);
+		PluginMakeBlankFrames(animationId, frameCount, duration, color);
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2123,14 +2860,21 @@
 	*/
 	public static void MakeBlankFramesName(string path, int frameCount, float duration, int color)
 	{
-		PluginMakeBlankFramesName(path,frameCount,duration,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMakeBlankFramesName(lpPath, frameCount, duration, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MakeBlankFramesNameD(string path, double frameCount, double duration, double color)
 	{
-		return PluginMakeBlankFramesNameD(path,frameCount,duration,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMakeBlankFramesNameD(lpPath, frameCount, duration, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2139,7 +2883,7 @@
 	*/
 	public static void MakeBlankFramesRandom(int animationId, int frameCount, float duration)
 	{
-		PluginMakeBlankFramesRandom(animationId,frameCount,duration);
+		PluginMakeBlankFramesRandom(animationId, frameCount, duration);
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2148,7 +2892,7 @@
 	*/
 	public static void MakeBlankFramesRandomBlackAndWhite(int animationId, int frameCount, float duration)
 	{
-		PluginMakeBlankFramesRandomBlackAndWhite(animationId,frameCount,duration);
+		PluginMakeBlankFramesRandomBlackAndWhite(animationId, frameCount, duration);
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2157,14 +2901,21 @@
 	*/
 	public static void MakeBlankFramesRandomBlackAndWhiteName(string path, int frameCount, float duration)
 	{
-		PluginMakeBlankFramesRandomBlackAndWhiteName(path,frameCount,duration);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMakeBlankFramesRandomBlackAndWhiteName(lpPath, frameCount, duration);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MakeBlankFramesRandomBlackAndWhiteNameD(string path, double frameCount, double duration)
 	{
-		return PluginMakeBlankFramesRandomBlackAndWhiteNameD(path,frameCount,duration);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMakeBlankFramesRandomBlackAndWhiteNameD(lpPath, frameCount, duration);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2173,14 +2924,21 @@
 	*/
 	public static void MakeBlankFramesRandomName(string path, int frameCount, float duration)
 	{
-		PluginMakeBlankFramesRandomName(path,frameCount,duration);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMakeBlankFramesRandomName(lpPath, frameCount, duration);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MakeBlankFramesRandomNameD(string path, double frameCount, double duration)
 	{
-		return PluginMakeBlankFramesRandomNameD(path,frameCount,duration);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMakeBlankFramesRandomNameD(lpPath, frameCount, duration);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2189,7 +2947,7 @@
 	*/
 	public static void MakeBlankFramesRGB(int animationId, int frameCount, float duration, int red, int green, int blue)
 	{
-		PluginMakeBlankFramesRGB(animationId,frameCount,duration,red,green,blue);
+		PluginMakeBlankFramesRGB(animationId, frameCount, duration, red, green, blue);
 	}
 	/*
 		Make a blank animation for the length of the frame count. Frame duration 
@@ -2198,14 +2956,21 @@
 	*/
 	public static void MakeBlankFramesRGBName(string path, int frameCount, float duration, int red, int green, int blue)
 	{
-		PluginMakeBlankFramesRGBName(path,frameCount,duration,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMakeBlankFramesRGBName(lpPath, frameCount, duration, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MakeBlankFramesRGBNameD(string path, double frameCount, double duration, double red, double green, double blue)
 	{
-		return PluginMakeBlankFramesRGBNameD(path,frameCount,duration,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMakeBlankFramesRGBNameD(lpPath, frameCount, duration, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Flips the color grid horizontally for all `Chroma` animation frames. Returns 
@@ -2213,7 +2978,8 @@
 	*/
 	public static int MirrorHorizontally(int animationId)
 	{
-		return PluginMirrorHorizontally(animationId);
+		int result = PluginMirrorHorizontally(animationId);
+		return result;
 	}
 	/*
 		Flips the color grid vertically for all `Chroma` animation frames. This 
@@ -2222,7 +2988,8 @@
 	*/
 	public static int MirrorVertically(int animationId)
 	{
-		return PluginMirrorVertically(animationId);
+		int result = PluginMirrorVertically(animationId);
+		return result;
 	}
 	/*
 		Multiply the color intensity with the lerp result from color 1 to color 
@@ -2231,7 +2998,7 @@
 	*/
 	public static void MultiplyColorLerpAllFrames(int animationId, int color1, int color2)
 	{
-		PluginMultiplyColorLerpAllFrames(animationId,color1,color2);
+		PluginMultiplyColorLerpAllFrames(animationId, color1, color2);
 	}
 	/*
 		Multiply the color intensity with the lerp result from color 1 to color 
@@ -2240,14 +3007,21 @@
 	*/
 	public static void MultiplyColorLerpAllFramesName(string path, int color1, int color2)
 	{
-		PluginMultiplyColorLerpAllFramesName(path,color1,color2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyColorLerpAllFramesName(lpPath, color1, color2);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyColorLerpAllFramesNameD(string path, double color1, double color2)
 	{
-		return PluginMultiplyColorLerpAllFramesNameD(path,color1,color2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyColorLerpAllFramesNameD(lpPath, color1, color2);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply all the colors in the frame by the intensity value. The valid the 
@@ -2257,7 +3031,7 @@
 	*/
 	public static void MultiplyIntensity(int animationId, int frameId, float intensity)
 	{
-		PluginMultiplyIntensity(animationId,frameId,intensity);
+		PluginMultiplyIntensity(animationId, frameId, intensity);
 	}
 	/*
 		Multiply all the colors for all frames by the intensity value. The valid 
@@ -2267,7 +3041,7 @@
 	*/
 	public static void MultiplyIntensityAllFrames(int animationId, float intensity)
 	{
-		PluginMultiplyIntensityAllFrames(animationId,intensity);
+		PluginMultiplyIntensityAllFrames(animationId, intensity);
 	}
 	/*
 		Multiply all the colors for all frames by the intensity value. The valid 
@@ -2277,14 +3051,21 @@
 	*/
 	public static void MultiplyIntensityAllFramesName(string path, float intensity)
 	{
-		PluginMultiplyIntensityAllFramesName(path,intensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyIntensityAllFramesName(lpPath, intensity);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyIntensityAllFramesNameD(string path, double intensity)
 	{
-		return PluginMultiplyIntensityAllFramesNameD(path,intensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyIntensityAllFramesNameD(lpPath, intensity);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
@@ -2292,7 +3073,7 @@
 	*/
 	public static void MultiplyIntensityAllFramesRGB(int animationId, int red, int green, int blue)
 	{
-		PluginMultiplyIntensityAllFramesRGB(animationId,red,green,blue);
+		PluginMultiplyIntensityAllFramesRGB(animationId, red, green, blue);
 	}
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
@@ -2300,14 +3081,21 @@
 	*/
 	public static void MultiplyIntensityAllFramesRGBName(string path, int red, int green, int blue)
 	{
-		PluginMultiplyIntensityAllFramesRGBName(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyIntensityAllFramesRGBName(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyIntensityAllFramesRGBNameD(string path, double red, double green, double blue)
 	{
-		return PluginMultiplyIntensityAllFramesRGBNameD(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyIntensityAllFramesRGBNameD(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
@@ -2315,7 +3103,7 @@
 	*/
 	public static void MultiplyIntensityColor(int animationId, int frameId, int color)
 	{
-		PluginMultiplyIntensityColor(animationId,frameId,color);
+		PluginMultiplyIntensityColor(animationId, frameId, color);
 	}
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
@@ -2323,7 +3111,7 @@
 	*/
 	public static void MultiplyIntensityColorAllFrames(int animationId, int color)
 	{
-		PluginMultiplyIntensityColorAllFrames(animationId,color);
+		PluginMultiplyIntensityColorAllFrames(animationId, color);
 	}
 	/*
 		Multiply all frames by the RBG color intensity. Animation is referenced 
@@ -2331,14 +3119,21 @@
 	*/
 	public static void MultiplyIntensityColorAllFramesName(string path, int color)
 	{
-		PluginMultiplyIntensityColorAllFramesName(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyIntensityColorAllFramesName(lpPath, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyIntensityColorAllFramesNameD(string path, double color)
 	{
-		return PluginMultiplyIntensityColorAllFramesNameD(path,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyIntensityColorAllFramesNameD(lpPath, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
@@ -2346,14 +3141,21 @@
 	*/
 	public static void MultiplyIntensityColorName(string path, int frameId, int color)
 	{
-		PluginMultiplyIntensityColorName(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyIntensityColorName(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyIntensityColorNameD(string path, double frameId, double color)
 	{
-		return PluginMultiplyIntensityColorNameD(path,frameId,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyIntensityColorNameD(lpPath, frameId, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply all the colors in the frame by the intensity value. The valid the 
@@ -2363,14 +3165,21 @@
 	*/
 	public static void MultiplyIntensityName(string path, int frameId, float intensity)
 	{
-		PluginMultiplyIntensityName(path,frameId,intensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyIntensityName(lpPath, frameId, intensity);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyIntensityNameD(string path, double frameId, double intensity)
 	{
-		return PluginMultiplyIntensityNameD(path,frameId,intensity);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyIntensityNameD(lpPath, frameId, intensity);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
@@ -2378,7 +3187,7 @@
 	*/
 	public static void MultiplyIntensityRGB(int animationId, int frameId, int red, int green, int blue)
 	{
-		PluginMultiplyIntensityRGB(animationId,frameId,red,green,blue);
+		PluginMultiplyIntensityRGB(animationId, frameId, red, green, blue);
 	}
 	/*
 		Multiply the specific frame by the RBG color intensity. Animation is referenced 
@@ -2386,14 +3195,21 @@
 	*/
 	public static void MultiplyIntensityRGBName(string path, int frameId, int red, int green, int blue)
 	{
-		PluginMultiplyIntensityRGBName(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyIntensityRGBName(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyIntensityRGBNameD(string path, double frameId, double red, double green, double blue)
 	{
-		return PluginMultiplyIntensityRGBNameD(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyIntensityRGBNameD(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply the specific frame by the color lerp result between color 1 and 
@@ -2402,7 +3218,7 @@
 	*/
 	public static void MultiplyNonZeroTargetColorLerp(int animationId, int frameId, int color1, int color2)
 	{
-		PluginMultiplyNonZeroTargetColorLerp(animationId,frameId,color1,color2);
+		PluginMultiplyNonZeroTargetColorLerp(animationId, frameId, color1, color2);
 	}
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
@@ -2410,7 +3226,7 @@
 	*/
 	public static void MultiplyNonZeroTargetColorLerpAllFrames(int animationId, int color1, int color2)
 	{
-		PluginMultiplyNonZeroTargetColorLerpAllFrames(animationId,color1,color2);
+		PluginMultiplyNonZeroTargetColorLerpAllFrames(animationId, color1, color2);
 	}
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
@@ -2418,14 +3234,21 @@
 	*/
 	public static void MultiplyNonZeroTargetColorLerpAllFramesName(string path, int color1, int color2)
 	{
-		PluginMultiplyNonZeroTargetColorLerpAllFramesName(path,color1,color2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyNonZeroTargetColorLerpAllFramesName(lpPath, color1, color2);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyNonZeroTargetColorLerpAllFramesNameD(string path, double color1, double color2)
 	{
-		return PluginMultiplyNonZeroTargetColorLerpAllFramesNameD(path,color1,color2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyNonZeroTargetColorLerpAllFramesNameD(lpPath, color1, color2);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply the specific frame by the color lerp result between RGB 1 and 2 
@@ -2434,7 +3257,7 @@
 	*/
 	public static void MultiplyNonZeroTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2)
 	{
-		PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(animationId,red1,green1,blue1,red2,green2,blue2);
+		PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(animationId, red1, green1, blue1, red2, green2, blue2);
 	}
 	/*
 		Multiply the specific frame by the color lerp result between RGB 1 and 2 
@@ -2443,14 +3266,21 @@
 	*/
 	public static void MultiplyNonZeroTargetColorLerpAllFramesRGBName(string path, int red1, int green1, int blue1, int red2, int green2, int blue2)
 	{
-		PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(path,red1,green1,blue1,red2,green2,blue2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(lpPath, red1, green1, blue1, red2, green2, blue2);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(string path, double red1, double green1, double blue1, double red2, double green2, double blue2)
 	{
-		return PluginMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(path,red1,green1,blue1,red2,green2,blue2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(lpPath, red1, green1, blue1, red2, green2, blue2);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply the specific frame by the color lerp result between color 1 and 
@@ -2459,7 +3289,7 @@
 	*/
 	public static void MultiplyTargetColorLerp(int animationId, int frameId, int color1, int color2)
 	{
-		PluginMultiplyTargetColorLerp(animationId,frameId,color1,color2);
+		PluginMultiplyTargetColorLerp(animationId, frameId, color1, color2);
 	}
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
@@ -2467,7 +3297,7 @@
 	*/
 	public static void MultiplyTargetColorLerpAllFrames(int animationId, int color1, int color2)
 	{
-		PluginMultiplyTargetColorLerpAllFrames(animationId,color1,color2);
+		PluginMultiplyTargetColorLerpAllFrames(animationId, color1, color2);
 	}
 	/*
 		Multiply all frames by the color lerp result between color 1 and 2 using 
@@ -2475,14 +3305,21 @@
 	*/
 	public static void MultiplyTargetColorLerpAllFramesName(string path, int color1, int color2)
 	{
-		PluginMultiplyTargetColorLerpAllFramesName(path,color1,color2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyTargetColorLerpAllFramesName(lpPath, color1, color2);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyTargetColorLerpAllFramesNameD(string path, double color1, double color2)
 	{
-		return PluginMultiplyTargetColorLerpAllFramesNameD(path,color1,color2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyTargetColorLerpAllFramesNameD(lpPath, color1, color2);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Multiply all frames by the color lerp result between RGB 1 and 2 using the 
@@ -2490,7 +3327,7 @@
 	*/
 	public static void MultiplyTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2)
 	{
-		PluginMultiplyTargetColorLerpAllFramesRGB(animationId,red1,green1,blue1,red2,green2,blue2);
+		PluginMultiplyTargetColorLerpAllFramesRGB(animationId, red1, green1, blue1, red2, green2, blue2);
 	}
 	/*
 		Multiply all frames by the color lerp result between RGB 1 and 2 using the 
@@ -2498,14 +3335,21 @@
 	*/
 	public static void MultiplyTargetColorLerpAllFramesRGBName(string path, int red1, int green1, int blue1, int red2, int green2, int blue2)
 	{
-		PluginMultiplyTargetColorLerpAllFramesRGBName(path,red1,green1,blue1,red2,green2,blue2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginMultiplyTargetColorLerpAllFramesRGBName(lpPath, red1, green1, blue1, red2, green2, blue2);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double MultiplyTargetColorLerpAllFramesRGBNameD(string path, double red1, double green1, double blue1, double red2, double green2, double blue2)
 	{
-		return PluginMultiplyTargetColorLerpAllFramesRGBNameD(path,red1,green1,blue1,red2,green2,blue2);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginMultiplyTargetColorLerpAllFramesRGBNameD(lpPath, red1, green1, blue1, red2, green2, blue2);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Offset all colors in the frame using the RGB offset. Use the range of -255 
@@ -2514,7 +3358,7 @@
 	*/
 	public static void OffsetColors(int animationId, int frameId, int red, int green, int blue)
 	{
-		PluginOffsetColors(animationId,frameId,red,green,blue);
+		PluginOffsetColors(animationId, frameId, red, green, blue);
 	}
 	/*
 		Offset all colors for all frames using the RGB offset. Use the range of 
@@ -2523,7 +3367,7 @@
 	*/
 	public static void OffsetColorsAllFrames(int animationId, int red, int green, int blue)
 	{
-		PluginOffsetColorsAllFrames(animationId,red,green,blue);
+		PluginOffsetColorsAllFrames(animationId, red, green, blue);
 	}
 	/*
 		Offset all colors for all frames using the RGB offset. Use the range of 
@@ -2532,14 +3376,21 @@
 	*/
 	public static void OffsetColorsAllFramesName(string path, int red, int green, int blue)
 	{
-		PluginOffsetColorsAllFramesName(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginOffsetColorsAllFramesName(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OffsetColorsAllFramesNameD(string path, double red, double green, double blue)
 	{
-		return PluginOffsetColorsAllFramesNameD(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOffsetColorsAllFramesNameD(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Offset all colors in the frame using the RGB offset. Use the range of -255 
@@ -2548,14 +3399,21 @@
 	*/
 	public static void OffsetColorsName(string path, int frameId, int red, int green, int blue)
 	{
-		PluginOffsetColorsName(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginOffsetColorsName(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OffsetColorsNameD(string path, double frameId, double red, double green, double blue)
 	{
-		return PluginOffsetColorsNameD(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOffsetColorsNameD(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -2565,7 +3423,7 @@
 	*/
 	public static void OffsetNonZeroColors(int animationId, int frameId, int red, int green, int blue)
 	{
-		PluginOffsetNonZeroColors(animationId,frameId,red,green,blue);
+		PluginOffsetNonZeroColors(animationId, frameId, red, green, blue);
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -2575,7 +3433,7 @@
 	*/
 	public static void OffsetNonZeroColorsAllFrames(int animationId, int red, int green, int blue)
 	{
-		PluginOffsetNonZeroColorsAllFrames(animationId,red,green,blue);
+		PluginOffsetNonZeroColorsAllFrames(animationId, red, green, blue);
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -2585,14 +3443,21 @@
 	*/
 	public static void OffsetNonZeroColorsAllFramesName(string path, int red, int green, int blue)
 	{
-		PluginOffsetNonZeroColorsAllFramesName(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginOffsetNonZeroColorsAllFramesName(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OffsetNonZeroColorsAllFramesNameD(string path, double red, double green, double blue)
 	{
-		return PluginOffsetNonZeroColorsAllFramesNameD(path,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOffsetNonZeroColorsAllFramesNameD(lpPath, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		This method will only update colors in the animation that are not already 
@@ -2602,14 +3467,21 @@
 	*/
 	public static void OffsetNonZeroColorsName(string path, int frameId, int red, int green, int blue)
 	{
-		PluginOffsetNonZeroColorsName(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginOffsetNonZeroColorsName(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OffsetNonZeroColorsNameD(string path, double frameId, double red, double green, double blue)
 	{
-		return PluginOffsetNonZeroColorsNameD(path,frameId,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOffsetNonZeroColorsNameD(lpPath, frameId, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Opens a `Chroma` animation file so that it can be played. Returns an animation 
@@ -2618,14 +3490,22 @@
 	*/
 	public static int OpenAnimation(string path)
 	{
-		return PluginOpenAnimation(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginOpenAnimation(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OpenAnimationD(string path)
 	{
-		return PluginOpenAnimationD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOpenAnimationD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
@@ -2633,7 +3513,11 @@
 	*/
 	public static int OpenEditorDialog(string path)
 	{
-		return PluginOpenEditorDialog(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginOpenEditorDialog(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Open the named animation in the editor dialog and play the animation at 
@@ -2641,21 +3525,33 @@
 	*/
 	public static int OpenEditorDialogAndPlay(string path)
 	{
-		return PluginOpenEditorDialogAndPlay(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginOpenEditorDialogAndPlay(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OpenEditorDialogAndPlayD(string path)
 	{
-		return PluginOpenEditorDialogAndPlayD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOpenEditorDialogAndPlayD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OpenEditorDialogD(string path)
 	{
-		return PluginOpenEditorDialogD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginOpenEditorDialogD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
@@ -2663,14 +3559,16 @@
 	*/
 	public static int OverrideFrameDuration(int animationId, float duration)
 	{
-		return PluginOverrideFrameDuration(animationId,duration);
+		int result = PluginOverrideFrameDuration(animationId, duration);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double OverrideFrameDurationD(double animationId, double duration)
 	{
-		return PluginOverrideFrameDurationD(animationId,duration);
+		double result = PluginOverrideFrameDurationD(animationId, duration);
+		return result;
 	}
 	/*
 		Override the duration of all frames with the `duration` value. Animation 
@@ -2678,7 +3576,10 @@
 	*/
 	public static void OverrideFrameDurationName(string path, float duration)
 	{
-		PluginOverrideFrameDurationName(path,duration);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginOverrideFrameDurationName(lpPath, duration);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Pause the current animation referenced by id.
@@ -2692,14 +3593,21 @@
 	*/
 	public static void PauseAnimationName(string path)
 	{
-		PluginPauseAnimationName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginPauseAnimationName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double PauseAnimationNameD(string path)
 	{
-		return PluginPauseAnimationNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginPauseAnimationNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Plays the `Chroma` animation. This will load the animation, if not loaded 
@@ -2707,14 +3615,16 @@
 	*/
 	public static int PlayAnimation(int animationId)
 	{
-		return PluginPlayAnimation(animationId);
+		int result = PluginPlayAnimation(animationId);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double PlayAnimationD(double animationId)
 	{
-		return PluginPlayAnimationD(animationId);
+		double result = PluginPlayAnimationD(animationId);
+		return result;
 	}
 	/*
 		`PluginPlayAnimationFrame` automatically handles initializing the `ChromaSDK`. 
@@ -2723,7 +3633,7 @@
 	*/
 	public static void PlayAnimationFrame(int animationId, int frameId, bool loop)
 	{
-		PluginPlayAnimationFrame(animationId,frameId,loop);
+		PluginPlayAnimationFrame(animationId, frameId, loop);
 	}
 	/*
 		`PluginPlayAnimationFrameName` automatically handles initializing the `ChromaSDK`. 
@@ -2732,14 +3642,21 @@
 	*/
 	public static void PlayAnimationFrameName(string path, int frameId, bool loop)
 	{
-		PluginPlayAnimationFrameName(path,frameId,loop);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginPlayAnimationFrameName(lpPath, frameId, loop);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double PlayAnimationFrameNameD(string path, double frameId, double loop)
 	{
-		return PluginPlayAnimationFrameNameD(path,frameId,loop);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginPlayAnimationFrameNameD(lpPath, frameId, loop);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		`PluginPlayAnimationLoop` automatically handles initializing the `ChromaSDK`. 
@@ -2748,7 +3665,7 @@
 	*/
 	public static void PlayAnimationLoop(int animationId, bool loop)
 	{
-		PluginPlayAnimationLoop(animationId,loop);
+		PluginPlayAnimationLoop(animationId, loop);
 	}
 	/*
 		`PluginPlayAnimationName` automatically handles initializing the `ChromaSDK`. 
@@ -2757,14 +3674,21 @@
 	*/
 	public static void PlayAnimationName(string path, bool loop)
 	{
-		PluginPlayAnimationName(path,loop);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginPlayAnimationName(lpPath, loop);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double PlayAnimationNameD(string path, double loop)
 	{
-		return PluginPlayAnimationNameD(path,loop);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginPlayAnimationNameD(lpPath, loop);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		`PluginPlayComposite` automatically handles initializing the `ChromaSDK`. 
@@ -2773,14 +3697,21 @@
 	*/
 	public static void PlayComposite(string name, bool loop)
 	{
-		PluginPlayComposite(name,loop);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		PluginPlayComposite(lpName, loop);
+		FreeIntPtr(lpName);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double PlayCompositeD(string name, double loop)
 	{
-		return PluginPlayCompositeD(name,loop);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		double result = PluginPlayCompositeD(lpName, loop);
+		FreeIntPtr(lpName);
+		return result;
 	}
 	/*
 		Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
@@ -2788,14 +3719,16 @@
 	*/
 	public static int PreviewFrame(int animationId, int frameIndex)
 	{
-		return PluginPreviewFrame(animationId,frameIndex);
+		int result = PluginPreviewFrame(animationId, frameIndex);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double PreviewFrameD(double animationId, double frameIndex)
 	{
-		return PluginPreviewFrameD(animationId,frameIndex);
+		double result = PluginPreviewFrameD(animationId, frameIndex);
+		return result;
 	}
 	/*
 		Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
@@ -2803,7 +3736,10 @@
 	*/
 	public static void PreviewFrameName(string path, int frameIndex)
 	{
-		PluginPreviewFrameName(path,frameIndex);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginPreviewFrameName(lpPath, frameIndex);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Reduce the frames of the animation by removing every nth element. Animation 
@@ -2811,7 +3747,7 @@
 	*/
 	public static void ReduceFrames(int animationId, int n)
 	{
-		PluginReduceFrames(animationId,n);
+		PluginReduceFrames(animationId, n);
 	}
 	/*
 		Reduce the frames of the animation by removing every nth element. Animation 
@@ -2819,14 +3755,21 @@
 	*/
 	public static void ReduceFramesName(string path, int n)
 	{
-		PluginReduceFramesName(path,n);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginReduceFramesName(lpPath, n);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double ReduceFramesNameD(string path, double n)
 	{
-		return PluginReduceFramesNameD(path,n);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginReduceFramesNameD(lpPath, n);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
@@ -2834,28 +3777,36 @@
 	*/
 	public static int ResetAnimation(int animationId)
 	{
-		return PluginResetAnimation(animationId);
+		int result = PluginResetAnimation(animationId);
+		return result;
 	}
 	/*
 		Resume the animation with loop `ON` or `OFF` referenced by id.
 	*/
 	public static void ResumeAnimation(int animationId, bool loop)
 	{
-		PluginResumeAnimation(animationId,loop);
+		PluginResumeAnimation(animationId, loop);
 	}
 	/*
 		Resume the animation with loop `ON` or `OFF` referenced by name.
 	*/
 	public static void ResumeAnimationName(string path, bool loop)
 	{
-		PluginResumeAnimationName(path,loop);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginResumeAnimationName(lpPath, loop);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double ResumeAnimationNameD(string path, double loop)
 	{
-		return PluginResumeAnimationNameD(path,loop);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginResumeAnimationNameD(lpPath, loop);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Reverse the animation frame order of the `Chroma` animation. Returns the 
@@ -2864,7 +3815,8 @@
 	*/
 	public static int Reverse(int animationId)
 	{
-		return PluginReverse(animationId);
+		int result = PluginReverse(animationId);
+		return result;
 	}
 	/*
 		Reverse the animation frame order of the `Chroma` animation. Animation is 
@@ -2880,28 +3832,46 @@
 	*/
 	public static void ReverseAllFramesName(string path)
 	{
-		PluginReverseAllFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginReverseAllFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double ReverseAllFramesNameD(string path)
 	{
-		return PluginReverseAllFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginReverseAllFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Save the animation referenced by id to the path specified.
 	*/
 	public static int SaveAnimation(int animationId, string path)
 	{
-		return PluginSaveAnimation(animationId,path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		int result = PluginSaveAnimation(animationId, lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Save the named animation to the target path specified.
 	*/
 	public static int SaveAnimationName(string sourceAnimation, string targetAnimation)
 	{
-		return PluginSaveAnimationName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		int result = PluginSaveAnimationName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Set the animation color for a frame given the `1D` `led`. The `led` should 
@@ -2910,7 +3880,7 @@
 	*/
 	public static void Set1DColor(int animationId, int frameId, int led, int color)
 	{
-		PluginSet1DColor(animationId,frameId,led,color);
+		PluginSet1DColor(animationId, frameId, led, color);
 	}
 	/*
 		Set the animation color for a frame given the `1D` `led`. The `led` should 
@@ -2919,14 +3889,21 @@
 	*/
 	public static void Set1DColorName(string path, int frameId, int led, int color)
 	{
-		PluginSet1DColorName(path,frameId,led,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSet1DColorName(lpPath, frameId, led, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double Set1DColorNameD(string path, double frameId, double led, double color)
 	{
-		return PluginSet1DColorNameD(path,frameId,led,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSet1DColorNameD(lpPath, frameId, led, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the animation color for a frame given the `2D` `row` and `column`. The 
@@ -2936,7 +3913,7 @@
 	*/
 	public static void Set2DColor(int animationId, int frameId, int row, int column, int color)
 	{
-		PluginSet2DColor(animationId,frameId,row,column,color);
+		PluginSet2DColor(animationId, frameId, row, column, color);
 	}
 	/*
 		Set the animation color for a frame given the `2D` `row` and `column`. The 
@@ -2946,14 +3923,21 @@
 	*/
 	public static void Set2DColorName(string path, int frameId, int row, int column, int color)
 	{
-		PluginSet2DColorName(path,frameId,row,column,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSet2DColorName(lpPath, frameId, row, column, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double Set2DColorNameD(string path, double frameId, double rowColumnIndex, double color)
 	{
-		return PluginSet2DColorNameD(path,frameId,rowColumnIndex,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSet2DColorNameD(lpPath, frameId, rowColumnIndex, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		When custom color is set, the custom key mode will be used. The animation 
@@ -2969,14 +3953,21 @@
 	*/
 	public static void SetChromaCustomColorAllFramesName(string path)
 	{
-		PluginSetChromaCustomColorAllFramesName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetChromaCustomColorAllFramesName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetChromaCustomColorAllFramesNameD(string path)
 	{
-		return PluginSetChromaCustomColorAllFramesNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetChromaCustomColorAllFramesNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the Chroma custom key color flag on all frames. `True` changes the layout 
@@ -2985,7 +3976,7 @@
 	*/
 	public static void SetChromaCustomFlag(int animationId, bool flag)
 	{
-		PluginSetChromaCustomFlag(animationId,flag);
+		PluginSetChromaCustomFlag(animationId, flag);
 	}
 	/*
 		Set the Chroma custom key color flag on all frames. `True` changes the layout 
@@ -2994,35 +3985,49 @@
 	*/
 	public static void SetChromaCustomFlagName(string path, bool flag)
 	{
-		PluginSetChromaCustomFlagName(path,flag);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetChromaCustomFlagName(lpPath, flag);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetChromaCustomFlagNameD(string path, double flag)
 	{
-		return PluginSetChromaCustomFlagNameD(path,flag);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetChromaCustomFlagNameD(lpPath, flag);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the current frame of the animation referenced by id.
 	*/
 	public static void SetCurrentFrame(int animationId, int frameId)
 	{
-		PluginSetCurrentFrame(animationId,frameId);
+		PluginSetCurrentFrame(animationId, frameId);
 	}
 	/*
 		Set the current frame of the animation referenced by name.
 	*/
 	public static void SetCurrentFrameName(string path, int frameId)
 	{
-		PluginSetCurrentFrameName(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetCurrentFrameName(lpPath, frameId);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetCurrentFrameNameD(string path, double frameId)
 	{
-		return PluginSetCurrentFrameNameD(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetCurrentFrameNameD(lpPath, frameId);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
@@ -3031,21 +4036,23 @@
 	*/
 	public static int SetDevice(int animationId, int deviceType, int device)
 	{
-		return PluginSetDevice(animationId,deviceType,device);
+		int result = PluginSetDevice(animationId, deviceType, device);
+		return result;
 	}
 	/*
 		SetEffect will display the referenced effect id.
 	*/
 	public static int SetEffect(System.Guid effectId)
 	{
-		return PluginSetEffect(effectId);
+		int result = PluginSetEffect(effectId);
+		return result;
 	}
 	/*
 		Set animation key to a static color for the given frame.
 	*/
 	public static void SetKeyColor(int animationId, int frameId, int rzkey, int color)
 	{
-		PluginSetKeyColor(animationId,frameId,rzkey,color);
+		PluginSetKeyColor(animationId, frameId, rzkey, color);
 	}
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
@@ -3053,7 +4060,7 @@
 	*/
 	public static void SetKeyColorAllFrames(int animationId, int rzkey, int color)
 	{
-		PluginSetKeyColorAllFrames(animationId,rzkey,color);
+		PluginSetKeyColorAllFrames(animationId, rzkey, color);
 	}
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
@@ -3061,14 +4068,21 @@
 	*/
 	public static void SetKeyColorAllFramesName(string path, int rzkey, int color)
 	{
-		PluginSetKeyColorAllFramesName(path,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyColorAllFramesName(lpPath, rzkey, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyColorAllFramesNameD(string path, double rzkey, double color)
 	{
-		return PluginSetKeyColorAllFramesNameD(path,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyColorAllFramesNameD(lpPath, rzkey, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
@@ -3076,7 +4090,7 @@
 	*/
 	public static void SetKeyColorAllFramesRGB(int animationId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyColorAllFramesRGB(animationId,rzkey,red,green,blue);
+		PluginSetKeyColorAllFramesRGB(animationId, rzkey, red, green, blue);
 	}
 	/*
 		Set the key to the specified key color for all frames. Animation is referenced 
@@ -3084,28 +4098,42 @@
 	*/
 	public static void SetKeyColorAllFramesRGBName(string path, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyColorAllFramesRGBName(path,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyColorAllFramesRGBName(lpPath, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyColorAllFramesRGBNameD(string path, double rzkey, double red, double green, double blue)
 	{
-		return PluginSetKeyColorAllFramesRGBNameD(path,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyColorAllFramesRGBNameD(lpPath, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set animation key to a static color for the given frame.
 	*/
 	public static void SetKeyColorName(string path, int frameId, int rzkey, int color)
 	{
-		PluginSetKeyColorName(path,frameId,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyColorName(lpPath, frameId, rzkey, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyColorNameD(string path, double frameId, double rzkey, double color)
 	{
-		return PluginSetKeyColorNameD(path,frameId,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyColorNameD(lpPath, frameId, rzkey, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the key to the specified key color for the specified frame. Animation 
@@ -3113,7 +4141,7 @@
 	*/
 	public static void SetKeyColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyColorRGB(animationId,frameId,rzkey,red,green,blue);
+		PluginSetKeyColorRGB(animationId, frameId, rzkey, red, green, blue);
 	}
 	/*
 		Set the key to the specified key color for the specified frame. Animation 
@@ -3121,14 +4149,21 @@
 	*/
 	public static void SetKeyColorRGBName(string path, int frameId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyColorRGBName(path,frameId,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyColorRGBName(lpPath, frameId, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue)
 	{
-		return PluginSetKeyColorRGBNameD(path,frameId,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyColorRGBNameD(lpPath, frameId, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set animation key to a static color for the given frame if the existing 
@@ -3136,7 +4171,7 @@
 	*/
 	public static void SetKeyNonZeroColor(int animationId, int frameId, int rzkey, int color)
 	{
-		PluginSetKeyNonZeroColor(animationId,frameId,rzkey,color);
+		PluginSetKeyNonZeroColor(animationId, frameId, rzkey, color);
 	}
 	/*
 		Set animation key to a static color for the given frame if the existing 
@@ -3144,14 +4179,21 @@
 	*/
 	public static void SetKeyNonZeroColorName(string path, int frameId, int rzkey, int color)
 	{
-		PluginSetKeyNonZeroColorName(path,frameId,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyNonZeroColorName(lpPath, frameId, rzkey, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyNonZeroColorNameD(string path, double frameId, double rzkey, double color)
 	{
-		return PluginSetKeyNonZeroColorNameD(path,frameId,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyNonZeroColorNameD(lpPath, frameId, rzkey, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set the key to the specified key color for the specified frame where color 
@@ -3159,7 +4201,7 @@
 	*/
 	public static void SetKeyNonZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyNonZeroColorRGB(animationId,frameId,rzkey,red,green,blue);
+		PluginSetKeyNonZeroColorRGB(animationId, frameId, rzkey, red, green, blue);
 	}
 	/*
 		Set the key to the specified key color for the specified frame where color 
@@ -3167,14 +4209,21 @@
 	*/
 	public static void SetKeyNonZeroColorRGBName(string path, int frameId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyNonZeroColorRGBName(path,frameId,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyNonZeroColorRGBName(lpPath, frameId, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyNonZeroColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue)
 	{
-		return PluginSetKeyNonZeroColorRGBNameD(path,frameId,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyNonZeroColorRGBNameD(lpPath, frameId, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame. Animation 
@@ -3182,7 +4231,7 @@
 	*/
 	public static void SetKeysColor(int animationId, int frameId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysColor(animationId,frameId,rzkeys,keyCount,color);
+		PluginSetKeysColor(animationId, frameId, rzkeys, keyCount, color);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
@@ -3190,7 +4239,7 @@
 	*/
 	public static void SetKeysColorAllFrames(int animationId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysColorAllFrames(animationId,rzkeys,keyCount,color);
+		PluginSetKeysColorAllFrames(animationId, rzkeys, keyCount, color);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
@@ -3198,7 +4247,10 @@
 	*/
 	public static void SetKeysColorAllFramesName(string path, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysColorAllFramesName(path,rzkeys,keyCount,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysColorAllFramesName(lpPath, rzkeys, keyCount, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
@@ -3206,7 +4258,7 @@
 	*/
 	public static void SetKeysColorAllFramesRGB(int animationId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysColorAllFramesRGB(animationId,rzkeys,keyCount,red,green,blue);
+		PluginSetKeysColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames. Animation 
@@ -3214,14 +4266,20 @@
 	*/
 	public static void SetKeysColorAllFramesRGBName(string path, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysColorAllFramesRGBName(path,rzkeys,keyCount,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysColorAllFramesRGBName(lpPath, rzkeys, keyCount, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame.
 	*/
 	public static void SetKeysColorName(string path, int frameId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysColorName(path,frameId,rzkeys,keyCount,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysColorName(lpPath, frameId, rzkeys, keyCount, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame. Animation 
@@ -3229,7 +4287,7 @@
 	*/
 	public static void SetKeysColorRGB(int animationId, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysColorRGB(animationId,frameId,rzkeys,keyCount,red,green,blue);
+		PluginSetKeysColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame. Animation 
@@ -3237,7 +4295,10 @@
 	*/
 	public static void SetKeysColorRGBName(string path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysColorRGBName(path,frameId,rzkeys,keyCount,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysColorRGBName(lpPath, frameId, rzkeys, keyCount, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame if 
@@ -3245,7 +4306,7 @@
 	*/
 	public static void SetKeysNonZeroColor(int animationId, int frameId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysNonZeroColor(animationId,frameId,rzkeys,keyCount,color);
+		PluginSetKeysNonZeroColor(animationId, frameId, rzkeys, keyCount, color);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3253,7 +4314,7 @@
 	*/
 	public static void SetKeysNonZeroColorAllFrames(int animationId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysNonZeroColorAllFrames(animationId,rzkeys,keyCount,color);
+		PluginSetKeysNonZeroColorAllFrames(animationId, rzkeys, keyCount, color);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames if the existing 
@@ -3261,7 +4322,10 @@
 	*/
 	public static void SetKeysNonZeroColorAllFramesName(string path, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysNonZeroColorAllFramesName(path,rzkeys,keyCount,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysNonZeroColorAllFramesName(lpPath, rzkeys, keyCount, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame if 
@@ -3269,7 +4333,10 @@
 	*/
 	public static void SetKeysNonZeroColorName(string path, int frameId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysNonZeroColorName(path,frameId,rzkeys,keyCount,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysNonZeroColorName(lpPath, frameId, rzkeys, keyCount, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3277,7 +4344,7 @@
 	*/
 	public static void SetKeysNonZeroColorRGB(int animationId, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysNonZeroColorRGB(animationId,frameId,rzkeys,keyCount,red,green,blue);
+		PluginSetKeysNonZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3285,7 +4352,10 @@
 	*/
 	public static void SetKeysNonZeroColorRGBName(string path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysNonZeroColorRGBName(path,frameId,rzkeys,keyCount,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysNonZeroColorRGBName(lpPath, frameId, rzkeys, keyCount, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3293,7 +4363,7 @@
 	*/
 	public static void SetKeysZeroColor(int animationId, int frameId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysZeroColor(animationId,frameId,rzkeys,keyCount,color);
+		PluginSetKeysZeroColor(animationId, frameId, rzkeys, keyCount, color);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames where the 
@@ -3301,7 +4371,7 @@
 	*/
 	public static void SetKeysZeroColorAllFrames(int animationId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysZeroColorAllFrames(animationId,rzkeys,keyCount,color);
+		PluginSetKeysZeroColorAllFrames(animationId, rzkeys, keyCount, color);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames where the 
@@ -3309,7 +4379,10 @@
 	*/
 	public static void SetKeysZeroColorAllFramesName(string path, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysZeroColorAllFramesName(path,rzkeys,keyCount,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysZeroColorAllFramesName(lpPath, rzkeys, keyCount, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames where the 
@@ -3317,7 +4390,7 @@
 	*/
 	public static void SetKeysZeroColorAllFramesRGB(int animationId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysZeroColorAllFramesRGB(animationId,rzkeys,keyCount,red,green,blue);
+		PluginSetKeysZeroColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
 	}
 	/*
 		Set an array of animation keys to a static color for all frames where the 
@@ -3325,7 +4398,10 @@
 	*/
 	public static void SetKeysZeroColorAllFramesRGBName(string path, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysZeroColorAllFramesRGBName(path,rzkeys,keyCount,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysZeroColorAllFramesRGBName(lpPath, rzkeys, keyCount, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3333,7 +4409,10 @@
 	*/
 	public static void SetKeysZeroColorName(string path, int frameId, int[] rzkeys, int keyCount, int color)
 	{
-		PluginSetKeysZeroColorName(path,frameId,rzkeys,keyCount,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysZeroColorName(lpPath, frameId, rzkeys, keyCount, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3341,7 +4420,7 @@
 	*/
 	public static void SetKeysZeroColorRGB(int animationId, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysZeroColorRGB(animationId,frameId,rzkeys,keyCount,red,green,blue);
+		PluginSetKeysZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
 	}
 	/*
 		Set an array of animation keys to a static color for the given frame where 
@@ -3349,7 +4428,10 @@
 	*/
 	public static void SetKeysZeroColorRGBName(string path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 	{
-		PluginSetKeysZeroColorRGBName(path,frameId,rzkeys,keyCount,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeysZeroColorRGBName(lpPath, frameId, rzkeys, keyCount, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Set animation key to a static color for the given frame where the color 
@@ -3357,7 +4439,7 @@
 	*/
 	public static void SetKeyZeroColor(int animationId, int frameId, int rzkey, int color)
 	{
-		PluginSetKeyZeroColor(animationId,frameId,rzkey,color);
+		PluginSetKeyZeroColor(animationId, frameId, rzkey, color);
 	}
 	/*
 		Set animation key to a static color for the given frame where the color 
@@ -3365,14 +4447,21 @@
 	*/
 	public static void SetKeyZeroColorName(string path, int frameId, int rzkey, int color)
 	{
-		PluginSetKeyZeroColorName(path,frameId,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyZeroColorName(lpPath, frameId, rzkey, color);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyZeroColorNameD(string path, double frameId, double rzkey, double color)
 	{
-		return PluginSetKeyZeroColorNameD(path,frameId,rzkey,color);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyZeroColorNameD(lpPath, frameId, rzkey, color);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Set animation key to a static color for the given frame where the color 
@@ -3380,7 +4469,7 @@
 	*/
 	public static void SetKeyZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyZeroColorRGB(animationId,frameId,rzkey,red,green,blue);
+		PluginSetKeyZeroColorRGB(animationId, frameId, rzkey, red, green, blue);
 	}
 	/*
 		Set animation key to a static color for the given frame where the color 
@@ -3388,14 +4477,21 @@
 	*/
 	public static void SetKeyZeroColorRGBName(string path, int frameId, int rzkey, int red, int green, int blue)
 	{
-		PluginSetKeyZeroColorRGBName(path,frameId,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginSetKeyZeroColorRGBName(lpPath, frameId, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SetKeyZeroColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue)
 	{
-		return PluginSetKeyZeroColorRGBNameD(path,frameId,rzkey,red,green,blue);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginSetKeyZeroColorRGBNameD(lpPath, frameId, rzkey, red, green, blue);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Invokes the setup for a debug logging callback so that `stdout` is redirected 
@@ -3419,14 +4515,16 @@
 	*/
 	public static int StopAnimation(int animationId)
 	{
-		return PluginStopAnimation(animationId);
+		int result = PluginStopAnimation(animationId);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double StopAnimationD(double animationId)
 	{
-		return PluginStopAnimationD(animationId);
+		double result = PluginStopAnimationD(animationId);
+		return result;
 	}
 	/*
 		`PluginStopAnimationName` automatically handles initializing the `ChromaSDK`. 
@@ -3435,14 +4533,21 @@
 	*/
 	public static void StopAnimationName(string path)
 	{
-		PluginStopAnimationName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginStopAnimationName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double StopAnimationNameD(string path)
 	{
-		return PluginStopAnimationNameD(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginStopAnimationNameD(lpPath);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		`PluginStopAnimationType` automatically handles initializing the `ChromaSDK`. 
@@ -3451,14 +4556,15 @@
 	*/
 	public static void StopAnimationType(int deviceType, int device)
 	{
-		PluginStopAnimationType(deviceType,device);
+		PluginStopAnimationType(deviceType, device);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double StopAnimationTypeD(double deviceType, double device)
 	{
-		return PluginStopAnimationTypeD(deviceType,device);
+		double result = PluginStopAnimationTypeD(deviceType, device);
+		return result;
 	}
 	/*
 		`PluginStopComposite` automatically handles initializing the `ChromaSDK`. 
@@ -3467,14 +4573,21 @@
 	*/
 	public static void StopComposite(string name)
 	{
-		PluginStopComposite(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		PluginStopComposite(lpName);
+		FreeIntPtr(lpName);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double StopCompositeD(string name)
 	{
-		return PluginStopCompositeD(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		double result = PluginStopCompositeD(lpName);
+		FreeIntPtr(lpName);
+		return result;
 	}
 	/*
 		Subtract the source color from the target color for all frames where the 
@@ -3482,7 +4595,7 @@
 	*/
 	public static void SubtractNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginSubtractNonZeroAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginSubtractNonZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Subtract the source color from the target color for all frames where the 
@@ -3490,14 +4603,27 @@
 	*/
 	public static void SubtractNonZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginSubtractNonZeroAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginSubtractNonZeroAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SubtractNonZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginSubtractNonZeroAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginSubtractNonZeroAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Subtract the source color from the target color for all frames where the 
@@ -3506,7 +4632,7 @@
 	*/
 	public static void SubtractNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginSubtractNonZeroAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginSubtractNonZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Subtract the source color from the target color for all frames where the 
@@ -3515,14 +4641,27 @@
 	*/
 	public static void SubtractNonZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginSubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginSubtractNonZeroAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SubtractNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Subtract the source color from the target where color is not black for the 
@@ -3530,7 +4669,7 @@
 	*/
 	public static void SubtractNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
 	{
-		PluginSubtractNonZeroAllKeysOffset(sourceAnimationId,targetAnimationId,frameId,offset);
+		PluginSubtractNonZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 	}
 	/*
 		Subtract the source color from the target where color is not black for the 
@@ -3538,14 +4677,27 @@
 	*/
 	public static void SubtractNonZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 	{
-		PluginSubtractNonZeroAllKeysOffsetName(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginSubtractNonZeroAllKeysOffsetName(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SubtractNonZeroAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 	{
-		return PluginSubtractNonZeroAllKeysOffsetNameD(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginSubtractNonZeroAllKeysOffsetNameD(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Subtract the source color from the target color where the target color is 
@@ -3553,7 +4705,7 @@
 	*/
 	public static void SubtractNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId)
 	{
-		PluginSubtractNonZeroTargetAllKeysAllFrames(sourceAnimationId,targetAnimationId);
+		PluginSubtractNonZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 	}
 	/*
 		Subtract the source color from the target color where the target color is 
@@ -3561,14 +4713,27 @@
 	*/
 	public static void SubtractNonZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 	{
-		PluginSubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginSubtractNonZeroTargetAllKeysAllFramesName(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SubtractNonZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 	{
-		return PluginSubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation,targetAnimation);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginSubtractNonZeroTargetAllKeysAllFramesNameD(lpSourceAnimation, lpTargetAnimation);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Subtract the source color from the target color where the target color is 
@@ -3577,7 +4742,7 @@
 	*/
 	public static void SubtractNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset)
 	{
-		PluginSubtractNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId,targetAnimationId,offset);
+		PluginSubtractNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 	}
 	/*
 		Subtract the source color from the target color where the target color is 
@@ -3586,14 +4751,27 @@
 	*/
 	public static void SubtractNonZeroTargetAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 	{
-		PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 	{
-		return PluginSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation,targetAnimation,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(lpSourceAnimation, lpTargetAnimation, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Subtract the source color from the target color where the target color is 
@@ -3602,7 +4780,7 @@
 	*/
 	public static void SubtractNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
 	{
-		PluginSubtractNonZeroTargetAllKeysOffset(sourceAnimationId,targetAnimationId,frameId,offset);
+		PluginSubtractNonZeroTargetAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 	}
 	/*
 		Subtract the source color from the target color where the target color is 
@@ -3611,14 +4789,27 @@
 	*/
 	public static void SubtractNonZeroTargetAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 	{
-		PluginSubtractNonZeroTargetAllKeysOffsetName(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		PluginSubtractNonZeroTargetAllKeysOffsetName(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double SubtractNonZeroTargetAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 	{
-		return PluginSubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation,targetAnimation,frameId,offset);
+		string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+		IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+		string pathTargetAnimation = GetStreamingPath(targetAnimation);
+		IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+		double result = PluginSubtractNonZeroTargetAllKeysOffsetNameD(lpSourceAnimation, lpTargetAnimation, frameId, offset);
+		FreeIntPtr(lpSourceAnimation);
+		FreeIntPtr(lpTargetAnimation);
+		return result;
 	}
 	/*
 		Trim the end of the animation. The length of the animation will be the lastFrameId 
@@ -3626,7 +4817,7 @@
 	*/
 	public static void TrimEndFrames(int animationId, int lastFrameId)
 	{
-		PluginTrimEndFrames(animationId,lastFrameId);
+		PluginTrimEndFrames(animationId, lastFrameId);
 	}
 	/*
 		Trim the end of the animation. The length of the animation will be the lastFrameId 
@@ -3634,35 +4825,49 @@
 	*/
 	public static void TrimEndFramesName(string path, int lastFrameId)
 	{
-		PluginTrimEndFramesName(path,lastFrameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginTrimEndFramesName(lpPath, lastFrameId);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double TrimEndFramesNameD(string path, double lastFrameId)
 	{
-		return PluginTrimEndFramesNameD(path,lastFrameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginTrimEndFramesNameD(lpPath, lastFrameId);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Remove the frame from the animation. Reference animation by id.
 	*/
 	public static void TrimFrame(int animationId, int frameId)
 	{
-		PluginTrimFrame(animationId,frameId);
+		PluginTrimFrame(animationId, frameId);
 	}
 	/*
 		Remove the frame from the animation. Reference animation by name.
 	*/
 	public static void TrimFrameName(string path, int frameId)
 	{
-		PluginTrimFrameName(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginTrimFrameName(lpPath, frameId);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double TrimFrameNameD(string path, double frameId)
 	{
-		return PluginTrimFrameNameD(path,frameId);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginTrimFrameNameD(lpPath, frameId);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Trim the start of the animation starting at frame 0 for the number of frames. 
@@ -3670,7 +4875,7 @@
 	*/
 	public static void TrimStartFrames(int animationId, int numberOfFrames)
 	{
-		PluginTrimStartFrames(animationId,numberOfFrames);
+		PluginTrimStartFrames(animationId, numberOfFrames);
 	}
 	/*
 		Trim the start of the animation starting at frame 0 for the number of frames. 
@@ -3678,28 +4883,37 @@
 	*/
 	public static void TrimStartFramesName(string path, int numberOfFrames)
 	{
-		PluginTrimStartFramesName(path,numberOfFrames);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginTrimStartFramesName(lpPath, numberOfFrames);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double TrimStartFramesNameD(string path, double numberOfFrames)
 	{
-		return PluginTrimStartFramesNameD(path,numberOfFrames);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		double result = PluginTrimStartFramesNameD(lpPath, numberOfFrames);
+		FreeIntPtr(lpPath);
+		return result;
 	}
 	/*
 		Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
 	*/
 	public static int Uninit()
 	{
-		return PluginUninit();
+		int result = PluginUninit();
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double UninitD()
 	{
-		return PluginUninitD();
+		double result = PluginUninitD();
+		return result;
 	}
 	/*
 		Unloads `Chroma` effects to free up resources. Returns the animation id 
@@ -3707,21 +4921,26 @@
 	*/
 	public static int UnloadAnimation(int animationId)
 	{
-		return PluginUnloadAnimation(animationId);
+		int result = PluginUnloadAnimation(animationId);
+		return result;
 	}
 	/*
 		D suffix for limited data types.
 	*/
 	public static double UnloadAnimationD(double animationId)
 	{
-		return PluginUnloadAnimationD(animationId);
+		double result = PluginUnloadAnimationD(animationId);
+		return result;
 	}
 	/*
 		Unload the animation effects. Reference the animation by name.
 	*/
 	public static void UnloadAnimationName(string path)
 	{
-		PluginUnloadAnimationName(path);
+		string pathPath = GetStreamingPath(path);
+		IntPtr lpPath = GetIntPtr(pathPath);
+		PluginUnloadAnimationName(lpPath);
+		FreeIntPtr(lpPath);
 	}
 	/*
 		Unload the the composite set of animation effects. Reference the animation 
@@ -3729,7 +4948,10 @@
 	*/
 	public static void UnloadComposite(string name)
 	{
-		PluginUnloadComposite(name);
+		string pathName = GetStreamingPath(name);
+		IntPtr lpName = GetIntPtr(pathName);
+		PluginUnloadComposite(lpName);
+		FreeIntPtr(lpName);
 	}
 	/*
 		Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
@@ -3742,7 +4964,8 @@
 	*/
 	public static int UpdateFrame(int animationId, int frameIndex, float duration, int[] colors, int length)
 	{
-		return PluginUpdateFrame(animationId,frameIndex,duration,colors,length);
+		int result = PluginUpdateFrame(animationId, frameIndex, duration, colors, length);
+		return result;
 	}
 #endregion
 

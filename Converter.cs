@@ -214,6 +214,27 @@ namespace ChromaAPISync
             return true;
         }
 
+        private static bool GetArgsTypes(string args, List<MetaArgInfo> detailArgs)
+        {
+            string[] parts = args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].Trim();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string strType = part.Substring(0, indexName).Trim();
+                    string name = part.Substring(indexName + 1).Trim();
+
+                    MetaArgInfo info = new MetaArgInfo();
+                    info.StrType = strType;
+                    info.Name = name;
+                    detailArgs.Add(info);
+                }
+            }
+            return true;
+        }
+
         const string TOKEN_NAME = "NAME";
         const string TOKEN_NAME_D = "NAME_D";
 
@@ -347,7 +368,7 @@ namespace ChromaAPISync
             return returnStr.TrimEnd();
         }
 
-        private static string RemoveArgTypes(string args)
+        private static string RemoveArgTypes(string args, List<MetaArgInfo> detailArgs)
         {
             string[] parts = args.Split(",".ToCharArray());
             for (int i = 0; i < parts.Length; ++i)
@@ -357,6 +378,16 @@ namespace ChromaAPISync
                 if (indexName > 0)
                 {
                     string name = part.Substring(indexName + 1);
+                    if (detailArgs[i].StrType == "const char*" ||
+                        detailArgs[i].StrType == "char*")
+                    {
+                        string lpArg = string.Format("lp{0}", UppercaseFirstLetter(name));
+                        name = lpArg;
+                    }
+                    if (i > 0)
+                    {
+                        name = " " + name;
+                    }
                     parts[i] = name;
                 }
             }
@@ -568,6 +599,12 @@ namespace ChromaAPISync
             }
             return string.Join(",", parts);
         }
+        
+        class MetaArgInfo
+        {
+            public string Name = string.Empty;
+            public string StrType = string.Empty;
+        }
 
         class MetaMethodInfo
         {
@@ -577,6 +614,7 @@ namespace ChromaAPISync
             public string Line = string.Empty;
             public string Args = string.Empty;
             public string Comments = string.Empty;
+            public List<MetaArgInfo> DetailArgs = new List<MetaArgInfo>();
         }
 
         static SortedList<string, MetaMethodInfo> _sMethods = new SortedList<string, MetaMethodInfo>();
@@ -660,6 +698,11 @@ namespace ChromaAPISync
                                 continue;
                             }
                             //Console.WriteLine("Args: {0}", methodInfo.Args);
+
+                            if (!GetArgsTypes(methodInfo.Args, methodInfo.DetailArgs))
+                            {
+                                continue;
+                            }
                         }
                         while (line != null);
                     }
@@ -912,6 +955,20 @@ namespace ChromaAPISync
             }
         }
 
+        private static string UppercaseFirstLetter(string name)
+        {
+            if (name.Length < 2)
+            {
+                return name.ToUpper();
+            }
+            else
+            {
+                return string.Format("{0}{1}",
+                    name.Substring(0, 1).ToUpper(),
+                    name.Substring(1));
+            }
+        }
+
         static bool WriteUnity(StreamWriter swUnity)
         {
             try
@@ -939,18 +996,54 @@ namespace ChromaAPISync
                         ChangeArgsToManagedTypes(methodInfo.Args));
 
                     Output(swUnity, "\t{0}", "{");
+                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
+                    {
+                        if (argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "char*")
+                        {
+                            string pathArg = string.Format("path{0}", UppercaseFirstLetter(argInfo.Name));
+                            Output(swUnity, "\t\tstring {0} = GetStreamingPath({1});",
+                                pathArg,
+                                argInfo.Name);
+  
+                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
+                            Output(swUnity, "\t\tIntPtr {0} = GetIntPtr({1});",
+                                lpArg,
+                                pathArg);
+
+                        }
+                    }
                     if (methodInfo.ReturnType == "void")
                     {
                         Output(swUnity, "\t\tPlugin{0}({1});",
                             methodInfo.Name,
-                            RemoveArgTypes(methodInfo.Args));
+                            RemoveArgTypes(methodInfo.Args, methodInfo.DetailArgs));
                     }
                     else
                     {
-                        Output(swUnity, "\t\treturn Plugin{0}({1});",
+                        Output(swUnity, "\t\t{0} result = Plugin{1}({2});",
+                            ChangeToManagedType(methodInfo.ReturnType),
                             methodInfo.Name,
-                            RemoveArgTypes(methodInfo.Args));
+                            RemoveArgTypes(methodInfo.Args, methodInfo.DetailArgs));
                     }
+
+                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
+                    {
+                        if (argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "char*")
+                        {
+                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
+                            Output(swUnity, "\t\tFreeIntPtr({0});",
+                                lpArg);
+
+                        }
+                    }
+
+                    if (methodInfo.ReturnType != "void")
+                    {
+                        Output(swUnity, "\t\treturn result;");
+                    }
+
                     Output(swUnity, "\t{0}", "}");
                 }
 
