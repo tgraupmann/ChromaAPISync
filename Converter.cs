@@ -228,7 +228,12 @@ namespace ChromaAPISync
             new MetaOverride() { MethodName="GetMaxLeds", ArgName="device", OverrideType="Device1D", CastType="int"},
             new MetaOverride() { MethodName="GetMaxRow", ArgName="device", OverrideType="Device2D", CastType="int"},
             new MetaOverride() { MethodName="GetMaxColumn", ArgName="device", OverrideType="Device2D", CastType="int"},
-            new MetaOverride() { MethodName="CoreQueryDevice", ArgName="DeviceInfo", OverrideType="", CastType="", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateEffect", ArgName="Effect", OverrideType="EFFECT_TYPE", CastType="int"},
+            new MetaOverride() { MethodName="CoreCreateEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreQueryDevice", ArgName="DeviceInfo", OverrideType="out DEVICE_INFO_TYPE", UseOut=true},
+            new MetaOverride() { MethodName="CreateEffect", ArgName="effect", OverrideType="EFFECT_TYPE", CastType="int"},
+            new MetaOverride() { MethodName="CreateEffect", ArgName="effectId", OverrideType="out FChromaSDKGuid", UseOut=true},
+            new MetaOverride() { MethodName="GetFrame", ArgName="duration", OverrideType="out float", UseOut=true},
         };
 
         private static bool GetArgsTypes(MetaMethodInfo methodInfo)
@@ -453,7 +458,7 @@ namespace ChromaAPISync
             return index;
         }
 
-        private static string ChangeToManagedImportType(string strType)
+        private static string ChangeToManagedImportType(MetaMethodInfo methodInfo, string strType)
         {
             string result = TrimArgType(strType);
             if (result == "int*")
@@ -468,7 +473,15 @@ namespace ChromaAPISync
             {
                 result = "IntPtr";
             }
+            else if (result == "float*")
+            {
+                result = "out float";
+            }
             else if (result == "RZRESULT")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::EFFECT_TYPE")
             {
                 result = "int";
             }
@@ -496,22 +509,34 @@ namespace ChromaAPISync
             {
                 result = "int";
             }
-            else if (result == "ChromaSDK::DEVICE_INFO_TYPE")
+            else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
             {
-                result = "out ChromSDK.DEVICE_INFO_TYPE";
+                result = "out DEVICE_INFO_TYPE";
             }
             else if (result == "const ChromaSDK::FChromaSDKGuid&")
             {
                 result = "Guid";
             }
+            else if (result == "ChromaSDK::FChromaSDKGuid*")
+            {
+                result = "out FChromaSDKGuid";
+            }
             else if (result == "RZDEVICEID")
             {
                 result = "Guid";
             }
+            else if (result == "RZEFFECTID*")
+            {
+                result = "out Guid";
+            }
+            else if (result == "PRZPARAM")
+            {
+                result = "IntPtr";
+            }
             return result;
         }
 
-        private static string ChangeToManagedType(string strType)
+        private static string ChangeToManagedType(MetaMethodInfo methodInfo, string strType)
         {
             string result = TrimArgType(strType);
             if (result == "int*")
@@ -554,10 +579,6 @@ namespace ChromaAPISync
             {
                 result = "int";
             }
-            else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
-            {
-                result = "out ChromSDK.DEVICE_INFO_TYPE";
-            }
             else if (result == "const ChromaSDK::FChromaSDKGuid&")
             {
                 result = "Guid";
@@ -565,6 +586,18 @@ namespace ChromaAPISync
             else if (result == "RZDEVICEID")
             {
                 result = "Guid";
+            }
+            else if (result == "RZEFFECTID")
+            {
+                result = "Guid";
+            }
+            else if (result == "RZEFFECTID*")
+            {
+                result = "out Guid";
+            }
+            else if (result == "PRZPARAM")
+            {
+                result = "IntPtr";
             }
             return result;
         }
@@ -609,7 +642,7 @@ namespace ChromaAPISync
                 if (indexName > 0)
                 {
                     string strType = part.Substring(0, indexName + 1).Trim();
-                    strType = ChangeToManagedType(strType);
+                    strType = ChangeToManagedType(methodInfo, strType);
                     string name = part.Substring(indexName + 1).Trim();
                     MetaArgInfo argInfo = methodInfo.DetailArgs[i];
                     if (null != argInfo.OverrideInfo &&
@@ -632,7 +665,7 @@ namespace ChromaAPISync
             return string.Join(",", parts);
         }
 
-        private static string ChangeArgsToManagedImportTypes(string args)
+        private static string ChangeArgsToManagedImportTypes(MetaMethodInfo methodInfo, string args)
         {
             string[] parts = args.Split(",".ToCharArray());
             for (int i = 0; i < parts.Length; ++i)
@@ -641,7 +674,7 @@ namespace ChromaAPISync
                 int indexName = GetIndexArgumentBeforeName(part);
                 if (indexName > 0)
                 {
-                    string strType = ChangeToManagedImportType(part.Substring(0, indexName).Trim());
+                    string strType = ChangeToManagedImportType(methodInfo, part.Substring(0, indexName+1).Trim());
                     string name = part.Substring(indexName + 1).Trim();
 
                     if (i == 0)
@@ -1040,19 +1073,41 @@ using UnityEngine;
 namespace ChromaSDK
 {
     [StructLayout(LayoutKind.Sequential)]
-    struct DEVICE_INFO_TYPE
+    public struct FChromaSDKGuid
+    {
+        Guid Data;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DEVICE_INFO_TYPE
     {
         int DeviceType;
         uint Connected;
     }
 
+    public enum EFFECT_TYPE
+    {
+        CHROMA_NONE = 0,            //!< No effect.
+        CHROMA_WAVE,                //!< Wave effect (This effect type has deprecated and should not be used).
+        CHROMA_SPECTRUMCYCLING,     //!< Spectrum cycling effect (This effect type has deprecated and should not be used).
+        CHROMA_BREATHING,           //!< Breathing effect (This effect type has deprecated and should not be used).
+        CHROMA_BLINKING,            //!< Blinking effect (This effect type has deprecated and should not be used).
+        CHROMA_REACTIVE,            //!< Reactive effect (This effect type has deprecated and should not be used).
+        CHROMA_STATIC,              //!< Static effect.
+        CHROMA_CUSTOM,              //!< Custom effect. For mice, please see Mouse::CHROMA_CUSTOM2.
+        CHROMA_RESERVED,            //!< Reserved
+        CHROMA_INVALID              //!< Invalid effect.
+    }
+
     public class ChromaAnimationAPI
     {
 #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
-        const string DLL_NAME = ""UnityNativeChromaSDK3"";
+        const string DLL_NAME = ""CChromaEditorLibrary3"";
 
+#elif UNITY_64
+        const string DLL_NAME = ""CChromaEditorLibrary64"";
 #else
-        const string DLL_NAME = ""UnityNativeChromaSDK"";
+        const string DLL_NAME = ""CChromaEditorLibrary"";
 #endif
 
         #region Data Structures
@@ -1281,8 +1336,7 @@ namespace ChromaSDK
 
         private const string FOOTER_UNITY =
 @"  }
-}
-";
+}";
 
         static bool WriteUnity(StreamWriter swUnity)
         {
@@ -1308,7 +1362,7 @@ namespace ChromaSDK
                     Output(swUnity, "\t\t{0}", "/// </summary>");
 
                     Output(swUnity, "\t\tpublic static {0} {1}({2})",
-                        ChangeToManagedType(methodInfo.ReturnType),
+                        ChangeToManagedType(methodInfo, methodInfo.ReturnType),
                         methodInfo.Name,
                         ChangeArgsToManagedTypes(methodInfo));
 
@@ -1339,7 +1393,7 @@ namespace ChromaSDK
                     else
                     {
                         Output(swUnity, "\t\t\t{0} result = Plugin{1}({2});",
-                            ChangeToManagedType(methodInfo.ReturnType),
+                            ChangeToManagedType(methodInfo, methodInfo.ReturnType),
                             methodInfo.Name,
                             RemoveArgTypes(methodInfo));
                     }
@@ -1374,6 +1428,14 @@ namespace ChromaSDK
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
+                    if (methodInfo.Name == "CoreCreateEffect")
+                    {
+                        if (true)
+                        {
+
+                        }
+                    }
+
                     Output(swUnity, "\t\t{0}", "/// <summary>");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
@@ -1391,9 +1453,9 @@ namespace ChromaSDK
                     Output(swUnity, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
 
                     Output(swUnity, "\t\tprivate static extern {0} Plugin{1}({2});",
-                        ChangeToManagedImportType(methodInfo.ReturnType),
+                        ChangeToManagedImportType(methodInfo, methodInfo.ReturnType),
                         methodInfo.Name,
-                        ChangeArgsToManagedImportTypes(methodInfo.Args));
+                        ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
                 }
 
                 Output(swUnity, "\t\t#endregion");
