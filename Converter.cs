@@ -1550,10 +1550,20 @@ namespace ChromaSDK
                     }
                     else
                     {
-                        Output(swUnity, "\t\t\t{0} result = Plugin{1}({2});",
-                            ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                            methodInfo.Name,
-                            RemoveArgTypes(methodInfo));
+                        if (methodInfo.ReturnType == "const char*")
+                        {
+                            Output(swUnity, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
+                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                                methodInfo.Name,
+                                RemoveArgTypes(methodInfo));
+                        }
+                        else
+                        {
+                            Output(swUnity, "\t\t\t{0} result = Plugin{1}({2});",
+                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                                methodInfo.Name,
+                                RemoveArgTypes(methodInfo));
+                        }
                     }
 
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)

@@ -2635,7 +2635,7 @@ namespace ChromaSDK
 		/// </summary>
 		public static string GetAnimationName(int animationId)
 		{
-			string result = PluginGetAnimationName(animationId);
+			string result = Marshal.PtrToStringAnsi(PluginGetAnimationName(animationId));
 			return result;
 		}
 		/// <summary>
