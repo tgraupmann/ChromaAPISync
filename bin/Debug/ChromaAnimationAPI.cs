@@ -3927,6 +3927,21 @@ namespace ChromaSDK
 			return result;
 		}
 		/// <summary>
+		/// Opens a `Chroma` animation data from memory so that it can be played. `Data` 
+		/// is a pointer to byte array of the loaded animation in memory. `Name` will 
+		/// be assigned to the animation when loaded. Returns an animation id >= 0 
+		/// upon success. Returns -1 if there was a failure. The animation id is used 
+		/// in most of the API methods.
+		/// </summary>
+		public static int OpenAnimationFromMemory(const byte* data, string name)
+		{
+			string pathName = GetStreamingPath(name);
+			IntPtr lpName = GetIntPtr(pathName);
+			int result = PluginOpenAnimationFromMemory(data, lpName);
+			FreeIntPtr(lpName);
+			return result;
+		}
+		/// <summary>
 		/// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 		/// upon success. Returns -1 if there was a failure.
 		/// </summary>
@@ -7701,6 +7716,16 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double PluginOpenAnimationD(IntPtr path);
+		/// <summary>
+		/// Opens a `Chroma` animation data from memory so that it can be played. `Data` 
+		/// is a pointer to byte array of the loaded animation in memory. `Name` will 
+		/// be assigned to the animation when loaded. Returns an animation id >= 0 
+		/// upon success. Returns -1 if there was a failure. The animation id is used 
+		/// in most of the API methods.
+		/// EXPORT_API int PluginOpenAnimationFromMemory(const byte* data, const char* name);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern int PluginOpenAnimationFromMemory(const byte* data, IntPtr name);
 		/// <summary>
 		/// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 		/// upon success. Returns -1 if there was a failure.

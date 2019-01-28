@@ -64,7 +64,7 @@ namespace ChromaAPISync
             {
                 using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
                 {
-                    if (!WriteHeader(swImplementation))
+                    if (!WriteImplementation(swImplementation))
                     {
                         return;
                     }
