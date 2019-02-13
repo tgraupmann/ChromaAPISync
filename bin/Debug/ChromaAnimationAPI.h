@@ -1894,6 +1894,16 @@ typedef int			(*PLUGIN_SET_DEVICE)(int animationId, int deviceType, int device);
 */
 typedef RZRESULT	(*PLUGIN_SET_EFFECT)(const ChromaSDK::FChromaSDKGuid& effectId);
 /*
+	When the idle animation is used, the named animation will play when no other 
+	animations are playing. Reference the animation by id.
+*/
+typedef void		(*PLUGIN_SET_IDLE_ANIMATION)(int animationId);
+/*
+	When the idle animation is used, the named animation will play when no other 
+	animations are playing. Reference the animation by name.
+*/
+typedef void		(*PLUGIN_SET_IDLE_ANIMATION_NAME)(const char* path);
+/*
 	Set animation key to a static color for the given frame.
 */
 typedef void		(*PLUGIN_SET_KEY_COLOR)(int animationId, int frameId, int rzkey, int color);
@@ -2327,6 +2337,14 @@ typedef void		(*PLUGIN_UNLOAD_COMPOSITE)(const char* name);
 	failure.
 */
 typedef int			(*PLUGIN_UPDATE_FRAME)(int animationId, int frameIndex, float duration, int* colors, int length);
+/*
+	When the idle animation flag is true, when no other animations are playing, 
+	the idle animation will be used. The idle animation will not be affected 
+	by the API calls to PluginIsPlaying, PluginStopAnimationType, PluginGetPlayingAnimationId, 
+	and PluginGetPlayingAnimationCount. Then the idle animation flag is false, 
+	the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
+*/
+typedef void		(*PLUGIN_USE_IDLE_ANIMATION)(int device, bool flag);
 #pragma endregion
 
 #pragma region API declare prototypes
@@ -4225,6 +4243,16 @@ CHROMASDK_DECLARE_METHOD(PLUGIN_SET_DEVICE, SetDevice);
 */
 CHROMASDK_DECLARE_METHOD(PLUGIN_SET_EFFECT, SetEffect);
 /*
+	When the idle animation is used, the named animation will play when no other 
+	animations are playing. Reference the animation by id.
+*/
+CHROMASDK_DECLARE_METHOD(PLUGIN_SET_IDLE_ANIMATION, SetIdleAnimation);
+/*
+	When the idle animation is used, the named animation will play when no other 
+	animations are playing. Reference the animation by name.
+*/
+CHROMASDK_DECLARE_METHOD(PLUGIN_SET_IDLE_ANIMATION_NAME, SetIdleAnimationName);
+/*
 	Set animation key to a static color for the given frame.
 */
 CHROMASDK_DECLARE_METHOD(PLUGIN_SET_KEY_COLOR, SetKeyColor);
@@ -4658,4 +4686,12 @@ CHROMASDK_DECLARE_METHOD(PLUGIN_UNLOAD_COMPOSITE, UnloadComposite);
 	failure.
 */
 CHROMASDK_DECLARE_METHOD(PLUGIN_UPDATE_FRAME, UpdateFrame);
+/*
+	When the idle animation flag is true, when no other animations are playing, 
+	the idle animation will be used. The idle animation will not be affected 
+	by the API calls to PluginIsPlaying, PluginStopAnimationType, PluginGetPlayingAnimationId, 
+	and PluginGetPlayingAnimationCount. Then the idle animation flag is false, 
+	the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
+*/
+CHROMASDK_DECLARE_METHOD(PLUGIN_USE_IDLE_ANIMATION, UseIdleAnimation);
 #pragma endregion

@@ -384,6 +384,8 @@
 * [PluginSetCurrentFrameNameD](#PluginSetCurrentFrameNameD)
 * [PluginSetDevice](#PluginSetDevice)
 * [PluginSetEffect](#PluginSetEffect)
+* [PluginSetIdleAnimation](#PluginSetIdleAnimation)
+* [PluginSetIdleAnimationName](#PluginSetIdleAnimationName)
 * [PluginSetKeyColor](#PluginSetKeyColor)
 * [PluginSetKeyColorAllFrames](#PluginSetKeyColorAllFrames)
 * [PluginSetKeyColorAllFramesName](#PluginSetKeyColorAllFramesName)
@@ -474,6 +476,7 @@
 * [PluginUnloadAnimationName](#PluginUnloadAnimationName)
 * [PluginUnloadComposite](#PluginUnloadComposite)
 * [PluginUpdateFrame](#PluginUpdateFrame)
+* [PluginUseIdleAnimation](#PluginUseIdleAnimation)
 
 ---
 <a name="PluginAddFrame"></a>
@@ -6864,6 +6867,36 @@ RZRESULT result = ChromaAnimationAPI::SetEffect(
 ```
 
 ---
+<a name="PluginSetIdleAnimation"></a>
+**PluginSetIdleAnimation**
+
+When the idle animation is used, the named animation will play when no other 
+animations are playing. Reference the animation by id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginSetIdleAnimation(int animationId);
+
+// Class Plugin
+ChromaAnimationAPI::SetIdleAnimation(int animationId);
+```
+
+---
+<a name="PluginSetIdleAnimationName"></a>
+**PluginSetIdleAnimationName**
+
+When the idle animation is used, the named animation will play when no other 
+animations are playing. Reference the animation by name.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginSetIdleAnimationName(const char* path);
+
+// Class Plugin
+ChromaAnimationAPI::SetIdleAnimationName(const char* path);
+```
+
+---
 <a name="PluginSetKeyColor"></a>
 **PluginSetKeyColor**
 
@@ -8369,5 +8402,25 @@ EXPORT_API int PluginUpdateFrame(
 // Class Plugin
 int result = ChromaAnimationAPI::UpdateFrame(
 	int animationId, int frameIndex, float duration, int* colors, int length);
+```
+
+---
+<a name="PluginUseIdleAnimation"></a>
+**PluginUseIdleAnimation**
+
+When the idle animation flag is true, when no other animations are playing, 
+the idle animation will be used. The idle animation will not be affected 
+by the API calls to PluginIsPlaying, PluginStopAnimationType, PluginGetPlayingAnimationId, 
+and PluginGetPlayingAnimationCount. Then the idle animation flag is false, 
+the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginUseIdleAnimation(
+	int device, bool flag);
+
+// Class Plugin
+ChromaAnimationAPI::UseIdleAnimation(
+	int device, bool flag);
 ```
 

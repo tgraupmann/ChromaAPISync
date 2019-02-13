@@ -4484,6 +4484,25 @@ namespace ChromaSDK
 			return result;
 		}
 		/// <summary>
+		/// When the idle animation is used, the named animation will play when no other 
+		/// animations are playing. Reference the animation by id.
+		/// </summary>
+		public static void SetIdleAnimation(int animationId)
+		{
+			PluginSetIdleAnimation(animationId);
+		}
+		/// <summary>
+		/// When the idle animation is used, the named animation will play when no other 
+		/// animations are playing. Reference the animation by name.
+		/// </summary>
+		public static void SetIdleAnimationName(string path)
+		{
+			string pathPath = GetStreamingPath(path);
+			IntPtr lpPath = GetIntPtr(pathPath);
+			PluginSetIdleAnimationName(lpPath);
+			FreeIntPtr(lpPath);
+		}
+		/// <summary>
 		/// Set animation key to a static color for the given frame.
 		/// </summary>
 		public static void SetKeyColor(int animationId, int frameId, int rzkey, int color)
@@ -5406,6 +5425,18 @@ namespace ChromaSDK
 		{
 			int result = PluginUpdateFrame(animationId, frameIndex, duration, colors, length);
 			return result;
+		}
+		/// <summary>
+		/// When the idle animation flag is true, when no other animations are playing, 
+		/// the idle animation will be used. The idle animation will not be affected 
+		/// by the API calls to PluginIsPlaying, PluginStopAnimationType, PluginGetPlayingAnimationId, 
+		/// and PluginGetPlayingAnimationCount. Then the idle animation flag is false, 
+		/// the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums. 
+		///
+		/// </summary>
+		public static void UseIdleAnimation(int device, bool flag)
+		{
+			PluginUseIdleAnimation(device, flag);
 		}
 		#endregion
 
@@ -8089,6 +8120,20 @@ namespace ChromaSDK
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int PluginSetEffect(Guid effectId);
 		/// <summary>
+		/// When the idle animation is used, the named animation will play when no other 
+		/// animations are playing. Reference the animation by id.
+		/// EXPORT_API void PluginSetIdleAnimation(int animationId);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginSetIdleAnimation(int animationId);
+		/// <summary>
+		/// When the idle animation is used, the named animation will play when no other 
+		/// animations are playing. Reference the animation by name.
+		/// EXPORT_API void PluginSetIdleAnimationName(const char* path);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginSetIdleAnimationName(IntPtr path);
+		/// <summary>
 		/// Set animation key to a static color for the given frame.
 		/// EXPORT_API void PluginSetKeyColor(int animationId, int frameId, int rzkey, int color);
 		/// </summary>
@@ -8706,6 +8751,17 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern int PluginUpdateFrame(int animationId, int frameIndex, float duration, int[] colors, int length);
+		/// <summary>
+		/// When the idle animation flag is true, when no other animations are playing, 
+		/// the idle animation will be used. The idle animation will not be affected 
+		/// by the API calls to PluginIsPlaying, PluginStopAnimationType, PluginGetPlayingAnimationId, 
+		/// and PluginGetPlayingAnimationCount. Then the idle animation flag is false, 
+		/// the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums. 
+		///
+		/// EXPORT_API void PluginUseIdleAnimation(int device, bool flag);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginUseIdleAnimation(int device, bool flag);
 		#endregion
   }
 }
