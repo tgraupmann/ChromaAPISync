@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define DEBUG_OUTPUT_FILES
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +10,60 @@ namespace ChromaAPISync
 {
     class Converter
     {
+        // Collect information from stdafx.h
+        private static SortedList<string, MetaMethodInfo> _sMethods = new SortedList<string, MetaMethodInfo>();
+
+        private static readonly MetaOverride[] _sUnityOverrides =
+        {
+            new MetaOverride() { MethodName="GetMaxLeds", ArgName="device", OverrideType="Device1D", CastType="int"},
+            new MetaOverride() { MethodName="GetMaxRow", ArgName="device", OverrideType="Device2D", CastType="int"},
+            new MetaOverride() { MethodName="GetMaxColumn", ArgName="device", OverrideType="Device2D", CastType="int"},
+            new MetaOverride() { MethodName="CoreCreateEffect", ArgName="Effect", OverrideType="EFFECT_TYPE", CastType="int"},
+            new MetaOverride() { MethodName="CoreCreateEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateChromaLinkEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateHeadsetEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateKeyboardEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateKeypadEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateMouseEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreCreateMousepadEffect", ArgName="pEffectId", UseOut=true},
+            new MetaOverride() { MethodName="CoreQueryDevice", ArgName="DeviceInfo", OverrideType="out DEVICE_INFO_TYPE", UseOut=true},
+            new MetaOverride() { MethodName="CreateEffect", ArgName="effect", OverrideType="EFFECT_TYPE", CastType="int"},
+            new MetaOverride() { MethodName="CreateEffect", ArgName="effectId", OverrideType="out FChromaSDKGuid", UseOut=true},
+            new MetaOverride() { MethodName="GetFrame", ArgName="duration", OverrideType="out float", UseOut=true},
+        };
+
+        #region Data
+
+        class MetaMethodInfo
+        {
+            public string Name = string.Empty;
+            public string ReturnType = string.Empty;
+            public string Tabs = string.Empty;
+            public string Line = string.Empty;
+            public string Args = string.Empty;
+            public string Comments = string.Empty;
+            public List<MetaArgInfo> DetailArgs = new List<MetaArgInfo>();
+        }
+
+        public class MetaOverride
+        {
+            public string MethodName = string.Empty;
+            public string ArgName = string.Empty;
+            public string OverrideType = string.Empty;
+            public string CastType = string.Empty;
+            public bool UseOut = false;
+        }
+
+        class MetaArgInfo
+        {
+            public MetaMethodInfo MethodInfo;
+            public MetaOverride OverrideInfo = null;
+            public string Name = string.Empty;
+            public string StrType = string.Empty;
+        }
+
+        #endregion
+
         public static void ConvertExportsToClass(string input,
             string outputHeader, string outputImplementation,
             string outputDocs,
@@ -40,6 +96,8 @@ namespace ChromaAPISync
                     return;
                 }
             }
+
+#if DEBUG_OUTPUT_FILES
 
             if (File.Exists(fileHeader))
             {
@@ -115,6 +173,7 @@ namespace ChromaAPISync
                     }
                 }
             }
+#endif
         }
 
         static bool Replace(ref string line, string search, string replace)
@@ -213,34 +272,6 @@ namespace ChromaAPISync
             args = temp.Substring(0, indexParens);
             return true;
         }
-
-        public class MetaOverride
-        {
-            public string MethodName = string.Empty;
-            public string ArgName = string.Empty;
-            public string OverrideType = string.Empty;
-            public string CastType = string.Empty;
-            public bool UseOut = false;
-        }
-
-        private static readonly MetaOverride[] _sUnityOverrides =
-        {
-            new MetaOverride() { MethodName="GetMaxLeds", ArgName="device", OverrideType="Device1D", CastType="int"},
-            new MetaOverride() { MethodName="GetMaxRow", ArgName="device", OverrideType="Device2D", CastType="int"},
-            new MetaOverride() { MethodName="GetMaxColumn", ArgName="device", OverrideType="Device2D", CastType="int"},
-            new MetaOverride() { MethodName="CoreCreateEffect", ArgName="Effect", OverrideType="EFFECT_TYPE", CastType="int"},
-            new MetaOverride() { MethodName="CoreCreateEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreCreateChromaLinkEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreCreateHeadsetEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreCreateKeyboardEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreCreateKeypadEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreCreateMouseEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreCreateMousepadEffect", ArgName="pEffectId", UseOut=true},
-            new MetaOverride() { MethodName="CoreQueryDevice", ArgName="DeviceInfo", OverrideType="out DEVICE_INFO_TYPE", UseOut=true},
-            new MetaOverride() { MethodName="CreateEffect", ArgName="effect", OverrideType="EFFECT_TYPE", CastType="int"},
-            new MetaOverride() { MethodName="CreateEffect", ArgName="effectId", OverrideType="out FChromaSDKGuid", UseOut=true},
-            new MetaOverride() { MethodName="GetFrame", ArgName="duration", OverrideType="out float", UseOut=true},
-        };
 
         private static bool GetArgsTypes(MetaMethodInfo methodInfo)
         {
@@ -711,27 +742,6 @@ namespace ChromaAPISync
             return string.Join(",", parts);
         }
         
-        class MetaArgInfo
-        {
-            public MetaMethodInfo MethodInfo;
-            public MetaOverride OverrideInfo = null;
-            public string Name = string.Empty;
-            public string StrType = string.Empty;
-        }
-
-        class MetaMethodInfo
-        {
-            public string Name = string.Empty;
-            public string ReturnType = string.Empty;
-            public string Tabs = string.Empty;
-            public string Line = string.Empty;
-            public string Args = string.Empty;
-            public string Comments = string.Empty;
-            public List<MetaArgInfo> DetailArgs = new List<MetaArgInfo>();
-        }
-
-        static SortedList<string, MetaMethodInfo> _sMethods = new SortedList<string, MetaMethodInfo>();
-
         static bool ProcessStdafx(string fileInput)
         {
             try
@@ -1268,7 +1278,7 @@ namespace ChromaSDK
         const string DLL_NAME = ""CChromaEditorLibrary"";
 #endif
 
-        #region Data Structures
+#region Data Structures
 
         public enum DeviceType
         {
@@ -1447,9 +1457,9 @@ namespace ChromaSDK
             }
         }
 
-        #endregion
+#endregion
 
-        #region Helpers (handle path conversions)
+#region Helpers (handle path conversions)
 
         /// <summary>
         /// Helper to convert string to IntPtr
@@ -1641,5 +1651,204 @@ namespace ChromaSDK
                 return false;
             }
         }
+
+#region Sort UE4 Header
+
+        public static void SortHeaderUE4(string input,
+            string outputHeader)
+        {
+            if (File.Exists(input))
+            {
+                if (!ProcessSortHeaderUE4(input))
+                {
+                    return;
+                }
+            }
+
+            if (File.Exists(outputHeader))
+            {
+                File.Delete(outputHeader);
+            }
+            using (FileStream fsHeader = File.Open(outputHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swHeader = new StreamWriter(fsHeader))
+                {
+                    if (!WriteSortHeaderUE4(swHeader))
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        private static string GetNextWord(string line)
+        {
+            string result = "";
+            for (int i = 0; i < line.Length; ++i)
+            {
+                char c = line[i];
+                if (i == 0 && char.IsDigit(c))
+                {
+                    return "";
+                }
+                else if (char.IsLetterOrDigit(c) ||
+                    c == '<' || c == '>' ||
+                    c == '_' ||
+                    c == ':')
+                {
+                    result += c;
+                }
+                else
+                {
+                    return result;
+                }
+            }
+            return result;
+        }
+
+        private static bool GetUE4MethodName(string line, out string methodName)
+        {
+            const string TOKEN_STATIC = "static";
+            string temp;
+            if (line.StartsWith(TOKEN_STATIC))
+            {
+                temp = line.Substring(TOKEN_STATIC.Length).Trim();
+            }
+            else
+            {
+                temp = line;
+            }
+
+            string returnType = GetNextWord(temp);
+            if (string.IsNullOrEmpty(returnType))
+            {
+                methodName = string.Empty;
+                return false;
+            }
+            temp = temp.Substring(returnType.Length).Trim();
+            methodName = GetNextWord(temp);
+
+            return true;
+        }
+
+        class UnrealMetaMethodInfo
+        {
+            public string Name = string.Empty;
+            public string Definition = string.Empty;
+            public string Line = string.Empty;
+        }
+
+        private static SortedList<string, UnrealMetaMethodInfo> _sUnrealMethods = null;
+
+        private static bool ProcessSortHeaderUE4(string fileInput)
+        {
+            try
+            {
+                const string TOKEN_UFUNCTION = @"UFUNCTION(";
+                _sUnrealMethods = new SortedList<string, UnrealMetaMethodInfo>();
+                string definition = string.Empty;
+                using (FileStream fs = File.Open(fileInput, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
+                        string line;
+                        bool readMethod = false;
+                        do
+                        {
+                            line = sr.ReadLine();
+                            if (line == null ||
+                                line == "\0")
+                            {
+                                break;
+                            }
+                            line = line.TrimStart();
+                            if (line.StartsWith(TOKEN_UFUNCTION))
+                            {
+                                definition = line;
+                                readMethod = true;
+                            }
+                            else if (readMethod)
+                            {
+                                readMethod = false;
+                                UnrealMetaMethodInfo methodInfo = new UnrealMetaMethodInfo();
+                                methodInfo.Definition = definition;
+
+                                if (!GetUE4MethodName(line, out methodInfo.Name))
+                                {
+                                    continue;
+                                }
+                                if (string.IsNullOrEmpty(methodInfo.Name))
+                                {
+                                    continue;
+                                }
+                                Console.WriteLine("Method: {0}", methodInfo.Name);
+                                methodInfo.Line = line;
+                                methodInfo.Definition = definition;
+                                _sUnrealMethods[methodInfo.Name] = methodInfo;
+                            }
+                        }
+                        while (line != null);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to process file: {0}", fileInput);
+                return false;
+            }
+        }
+
+        static bool WriteSortHeaderUE4(StreamWriter swHeader)
+        {
+            try
+            {
+                Output(swHeader, "#pragma region Auto sort blueprint methods");
+                Output(swHeader, string.Empty);
+
+                foreach (KeyValuePair<string, UnrealMetaMethodInfo> unrealMethod in _sUnrealMethods)
+                {
+                    UnrealMetaMethodInfo unrealMethodInfo = unrealMethod.Value;
+
+                    foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                    {
+
+                        MetaMethodInfo methodInfo = method.Value;
+                        if (methodInfo.Name != unrealMethodInfo.Name)
+                        {
+                            continue;
+                        }
+
+                        Output(swHeader, "\t/*");
+
+                        if (!string.IsNullOrEmpty(methodInfo.Comments))
+                        {
+                            Output(swHeader, "\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                        }
+
+                        Output(swHeader, "\t*/");
+                    }
+
+                    Output(swHeader, "\t{0}", unrealMethodInfo.Definition);
+                    Output(swHeader, "\t{0}", unrealMethodInfo.Line);
+                    Output(swHeader, string.Empty);
+                }
+                Output(swHeader, string.Empty);
+                Output(swHeader, "#pragma endregion");
+
+                swHeader.Flush();
+                swHeader.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write header!");
+                return false;
+            }
+        }
+
+#endregion
     }
 }
