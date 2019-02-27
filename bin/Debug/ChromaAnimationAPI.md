@@ -4376,10 +4376,10 @@ API methods auto initialize the ChromaSDK if not already initialized.
 
 ```C++
 // DLL Interface
-EXPORT_API int PluginInit();
+EXPORT_API RZRESULT PluginInit();
 
 // Class Plugin
-int result = ChromaAnimationAPI::Init();
+RZRESULT result = ChromaAnimationAPI::Init();
 ```
 
 ---
@@ -8304,10 +8304,10 @@ Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
 
 ```C++
 // DLL Interface
-EXPORT_API int PluginUninit();
+EXPORT_API RZRESULT PluginUninit();
 
 // Class Plugin
-int result = ChromaAnimationAPI::Uninit();
+RZRESULT result = ChromaAnimationAPI::Uninit();
 ```
 
 ---

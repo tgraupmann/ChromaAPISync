@@ -517,7 +517,7 @@ namespace ChromaAPISync
             }
             else if (result == "RZRESULT")
             {
-                result = "int";
+                result = "long";
             }
             else if (result == "ChromaSDK::EFFECT_TYPE")
             {
@@ -600,7 +600,7 @@ namespace ChromaAPISync
             }
             else if (result == "RZRESULT")
             {
-                result = "int";
+                result = "long";
             }
             else if (result == "ChromaSDK::ChromaLink::EFFECT_TYPE")
             {
