@@ -47,6 +47,10 @@
 * [PluginCopyKeyColorAllFramesOffsetNameD](#PluginCopyKeyColorAllFramesOffsetNameD)
 * [PluginCopyKeyColorName](#PluginCopyKeyColorName)
 * [PluginCopyKeyColorNameD](#PluginCopyKeyColorNameD)
+* [PluginCopyKeysColor](#PluginCopyKeysColor)
+* [PluginCopyKeysColorName](#PluginCopyKeysColorName)
+* [PluginCopyKeysColorOffset](#PluginCopyKeysColorOffset)
+* [PluginCopyKeysColorOffsetName](#PluginCopyKeysColorOffsetName)
 * [PluginCopyNonZeroAllKeys](#PluginCopyNonZeroAllKeys)
 * [PluginCopyNonZeroAllKeysAllFrames](#PluginCopyNonZeroAllKeysAllFrames)
 * [PluginCopyNonZeroAllKeysAllFramesName](#PluginCopyNonZeroAllKeysAllFramesName)
@@ -1293,6 +1297,84 @@ EXPORT_API double PluginCopyKeyColorNameD(
 double result = ChromaAnimationAPI::CopyKeyColorNameD(
 	const char* sourceAnimation, const char* targetAnimation, double frameId,
 	double rzkey);
+```
+
+---
+<a name="PluginCopyKeysColor"></a>
+**PluginCopyKeysColor**
+
+Copy animation color for a set of keys from the source animation to the 
+target animation for the given frame. Reference the source and target by 
+id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyKeysColor(
+	int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
+
+// Class Plugin
+ChromaAnimationAPI::CopyKeysColor(
+	int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
+```
+
+---
+<a name="PluginCopyKeysColorName"></a>
+**PluginCopyKeysColorName**
+
+Copy animation color for a set of keys from the source animation to the 
+target animation for the given frame. Reference the source and target by 
+name.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyKeysColorName(
+	const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys,
+	int size);
+
+// Class Plugin
+ChromaAnimationAPI::CopyKeysColorName(
+	const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys,
+	int size);
+```
+
+---
+<a name="PluginCopyKeysColorOffset"></a>
+**PluginCopyKeysColorOffset**
+
+Copy animation color for a set of keys from the source animation to the 
+target animation from the source frame to the target frame. Reference the 
+source and target by id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyKeysColorOffset(
+	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId,
+	int* keys, int size);
+
+// Class Plugin
+ChromaAnimationAPI::CopyKeysColorOffset(
+	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId,
+	int* keys, int size);
+```
+
+---
+<a name="PluginCopyKeysColorOffsetName"></a>
+**PluginCopyKeysColorOffsetName**
+
+Copy animation color for a set of keys from the source animation to the 
+target animation from the source frame to the target frame. Reference the 
+source and target by name.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyKeysColorOffsetName(
+	const char* sourceAnimation, const char* targetAnimation, int sourceFrameId,
+	int targetFrameId, int* keys, int size);
+
+// Class Plugin
+ChromaAnimationAPI::CopyKeysColorOffsetName(
+	const char* sourceAnimation, const char* targetAnimation, int sourceFrameId,
+	int targetFrameId, int* keys, int size);
 ```
 
 ---

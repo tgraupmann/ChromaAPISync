@@ -975,6 +975,54 @@ namespace ChromaSDK
 			return result;
 		}
 		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for the given frame. Reference the source and target by 
+		/// id.
+		/// </summary>
+		public static void CopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, int[] keys, int size)
+		{
+			PluginCopyKeysColor(sourceAnimationId, targetAnimationId, frameId, keys, size);
+		}
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for the given frame. Reference the source and target by 
+		/// name.
+		/// </summary>
+		public static void CopyKeysColorName(string sourceAnimation, string targetAnimation, int frameId, int[] keys, int size)
+		{
+			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+			string pathTargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			PluginCopyKeysColorName(lpSourceAnimation, lpTargetAnimation, frameId, keys, size);
+			FreeIntPtr(lpSourceAnimation);
+			FreeIntPtr(lpTargetAnimation);
+		}
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation from the source frame to the target frame. Reference the 
+		/// source and target by id.
+		/// </summary>
+		public static void CopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int[] keys, int size)
+		{
+			PluginCopyKeysColorOffset(sourceAnimationId, targetAnimationId, sourceFrameId, targetFrameId, keys, size);
+		}
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation from the source frame to the target frame. Reference the 
+		/// source and target by name.
+		/// </summary>
+		public static void CopyKeysColorOffsetName(string sourceAnimation, string targetAnimation, int sourceFrameId, int targetFrameId, int[] keys, int size)
+		{
+			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+			string pathTargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			PluginCopyKeysColorOffsetName(lpSourceAnimation, lpTargetAnimation, sourceFrameId, targetFrameId, keys, size);
+			FreeIntPtr(lpSourceAnimation);
+			FreeIntPtr(lpTargetAnimation);
+		}
+		/// <summary>
 		/// Copy source animation to target animation for the given frame. Source and 
 		/// target are referenced by id.
 		/// </summary>
@@ -5780,6 +5828,38 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double PluginCopyKeyColorNameD(IntPtr sourceAnimation, IntPtr targetAnimation, double frameId, double rzkey);
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for the given frame. Reference the source and target by 
+		/// id.
+		/// EXPORT_API void PluginCopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, int[] keys, int size);
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for the given frame. Reference the source and target by 
+		/// name.
+		/// EXPORT_API void PluginCopyKeysColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys, int size);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyKeysColorName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId, int[] keys, int size);
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation from the source frame to the target frame. Reference the 
+		/// source and target by id.
+		/// EXPORT_API void PluginCopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int* keys, int size);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int[] keys, int size);
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation from the source frame to the target frame. Reference the 
+		/// source and target by name.
+		/// EXPORT_API void PluginCopyKeysColorOffsetName(const char* sourceAnimation, const char* targetAnimation, int sourceFrameId, int targetFrameId, int* keys, int size);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyKeysColorOffsetName(IntPtr sourceAnimation, IntPtr targetAnimation, int sourceFrameId, int targetFrameId, int[] keys, int size);
 		/// <summary>
 		/// Copy source animation to target animation for the given frame. Source and 
 		/// target are referenced by id.
