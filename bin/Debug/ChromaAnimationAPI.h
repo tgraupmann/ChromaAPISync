@@ -2369,6 +2369,10 @@ typedef int			(*PLUGIN_UPDATE_FRAME)(int animationId, int frameIndex, float dura
 	the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
 */
 typedef void		(*PLUGIN_USE_IDLE_ANIMATION)(int device, bool flag);
+/*
+	Set idle animation flag for all devices.
+*/
+typedef void		(*PLUGIN_USE_IDLE_ANIMATIONS)(bool flag);
 #pragma endregion
 
 #pragma region API declare prototypes
@@ -4742,4 +4746,8 @@ CHROMASDK_DECLARE_METHOD(PLUGIN_UPDATE_FRAME, UpdateFrame);
 	the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
 */
 CHROMASDK_DECLARE_METHOD(PLUGIN_USE_IDLE_ANIMATION, UseIdleAnimation);
+/*
+	Set idle animation flag for all devices.
+*/
+CHROMASDK_DECLARE_METHOD(PLUGIN_USE_IDLE_ANIMATIONS, UseIdleAnimations);
 #pragma endregion

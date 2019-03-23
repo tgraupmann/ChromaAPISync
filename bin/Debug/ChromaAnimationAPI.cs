@@ -5486,6 +5486,13 @@ namespace ChromaSDK
 		{
 			PluginUseIdleAnimation(device, flag);
 		}
+		/// <summary>
+		/// Set idle animation flag for all devices.
+		/// </summary>
+		public static void UseIdleAnimations(bool flag)
+		{
+			PluginUseIdleAnimations(flag);
+		}
 		#endregion
 
 		#region Private DLL Hooks
@@ -8842,6 +8849,12 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void PluginUseIdleAnimation(int device, bool flag);
+		/// <summary>
+		/// Set idle animation flag for all devices.
+		/// EXPORT_API void PluginUseIdleAnimations(bool flag);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginUseIdleAnimations(bool flag);
 		#endregion
   }
 }

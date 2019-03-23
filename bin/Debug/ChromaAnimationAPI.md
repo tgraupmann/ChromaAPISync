@@ -481,6 +481,7 @@
 * [PluginUnloadComposite](#PluginUnloadComposite)
 * [PluginUpdateFrame](#PluginUpdateFrame)
 * [PluginUseIdleAnimation](#PluginUseIdleAnimation)
+* [PluginUseIdleAnimations](#PluginUseIdleAnimations)
 
 ---
 <a name="PluginAddFrame"></a>
@@ -8504,5 +8505,19 @@ EXPORT_API void PluginUseIdleAnimation(
 // Class Plugin
 ChromaAnimationAPI::UseIdleAnimation(
 	int device, bool flag);
+```
+
+---
+<a name="PluginUseIdleAnimations"></a>
+**PluginUseIdleAnimations**
+
+Set idle animation flag for all devices.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginUseIdleAnimations(bool flag);
+
+// Class Plugin
+ChromaAnimationAPI::UseIdleAnimations(bool flag);
 ```
 
