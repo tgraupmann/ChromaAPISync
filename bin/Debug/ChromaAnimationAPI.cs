@@ -3981,7 +3981,7 @@ namespace ChromaSDK
 		/// upon success. Returns -1 if there was a failure. The animation id is used 
 		/// in most of the API methods.
 		/// </summary>
-		public static int OpenAnimationFromMemory(const byte* data, string name)
+		public static int OpenAnimationFromMemory(byte[] data, string name)
 		{
 			string pathName = GetStreamingPath(name);
 			IntPtr lpName = GetIntPtr(pathName);
@@ -7843,7 +7843,7 @@ namespace ChromaSDK
 		/// EXPORT_API int PluginOpenAnimationFromMemory(const byte* data, const char* name);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginOpenAnimationFromMemory(const byte* data, IntPtr name);
+		private static extern int PluginOpenAnimationFromMemory(byte[] data, IntPtr name);
 		/// <summary>
 		/// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 		/// upon success. Returns -1 if there was a failure.

@@ -503,6 +503,10 @@ namespace ChromaAPISync
             {
                 result = "int[]";
             }
+            else if (result == "const byte*")
+            {
+                result = "byte[]";
+            }
             else if (result == "const int*")
             {
                 result = "int[]";
@@ -589,6 +593,10 @@ namespace ChromaAPISync
             if (result == "int*")
             {
                 result = "int[]";
+            }
+            else if (result == "const byte*")
+            {
+                result = "byte[]";
             }
             else if (result == "const int*")
             {
