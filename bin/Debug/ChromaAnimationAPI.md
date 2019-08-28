@@ -78,6 +78,9 @@
 * [PluginCopyNonZeroTargetAllKeysOffset](#PluginCopyNonZeroTargetAllKeysOffset)
 * [PluginCopyNonZeroTargetAllKeysOffsetName](#PluginCopyNonZeroTargetAllKeysOffsetName)
 * [PluginCopyNonZeroTargetAllKeysOffsetNameD](#PluginCopyNonZeroTargetAllKeysOffsetNameD)
+* [PluginCopyNonZeroTargetZeroAllKeysAllFrames](#PluginCopyNonZeroTargetZeroAllKeysAllFrames)
+* [PluginCopyNonZeroTargetZeroAllKeysAllFramesName](#PluginCopyNonZeroTargetZeroAllKeysAllFramesName)
+* [PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD](#PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD)
 * [PluginCopyRedChannelAllFrames](#PluginCopyRedChannelAllFrames)
 * [PluginCopyRedChannelAllFramesName](#PluginCopyRedChannelAllFramesName)
 * [PluginCopyRedChannelAllFramesNameD](#PluginCopyRedChannelAllFramesNameD)
@@ -223,6 +226,8 @@
 * [PluginGetKeyColor](#PluginGetKeyColor)
 * [PluginGetKeyColorD](#PluginGetKeyColorD)
 * [PluginGetKeyColorName](#PluginGetKeyColorName)
+* [PluginGetLibraryLoadedState](#PluginGetLibraryLoadedState)
+* [PluginGetLibraryLoadedStateD](#PluginGetLibraryLoadedStateD)
 * [PluginGetMaxColumn](#PluginGetMaxColumn)
 * [PluginGetMaxColumnD](#PluginGetMaxColumnD)
 * [PluginGetMaxLeds](#PluginGetMaxLeds)
@@ -482,6 +487,8 @@
 * [PluginUpdateFrame](#PluginUpdateFrame)
 * [PluginUseIdleAnimation](#PluginUseIdleAnimation)
 * [PluginUseIdleAnimations](#PluginUseIdleAnimations)
+* [PluginUsePreloading](#PluginUsePreloading)
+* [PluginUsePreloadingName](#PluginUsePreloadingName)
 
 ---
 <a name="PluginAddFrame"></a>
@@ -1848,6 +1855,58 @@ double result = ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffsetNameD(
 ```
 
 ---
+<a name="PluginCopyNonZeroTargetZeroAllKeysAllFrames"></a>
+**PluginCopyNonZeroTargetZeroAllKeysAllFrames**
+
+Copy nonzero colors from the source animation to the target animation where 
+the target color is zero for all frames. Source and target are referenced 
+by id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyNonZeroTargetZeroAllKeysAllFrames(
+	int sourceAnimationId, int targetAnimationId);
+
+// Class Plugin
+ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFrames(
+	int sourceAnimationId, int targetAnimationId);
+```
+
+---
+<a name="PluginCopyNonZeroTargetZeroAllKeysAllFramesName"></a>
+**PluginCopyNonZeroTargetZeroAllKeysAllFramesName**
+
+Copy nonzero colors from the source animation to the target animation where 
+the target color is zero for all frames. Source and target are referenced 
+by name.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyNonZeroTargetZeroAllKeysAllFramesName(
+	const char* sourceAnimation, const char* targetAnimation);
+
+// Class Plugin
+ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesName(
+	const char* sourceAnimation, const char* targetAnimation);
+```
+
+---
+<a name="PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD"></a>
+**PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD**
+
+D suffix for limited data types.
+
+```C++
+// DLL Interface
+EXPORT_API double PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD(
+	const char* sourceAnimation, const char* targetAnimation);
+
+// Class Plugin
+double result = ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesNameD(
+	const char* sourceAnimation, const char* targetAnimation);
+```
+
+---
 <a name="PluginCopyRedChannelAllFrames"></a>
 **PluginCopyRedChannelAllFrames**
 
@@ -2110,11 +2169,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateChromaLinkEffect(
-	ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateChromaLinkEffect(
-	ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2126,11 +2185,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateEffect(
-	RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateEffect(
-	RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2142,11 +2201,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateHeadsetEffect(
-	ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateHeadsetEffect(
-	ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2158,11 +2217,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateKeyboardEffect(
-	ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateKeyboardEffect(
-	ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2174,11 +2233,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateKeypadEffect(
-	ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateKeypadEffect(
-	ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2190,11 +2249,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateMouseEffect(
-	ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateMouseEffect(
-	ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2206,11 +2265,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreCreateMousepadEffect(
-	ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreCreateMousepadEffect(
-	ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 ```
 
 ---
@@ -2250,11 +2309,11 @@ Direct access to low level API.
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginCoreQueryDevice(
-	RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE &DeviceInfo);
+	RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreQueryDevice(
-	RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE &DeviceInfo);
+	RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 ```
 
 ---
@@ -4256,6 +4315,37 @@ EXPORT_API int PluginGetKeyColorName(
 // Class Plugin
 int result = ChromaAnimationAPI::GetKeyColorName(
 	const char* path, int frameId, int rzkey);
+```
+
+---
+<a name="PluginGetLibraryLoadedState"></a>
+**PluginGetLibraryLoadedState**
+
+Returns `RZRESULT_SUCCESS` if the plugin has been initialized successfully. 
+Returns `RZRESULT_DLL_NOT_FOUND` if core Chroma library is not found. Returns 
+`RZRESULT_DLL_INVALID_SIGNATURE` if core Chroma library has an invalid 
+signature.
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginGetLibraryLoadedState();
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::GetLibraryLoadedState();
+```
+
+---
+<a name="PluginGetLibraryLoadedStateD"></a>
+**PluginGetLibraryLoadedStateD**
+
+D suffix for limited data types.
+
+```C++
+// DLL Interface
+EXPORT_API double PluginGetLibraryLoadedStateD();
+
+// Class Plugin
+double result = ChromaAnimationAPI::GetLibraryLoadedStateD();
 ```
 
 ---
@@ -8519,5 +8609,39 @@ EXPORT_API void PluginUseIdleAnimations(bool flag);
 
 // Class Plugin
 ChromaAnimationAPI::UseIdleAnimations(bool flag);
+```
+
+---
+<a name="PluginUsePreloading"></a>
+**PluginUsePreloading**
+
+Set preloading animation flag, which is set to true by default. Reference 
+animation by id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginUsePreloading(
+	int animationId, bool flag);
+
+// Class Plugin
+ChromaAnimationAPI::UsePreloading(
+	int animationId, bool flag);
+```
+
+---
+<a name="PluginUsePreloadingName"></a>
+**PluginUsePreloadingName**
+
+Set preloading animation flag, which is set to true by default. Reference 
+animation by name.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginUsePreloadingName(
+	const char* path, bool flag);
+
+// Class Plugin
+ChromaAnimationAPI::UsePreloadingName(
+	const char* path, bool flag);
 ```
 

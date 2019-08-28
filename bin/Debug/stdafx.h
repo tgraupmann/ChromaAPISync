@@ -402,6 +402,22 @@
 	*/
 	EXPORT_API double PluginCopyNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
 	/*
+		Copy nonzero colors from the source animation to the target animation where 
+		the target color is zero for all frames. Source and target are referenced 
+		by id.
+	*/
+	EXPORT_API void PluginCopyNonZeroTargetZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
+	/*
+		Copy nonzero colors from the source animation to the target animation where 
+		the target color is zero for all frames. Source and target are referenced 
+		by name.
+	*/
+	EXPORT_API void PluginCopyNonZeroTargetZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
+	/*
+		D suffix for limited data types.
+	*/
+	EXPORT_API double PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation);
+	/*
 		Copy red channel to other channels for all frames. Intensity range is 0.0 
 		to 1.0. Reference the animation by id.
 	*/
@@ -476,31 +492,31 @@
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateChromaLinkEffect(ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateChromaLinkEffect(ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateHeadsetEffect(ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateHeadsetEffect(ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateKeyboardEffect(ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateKeyboardEffect(ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateKeypadEffect(ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateKeypadEffect(ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateMouseEffect(ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateMouseEffect(ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreCreateMousepadEffect(ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID *pEffectId);
+	EXPORT_API RZRESULT PluginCoreCreateMousepadEffect(ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 	/*
 		Direct access to low level API.
 	*/
@@ -512,7 +528,7 @@
 	/*
 		Direct access to low level API.
 	*/
-	EXPORT_API RZRESULT PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE &DeviceInfo);
+	EXPORT_API RZRESULT PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 	/*
 		Direct access to low level API.
 	*/
@@ -1108,6 +1124,17 @@
 		Get the color of an animation key for the given frame referenced by name.
 	*/
 	EXPORT_API int PluginGetKeyColorName(const char* path, int frameId, int rzkey);
+	/*
+		Returns `RZRESULT_SUCCESS` if the plugin has been initialized successfully. 
+		Returns `RZRESULT_DLL_NOT_FOUND` if core Chroma library is not found. Returns 
+		`RZRESULT_DLL_INVALID_SIGNATURE` if core Chroma library has an invalid 
+		signature.
+	*/
+	EXPORT_API RZRESULT PluginGetLibraryLoadedState();
+	/*
+		D suffix for limited data types.
+	*/
+	EXPORT_API double PluginGetLibraryLoadedStateD();
 	/*
 		Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
 		integer upon success. Returns -1 upon failure.
@@ -2373,4 +2400,14 @@
 		Set idle animation flag for all devices.
 	*/
 	EXPORT_API void PluginUseIdleAnimations(bool flag);
+	/*
+		Set preloading animation flag, which is set to true by default. Reference 
+		animation by id.
+	*/
+	EXPORT_API void PluginUsePreloading(int animationId, bool flag);
+	/*
+		Set preloading animation flag, which is set to true by default. Reference 
+		animation by name.
+	*/
+	EXPORT_API void PluginUsePreloadingName(const char* path, bool flag);
 #pragma endregion

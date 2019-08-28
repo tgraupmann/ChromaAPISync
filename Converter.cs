@@ -852,6 +852,24 @@ namespace ChromaAPISync
         {
             try
             {
+                string header =
+@"#pragma once
+
+#include ""..\CChromaEditorLibrary\ChromaSDKPluginTypes.h""
+
+# ifdef _WIN64
+#define CHROMA_EDITOR_DLL	_T(""CChromaEditorLibrary64.dll"")
+#else
+#define CHROMA_EDITOR_DLL	_T(""CChromaEditorLibrary.dll"")
+#endif
+
+                /* Setup log mechanism */
+typedef void(*DebugLogPtr)(const char*);
+                void LogDebug(const char* text, ...);
+                void LogError(const char* text, ...);
+                /* End of setup log mechanism */
+                ";
+                Output(swHeader, "{0}", header);
                 Output(swHeader, "#pragma region API typedefs");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
@@ -873,24 +891,42 @@ namespace ChromaAPISync
 
                 Output(swHeader, "");
 
+                string strNamespace =
+@"#define CHROMASDK_DECLARE_METHOD(Signature, FieldName) static Signature FieldName;
+
+namespace ChromaSDK
+{
+	class ChromaAnimationAPI
+	{
+	public:
+";
+                Output(swHeader, "{0}", strNamespace);
+
                 Output(swHeader, "#pragma region API declare prototypes");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    Output(swHeader, "/*");
+                    Output(swHeader, "\t\t/*");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Output(swHeader, "\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                        Output(swHeader, "\t\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t\t"));
                     }
 
-                    Output(swHeader, "*/");
+                    Output(swHeader, "\t\t*/");
 
-                    Output(swHeader, "CHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
+                    Output(swHeader, "\t\tCHROMASDK_DECLARE_METHOD(PLUGIN_{0}, {1});",
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
                 Output(swHeader, "#pragma endregion");
+
+                string footer =
+@"
+static int InitAPI();
+	};
+}";
+                Output(swHeader, "{0}", footer);
 
                 swHeader.Flush();
                 swHeader.Close();
@@ -910,6 +946,17 @@ namespace ChromaAPISync
             {
                 Console.WriteLine();
 
+                string header =
+@"#include ""stdafx.h""
+#include ""ChromaAnimationAPI.h""
+#include ""..\CChromaEditorLibrary\VerifyLibrarySignature.h""
+
+using namespace ChromaSDK;
+
+#define CHROMASDK_DECLARE_METHOD_IMPL(Signature, FieldName) Signature ChromaAnimationAPI::FieldName = nullptr;
+";
+                Output(swImplementation, "{0}", header);
+
                 Output(swImplementation, "#pragma region API declare assignments");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
@@ -922,6 +969,42 @@ namespace ChromaAPISync
 
                 Output(swImplementation, "");
 
+                string definition =
+@"#define CHROMASDK_VALIDATE_METHOD(Signature, FieldName) FieldName = (Signature) GetProcAddress(library, ""Plugin"" #FieldName); \
+if (FieldName == nullptr) \
+{ \
+	fprintf(stderr, ""Failed to find method: %s!\r\n"", ""Plugin"" #FieldName); \
+	return -1; \
+}
+
+int ChromaAnimationAPI::InitAPI()
+{
+	HMODULE library = LoadLibrary(CHROMA_EDITOR_DLL);
+	if (library == NULL)
+	{
+		fprintf(stderr, ""Failed to load Chroma Editor Library!\r\n"");
+		return -1;
+	}
+
+#if false
+	// when editor DLL is digitally signed
+	if (!VerifyLibrarySignature::VerifyModule(library))
+	{
+		fprintf(stderr, ""Failed to load Chroma Editor Library reason: invalid signature!\r\n"");
+
+		// unload the library
+		FreeLibrary(library);
+		library = NULL;
+
+		return -1;
+	}
+#endif
+
+	//fprintf(stderr, ""Loaded Chroma Editor DLL!\r\n"");
+";
+
+                Output(swImplementation, "{0}", definition);
+
                 Output(swImplementation, "#pragma region API validation");
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
@@ -931,6 +1014,13 @@ namespace ChromaAPISync
                         GetCamelUnderscore(methodInfo.Name), methodInfo.Name);
                 }
                 Output(swImplementation, "#pragma endregion");
+
+                string footer =
+@"
+	fprintf(stdout, ""Validated all DLL methods [success]\r\n"");
+	return 0;
+}";
+                Output(swImplementation, "{0}", footer);
 
                 swImplementation.Flush();
                 swImplementation.Close();
