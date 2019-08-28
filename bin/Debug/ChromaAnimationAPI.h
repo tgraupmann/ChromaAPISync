@@ -8,11 +8,11 @@
 #define CHROMA_EDITOR_DLL	_T("CChromaEditorLibrary.dll")
 #endif
 
-                /* Setup log mechanism */
+/* Setup log mechanism */
 typedef void(*DebugLogPtr)(const char*);
-                void LogDebug(const char* text, ...);
-                void LogError(const char* text, ...);
-                /* End of setup log mechanism */
+void LogDebug(const char* text, ...);
+void LogError(const char* text, ...);
+/* End of setup log mechanism */
                 
 #pragma region API typedefs
 /*

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "ChromaAnimationAPI.h"
+#if false
 #include "..\CChromaEditorLibrary\VerifyLibrarySignature.h"
+#endif
 
 using namespace ChromaSDK;
 

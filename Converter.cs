@@ -863,11 +863,11 @@ namespace ChromaAPISync
 #define CHROMA_EDITOR_DLL	_T(""CChromaEditorLibrary.dll"")
 #endif
 
-                /* Setup log mechanism */
+/* Setup log mechanism */
 typedef void(*DebugLogPtr)(const char*);
-                void LogDebug(const char* text, ...);
-                void LogError(const char* text, ...);
-                /* End of setup log mechanism */
+void LogDebug(const char* text, ...);
+void LogError(const char* text, ...);
+/* End of setup log mechanism */
                 ";
                 Output(swHeader, "{0}", header);
                 Output(swHeader, "#pragma region API typedefs");
@@ -949,7 +949,9 @@ static int InitAPI();
                 string header =
 @"#include ""stdafx.h""
 #include ""ChromaAnimationAPI.h""
+#if false
 #include ""..\CChromaEditorLibrary\VerifyLibrarySignature.h""
+#endif
 
 using namespace ChromaSDK;
 
