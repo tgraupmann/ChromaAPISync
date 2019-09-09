@@ -69,14 +69,16 @@ namespace ChromaAPISync
             string outputDocs,
             string outputUnity,
             string outputSortInput,
-            string outputJava)
+            string outputJavaInterface,
+            string outputJavaSDK)
         {
             OpenClassFiles(input,
                 outputHeader, outputImplementation,
                 outputDocs,
                 outputUnity,
                 outputSortInput,
-                outputJava);
+                outputJavaInterface,
+                outputJavaSDK);
         }
 
         private static void Output(StreamWriter sw, string msg, params object[] args)
@@ -90,7 +92,7 @@ namespace ChromaAPISync
             string fileDocs,
             string fileUnity,
             string fileSortInput,
-            string fileJava)
+            string fileJavaInterface, string fileJavaSDK)
         {
             if (File.Exists(input))
             {
@@ -102,15 +104,30 @@ namespace ChromaAPISync
 
 #if DEBUG_OUTPUT_FILES
 
-            if (File.Exists(fileJava))
+            if (File.Exists(fileJavaInterface))
             {
-                File.Delete(fileJava);
+                File.Delete(fileJavaInterface);
             }
-            using (FileStream fsJava = File.Open(fileJava, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            using (FileStream fsJava = File.Open(fileJavaInterface, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
             {
                 using (StreamWriter swJava = new StreamWriter(fsJava))
                 {
-                    if (!WriteJava(swJava))
+                    if (!WriteJavaInterface(swJava))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileJavaSDK))
+            {
+                File.Delete(fileJavaSDK);
+            }
+            using (FileStream fsJava = File.Open(fileJavaSDK, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swJava = new StreamWriter(fsJava))
+                {
+                    if (!WriteJavaSDK(swJava))
                     {
                         return;
                     }
@@ -2028,7 +2045,44 @@ namespace ChromaSDK
             return string.Join(", ", newParts.ToArray());
         }
 
-        static bool WriteJava(StreamWriter swJava)
+        static string GetJavaArgsWithoutType(string input)
+        {
+            string[] parts = input.Split(",".ToCharArray());
+            List<string> newParts = new List<string>();
+            foreach (string part in parts)
+            {
+                string trimPart = part.Trim();
+                int indexSpace = trimPart.LastIndexOf(" ");
+                if (indexSpace > 0)
+                {
+                    string name = trimPart.Substring(indexSpace);
+                    newParts.Add(string.Format("{0}", name.Trim()));
+                }
+                else
+                {
+                    newParts.Add(trimPart); //unexpected format
+                }
+            }
+            return string.Join(", ", newParts.ToArray());
+        }
+
+        static string LowercaseFirstLetter(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
+            else if (input.Length > 1)
+            {
+                return string.Format("{0}{1}", input.Substring(0, 1).ToLower(), input.Substring(1));
+            }
+            else
+            {
+                return input.ToLower();
+            }
+        }
+
+        static bool WriteJavaInterface(StreamWriter swJava)
         {
             try
             {
@@ -2068,6 +2122,109 @@ interface JChromaLib extends Library {
                         GetJavaReturnType(methodInfo.ReturnType),
                         methodInfo.Name,
                         GetJavaArgs(methodInfo.Args));
+                }
+
+                Output(swJava, "");
+                Output(swJava, "{0}", "}");
+
+                swJava.Flush();
+                swJava.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write java!");
+                return false;
+            }
+        }
+
+        static bool WriteJavaSDK(StreamWriter swJava)
+        {
+            try
+            {
+                string header =
+@"package com.razer.java;
+
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+
+import org.jglr.jchroma.devices.DeviceInfos;
+import org.jglr.jchroma.devices.GUIDStruct;
+
+/**
+ * Entry point of the API, allows to create effects for the device and query Razer devices
+ */
+public class JChromaSDK {
+
+    private static JChromaSDK instance;
+    private final JChromaLib wrapper;
+
+    private JChromaSDK() {
+        String libName = ""CChromaEditorLibrary"";
+        if (System.getProperty(""os.arch"").contains(""64""))
+                {
+                    libName += ""64"";
+                }
+                String path = System.getProperty(""user.dir"") + ""\\src\\main\\resources\\"";
+                String fullPath = path + ""\\"" + libName;
+                //System.out.println(""fullPath: ""+fullPath);
+                wrapper = (JChromaLib)Native.loadLibrary(fullPath, JChromaLib.class);
+    }
+
+    /**
+     * Returns the <code>JChroma</code> singleton. One must be warned that this method performs
+     * lazy initialisation and that loading the native files is done at initialisation
+     * @return
+     *          The JChroma singleton
+     */
+    public static JChromaSDK getInstance()
+    {
+        if (instance == null)
+            instance = new JChromaSDK();
+        return instance;
+    }
+                ";
+                Output(swJava, "{0}", header);
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swJava, "\t/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swJava, "\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                    }
+
+                    Output(swJava, "\t*/");
+
+                    Output(swJava, "\t/// EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+
+                    Output(swJava, "\tpublic {0} {1}({2})",
+                        GetJavaReturnType(methodInfo.ReturnType),
+                        LowercaseFirstLetter(methodInfo.Name),
+                        GetJavaArgs(methodInfo.Args));
+
+                    Output(swJava, "\t{0}", "{");
+                    if (GetJavaReturnType(methodInfo.ReturnType).Trim() == "void")
+                    {
+                        Output(swJava, "\t\twrapper.Plugin{1}({2});",
+                        GetJavaReturnType(methodInfo.ReturnType),
+                        methodInfo.Name,
+                        GetJavaArgsWithoutType(methodInfo.Args));
+                    }
+                    else
+                    {
+                        Output(swJava, "\t\treturn wrapper.Plugin{1}({2});",
+                        GetJavaReturnType(methodInfo.ReturnType),
+                        methodInfo.Name,
+                        GetJavaArgsWithoutType(methodInfo.Args));
+                    }
+                    Output(swJava, "\t{0}", "}");
                 }
 
                 Output(swJava, "");
