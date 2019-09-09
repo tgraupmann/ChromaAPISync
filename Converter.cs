@@ -68,13 +68,15 @@ namespace ChromaAPISync
             string outputHeader, string outputImplementation,
             string outputDocs,
             string outputUnity,
-            string outputSortInput)
+            string outputSortInput,
+            string outputJava)
         {
             OpenClassFiles(input,
                 outputHeader, outputImplementation,
                 outputDocs,
                 outputUnity,
-                outputSortInput);
+                outputSortInput,
+                outputJava);
         }
 
         private static void Output(StreamWriter sw, string msg, params object[] args)
@@ -87,7 +89,8 @@ namespace ChromaAPISync
             string fileHeader, string fileImplementation,
             string fileDocs,
             string fileUnity,
-            string fileSortInput)
+            string fileSortInput,
+            string fileJava)
         {
             if (File.Exists(input))
             {
@@ -98,6 +101,21 @@ namespace ChromaAPISync
             }
 
 #if DEBUG_OUTPUT_FILES
+
+            if (File.Exists(fileJava))
+            {
+                File.Delete(fileJava);
+            }
+            using (FileStream fsJava = File.Open(fileJava, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swJava = new StreamWriter(fsJava))
+                {
+                    if (!WriteJava(swJava))
+                    {
+                        return;
+                    }
+                }
+            }
 
             if (File.Exists(fileHeader))
             {
@@ -1950,5 +1968,121 @@ namespace ChromaSDK
         }
 
 #endregion
+
+        static string GetJavaReturnType(string input)
+        {
+            switch (input.Trim())
+            {
+                case "const char*":
+                    return "String";
+                case "bool":
+                    return "boolean";
+                case "ChromaSDK::EFFECT_TYPE":
+                case "ChromaSDK::ChromaLink::EFFECT_TYPE":
+                case "ChromaSDK::Headset::EFFECT_TYPE":
+                case "ChromaSDK::Keyboard::EFFECT_TYPE":
+                case "ChromaSDK::Keypad::EFFECT_TYPE":
+                case "ChromaSDK::Mouse::EFFECT_TYPE":
+                case "ChromaSDK::Mousepad::EFFECT_TYPE":
+                case "RZRESULT":
+                    return "int";
+                case "const byte*":
+                case "int*":
+                case "const int*":
+                case "float*":
+                case "PRZPARAM":
+                case "RZEFFECTID*":
+                case "DebugLogPtr":
+                    return "Pointer";
+                case "const ChromaSDK::FChromaSDKGuid&":
+                case "ChromaSDK::FChromaSDKGuid*":
+                case "RZDEVICEID":
+                case "RZEFFECTID":
+                    return "GUIDStruct";
+                case "ChromaSDK::DEVICE_INFO_TYPE&":
+                    return "DeviceInfos.DeviceInfosStruct";
+            }
+            return input;
+        }
+
+        static string GetJavaArgs(string input)
+        {
+            string[] parts = input.Split(",".ToCharArray());
+            List<string> newParts = new List<string>();
+            foreach (string part in parts)
+            {
+                string trimPart = part.Trim();
+                int indexSpace = trimPart.LastIndexOf(" ");
+                if (indexSpace > 0)
+                {
+                    string type = trimPart.Substring(0, indexSpace);
+                    string name = trimPart.Substring(indexSpace);
+                    string newType = GetJavaReturnType(type);
+                    newParts.Add(string.Format("{0}{1}", newType, name));
+                }
+                else
+                {
+                    newParts.Add(trimPart); //unexpected format
+                }
+            }
+            return string.Join(", ", newParts.ToArray());
+        }
+
+        static bool WriteJava(StreamWriter swJava)
+        {
+            try
+            {
+                string header =
+@"package com.razer.java;
+
+import com.sun.jna.Library;
+import com.sun.jna.Pointer;
+import org.jglr.jchroma.devices.DeviceInfos;
+import org.jglr.jchroma.devices.GUIDStruct;
+
+/**
+ * Wrapper used by JNA to load Razer Chroma SDK libraries.
+ */
+interface JChromaLib extends Library {
+                ";
+                Output(swJava, "{0}", header);
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swJava, "\t/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swJava, "\t{0}", SplitLongComments(methodInfo.Comments, "\t"));
+                    }
+
+                    Output(swJava, "\t*/");
+
+                    Output(swJava, "\t/// EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+
+                    Output(swJava, "\t{0} Plugin{1}({2});",
+                        GetJavaReturnType(methodInfo.ReturnType),
+                        methodInfo.Name,
+                        GetJavaArgs(methodInfo.Args));
+                }
+
+                Output(swJava, "");
+                Output(swJava, "{0}", "}");
+
+                swJava.Flush();
+                swJava.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write java!");
+                return false;
+            }
+        }
     }
 }

@@ -9,7 +9,8 @@
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
                 "ChromaAnimationAPI.cs",
-                "stdafx.h");
+                "stdafx.h",
+                "JChromaLib.java");
             const string headerUE4 = @"C:\Razer\UE4_XDK_SampleApp\UE4ChromaSDKRT\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
             Converter.SortHeaderUE4(headerUE4,
                 "ChromaSDKPluginBPLibrary.h");
