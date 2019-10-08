@@ -208,7 +208,8 @@
 Add source color to target where color is not black for all frames, reference 
 source and target by id.
 ```c++
-void AddNonZeroAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::AddNonZeroAllKeysAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId);
 ```
 
 ---
@@ -218,8 +219,8 @@ void AddNonZeroAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId
 Add source color to target where color is not black for all frames, reference 
 source and target by name.
 ```c++
-void AddNonZeroAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::AddNonZeroAllKeysAllFramesName(const FString& 
+	sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -230,8 +231,8 @@ Add source color to target where color is not black for all frames starting
 at offset for the length of the source, reference source and target by 
 id.
 ```c++
-void AddNonZeroAllKeysAllFramesOffset(int32 sourceAnimationId, int32 targetAnimationId, 
-	int32 offset);
+void UChromaSDKPluginBPLibrary::AddNonZeroAllKeysAllFramesOffset(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 offset);
 ```
 
 ---
@@ -242,8 +243,9 @@ Add source color to target where color is not black for all frames starting
 at offset for the length of the source, reference source and target by 
 name.
 ```c++
-void AddNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName, int32 offset);
+void UChromaSDKPluginBPLibrary::AddNonZeroAllKeysAllFramesOffsetName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName, int32 
+	offset);
 ```
 
 ---
@@ -253,7 +255,8 @@ void AddNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName,
 Add source color to target where the target color is not black for all frames, 
 reference source and target by id.
 ```c++
-void AddNonZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::AddNonZeroTargetAllKeysAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId);
 ```
 
 ---
@@ -263,8 +266,8 @@ void AddNonZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnima
 Add source color to target where the target color is not black for all frames, 
 reference source and target by name.
 ```c++
-void AddNonZeroTargetAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::AddNonZeroTargetAllKeysAllFramesName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -275,8 +278,8 @@ Add source color to target where the target color is not black for all frames
 starting at offset for the length of the source, reference source and target 
 by id.
 ```c++
-void AddNonZeroTargetAllKeysAllFramesOffset(int32 sourceAnimationId, int32 
-	targetAnimationId, int32 offset);
+void UChromaSDKPluginBPLibrary::AddNonZeroTargetAllKeysAllFramesOffset(int32 
+	sourceAnimationId, int32 targetAnimationId, int32 offset);
 ```
 
 ---
@@ -287,8 +290,9 @@ Add source color to target where the target color is not black for all frames
 starting at offset for the length of the source, reference source and target 
 by name.
 ```c++
-void AddNonZeroTargetAllKeysAllFramesOffsetName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName, int32 offset);
+void UChromaSDKPluginBPLibrary::AddNonZeroTargetAllKeysAllFramesOffsetName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName, int32 
+	offset);
 ```
 
 ---
@@ -298,7 +302,8 @@ void AddNonZeroTargetAllKeysAllFramesOffsetName(const FString& sourceAnimationNa
 Append all source frames to the target animation, reference source and target 
 by id.
 ```c++
-void AppendAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::AppendAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId);
 ```
 
 ---
@@ -308,8 +313,8 @@ void AppendAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
 Append all source frames to the target animation, reference source and target 
 by name.
 ```c++
-void AppendAllFramesName(const FString& sourceAnimationName, const FString& 
-	targetAnimationName);
+void UChromaSDKPluginBPLibrary::AppendAllFramesName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName);
 ```
 
 ---
@@ -318,7 +323,7 @@ void AppendAllFramesName(const FString& sourceAnimationName, const FString&
 
 `PluginClearAll` will issue a `CLEAR` effect for all devices.
 ```c++
-void ClearAll();
+void UChromaSDKPluginBPLibrary::ClearAll();
 ```
 
 ---
@@ -327,7 +332,8 @@ void ClearAll();
 
 `PluginClearAnimationType` will issue a `CLEAR` effect for the given device.
 ```c++
-void ClearAnimationType(EChromaSDKDeviceEnum::Type device);
+void UChromaSDKPluginBPLibrary::ClearAnimationType(EChromaSDKDeviceEnum::Type 
+	device);
 ```
 
 ---
@@ -337,7 +343,7 @@ void ClearAnimationType(EChromaSDKDeviceEnum::Type device);
 `PluginCloseAll` closes all open animations so they can be reloaded from 
 disk. The set of animations will be stopped if playing.
 ```c++
-void CloseAll();
+void UChromaSDKPluginBPLibrary::CloseAll();
 ```
 
 ---
@@ -349,7 +355,7 @@ the animation id upon success. Returns -1 upon failure. This might be used
 while authoring effects if there was a change necessitating re-opening 
 the animation. The animation id can no longer be used once closed.
 ```c++
-void CloseAnimation(const int32 animationId);
+void UChromaSDKPluginBPLibrary::CloseAnimation(const int32 animationId);
 ```
 
 ---
@@ -359,7 +365,7 @@ void CloseAnimation(const int32 animationId);
 Closes the `Chroma` animation referenced by name so that the animation can 
 be reloaded from disk.
 ```c++
-void CloseAnimationName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::CloseAnimationName(const FString& animationName);
 ```
 
 ---
@@ -369,7 +375,8 @@ void CloseAnimationName(const FString& animationName);
 Copy animation to named target animation in memory. If target animation 
 exists, close first. Source is referenced by id.
 ```c++
-void CopyAnimation(int32 sourceAnimationId, const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::CopyAnimation(int32 sourceAnimationId, const 
+	FString& targetAnimationName);
 ```
 
 ---
@@ -379,8 +386,8 @@ void CopyAnimation(int32 sourceAnimationId, const FString& targetAnimationName);
 Copy animation to named target animation in memory. If target animation 
 exists, close first. Source is referenced by name.
 ```c++
-void CopyAnimationName(const FString& sourceAnimationName, const FString& 
-	targetAnimationName);
+void UChromaSDKPluginBPLibrary::CopyAnimationName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName);
 ```
 
 ---
@@ -390,8 +397,8 @@ void CopyAnimationName(const FString& sourceAnimationName, const FString&
 Copy animation key color from the source animation to the target animation 
 for the given frame. Reference the source and target by id.
 ```c++
-void CopyKeyColor(int32 sourceAnimationId, int32 targetAnimationId, int32 
-	frameIndex, EChromaSDKKeyboardKey::Type key);
+void UChromaSDKPluginBPLibrary::CopyKeyColor(int32 sourceAnimationId, int32 
+	targetAnimationId, int32 frameIndex, EChromaSDKKeyboardKey::Type key);
 ```
 
 ---
@@ -401,8 +408,8 @@ void CopyKeyColor(int32 sourceAnimationId, int32 targetAnimationId, int32
 Copy animation key color from the source animation to the target animation 
 for the given frame.
 ```c++
-void CopyKeyColorName(const FString& sourceAnimationName, const FString& 
-	targetAnimationName, const int32 frameIndex, EChromaSDKKeyboardKey::Type 
+void UChromaSDKPluginBPLibrary::CopyKeyColorName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName, const int32 frameIndex, EChromaSDKKeyboardKey::Type 
 	key);
 ```
 
@@ -414,8 +421,9 @@ Copy animation color for a set of keys from the source animation to the
 target animation for the given frame. Reference the source and target by 
 id.
 ```c++
-void CopyKeysColor(int32 sourceAnimationId, int32 targetAnimationId, int32 
-	frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys);
+void UChromaSDKPluginBPLibrary::CopyKeysColor(int32 sourceAnimationId, int32 
+	targetAnimationId, int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys);
 ```
 
 ---
@@ -426,8 +434,8 @@ Copy animation color for a set of keys from the source animation to the
 target animation for the given frame. Reference the source and target by 
 name.
 ```c++
-void CopyKeysColorName(const FString& sourceAnimationName, const FString& 
-	targetAnimationName, const int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+void UChromaSDKPluginBPLibrary::CopyKeysColorName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName, const int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
 	keys);
 ```
 
@@ -438,8 +446,8 @@ void CopyKeysColorName(const FString& sourceAnimationName, const FString&
 Copy source animation to target animation for the given frame. Source and 
 target are referenced by id.
 ```c++
-void CopyNonZeroAllKeys(int32 sourceAnimationId, int32 targetAnimationId, 
-	int32 frameId);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeys(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 frameId);
 ```
 
 ---
@@ -449,7 +457,8 @@ void CopyNonZeroAllKeys(int32 sourceAnimationId, int32 targetAnimationId,
 Copy nonzero colors from a source animation to a target animation for all 
 frames. Reference source and target by id.
 ```c++
-void CopyNonZeroAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId);
 ```
 
 ---
@@ -459,8 +468,8 @@ void CopyNonZeroAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationI
 Copy nonzero colors from a source animation to a target animation for all 
 frames. Reference source and target by name.
 ```c++
-void CopyNonZeroAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysAllFramesName(const FString& 
+	sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -471,8 +480,8 @@ Copy nonzero colors from a source animation to a target animation for all
 frames starting at the offset for the length of the source animation. The 
 source and target are referenced by id.
 ```c++
-void CopyNonZeroAllKeysAllFramesOffset(int32 sourceAnimationId, int32 targetAnimationId, 
-	int32 offset);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysAllFramesOffset(int32 
+	sourceAnimationId, int32 targetAnimationId, int32 offset);
 ```
 
 ---
@@ -483,8 +492,9 @@ Copy nonzero colors from a source animation to a target animation for all
 frames starting at the offset for the length of the source animation. The 
 source and target are referenced by name.
 ```c++
-void CopyNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName, int32 offset);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysAllFramesOffsetName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName, int32 
+	offset);
 ```
 
 ---
@@ -494,8 +504,8 @@ void CopyNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName,
 Copy nonzero colors from source animation to target animation for the specified 
 frame. Source and target are referenced by id.
 ```c++
-void CopyNonZeroAllKeysName(const FString& sourceAnimationName, const FString& 
-	targetAnimationName, int32 frameId);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName, int32 frameId);
 ```
 
 ---
@@ -506,8 +516,8 @@ Copy nonzero colors from the source animation to the target animation from
 the source frame to the target offset frame. Source and target are referenced 
 by id.
 ```c++
-void CopyNonZeroAllKeysOffset(int32 sourceAnimationId, int32 targetAnimationId, 
-	int32 frameId, int32 offset);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysOffset(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 frameId, int32 offset);
 ```
 
 ---
@@ -518,8 +528,9 @@ Copy nonzero colors from the source animation to the target animation from
 the source frame to the target offset frame. Source and target are referenced 
 by name.
 ```c++
-void CopyNonZeroAllKeysOffsetName(const FString& sourceAnimationName, const 
-	FString& targetAnimationName, int32 frameId, int32 offset);
+void UChromaSDKPluginBPLibrary::CopyNonZeroAllKeysOffsetName(const FString& 
+	sourceAnimationName, const FString& targetAnimationName, int32 frameId, 
+	int32 offset);
 ```
 
 ---
@@ -529,8 +540,9 @@ void CopyNonZeroAllKeysOffsetName(const FString& sourceAnimationName, const
 Copy animation key color from the source animation to the target animation 
 for the given frame where color is not zero.
 ```c++
-void CopyNonZeroKeyColor(int32 sourceAnimationId, int32 targetAnimationId, 
-	int32 frameIndex, EChromaSDKKeyboardKey::Type key);
+void UChromaSDKPluginBPLibrary::CopyNonZeroKeyColor(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 frameIndex, EChromaSDKKeyboardKey::Type 
+	key);
 ```
 
 ---
@@ -540,8 +552,8 @@ void CopyNonZeroKeyColor(int32 sourceAnimationId, int32 targetAnimationId,
 Copy animation key color from the source animation to the target animation 
 for the given frame where color is not zero.
 ```c++
-void CopyNonZeroKeyColorName(const FString& sourceAnimationName, const FString& 
-	targetAnimationName, const int32 frameIndex, EChromaSDKKeyboardKey::Type 
+void UChromaSDKPluginBPLibrary::CopyNonZeroKeyColorName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName, const int32 frameIndex, EChromaSDKKeyboardKey::Type 
 	key);
 ```
 
@@ -553,8 +565,8 @@ Copy nonzero colors from the source animation to the target animation where
 the target color is nonzero for the specified frame. Source and target 
 are referenced by id.
 ```c++
-void CopyNonZeroTargetAllKeys(int32 sourceAnimationId, int32 targetAnimationId, 
-	int32 frameId);
+void UChromaSDKPluginBPLibrary::CopyNonZeroTargetAllKeys(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 frameId);
 ```
 
 ---
@@ -565,7 +577,8 @@ Copy nonzero colors from the source animation to the target animation where
 the target color is nonzero for all frames. Source and target are referenced 
 by id.
 ```c++
-void CopyNonZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::CopyNonZeroTargetAllKeysAllFrames(int32 
+	sourceAnimationId, int32 targetAnimationId);
 ```
 
 ---
@@ -576,8 +589,8 @@ Copy nonzero colors from the source animation to the target animation where
 the target color is nonzero for all frames. Source and target are referenced 
 by name.
 ```c++
-void CopyNonZeroTargetAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::CopyNonZeroTargetAllKeysAllFramesName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -588,8 +601,8 @@ Copy nonzero colors from the source animation to the target animation where
 the target color is nonzero for all frames. Source and target are referenced 
 by name.
 ```c++
-void CopyNonZeroTargetAllKeysAllFramesOffset(int32 sourceAnimationId, int32 
-	targetAnimationId, int32 offset);
+void UChromaSDKPluginBPLibrary::CopyNonZeroTargetAllKeysAllFramesOffset(int32 
+	sourceAnimationId, int32 targetAnimationId, int32 offset);
 ```
 
 ---
@@ -601,8 +614,9 @@ the target color is nonzero for all frames starting at the target offset
 for the length of the source animation. Source and target animations are 
 referenced by name.
 ```c++
-void CopyNonZeroTargetAllKeysAllFramesOffsetName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName, int32 offset);
+void UChromaSDKPluginBPLibrary::CopyNonZeroTargetAllKeysAllFramesOffsetName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName, int32 
+	offset);
 ```
 
 ---
@@ -613,8 +627,8 @@ Copy nonzero colors from the source animation to the target animation where
 the target color is nonzero for the specified frame. The source and target 
 are referenced by name.
 ```c++
-void CopyNonZeroTargetAllKeysName(const FString& sourceAnimationName, const 
-	FString& targetAnimationName, int32 frameId);
+void UChromaSDKPluginBPLibrary::CopyNonZeroTargetAllKeysName(const FString& 
+	sourceAnimationName, const FString& targetAnimationName, int32 frameId);
 ```
 
 ---
@@ -624,7 +638,8 @@ void CopyNonZeroTargetAllKeysName(const FString& sourceAnimationName, const
 Copy nonzero color from source animation to target animation where target 
 is zero for all frames. Source and target are referenced by id.
 ```c++
-void CopyZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::CopyZeroTargetAllKeysAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId);
 ```
 
 ---
@@ -634,8 +649,8 @@ void CopyZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimati
 Copy nonzero color from source animation to target animation where target 
 is zero for all frames. Source and target are referenced by name.
 ```c++
-void CopyZeroTargetAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::CopyZeroTargetAllKeysAllFramesName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -645,7 +660,8 @@ void CopyZeroTargetAllKeysAllFramesName(const FString& sourceAnimationName,
 Duplicate the first animation frame so that the animation length matches 
 the frame count. Animation is referenced by id.
 ```c++
-void DuplicateFirstFrame(int32 animationId, int32 frameCount);
+void UChromaSDKPluginBPLibrary::DuplicateFirstFrame(int32 animationId, int32 
+	frameCount);
 ```
 
 ---
@@ -655,7 +671,8 @@ void DuplicateFirstFrame(int32 animationId, int32 frameCount);
 Duplicate the first animation frame so that the animation length matches 
 the frame count. Animation is referenced by name.
 ```c++
-void DuplicateFirstFrameName(const FString& animationName, int32 frameCount);
+void UChromaSDKPluginBPLibrary::DuplicateFirstFrameName(const FString& animationName, 
+	int32 frameCount);
 ```
 
 ---
@@ -666,7 +683,7 @@ Duplicate all the frames of the animation to double the animation length.
 Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 The animation is referenced by id.
 ```c++
-void DuplicateFrames(int32 animationId);
+void UChromaSDKPluginBPLibrary::DuplicateFrames(int32 animationId);
 ```
 
 ---
@@ -677,7 +694,7 @@ Duplicate all the frames of the animation to double the animation length.
 Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 The animation is referenced by name.
 ```c++
-void DuplicateFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::DuplicateFramesName(const FString& animationName);
 ```
 
 ---
@@ -687,7 +704,7 @@ void DuplicateFramesName(const FString& animationName);
 Duplicate all the animation frames in reverse so that the animation plays 
 forwards and backwards. Animation is referenced by id.
 ```c++
-void DuplicateMirrorFrames(int32 animationId);
+void UChromaSDKPluginBPLibrary::DuplicateMirrorFrames(int32 animationId);
 ```
 
 ---
@@ -697,7 +714,8 @@ void DuplicateMirrorFrames(int32 animationId);
 Duplicate all the animation frames in reverse so that the animation plays 
 forwards and backwards. Animation is referenced by name.
 ```c++
-void DuplicateMirrorFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::DuplicateMirrorFramesName(const FString& 
+	animationName);
 ```
 
 ---
@@ -707,7 +725,7 @@ void DuplicateMirrorFramesName(const FString& animationName);
 Fade the animation to black starting at the fade frame index to the end 
 of the animation. Animation is referenced by id.
 ```c++
-void FadeEndFrames(int32 animationId, int32 fade);
+void UChromaSDKPluginBPLibrary::FadeEndFrames(int32 animationId, int32 fade);
 ```
 
 ---
@@ -717,7 +735,8 @@ void FadeEndFrames(int32 animationId, int32 fade);
 Fade the animation to black starting at the fade frame index to the end 
 of the animation. Animation is referenced by name.
 ```c++
-void FadeEndFramesName(const FString& animationName, int32 fade);
+void UChromaSDKPluginBPLibrary::FadeEndFramesName(const FString& animationName, 
+	int32 fade);
 ```
 
 ---
@@ -727,7 +746,8 @@ void FadeEndFramesName(const FString& animationName, int32 fade);
 Fade the animation from black to full color starting at 0 to the fade frame 
 index. Animation is referenced by id.
 ```c++
-void FadeStartFrames(int32 animationId, int32 fade);
+void UChromaSDKPluginBPLibrary::FadeStartFrames(int32 animationId, int32 
+	fade);
 ```
 
 ---
@@ -737,7 +757,8 @@ void FadeStartFrames(int32 animationId, int32 fade);
 Fade the animation from black to full color starting at 0 to the fade frame 
 index. Animation is referenced by name.
 ```c++
-void FadeStartFramesName(const FString& animationName, int32 fade);
+void UChromaSDKPluginBPLibrary::FadeStartFramesName(const FString& animationName, 
+	int32 fade);
 ```
 
 ---
@@ -747,7 +768,8 @@ void FadeStartFramesName(const FString& animationName, int32 fade);
 Set the RGB value for all colors in the specified frame. Animation is referenced 
 by id.
 ```c++
-void FillColor(int32 animationId, int32 frameId, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillColor(int32 animationId, int32 frameId, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -757,7 +779,8 @@ void FillColor(int32 animationId, int32 frameId, const FLinearColor& colorParam)
 Set the RGB value for all colors for all frames. Animation is referenced 
 by id.
 ```c++
-void FillColorAllFrames(int32 animationId, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillColorAllFrames(int32 animationId, const 
+	FLinearColor& colorParam);
 ```
 
 ---
@@ -767,8 +790,8 @@ void FillColorAllFrames(int32 animationId, const FLinearColor& colorParam);
 Set the RGB value for all colors for all frames. Animation is referenced 
 by name.
 ```c++
-void FillColorAllFramesName(const FString& animationName, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::FillColorAllFramesName(const FString& animationName, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -778,8 +801,8 @@ void FillColorAllFramesName(const FString& animationName, const FLinearColor&
 Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 for red, green, and blue parameters. Animation is referenced by id.
 ```c++
-void FillColorAllFramesRGB(int32 animationId, int32 red, int32 green, int32 
-	blue);
+void UChromaSDKPluginBPLibrary::FillColorAllFramesRGB(int32 animationId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -789,8 +812,8 @@ void FillColorAllFramesRGB(int32 animationId, int32 red, int32 green, int32
 Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 for red, green, and blue parameters. Animation is referenced by name.
 ```c++
-void FillColorAllFramesRGBName(const FString& animationName, int32 red, 
-	int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillColorAllFramesRGBName(const FString& 
+	animationName, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -800,8 +823,8 @@ void FillColorAllFramesRGBName(const FString& animationName, int32 red,
 Set the RGB value for all colors in the specified frame. Animation is referenced 
 by name.
 ```c++
-void FillColorName(const FString& animationName, int32 frameId, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::FillColorName(const FString& animationName, 
+	int32 frameId, const FLinearColor& colorParam);
 ```
 
 ---
@@ -811,8 +834,8 @@ void FillColorName(const FString& animationName, int32 frameId, const FLinearCol
 Set the RGB value for all colors in the specified frame. Animation is referenced 
 by id.
 ```c++
-void FillColorRGB(int32 animationId, int32 frameId, int32 red, int32 green, 
-	int32 blue);
+void UChromaSDKPluginBPLibrary::FillColorRGB(int32 animationId, int32 frameId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -822,8 +845,8 @@ void FillColorRGB(int32 animationId, int32 frameId, int32 red, int32 green,
 Set the RGB value for all colors in the specified frame. Animation is referenced 
 by name.
 ```c++
-void FillColorRGBName(const FString& animationName, int32 frameId, int32 
-	red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillColorRGBName(const FString& animationName, 
+	int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -834,8 +857,8 @@ This method will only update colors in the animation that are not already
 set to black. Set the RGB value for a subset of colors in the specified 
 frame. Animation is referenced by id.
 ```c++
-void FillNonZeroColor(int32 animationId, int32 frameId, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::FillNonZeroColor(int32 animationId, int32 
+	frameId, const FLinearColor& colorParam);
 ```
 
 ---
@@ -846,7 +869,8 @@ This method will only update colors in the animation that are not already
 set to black. Set the RGB value for a subset of colors for all frames. 
 Animation is referenced by id.
 ```c++
-void FillNonZeroColorAllFrames(int32 animationId, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorAllFrames(int32 animationId, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -857,8 +881,8 @@ This method will only update colors in the animation that are not already
 set to black. Set the RGB value for a subset of colors for all frames. 
 Animation is referenced by name.
 ```c++
-void FillNonZeroColorAllFramesName(const FString& animationName, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorAllFramesName(const FString& 
+	animationName, const FLinearColor& colorParam);
 ```
 
 ---
@@ -870,8 +894,8 @@ set to black. Set the RGB value for a subset of colors for all frames.
 Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 is referenced by id.
 ```c++
-void FillNonZeroColorAllFramesRGB(int32 animationId, int32 red, int32 green, 
-	int32 blue);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorAllFramesRGB(int32 animationId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -883,8 +907,8 @@ set to black. Set the RGB value for a subset of colors for all frames.
 Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 is referenced by name.
 ```c++
-void FillNonZeroColorAllFramesRGBName(const FString& animationName, int32 
-	red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorAllFramesRGBName(const FString& 
+	animationName, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -895,8 +919,8 @@ This method will only update colors in the animation that are not already
 set to black. Set the RGB value for a subset of colors in the specified 
 frame. Animation is referenced by name.
 ```c++
-void FillNonZeroColorName(const FString& animationName, int32 frameId, const 
-	FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorName(const FString& animationName, 
+	int32 frameId, const FLinearColor& colorParam);
 ```
 
 ---
@@ -908,8 +932,8 @@ set to black. Set the RGB value for a subset of colors in the specified
 frame. Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 is referenced by id.
 ```c++
-void FillNonZeroColorRGB(int32 animationId, int32 frameId, int32 red, int32 
-	green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorRGB(int32 animationId, int32 
+	frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -921,8 +945,8 @@ set to black. Set the RGB value for a subset of colors in the specified
 frame. Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 is referenced by name.
 ```c++
-void FillNonZeroColorRGBName(const FString& animationName, int32 frameId, 
-	int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillNonZeroColorRGBName(const FString& animationName, 
+	int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -932,7 +956,8 @@ void FillNonZeroColorRGBName(const FString& animationName, int32 frameId,
 Fill the frame with random RGB values for the given frame. Animation is 
 referenced by id.
 ```c++
-void FillRandomColors(int32 animationId, int32 frameId);
+void UChromaSDKPluginBPLibrary::FillRandomColors(int32 animationId, int32 
+	frameId);
 ```
 
 ---
@@ -942,7 +967,7 @@ void FillRandomColors(int32 animationId, int32 frameId);
 Fill the frame with random RGB values for all frames. Animation is referenced 
 by id.
 ```c++
-void FillRandomColorsAllFrames(int32 animationId);
+void UChromaSDKPluginBPLibrary::FillRandomColorsAllFrames(int32 animationId);
 ```
 
 ---
@@ -952,7 +977,8 @@ void FillRandomColorsAllFrames(int32 animationId);
 Fill the frame with random RGB values for all frames. Animation is referenced 
 by name.
 ```c++
-void FillRandomColorsAllFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::FillRandomColorsAllFramesName(const FString& 
+	animationName);
 ```
 
 ---
@@ -962,7 +988,8 @@ void FillRandomColorsAllFramesName(const FString& animationName);
 Fill the frame with random black and white values for the specified frame. 
 Animation is referenced by id.
 ```c++
-void FillRandomColorsBlackAndWhite(int32 animationId, int32 frameId);
+void UChromaSDKPluginBPLibrary::FillRandomColorsBlackAndWhite(int32 animationId, 
+	int32 frameId);
 ```
 
 ---
@@ -972,7 +999,8 @@ void FillRandomColorsBlackAndWhite(int32 animationId, int32 frameId);
 Fill the frame with random black and white values for all frames. Animation 
 is referenced by id.
 ```c++
-void FillRandomColorsBlackAndWhiteAllFrames(int32 animationId);
+void UChromaSDKPluginBPLibrary::FillRandomColorsBlackAndWhiteAllFrames(int32 
+	animationId);
 ```
 
 ---
@@ -982,7 +1010,8 @@ void FillRandomColorsBlackAndWhiteAllFrames(int32 animationId);
 Fill the frame with random black and white values for all frames. Animation 
 is referenced by name.
 ```c++
-void FillRandomColorsBlackAndWhiteAllFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::FillRandomColorsBlackAndWhiteAllFramesName(const 
+	FString& animationName);
 ```
 
 ---
@@ -992,8 +1021,8 @@ void FillRandomColorsBlackAndWhiteAllFramesName(const FString& animationName);
 Fill the frame with random black and white values for the specified frame. 
 Animation is referenced by name.
 ```c++
-void FillRandomColorsBlackAndWhiteName(const FString& animationName, int32 
-	frameId);
+void UChromaSDKPluginBPLibrary::FillRandomColorsBlackAndWhiteName(const 
+	FString& animationName, int32 frameId);
 ```
 
 ---
@@ -1003,7 +1032,8 @@ void FillRandomColorsBlackAndWhiteName(const FString& animationName, int32
 Fill the frame with random RGB values for the given frame. Animation is 
 referenced by name.
 ```c++
-void FillRandomColorsName(const FString& animationName, int32 frameId);
+void UChromaSDKPluginBPLibrary::FillRandomColorsName(const FString& animationName, 
+	int32 frameId);
 ```
 
 ---
@@ -1013,8 +1043,8 @@ void FillRandomColorsName(const FString& animationName, int32 frameId);
 Fill all frames with RGB color where the animation color is less than the 
 RGB threshold. Animation is referenced by id.
 ```c++
-void FillThresholdColorsAllFrames(int32 animationId, int32 threshold, const 
-	FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsAllFrames(int32 animationId, 
+	int32 threshold, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1024,8 +1054,8 @@ void FillThresholdColorsAllFrames(int32 animationId, int32 threshold, const
 Fill all frames with RGB color where the animation color is less than the 
 RGB threshold. Animation is referenced by name.
 ```c++
-void FillThresholdColorsAllFramesName(const FString& animationName, int32 
-	threshold, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsAllFramesName(const FString& 
+	animationName, int32 threshold, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1035,8 +1065,8 @@ void FillThresholdColorsAllFramesName(const FString& animationName, int32
 Fill all frames with RGB color where the animation color is less than the 
 threshold. Animation is referenced by id.
 ```c++
-void FillThresholdColorsAllFramesRGB(int32 animationId, int32 threshold, 
-	int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsAllFramesRGB(int32 animationId, 
+	int32 threshold, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1046,8 +1076,9 @@ void FillThresholdColorsAllFramesRGB(int32 animationId, int32 threshold,
 Fill all frames with RGB color where the animation color is less than the 
 threshold. Animation is referenced by name.
 ```c++
-void FillThresholdColorsAllFramesRGBName(const FString& animationName, int32 
-	threshold, int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsAllFramesRGBName(const 
+	FString& animationName, int32 threshold, int32 red, int32 green, int32 
+	blue);
 ```
 
 ---
@@ -1058,9 +1089,9 @@ Fill all frames with the min RGB color where the animation color is less
 than the min threshold AND with the max RGB color where the animation is 
 more than the max threshold. Animation is referenced by id.
 ```c++
-void FillThresholdColorsMinMaxAllFramesRGB(int32 animationId, int32 minThreshold, 
-	int32 minRed, int32 minGreen, int32 minBlue, int32 maxThreshold, int32 
-	maxRed, int32 maxGreen, int32 maxBlue);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsMinMaxAllFramesRGB(int32 
+	animationId, int32 minThreshold, int32 minRed, int32 minGreen, int32 minBlue, 
+	int32 maxThreshold, int32 maxRed, int32 maxGreen, int32 maxBlue);
 ```
 
 ---
@@ -1071,9 +1102,10 @@ Fill all frames with the min RGB color where the animation color is less
 than the min threshold AND with the max RGB color where the animation is 
 more than the max threshold. Animation is referenced by name.
 ```c++
-void FillThresholdColorsMinMaxAllFramesRGBName(const FString& animationName, 
-	int32 minThreshold, int32 minRed, int32 minGreen, int32 minBlue, int32 
-	maxThreshold, int32 maxRed, int32 maxGreen, int32 maxBlue);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsMinMaxAllFramesRGBName(const 
+	FString& animationName, int32 minThreshold, int32 minRed, int32 minGreen, 
+	int32 minBlue, int32 maxThreshold, int32 maxRed, int32 maxGreen, int32 
+	maxBlue);
 ```
 
 ---
@@ -1083,8 +1115,8 @@ void FillThresholdColorsMinMaxAllFramesRGBName(const FString& animationName,
 Fill the specified frame with RGB color where the animation color is less 
 than the RGB threshold. Animation is referenced by id.
 ```c++
-void FillThresholdColorsRGB(int32 animationId, int32 frameId, int32 threshold, 
-	int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsRGB(int32 animationId, 
+	int32 frameId, int32 threshold, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1094,8 +1126,9 @@ void FillThresholdColorsRGB(int32 animationId, int32 frameId, int32 threshold,
 Fill the specified frame with RGB color where the animation color is less 
 than the RGB threshold. Animation is referenced by name.
 ```c++
-void FillThresholdColorsRGBName(const FString& animationName, int32 frameId, 
-	int32 threshold, int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillThresholdColorsRGBName(const FString& 
+	animationName, int32 frameId, int32 threshold, int32 red, int32 green, 
+	int32 blue);
 ```
 
 ---
@@ -1105,9 +1138,9 @@ void FillThresholdColorsRGBName(const FString& animationName, int32 frameId,
 Fill all frames with RGB color where the animation color is less than the 
 RGB threshold. Animation is referenced by id.
 ```c++
-void FillThresholdRGBColorsAllFramesRGB(int32 animationId, int32 redThreshold, 
-	int32 greenThreshold, int32 blueThreshold, int32 red, int32 green, int32 
-	blue);
+void UChromaSDKPluginBPLibrary::FillThresholdRGBColorsAllFramesRGB(int32 
+	animationId, int32 redThreshold, int32 greenThreshold, int32 blueThreshold, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1117,9 +1150,9 @@ void FillThresholdRGBColorsAllFramesRGB(int32 animationId, int32 redThreshold,
 Fill all frames with RGB color where the animation color is less than the 
 RGB threshold. Animation is referenced by name.
 ```c++
-void FillThresholdRGBColorsAllFramesRGBName(const FString& animationName, 
-	int32 redThreshold, int32 greenThreshold, int32 blueThreshold, int32 red, 
-	int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillThresholdRGBColorsAllFramesRGBName(const 
+	FString& animationName, int32 redThreshold, int32 greenThreshold, int32 
+	blueThreshold, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1129,8 +1162,8 @@ void FillThresholdRGBColorsAllFramesRGBName(const FString& animationName,
 Fill the specified frame with RGB color where the animation color is zero. 
 Animation is referenced by id.
 ```c++
-void FillZeroColor(int32 animationId, int32 frameId, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::FillZeroColor(int32 animationId, int32 frameId, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -1140,7 +1173,8 @@ void FillZeroColor(int32 animationId, int32 frameId, const FLinearColor&
 Fill all frames with RGB color where the animation color is zero. Animation 
 is referenced by id.
 ```c++
-void FillZeroColorAllFrames(int32 animationId, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillZeroColorAllFrames(int32 animationId, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -1150,8 +1184,8 @@ void FillZeroColorAllFrames(int32 animationId, const FLinearColor& colorParam);
 Fill all frames with RGB color where the animation color is zero. Animation 
 is referenced by name.
 ```c++
-void FillZeroColorAllFramesName(const FString& animationName, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::FillZeroColorAllFramesName(const FString& 
+	animationName, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1161,8 +1195,8 @@ void FillZeroColorAllFramesName(const FString& animationName, const FLinearColor
 Fill all frames with RGB color where the animation color is zero. Animation 
 is referenced by id.
 ```c++
-void FillZeroColorAllFramesRGB(int32 animationId, int32 red, int32 green, 
-	int32 blue);
+void UChromaSDKPluginBPLibrary::FillZeroColorAllFramesRGB(int32 animationId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1172,8 +1206,8 @@ void FillZeroColorAllFramesRGB(int32 animationId, int32 red, int32 green,
 Fill all frames with RGB color where the animation color is zero. Animation 
 is referenced by name.
 ```c++
-void FillZeroColorAllFramesRGBName(const FString& animationName, int32 red, 
-	int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillZeroColorAllFramesRGBName(const FString& 
+	animationName, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1183,8 +1217,8 @@ void FillZeroColorAllFramesRGBName(const FString& animationName, int32 red,
 Fill the specified frame with RGB color where the animation color is zero. 
 Animation is referenced by name.
 ```c++
-void FillZeroColorName(const FString& animationName, int32 frameId, const 
-	FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::FillZeroColorName(const FString& animationName, 
+	int32 frameId, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1194,8 +1228,8 @@ void FillZeroColorName(const FString& animationName, int32 frameId, const
 Fill the specified frame with RGB color where the animation color is zero. 
 Animation is referenced by id.
 ```c++
-void FillZeroColorRGB(int32 animationId, int32 frameId, int32 red, int32 
-	green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillZeroColorRGB(int32 animationId, int32 
+	frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1205,8 +1239,8 @@ void FillZeroColorRGB(int32 animationId, int32 frameId, int32 red, int32
 Fill the specified frame with RGB color where the animation color is zero. 
 Animation is referenced by name.
 ```c++
-void FillZeroColorRGBName(const FString& animationName, int32 frameId, int32 
-	red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::FillZeroColorRGBName(const FString& animationName, 
+	int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1215,7 +1249,7 @@ void FillZeroColorRGBName(const FString& animationName, int32 frameId, int32
 
 Get the animation id for the named animation.
 ```c++
-int32 GetAnimation(const FString& animationName);
+int32 UChromaSDKPluginBPLibrary::GetAnimation(const FString& animationName);
 ```
 
 ---
@@ -1224,7 +1258,7 @@ int32 GetAnimation(const FString& animationName);
 
 `PluginGetAnimationCount` will return the number of loaded animations.
 ```c++
-int32 GetAnimationCount();
+int32 UChromaSDKPluginBPLibrary::GetAnimationCount();
 ```
 
 ---
@@ -1236,7 +1270,7 @@ the loaded animation. The `index` is zero-based and less than the number
 returned by `PluginGetAnimationCount`. Use `PluginGetAnimationName` to 
 get the name of the animation.
 ```c++
-int32 GetAnimationId(const FString& animationName);
+int32 UChromaSDKPluginBPLibrary::GetAnimationId(const FString& animationName);
 ```
 
 ---
@@ -1247,7 +1281,7 @@ int32 GetAnimationId(const FString& animationName);
 the animation of the `.chroma` animation file. If a name is not available 
 then an empty string will be returned.
 ```c++
-FString GetAnimationName(const int32 animationId);
+FString UChromaSDKPluginBPLibrary::GetAnimationName(const int32 animationId);
 ```
 
 ---
@@ -1257,7 +1291,7 @@ FString GetAnimationName(const int32 animationId);
 Returns the frame count of a `Chroma` animation upon success. Returns -1 
 upon failure.
 ```c++
-int32 GetFrameCount(const int32 animationId);
+int32 UChromaSDKPluginBPLibrary::GetFrameCount(const int32 animationId);
 ```
 
 ---
@@ -1267,7 +1301,7 @@ int32 GetFrameCount(const int32 animationId);
 Returns the frame count of a `Chroma` animation upon success. Returns -1 
 upon failure.
 ```c++
-int32 GetFrameCountName(const FString& animationName);
+int32 UChromaSDKPluginBPLibrary::GetFrameCountName(const FString& animationName);
 ```
 
 ---
@@ -1276,8 +1310,8 @@ int32 GetFrameCountName(const FString& animationName);
 
 Get the color of an animation key for the given frame referenced by id.
 ```c++
-FLinearColor GetKeyColor(int32 animationId, int32 frameIndex, EChromaSDKKeyboardKey::Type 
-	key);
+FLinearColor UChromaSDKPluginBPLibrary::GetKeyColor(int32 animationId, int32 
+	frameIndex, EChromaSDKKeyboardKey::Type key);
 ```
 
 ---
@@ -1286,8 +1320,8 @@ FLinearColor GetKeyColor(int32 animationId, int32 frameIndex, EChromaSDKKeyboard
 
 Get the color of an animation key for the given frame referenced by name.
 ```c++
-FLinearColor GetKeyColorName(const FString& animationName, const int32 frameIndex, 
-	EChromaSDKKeyboardKey::Type key);
+FLinearColor UChromaSDKPluginBPLibrary::GetKeyColorName(const FString& animationName, 
+	const int32 frameIndex, EChromaSDKKeyboardKey::Type key);
 ```
 
 ---
@@ -1297,7 +1331,8 @@ FLinearColor GetKeyColorName(const FString& animationName, const int32 frameInde
 Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
 integer upon success. Returns -1 upon failure.
 ```c++
-int32 GetMaxColumn(EChromaSDKDevice2DEnum::Type device);
+int32 UChromaSDKPluginBPLibrary::GetMaxColumn(EChromaSDKDevice2DEnum::Type 
+	device);
 ```
 
 ---
@@ -1307,7 +1342,8 @@ int32 GetMaxColumn(EChromaSDKDevice2DEnum::Type device);
 Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
 upon success. Returns -1 upon failure.
 ```c++
-int32 GetMaxLeds(EChromaSDKDevice1DEnum::Type device);
+int32 UChromaSDKPluginBPLibrary::GetMaxLeds(EChromaSDKDevice1DEnum::Type 
+	device);
 ```
 
 ---
@@ -1317,7 +1353,8 @@ int32 GetMaxLeds(EChromaSDKDevice1DEnum::Type device);
 Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
 upon success. Returns -1 upon failure.
 ```c++
-int32 GetMaxRow(EChromaSDKDevice2DEnum::Type device);
+int32 UChromaSDKPluginBPLibrary::GetMaxRow(EChromaSDKDevice2DEnum::Type 
+	device);
 ```
 
 ---
@@ -1326,7 +1363,7 @@ int32 GetMaxRow(EChromaSDKDevice2DEnum::Type device);
 
 `PluginGetPlayingAnimationCount` will return the number of playing animations.
 ```c++
-int32 GetPlayingAnimationCount();
+int32 UChromaSDKPluginBPLibrary::GetPlayingAnimationCount();
 ```
 
 ---
@@ -1338,7 +1375,7 @@ of the playing animation. The `index` is zero-based and less than the number
 returned by `PluginGetPlayingAnimationCount`. Use `PluginGetAnimationName` 
 to get the name of the animation.
 ```c++
-int32 GetPlayingAnimationId(int32 index);
+int32 UChromaSDKPluginBPLibrary::GetPlayingAnimationId(int32 index);
 ```
 
 ---
@@ -1347,7 +1384,8 @@ int32 GetPlayingAnimationId(int32 index);
 
 Get the RGB color given red, green, and blue.
 ```c++
-FLinearColor GetRGB(int32 red, int32 green, int32 blue);
+FLinearColor UChromaSDKPluginBPLibrary::GetRGB(int32 red, int32 green, int32 
+	blue);
 ```
 
 ---
@@ -1357,7 +1395,8 @@ FLinearColor GetRGB(int32 red, int32 green, int32 blue);
 Insert an animation delay by duplicating the frame by the delay number of 
 times. Animation is referenced by id.
 ```c++
-void InsertDelay(int32 animationId, int32 frameId, int32 delay);
+void UChromaSDKPluginBPLibrary::InsertDelay(int32 animationId, int32 frameId, 
+	int32 delay);
 ```
 
 ---
@@ -1367,8 +1406,8 @@ void InsertDelay(int32 animationId, int32 frameId, int32 delay);
 Insert an animation delay by duplicating the frame by the delay number of 
 times. Animation is referenced by name.
 ```c++
-void InsertDelayName(const FString& animationName, int32 frameId, int32 
-	delay);
+void UChromaSDKPluginBPLibrary::InsertDelayName(const FString& animationName, 
+	int32 frameId, int32 delay);
 ```
 
 ---
@@ -1378,7 +1417,8 @@ void InsertDelayName(const FString& animationName, int32 frameId, int32
 Duplicate the source frame index at the target frame index. Animation is 
 referenced by id.
 ```c++
-void InsertFrame(int32 animationId, int32 sourceFrame, int32 targetFrame);
+void UChromaSDKPluginBPLibrary::InsertFrame(int32 animationId, int32 sourceFrame, 
+	int32 targetFrame);
 ```
 
 ---
@@ -1388,8 +1428,8 @@ void InsertFrame(int32 animationId, int32 sourceFrame, int32 targetFrame);
 Duplicate the source frame index at the target frame index. Animation is 
 referenced by name.
 ```c++
-void InsertFrameName(const FString& animationName, int32 sourceFrame, int32 
-	targetFrame);
+void UChromaSDKPluginBPLibrary::InsertFrameName(const FString& animationName, 
+	int32 sourceFrame, int32 targetFrame);
 ```
 
 ---
@@ -1398,7 +1438,7 @@ void InsertFrameName(const FString& animationName, int32 sourceFrame, int32
 
 Invert all the colors for all frames. Animation is referenced by id.
 ```c++
-void InvertColorsAllFrames(int32 animationId);
+void UChromaSDKPluginBPLibrary::InvertColorsAllFrames(int32 animationId);
 ```
 
 ---
@@ -1407,7 +1447,8 @@ void InvertColorsAllFrames(int32 animationId);
 
 Invert all the colors for all frames. Animation is referenced by name.
 ```c++
-void InvertColorsAllFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::InvertColorsAllFramesName(const FString& 
+	animationName);
 ```
 
 ---
@@ -1417,7 +1458,7 @@ void InvertColorsAllFramesName(const FString& animationName);
 Returns true if the plugin has been initialized. Returns false if the plugin 
 is uninitialized.
 ```c++
-bool IsInitialized();
+bool UChromaSDKPluginBPLibrary::IsInitialized();
 ```
 
 ---
@@ -1426,7 +1467,7 @@ bool IsInitialized();
 
 Do a lerp math operation on a float.
 ```c++
-float Lerp(float start, float end, float amt);
+float UChromaSDKPluginBPLibrary::Lerp(float start, float end, float amt);
 ```
 
 ---
@@ -1435,8 +1476,8 @@ float Lerp(float start, float end, float amt);
 
 Lerp from one color to another given t in the range 0.0 to 1.0.
 ```c++
-FLinearColor LerpColor(FLinearColor colorParam1, FLinearColor colorParam2, 
-	float t);
+FLinearColor UChromaSDKPluginBPLibrary::LerpColor(FLinearColor colorParam1, 
+	FLinearColor colorParam2, float t);
 ```
 
 ---
@@ -1446,7 +1487,7 @@ FLinearColor LerpColor(FLinearColor colorParam1, FLinearColor colorParam2,
 Loads `Chroma` effects so that the animation can be played immediately. 
 Returns the animation id upon success. Returns -1 upon failure.
 ```c++
-void LoadAnimation(const int32 animationId);
+void UChromaSDKPluginBPLibrary::LoadAnimation(const int32 animationId);
 ```
 
 ---
@@ -1455,7 +1496,7 @@ void LoadAnimation(const int32 animationId);
 
 Load the named animation.
 ```c++
-void LoadAnimationName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::LoadAnimationName(const FString& animationName);
 ```
 
 ---
@@ -1466,8 +1507,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color defaults to color. Animation 
 is referenced by id.
 ```c++
-void MakeBlankFrames(int32 animationId, int32 frameCount, float duration, 
-	const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::MakeBlankFrames(int32 animationId, int32 
+	frameCount, float duration, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1478,8 +1519,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color defaults to color. Animation 
 is referenced by name.
 ```c++
-void MakeBlankFramesName(const FString& animationName, int32 frameCount, 
-	float duration, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesName(const FString& animationName, 
+	int32 frameCount, float duration, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1490,7 +1531,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color is random. Animation is referenced 
 by id.
 ```c++
-void MakeBlankFramesRandom(int32 animationId, int32 frameCount, float duration);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesRandom(int32 animationId, 
+	int32 frameCount, float duration);
 ```
 
 ---
@@ -1501,8 +1543,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color is random black and white. Animation 
 is referenced by id.
 ```c++
-void MakeBlankFramesRandomBlackAndWhite(int32 animationId, int32 frameCount, 
-	float duration);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesRandomBlackAndWhite(int32 
+	animationId, int32 frameCount, float duration);
 ```
 
 ---
@@ -1513,8 +1555,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color is random black and white. Animation 
 is referenced by name.
 ```c++
-void MakeBlankFramesRandomBlackAndWhiteName(const FString& animationName, 
-	int32 frameCount, float duration);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesRandomBlackAndWhiteName(const 
+	FString& animationName, int32 frameCount, float duration);
 ```
 
 ---
@@ -1525,8 +1567,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color is random. Animation is referenced 
 by name.
 ```c++
-void MakeBlankFramesRandomName(const FString& animationName, int32 frameCount, 
-	float duration);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesRandomName(const FString& 
+	animationName, int32 frameCount, float duration);
 ```
 
 ---
@@ -1537,8 +1579,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color defaults to color. Animation 
 is referenced by id.
 ```c++
-void MakeBlankFramesRGB(int32 animationId, int32 frameCount, float duration, 
-	int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesRGB(int32 animationId, int32 
+	frameCount, float duration, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1549,8 +1591,8 @@ Make a blank animation for the length of the frame count. Frame duration
 defaults to the duration. The frame color defaults to color. Animation 
 is referenced by name.
 ```c++
-void MakeBlankFramesRGBName(const FString& animationName, int32 frameCount, 
-	float duration, int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::MakeBlankFramesRGBName(const FString& animationName, 
+	int32 frameCount, float duration, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1561,8 +1603,8 @@ Multiply the color intensity with the lerp result from color 1 to color
 2 using the frame index divided by the frame count for the `t` parameter. 
 Animation is referenced in id.
 ```c++
-void MultiplyColorLerpAllFrames(int32 animationId, const FLinearColor& colorParam1, 
-	const FLinearColor& colorParam2);
+void UChromaSDKPluginBPLibrary::MultiplyColorLerpAllFrames(int32 animationId, 
+	const FLinearColor& colorParam1, const FLinearColor& colorParam2);
 ```
 
 ---
@@ -1573,8 +1615,8 @@ Multiply the color intensity with the lerp result from color 1 to color
 2 using the frame index divided by the frame count for the `t` parameter. 
 Animation is referenced in name.
 ```c++
-void MultiplyColorLerpAllFramesName(const FString& animationName, const 
-	FLinearColor& colorParam1, const FLinearColor& colorParam2);
+void UChromaSDKPluginBPLibrary::MultiplyColorLerpAllFramesName(const FString& 
+	animationName, const FLinearColor& colorParam1, const FLinearColor& colorParam2);
 ```
 
 ---
@@ -1586,7 +1628,8 @@ intensity range is from 0.0 to 255.0. RGB components are multiplied equally.
 An intensity of 0.5 would half the color value. Black colors in the frame 
 will not be affected by this method.
 ```c++
-void MultiplyIntensity(int32 animationId, int32 frameId, float intensity);
+void UChromaSDKPluginBPLibrary::MultiplyIntensity(int32 animationId, int32 
+	frameId, float intensity);
 ```
 
 ---
@@ -1598,7 +1641,8 @@ the intensity range is from 0.0 to 255.0. RGB components are multiplied
 equally. An intensity of 0.5 would half the color value. Black colors in 
 the frame will not be affected by this method.
 ```c++
-void MultiplyIntensityAllFrames(int32 animationId, float intensity);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityAllFrames(int32 animationId, 
+	float intensity);
 ```
 
 ---
@@ -1610,8 +1654,8 @@ the intensity range is from 0.0 to 255.0. RGB components are multiplied
 equally. An intensity of 0.5 would half the color value. Black colors in 
 the frame will not be affected by this method.
 ```c++
-void MultiplyIntensityAllFramesName(const FString& animationName, float 
-	intensity);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityAllFramesName(const FString& 
+	animationName, float intensity);
 ```
 
 ---
@@ -1621,8 +1665,8 @@ void MultiplyIntensityAllFramesName(const FString& animationName, float
 Multiply all frames by the RBG color intensity. Animation is referenced 
 by id.
 ```c++
-void MultiplyIntensityAllFramesRGB(int32 animationId, int32 red, int32 green, 
-	int32 blue);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityAllFramesRGB(int32 animationId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1632,8 +1676,8 @@ void MultiplyIntensityAllFramesRGB(int32 animationId, int32 red, int32 green,
 Multiply all frames by the RBG color intensity. Animation is referenced 
 by name.
 ```c++
-void MultiplyIntensityAllFramesRGBName(const FString& animationName, int32 
-	red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityAllFramesRGBName(const 
+	FString& animationName, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1643,8 +1687,8 @@ void MultiplyIntensityAllFramesRGBName(const FString& animationName, int32
 Multiply the specific frame by the RBG color intensity. Animation is referenced 
 by id.
 ```c++
-void MultiplyIntensityColor(int32 animationId, int32 frameId, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityColor(int32 animationId, 
+	int32 frameId, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1654,8 +1698,8 @@ void MultiplyIntensityColor(int32 animationId, int32 frameId, const FLinearColor
 Multiply all frames by the RBG color intensity. Animation is referenced 
 by id.
 ```c++
-void MultiplyIntensityColorAllFrames(int32 animationId, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityColorAllFrames(int32 animationId, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -1665,8 +1709,8 @@ void MultiplyIntensityColorAllFrames(int32 animationId, const FLinearColor&
 Multiply all frames by the RBG color intensity. Animation is referenced 
 by name.
 ```c++
-void MultiplyIntensityColorAllFramesName(const FString& animationName, const 
-	FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityColorAllFramesName(const 
+	FString& animationName, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1676,8 +1720,8 @@ void MultiplyIntensityColorAllFramesName(const FString& animationName, const
 Multiply the specific frame by the RBG color intensity. Animation is referenced 
 by name.
 ```c++
-void MultiplyIntensityColorName(const FString& animationName, int32 frameId, 
-	const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityColorName(const FString& 
+	animationName, int32 frameId, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1689,8 +1733,8 @@ intensity range is from 0.0 to 255.0. RGB components are multiplied equally.
 An intensity of 0.5 would half the color value. Black colors in the frame 
 will not be affected by this method.
 ```c++
-void MultiplyIntensityName(const FString& animationName, int32 frameId, 
-	float intensity);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityName(const FString& animationName, 
+	int32 frameId, float intensity);
 ```
 
 ---
@@ -1700,8 +1744,8 @@ void MultiplyIntensityName(const FString& animationName, int32 frameId,
 Multiply the specific frame by the RBG color intensity. Animation is referenced 
 by id.
 ```c++
-void MultiplyIntensityRGB(int32 animationId, int32 frameId, int32 red, int32 
-	green, int32 blue);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityRGB(int32 animationId, 
+	int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1711,8 +1755,8 @@ void MultiplyIntensityRGB(int32 animationId, int32 frameId, int32 red, int32
 Multiply the specific frame by the RBG color intensity. Animation is referenced 
 by name.
 ```c++
-void MultiplyIntensityRGBName(const FString& animationName, int32 frameId, 
-	int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::MultiplyIntensityRGBName(const FString& 
+	animationName, int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1722,8 +1766,8 @@ void MultiplyIntensityRGBName(const FString& animationName, int32 frameId,
 Multiply all frames by the color lerp result between color 1 and 2 using 
 the frame color value as the `t` value. Animation is referenced by id.
 ```c++
-void MultiplyNonZeroTargetColorLerpAllFrames(int32 animationId, const FLinearColor& 
-	colorParam1, const FLinearColor& colorParam2);
+void UChromaSDKPluginBPLibrary::MultiplyNonZeroTargetColorLerpAllFrames(int32 
+	animationId, const FLinearColor& colorParam1, const FLinearColor& colorParam2);
 ```
 
 ---
@@ -1733,8 +1777,9 @@ void MultiplyNonZeroTargetColorLerpAllFrames(int32 animationId, const FLinearCol
 Multiply all frames by the color lerp result between color 1 and 2 using 
 the frame color value as the `t` value. Animation is referenced by name.
 ```c++
-void MultiplyNonZeroTargetColorLerpAllFramesName(const FString& animationName, 
-	const FLinearColor& colorParam1, const FLinearColor& colorParam2);
+void UChromaSDKPluginBPLibrary::MultiplyNonZeroTargetColorLerpAllFramesName(const 
+	FString& animationName, const FLinearColor& colorParam1, const FLinearColor& 
+	colorParam2);
 ```
 
 ---
@@ -1744,8 +1789,8 @@ void MultiplyNonZeroTargetColorLerpAllFramesName(const FString& animationName,
 Multiply all frames by the color lerp result between color 1 and 2 using 
 the frame color value as the `t` value. Animation is referenced by id.
 ```c++
-void MultiplyTargetColorLerpAllFrames(int32 animationId, const FLinearColor& 
-	colorParam1, const FLinearColor& colorParam2);
+void UChromaSDKPluginBPLibrary::MultiplyTargetColorLerpAllFrames(int32 animationId, 
+	const FLinearColor& colorParam1, const FLinearColor& colorParam2);
 ```
 
 ---
@@ -1755,8 +1800,9 @@ void MultiplyTargetColorLerpAllFrames(int32 animationId, const FLinearColor&
 Multiply all frames by the color lerp result between color 1 and 2 using 
 the frame color value as the `t` value. Animation is referenced by name.
 ```c++
-void MultiplyTargetColorLerpAllFramesName(const FString& animationName, 
-	const FLinearColor& colorParam1, const FLinearColor& colorParam2);
+void UChromaSDKPluginBPLibrary::MultiplyTargetColorLerpAllFramesName(const 
+	FString& animationName, const FLinearColor& colorParam1, const FLinearColor& 
+	colorParam2);
 ```
 
 ---
@@ -1767,8 +1813,8 @@ Offset all colors in the frame using the RGB offset. Use the range of -255
 to 255 for red, green, and blue parameters. Negative values remove color. 
 Positive values add color.
 ```c++
-void OffsetColors(int32 animationId, int32 frameId, int32 red, int32 green, 
-	int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetColors(int32 animationId, int32 frameId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1779,8 +1825,8 @@ Offset all colors for all frames using the RGB offset. Use the range of
 -255 to 255 for red, green, and blue parameters. Negative values remove 
 color. Positive values add color.
 ```c++
-void OffsetColorsAllFrames(int32 animationId, int32 red, int32 green, int32 
-	blue);
+void UChromaSDKPluginBPLibrary::OffsetColorsAllFrames(int32 animationId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1791,8 +1837,8 @@ Offset all colors for all frames using the RGB offset. Use the range of
 -255 to 255 for red, green, and blue parameters. Negative values remove 
 color. Positive values add color.
 ```c++
-void OffsetColorsAllFramesName(const FString& animationName, int32 red, 
-	int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetColorsAllFramesName(const FString& 
+	animationName, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1803,8 +1849,8 @@ Offset all colors in the frame using the RGB offset. Use the range of -255
 to 255 for red, green, and blue parameters. Negative values remove color. 
 Positive values add color.
 ```c++
-void OffsetColorsName(const FString& animationName, int32 frameId, int32 
-	red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetColorsName(const FString& animationName, 
+	int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1816,8 +1862,8 @@ set to black. Offset a subset of colors in the frame using the RGB offset.
 Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 values remove color. Positive values add color.
 ```c++
-void OffsetNonZeroColors(int32 animationId, int32 frameId, int32 red, int32 
-	green, int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetNonZeroColors(int32 animationId, int32 
+	frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1829,8 +1875,8 @@ set to black. Offset a subset of colors for all frames using the RGB offset.
 Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 values remove color. Positive values add color.
 ```c++
-void OffsetNonZeroColorsAllFrames(int32 animationId, int32 red, int32 green, 
-	int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetNonZeroColorsAllFrames(int32 animationId, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1842,8 +1888,8 @@ set to black. Offset a subset of colors for all frames using the RGB offset.
 Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 values remove color. Positive values add color.
 ```c++
-void OffsetNonZeroColorsAllFramesName(const FString& animationName, int32 
-	red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetNonZeroColorsAllFramesName(const FString& 
+	animationName, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1855,8 +1901,8 @@ set to black. Offset a subset of colors in the frame using the RGB offset.
 Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 values remove color. Positive values add color.
 ```c++
-void OffsetNonZeroColorsName(const FString& animationName, int32 frameId, 
-	int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::OffsetNonZeroColorsName(const FString& animationName, 
+	int32 frameId, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -1866,7 +1912,8 @@ void OffsetNonZeroColorsName(const FString& animationName, int32 frameId,
 Override the duration of all frames with the `duration` value. Animation 
 is referenced by name.
 ```c++
-void OverrideFrameDurationName(const FString& animationName, float duration);
+void UChromaSDKPluginBPLibrary::OverrideFrameDurationName(const FString& 
+	animationName, float duration);
 ```
 
 ---
@@ -1876,7 +1923,8 @@ void OverrideFrameDurationName(const FString& animationName, float duration);
 Plays the `Chroma` animation. This will load the animation, if not loaded 
 previously. Returns the animation id upon success. Returns -1 upon failure.
 ```c++
-void PlayAnimation(const FString& animationName, bool loop);
+void UChromaSDKPluginBPLibrary::PlayAnimation(const FString& animationName, 
+	bool loop);
 ```
 
 ---
@@ -1887,7 +1935,8 @@ void PlayAnimation(const FString& animationName, bool loop);
 The named `.chroma` animation file will be automatically opened. The animation 
 will play with looping `on` or `off`.
 ```c++
-void PlayAnimationName(const FString& animationName, bool loop);
+void UChromaSDKPluginBPLibrary::PlayAnimationName(const FString& animationName, 
+	bool loop);
 ```
 
 ---
@@ -1897,7 +1946,7 @@ void PlayAnimationName(const FString& animationName, bool loop);
 Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 Returns the animation id upon success. Returns -1 upon failure.
 ```c++
-int32 PreviewFrame(int32 animationId, int32 frameId);
+int32 UChromaSDKPluginBPLibrary::PreviewFrame(int32 animationId, int32 frameId);
 ```
 
 ---
@@ -1907,7 +1956,8 @@ int32 PreviewFrame(int32 animationId, int32 frameId);
 Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 Animaton is referenced by name.
 ```c++
-void PreviewFrameName(const FString& animationName, int32 frameId);
+void UChromaSDKPluginBPLibrary::PreviewFrameName(const FString& animationName, 
+	int32 frameId);
 ```
 
 ---
@@ -1917,7 +1967,7 @@ void PreviewFrameName(const FString& animationName, int32 frameId);
 Reduce the frames of the animation by removing every nth element. Animation 
 is referenced by id.
 ```c++
-void ReduceFrames(int32 animationId, int32 n);
+void UChromaSDKPluginBPLibrary::ReduceFrames(int32 animationId, int32 n);
 ```
 
 ---
@@ -1927,7 +1977,8 @@ void ReduceFrames(int32 animationId, int32 n);
 Reduce the frames of the animation by removing every nth element. Animation 
 is referenced by name.
 ```c++
-void ReduceFramesName(const FString& animationName, int32 n);
+void UChromaSDKPluginBPLibrary::ReduceFramesName(const FString& animationName, 
+	int32 n);
 ```
 
 ---
@@ -1937,7 +1988,7 @@ void ReduceFramesName(const FString& animationName, int32 n);
 Reverse the animation frame order of the `Chroma` animation. Animation is 
 referenced by id.
 ```c++
-void ReverseAllFrames(int32 animationId);
+void UChromaSDKPluginBPLibrary::ReverseAllFrames(int32 animationId);
 ```
 
 ---
@@ -1947,7 +1998,7 @@ void ReverseAllFrames(int32 animationId);
 Reverse the animation frame order of the `Chroma` animation. Animation is 
 referenced by name.
 ```c++
-void ReverseAllFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::ReverseAllFramesName(const FString& animationName);
 ```
 
 ---
@@ -1957,7 +2008,8 @@ void ReverseAllFramesName(const FString& animationName);
 When custom color is set, the custom key mode will be used. The animation 
 is referenced by name.
 ```c++
-void SetChromaCustomColorAllFramesName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::SetChromaCustomColorAllFramesName(const 
+	FString& animationName);
 ```
 
 ---
@@ -1968,7 +2020,8 @@ Set the Chroma custom key color flag on all frames. `True` changes the layout
 from grid to key. `True` changes the layout from key to grid. Animation 
 is referenced by name.
 ```c++
-void SetChromaCustomFlagName(const FString& animationName, bool flag);
+void UChromaSDKPluginBPLibrary::SetChromaCustomFlagName(const FString& animationName, 
+	bool flag);
 ```
 
 ---
@@ -1978,7 +2031,7 @@ void SetChromaCustomFlagName(const FString& animationName, bool flag);
 When the idle animation is used, the named animation will play when no other 
 animations are playing. Reference the animation by name.
 ```c++
-void SetIdleAnimationName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::SetIdleAnimationName(const FString& animationName);
 ```
 
 ---
@@ -1987,8 +2040,8 @@ void SetIdleAnimationName(const FString& animationName);
 
 Set animation key to a static color for the given frame.
 ```c++
-void SetKeyColor(int32 animationId, int32 frameIndex, EChromaSDKKeyboardKey::Type 
-	key, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeyColor(int32 animationId, int32 frameIndex, 
+	EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
 ```
 
 ---
@@ -1998,8 +2051,8 @@ void SetKeyColor(int32 animationId, int32 frameIndex, EChromaSDKKeyboardKey::Typ
 Set the key to the specified key color for all frames. Animation is referenced 
 by id.
 ```c++
-void SetKeyColorAllFrames(int32 animationId, EChromaSDKKeyboardKey::Type 
-	key, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeyColorAllFrames(int32 animationId, 
+	EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
 ```
 
 ---
@@ -2009,8 +2062,8 @@ void SetKeyColorAllFrames(int32 animationId, EChromaSDKKeyboardKey::Type
 Set the key to the specified key color for all frames. Animation is referenced 
 by name.
 ```c++
-void SetKeyColorAllFramesName(const FString& animationName, EChromaSDKKeyboardKey::Type 
-	key, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeyColorAllFramesName(const FString& 
+	animationName, EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
 ```
 
 ---
@@ -2019,8 +2072,9 @@ void SetKeyColorAllFramesName(const FString& animationName, EChromaSDKKeyboardKe
 
 Set animation key to a static color for the given frame.
 ```c++
-void SetKeyColorName(const FString& animationName, const int32 frameIndex, 
-	EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeyColorName(const FString& animationName, 
+	const int32 frameIndex, EChromaSDKKeyboardKey::Type key, const FLinearColor& 
+	colorParam);
 ```
 
 ---
@@ -2030,8 +2084,8 @@ void SetKeyColorName(const FString& animationName, const int32 frameIndex,
 Set animation key to a static color for the given frame if the existing 
 color is not already black.
 ```c++
-void SetKeyNonZeroColor(int32 animationId, int32 frameIndex, EChromaSDKKeyboardKey::Type 
-	key, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeyNonZeroColor(int32 animationId, int32 
+	frameIndex, EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
 ```
 
 ---
@@ -2041,8 +2095,9 @@ void SetKeyNonZeroColor(int32 animationId, int32 frameIndex, EChromaSDKKeyboardK
 Set animation key to a static color for the given frame if the existing 
 color is not already black.
 ```c++
-void SetKeyNonZeroColorName(const FString& animationName, const int32 frameIndex, 
-	EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeyNonZeroColorName(const FString& animationName, 
+	const int32 frameIndex, EChromaSDKKeyboardKey::Type key, const FLinearColor& 
+	colorParam);
 ```
 
 ---
@@ -2052,8 +2107,9 @@ void SetKeyNonZeroColorName(const FString& animationName, const int32 frameIndex
 Set an array of animation keys to a static color for the given frame. Animation 
 is referenced by id.
 ```c++
-void SetKeysColor(int32 animationId, int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
-	keys, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysColor(int32 animationId, int32 frameIndex, 
+	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, const FLinearColor& 
+	colorParam);
 ```
 
 ---
@@ -2063,8 +2119,9 @@ void SetKeysColor(int32 animationId, int32 frameIndex, const TArray<TEnumAsByte<
 Set an array of animation keys to a static color for all frames. Animation 
 is referenced by id.
 ```c++
-void SetKeysColorAllFrames(int32 animationId, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
-	keys, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysColorAllFrames(int32 animationId, 
+	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, const FLinearColor& 
+	colorParam);
 ```
 
 ---
@@ -2074,7 +2131,8 @@ void SetKeysColorAllFrames(int32 animationId, const TArray<TEnumAsByte<EChromaSD
 Set an array of animation keys to a static color for all frames. Animation 
 is referenced by name.
 ```c++
-void SetKeysColorAllFramesName(const FString& animationName, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+void UChromaSDKPluginBPLibrary::SetKeysColorAllFramesName(const FString& 
+	animationName, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
 	keys, const FLinearColor& colorParam);
 ```
 
@@ -2085,8 +2143,9 @@ void SetKeysColorAllFramesName(const FString& animationName, const TArray<TEnumA
 Set an array of animation keys to a static color for all frames. Animation 
 is referenced by id.
 ```c++
-void SetKeysColorAllFramesRGB(int32 animationId, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
-	keys, int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::SetKeysColorAllFramesRGB(int32 animationId, 
+	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, int32 red, 
+	int32 green, int32 blue);
 ```
 
 ---
@@ -2096,7 +2155,8 @@ void SetKeysColorAllFramesRGB(int32 animationId, const TArray<TEnumAsByte<EChrom
 Set an array of animation keys to a static color for all frames. Animation 
 is referenced by name.
 ```c++
-void SetKeysColorAllFramesRGBName(const FString& animationName, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+void UChromaSDKPluginBPLibrary::SetKeysColorAllFramesRGBName(const FString& 
+	animationName, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
 	keys, int32 red, int32 green, int32 blue);
 ```
 
@@ -2106,9 +2166,9 @@ void SetKeysColorAllFramesRGBName(const FString& animationName, const TArray<TEn
 
 Set an array of animation keys to a static color for the given frame.
 ```c++
-void SetKeysColorName(const FString& animationName, const int32 frameIndex, 
-	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysColorName(const FString& animationName, 
+	const int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys, const FLinearColor& colorParam);
 ```
 
 ---
@@ -2118,8 +2178,9 @@ void SetKeysColorName(const FString& animationName, const int32 frameIndex,
 Set an array of animation keys to a static color for the given frame. Animation 
 is referenced by id.
 ```c++
-void SetKeysColorRGB(int32 animationId, int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
-	keys, int32 red, int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::SetKeysColorRGB(int32 animationId, int32 
+	frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, 
+	int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -2129,9 +2190,9 @@ void SetKeysColorRGB(int32 animationId, int32 frameIndex, const TArray<TEnumAsBy
 Set an array of animation keys to a static color for the given frame. Animation 
 is referenced by name.
 ```c++
-void SetKeysColorRGBName(const FString& animationName, const int32 frameIndex, 
-	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, int32 red, 
-	int32 green, int32 blue);
+void UChromaSDKPluginBPLibrary::SetKeysColorRGBName(const FString& animationName, 
+	const int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys, int32 red, int32 green, int32 blue);
 ```
 
 ---
@@ -2141,8 +2202,9 @@ void SetKeysColorRGBName(const FString& animationName, const int32 frameIndex,
 Set an array of animation keys to a static color for the given frame if 
 the existing color is not already black.
 ```c++
-void SetKeysNonZeroColor(int32 animationId, int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
-	keys, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysNonZeroColor(int32 animationId, int32 
+	frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -2152,8 +2214,9 @@ void SetKeysNonZeroColor(int32 animationId, int32 frameIndex, const TArray<TEnum
 Set an array of animation keys to a static color for the given frame where 
 the color is not black. Animation is referenced by id.
 ```c++
-void SetKeysNonZeroColorAllFrames(int32 animationId, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
-	keys, const FLinearColor& colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysNonZeroColorAllFrames(int32 animationId, 
+	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, const FLinearColor& 
+	colorParam);
 ```
 
 ---
@@ -2163,9 +2226,9 @@ void SetKeysNonZeroColorAllFrames(int32 animationId, const TArray<TEnumAsByte<EC
 Set an array of animation keys to a static color for all frames if the existing 
 color is not already black. Reference animation by name.
 ```c++
-void SetKeysNonZeroColorAllFramesName(const FString& animationName, const 
-	TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysNonZeroColorAllFramesName(const FString& 
+	animationName, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys, const FLinearColor& colorParam);
 ```
 
 ---
@@ -2175,9 +2238,9 @@ void SetKeysNonZeroColorAllFramesName(const FString& animationName, const
 Set an array of animation keys to a static color for the given frame if 
 the existing color is not already black. Reference animation by name.
 ```c++
-void SetKeysNonZeroColorName(const FString& animationName, const int32 frameIndex, 
-	const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& keys, const FLinearColor& 
-	colorParam);
+void UChromaSDKPluginBPLibrary::SetKeysNonZeroColorName(const FString& animationName, 
+	const int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys, const FLinearColor& colorParam);
 ```
 
 ---
@@ -2186,7 +2249,7 @@ void SetKeysNonZeroColorName(const FString& animationName, const int32 frameInde
 
 `PluginStopAll` will automatically stop all animations that are playing.
 ```c++
-void StopAll();
+void UChromaSDKPluginBPLibrary::StopAll();
 ```
 
 ---
@@ -2196,7 +2259,7 @@ void StopAll();
 Stops animation playback if in progress. Returns the animation id upon success. 
 Returns -1 upon failure.
 ```c++
-void StopAnimation(const FString& animationName);
+void UChromaSDKPluginBPLibrary::StopAnimation(const FString& animationName);
 ```
 
 ---
@@ -2207,7 +2270,8 @@ void StopAnimation(const FString& animationName);
 If any animation is playing for the `deviceType` and `device` combination, 
 it will be stopped.
 ```c++
-void StopAnimationType(EChromaSDKDeviceEnum::Type device);
+void UChromaSDKPluginBPLibrary::StopAnimationType(EChromaSDKDeviceEnum::Type 
+	device);
 ```
 
 ---
@@ -2217,7 +2281,8 @@ void StopAnimationType(EChromaSDKDeviceEnum::Type device);
 Subtract the source color from the target color for all frames where the 
 target color is not black. Source and target are referenced by id.
 ```c++
-void SubtractNonZeroAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimationId);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeysAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId);
 ```
 
 ---
@@ -2227,8 +2292,8 @@ void SubtractNonZeroAllKeysAllFrames(int32 sourceAnimationId, int32 targetAnimat
 Subtract the source color from the target color for all frames where the 
 target color is not black. Source and target are referenced by name.
 ```c++
-void SubtractNonZeroAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeysAllFramesName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -2239,8 +2304,8 @@ Subtract the source color from the target color for all frames where the
 target color is not black starting at offset for the length of the source. 
 Source and target are referenced by id.
 ```c++
-void SubtractNonZeroAllKeysAllFramesOffset(int32 sourceAnimationId, int32 
-	targetAnimationId, int32 offset);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeysAllFramesOffset(int32 
+	sourceAnimationId, int32 targetAnimationId, int32 offset);
 ```
 
 ---
@@ -2251,8 +2316,9 @@ Subtract the source color from the target color for all frames where the
 target color is not black starting at offset for the length of the source. 
 Source and target are referenced by name.
 ```c++
-void SubtractNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName, int32 offset);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeysAllFramesOffsetName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName, int32 
+	offset);
 ```
 
 ---
@@ -2262,8 +2328,8 @@ void SubtractNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationNam
 Subtract the source color from the target color where the target color is 
 not black for all frames. Reference source and target by id.
 ```c++
-void SubtractNonZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32 
-	targetAnimationId);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroTargetAllKeysAllFrames(int32 
+	sourceAnimationId, int32 targetAnimationId);
 ```
 
 ---
@@ -2273,8 +2339,8 @@ void SubtractNonZeroTargetAllKeysAllFrames(int32 sourceAnimationId, int32
 Subtract the source color from the target color where the target color is 
 not black for all frames. Reference source and target by name.
 ```c++
-void SubtractNonZeroTargetAllKeysAllFramesName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroTargetAllKeysAllFramesName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName);
 ```
 
 ---
@@ -2285,8 +2351,8 @@ Subtract the source color from the target color where the target color is
 not black for all frames starting at the target offset for the length of 
 the source. Reference source and target by id.
 ```c++
-void SubtractNonZeroTargetAllKeysAllFramesOffset(int32 sourceAnimationId, 
-	int32 targetAnimationId, int32 offset);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroTargetAllKeysAllFramesOffset(int32 
+	sourceAnimationId, int32 targetAnimationId, int32 offset);
 ```
 
 ---
@@ -2297,8 +2363,9 @@ Subtract the source color from the target color where the target color is
 not black for all frames starting at the target offset for the length of 
 the source. Reference source and target by name.
 ```c++
-void SubtractNonZeroTargetAllKeysAllFramesOffsetName(const FString& sourceAnimationName, 
-	const FString& targetAnimationName, int32 offset);
+void UChromaSDKPluginBPLibrary::SubtractNonZeroTargetAllKeysAllFramesOffsetName(const 
+	FString& sourceAnimationName, const FString& targetAnimationName, int32 
+	offset);
 ```
 
 ---
@@ -2308,7 +2375,7 @@ void SubtractNonZeroTargetAllKeysAllFramesOffsetName(const FString& sourceAnimat
 Trim the end of the animation. The length of the animation will be the lastFrameId 
 + 1. Reference the animation by id.
 ```c++
-void TrimEndFrames(int32 animationId, int32 lastFrameId);
+void UChromaSDKPluginBPLibrary::TrimEndFrames(int32 animationId, int32 lastFrameId);
 ```
 
 ---
@@ -2318,7 +2385,8 @@ void TrimEndFrames(int32 animationId, int32 lastFrameId);
 Trim the end of the animation. The length of the animation will be the lastFrameId 
 + 1. Reference the animation by name.
 ```c++
-void TrimEndFramesName(const FString& animationName, int32 lastFrameId);
+void UChromaSDKPluginBPLibrary::TrimEndFramesName(const FString& animationName, 
+	int32 lastFrameId);
 ```
 
 ---
@@ -2327,7 +2395,7 @@ void TrimEndFramesName(const FString& animationName, int32 lastFrameId);
 
 Remove the frame from the animation. Reference animation by id.
 ```c++
-void TrimFrame(int32 animationId, int32 frameId);
+void UChromaSDKPluginBPLibrary::TrimFrame(int32 animationId, int32 frameId);
 ```
 
 ---
@@ -2336,7 +2404,8 @@ void TrimFrame(int32 animationId, int32 frameId);
 
 Remove the frame from the animation. Reference animation by name.
 ```c++
-void TrimFrameName(const FString& animationName, int32 frameId);
+void UChromaSDKPluginBPLibrary::TrimFrameName(const FString& animationName, 
+	int32 frameId);
 ```
 
 ---
@@ -2346,7 +2415,8 @@ void TrimFrameName(const FString& animationName, int32 frameId);
 Trim the start of the animation starting at frame 0 for the number of frames. 
 Reference the animation by id.
 ```c++
-void TrimStartFrames(int32 animationId, int32 numberOfFrames);
+void UChromaSDKPluginBPLibrary::TrimStartFrames(int32 animationId, int32 
+	numberOfFrames);
 ```
 
 ---
@@ -2356,7 +2426,8 @@ void TrimStartFrames(int32 animationId, int32 numberOfFrames);
 Trim the start of the animation starting at frame 0 for the number of frames. 
 Reference the animation by name.
 ```c++
-void TrimStartFramesName(const FString& animationName, int32 numberOfFrames);
+void UChromaSDKPluginBPLibrary::TrimStartFramesName(const FString& animationName, 
+	int32 numberOfFrames);
 ```
 
 ---
@@ -2366,7 +2437,7 @@ void TrimStartFramesName(const FString& animationName, int32 numberOfFrames);
 Unloads `Chroma` effects to free up resources. Returns the animation id 
 upon success. Returns -1 upon failure. Reference the animation by id.
 ```c++
-void UnloadAnimation(const int32 animationId);
+void UChromaSDKPluginBPLibrary::UnloadAnimation(const int32 animationId);
 ```
 
 ---
@@ -2375,7 +2446,7 @@ void UnloadAnimation(const int32 animationId);
 
 Unload the animation effects. Reference the animation by name.
 ```c++
-void UnloadAnimationName(const FString& animationName);
+void UChromaSDKPluginBPLibrary::UnloadAnimationName(const FString& animationName);
 ```
 
 ---
@@ -2388,7 +2459,8 @@ by the API calls to PluginIsPlaying, PluginStopAnimationType, PluginGetPlayingAn
 and PluginGetPlayingAnimationCount. Then the idle animation flag is false, 
 the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
 ```c++
-void UseIdleAnimation(EChromaSDKDeviceEnum::Type device, bool flag);
+void UChromaSDKPluginBPLibrary::UseIdleAnimation(EChromaSDKDeviceEnum::Type 
+	device, bool flag);
 ```
 
 ---
@@ -2398,7 +2470,7 @@ void UseIdleAnimation(EChromaSDKDeviceEnum::Type device, bool flag);
 Set preloading animation flag, which is set to true by default. Reference 
 animation by id.
 ```c++
-void UsePreloading(int32 animationId, bool flag);
+void UChromaSDKPluginBPLibrary::UsePreloading(int32 animationId, bool flag);
 ```
 
 ---
@@ -2408,7 +2480,8 @@ void UsePreloading(int32 animationId, bool flag);
 Set preloading animation flag, which is set to true by default. Reference 
 animation by name.
 ```c++
-void UsePreloadingName(const FString& animationName, bool flag);
+void UChromaSDKPluginBPLibrary::UsePreloadingName(const FString& animationName, 
+	bool flag);
 ```
 
 ---

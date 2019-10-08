@@ -2001,6 +2001,27 @@ namespace ChromaSDK
             }
         }
 
+        static string AddClassToMethodSignature(string methodSignature, string className, string separator)
+        {
+            string result = string.Empty;
+            bool foundWhiteSpace = false;
+            bool added = false;
+            foreach (char c in methodSignature)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    foundWhiteSpace = true;
+                }
+                else if (foundWhiteSpace && !added)
+                {
+                    result += className + separator;
+                    added = true;
+                }
+                result += c;
+            }
+            return result;
+        }
+
         static bool WriteReadmeUE4(StreamWriter swDoc)
         {
             try
@@ -2049,14 +2070,13 @@ namespace ChromaSDK
                         }
                         Output(swDoc, "```c++");
                         const string TOKEN_STATIC = "static ";
-                        if (unrealMethodInfo.Line.StartsWith(TOKEN_STATIC))
+                        string methodSignature = unrealMethodInfo.Line;
+                        if (methodSignature.StartsWith(TOKEN_STATIC))
                         {
-                            Output(swDoc, "{0}", SplitLongComments(unrealMethodInfo.Line.Substring(TOKEN_STATIC.Length), "\t"));
+                            methodSignature = methodSignature.Substring(TOKEN_STATIC.Length);
                         }
-                        else
-                        {
-                            Output(swDoc, "{0}", SplitLongComments(unrealMethodInfo.Line, "\t"));
-                        }
+                        methodSignature = AddClassToMethodSignature(methodSignature, "UChromaSDKPluginBPLibrary", "::");
+                        Output(swDoc, "{0}", SplitLongComments(methodSignature, "\t"));
                         Output(swDoc, "```");
                         Output(swDoc, string.Empty);
 
