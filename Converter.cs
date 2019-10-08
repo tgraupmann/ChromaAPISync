@@ -2005,6 +2005,25 @@ namespace ChromaSDK
         {
             try
             {
+                foreach (KeyValuePair<string, UnrealMetaMethodInfo> unrealMethod in _sUnrealMethods)
+                {
+                    UnrealMetaMethodInfo unrealMethodInfo = unrealMethod.Value;
+
+                    foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                    {
+
+                        MetaMethodInfo methodInfo = method.Value;
+                        if (methodInfo.Name != unrealMethodInfo.Name)
+                        {
+                            continue;
+                        }
+
+                        Output(swDoc, "* [{0}](#{0})", method.Value.Name);
+                    }
+                }
+
+                Output(swDoc, string.Empty);
+
                 Output(swDoc, "---");
 
                 foreach (KeyValuePair<string, UnrealMetaMethodInfo> unrealMethod in _sUnrealMethods)
