@@ -1790,7 +1790,8 @@ namespace ChromaSDK
 #region Sort UE4 Header
 
         public static void SortHeaderUE4(string input,
-            string outputHeader)
+            string outputHeader,
+            string outputReadme)
         {
             if (File.Exists(input))
             {
@@ -1814,6 +1815,22 @@ namespace ChromaSDK
                     }
                 }
             }
+
+            if (File.Exists(outputReadme))
+            {
+                File.Delete(outputReadme);
+            }
+            using (FileStream fsDoc = File.Open(outputReadme, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swDoc = new StreamWriter(fsDoc))
+                {
+                    if (!WriteReadmeUE4(swDoc))
+                    {
+                        return;
+                    }
+                }
+            }
+
         }
 
         private static string GetNextWord(string line)
@@ -1984,7 +2001,63 @@ namespace ChromaSDK
             }
         }
 
-#endregion
+        static bool WriteReadmeUE4(StreamWriter swDoc)
+        {
+            try
+            {
+                Output(swDoc, "---");
+
+                foreach (KeyValuePair<string, UnrealMetaMethodInfo> unrealMethod in _sUnrealMethods)
+                {
+                    UnrealMetaMethodInfo unrealMethodInfo = unrealMethod.Value;
+
+                    foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                    {
+
+                        MetaMethodInfo methodInfo = method.Value;
+                        if (methodInfo.Name != unrealMethodInfo.Name)
+                        {
+                            continue;
+                        }
+
+                        Output(swDoc, "<a name=\"{0}\"></a>", method.Value.Name);
+                        Output(swDoc, "**{0}**", method.Value.Name);
+                        Output(swDoc, string.Empty);
+
+                        if (!string.IsNullOrEmpty(methodInfo.Comments))
+                        {
+                            Output(swDoc, "{0}", SplitLongComments(methodInfo.Comments, string.Empty));
+                        }
+                        Output(swDoc, "```c++");
+                        const string TOKEN_STATIC = "static ";
+                        if (unrealMethodInfo.Line.StartsWith(TOKEN_STATIC))
+                        {
+                            Output(swDoc, "{0}", SplitLongComments(unrealMethodInfo.Line.Substring(TOKEN_STATIC.Length), "\t"));
+                        }
+                        else
+                        {
+                            Output(swDoc, "{0}", SplitLongComments(unrealMethodInfo.Line, "\t"));
+                        }
+                        Output(swDoc, "```");
+                        Output(swDoc, string.Empty);
+
+                        Output(swDoc, "---");
+                    }
+                }
+
+                swDoc.Flush();
+                swDoc.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write header!");
+                return false;
+            }
+        }
+
+        #endregion
 
         static string GetJavaReturnType(string input)
         {
