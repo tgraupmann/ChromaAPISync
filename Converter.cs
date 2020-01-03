@@ -1406,6 +1406,18 @@ int ChromaAnimationAPI::InitAPI()
         }
 ";
 
+        private const string HEADER_UNITY_GET_STREAMING_PATH =
+@"
+        /// <summary>
+        /// Get the streaming path for the animation given the relative path from Assets/StreamingAssets
+        /// </summary>
+        /// <param name=""animation""></param>
+        /// <returns></returns>
+        public static string GetStreamingPath(string animation)
+        {
+            return string.Format(""{0}/{1}"", Application.streamingAssetsPath, animation);
+        }";
+
         private const string HEADER_CSHARP =
 @"using System;
 using System.Collections.Generic;
@@ -1660,16 +1672,7 @@ __UNITY_KEY_MAPPING__
                 Marshal.FreeHGlobal(lpData);
             }
         }
-
-        /// <summary>
-        /// Get the streaming path for the animation given the relative path from Assets/StreamingAssets
-        /// </summary>
-        /// <param name=""animation""></param>
-        /// <returns></returns>
-        public static string GetStreamingPath(string animation)
-        {
-            return string.Format(""{0}/{1}"", Application.streamingAssetsPath, animation);
-        }
+__UNITY_GET_STREAMING_PATH__
 #endregion";
 
         private const string FOOTER_UNITY =
@@ -1683,6 +1686,7 @@ __UNITY_KEY_MAPPING__
                 string headerCSharp = HEADER_CSHARP.Replace("__UNITY_INCLUDES__\r\n", string.Empty);
                 headerCSharp = headerCSharp.Replace("__UNITY_DLL_NAME__\r\n", HEADER_CSHARP_DLL_NAME);
                 headerCSharp = headerCSharp.Replace("__UNITY_KEY_MAPPING__\r\n", string.Empty);
+                headerCSharp = headerCSharp.Replace("__UNITY_GET_STREAMING_PATH__\r\n", string.Empty);
                 Output(swCSharp, "{0}", headerCSharp);
 
                 Output(swCSharp, "");
@@ -1714,7 +1718,7 @@ __UNITY_KEY_MAPPING__
                             argInfo.StrType == "char*")
                         {
                             string pathArg = string.Format("path{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swCSharp, "\t\t\tstring {0} = GetStreamingPath({1});",
+                            Output(swCSharp, "\t\t\tstring {0} = {1};",
                                 pathArg,
                                 argInfo.Name);
 
@@ -1832,6 +1836,7 @@ __UNITY_KEY_MAPPING__
                 string headerUnity = HEADER_CSHARP.Replace("__UNITY_INCLUDES__", HEADER_UNITY_INCLUDES);
                 headerUnity = headerUnity.Replace("__UNITY_DLL_NAME__", HEADER_UNITY_DLL_NAME);
                 headerUnity = headerUnity.Replace("__UNITY_KEY_MAPPING__", HEADER_UNITY_KEY_MAPPING);
+                headerUnity = headerUnity.Replace("__UNITY_GET_STREAMING_PATH__", HEADER_UNITY_GET_STREAMING_PATH);
                 Output(swUnity, "{0}", headerUnity);
 
                 Output(swUnity, "");
