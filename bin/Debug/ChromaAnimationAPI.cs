@@ -4912,6 +4912,21 @@ namespace ChromaSDK
 			PluginSetLogDelegate(fp);
 		}
 		/// <summary>
+		/// `PluginStaticColor` sets the target device to the static color.
+		/// </summary>
+		public static void StaticColor(int deviceType, int device, int color)
+		{
+			PluginStaticColor(deviceType, device, color);
+		}
+		/// <summary>
+		/// D suffix for limited data types.
+		/// </summary>
+		public static double StaticColorD(double deviceType, double device, double color)
+		{
+			double result = PluginStaticColorD(deviceType, device, color);
+			return result;
+		}
+		/// <summary>
 		/// `PluginStopAll` will automatically stop all animations that are playing. 
 		///
 		/// </summary>
@@ -8501,6 +8516,18 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void PluginSetLogDelegate(IntPtr fp);
+		/// <summary>
+		/// `PluginStaticColor` sets the target device to the static color.
+		/// EXPORT_API void PluginStaticColor(int deviceType, int device, int color);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginStaticColor(int deviceType, int device, int color);
+		/// <summary>
+		/// D suffix for limited data types.
+		/// EXPORT_API double PluginStaticColorD(double deviceType, double device, double color);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern double PluginStaticColorD(double deviceType, double device, double color);
 		/// <summary>
 		/// `PluginStopAll` will automatically stop all animations that are playing. 
 		///

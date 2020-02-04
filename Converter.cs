@@ -69,6 +69,7 @@ namespace ChromaAPISync
             string outputDocs,
             string outputCSharp,
             string outputUnity,
+            string outputUnityDocs,
             string outputSortInput,
             string outputJavaInterface,
             string outputJavaSDK)
@@ -78,6 +79,7 @@ namespace ChromaAPISync
                 outputDocs,
                 outputCSharp,
                 outputUnity,
+                outputUnityDocs,
                 outputSortInput,
                 outputJavaInterface,
                 outputJavaSDK);
@@ -94,6 +96,7 @@ namespace ChromaAPISync
             string fileDocs,
             string fileCSharp,
             string fileUnity,
+            string fileUnityDocs,
             string fileSortInput,
             string fileJavaInterface, string fileJavaSDK)
         {
@@ -206,6 +209,21 @@ namespace ChromaAPISync
                 using (StreamWriter swUnity = new StreamWriter(fsUnity))
                 {
                     if (!WriteUnity(swUnity))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileUnityDocs))
+            {
+                File.Delete(fileUnityDocs);
+            }
+            using (FileStream fsUnityDocs = File.Open(fileUnityDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swUnityDocs = new StreamWriter(fsUnityDocs))
+                {
+                    if (!WriteUnityDocs(swUnityDocs))
                     {
                         return;
                     }
@@ -1979,7 +1997,67 @@ __UNITY_GET_STREAMING_PATH__
             }
         }
 
-#region Sort UE4 Header
+        static bool WriteUnityDocs(StreamWriter swUnityDocs)
+        {
+            try
+            {
+                string header = @"<a name=""api""></a>
+## API
+";
+                Output(swUnityDocs, header);
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+                    Output(swUnityDocs, "* [{0}](#{0})", methodInfo.Name);
+                }
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swUnityDocs, "---");
+                    Output(swUnityDocs, string.Empty);
+
+                    Output(swUnityDocs, @"<a name=""{0}""></a>", methodInfo.Name);
+                    Output(swUnityDocs, @"**{0}**", methodInfo.Name);
+                    Output(swUnityDocs, string.Empty);
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swUnityDocs, "{0}", SplitLongComments(methodInfo.Comments, ""));
+                        Output(swUnityDocs, string.Empty);
+                    }
+
+                    Output(swUnityDocs, "{0}", "```charp");
+                    if (methodInfo.ReturnType == "void")
+                    {
+                        Output(swUnityDocs, "UnityNativeChromaSDK.{0}({1});", methodInfo.Name, ChangeArgsToManagedTypes(methodInfo));
+                    }
+                    else
+                    {
+                        Output(swUnityDocs, "{0} result = UnityNativeChromaSDK.{1}({2});",
+                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                                methodInfo.Name,
+                                ChangeArgsToManagedTypes(methodInfo));
+                    }
+                    Output(swUnityDocs, "{0}", "```");
+                    Output(swUnityDocs, string.Empty);
+                }
+
+                swUnityDocs.Flush();
+                swUnityDocs.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write unity!");
+                return false;
+            }
+        }
+
+        #region Sort UE4 Header
 
         public static void SortHeaderUE4(string input,
             string outputHeader,

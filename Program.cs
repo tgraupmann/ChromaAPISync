@@ -10,6 +10,7 @@
                 "ChromaAnimationAPI.md",
                 "ChromaAnimationAPI.cs",
                 @"Unity\ChromaAnimationAPI.cs",
+                @"Unity\ChromaAnimationAPI.md",
                 "stdafx.h",
                 "JChromaLib.java",
                 "JChromaSDK.java");

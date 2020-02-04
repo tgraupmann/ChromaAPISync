@@ -3996,6 +3996,22 @@ public class JChromaSDK {
 		wrapper.PluginSetLogDelegate(fp);
 	}
 	/*
+	`PluginStaticColor` sets the target device to the static color.
+	*/
+	/// EXPORT_API void PluginStaticColor(int deviceType, int device, int color);
+	public void staticColor(int deviceType, int device, int color)
+	{
+		wrapper.PluginStaticColor(deviceType, device, color);
+	}
+	/*
+	D suffix for limited data types.
+	*/
+	/// EXPORT_API double PluginStaticColorD(double deviceType, double device, double color);
+	public double staticColorD(double deviceType, double device, double color)
+	{
+		return wrapper.PluginStaticColorD(deviceType, device, color);
+	}
+	/*
 	`PluginStopAll` will automatically stop all animations that are playing.
 	*/
 	/// EXPORT_API void PluginStopAll();

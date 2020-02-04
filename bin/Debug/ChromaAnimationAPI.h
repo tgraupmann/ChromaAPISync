@@ -2196,6 +2196,14 @@ typedef double		(*PLUGIN_SET_KEY_ZERO_COLOR_RGB_NAME_D)(const char* path, double
 */
 typedef void		(*PLUGIN_SET_LOG_DELEGATE)(DebugLogPtr fp);
 /*
+	`PluginStaticColor` sets the target device to the static color.
+*/
+typedef void		(*PLUGIN_STATIC_COLOR)(int deviceType, int device, int color);
+/*
+	D suffix for limited data types.
+*/
+typedef double		(*PLUGIN_STATIC_COLOR_D)(double deviceType, double device, double color);
+/*
 	`PluginStopAll` will automatically stop all animations that are playing.
 */
 typedef void		(*PLUGIN_STOP_ALL)();
@@ -4617,6 +4625,14 @@ namespace ChromaSDK
 			in the console window.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_LOG_DELEGATE, SetLogDelegate);
+		/*
+			`PluginStaticColor` sets the target device to the static color.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_STATIC_COLOR, StaticColor);
+		/*
+			D suffix for limited data types.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_STATIC_COLOR_D, StaticColorD);
 		/*
 			`PluginStopAll` will automatically stop all animations that are playing.
 		*/

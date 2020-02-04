@@ -2635,6 +2635,16 @@ interface JChromaLib extends Library {
 	/// EXPORT_API void PluginSetLogDelegate(DebugLogPtr fp);
 	void PluginSetLogDelegate(Pointer fp);
 	/*
+	`PluginStaticColor` sets the target device to the static color.
+	*/
+	/// EXPORT_API void PluginStaticColor(int deviceType, int device, int color);
+	void PluginStaticColor(int deviceType, int device, int color);
+	/*
+	D suffix for limited data types.
+	*/
+	/// EXPORT_API double PluginStaticColorD(double deviceType, double device, double color);
+	double PluginStaticColorD(double deviceType, double device, double color);
+	/*
 	`PluginStopAll` will automatically stop all animations that are playing.
 	*/
 	/// EXPORT_API void PluginStopAll();
