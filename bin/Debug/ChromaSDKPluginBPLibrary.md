@@ -18,6 +18,8 @@
 * [CopyKeyColor](#CopyKeyColor)
 * [CopyKeyColorName](#CopyKeyColorName)
 * [CopyKeysColor](#CopyKeysColor)
+* [CopyKeysColorAllFrames](#CopyKeysColorAllFrames)
+* [CopyKeysColorAllFramesName](#CopyKeysColorAllFramesName)
 * [CopyKeysColorName](#CopyKeysColorName)
 * [CopyNonZeroAllKeys](#CopyNonZeroAllKeys)
 * [CopyNonZeroAllKeysAllFrames](#CopyNonZeroAllKeysAllFrames)
@@ -423,6 +425,30 @@ id.
 ```c++
 void UChromaSDKPluginBPLibrary::CopyKeysColor(int32 sourceAnimationId, int32 
 	targetAnimationId, int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys);
+```
+
+---
+<a name="CopyKeysColorAllFrames"></a>
+**CopyKeysColorAllFrames**
+
+Copy animation color for a set of keys from the source animation to the 
+target animation for all frames. Reference the source and target by id.
+```c++
+void UChromaSDKPluginBPLibrary::CopyKeysColorAllFrames(int32 sourceAnimationId, 
+	int32 targetAnimationId, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
+	keys);
+```
+
+---
+<a name="CopyKeysColorAllFramesName"></a>
+**CopyKeysColorAllFramesName**
+
+Copy animation color for a set of keys from the source animation to the 
+target animation for all frames. Reference the source and target by name.
+```c++
+void UChromaSDKPluginBPLibrary::CopyKeysColorAllFramesName(const FString& 
+	sourceAnimationName, const FString& targetAnimationName, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
 	keys);
 ```
 

@@ -262,6 +262,16 @@ typedef double		(*PLUGIN_COPY_KEY_COLOR_NAME_D)(const char* sourceAnimation, con
 typedef void		(*PLUGIN_COPY_KEYS_COLOR)(int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
+	target animation for all frames. Reference the source and target by id.
+*/
+typedef void		(*PLUGIN_COPY_KEYS_COLOR_ALL_FRAMES)(int sourceAnimationId, int targetAnimationId, int* keys, int size);
+/*
+	Copy animation color for a set of keys from the source animation to the 
+	target animation for all frames. Reference the source and target by name.
+*/
+typedef void		(*PLUGIN_COPY_KEYS_COLOR_ALL_FRAMES_NAME)(const char* sourceAnimation, const char* targetAnimation, int* keys, int size);
+/*
+	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
 	name.
 */
@@ -2690,6 +2700,16 @@ namespace ChromaSDK
 			id.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_KEYS_COLOR, CopyKeysColor);
+		/*
+			Copy animation color for a set of keys from the source animation to the 
+			target animation for all frames. Reference the source and target by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_KEYS_COLOR_ALL_FRAMES, CopyKeysColorAllFrames);
+		/*
+			Copy animation color for a set of keys from the source animation to the 
+			target animation for all frames. Reference the source and target by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_KEYS_COLOR_ALL_FRAMES_NAME, CopyKeysColorAllFramesName);
 		/*
 			Copy animation color for a set of keys from the source animation to the 
 			target animation for the given frame. Reference the source and target by 

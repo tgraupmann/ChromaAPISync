@@ -175,13 +175,20 @@ namespace ChromaSDK
     public class ChromaAnimationAPI
     {
 
-#if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
-        const string DLL_NAME = "CChromaEditorLibrary3";
-
-#elif UNITY_64
-        const string DLL_NAME = "CChromaEditorLibrary64";
-#else
+#if PLATFORM_XBOXONE
+    #if UNITY_EDITOR
         const string DLL_NAME = "CChromaEditorLibrary";
+    #else
+        const string DLL_NAME = "XDKChromaEditorLibrary";
+    #endif
+#else
+    #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
+        const string DLL_NAME = "CChromaEditorLibrary3";
+    #elif UNITY_64
+        const string DLL_NAME = "CChromaEditorLibrary64";
+    #else
+        const string DLL_NAME = "CChromaEditorLibrary";
+    #endif
 #endif
 
 #region Data Structures
@@ -988,6 +995,30 @@ namespace ChromaSDK
 		}
 		/// <summary>
 		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for all frames. Reference the source and target by id. 
+		///
+		/// </summary>
+		public static void CopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, int[] keys, int size)
+		{
+			PluginCopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, keys, size);
+		}
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for all frames. Reference the source and target by name. 
+		///
+		/// </summary>
+		public static void CopyKeysColorAllFramesName(string sourceAnimation, string targetAnimation, int[] keys, int size)
+		{
+			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+			string pathTargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			PluginCopyKeysColorAllFramesName(lpSourceAnimation, lpTargetAnimation, keys, size);
+			FreeIntPtr(lpSourceAnimation);
+			FreeIntPtr(lpTargetAnimation);
+		}
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
 		/// target animation for the given frame. Reference the source and target by 
 		/// name.
 		/// </summary>
@@ -1579,97 +1610,97 @@ namespace ChromaSDK
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateChromaLinkEffect(int Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateChromaLinkEffect(int Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateChromaLinkEffect(Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateChromaLinkEffect(Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateEffect(Guid DeviceId, EFFECT_TYPE Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateEffect(Guid DeviceId, EFFECT_TYPE Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateEffect(DeviceId, (int)Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateEffect(DeviceId, (int)Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateHeadsetEffect(int Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateHeadsetEffect(int Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateHeadsetEffect(Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateHeadsetEffect(Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateKeyboardEffect(int Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateKeyboardEffect(int Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateKeyboardEffect(Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateKeyboardEffect(Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateKeypadEffect(int Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateKeypadEffect(int Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateKeypadEffect(Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateKeypadEffect(Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateMouseEffect(int Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateMouseEffect(int Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateMouseEffect(Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateMouseEffect(Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreCreateMousepadEffect(int Effect, IntPtr pParam, out Guid pEffectId)
+		public static int CoreCreateMousepadEffect(int Effect, IntPtr pParam, out Guid pEffectId)
 		{
-			long result = PluginCoreCreateMousepadEffect(Effect, pParam, out pEffectId);
+			int result = PluginCoreCreateMousepadEffect(Effect, pParam, out pEffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreDeleteEffect(Guid EffectId)
+		public static int CoreDeleteEffect(Guid EffectId)
 		{
-			long result = PluginCoreDeleteEffect(EffectId);
+			int result = PluginCoreDeleteEffect(EffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreInit()
+		public static int CoreInit()
 		{
-			long result = PluginCoreInit();
+			int result = PluginCoreInit();
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreQueryDevice(Guid DeviceId, out DEVICE_INFO_TYPE DeviceInfo)
+		public static int CoreQueryDevice(Guid DeviceId, out DEVICE_INFO_TYPE DeviceInfo)
 		{
-			long result = PluginCoreQueryDevice(DeviceId, out DeviceInfo);
+			int result = PluginCoreQueryDevice(DeviceId, out DeviceInfo);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreSetEffect(Guid EffectId)
+		public static int CoreSetEffect(Guid EffectId)
 		{
-			long result = PluginCoreSetEffect(EffectId);
+			int result = PluginCoreSetEffect(EffectId);
 			return result;
 		}
 		/// <summary>
 		/// Direct access to low level API.
 		/// </summary>
-		public static long CoreUnInit()
+		public static int CoreUnInit()
 		{
-			long result = PluginCoreUnInit();
+			int result = PluginCoreUnInit();
 			return result;
 		}
 		/// <summary>
@@ -1705,17 +1736,17 @@ namespace ChromaSDK
 		/// <summary>
 		/// Create a device specific effect.
 		/// </summary>
-		public static long CreateEffect(Guid deviceId, EFFECT_TYPE effect, int[] colors, int size, out FChromaSDKGuid effectId)
+		public static int CreateEffect(Guid deviceId, EFFECT_TYPE effect, int[] colors, int size, out FChromaSDKGuid effectId)
 		{
-			long result = PluginCreateEffect(deviceId, (int)effect, colors, size, out effectId);
+			int result = PluginCreateEffect(deviceId, (int)effect, colors, size, out effectId);
 			return result;
 		}
 		/// <summary>
 		/// Delete an effect given the effect id.
 		/// </summary>
-		public static long DeleteEffect(Guid effectId)
+		public static int DeleteEffect(Guid effectId)
 		{
-			long result = PluginDeleteEffect(effectId);
+			int result = PluginDeleteEffect(effectId);
 			return result;
 		}
 		/// <summary>
@@ -2907,9 +2938,9 @@ namespace ChromaSDK
 		/// `RZRESULT_DLL_INVALID_SIGNATURE` if core Chroma library has an invalid 
 		/// signature.
 		/// </summary>
-		public static long GetLibraryLoadedState()
+		public static int GetLibraryLoadedState()
 		{
-			long result = PluginGetLibraryLoadedState();
+			int result = PluginGetLibraryLoadedState();
 			return result;
 		}
 		/// <summary>
@@ -3041,9 +3072,9 @@ namespace ChromaSDK
 		/// Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
 		/// API methods auto initialize the ChromaSDK if not already initialized.
 		/// </summary>
-		public static long Init()
+		public static int Init()
 		{
-			long result = PluginInit();
+			int result = PluginInit();
 			return result;
 		}
 		/// <summary>
@@ -4586,9 +4617,9 @@ namespace ChromaSDK
 		/// <summary>
 		/// SetEffect will display the referenced effect id.
 		/// </summary>
-		public static long SetEffect(Guid effectId)
+		public static int SetEffect(Guid effectId)
 		{
-			long result = PluginSetEffect(effectId);
+			int result = PluginSetEffect(effectId);
 			return result;
 		}
 		/// <summary>
@@ -5484,9 +5515,9 @@ namespace ChromaSDK
 		/// Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure. 
 		///
 		/// </summary>
-		public static long Uninit()
+		public static int Uninit()
 		{
-			long result = PluginUninit();
+			int result = PluginUninit();
 			return result;
 		}
 		/// <summary>
@@ -5939,6 +5970,22 @@ namespace ChromaSDK
 		private static extern void PluginCopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, int[] keys, int size);
 		/// <summary>
 		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for all frames. Reference the source and target by id. 
+		///
+		/// EXPORT_API void PluginCopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, int* keys, int size);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, int[] keys, int size);
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
+		/// target animation for all frames. Reference the source and target by name. 
+		///
+		/// EXPORT_API void PluginCopyKeysColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, int* keys, int size);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyKeysColorAllFramesName(IntPtr sourceAnimation, IntPtr targetAnimation, int[] keys, int size);
+		/// <summary>
+		/// Copy animation color for a set of keys from the source animation to the 
 		/// target animation for the given frame. Reference the source and target by 
 		/// name.
 		/// EXPORT_API void PluginCopyKeysColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys, int size);
@@ -6283,73 +6330,73 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginCoreCreateChromaLinkEffect(ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateChromaLinkEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateChromaLinkEffect(int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateEffect(Guid DeviceId, int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateEffect(Guid DeviceId, int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateHeadsetEffect(ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateHeadsetEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateHeadsetEffect(int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateKeyboardEffect(ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateKeyboardEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateKeyboardEffect(int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateKeypadEffect(ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateKeypadEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateKeypadEffect(int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateMouseEffect(ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateMouseEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateMouseEffect(int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreCreateMousepadEffect(ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreCreateMousepadEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+		private static extern int PluginCoreCreateMousepadEffect(int Effect, IntPtr pParam, out Guid pEffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreDeleteEffect(RZEFFECTID EffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreDeleteEffect(Guid EffectId);
+		private static extern int PluginCoreDeleteEffect(Guid EffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreInit();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreInit();
+		private static extern int PluginCoreInit();
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreQueryDevice(Guid DeviceId, out DEVICE_INFO_TYPE DeviceInfo);
+		private static extern int PluginCoreQueryDevice(Guid DeviceId, out DEVICE_INFO_TYPE DeviceInfo);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreSetEffect(RZEFFECTID EffectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreSetEffect(Guid EffectId);
+		private static extern int PluginCoreSetEffect(Guid EffectId);
 		/// <summary>
 		/// Direct access to low level API.
 		/// EXPORT_API RZRESULT PluginCoreUnInit();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCoreUnInit();
+		private static extern int PluginCoreUnInit();
 		/// <summary>
 		/// Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 		/// uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
@@ -6378,13 +6425,13 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginCreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int* colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginCreateEffect(Guid deviceId, int effect, int[] colors, int size, out FChromaSDKGuid effectId);
+		private static extern int PluginCreateEffect(Guid deviceId, int effect, int[] colors, int size, out FChromaSDKGuid effectId);
 		/// <summary>
 		/// Delete an effect given the effect id.
 		/// EXPORT_API RZRESULT PluginDeleteEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginDeleteEffect(Guid effectId);
+		private static extern int PluginDeleteEffect(Guid effectId);
 		/// <summary>
 		/// Duplicate the first animation frame so that the animation length matches 
 		/// the frame count. Animation is referenced by id.
@@ -7184,7 +7231,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginGetLibraryLoadedState();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginGetLibraryLoadedState();
+		private static extern int PluginGetLibraryLoadedState();
 		/// <summary>
 		/// D suffix for limited data types.
 		/// EXPORT_API double PluginGetLibraryLoadedStateD();
@@ -7282,7 +7329,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginInit();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginInit();
+		private static extern int PluginInit();
 		/// <summary>
 		/// D suffix for limited data types.
 		/// EXPORT_API double PluginInitD();
@@ -8336,7 +8383,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginSetEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginSetEffect(Guid effectId);
+		private static extern int PluginSetEffect(Guid effectId);
 		/// <summary>
 		/// When the idle animation is used, the named animation will play when no other 
 		/// animations are playing. Reference the animation by id.
@@ -8936,7 +8983,7 @@ namespace ChromaSDK
 		/// EXPORT_API RZRESULT PluginUninit();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern long PluginUninit();
+		private static extern int PluginUninit();
 		/// <summary>
 		/// D suffix for limited data types.
 		/// EXPORT_API double PluginUninitD();

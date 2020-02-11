@@ -486,6 +486,24 @@ public class JChromaSDK {
 	}
 	/*
 	Copy animation color for a set of keys from the source animation to the 
+	target animation for all frames. Reference the source and target by id.
+	*/
+	/// EXPORT_API void PluginCopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, int* keys, int size);
+	public void copyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, Pointer keys, int size)
+	{
+		wrapper.PluginCopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, keys, size);
+	}
+	/*
+	Copy animation color for a set of keys from the source animation to the 
+	target animation for all frames. Reference the source and target by name.
+	*/
+	/// EXPORT_API void PluginCopyKeysColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, int* keys, int size);
+	public void copyKeysColorAllFramesName(String sourceAnimation, String targetAnimation, Pointer keys, int size)
+	{
+		wrapper.PluginCopyKeysColorAllFramesName(sourceAnimation, targetAnimation, keys, size);
+	}
+	/*
+	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
 	name.
 	*/
