@@ -508,12 +508,10 @@ void NodeChromaSDK::_register_methods() {
 	size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
 	success. Returns -1 upon failure.
 */
-/*
 int godot::NodeChromaSDK::AddFrame(int animationId, float duration, int* colors, int length)
 {
 	return ChromaAnimationAPI::AddFrame(animationId, duration, colors, length);
 }
-*/
 
 /*
 	Add source color to target where color is not black for all frames, reference 
@@ -528,22 +526,18 @@ void godot::NodeChromaSDK::AddNonZeroAllKeysAllFrames(int sourceAnimationId, int
 	Add source color to target where color is not black for all frames, reference 
 	source and target by name.
 */
-/*
 void godot::NodeChromaSDK::AddNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::AddNonZeroAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AddNonZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::AddNonZeroAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Add source color to target where color is not black for all frames starting 
@@ -560,22 +554,18 @@ void godot::NodeChromaSDK::AddNonZeroAllKeysAllFramesOffset(int sourceAnimationI
 	at offset for the length of the source, reference source and target by 
 	name.
 */
-/*
 void godot::NodeChromaSDK::AddNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::AddNonZeroAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AddNonZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::AddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Add source color to target where color is not black for the source frame 
@@ -590,22 +580,18 @@ void godot::NodeChromaSDK::AddNonZeroAllKeysOffset(int sourceAnimationId, int ta
 	Add source color to target where color is not black for the source frame 
 	and target offset frame, reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::AddNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset)
 {
 	ChromaAnimationAPI::AddNonZeroAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AddNonZeroAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset)
 {
 	return ChromaAnimationAPI::AddNonZeroAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	Add source color to target where the target color is not black for all frames, 
@@ -620,22 +606,18 @@ void godot::NodeChromaSDK::AddNonZeroTargetAllKeysAllFrames(int sourceAnimationI
 	Add source color to target where the target color is not black for all frames, 
 	reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::AddNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AddNonZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Add source color to target where the target color is not black for all frames 
@@ -652,22 +634,18 @@ void godot::NodeChromaSDK::AddNonZeroTargetAllKeysAllFramesOffset(int sourceAnim
 	starting at offset for the length of the source, reference source and target 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::AddNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AddNonZeroTargetAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Add source color to target where target color is not blank from the source 
@@ -682,22 +660,18 @@ void godot::NodeChromaSDK::AddNonZeroTargetAllKeysOffset(int sourceAnimationId, 
 	Add source color to target where target color is not blank from the source 
 	frame to the target offset frame, reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::AddNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset)
 {
 	ChromaAnimationAPI::AddNonZeroTargetAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AddNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset)
 {
 	return ChromaAnimationAPI::AddNonZeroTargetAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	Append all source frames to the target animation, reference source and target 
@@ -712,22 +686,18 @@ void godot::NodeChromaSDK::AppendAllFrames(int sourceAnimationId, int targetAnim
 	Append all source frames to the target animation, reference source and target 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::AppendAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::AppendAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::AppendAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::AppendAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	`PluginClearAll` will issue a `CLEAR` effect for all devices.
@@ -777,75 +747,61 @@ double godot::NodeChromaSDK::CloseAnimationD(double animationId)
 	Closes the `Chroma` animation referenced by name so that the animation can 
 	be reloaded from disk.
 */
-/*
 void godot::NodeChromaSDK::CloseAnimationName(const char* path)
 {
 	ChromaAnimationAPI::CloseAnimationName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CloseAnimationNameD(const char* path)
 {
 	return ChromaAnimationAPI::CloseAnimationNameD(path);
 }
-*/
 
 /*
 	`PluginCloseComposite` closes a set of animations so they can be reloaded 
 	from disk. The set of animations will be stopped if playing.
 */
-/*
 void godot::NodeChromaSDK::CloseComposite(const char* name)
 {
 	ChromaAnimationAPI::CloseComposite(name);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CloseCompositeD(const char* name)
 {
 	return ChromaAnimationAPI::CloseCompositeD(name);
 }
-*/
 
 /*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by id.
 */
-/*
 int godot::NodeChromaSDK::CopyAnimation(int sourceAnimationId, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyAnimation(sourceAnimationId, targetAnimation);
 }
-*/
 
 /*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyAnimationName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::CopyAnimationName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyAnimationNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyAnimationNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Copy blue channel to other channels for all frames. Intensity range is 0.0 
@@ -860,22 +816,18 @@ void godot::NodeChromaSDK::CopyBlueChannelAllFrames(int animationId, float redIn
 	Copy blue channel to other channels for all frames. Intensity range is 0.0 
 	to 1.0. Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::CopyBlueChannelAllFramesName(const char* path, float redIntensity, float greenIntensity)
 {
 	ChromaAnimationAPI::CopyBlueChannelAllFramesName(path, redIntensity, greenIntensity);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyBlueChannelAllFramesNameD(const char* path, double redIntensity, double greenIntensity)
 {
 	return ChromaAnimationAPI::CopyBlueChannelAllFramesNameD(path, redIntensity, greenIntensity);
 }
-*/
 
 /*
 	Copy green channel to other channels for all frames. Intensity range is 
@@ -890,22 +842,18 @@ void godot::NodeChromaSDK::CopyGreenChannelAllFrames(int animationId, float redI
 	Copy green channel to other channels for all frames. Intensity range is 
 	0.0 to 1.0. Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::CopyGreenChannelAllFramesName(const char* path, float redIntensity, float blueIntensity)
 {
 	ChromaAnimationAPI::CopyGreenChannelAllFramesName(path, redIntensity, blueIntensity);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyGreenChannelAllFramesNameD(const char* path, double redIntensity, double blueIntensity)
 {
 	return ChromaAnimationAPI::CopyGreenChannelAllFramesNameD(path, redIntensity, blueIntensity);
 }
-*/
 
 /*
 	Copy animation key color from the source animation to the target animation 
@@ -929,22 +877,18 @@ void godot::NodeChromaSDK::CopyKeyColorAllFrames(int sourceAnimationId, int targ
 	Copy animation key color from the source animation to the target animation 
 	for all frames. Reference the source and target by name.
 */
-/*
 void godot::NodeChromaSDK::CopyKeyColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, int rzkey)
 {
 	ChromaAnimationAPI::CopyKeyColorAllFramesName(sourceAnimation, targetAnimation, rzkey);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyKeyColorAllFramesNameD(const char* sourceAnimation, const char* targetAnimation, double rzkey)
 {
 	return ChromaAnimationAPI::CopyKeyColorAllFramesNameD(sourceAnimation, targetAnimation, rzkey);
 }
-*/
 
 /*
 	Copy animation key color from the source animation to the target animation 
@@ -961,113 +905,93 @@ void godot::NodeChromaSDK::CopyKeyColorAllFramesOffset(int sourceAnimationId, in
 	for all frames, starting at the offset for the length of the source animation. 
 	Source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyKeyColorAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int rzkey, int offset)
 {
 	ChromaAnimationAPI::CopyKeyColorAllFramesOffsetName(sourceAnimation, targetAnimation, rzkey, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyKeyColorAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double rzkey, double offset)
 {
 	return ChromaAnimationAPI::CopyKeyColorAllFramesOffsetNameD(sourceAnimation, targetAnimation, rzkey, offset);
 }
-*/
 
 /*
 	Copy animation key color from the source animation to the target animation 
 	for the given frame.
 */
-/*
 void godot::NodeChromaSDK::CopyKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey)
 {
 	ChromaAnimationAPI::CopyKeyColorName(sourceAnimation, targetAnimation, frameId, rzkey);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyKeyColorNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey)
 {
 	return ChromaAnimationAPI::CopyKeyColorNameD(sourceAnimation, targetAnimation, frameId, rzkey);
 }
-*/
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
 	id.
 */
-/*
 void godot::NodeChromaSDK::CopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size)
 {
 	ChromaAnimationAPI::CopyKeysColor(sourceAnimationId, targetAnimationId, frameId, keys, size);
 }
-*/
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for all frames. Reference the source and target by id.
 */
-/*
 void godot::NodeChromaSDK::CopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, int* keys, int size)
 {
 	ChromaAnimationAPI::CopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, keys, size);
 }
-*/
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for all frames. Reference the source and target by name.
 */
-/*
 void godot::NodeChromaSDK::CopyKeysColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, int* keys, int size)
 {
 	ChromaAnimationAPI::CopyKeysColorAllFramesName(sourceAnimation, targetAnimation, keys, size);
 }
-*/
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
 	name.
 */
-/*
 void godot::NodeChromaSDK::CopyKeysColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys, int size)
 {
 	ChromaAnimationAPI::CopyKeysColorName(sourceAnimation, targetAnimation, frameId, keys, size);
 }
-*/
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation from the source frame to the target frame. Reference the 
 	source and target by id.
 */
-/*
 void godot::NodeChromaSDK::CopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int* keys, int size)
 {
 	ChromaAnimationAPI::CopyKeysColorOffset(sourceAnimationId, targetAnimationId, sourceFrameId, targetFrameId, keys, size);
 }
-*/
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation from the source frame to the target frame. Reference the 
 	source and target by name.
 */
-/*
 void godot::NodeChromaSDK::CopyKeysColorOffsetName(const char* sourceAnimation, const char* targetAnimation, int sourceFrameId, int targetFrameId, int* keys, int size)
 {
 	ChromaAnimationAPI::CopyKeysColorOffsetName(sourceAnimation, targetAnimation, sourceFrameId, targetFrameId, keys, size);
 }
-*/
 
 /*
 	Copy source animation to target animation for the given frame. Source and 
@@ -1091,22 +1015,18 @@ void godot::NodeChromaSDK::CopyNonZeroAllKeysAllFrames(int sourceAnimationId, in
 	Copy nonzero colors from a source animation to a target animation for all 
 	frames. Reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Copy nonzero colors from a source animation to a target animation for all 
@@ -1123,43 +1043,35 @@ void godot::NodeChromaSDK::CopyNonZeroAllKeysAllFramesOffset(int sourceAnimation
 	frames starting at the offset for the length of the source animation. The 
 	source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Copy nonzero colors from source animation to target animation for the specified 
 	frame. Source and target are referenced by id.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId)
 {
 	ChromaAnimationAPI::CopyNonZeroAllKeysName(sourceAnimation, targetAnimation, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroAllKeysNameD(const char* sourceAnimation, const char* targetAnimation, double frameId)
 {
 	return ChromaAnimationAPI::CopyNonZeroAllKeysNameD(sourceAnimation, targetAnimation, frameId);
 }
-*/
 
 /*
 	Copy nonzero colors from the source animation to the target animation from 
@@ -1176,22 +1088,18 @@ void godot::NodeChromaSDK::CopyNonZeroAllKeysOffset(int sourceAnimationId, int t
 	the source frame to the target offset frame. Source and target are referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset)
 {
 	ChromaAnimationAPI::CopyNonZeroAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset)
 {
 	return ChromaAnimationAPI::CopyNonZeroAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	Copy animation key color from the source animation to the target animation 
@@ -1206,22 +1114,18 @@ void godot::NodeChromaSDK::CopyNonZeroKeyColor(int sourceAnimationId, int target
 	Copy animation key color from the source animation to the target animation 
 	for the given frame where color is not zero.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey)
 {
 	ChromaAnimationAPI::CopyNonZeroKeyColorName(sourceAnimation, targetAnimation, frameId, rzkey);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroKeyColorNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey)
 {
 	return ChromaAnimationAPI::CopyNonZeroKeyColorNameD(sourceAnimation, targetAnimation, frameId, rzkey);
 }
-*/
 
 /*
 	Copy nonzero colors from the source animation to the target animation where 
@@ -1248,22 +1152,18 @@ void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysAllFrames(int sourceAnimation
 	the target color is nonzero for all frames. Source and target are referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Copy nonzero colors from the source animation to the target animation where 
@@ -1281,44 +1181,36 @@ void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysAllFramesOffset(int sourceAni
 	for the length of the source animation. Source and target animations are 
 	referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroTargetAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Copy nonzero colors from the source animation to the target animation where 
 	the target color is nonzero for the specified frame. The source and target 
 	are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId)
 {
 	ChromaAnimationAPI::CopyNonZeroTargetAllKeysName(sourceAnimation, targetAnimation, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroTargetAllKeysNameD(const char* sourceAnimation, const char* targetAnimation, double frameId)
 {
 	return ChromaAnimationAPI::CopyNonZeroTargetAllKeysNameD(sourceAnimation, targetAnimation, frameId);
 }
-*/
 
 /*
 	Copy nonzero colors from the source animation to the target animation where 
@@ -1335,22 +1227,18 @@ void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysOffset(int sourceAnimationId,
 	the target color is nonzero for the specified source frame and target offset 
 	frame. The source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset)
 {
 	ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset)
 {
 	return ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	Copy nonzero colors from the source animation to the target animation where 
@@ -1367,22 +1255,18 @@ void godot::NodeChromaSDK::CopyNonZeroTargetZeroAllKeysAllFrames(int sourceAnima
 	the target color is zero for all frames. Source and target are referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::CopyNonZeroTargetZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyNonZeroTargetZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Copy red channel to other channels for all frames. Intensity range is 0.0 
@@ -1397,22 +1281,18 @@ void godot::NodeChromaSDK::CopyRedChannelAllFrames(int animationId, float greenI
 	Copy green channel to other channels for all frames. Intensity range is 
 	0.0 to 1.0. Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::CopyRedChannelAllFramesName(const char* path, float greenIntensity, float blueIntensity)
 {
 	ChromaAnimationAPI::CopyRedChannelAllFramesName(path, greenIntensity, blueIntensity);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyRedChannelAllFramesNameD(const char* path, double greenIntensity, double blueIntensity)
 {
 	return ChromaAnimationAPI::CopyRedChannelAllFramesNameD(path, greenIntensity, blueIntensity);
 }
-*/
 
 /*
 	Copy zero colors from source animation to target animation for all frames. 
@@ -1427,22 +1307,18 @@ void godot::NodeChromaSDK::CopyZeroAllKeysAllFrames(int sourceAnimationId, int t
 	Copy zero colors from source animation to target animation for all frames. 
 	Source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::CopyZeroAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyZeroAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Copy zero colors from source animation to target animation for all frames 
@@ -1459,22 +1335,18 @@ void godot::NodeChromaSDK::CopyZeroAllKeysAllFramesOffset(int sourceAnimationId,
 	starting at the target offset for the length of the source animation. Source 
 	and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::CopyZeroAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::CopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Copy zero key color from source animation to target animation for the specified 
@@ -1489,22 +1361,18 @@ void godot::NodeChromaSDK::CopyZeroKeyColor(int sourceAnimationId, int targetAni
 	Copy zero key color from source animation to target animation for the specified 
 	frame. Source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyZeroKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey)
 {
 	ChromaAnimationAPI::CopyZeroKeyColorName(sourceAnimation, targetAnimation, frameId, rzkey);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyZeroKeyColorNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey)
 {
 	return ChromaAnimationAPI::CopyZeroKeyColorNameD(sourceAnimation, targetAnimation, frameId, rzkey);
 }
-*/
 
 /*
 	Copy nonzero color from source animation to target animation where target 
@@ -1519,102 +1387,82 @@ void godot::NodeChromaSDK::CopyZeroTargetAllKeysAllFrames(int sourceAnimationId,
 	Copy nonzero color from source animation to target animation where target 
 	is zero for all frames. Source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::CopyZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::CopyZeroTargetAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::CopyZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateChromaLinkEffect(ChromaSDK::ChromaLink::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateChromaLinkEffect(Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateEffect(RZDEVICEID DeviceId, ChromaSDK::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateEffect(DeviceId, Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateHeadsetEffect(ChromaSDK::Headset::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateHeadsetEffect(Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateKeyboardEffect(ChromaSDK::Keyboard::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateKeyboardEffect(Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateKeypadEffect(ChromaSDK::Keypad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateKeypadEffect(Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateMouseEffect(ChromaSDK::Mouse::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateMouseEffect(Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreCreateMousepadEffect(ChromaSDK::Mousepad::EFFECT_TYPE Effect, PRZPARAM pParam, RZEFFECTID* pEffectId)
 {
 	return ChromaAnimationAPI::CoreCreateMousepadEffect(Effect, pParam, pEffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreDeleteEffect(RZEFFECTID EffectId)
 {
 	return ChromaAnimationAPI::CoreDeleteEffect(EffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
@@ -1627,22 +1475,18 @@ RZRESULT godot::NodeChromaSDK::CoreInit()
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo)
 {
 	return ChromaAnimationAPI::CoreQueryDevice(DeviceId, DeviceInfo);
 }
-*/
 
 /*
 	Direct access to low level API.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CoreSetEffect(RZEFFECTID EffectId)
 {
 	return ChromaAnimationAPI::CoreSetEffect(EffectId);
 }
-*/
 
 /*
 	Direct access to low level API.
@@ -1661,12 +1505,10 @@ RZRESULT godot::NodeChromaSDK::CoreUnInit()
 	at the given path. Returns the animation id upon success. Returns -1 upon 
 	failure.
 */
-/*
 int godot::NodeChromaSDK::CreateAnimation(const char* path, int deviceType, int device)
 {
 	return ChromaAnimationAPI::CreateAnimation(path, deviceType, device);
 }
-*/
 
 /*
 	Creates a `Chroma` animation in memory without creating a file. The `deviceType` 
@@ -1684,22 +1526,18 @@ int godot::NodeChromaSDK::CreateAnimationInMemory(int deviceType, int device)
 /*
 	Create a device specific effect.
 */
-/*
 RZRESULT godot::NodeChromaSDK::CreateEffect(RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int* colors, int size, ChromaSDK::FChromaSDKGuid* effectId)
 {
 	return ChromaAnimationAPI::CreateEffect(deviceId, effect, colors, size, effectId);
 }
-*/
 
 /*
 	Delete an effect given the effect id.
 */
-/*
 RZRESULT godot::NodeChromaSDK::DeleteEffect(const ChromaSDK::FChromaSDKGuid& effectId)
 {
 	return ChromaAnimationAPI::DeleteEffect(effectId);
 }
-*/
 
 /*
 	Duplicate the first animation frame so that the animation length matches 
@@ -1714,22 +1552,18 @@ void godot::NodeChromaSDK::DuplicateFirstFrame(int animationId, int frameCount)
 	Duplicate the first animation frame so that the animation length matches 
 	the frame count. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::DuplicateFirstFrameName(const char* path, int frameCount)
 {
 	ChromaAnimationAPI::DuplicateFirstFrameName(path, frameCount);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::DuplicateFirstFrameNameD(const char* path, double frameCount)
 {
 	return ChromaAnimationAPI::DuplicateFirstFrameNameD(path, frameCount);
 }
-*/
 
 /*
 	Duplicate all the frames of the animation to double the animation length. 
@@ -1746,22 +1580,18 @@ void godot::NodeChromaSDK::DuplicateFrames(int animationId)
 	Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 	The animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::DuplicateFramesName(const char* path)
 {
 	ChromaAnimationAPI::DuplicateFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::DuplicateFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::DuplicateFramesNameD(path);
 }
-*/
 
 /*
 	Duplicate all the animation frames in reverse so that the animation plays 
@@ -1776,22 +1606,18 @@ void godot::NodeChromaSDK::DuplicateMirrorFrames(int animationId)
 	Duplicate all the animation frames in reverse so that the animation plays 
 	forwards and backwards. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::DuplicateMirrorFramesName(const char* path)
 {
 	ChromaAnimationAPI::DuplicateMirrorFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::DuplicateMirrorFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::DuplicateMirrorFramesNameD(path);
 }
-*/
 
 /*
 	Fade the animation to black starting at the fade frame index to the end 
@@ -1806,22 +1632,18 @@ void godot::NodeChromaSDK::FadeEndFrames(int animationId, int fade)
 	Fade the animation to black starting at the fade frame index to the end 
 	of the animation. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FadeEndFramesName(const char* path, int fade)
 {
 	ChromaAnimationAPI::FadeEndFramesName(path, fade);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FadeEndFramesNameD(const char* path, double fade)
 {
 	return ChromaAnimationAPI::FadeEndFramesNameD(path, fade);
 }
-*/
 
 /*
 	Fade the animation from black to full color starting at 0 to the fade frame 
@@ -1836,22 +1658,18 @@ void godot::NodeChromaSDK::FadeStartFrames(int animationId, int fade)
 	Fade the animation from black to full color starting at 0 to the fade frame 
 	index. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FadeStartFramesName(const char* path, int fade)
 {
 	ChromaAnimationAPI::FadeStartFramesName(path, fade);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FadeStartFramesNameD(const char* path, double fade)
 {
 	return ChromaAnimationAPI::FadeStartFramesNameD(path, fade);
 }
-*/
 
 /*
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
@@ -1875,22 +1693,18 @@ void godot::NodeChromaSDK::FillColorAllFrames(int animationId, int color)
 	Set the RGB value for all colors for all frames. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::FillColorAllFramesName(const char* path, int color)
 {
 	ChromaAnimationAPI::FillColorAllFramesName(path, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillColorAllFramesNameD(const char* path, double color)
 {
 	return ChromaAnimationAPI::FillColorAllFramesNameD(path, color);
 }
-*/
 
 /*
 	Set the RGB value for all colors for all frames. Use the range of 0 to 255 
@@ -1905,43 +1719,35 @@ void godot::NodeChromaSDK::FillColorAllFramesRGB(int animationId, int red, int g
 	Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 	for red, green, and blue parameters. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillColorAllFramesRGBName(const char* path, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillColorAllFramesRGBName(path, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillColorAllFramesRGBNameD(const char* path, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillColorAllFramesRGBNameD(path, red, green, blue);
 }
-*/
 
 /*
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::FillColorName(const char* path, int frameId, int color)
 {
 	ChromaAnimationAPI::FillColorName(path, frameId, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillColorNameD(const char* path, double frameId, double color)
 {
 	return ChromaAnimationAPI::FillColorNameD(path, frameId, color);
 }
-*/
 
 /*
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
@@ -1956,22 +1762,18 @@ void godot::NodeChromaSDK::FillColorRGB(int animationId, int frameId, int red, i
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::FillColorRGBName(const char* path, int frameId, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillColorRGBName(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillColorRGBNameD(const char* path, double frameId, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillColorRGBNameD(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	This method will only update colors in the animation that are not already 
@@ -1998,22 +1800,18 @@ void godot::NodeChromaSDK::FillNonZeroColorAllFrames(int animationId, int color)
 	set to black. Set the RGB value for a subset of colors for all frames. 
 	Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillNonZeroColorAllFramesName(const char* path, int color)
 {
 	ChromaAnimationAPI::FillNonZeroColorAllFramesName(path, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillNonZeroColorAllFramesNameD(const char* path, double color)
 {
 	return ChromaAnimationAPI::FillNonZeroColorAllFramesNameD(path, color);
 }
-*/
 
 /*
 	This method will only update colors in the animation that are not already 
@@ -2032,44 +1830,36 @@ void godot::NodeChromaSDK::FillNonZeroColorAllFramesRGB(int animationId, int red
 	Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillNonZeroColorAllFramesRGBName(const char* path, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillNonZeroColorAllFramesRGBName(path, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillNonZeroColorAllFramesRGBNameD(const char* path, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillNonZeroColorAllFramesRGBNameD(path, red, green, blue);
 }
-*/
 
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Set the RGB value for a subset of colors in the specified 
 	frame. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillNonZeroColorName(const char* path, int frameId, int color)
 {
 	ChromaAnimationAPI::FillNonZeroColorName(path, frameId, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillNonZeroColorNameD(const char* path, double frameId, double color)
 {
 	return ChromaAnimationAPI::FillNonZeroColorNameD(path, frameId, color);
 }
-*/
 
 /*
 	This method will only update colors in the animation that are not already 
@@ -2088,22 +1878,18 @@ void godot::NodeChromaSDK::FillNonZeroColorRGB(int animationId, int frameId, int
 	frame. Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillNonZeroColorRGBName(const char* path, int frameId, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillNonZeroColorRGBName(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillNonZeroColorRGBNameD(const char* path, double frameId, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillNonZeroColorRGBNameD(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	Fill the frame with random RGB values for the given frame. Animation is 
@@ -2127,22 +1913,18 @@ void godot::NodeChromaSDK::FillRandomColorsAllFrames(int animationId)
 	Fill the frame with random RGB values for all frames. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::FillRandomColorsAllFramesName(const char* path)
 {
 	ChromaAnimationAPI::FillRandomColorsAllFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillRandomColorsAllFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::FillRandomColorsAllFramesNameD(path);
 }
-*/
 
 /*
 	Fill the frame with random black and white values for the specified frame. 
@@ -2166,64 +1948,52 @@ void godot::NodeChromaSDK::FillRandomColorsBlackAndWhiteAllFrames(int animationI
 	Fill the frame with random black and white values for all frames. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillRandomColorsBlackAndWhiteAllFramesName(const char* path)
 {
 	ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillRandomColorsBlackAndWhiteAllFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFramesNameD(path);
 }
-*/
 
 /*
 	Fill the frame with random black and white values for the specified frame. 
 	Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillRandomColorsBlackAndWhiteName(const char* path, int frameId)
 {
 	ChromaAnimationAPI::FillRandomColorsBlackAndWhiteName(path, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillRandomColorsBlackAndWhiteNameD(const char* path, double frameId)
 {
 	return ChromaAnimationAPI::FillRandomColorsBlackAndWhiteNameD(path, frameId);
 }
-*/
 
 /*
 	Fill the frame with random RGB values for the given frame. Animation is 
 	referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillRandomColorsName(const char* path, int frameId)
 {
 	ChromaAnimationAPI::FillRandomColorsName(path, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillRandomColorsNameD(const char* path, double frameId)
 {
 	return ChromaAnimationAPI::FillRandomColorsNameD(path, frameId);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is less 
@@ -2247,22 +2017,18 @@ void godot::NodeChromaSDK::FillThresholdColorsAllFrames(int animationId, int thr
 	Fill all frames with RGB color where the animation color is less than the 
 	RGB threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdColorsAllFramesName(const char* path, int threshold, int color)
 {
 	ChromaAnimationAPI::FillThresholdColorsAllFramesName(path, threshold, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdColorsAllFramesNameD(const char* path, double threshold, double color)
 {
 	return ChromaAnimationAPI::FillThresholdColorsAllFramesNameD(path, threshold, color);
 }
-*/
 
 /*
 	Fill all frames with RGB color where the animation color is less than the 
@@ -2277,22 +2043,18 @@ void godot::NodeChromaSDK::FillThresholdColorsAllFramesRGB(int animationId, int 
 	Fill all frames with RGB color where the animation color is less than the 
 	threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdColorsAllFramesRGBName(const char* path, int threshold, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillThresholdColorsAllFramesRGBName(path, threshold, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdColorsAllFramesRGBNameD(const char* path, double threshold, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillThresholdColorsAllFramesRGBNameD(path, threshold, red, green, blue);
 }
-*/
 
 /*
 	Fill all frames with the min RGB color where the animation color is less 
@@ -2309,22 +2071,18 @@ void godot::NodeChromaSDK::FillThresholdColorsMinMaxAllFramesRGB(int animationId
 	than the min threshold AND with the max RGB color where the animation is 
 	more than the max threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdColorsMinMaxAllFramesRGBName(const char* path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 {
 	ChromaAnimationAPI::FillThresholdColorsMinMaxAllFramesRGBName(path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdColorsMinMaxAllFramesRGBNameD(const char* path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 {
 	return ChromaAnimationAPI::FillThresholdColorsMinMaxAllFramesRGBNameD(path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 }
-*/
 
 /*
 	Fill the specified frame with the min RGB color where the animation color 
@@ -2341,43 +2099,35 @@ void godot::NodeChromaSDK::FillThresholdColorsMinMaxRGB(int animationId, int fra
 	is less than the min threshold AND with the max RGB color where the animation 
 	is more than the max threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdColorsMinMaxRGBName(const char* path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 {
 	ChromaAnimationAPI::FillThresholdColorsMinMaxRGBName(path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdColorsMinMaxRGBNameD(const char* path, double frameId, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 {
 	return ChromaAnimationAPI::FillThresholdColorsMinMaxRGBNameD(path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdColorsName(const char* path, int frameId, int threshold, int color)
 {
 	ChromaAnimationAPI::FillThresholdColorsName(path, frameId, threshold, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdColorsNameD(const char* path, double frameId, double threshold, double color)
 {
 	return ChromaAnimationAPI::FillThresholdColorsNameD(path, frameId, threshold, color);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is less 
@@ -2392,22 +2142,18 @@ void godot::NodeChromaSDK::FillThresholdColorsRGB(int animationId, int frameId, 
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdColorsRGBName(const char* path, int frameId, int threshold, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillThresholdColorsRGBName(path, frameId, threshold, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdColorsRGBNameD(const char* path, double frameId, double threshold, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillThresholdColorsRGBNameD(path, frameId, threshold, red, green, blue);
 }
-*/
 
 /*
 	Fill all frames with RGB color where the animation color is less than the 
@@ -2422,22 +2168,18 @@ void godot::NodeChromaSDK::FillThresholdRGBColorsAllFramesRGB(int animationId, i
 	Fill all frames with RGB color where the animation color is less than the 
 	RGB threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdRGBColorsAllFramesRGBName(const char* path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillThresholdRGBColorsAllFramesRGBName(path, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdRGBColorsAllFramesRGBNameD(const char* path, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillThresholdRGBColorsAllFramesRGBNameD(path, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is less 
@@ -2452,22 +2194,18 @@ void godot::NodeChromaSDK::FillThresholdRGBColorsRGB(int animationId, int frameI
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillThresholdRGBColorsRGBName(const char* path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillThresholdRGBColorsRGBName(path, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillThresholdRGBColorsRGBNameD(const char* path, double frameId, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillThresholdRGBColorsRGBNameD(path, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is zero. 
@@ -2491,22 +2229,18 @@ void godot::NodeChromaSDK::FillZeroColorAllFrames(int animationId, int color)
 	Fill all frames with RGB color where the animation color is zero. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillZeroColorAllFramesName(const char* path, int color)
 {
 	ChromaAnimationAPI::FillZeroColorAllFramesName(path, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillZeroColorAllFramesNameD(const char* path, double color)
 {
 	return ChromaAnimationAPI::FillZeroColorAllFramesNameD(path, color);
 }
-*/
 
 /*
 	Fill all frames with RGB color where the animation color is zero. Animation 
@@ -2521,43 +2255,35 @@ void godot::NodeChromaSDK::FillZeroColorAllFramesRGB(int animationId, int red, i
 	Fill all frames with RGB color where the animation color is zero. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillZeroColorAllFramesRGBName(const char* path, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillZeroColorAllFramesRGBName(path, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillZeroColorAllFramesRGBNameD(const char* path, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillZeroColorAllFramesRGBNameD(path, red, green, blue);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is zero. 
 	Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillZeroColorName(const char* path, int frameId, int color)
 {
 	ChromaAnimationAPI::FillZeroColorName(path, frameId, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillZeroColorNameD(const char* path, double frameId, double color)
 {
 	return ChromaAnimationAPI::FillZeroColorNameD(path, frameId, color);
 }
-*/
 
 /*
 	Fill the specified frame with RGB color where the animation color is zero. 
@@ -2572,22 +2298,18 @@ void godot::NodeChromaSDK::FillZeroColorRGB(int animationId, int frameId, int re
 	Fill the specified frame with RGB color where the animation color is zero. 
 	Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::FillZeroColorRGBName(const char* path, int frameId, int red, int green, int blue)
 {
 	ChromaAnimationAPI::FillZeroColorRGBName(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::FillZeroColorRGBNameD(const char* path, double frameId, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::FillZeroColorRGBNameD(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	Get the animation color for a frame given the `1D` `led`. The `led` should 
@@ -2604,22 +2326,18 @@ int godot::NodeChromaSDK::Get1DColor(int animationId, int frameId, int led)
 	be greater than or equal to 0 and less than the `MaxLeds`. Animation is 
 	referenced by name.
 */
-/*
 int godot::NodeChromaSDK::Get1DColorName(const char* path, int frameId, int led)
 {
 	return ChromaAnimationAPI::Get1DColorName(path, frameId, led);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::Get1DColorNameD(const char* path, double frameId, double led)
 {
 	return ChromaAnimationAPI::Get1DColorNameD(path, frameId, led);
 }
-*/
 
 /*
 	Get the animation color for a frame given the `2D` `row` and `column`. The 
@@ -2638,32 +2356,26 @@ int godot::NodeChromaSDK::Get2DColor(int animationId, int frameId, int row, int 
 	The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 	Animation is referenced by name.
 */
-/*
 int godot::NodeChromaSDK::Get2DColorName(const char* path, int frameId, int row, int column)
 {
 	return ChromaAnimationAPI::Get2DColorName(path, frameId, row, column);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::Get2DColorNameD(const char* path, double frameId, double row, double column)
 {
 	return ChromaAnimationAPI::Get2DColorNameD(path, frameId, row, column);
 }
-*/
 
 /*
 	Get the animation id for the named animation.
 */
-/*
 int godot::NodeChromaSDK::GetAnimation(const char* name)
 {
 	return ChromaAnimationAPI::GetAnimation(name);
 }
-*/
 
 /*
 	`PluginGetAnimationCount` will return the number of loaded animations.
@@ -2676,12 +2388,10 @@ int godot::NodeChromaSDK::GetAnimationCount()
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::GetAnimationD(const char* name)
 {
 	return ChromaAnimationAPI::GetAnimationD(name);
 }
-*/
 
 /*
 	`PluginGetAnimationId` will return the `animationId` given the `index` of 
@@ -2715,22 +2425,18 @@ int godot::NodeChromaSDK::GetCurrentFrame(int animationId)
 /*
 	Get the current frame of the animation referenced by name.
 */
-/*
 int godot::NodeChromaSDK::GetCurrentFrameName(const char* path)
 {
 	return ChromaAnimationAPI::GetCurrentFrameName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::GetCurrentFrameNameD(const char* path)
 {
 	return ChromaAnimationAPI::GetCurrentFrameNameD(path);
 }
-*/
 
 /*
 	Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
@@ -2747,22 +2453,18 @@ int godot::NodeChromaSDK::GetDevice(int animationId)
 	animation respective to the `deviceType`, as an integer upon success. Returns 
 	-1 upon failure.
 */
-/*
 int godot::NodeChromaSDK::GetDeviceName(const char* path)
 {
 	return ChromaAnimationAPI::GetDeviceName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::GetDeviceNameD(const char* path)
 {
 	return ChromaAnimationAPI::GetDeviceNameD(path);
 }
-*/
 
 /*
 	Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
@@ -2777,22 +2479,18 @@ int godot::NodeChromaSDK::GetDeviceType(int animationId)
 	Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
 	upon success. Returns -1 upon failure.
 */
-/*
 int godot::NodeChromaSDK::GetDeviceTypeName(const char* path)
 {
 	return ChromaAnimationAPI::GetDeviceTypeName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::GetDeviceTypeNameD(const char* path)
 {
 	return ChromaAnimationAPI::GetDeviceTypeNameD(path);
 }
-*/
 
 /*
 	Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
@@ -2802,12 +2500,10 @@ double godot::NodeChromaSDK::GetDeviceTypeNameD(const char* path)
 	For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
 	COLUMN`. Returns the animation id upon success. Returns -1 upon failure.
 */
-/*
 int godot::NodeChromaSDK::GetFrame(int animationId, int frameIndex, float* duration, int* colors, int length)
 {
 	return ChromaAnimationAPI::GetFrame(animationId, frameIndex, duration, colors, length);
 }
-*/
 
 /*
 	Returns the frame count of a `Chroma` animation upon success. Returns -1 
@@ -2822,22 +2518,18 @@ int godot::NodeChromaSDK::GetFrameCount(int animationId)
 	Returns the frame count of a `Chroma` animation upon success. Returns -1 
 	upon failure.
 */
-/*
 int godot::NodeChromaSDK::GetFrameCountName(const char* path)
 {
 	return ChromaAnimationAPI::GetFrameCountName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::GetFrameCountNameD(const char* path)
 {
 	return ChromaAnimationAPI::GetFrameCountNameD(path);
 }
-*/
 
 /*
 	Get the color of an animation key for the given frame referenced by id.
@@ -2850,22 +2542,18 @@ int godot::NodeChromaSDK::GetKeyColor(int animationId, int frameId, int rzkey)
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::GetKeyColorD(const char* path, double frameId, double rzkey)
 {
 	return ChromaAnimationAPI::GetKeyColorD(path, frameId, rzkey);
 }
-*/
 
 /*
 	Get the color of an animation key for the given frame referenced by name.
 */
-/*
 int godot::NodeChromaSDK::GetKeyColorName(const char* path, int frameId, int rzkey)
 {
 	return ChromaAnimationAPI::GetKeyColorName(path, frameId, rzkey);
 }
-*/
 
 /*
 	Returns `RZRESULT_SUCCESS` if the plugin has been initialized successfully. 
@@ -2983,22 +2671,18 @@ bool godot::NodeChromaSDK::HasAnimationLoop(int animationId)
 /*
 	Check if the animation has loop enabled referenced by name.
 */
-/*
 bool godot::NodeChromaSDK::HasAnimationLoopName(const char* path)
 {
 	return ChromaAnimationAPI::HasAnimationLoopName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::HasAnimationLoopNameD(const char* path)
 {
 	return ChromaAnimationAPI::HasAnimationLoopNameD(path);
 }
-*/
 
 /*
 	Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
@@ -3030,22 +2714,18 @@ void godot::NodeChromaSDK::InsertDelay(int animationId, int frameId, int delay)
 	Insert an animation delay by duplicating the frame by the delay number of 
 	times. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::InsertDelayName(const char* path, int frameId, int delay)
 {
 	ChromaAnimationAPI::InsertDelayName(path, frameId, delay);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::InsertDelayNameD(const char* path, double frameId, double delay)
 {
 	return ChromaAnimationAPI::InsertDelayNameD(path, frameId, delay);
 }
-*/
 
 /*
 	Duplicate the source frame index at the target frame index. Animation is 
@@ -3060,22 +2740,18 @@ void godot::NodeChromaSDK::InsertFrame(int animationId, int sourceFrame, int tar
 	Duplicate the source frame index at the target frame index. Animation is 
 	referenced by name.
 */
-/*
 void godot::NodeChromaSDK::InsertFrameName(const char* path, int sourceFrame, int targetFrame)
 {
 	ChromaAnimationAPI::InsertFrameName(path, sourceFrame, targetFrame);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::InsertFrameNameD(const char* path, double sourceFrame, double targetFrame)
 {
 	return ChromaAnimationAPI::InsertFrameNameD(path, sourceFrame, targetFrame);
 }
-*/
 
 /*
 	Invert all the colors at the specified frame. Animation is referenced by 
@@ -3097,43 +2773,35 @@ void godot::NodeChromaSDK::InvertColorsAllFrames(int animationId)
 /*
 	Invert all the colors for all frames. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::InvertColorsAllFramesName(const char* path)
 {
 	ChromaAnimationAPI::InvertColorsAllFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::InvertColorsAllFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::InvertColorsAllFramesNameD(path);
 }
-*/
 
 /*
 	Invert all the colors at the specified frame. Animation is referenced by 
 	name.
 */
-/*
 void godot::NodeChromaSDK::InvertColorsName(const char* path, int frameId)
 {
 	ChromaAnimationAPI::InvertColorsName(path, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::InvertColorsNameD(const char* path, double frameId)
 {
 	return ChromaAnimationAPI::InvertColorsNameD(path, frameId);
 }
-*/
 
 /*
 	Check if the animation is paused referenced by id.
@@ -3146,22 +2814,18 @@ bool godot::NodeChromaSDK::IsAnimationPaused(int animationId)
 /*
 	Check if the animation is paused referenced by name.
 */
-/*
 bool godot::NodeChromaSDK::IsAnimationPausedName(const char* path)
 {
 	return ChromaAnimationAPI::IsAnimationPausedName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::IsAnimationPausedNameD(const char* path)
 {
 	return ChromaAnimationAPI::IsAnimationPausedNameD(path);
 }
-*/
 
 /*
 	The editor dialog is a non-blocking modal window, this method returns true 
@@ -3238,22 +2902,18 @@ double godot::NodeChromaSDK::IsPlayingD(double animationId)
 	will return whether the animation is playing or not. Animation is referenced 
 	by name.
 */
-/*
 bool godot::NodeChromaSDK::IsPlayingName(const char* path)
 {
 	return ChromaAnimationAPI::IsPlayingName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::IsPlayingNameD(const char* path)
 {
 	return ChromaAnimationAPI::IsPlayingNameD(path);
 }
-*/
 
 /*
 	`PluginIsPlayingType` automatically handles initializing the `ChromaSDK`. 
@@ -3309,22 +2969,18 @@ double godot::NodeChromaSDK::LoadAnimationD(double animationId)
 /*
 	Load the named animation.
 */
-/*
 void godot::NodeChromaSDK::LoadAnimationName(const char* path)
 {
 	ChromaAnimationAPI::LoadAnimationName(path);
 }
-*/
 
 /*
 	Load a composite set of animations.
 */
-/*
 void godot::NodeChromaSDK::LoadComposite(const char* name)
 {
 	ChromaAnimationAPI::LoadComposite(name);
 }
-*/
 
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
@@ -3341,22 +2997,18 @@ void godot::NodeChromaSDK::MakeBlankFrames(int animationId, int frameCount, floa
 	defaults to the duration. The frame color defaults to color. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::MakeBlankFramesName(const char* path, int frameCount, float duration, int color)
 {
 	ChromaAnimationAPI::MakeBlankFramesName(path, frameCount, duration, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MakeBlankFramesNameD(const char* path, double frameCount, double duration, double color)
 {
 	return ChromaAnimationAPI::MakeBlankFramesNameD(path, frameCount, duration, color);
 }
-*/
 
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
@@ -3383,44 +3035,36 @@ void godot::NodeChromaSDK::MakeBlankFramesRandomBlackAndWhite(int animationId, i
 	defaults to the duration. The frame color is random black and white. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::MakeBlankFramesRandomBlackAndWhiteName(const char* path, int frameCount, float duration)
 {
 	ChromaAnimationAPI::MakeBlankFramesRandomBlackAndWhiteName(path, frameCount, duration);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MakeBlankFramesRandomBlackAndWhiteNameD(const char* path, double frameCount, double duration)
 {
 	return ChromaAnimationAPI::MakeBlankFramesRandomBlackAndWhiteNameD(path, frameCount, duration);
 }
-*/
 
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
 	defaults to the duration. The frame color is random. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::MakeBlankFramesRandomName(const char* path, int frameCount, float duration)
 {
 	ChromaAnimationAPI::MakeBlankFramesRandomName(path, frameCount, duration);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MakeBlankFramesRandomNameD(const char* path, double frameCount, double duration)
 {
 	return ChromaAnimationAPI::MakeBlankFramesRandomNameD(path, frameCount, duration);
 }
-*/
 
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
@@ -3437,22 +3081,18 @@ void godot::NodeChromaSDK::MakeBlankFramesRGB(int animationId, int frameCount, f
 	defaults to the duration. The frame color defaults to color. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::MakeBlankFramesRGBName(const char* path, int frameCount, float duration, int red, int green, int blue)
 {
 	ChromaAnimationAPI::MakeBlankFramesRGBName(path, frameCount, duration, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MakeBlankFramesRGBNameD(const char* path, double frameCount, double duration, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::MakeBlankFramesRGBNameD(path, frameCount, duration, red, green, blue);
 }
-*/
 
 /*
 	Flips the color grid horizontally for all `Chroma` animation frames. Returns 
@@ -3488,22 +3128,18 @@ void godot::NodeChromaSDK::MultiplyColorLerpAllFrames(int animationId, int color
 	2 using the frame index divided by the frame count for the `t` parameter. 
 	Animation is referenced in name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyColorLerpAllFramesName(const char* path, int color1, int color2)
 {
 	ChromaAnimationAPI::MultiplyColorLerpAllFramesName(path, color1, color2);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyColorLerpAllFramesNameD(const char* path, double color1, double color2)
 {
 	return ChromaAnimationAPI::MultiplyColorLerpAllFramesNameD(path, color1, color2);
 }
-*/
 
 /*
 	Multiply all the colors in the frame by the intensity value. The valid the 
@@ -3533,22 +3169,18 @@ void godot::NodeChromaSDK::MultiplyIntensityAllFrames(int animationId, float int
 	equally. An intensity of 0.5 would half the color value. Black colors in 
 	the frame will not be affected by this method.
 */
-/*
 void godot::NodeChromaSDK::MultiplyIntensityAllFramesName(const char* path, float intensity)
 {
 	ChromaAnimationAPI::MultiplyIntensityAllFramesName(path, intensity);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyIntensityAllFramesNameD(const char* path, double intensity)
 {
 	return ChromaAnimationAPI::MultiplyIntensityAllFramesNameD(path, intensity);
 }
-*/
 
 /*
 	Multiply all frames by the RBG color intensity. Animation is referenced 
@@ -3563,22 +3195,18 @@ void godot::NodeChromaSDK::MultiplyIntensityAllFramesRGB(int animationId, int re
 	Multiply all frames by the RBG color intensity. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyIntensityAllFramesRGBName(const char* path, int red, int green, int blue)
 {
 	ChromaAnimationAPI::MultiplyIntensityAllFramesRGBName(path, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyIntensityAllFramesRGBNameD(const char* path, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::MultiplyIntensityAllFramesRGBNameD(path, red, green, blue);
 }
-*/
 
 /*
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
@@ -3602,43 +3230,35 @@ void godot::NodeChromaSDK::MultiplyIntensityColorAllFrames(int animationId, int 
 	Multiply all frames by the RBG color intensity. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyIntensityColorAllFramesName(const char* path, int color)
 {
 	ChromaAnimationAPI::MultiplyIntensityColorAllFramesName(path, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyIntensityColorAllFramesNameD(const char* path, double color)
 {
 	return ChromaAnimationAPI::MultiplyIntensityColorAllFramesNameD(path, color);
 }
-*/
 
 /*
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyIntensityColorName(const char* path, int frameId, int color)
 {
 	ChromaAnimationAPI::MultiplyIntensityColorName(path, frameId, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyIntensityColorNameD(const char* path, double frameId, double color)
 {
 	return ChromaAnimationAPI::MultiplyIntensityColorNameD(path, frameId, color);
 }
-*/
 
 /*
 	Multiply all the colors in the frame by the intensity value. The valid the 
@@ -3646,22 +3266,18 @@ double godot::NodeChromaSDK::MultiplyIntensityColorNameD(const char* path, doubl
 	An intensity of 0.5 would half the color value. Black colors in the frame 
 	will not be affected by this method.
 */
-/*
 void godot::NodeChromaSDK::MultiplyIntensityName(const char* path, int frameId, float intensity)
 {
 	ChromaAnimationAPI::MultiplyIntensityName(path, frameId, intensity);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyIntensityNameD(const char* path, double frameId, double intensity)
 {
 	return ChromaAnimationAPI::MultiplyIntensityNameD(path, frameId, intensity);
 }
-*/
 
 /*
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
@@ -3676,22 +3292,18 @@ void godot::NodeChromaSDK::MultiplyIntensityRGB(int animationId, int frameId, in
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyIntensityRGBName(const char* path, int frameId, int red, int green, int blue)
 {
 	ChromaAnimationAPI::MultiplyIntensityRGBName(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyIntensityRGBNameD(const char* path, double frameId, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::MultiplyIntensityRGBNameD(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	Multiply the specific frame by the color lerp result between color 1 and 
@@ -3716,22 +3328,18 @@ void godot::NodeChromaSDK::MultiplyNonZeroTargetColorLerpAllFrames(int animation
 	Multiply all frames by the color lerp result between color 1 and 2 using 
 	the frame color value as the `t` value. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyNonZeroTargetColorLerpAllFramesName(const char* path, int color1, int color2)
 {
 	ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesName(path, color1, color2);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyNonZeroTargetColorLerpAllFramesNameD(const char* path, double color1, double color2)
 {
 	return ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesNameD(path, color1, color2);
 }
-*/
 
 /*
 	Multiply the specific frame by the color lerp result between RGB 1 and 2 
@@ -3748,22 +3356,18 @@ void godot::NodeChromaSDK::MultiplyNonZeroTargetColorLerpAllFramesRGB(int animat
 	using the frame color value as the `t` value. Animation is referenced by 
 	name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyNonZeroTargetColorLerpAllFramesRGBName(const char* path, int red1, int green1, int blue1, int red2, int green2, int blue2)
 {
 	ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesRGBName(path, red1, green1, blue1, red2, green2, blue2);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(const char* path, double red1, double green1, double blue1, double red2, double green2, double blue2)
 {
 	return ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(path, red1, green1, blue1, red2, green2, blue2);
 }
-*/
 
 /*
 	Multiply the specific frame by the color lerp result between color 1 and 
@@ -3788,22 +3392,18 @@ void godot::NodeChromaSDK::MultiplyTargetColorLerpAllFrames(int animationId, int
 	Multiply all frames by the color lerp result between color 1 and 2 using 
 	the frame color value as the `t` value. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyTargetColorLerpAllFramesName(const char* path, int color1, int color2)
 {
 	ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesName(path, color1, color2);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyTargetColorLerpAllFramesNameD(const char* path, double color1, double color2)
 {
 	return ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesNameD(path, color1, color2);
 }
-*/
 
 /*
 	Multiply all frames by the color lerp result between RGB 1 and 2 using the 
@@ -3818,22 +3418,18 @@ void godot::NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGB(int animationId, 
 	Multiply all frames by the color lerp result between RGB 1 and 2 using the 
 	frame color value as the `t` value. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGBName(const char* path, int red1, int green1, int blue1, int red2, int green2, int blue2)
 {
 	ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGBName(path, red1, green1, blue1, red2, green2, blue2);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGBNameD(const char* path, double red1, double green1, double blue1, double red2, double green2, double blue2)
 {
 	return ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGBNameD(path, red1, green1, blue1, red2, green2, blue2);
 }
-*/
 
 /*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
@@ -3860,44 +3456,36 @@ void godot::NodeChromaSDK::OffsetColorsAllFrames(int animationId, int red, int g
 	-255 to 255 for red, green, and blue parameters. Negative values remove 
 	color. Positive values add color.
 */
-/*
 void godot::NodeChromaSDK::OffsetColorsAllFramesName(const char* path, int red, int green, int blue)
 {
 	ChromaAnimationAPI::OffsetColorsAllFramesName(path, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OffsetColorsAllFramesNameD(const char* path, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::OffsetColorsAllFramesNameD(path, red, green, blue);
 }
-*/
 
 /*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
 */
-/*
 void godot::NodeChromaSDK::OffsetColorsName(const char* path, int frameId, int red, int green, int blue)
 {
 	ChromaAnimationAPI::OffsetColorsName(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OffsetColorsNameD(const char* path, double frameId, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::OffsetColorsNameD(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	This method will only update colors in the animation that are not already 
@@ -3927,22 +3515,18 @@ void godot::NodeChromaSDK::OffsetNonZeroColorsAllFrames(int animationId, int red
 	Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 	values remove color. Positive values add color.
 */
-/*
 void godot::NodeChromaSDK::OffsetNonZeroColorsAllFramesName(const char* path, int red, int green, int blue)
 {
 	ChromaAnimationAPI::OffsetNonZeroColorsAllFramesName(path, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OffsetNonZeroColorsAllFramesNameD(const char* path, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::OffsetNonZeroColorsAllFramesNameD(path, red, green, blue);
 }
-*/
 
 /*
 	This method will only update colors in the animation that are not already 
@@ -3950,44 +3534,36 @@ double godot::NodeChromaSDK::OffsetNonZeroColorsAllFramesNameD(const char* path,
 	Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 	values remove color. Positive values add color.
 */
-/*
 void godot::NodeChromaSDK::OffsetNonZeroColorsName(const char* path, int frameId, int red, int green, int blue)
 {
 	ChromaAnimationAPI::OffsetNonZeroColorsName(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OffsetNonZeroColorsNameD(const char* path, double frameId, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::OffsetNonZeroColorsNameD(path, frameId, red, green, blue);
 }
-*/
 
 /*
 	Opens a `Chroma` animation file so that it can be played. Returns an animation 
 	id >= 0 upon success. Returns -1 if there was a failure. The animation 
 	id is used in most of the API methods.
 */
-/*
 int godot::NodeChromaSDK::OpenAnimation(const char* path)
 {
 	return ChromaAnimationAPI::OpenAnimation(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OpenAnimationD(const char* path)
 {
 	return ChromaAnimationAPI::OpenAnimationD(path);
 }
-*/
 
 /*
 	Opens a `Chroma` animation data from memory so that it can be played. `Data` 
@@ -3996,54 +3572,44 @@ double godot::NodeChromaSDK::OpenAnimationD(const char* path)
 	upon success. Returns -1 if there was a failure. The animation id is used 
 	in most of the API methods.
 */
-/*
 int godot::NodeChromaSDK::OpenAnimationFromMemory(const byte* data, const char* name)
 {
 	return ChromaAnimationAPI::OpenAnimationFromMemory(data, name);
 }
-*/
 
 /*
 	Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 	upon success. Returns -1 if there was a failure.
 */
-/*
 int godot::NodeChromaSDK::OpenEditorDialog(const char* path)
 {
 	return ChromaAnimationAPI::OpenEditorDialog(path);
 }
-*/
 
 /*
 	Open the named animation in the editor dialog and play the animation at 
 	start.
 */
-/*
 int godot::NodeChromaSDK::OpenEditorDialogAndPlay(const char* path)
 {
 	return ChromaAnimationAPI::OpenEditorDialogAndPlay(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OpenEditorDialogAndPlayD(const char* path)
 {
 	return ChromaAnimationAPI::OpenEditorDialogAndPlayD(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::OpenEditorDialogD(const char* path)
 {
 	return ChromaAnimationAPI::OpenEditorDialogD(path);
 }
-*/
 
 /*
 	Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
@@ -4066,12 +3632,10 @@ double godot::NodeChromaSDK::OverrideFrameDurationD(double animationId, double d
 	Override the duration of all frames with the `duration` value. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::OverrideFrameDurationName(const char* path, float duration)
 {
 	ChromaAnimationAPI::OverrideFrameDurationName(path, duration);
 }
-*/
 
 /*
 	Pause the current animation referenced by id.
@@ -4084,22 +3648,18 @@ void godot::NodeChromaSDK::PauseAnimation(int animationId)
 /*
 	Pause the current animation referenced by name.
 */
-/*
 void godot::NodeChromaSDK::PauseAnimationName(const char* path)
 {
 	ChromaAnimationAPI::PauseAnimationName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::PauseAnimationNameD(const char* path)
 {
 	return ChromaAnimationAPI::PauseAnimationNameD(path);
 }
-*/
 
 /*
 	Plays the `Chroma` animation. This will load the animation, if not loaded 
@@ -4133,22 +3693,18 @@ void godot::NodeChromaSDK::PlayAnimationFrame(int animationId, int frameId, bool
 	The named `.chroma` animation file will be automatically opened. The animation 
 	will play with looping `on` or `off` starting at the `frameId`.
 */
-/*
 void godot::NodeChromaSDK::PlayAnimationFrameName(const char* path, int frameId, bool loop)
 {
 	ChromaAnimationAPI::PlayAnimationFrameName(path, frameId, loop);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::PlayAnimationFrameNameD(const char* path, double frameId, double loop)
 {
 	return ChromaAnimationAPI::PlayAnimationFrameNameD(path, frameId, loop);
 }
-*/
 
 /*
 	`PluginPlayAnimationLoop` automatically handles initializing the `ChromaSDK`. 
@@ -4165,44 +3721,36 @@ void godot::NodeChromaSDK::PlayAnimationLoop(int animationId, bool loop)
 	The named `.chroma` animation file will be automatically opened. The animation 
 	will play with looping `on` or `off`.
 */
-/*
 void godot::NodeChromaSDK::PlayAnimationName(const char* path, bool loop)
 {
 	ChromaAnimationAPI::PlayAnimationName(path, loop);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::PlayAnimationNameD(const char* path, double loop)
 {
 	return ChromaAnimationAPI::PlayAnimationNameD(path, loop);
 }
-*/
 
 /*
 	`PluginPlayComposite` automatically handles initializing the `ChromaSDK`. 
 	The named animation files for the `.chroma` set will be automatically opened. 
 	The set of animations will play with looping `on` or `off`.
 */
-/*
 void godot::NodeChromaSDK::PlayComposite(const char* name, bool loop)
 {
 	ChromaAnimationAPI::PlayComposite(name, loop);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::PlayCompositeD(const char* name, double loop)
 {
 	return ChromaAnimationAPI::PlayCompositeD(name, loop);
 }
-*/
 
 /*
 	Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
@@ -4225,12 +3773,10 @@ double godot::NodeChromaSDK::PreviewFrameD(double animationId, double frameIndex
 	Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 	Animaton is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::PreviewFrameName(const char* path, int frameIndex)
 {
 	ChromaAnimationAPI::PreviewFrameName(path, frameIndex);
 }
-*/
 
 /*
 	Reduce the frames of the animation by removing every nth element. Animation 
@@ -4245,22 +3791,18 @@ void godot::NodeChromaSDK::ReduceFrames(int animationId, int n)
 	Reduce the frames of the animation by removing every nth element. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::ReduceFramesName(const char* path, int n)
 {
 	ChromaAnimationAPI::ReduceFramesName(path, n);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::ReduceFramesNameD(const char* path, double n)
 {
 	return ChromaAnimationAPI::ReduceFramesNameD(path, n);
 }
-*/
 
 /*
 	Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
@@ -4282,22 +3824,18 @@ void godot::NodeChromaSDK::ResumeAnimation(int animationId, bool loop)
 /*
 	Resume the animation with loop `ON` or `OFF` referenced by name.
 */
-/*
 void godot::NodeChromaSDK::ResumeAnimationName(const char* path, bool loop)
 {
 	ChromaAnimationAPI::ResumeAnimationName(path, loop);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::ResumeAnimationNameD(const char* path, double loop)
 {
 	return ChromaAnimationAPI::ResumeAnimationNameD(path, loop);
 }
-*/
 
 /*
 	Reverse the animation frame order of the `Chroma` animation. Returns the 
@@ -4322,42 +3860,34 @@ void godot::NodeChromaSDK::ReverseAllFrames(int animationId)
 	Reverse the animation frame order of the `Chroma` animation. Animation is 
 	referenced by name.
 */
-/*
 void godot::NodeChromaSDK::ReverseAllFramesName(const char* path)
 {
 	ChromaAnimationAPI::ReverseAllFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::ReverseAllFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::ReverseAllFramesNameD(path);
 }
-*/
 
 /*
 	Save the animation referenced by id to the path specified.
 */
-/*
 int godot::NodeChromaSDK::SaveAnimation(int animationId, const char* path)
 {
 	return ChromaAnimationAPI::SaveAnimation(animationId, path);
 }
-*/
 
 /*
 	Save the named animation to the target path specified.
 */
-/*
 int godot::NodeChromaSDK::SaveAnimationName(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::SaveAnimationName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Set the animation color for a frame given the `1D` `led`. The `led` should 
@@ -4374,22 +3904,18 @@ void godot::NodeChromaSDK::Set1DColor(int animationId, int frameId, int led, int
 	be greater than or equal to 0 and less than the `MaxLeds`. The animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::Set1DColorName(const char* path, int frameId, int led, int color)
 {
 	ChromaAnimationAPI::Set1DColorName(path, frameId, led, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::Set1DColorNameD(const char* path, double frameId, double led, double color)
 {
 	return ChromaAnimationAPI::Set1DColorNameD(path, frameId, led, color);
 }
-*/
 
 /*
 	Set the animation color for a frame given the `2D` `row` and `column`. The 
@@ -4408,22 +3934,18 @@ void godot::NodeChromaSDK::Set2DColor(int animationId, int frameId, int row, int
 	The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 	The animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::Set2DColorName(const char* path, int frameId, int row, int column, int color)
 {
 	ChromaAnimationAPI::Set2DColorName(path, frameId, row, column, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::Set2DColorNameD(const char* path, double frameId, double rowColumnIndex, double color)
 {
 	return ChromaAnimationAPI::Set2DColorNameD(path, frameId, rowColumnIndex, color);
 }
-*/
 
 /*
 	When custom color is set, the custom key mode will be used. The animation 
@@ -4438,22 +3960,18 @@ void godot::NodeChromaSDK::SetChromaCustomColorAllFrames(int animationId)
 	When custom color is set, the custom key mode will be used. The animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetChromaCustomColorAllFramesName(const char* path)
 {
 	ChromaAnimationAPI::SetChromaCustomColorAllFramesName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetChromaCustomColorAllFramesNameD(const char* path)
 {
 	return ChromaAnimationAPI::SetChromaCustomColorAllFramesNameD(path);
 }
-*/
 
 /*
 	Set the Chroma custom key color flag on all frames. `True` changes the layout 
@@ -4470,22 +3988,18 @@ void godot::NodeChromaSDK::SetChromaCustomFlag(int animationId, bool flag)
 	from grid to key. `True` changes the layout from key to grid. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetChromaCustomFlagName(const char* path, bool flag)
 {
 	ChromaAnimationAPI::SetChromaCustomFlagName(path, flag);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetChromaCustomFlagNameD(const char* path, double flag)
 {
 	return ChromaAnimationAPI::SetChromaCustomFlagNameD(path, flag);
 }
-*/
 
 /*
 	Set the current frame of the animation referenced by id.
@@ -4498,22 +4012,18 @@ void godot::NodeChromaSDK::SetCurrentFrame(int animationId, int frameId)
 /*
 	Set the current frame of the animation referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetCurrentFrameName(const char* path, int frameId)
 {
 	ChromaAnimationAPI::SetCurrentFrameName(path, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetCurrentFrameNameD(const char* path, double frameId)
 {
 	return ChromaAnimationAPI::SetCurrentFrameNameD(path, frameId);
 }
-*/
 
 /*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
@@ -4528,12 +4038,10 @@ int godot::NodeChromaSDK::SetDevice(int animationId, int deviceType, int device)
 /*
 	SetEffect will display the referenced effect id.
 */
-/*
 RZRESULT godot::NodeChromaSDK::SetEffect(const ChromaSDK::FChromaSDKGuid& effectId)
 {
 	return ChromaAnimationAPI::SetEffect(effectId);
 }
-*/
 
 /*
 	When the idle animation is used, the named animation will play when no other 
@@ -4548,12 +4056,10 @@ void godot::NodeChromaSDK::SetIdleAnimation(int animationId)
 	When the idle animation is used, the named animation will play when no other 
 	animations are playing. Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::SetIdleAnimationName(const char* path)
 {
 	ChromaAnimationAPI::SetIdleAnimationName(path);
 }
-*/
 
 /*
 	Set animation key to a static color for the given frame.
@@ -4576,22 +4082,18 @@ void godot::NodeChromaSDK::SetKeyColorAllFrames(int animationId, int rzkey, int 
 	Set the key to the specified key color for all frames. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeyColorAllFramesName(const char* path, int rzkey, int color)
 {
 	ChromaAnimationAPI::SetKeyColorAllFramesName(path, rzkey, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyColorAllFramesNameD(const char* path, double rzkey, double color)
 {
 	return ChromaAnimationAPI::SetKeyColorAllFramesNameD(path, rzkey, color);
 }
-*/
 
 /*
 	Set the key to the specified key color for all frames. Animation is referenced 
@@ -4606,42 +4108,34 @@ void godot::NodeChromaSDK::SetKeyColorAllFramesRGB(int animationId, int rzkey, i
 	Set the key to the specified key color for all frames. Animation is referenced 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeyColorAllFramesRGBName(const char* path, int rzkey, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeyColorAllFramesRGBName(path, rzkey, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyColorAllFramesRGBNameD(const char* path, double rzkey, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::SetKeyColorAllFramesRGBNameD(path, rzkey, red, green, blue);
 }
-*/
 
 /*
 	Set animation key to a static color for the given frame.
 */
-/*
 void godot::NodeChromaSDK::SetKeyColorName(const char* path, int frameId, int rzkey, int color)
 {
 	ChromaAnimationAPI::SetKeyColorName(path, frameId, rzkey, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyColorNameD(const char* path, double frameId, double rzkey, double color)
 {
 	return ChromaAnimationAPI::SetKeyColorNameD(path, frameId, rzkey, color);
 }
-*/
 
 /*
 	Set the key to the specified key color for the specified frame. Animation 
@@ -4656,22 +4150,18 @@ void godot::NodeChromaSDK::SetKeyColorRGB(int animationId, int frameId, int rzke
 	Set the key to the specified key color for the specified frame. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeyColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeyColorRGBName(path, frameId, rzkey, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyColorRGBNameD(const char* path, double frameId, double rzkey, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::SetKeyColorRGBNameD(path, frameId, rzkey, red, green, blue);
 }
-*/
 
 /*
 	Set animation key to a static color for the given frame if the existing 
@@ -4686,22 +4176,18 @@ void godot::NodeChromaSDK::SetKeyNonZeroColor(int animationId, int frameId, int 
 	Set animation key to a static color for the given frame if the existing 
 	color is not already black.
 */
-/*
 void godot::NodeChromaSDK::SetKeyNonZeroColorName(const char* path, int frameId, int rzkey, int color)
 {
 	ChromaAnimationAPI::SetKeyNonZeroColorName(path, frameId, rzkey, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyNonZeroColorNameD(const char* path, double frameId, double rzkey, double color)
 {
 	return ChromaAnimationAPI::SetKeyNonZeroColorNameD(path, frameId, rzkey, color);
 }
-*/
 
 /*
 	Set the key to the specified key color for the specified frame where color 
@@ -4716,263 +4202,215 @@ void godot::NodeChromaSDK::SetKeyNonZeroColorRGB(int animationId, int frameId, i
 	Set the key to the specified key color for the specified frame where color 
 	is not black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeyNonZeroColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeyNonZeroColorRGBName(path, frameId, rzkey, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyNonZeroColorRGBNameD(const char* path, double frameId, double rzkey, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::SetKeyNonZeroColorRGBNameD(path, frameId, rzkey, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysColor(animationId, frameId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames. Animation 
 	is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysColorAllFrames(animationId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysColorAllFramesName(path, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames. Animation 
 	is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorAllFramesRGB(int animationId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorAllFramesRGBName(const char* path, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysColorAllFramesRGBName(path, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysColorName(path, frameId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysColorRGBName(path, frameId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame if 
 	the existing color is not already black.
 */
-/*
 void godot::NodeChromaSDK::SetKeysNonZeroColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysNonZeroColor(animationId, frameId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is not black. Animation is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysNonZeroColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysNonZeroColorAllFrames(animationId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames if the existing 
 	color is not already black. Reference animation by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysNonZeroColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysNonZeroColorAllFramesName(path, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame if 
 	the existing color is not already black. Reference animation by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysNonZeroColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysNonZeroColorName(path, frameId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is not black. Animation is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysNonZeroColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysNonZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is not black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysNonZeroColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysNonZeroColorRGBName(path, frameId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysZeroColor(animationId, frameId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames where the 
 	color is black. Animation is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysZeroColorAllFrames(animationId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames where the 
 	color is black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysZeroColorAllFramesName(path, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames where the 
 	color is black. Animation is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorAllFramesRGB(int animationId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysZeroColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for all frames where the 
 	color is black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorAllFramesRGBName(const char* path, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysZeroColorAllFramesRGBName(path, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color)
 {
 	ChromaAnimationAPI::SetKeysZeroColorName(path, frameId, rzkeys, keyCount, color);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by id.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeysZeroColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeysZeroColorRGBName(path, frameId, rzkeys, keyCount, red, green, blue);
 }
-*/
 
 /*
 	Set animation key to a static color for the given frame where the color 
@@ -4987,22 +4425,18 @@ void godot::NodeChromaSDK::SetKeyZeroColor(int animationId, int frameId, int rzk
 	Set animation key to a static color for the given frame where the color 
 	is black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeyZeroColorName(const char* path, int frameId, int rzkey, int color)
 {
 	ChromaAnimationAPI::SetKeyZeroColorName(path, frameId, rzkey, color);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyZeroColorNameD(const char* path, double frameId, double rzkey, double color)
 {
 	return ChromaAnimationAPI::SetKeyZeroColorNameD(path, frameId, rzkey, color);
 }
-*/
 
 /*
 	Set animation key to a static color for the given frame where the color 
@@ -5017,34 +4451,28 @@ void godot::NodeChromaSDK::SetKeyZeroColorRGB(int animationId, int frameId, int 
 	Set animation key to a static color for the given frame where the color 
 	is black. Animation is referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SetKeyZeroColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue)
 {
 	ChromaAnimationAPI::SetKeyZeroColorRGBName(path, frameId, rzkey, red, green, blue);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SetKeyZeroColorRGBNameD(const char* path, double frameId, double rzkey, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::SetKeyZeroColorRGBNameD(path, frameId, rzkey, red, green, blue);
 }
-*/
 
 /*
 	Invokes the setup for a debug logging callback so that `stdout` is redirected 
 	to the callback. This is used by `Unity` so that debug messages can appear 
 	in the console window.
 */
-/*
 void godot::NodeChromaSDK::SetLogDelegate(DebugLogPtr fp)
 {
 	ChromaAnimationAPI::SetLogDelegate(fp);
 }
-*/
 
 /*
 	`PluginStaticColor` sets the target device to the static color.
@@ -5092,22 +4520,18 @@ double godot::NodeChromaSDK::StopAnimationD(double animationId)
 	The named `.chroma` animation file will be automatically opened. The animation 
 	will stop if playing.
 */
-/*
 void godot::NodeChromaSDK::StopAnimationName(const char* path)
 {
 	ChromaAnimationAPI::StopAnimationName(path);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::StopAnimationNameD(const char* path)
 {
 	return ChromaAnimationAPI::StopAnimationNameD(path);
 }
-*/
 
 /*
 	`PluginStopAnimationType` automatically handles initializing the `ChromaSDK`. 
@@ -5132,22 +4556,18 @@ double godot::NodeChromaSDK::StopAnimationTypeD(double deviceType, double device
 	The named animation files for the `.chroma` set will be automatically opened. 
 	The set of animations will be stopped if playing.
 */
-/*
 void godot::NodeChromaSDK::StopComposite(const char* name)
 {
 	ChromaAnimationAPI::StopComposite(name);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::StopCompositeD(const char* name)
 {
 	return ChromaAnimationAPI::StopCompositeD(name);
 }
-*/
 
 /*
 	Subtract the source color from the target color for all frames where the 
@@ -5162,22 +4582,18 @@ void godot::NodeChromaSDK::SubtractNonZeroAllKeysAllFrames(int sourceAnimationId
 	Subtract the source color from the target color for all frames where the 
 	target color is not black. Source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SubtractNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SubtractNonZeroAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Subtract the source color from the target color for all frames where the 
@@ -5194,22 +4610,18 @@ void godot::NodeChromaSDK::SubtractNonZeroAllKeysAllFramesOffset(int sourceAnima
 	target color is not black starting at offset for the length of the source. 
 	Source and target are referenced by name.
 */
-/*
 void godot::NodeChromaSDK::SubtractNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SubtractNonZeroAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Subtract the source color from the target where color is not black for the 
@@ -5224,22 +4636,18 @@ void godot::NodeChromaSDK::SubtractNonZeroAllKeysOffset(int sourceAnimationId, i
 	Subtract the source color from the target where color is not black for the 
 	source frame and target offset frame, reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::SubtractNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset)
 {
 	ChromaAnimationAPI::SubtractNonZeroAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SubtractNonZeroAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset)
 {
 	return ChromaAnimationAPI::SubtractNonZeroAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	Subtract the source color from the target color where the target color is 
@@ -5254,22 +4662,18 @@ void godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysAllFrames(int sourceAnima
 	Subtract the source color from the target color where the target color is 
 	not black for all frames. Reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation)
 {
 	ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysAllFramesNameD(const char* sourceAnimation, const char* targetAnimation)
 {
 	return ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
 }
-*/
 
 /*
 	Subtract the source color from the target color where the target color is 
@@ -5286,22 +4690,18 @@ void godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysAllFramesOffset(int sourc
 	not black for all frames starting at the target offset for the length of 
 	the source. Reference source and target by name.
 */
-/*
 void godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset)
 {
 	ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double offset)
 {
 	return ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 }
-*/
 
 /*
 	Subtract the source color from the target color where the target color is 
@@ -5318,22 +4718,18 @@ void godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysOffset(int sourceAnimatio
 	not black from the source frame to the target offset frame. Reference source 
 	and target by name.
 */
-/*
 void godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset)
 {
 	ChromaAnimationAPI::SubtractNonZeroTargetAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::SubtractNonZeroTargetAllKeysOffsetNameD(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset)
 {
 	return ChromaAnimationAPI::SubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 }
-*/
 
 /*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
@@ -5348,22 +4744,18 @@ void godot::NodeChromaSDK::TrimEndFrames(int animationId, int lastFrameId)
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
 	+ 1. Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::TrimEndFramesName(const char* path, int lastFrameId)
 {
 	ChromaAnimationAPI::TrimEndFramesName(path, lastFrameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::TrimEndFramesNameD(const char* path, double lastFrameId)
 {
 	return ChromaAnimationAPI::TrimEndFramesNameD(path, lastFrameId);
 }
-*/
 
 /*
 	Remove the frame from the animation. Reference animation by id.
@@ -5376,22 +4768,18 @@ void godot::NodeChromaSDK::TrimFrame(int animationId, int frameId)
 /*
 	Remove the frame from the animation. Reference animation by name.
 */
-/*
 void godot::NodeChromaSDK::TrimFrameName(const char* path, int frameId)
 {
 	ChromaAnimationAPI::TrimFrameName(path, frameId);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::TrimFrameNameD(const char* path, double frameId)
 {
 	return ChromaAnimationAPI::TrimFrameNameD(path, frameId);
 }
-*/
 
 /*
 	Trim the start of the animation starting at frame 0 for the number of frames. 
@@ -5406,22 +4794,18 @@ void godot::NodeChromaSDK::TrimStartFrames(int animationId, int numberOfFrames)
 	Trim the start of the animation starting at frame 0 for the number of frames. 
 	Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::TrimStartFramesName(const char* path, int numberOfFrames)
 {
 	ChromaAnimationAPI::TrimStartFramesName(path, numberOfFrames);
 }
-*/
 
 /*
 	D suffix for limited data types.
 */
-/*
 double godot::NodeChromaSDK::TrimStartFramesNameD(const char* path, double numberOfFrames)
 {
 	return ChromaAnimationAPI::TrimStartFramesNameD(path, numberOfFrames);
 }
-*/
 
 /*
 	Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
@@ -5459,23 +4843,19 @@ double godot::NodeChromaSDK::UnloadAnimationD(double animationId)
 /*
 	Unload the animation effects. Reference the animation by name.
 */
-/*
 void godot::NodeChromaSDK::UnloadAnimationName(const char* path)
 {
 	ChromaAnimationAPI::UnloadAnimationName(path);
 }
-*/
 
 /*
 	Unload the the composite set of animation effects. Reference the animation 
 	by name.
 */
-/*
 void godot::NodeChromaSDK::UnloadComposite(const char* name)
 {
 	ChromaAnimationAPI::UnloadComposite(name);
 }
-*/
 
 /*
 	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
@@ -5486,12 +4866,10 @@ void godot::NodeChromaSDK::UnloadComposite(const char* name)
 	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
 	failure.
 */
-/*
 int godot::NodeChromaSDK::UpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length)
 {
 	return ChromaAnimationAPI::UpdateFrame(animationId, frameIndex, duration, colors, length);
 }
-*/
 
 /*
 	When the idle animation flag is true, when no other animations are playing, 
@@ -5526,11 +4904,9 @@ void godot::NodeChromaSDK::UsePreloading(int animationId, bool flag)
 	Set preloading animation flag, which is set to true by default. Reference 
 	animation by name.
 */
-/*
 void godot::NodeChromaSDK::UsePreloadingName(const char* path, bool flag)
 {
 	ChromaAnimationAPI::UsePreloadingName(path, flag);
 }
-*/
 
 #pragma endregion

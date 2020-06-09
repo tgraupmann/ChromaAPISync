@@ -1258,11 +1258,6 @@ int ChromaAnimationAPI::InitAPI()
 
                     Output(swImplementation, "*/");
 
-                    if (!IsGodotSupported(methodInfo))
-                    {
-                        Output(swImplementation, "{0}", "/*");
-                    }
-
                     Output(swImplementation, "{0} godot::NodeChromaSDK::{1}({2})",
                             methodInfo.ReturnType,
                             methodInfo.Name,
@@ -1285,11 +1280,6 @@ int ChromaAnimationAPI::InitAPI()
                             GetJavaArgsWithoutType(methodInfo.Args));
                     }
                     Output(swImplementation, "{0}", "}");
-
-                    if (!IsGodotSupported(methodInfo))
-                    {
-                        Output(swImplementation, "{0}", "*/");
-                    }
 
                     Output(swImplementation, "");
 
