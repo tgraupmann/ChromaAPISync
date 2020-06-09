@@ -20,12 +20,12 @@ void AddNonZeroAllKeysAllFrames(
 	source and target by name.
 */
 void AddNonZeroAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double AddNonZeroAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Add source color to target where color is not black for all frames starting 
 	at offset for the length of the source, reference source and target by 
@@ -39,12 +39,12 @@ void AddNonZeroAllKeysAllFramesOffset(
 	name.
 */
 void AddNonZeroAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double AddNonZeroAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Add source color to target where color is not black for the source frame 
 	and target offset frame, reference source and target by id.
@@ -56,13 +56,12 @@ void AddNonZeroAllKeysOffset(
 	and target offset frame, reference source and target by name.
 */
 void AddNonZeroAllKeysOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	String sourceAnimation, String targetAnimation, int frameId, int offset);
 /*
 	D suffix for limited data types.
 */
 double AddNonZeroAllKeysOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double offset);
+	String sourceAnimation, String targetAnimation, double frameId, double offset);
 /*
 	Add source color to target where the target color is not black for all frames, 
 	reference source and target by id.
@@ -74,12 +73,12 @@ void AddNonZeroTargetAllKeysAllFrames(
 	reference source and target by name.
 */
 void AddNonZeroTargetAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double AddNonZeroTargetAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Add source color to target where the target color is not black for all frames 
 	starting at offset for the length of the source, reference source and target 
@@ -93,12 +92,12 @@ void AddNonZeroTargetAllKeysAllFramesOffset(
 	by name.
 */
 void AddNonZeroTargetAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double AddNonZeroTargetAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Add source color to target where target color is not blank from the source 
 	frame to the target offset frame, reference source and target by id.
@@ -110,13 +109,12 @@ void AddNonZeroTargetAllKeysOffset(
 	frame to the target offset frame, reference source and target by name.
 */
 void AddNonZeroTargetAllKeysOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	String sourceAnimation, String targetAnimation, int frameId, int offset);
 /*
 	D suffix for limited data types.
 */
 double AddNonZeroTargetAllKeysOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double offset);
+	String sourceAnimation, String targetAnimation, double frameId, double offset);
 /*
 	Append all source frames to the target animation, reference source and target 
 	by id.
@@ -128,12 +126,12 @@ void AppendAllFrames(
 	by name.
 */
 void AppendAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double AppendAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	`PluginClearAll` will issue a `CLEAR` effect for all devices.
 */
@@ -163,37 +161,37 @@ double CloseAnimationD(double animationId);
 	Closes the `Chroma` animation referenced by name so that the animation can 
 	be reloaded from disk.
 */
-void CloseAnimationName(const char* path);
+void CloseAnimationName(String path);
 /*
 	D suffix for limited data types.
 */
-double CloseAnimationNameD(const char* path);
+double CloseAnimationNameD(String path);
 /*
 	`PluginCloseComposite` closes a set of animations so they can be reloaded 
 	from disk. The set of animations will be stopped if playing.
 */
-void CloseComposite(const char* name);
+void CloseComposite(String name);
 /*
 	D suffix for limited data types.
 */
-double CloseCompositeD(const char* name);
+double CloseCompositeD(String name);
 /*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by id.
 */
 int CopyAnimation(
-	int sourceAnimationId, const char* targetAnimation);
+	int sourceAnimationId, String targetAnimation);
 /*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by name.
 */
 void CopyAnimationName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double CopyAnimationNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Copy blue channel to other channels for all frames. Intensity range is 0.0 
 	to 1.0. Reference the animation by id.
@@ -205,12 +203,12 @@ void CopyBlueChannelAllFrames(
 	to 1.0. Reference the animation by name.
 */
 void CopyBlueChannelAllFramesName(
-	const char* path, float redIntensity, float greenIntensity);
+	String path, float redIntensity, float greenIntensity);
 /*
 	D suffix for limited data types.
 */
 double CopyBlueChannelAllFramesNameD(
-	const char* path, double redIntensity, double greenIntensity);
+	String path, double redIntensity, double greenIntensity);
 /*
 	Copy green channel to other channels for all frames. Intensity range is 
 	0.0 to 1.0. Reference the animation by id.
@@ -222,12 +220,12 @@ void CopyGreenChannelAllFrames(
 	0.0 to 1.0. Reference the animation by name.
 */
 void CopyGreenChannelAllFramesName(
-	const char* path, float redIntensity, float blueIntensity);
+	String path, float redIntensity, float blueIntensity);
 /*
 	D suffix for limited data types.
 */
 double CopyGreenChannelAllFramesNameD(
-	const char* path, double redIntensity, double blueIntensity);
+	String path, double redIntensity, double blueIntensity);
 /*
 	Copy animation key color from the source animation to the target animation 
 	for the given frame. Reference the source and target by id.
@@ -245,12 +243,12 @@ void CopyKeyColorAllFrames(
 	for all frames. Reference the source and target by name.
 */
 void CopyKeyColorAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation, int rzkey);
+	String sourceAnimation, String targetAnimation, int rzkey);
 /*
 	D suffix for limited data types.
 */
 double CopyKeyColorAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation, double rzkey);
+	String sourceAnimation, String targetAnimation, double rzkey);
 /*
 	Copy animation key color from the source animation to the target animation 
 	for all frames, starting at the offset for the length of the source animation. 
@@ -264,24 +262,23 @@ void CopyKeyColorAllFramesOffset(
 	Source and target are referenced by name.
 */
 void CopyKeyColorAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int rzkey, int offset);
+	String sourceAnimation, String targetAnimation, int rzkey, int offset);
 /*
 	D suffix for limited data types.
 */
 double CopyKeyColorAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double rzkey, double offset);
+	String sourceAnimation, String targetAnimation, double rzkey, double offset);
 /*
 	Copy animation key color from the source animation to the target animation 
 	for the given frame.
 */
 void CopyKeyColorName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
+	String sourceAnimation, String targetAnimation, int frameId, int rzkey);
 /*
 	D suffix for limited data types.
 */
 double CopyKeyColorNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double rzkey);
+	String sourceAnimation, String targetAnimation, double frameId, double rzkey);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
@@ -300,31 +297,28 @@ void CopyKeysColorAllFrames(
 	target animation for all frames. Reference the source and target by name.
 */
 void CopyKeysColorAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation, int* keys, int size);
+	String sourceAnimation, String targetAnimation, int* keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
 	name.
 */
 void CopyKeysColorName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys,
-	int size);
+	String sourceAnimation, String targetAnimation, int frameId, int* keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation from the source frame to the target frame. Reference the 
 	source and target by id.
 */
 void CopyKeysColorOffset(
-	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId,
-	int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int* keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation from the source frame to the target frame. Reference the 
 	source and target by name.
 */
 void CopyKeysColorOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int sourceFrameId,
-	int targetFrameId, int* keys, int size);
+	String sourceAnimation, String targetAnimation, int sourceFrameId, int targetFrameId, int* keys, int size);
 /*
 	Copy source animation to target animation for the given frame. Source and 
 	target are referenced by id.
@@ -342,12 +336,12 @@ void CopyNonZeroAllKeysAllFrames(
 	frames. Reference source and target by name.
 */
 void CopyNonZeroAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Copy nonzero colors from a source animation to a target animation for all 
 	frames starting at the offset for the length of the source animation. The 
@@ -361,23 +355,23 @@ void CopyNonZeroAllKeysAllFramesOffset(
 	source and target are referenced by name.
 */
 void CopyNonZeroAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Copy nonzero colors from source animation to target animation for the specified 
 	frame. Source and target are referenced by id.
 */
 void CopyNonZeroAllKeysName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId);
+	String sourceAnimation, String targetAnimation, int frameId);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroAllKeysNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId);
+	String sourceAnimation, String targetAnimation, double frameId);
 /*
 	Copy nonzero colors from the source animation to the target animation from 
 	the source frame to the target offset frame. Source and target are referenced 
@@ -391,13 +385,12 @@ void CopyNonZeroAllKeysOffset(
 	by name.
 */
 void CopyNonZeroAllKeysOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	String sourceAnimation, String targetAnimation, int frameId, int offset);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroAllKeysOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double offset);
+	String sourceAnimation, String targetAnimation, double frameId, double offset);
 /*
 	Copy animation key color from the source animation to the target animation 
 	for the given frame where color is not zero.
@@ -409,13 +402,12 @@ void CopyNonZeroKeyColor(
 	for the given frame where color is not zero.
 */
 void CopyNonZeroKeyColorName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
+	String sourceAnimation, String targetAnimation, int frameId, int rzkey);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroKeyColorNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double rzkey);
+	String sourceAnimation, String targetAnimation, double frameId, double rzkey);
 /*
 	Copy nonzero colors from the source animation to the target animation where 
 	the target color is nonzero for the specified frame. Source and target 
@@ -436,12 +428,12 @@ void CopyNonZeroTargetAllKeysAllFrames(
 	by name.
 */
 void CopyNonZeroTargetAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroTargetAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Copy nonzero colors from the source animation to the target animation where 
 	the target color is nonzero for all frames. Source and target are referenced 
@@ -456,24 +448,24 @@ void CopyNonZeroTargetAllKeysAllFramesOffset(
 	referenced by name.
 */
 void CopyNonZeroTargetAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroTargetAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Copy nonzero colors from the source animation to the target animation where 
 	the target color is nonzero for the specified frame. The source and target 
 	are referenced by name.
 */
 void CopyNonZeroTargetAllKeysName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId);
+	String sourceAnimation, String targetAnimation, int frameId);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroTargetAllKeysNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId);
+	String sourceAnimation, String targetAnimation, double frameId);
 /*
 	Copy nonzero colors from the source animation to the target animation where 
 	the target color is nonzero for the specified source frame and target offset 
@@ -487,13 +479,12 @@ void CopyNonZeroTargetAllKeysOffset(
 	frame. The source and target are referenced by name.
 */
 void CopyNonZeroTargetAllKeysOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	String sourceAnimation, String targetAnimation, int frameId, int offset);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroTargetAllKeysOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double offset);
+	String sourceAnimation, String targetAnimation, double frameId, double offset);
 /*
 	Copy nonzero colors from the source animation to the target animation where 
 	the target color is zero for all frames. Source and target are referenced 
@@ -507,12 +498,12 @@ void CopyNonZeroTargetZeroAllKeysAllFrames(
 	by name.
 */
 void CopyNonZeroTargetZeroAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double CopyNonZeroTargetZeroAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Copy red channel to other channels for all frames. Intensity range is 0.0 
 	to 1.0. Reference the animation by id.
@@ -524,12 +515,12 @@ void CopyRedChannelAllFrames(
 	0.0 to 1.0. Reference the animation by name.
 */
 void CopyRedChannelAllFramesName(
-	const char* path, float greenIntensity, float blueIntensity);
+	String path, float greenIntensity, float blueIntensity);
 /*
 	D suffix for limited data types.
 */
 double CopyRedChannelAllFramesNameD(
-	const char* path, double greenIntensity, double blueIntensity);
+	String path, double greenIntensity, double blueIntensity);
 /*
 	Copy zero colors from source animation to target animation for all frames. 
 	Source and target are referenced by id.
@@ -541,12 +532,12 @@ void CopyZeroAllKeysAllFrames(
 	Source and target are referenced by name.
 */
 void CopyZeroAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double CopyZeroAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Copy zero colors from source animation to target animation for all frames 
 	starting at the target offset for the length of the source animation. Source 
@@ -560,12 +551,12 @@ void CopyZeroAllKeysAllFramesOffset(
 	and target are referenced by name.
 */
 void CopyZeroAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double CopyZeroAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Copy zero key color from source animation to target animation for the specified 
 	frame. Source and target are referenced by id.
@@ -577,13 +568,12 @@ void CopyZeroKeyColor(
 	frame. Source and target are referenced by name.
 */
 void CopyZeroKeyColorName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
+	String sourceAnimation, String targetAnimation, int frameId, int rzkey);
 /*
 	D suffix for limited data types.
 */
 double CopyZeroKeyColorNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double rzkey);
+	String sourceAnimation, String targetAnimation, double frameId, double rzkey);
 /*
 	Copy nonzero color from source animation to target animation where target 
 	is zero for all frames. Source and target are referenced by id.
@@ -595,12 +585,12 @@ void CopyZeroTargetAllKeysAllFrames(
 	is zero for all frames. Source and target are referenced by name.
 */
 void CopyZeroTargetAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double CopyZeroTargetAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Direct access to low level API.
 */
@@ -667,7 +657,7 @@ RZRESULT CoreUnInit();
 	failure.
 */
 int CreateAnimation(
-	const char* path, int deviceType, int device);
+	String path, int deviceType, int device);
 /*
 	Creates a `Chroma` animation in memory without creating a file. The `deviceType` 
 	parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
@@ -682,8 +672,7 @@ int CreateAnimationInMemory(
 	Create a device specific effect.
 */
 RZRESULT CreateEffect(
-	RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int* colors, int size,
-	ChromaSDK::FChromaSDKGuid* effectId);
+	RZDEVICEID deviceId, ChromaSDK::EFFECT_TYPE effect, int* colors, int size, ChromaSDK::FChromaSDKGuid* effectId);
 /*
 	Delete an effect given the effect id.
 */
@@ -700,12 +689,12 @@ void DuplicateFirstFrame(
 	the frame count. Animation is referenced by name.
 */
 void DuplicateFirstFrameName(
-	const char* path, int frameCount);
+	String path, int frameCount);
 /*
 	D suffix for limited data types.
 */
 double DuplicateFirstFrameNameD(
-	const char* path, double frameCount);
+	String path, double frameCount);
 /*
 	Duplicate all the frames of the animation to double the animation length. 
 	Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
@@ -717,11 +706,11 @@ void DuplicateFrames(int animationId);
 	Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 	The animation is referenced by name.
 */
-void DuplicateFramesName(const char* path);
+void DuplicateFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double DuplicateFramesNameD(const char* path);
+double DuplicateFramesNameD(String path);
 /*
 	Duplicate all the animation frames in reverse so that the animation plays 
 	forwards and backwards. Animation is referenced by id.
@@ -731,11 +720,11 @@ void DuplicateMirrorFrames(int animationId);
 	Duplicate all the animation frames in reverse so that the animation plays 
 	forwards and backwards. Animation is referenced by name.
 */
-void DuplicateMirrorFramesName(const char* path);
+void DuplicateMirrorFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double DuplicateMirrorFramesNameD(const char* path);
+double DuplicateMirrorFramesNameD(String path);
 /*
 	Fade the animation to black starting at the fade frame index to the end 
 	of the animation. Animation is referenced by id.
@@ -747,12 +736,12 @@ void FadeEndFrames(
 	of the animation. Animation is referenced by name.
 */
 void FadeEndFramesName(
-	const char* path, int fade);
+	String path, int fade);
 /*
 	D suffix for limited data types.
 */
 double FadeEndFramesNameD(
-	const char* path, double fade);
+	String path, double fade);
 /*
 	Fade the animation from black to full color starting at 0 to the fade frame 
 	index. Animation is referenced by id.
@@ -764,12 +753,12 @@ void FadeStartFrames(
 	index. Animation is referenced by name.
 */
 void FadeStartFramesName(
-	const char* path, int fade);
+	String path, int fade);
 /*
 	D suffix for limited data types.
 */
 double FadeStartFramesNameD(
-	const char* path, double fade);
+	String path, double fade);
 /*
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
 	by id.
@@ -787,12 +776,12 @@ void FillColorAllFrames(
 	by name.
 */
 void FillColorAllFramesName(
-	const char* path, int color);
+	String path, int color);
 /*
 	D suffix for limited data types.
 */
 double FillColorAllFramesNameD(
-	const char* path, double color);
+	String path, double color);
 /*
 	Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 	for red, green, and blue parameters. Animation is referenced by id.
@@ -804,23 +793,23 @@ void FillColorAllFramesRGB(
 	for red, green, and blue parameters. Animation is referenced by name.
 */
 void FillColorAllFramesRGBName(
-	const char* path, int red, int green, int blue);
+	String path, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillColorAllFramesRGBNameD(
-	const char* path, double red, double green, double blue);
+	String path, double red, double green, double blue);
 /*
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
 	by name.
 */
 void FillColorName(
-	const char* path, int frameId, int color);
+	String path, int frameId, int color);
 /*
 	D suffix for limited data types.
 */
 double FillColorNameD(
-	const char* path, double frameId, double color);
+	String path, double frameId, double color);
 /*
 	Set the RGB value for all colors in the specified frame. Animation is referenced 
 	by id.
@@ -832,12 +821,12 @@ void FillColorRGB(
 	by name.
 */
 void FillColorRGBName(
-	const char* path, int frameId, int red, int green, int blue);
+	String path, int frameId, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillColorRGBNameD(
-	const char* path, double frameId, double red, double green, double blue);
+	String path, double frameId, double red, double green, double blue);
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Set the RGB value for a subset of colors in the specified 
@@ -858,12 +847,12 @@ void FillNonZeroColorAllFrames(
 	Animation is referenced by name.
 */
 void FillNonZeroColorAllFramesName(
-	const char* path, int color);
+	String path, int color);
 /*
 	D suffix for limited data types.
 */
 double FillNonZeroColorAllFramesNameD(
-	const char* path, double color);
+	String path, double color);
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Set the RGB value for a subset of colors for all frames. 
@@ -879,24 +868,24 @@ void FillNonZeroColorAllFramesRGB(
 	is referenced by name.
 */
 void FillNonZeroColorAllFramesRGBName(
-	const char* path, int red, int green, int blue);
+	String path, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillNonZeroColorAllFramesRGBNameD(
-	const char* path, double red, double green, double blue);
+	String path, double red, double green, double blue);
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Set the RGB value for a subset of colors in the specified 
 	frame. Animation is referenced by name.
 */
 void FillNonZeroColorName(
-	const char* path, int frameId, int color);
+	String path, int frameId, int color);
 /*
 	D suffix for limited data types.
 */
 double FillNonZeroColorNameD(
-	const char* path, double frameId, double color);
+	String path, double frameId, double color);
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Set the RGB value for a subset of colors in the specified 
@@ -912,12 +901,12 @@ void FillNonZeroColorRGB(
 	is referenced by name.
 */
 void FillNonZeroColorRGBName(
-	const char* path, int frameId, int red, int green, int blue);
+	String path, int frameId, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillNonZeroColorRGBNameD(
-	const char* path, double frameId, double red, double green, double blue);
+	String path, double frameId, double red, double green, double blue);
 /*
 	Fill the frame with random RGB values for the given frame. Animation is 
 	referenced by id.
@@ -933,11 +922,11 @@ void FillRandomColorsAllFrames(int animationId);
 	Fill the frame with random RGB values for all frames. Animation is referenced 
 	by name.
 */
-void FillRandomColorsAllFramesName(const char* path);
+void FillRandomColorsAllFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double FillRandomColorsAllFramesNameD(const char* path);
+double FillRandomColorsAllFramesNameD(String path);
 /*
 	Fill the frame with random black and white values for the specified frame. 
 	Animation is referenced by id.
@@ -953,33 +942,33 @@ void FillRandomColorsBlackAndWhiteAllFrames(int animationId);
 	Fill the frame with random black and white values for all frames. Animation 
 	is referenced by name.
 */
-void FillRandomColorsBlackAndWhiteAllFramesName(const char* path);
+void FillRandomColorsBlackAndWhiteAllFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double FillRandomColorsBlackAndWhiteAllFramesNameD(const char* path);
+double FillRandomColorsBlackAndWhiteAllFramesNameD(String path);
 /*
 	Fill the frame with random black and white values for the specified frame. 
 	Animation is referenced by name.
 */
 void FillRandomColorsBlackAndWhiteName(
-	const char* path, int frameId);
+	String path, int frameId);
 /*
 	D suffix for limited data types.
 */
 double FillRandomColorsBlackAndWhiteNameD(
-	const char* path, double frameId);
+	String path, double frameId);
 /*
 	Fill the frame with random RGB values for the given frame. Animation is 
 	referenced by name.
 */
 void FillRandomColorsName(
-	const char* path, int frameId);
+	String path, int frameId);
 /*
 	D suffix for limited data types.
 */
 double FillRandomColorsNameD(
-	const char* path, double frameId);
+	String path, double frameId);
 /*
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by id.
@@ -997,12 +986,12 @@ void FillThresholdColorsAllFrames(
 	RGB threshold. Animation is referenced by name.
 */
 void FillThresholdColorsAllFramesName(
-	const char* path, int threshold, int color);
+	String path, int threshold, int color);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdColorsAllFramesNameD(
-	const char* path, double threshold, double color);
+	String path, double threshold, double color);
 /*
 	Fill all frames with RGB color where the animation color is less than the 
 	threshold. Animation is referenced by id.
@@ -1014,67 +1003,61 @@ void FillThresholdColorsAllFramesRGB(
 	threshold. Animation is referenced by name.
 */
 void FillThresholdColorsAllFramesRGBName(
-	const char* path, int threshold, int red, int green, int blue);
+	String path, int threshold, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdColorsAllFramesRGBNameD(
-	const char* path, double threshold, double red, double green, double blue);
+	String path, double threshold, double red, double green, double blue);
 /*
 	Fill all frames with the min RGB color where the animation color is less 
 	than the min threshold AND with the max RGB color where the animation is 
 	more than the max threshold. Animation is referenced by id.
 */
 void FillThresholdColorsMinMaxAllFramesRGB(
-	int animationId, int minThreshold, int minRed, int minGreen, int minBlue,
-	int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+	int animationId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 /*
 	Fill all frames with the min RGB color where the animation color is less 
 	than the min threshold AND with the max RGB color where the animation is 
 	more than the max threshold. Animation is referenced by name.
 */
 void FillThresholdColorsMinMaxAllFramesRGBName(
-	const char* path, int minThreshold, int minRed, int minGreen, int minBlue,
-	int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+	String path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdColorsMinMaxAllFramesRGBNameD(
-	const char* path, double minThreshold, double minRed, double minGreen, double minBlue,
-	double maxThreshold, double maxRed, double maxGreen, double maxBlue);
+	String path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
 /*
 	Fill the specified frame with the min RGB color where the animation color 
 	is less than the min threshold AND with the max RGB color where the animation 
 	is more than the max threshold. Animation is referenced by id.
 */
 void FillThresholdColorsMinMaxRGB(
-	int animationId, int frameId, int minThreshold, int minRed, int minGreen,
-	int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+	int animationId, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 /*
 	Fill the specified frame with the min RGB color where the animation color 
 	is less than the min threshold AND with the max RGB color where the animation 
 	is more than the max threshold. Animation is referenced by name.
 */
 void FillThresholdColorsMinMaxRGBName(
-	const char* path, int frameId, int minThreshold, int minRed, int minGreen,
-	int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+	String path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdColorsMinMaxRGBNameD(
-	const char* path, double frameId, double minThreshold, double minRed, double minGreen,
-	double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
+	String path, double frameId, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
 /*
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by name.
 */
 void FillThresholdColorsName(
-	const char* path, int frameId, int threshold, int color);
+	String path, int frameId, int threshold, int color);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdColorsNameD(
-	const char* path, double frameId, double threshold, double color);
+	String path, double frameId, double threshold, double color);
 /*
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by id.
@@ -1086,53 +1069,46 @@ void FillThresholdColorsRGB(
 	than the RGB threshold. Animation is referenced by name.
 */
 void FillThresholdColorsRGBName(
-	const char* path, int frameId, int threshold, int red, int green, int blue);
+	String path, int frameId, int threshold, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdColorsRGBNameD(
-	const char* path, double frameId, double threshold, double red, double green,
-	double blue);
+	String path, double frameId, double threshold, double red, double green, double blue);
 /*
 	Fill all frames with RGB color where the animation color is less than the 
 	RGB threshold. Animation is referenced by id.
 */
 void FillThresholdRGBColorsAllFramesRGB(
-	int animationId, int redThreshold, int greenThreshold, int blueThreshold,
-	int red, int green, int blue);
+	int animationId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 /*
 	Fill all frames with RGB color where the animation color is less than the 
 	RGB threshold. Animation is referenced by name.
 */
 void FillThresholdRGBColorsAllFramesRGBName(
-	const char* path, int redThreshold, int greenThreshold, int blueThreshold,
-	int red, int green, int blue);
+	String path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdRGBColorsAllFramesRGBNameD(
-	const char* path, double redThreshold, double greenThreshold, double blueThreshold,
-	double red, double green, double blue);
+	String path, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue);
 /*
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by id.
 */
 void FillThresholdRGBColorsRGB(
-	int animationId, int frameId, int redThreshold, int greenThreshold, int blueThreshold,
-	int red, int green, int blue);
+	int animationId, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 /*
 	Fill the specified frame with RGB color where the animation color is less 
 	than the RGB threshold. Animation is referenced by name.
 */
 void FillThresholdRGBColorsRGBName(
-	const char* path, int frameId, int redThreshold, int greenThreshold, int blueThreshold,
-	int red, int green, int blue);
+	String path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillThresholdRGBColorsRGBNameD(
-	const char* path, double frameId, double redThreshold, double greenThreshold,
-	double blueThreshold, double red, double green, double blue);
+	String path, double frameId, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue);
 /*
 	Fill the specified frame with RGB color where the animation color is zero. 
 	Animation is referenced by id.
@@ -1150,12 +1126,12 @@ void FillZeroColorAllFrames(
 	is referenced by name.
 */
 void FillZeroColorAllFramesName(
-	const char* path, int color);
+	String path, int color);
 /*
 	D suffix for limited data types.
 */
 double FillZeroColorAllFramesNameD(
-	const char* path, double color);
+	String path, double color);
 /*
 	Fill all frames with RGB color where the animation color is zero. Animation 
 	is referenced by id.
@@ -1167,23 +1143,23 @@ void FillZeroColorAllFramesRGB(
 	is referenced by name.
 */
 void FillZeroColorAllFramesRGBName(
-	const char* path, int red, int green, int blue);
+	String path, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillZeroColorAllFramesRGBNameD(
-	const char* path, double red, double green, double blue);
+	String path, double red, double green, double blue);
 /*
 	Fill the specified frame with RGB color where the animation color is zero. 
 	Animation is referenced by name.
 */
 void FillZeroColorName(
-	const char* path, int frameId, int color);
+	String path, int frameId, int color);
 /*
 	D suffix for limited data types.
 */
 double FillZeroColorNameD(
-	const char* path, double frameId, double color);
+	String path, double frameId, double color);
 /*
 	Fill the specified frame with RGB color where the animation color is zero. 
 	Animation is referenced by id.
@@ -1195,12 +1171,12 @@ void FillZeroColorRGB(
 	Animation is referenced by name.
 */
 void FillZeroColorRGBName(
-	const char* path, int frameId, int red, int green, int blue);
+	String path, int frameId, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double FillZeroColorRGBNameD(
-	const char* path, double frameId, double red, double green, double blue);
+	String path, double frameId, double red, double green, double blue);
 /*
 	Get the animation color for a frame given the `1D` `led`. The `led` should 
 	be greater than or equal to 0 and less than the `MaxLeds`. Animation is 
@@ -1214,12 +1190,12 @@ int Get1DColor(
 	referenced by name.
 */
 int Get1DColorName(
-	const char* path, int frameId, int led);
+	String path, int frameId, int led);
 /*
 	D suffix for limited data types.
 */
 double Get1DColorNameD(
-	const char* path, double frameId, double led);
+	String path, double frameId, double led);
 /*
 	Get the animation color for a frame given the `2D` `row` and `column`. The 
 	`row` should be greater than or equal to 0 and less than the `MaxRow`. 
@@ -1235,16 +1211,16 @@ int Get2DColor(
 	Animation is referenced by name.
 */
 int Get2DColorName(
-	const char* path, int frameId, int row, int column);
+	String path, int frameId, int row, int column);
 /*
 	D suffix for limited data types.
 */
 double Get2DColorNameD(
-	const char* path, double frameId, double row, double column);
+	String path, double frameId, double row, double column);
 /*
 	Get the animation id for the named animation.
 */
-int GetAnimation(const char* name);
+int GetAnimation(String name);
 /*
 	`PluginGetAnimationCount` will return the number of loaded animations.
 */
@@ -1252,7 +1228,7 @@ int GetAnimationCount();
 /*
 	D suffix for limited data types.
 */
-double GetAnimationD(const char* name);
+double GetAnimationD(String name);
 /*
 	`PluginGetAnimationId` will return the `animationId` given the `index` of 
 	the loaded animation. The `index` is zero-based and less than the number 
@@ -1273,11 +1249,11 @@ int GetCurrentFrame(int animationId);
 /*
 	Get the current frame of the animation referenced by name.
 */
-int GetCurrentFrameName(const char* path);
+int GetCurrentFrameName(String path);
 /*
 	D suffix for limited data types.
 */
-double GetCurrentFrameNameD(const char* path);
+double GetCurrentFrameNameD(String path);
 /*
 	Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 	animation respective to the `deviceType`, as an integer upon success. Returns 
@@ -1289,11 +1265,11 @@ int GetDevice(int animationId);
 	animation respective to the `deviceType`, as an integer upon success. Returns 
 	-1 upon failure.
 */
-int GetDeviceName(const char* path);
+int GetDeviceName(String path);
 /*
 	D suffix for limited data types.
 */
-double GetDeviceNameD(const char* path);
+double GetDeviceNameD(String path);
 /*
 	Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
 	upon success. Returns -1 upon failure.
@@ -1303,11 +1279,11 @@ int GetDeviceType(int animationId);
 	Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
 	upon success. Returns -1 upon failure.
 */
-int GetDeviceTypeName(const char* path);
+int GetDeviceTypeName(String path);
 /*
 	D suffix for limited data types.
 */
-double GetDeviceTypeNameD(const char* path);
+double GetDeviceTypeNameD(String path);
 /*
 	Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
 	The `color` is expected to be an array of the expected dimensions for the 
@@ -1327,11 +1303,11 @@ int GetFrameCount(int animationId);
 	Returns the frame count of a `Chroma` animation upon success. Returns -1 
 	upon failure.
 */
-int GetFrameCountName(const char* path);
+int GetFrameCountName(String path);
 /*
 	D suffix for limited data types.
 */
-double GetFrameCountNameD(const char* path);
+double GetFrameCountNameD(String path);
 /*
 	Get the color of an animation key for the given frame referenced by id.
 */
@@ -1341,12 +1317,12 @@ int GetKeyColor(
 	D suffix for limited data types.
 */
 double GetKeyColorD(
-	const char* path, double frameId, double rzkey);
+	String path, double frameId, double rzkey);
 /*
 	Get the color of an animation key for the given frame referenced by name.
 */
 int GetKeyColorName(
-	const char* path, int frameId, int rzkey);
+	String path, int frameId, int rzkey);
 /*
 	Returns `RZRESULT_SUCCESS` if the plugin has been initialized successfully. 
 	Returns `RZRESULT_DLL_NOT_FOUND` if core Chroma library is not found. Returns 
@@ -1413,11 +1389,11 @@ bool HasAnimationLoop(int animationId);
 /*
 	Check if the animation has loop enabled referenced by name.
 */
-bool HasAnimationLoopName(const char* path);
+bool HasAnimationLoopName(String path);
 /*
 	D suffix for limited data types.
 */
-double HasAnimationLoopNameD(const char* path);
+double HasAnimationLoopNameD(String path);
 /*
 	Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
 	API methods auto initialize the ChromaSDK if not already initialized.
@@ -1438,12 +1414,12 @@ void InsertDelay(
 	times. Animation is referenced by name.
 */
 void InsertDelayName(
-	const char* path, int frameId, int delay);
+	String path, int frameId, int delay);
 /*
 	D suffix for limited data types.
 */
 double InsertDelayNameD(
-	const char* path, double frameId, double delay);
+	String path, double frameId, double delay);
 /*
 	Duplicate the source frame index at the target frame index. Animation is 
 	referenced by id.
@@ -1455,12 +1431,12 @@ void InsertFrame(
 	referenced by name.
 */
 void InsertFrameName(
-	const char* path, int sourceFrame, int targetFrame);
+	String path, int sourceFrame, int targetFrame);
 /*
 	D suffix for limited data types.
 */
 double InsertFrameNameD(
-	const char* path, double sourceFrame, double targetFrame);
+	String path, double sourceFrame, double targetFrame);
 /*
 	Invert all the colors at the specified frame. Animation is referenced by 
 	id.
@@ -1474,22 +1450,22 @@ void InvertColorsAllFrames(int animationId);
 /*
 	Invert all the colors for all frames. Animation is referenced by name.
 */
-void InvertColorsAllFramesName(const char* path);
+void InvertColorsAllFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double InvertColorsAllFramesNameD(const char* path);
+double InvertColorsAllFramesNameD(String path);
 /*
 	Invert all the colors at the specified frame. Animation is referenced by 
 	name.
 */
 void InvertColorsName(
-	const char* path, int frameId);
+	String path, int frameId);
 /*
 	D suffix for limited data types.
 */
 double InvertColorsNameD(
-	const char* path, double frameId);
+	String path, double frameId);
 /*
 	Check if the animation is paused referenced by id.
 */
@@ -1497,11 +1473,11 @@ bool IsAnimationPaused(int animationId);
 /*
 	Check if the animation is paused referenced by name.
 */
-bool IsAnimationPausedName(const char* path);
+bool IsAnimationPausedName(String path);
 /*
 	D suffix for limited data types.
 */
-double IsAnimationPausedNameD(const char* path);
+double IsAnimationPausedNameD(String path);
 /*
 	The editor dialog is a non-blocking modal window, this method returns true 
 	if the modal window is open, otherwise false.
@@ -1545,11 +1521,11 @@ double IsPlayingD(double animationId);
 	will return whether the animation is playing or not. Animation is referenced 
 	by name.
 */
-bool IsPlayingName(const char* path);
+bool IsPlayingName(String path);
 /*
 	D suffix for limited data types.
 */
-double IsPlayingNameD(const char* path);
+double IsPlayingNameD(String path);
 /*
 	`PluginIsPlayingType` automatically handles initializing the `ChromaSDK`. 
 	If any animation is playing for the `deviceType` and `device` combination, 
@@ -1584,11 +1560,11 @@ double LoadAnimationD(double animationId);
 /*
 	Load the named animation.
 */
-void LoadAnimationName(const char* path);
+void LoadAnimationName(String path);
 /*
 	Load a composite set of animations.
 */
-void LoadComposite(const char* name);
+void LoadComposite(String name);
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
 	defaults to the duration. The frame color defaults to color. Animation 
@@ -1602,12 +1578,12 @@ void MakeBlankFrames(
 	is referenced by name.
 */
 void MakeBlankFramesName(
-	const char* path, int frameCount, float duration, int color);
+	String path, int frameCount, float duration, int color);
 /*
 	D suffix for limited data types.
 */
 double MakeBlankFramesNameD(
-	const char* path, double frameCount, double duration, double color);
+	String path, double frameCount, double duration, double color);
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
 	defaults to the duration. The frame color is random. Animation is referenced 
@@ -1628,24 +1604,24 @@ void MakeBlankFramesRandomBlackAndWhite(
 	is referenced by name.
 */
 void MakeBlankFramesRandomBlackAndWhiteName(
-	const char* path, int frameCount, float duration);
+	String path, int frameCount, float duration);
 /*
 	D suffix for limited data types.
 */
 double MakeBlankFramesRandomBlackAndWhiteNameD(
-	const char* path, double frameCount, double duration);
+	String path, double frameCount, double duration);
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
 	defaults to the duration. The frame color is random. Animation is referenced 
 	by name.
 */
 void MakeBlankFramesRandomName(
-	const char* path, int frameCount, float duration);
+	String path, int frameCount, float duration);
 /*
 	D suffix for limited data types.
 */
 double MakeBlankFramesRandomNameD(
-	const char* path, double frameCount, double duration);
+	String path, double frameCount, double duration);
 /*
 	Make a blank animation for the length of the frame count. Frame duration 
 	defaults to the duration. The frame color defaults to color. Animation 
@@ -1659,13 +1635,12 @@ void MakeBlankFramesRGB(
 	is referenced by name.
 */
 void MakeBlankFramesRGBName(
-	const char* path, int frameCount, float duration, int red, int green, int blue);
+	String path, int frameCount, float duration, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double MakeBlankFramesRGBNameD(
-	const char* path, double frameCount, double duration, double red, double green,
-	double blue);
+	String path, double frameCount, double duration, double red, double green, double blue);
 /*
 	Flips the color grid horizontally for all `Chroma` animation frames. Returns 
 	the animation id upon success. Returns -1 upon failure.
@@ -1690,12 +1665,12 @@ void MultiplyColorLerpAllFrames(
 	Animation is referenced in name.
 */
 void MultiplyColorLerpAllFramesName(
-	const char* path, int color1, int color2);
+	String path, int color1, int color2);
 /*
 	D suffix for limited data types.
 */
 double MultiplyColorLerpAllFramesNameD(
-	const char* path, double color1, double color2);
+	String path, double color1, double color2);
 /*
 	Multiply all the colors in the frame by the intensity value. The valid the 
 	intensity range is from 0.0 to 255.0. RGB components are multiplied equally. 
@@ -1719,12 +1694,12 @@ void MultiplyIntensityAllFrames(
 	the frame will not be affected by this method.
 */
 void MultiplyIntensityAllFramesName(
-	const char* path, float intensity);
+	String path, float intensity);
 /*
 	D suffix for limited data types.
 */
 double MultiplyIntensityAllFramesNameD(
-	const char* path, double intensity);
+	String path, double intensity);
 /*
 	Multiply all frames by the RBG color intensity. Animation is referenced 
 	by id.
@@ -1736,12 +1711,12 @@ void MultiplyIntensityAllFramesRGB(
 	by name.
 */
 void MultiplyIntensityAllFramesRGBName(
-	const char* path, int red, int green, int blue);
+	String path, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double MultiplyIntensityAllFramesRGBNameD(
-	const char* path, double red, double green, double blue);
+	String path, double red, double green, double blue);
 /*
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
 	by id.
@@ -1759,23 +1734,23 @@ void MultiplyIntensityColorAllFrames(
 	by name.
 */
 void MultiplyIntensityColorAllFramesName(
-	const char* path, int color);
+	String path, int color);
 /*
 	D suffix for limited data types.
 */
 double MultiplyIntensityColorAllFramesNameD(
-	const char* path, double color);
+	String path, double color);
 /*
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
 	by name.
 */
 void MultiplyIntensityColorName(
-	const char* path, int frameId, int color);
+	String path, int frameId, int color);
 /*
 	D suffix for limited data types.
 */
 double MultiplyIntensityColorNameD(
-	const char* path, double frameId, double color);
+	String path, double frameId, double color);
 /*
 	Multiply all the colors in the frame by the intensity value. The valid the 
 	intensity range is from 0.0 to 255.0. RGB components are multiplied equally. 
@@ -1783,12 +1758,12 @@ double MultiplyIntensityColorNameD(
 	will not be affected by this method.
 */
 void MultiplyIntensityName(
-	const char* path, int frameId, float intensity);
+	String path, int frameId, float intensity);
 /*
 	D suffix for limited data types.
 */
 double MultiplyIntensityNameD(
-	const char* path, double frameId, double intensity);
+	String path, double frameId, double intensity);
 /*
 	Multiply the specific frame by the RBG color intensity. Animation is referenced 
 	by id.
@@ -1800,12 +1775,12 @@ void MultiplyIntensityRGB(
 	by name.
 */
 void MultiplyIntensityRGBName(
-	const char* path, int frameId, int red, int green, int blue);
+	String path, int frameId, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double MultiplyIntensityRGBNameD(
-	const char* path, double frameId, double red, double green, double blue);
+	String path, double frameId, double red, double green, double blue);
 /*
 	Multiply the specific frame by the color lerp result between color 1 and 
 	2 using the frame color value as the `t` value. Animation is referenced 
@@ -1824,12 +1799,12 @@ void MultiplyNonZeroTargetColorLerpAllFrames(
 	the frame color value as the `t` value. Animation is referenced by name.
 */
 void MultiplyNonZeroTargetColorLerpAllFramesName(
-	const char* path, int color1, int color2);
+	String path, int color1, int color2);
 /*
 	D suffix for limited data types.
 */
 double MultiplyNonZeroTargetColorLerpAllFramesNameD(
-	const char* path, double color1, double color2);
+	String path, double color1, double color2);
 /*
 	Multiply the specific frame by the color lerp result between RGB 1 and 2 
 	using the frame color value as the `t` value. Animation is referenced by 
@@ -1843,14 +1818,12 @@ void MultiplyNonZeroTargetColorLerpAllFramesRGB(
 	name.
 */
 void MultiplyNonZeroTargetColorLerpAllFramesRGBName(
-	const char* path, int red1, int green1, int blue1, int red2, int green2,
-	int blue2);
+	String path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 /*
 	D suffix for limited data types.
 */
 double MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(
-	const char* path, double red1, double green1, double blue1, double red2,
-	double green2, double blue2);
+	String path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 /*
 	Multiply the specific frame by the color lerp result between color 1 and 
 	2 using the frame color value as the `t` value. Animation is referenced 
@@ -1869,12 +1842,12 @@ void MultiplyTargetColorLerpAllFrames(
 	the frame color value as the `t` value. Animation is referenced by name.
 */
 void MultiplyTargetColorLerpAllFramesName(
-	const char* path, int color1, int color2);
+	String path, int color1, int color2);
 /*
 	D suffix for limited data types.
 */
 double MultiplyTargetColorLerpAllFramesNameD(
-	const char* path, double color1, double color2);
+	String path, double color1, double color2);
 /*
 	Multiply all frames by the color lerp result between RGB 1 and 2 using the 
 	frame color value as the `t` value. Animation is referenced by id.
@@ -1886,14 +1859,12 @@ void MultiplyTargetColorLerpAllFramesRGB(
 	frame color value as the `t` value. Animation is referenced by name.
 */
 void MultiplyTargetColorLerpAllFramesRGBName(
-	const char* path, int red1, int green1, int blue1, int red2, int green2,
-	int blue2);
+	String path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 /*
 	D suffix for limited data types.
 */
 double MultiplyTargetColorLerpAllFramesRGBNameD(
-	const char* path, double red1, double green1, double blue1, double red2,
-	double green2, double blue2);
+	String path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 /*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
@@ -1914,24 +1885,24 @@ void OffsetColorsAllFrames(
 	color. Positive values add color.
 */
 void OffsetColorsAllFramesName(
-	const char* path, int red, int green, int blue);
+	String path, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double OffsetColorsAllFramesNameD(
-	const char* path, double red, double green, double blue);
+	String path, double red, double green, double blue);
 /*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
 */
 void OffsetColorsName(
-	const char* path, int frameId, int red, int green, int blue);
+	String path, int frameId, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double OffsetColorsNameD(
-	const char* path, double frameId, double red, double green, double blue);
+	String path, double frameId, double red, double green, double blue);
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Offset a subset of colors in the frame using the RGB offset. 
@@ -1955,12 +1926,12 @@ void OffsetNonZeroColorsAllFrames(
 	values remove color. Positive values add color.
 */
 void OffsetNonZeroColorsAllFramesName(
-	const char* path, int red, int green, int blue);
+	String path, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double OffsetNonZeroColorsAllFramesNameD(
-	const char* path, double red, double green, double blue);
+	String path, double red, double green, double blue);
 /*
 	This method will only update colors in the animation that are not already 
 	set to black. Offset a subset of colors in the frame using the RGB offset. 
@@ -1968,22 +1939,22 @@ double OffsetNonZeroColorsAllFramesNameD(
 	values remove color. Positive values add color.
 */
 void OffsetNonZeroColorsName(
-	const char* path, int frameId, int red, int green, int blue);
+	String path, int frameId, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double OffsetNonZeroColorsNameD(
-	const char* path, double frameId, double red, double green, double blue);
+	String path, double frameId, double red, double green, double blue);
 /*
 	Opens a `Chroma` animation file so that it can be played. Returns an animation 
 	id >= 0 upon success. Returns -1 if there was a failure. The animation 
 	id is used in most of the API methods.
 */
-int OpenAnimation(const char* path);
+int OpenAnimation(String path);
 /*
 	D suffix for limited data types.
 */
-double OpenAnimationD(const char* path);
+double OpenAnimationD(String path);
 /*
 	Opens a `Chroma` animation data from memory so that it can be played. `Data` 
 	is a pointer to byte array of the loaded animation in memory. `Name` will 
@@ -1992,25 +1963,25 @@ double OpenAnimationD(const char* path);
 	in most of the API methods.
 */
 int OpenAnimationFromMemory(
-	const byte* data, const char* name);
+	const byte* data, String name);
 /*
 	Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 	upon success. Returns -1 if there was a failure.
 */
-int OpenEditorDialog(const char* path);
+int OpenEditorDialog(String path);
 /*
 	Open the named animation in the editor dialog and play the animation at 
 	start.
 */
-int OpenEditorDialogAndPlay(const char* path);
+int OpenEditorDialogAndPlay(String path);
 /*
 	D suffix for limited data types.
 */
-double OpenEditorDialogAndPlayD(const char* path);
+double OpenEditorDialogAndPlayD(String path);
 /*
 	D suffix for limited data types.
 */
-double OpenEditorDialogD(const char* path);
+double OpenEditorDialogD(String path);
 /*
 	Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
 	parameter. Returns the animation id upon success. Returns -1 upon failure.
@@ -2027,7 +1998,7 @@ double OverrideFrameDurationD(
 	is referenced by name.
 */
 void OverrideFrameDurationName(
-	const char* path, float duration);
+	String path, float duration);
 /*
 	Pause the current animation referenced by id.
 */
@@ -2035,11 +2006,11 @@ void PauseAnimation(int animationId);
 /*
 	Pause the current animation referenced by name.
 */
-void PauseAnimationName(const char* path);
+void PauseAnimationName(String path);
 /*
 	D suffix for limited data types.
 */
-double PauseAnimationNameD(const char* path);
+double PauseAnimationNameD(String path);
 /*
 	Plays the `Chroma` animation. This will load the animation, if not loaded 
 	previously. Returns the animation id upon success. Returns -1 upon failure.
@@ -2062,12 +2033,12 @@ void PlayAnimationFrame(
 	will play with looping `on` or `off` starting at the `frameId`.
 */
 void PlayAnimationFrameName(
-	const char* path, int frameId, bool loop);
+	String path, int frameId, bool loop);
 /*
 	D suffix for limited data types.
 */
 double PlayAnimationFrameNameD(
-	const char* path, double frameId, double loop);
+	String path, double frameId, double loop);
 /*
 	`PluginPlayAnimationLoop` automatically handles initializing the `ChromaSDK`. 
 	The method will play the animation given the `animationId` with looping 
@@ -2081,24 +2052,24 @@ void PlayAnimationLoop(
 	will play with looping `on` or `off`.
 */
 void PlayAnimationName(
-	const char* path, bool loop);
+	String path, bool loop);
 /*
 	D suffix for limited data types.
 */
 double PlayAnimationNameD(
-	const char* path, double loop);
+	String path, double loop);
 /*
 	`PluginPlayComposite` automatically handles initializing the `ChromaSDK`. 
 	The named animation files for the `.chroma` set will be automatically opened. 
 	The set of animations will play with looping `on` or `off`.
 */
 void PlayComposite(
-	const char* name, bool loop);
+	String name, bool loop);
 /*
 	D suffix for limited data types.
 */
 double PlayCompositeD(
-	const char* name, double loop);
+	String name, double loop);
 /*
 	Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 	Returns the animation id upon success. Returns -1 upon failure.
@@ -2115,7 +2086,7 @@ double PreviewFrameD(
 	Animaton is referenced by name.
 */
 void PreviewFrameName(
-	const char* path, int frameIndex);
+	String path, int frameIndex);
 /*
 	Reduce the frames of the animation by removing every nth element. Animation 
 	is referenced by id.
@@ -2127,12 +2098,12 @@ void ReduceFrames(
 	is referenced by name.
 */
 void ReduceFramesName(
-	const char* path, int n);
+	String path, int n);
 /*
 	D suffix for limited data types.
 */
 double ReduceFramesNameD(
-	const char* path, double n);
+	String path, double n);
 /*
 	Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
 	upon success. Returns -1 upon failure.
@@ -2147,12 +2118,12 @@ void ResumeAnimation(
 	Resume the animation with loop `ON` or `OFF` referenced by name.
 */
 void ResumeAnimationName(
-	const char* path, bool loop);
+	String path, bool loop);
 /*
 	D suffix for limited data types.
 */
 double ResumeAnimationNameD(
-	const char* path, double loop);
+	String path, double loop);
 /*
 	Reverse the animation frame order of the `Chroma` animation. Returns the 
 	animation id upon success. Returns -1 upon failure. Animation is referenced 
@@ -2168,21 +2139,21 @@ void ReverseAllFrames(int animationId);
 	Reverse the animation frame order of the `Chroma` animation. Animation is 
 	referenced by name.
 */
-void ReverseAllFramesName(const char* path);
+void ReverseAllFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double ReverseAllFramesNameD(const char* path);
+double ReverseAllFramesNameD(String path);
 /*
 	Save the animation referenced by id to the path specified.
 */
 int SaveAnimation(
-	int animationId, const char* path);
+	int animationId, String path);
 /*
 	Save the named animation to the target path specified.
 */
 int SaveAnimationName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Set the animation color for a frame given the `1D` `led`. The `led` should 
 	be greater than or equal to 0 and less than the `MaxLeds`. The animation 
@@ -2196,12 +2167,12 @@ void Set1DColor(
 	is referenced by name.
 */
 void Set1DColorName(
-	const char* path, int frameId, int led, int color);
+	String path, int frameId, int led, int color);
 /*
 	D suffix for limited data types.
 */
 double Set1DColorNameD(
-	const char* path, double frameId, double led, double color);
+	String path, double frameId, double led, double color);
 /*
 	Set the animation color for a frame given the `2D` `row` and `column`. The 
 	`row` should be greater than or equal to 0 and less than the `MaxRow`. 
@@ -2217,12 +2188,12 @@ void Set2DColor(
 	The animation is referenced by name.
 */
 void Set2DColorName(
-	const char* path, int frameId, int row, int column, int color);
+	String path, int frameId, int row, int column, int color);
 /*
 	D suffix for limited data types.
 */
 double Set2DColorNameD(
-	const char* path, double frameId, double rowColumnIndex, double color);
+	String path, double frameId, double rowColumnIndex, double color);
 /*
 	When custom color is set, the custom key mode will be used. The animation 
 	is referenced by id.
@@ -2232,11 +2203,11 @@ void SetChromaCustomColorAllFrames(int animationId);
 	When custom color is set, the custom key mode will be used. The animation 
 	is referenced by name.
 */
-void SetChromaCustomColorAllFramesName(const char* path);
+void SetChromaCustomColorAllFramesName(String path);
 /*
 	D suffix for limited data types.
 */
-double SetChromaCustomColorAllFramesNameD(const char* path);
+double SetChromaCustomColorAllFramesNameD(String path);
 /*
 	Set the Chroma custom key color flag on all frames. `True` changes the layout 
 	from grid to key. `True` changes the layout from key to grid. Animation 
@@ -2250,12 +2221,12 @@ void SetChromaCustomFlag(
 	is referenced by name.
 */
 void SetChromaCustomFlagName(
-	const char* path, bool flag);
+	String path, bool flag);
 /*
 	D suffix for limited data types.
 */
 double SetChromaCustomFlagNameD(
-	const char* path, double flag);
+	String path, double flag);
 /*
 	Set the current frame of the animation referenced by id.
 */
@@ -2265,12 +2236,12 @@ void SetCurrentFrame(
 	Set the current frame of the animation referenced by name.
 */
 void SetCurrentFrameName(
-	const char* path, int frameId);
+	String path, int frameId);
 /*
 	D suffix for limited data types.
 */
 double SetCurrentFrameNameD(
-	const char* path, double frameId);
+	String path, double frameId);
 /*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
@@ -2292,7 +2263,7 @@ void SetIdleAnimation(int animationId);
 	When the idle animation is used, the named animation will play when no other 
 	animations are playing. Reference the animation by name.
 */
-void SetIdleAnimationName(const char* path);
+void SetIdleAnimationName(String path);
 /*
 	Set animation key to a static color for the given frame.
 */
@@ -2309,12 +2280,12 @@ void SetKeyColorAllFrames(
 	by name.
 */
 void SetKeyColorAllFramesName(
-	const char* path, int rzkey, int color);
+	String path, int rzkey, int color);
 /*
 	D suffix for limited data types.
 */
 double SetKeyColorAllFramesNameD(
-	const char* path, double rzkey, double color);
+	String path, double rzkey, double color);
 /*
 	Set the key to the specified key color for all frames. Animation is referenced 
 	by id.
@@ -2326,22 +2297,22 @@ void SetKeyColorAllFramesRGB(
 	by name.
 */
 void SetKeyColorAllFramesRGBName(
-	const char* path, int rzkey, int red, int green, int blue);
+	String path, int rzkey, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double SetKeyColorAllFramesRGBNameD(
-	const char* path, double rzkey, double red, double green, double blue);
+	String path, double rzkey, double red, double green, double blue);
 /*
 	Set animation key to a static color for the given frame.
 */
 void SetKeyColorName(
-	const char* path, int frameId, int rzkey, int color);
+	String path, int frameId, int rzkey, int color);
 /*
 	D suffix for limited data types.
 */
 double SetKeyColorNameD(
-	const char* path, double frameId, double rzkey, double color);
+	String path, double frameId, double rzkey, double color);
 /*
 	Set the key to the specified key color for the specified frame. Animation 
 	is referenced by id.
@@ -2353,13 +2324,12 @@ void SetKeyColorRGB(
 	is referenced by name.
 */
 void SetKeyColorRGBName(
-	const char* path, int frameId, int rzkey, int red, int green, int blue);
+	String path, int frameId, int rzkey, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double SetKeyColorRGBNameD(
-	const char* path, double frameId, double rzkey, double red, double green,
-	double blue);
+	String path, double frameId, double rzkey, double red, double green, double blue);
 /*
 	Set animation key to a static color for the given frame if the existing 
 	color is not already black.
@@ -2371,12 +2341,12 @@ void SetKeyNonZeroColor(
 	color is not already black.
 */
 void SetKeyNonZeroColorName(
-	const char* path, int frameId, int rzkey, int color);
+	String path, int frameId, int rzkey, int color);
 /*
 	D suffix for limited data types.
 */
 double SetKeyNonZeroColorNameD(
-	const char* path, double frameId, double rzkey, double color);
+	String path, double frameId, double rzkey, double color);
 /*
 	Set the key to the specified key color for the specified frame where color 
 	is not black. Animation is referenced by id.
@@ -2388,13 +2358,12 @@ void SetKeyNonZeroColorRGB(
 	is not black. Animation is referenced by name.
 */
 void SetKeyNonZeroColorRGBName(
-	const char* path, int frameId, int rzkey, int red, int green, int blue);
+	String path, int frameId, int rzkey, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double SetKeyNonZeroColorRGBNameD(
-	const char* path, double frameId, double rzkey, double red, double green,
-	double blue);
+	String path, double frameId, double rzkey, double red, double green, double blue);
 /*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by id.
@@ -2412,7 +2381,7 @@ void SetKeysColorAllFrames(
 	is referenced by name.
 */
 void SetKeysColorAllFramesName(
-	const char* path, const int* rzkeys, int keyCount, int color);
+	String path, const int* rzkeys, int keyCount, int color);
 /*
 	Set an array of animation keys to a static color for all frames. Animation 
 	is referenced by id.
@@ -2424,26 +2393,24 @@ void SetKeysColorAllFramesRGB(
 	is referenced by name.
 */
 void SetKeysColorAllFramesRGBName(
-	const char* path, const int* rzkeys, int keyCount, int red, int green, int blue);
+	String path, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame.
 */
 void SetKeysColorName(
-	const char* path, int frameId, const int* rzkeys, int keyCount, int color);
+	String path, int frameId, const int* rzkeys, int keyCount, int color);
 /*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by id.
 */
 void SetKeysColorRGB(
-	int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green,
-	int blue);
+	int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by name.
 */
 void SetKeysColorRGBName(
-	const char* path, int frameId, const int* rzkeys, int keyCount, int red,
-	int green, int blue);
+	String path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame if 
 	the existing color is not already black.
@@ -2461,27 +2428,25 @@ void SetKeysNonZeroColorAllFrames(
 	color is not already black. Reference animation by name.
 */
 void SetKeysNonZeroColorAllFramesName(
-	const char* path, const int* rzkeys, int keyCount, int color);
+	String path, const int* rzkeys, int keyCount, int color);
 /*
 	Set an array of animation keys to a static color for the given frame if 
 	the existing color is not already black. Reference animation by name.
 */
 void SetKeysNonZeroColorName(
-	const char* path, int frameId, const int* rzkeys, int keyCount, int color);
+	String path, int frameId, const int* rzkeys, int keyCount, int color);
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is not black. Animation is referenced by id.
 */
 void SetKeysNonZeroColorRGB(
-	int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green,
-	int blue);
+	int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is not black. Animation is referenced by name.
 */
 void SetKeysNonZeroColorRGBName(
-	const char* path, int frameId, const int* rzkeys, int keyCount, int red,
-	int green, int blue);
+	String path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by id.
@@ -2499,7 +2464,7 @@ void SetKeysZeroColorAllFrames(
 	color is black. Animation is referenced by name.
 */
 void SetKeysZeroColorAllFramesName(
-	const char* path, const int* rzkeys, int keyCount, int color);
+	String path, const int* rzkeys, int keyCount, int color);
 /*
 	Set an array of animation keys to a static color for all frames where the 
 	color is black. Animation is referenced by id.
@@ -2511,27 +2476,25 @@ void SetKeysZeroColorAllFramesRGB(
 	color is black. Animation is referenced by name.
 */
 void SetKeysZeroColorAllFramesRGBName(
-	const char* path, const int* rzkeys, int keyCount, int red, int green, int blue);
+	String path, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by name.
 */
 void SetKeysZeroColorName(
-	const char* path, int frameId, const int* rzkeys, int keyCount, int color);
+	String path, int frameId, const int* rzkeys, int keyCount, int color);
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by id.
 */
 void SetKeysZeroColorRGB(
-	int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green,
-	int blue);
+	int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set an array of animation keys to a static color for the given frame where 
 	the color is black. Animation is referenced by name.
 */
 void SetKeysZeroColorRGBName(
-	const char* path, int frameId, const int* rzkeys, int keyCount, int red,
-	int green, int blue);
+	String path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 /*
 	Set animation key to a static color for the given frame where the color 
 	is black. Animation is referenced by id.
@@ -2543,12 +2506,12 @@ void SetKeyZeroColor(
 	is black. Animation is referenced by name.
 */
 void SetKeyZeroColorName(
-	const char* path, int frameId, int rzkey, int color);
+	String path, int frameId, int rzkey, int color);
 /*
 	D suffix for limited data types.
 */
 double SetKeyZeroColorNameD(
-	const char* path, double frameId, double rzkey, double color);
+	String path, double frameId, double rzkey, double color);
 /*
 	Set animation key to a static color for the given frame where the color 
 	is black. Animation is referenced by id.
@@ -2560,13 +2523,12 @@ void SetKeyZeroColorRGB(
 	is black. Animation is referenced by name.
 */
 void SetKeyZeroColorRGBName(
-	const char* path, int frameId, int rzkey, int red, int green, int blue);
+	String path, int frameId, int rzkey, int red, int green, int blue);
 /*
 	D suffix for limited data types.
 */
 double SetKeyZeroColorRGBNameD(
-	const char* path, double frameId, double rzkey, double red, double green,
-	double blue);
+	String path, double frameId, double rzkey, double red, double green, double blue);
 /*
 	Invokes the setup for a debug logging callback so that `stdout` is redirected 
 	to the callback. This is used by `Unity` so that debug messages can appear 
@@ -2601,11 +2563,11 @@ double StopAnimationD(double animationId);
 	The named `.chroma` animation file will be automatically opened. The animation 
 	will stop if playing.
 */
-void StopAnimationName(const char* path);
+void StopAnimationName(String path);
 /*
 	D suffix for limited data types.
 */
-double StopAnimationNameD(const char* path);
+double StopAnimationNameD(String path);
 /*
 	`PluginStopAnimationType` automatically handles initializing the `ChromaSDK`. 
 	If any animation is playing for the `deviceType` and `device` combination, 
@@ -2623,11 +2585,11 @@ double StopAnimationTypeD(
 	The named animation files for the `.chroma` set will be automatically opened. 
 	The set of animations will be stopped if playing.
 */
-void StopComposite(const char* name);
+void StopComposite(String name);
 /*
 	D suffix for limited data types.
 */
-double StopCompositeD(const char* name);
+double StopCompositeD(String name);
 /*
 	Subtract the source color from the target color for all frames where the 
 	target color is not black. Source and target are referenced by id.
@@ -2639,12 +2601,12 @@ void SubtractNonZeroAllKeysAllFrames(
 	target color is not black. Source and target are referenced by name.
 */
 void SubtractNonZeroAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double SubtractNonZeroAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Subtract the source color from the target color for all frames where the 
 	target color is not black starting at offset for the length of the source. 
@@ -2658,12 +2620,12 @@ void SubtractNonZeroAllKeysAllFramesOffset(
 	Source and target are referenced by name.
 */
 void SubtractNonZeroAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double SubtractNonZeroAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Subtract the source color from the target where color is not black for the 
 	source frame and target offset frame, reference source and target by id.
@@ -2675,13 +2637,12 @@ void SubtractNonZeroAllKeysOffset(
 	source frame and target offset frame, reference source and target by name.
 */
 void SubtractNonZeroAllKeysOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	String sourceAnimation, String targetAnimation, int frameId, int offset);
 /*
 	D suffix for limited data types.
 */
 double SubtractNonZeroAllKeysOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double offset);
+	String sourceAnimation, String targetAnimation, double frameId, double offset);
 /*
 	Subtract the source color from the target color where the target color is 
 	not black for all frames. Reference source and target by id.
@@ -2693,12 +2654,12 @@ void SubtractNonZeroTargetAllKeysAllFrames(
 	not black for all frames. Reference source and target by name.
 */
 void SubtractNonZeroTargetAllKeysAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	D suffix for limited data types.
 */
 double SubtractNonZeroTargetAllKeysAllFramesNameD(
-	const char* sourceAnimation, const char* targetAnimation);
+	String sourceAnimation, String targetAnimation);
 /*
 	Subtract the source color from the target color where the target color is 
 	not black for all frames starting at the target offset for the length of 
@@ -2712,12 +2673,12 @@ void SubtractNonZeroTargetAllKeysAllFramesOffset(
 	the source. Reference source and target by name.
 */
 void SubtractNonZeroTargetAllKeysAllFramesOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int offset);
+	String sourceAnimation, String targetAnimation, int offset);
 /*
 	D suffix for limited data types.
 */
 double SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double offset);
+	String sourceAnimation, String targetAnimation, double offset);
 /*
 	Subtract the source color from the target color where the target color is 
 	not black from the source frame to the target offset frame. Reference source 
@@ -2731,13 +2692,12 @@ void SubtractNonZeroTargetAllKeysOffset(
 	and target by name.
 */
 void SubtractNonZeroTargetAllKeysOffsetName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	String sourceAnimation, String targetAnimation, int frameId, int offset);
 /*
 	D suffix for limited data types.
 */
 double SubtractNonZeroTargetAllKeysOffsetNameD(
-	const char* sourceAnimation, const char* targetAnimation, double frameId,
-	double offset);
+	String sourceAnimation, String targetAnimation, double frameId, double offset);
 /*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
 	+ 1. Reference the animation by id.
@@ -2749,12 +2709,12 @@ void TrimEndFrames(
 	+ 1. Reference the animation by name.
 */
 void TrimEndFramesName(
-	const char* path, int lastFrameId);
+	String path, int lastFrameId);
 /*
 	D suffix for limited data types.
 */
 double TrimEndFramesNameD(
-	const char* path, double lastFrameId);
+	String path, double lastFrameId);
 /*
 	Remove the frame from the animation. Reference animation by id.
 */
@@ -2764,12 +2724,12 @@ void TrimFrame(
 	Remove the frame from the animation. Reference animation by name.
 */
 void TrimFrameName(
-	const char* path, int frameId);
+	String path, int frameId);
 /*
 	D suffix for limited data types.
 */
 double TrimFrameNameD(
-	const char* path, double frameId);
+	String path, double frameId);
 /*
 	Trim the start of the animation starting at frame 0 for the number of frames. 
 	Reference the animation by id.
@@ -2781,12 +2741,12 @@ void TrimStartFrames(
 	Reference the animation by name.
 */
 void TrimStartFramesName(
-	const char* path, int numberOfFrames);
+	String path, int numberOfFrames);
 /*
 	D suffix for limited data types.
 */
 double TrimStartFramesNameD(
-	const char* path, double numberOfFrames);
+	String path, double numberOfFrames);
 /*
 	Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
 */
@@ -2807,12 +2767,12 @@ double UnloadAnimationD(double animationId);
 /*
 	Unload the animation effects. Reference the animation by name.
 */
-void UnloadAnimationName(const char* path);
+void UnloadAnimationName(String path);
 /*
 	Unload the the composite set of animation effects. Reference the animation 
 	by name.
 */
-void UnloadComposite(const char* name);
+void UnloadComposite(String name);
 /*
 	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
 	(in seconds). The `color` is expected to be an array of the dimensions 
@@ -2848,5 +2808,5 @@ void UsePreloading(
 	animation by name.
 */
 void UsePreloadingName(
-	const char* path, bool flag);
+	String path, bool flag);
 #pragma endregion

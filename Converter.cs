@@ -695,6 +695,17 @@ namespace ChromaAPISync
             return result;
         }
 
+        private static string ChangeToGodotVariantType(MetaMethodInfo methodInfo, string strType)
+        {
+            // this is for private methods
+            string result = TrimArgType(strType);
+            if (result == "const char*")
+            {
+                result = "String";
+            }
+            return result;
+        }
+
         private static string ChangeToManagedType(MetaMethodInfo methodInfo, string strType)
         {
             // this is for public methods
@@ -858,7 +869,33 @@ namespace ChromaAPISync
             }
             return string.Join(",", parts);
         }
-        
+
+        private static string ChangeArgsToGodotVariantTypes(MetaMethodInfo methodInfo, string args)
+        {
+            string[] parts = args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].Trim();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string strType = ChangeToGodotVariantType(methodInfo, part.Substring(0, indexName + 1).Trim());
+                    string name = part.Substring(indexName + 1).Trim();
+
+                    if (i == 0)
+                    {
+                        parts[i] = strType + " " + name;
+                    }
+                    else
+                    {
+                        parts[i] = " " + strType + " " + name;
+
+                    }
+                }
+            }
+            return string.Join(",", parts);
+        }
+
         static bool ProcessStdafx(string fileInput)
         {
             try
@@ -1170,14 +1207,14 @@ int ChromaAnimationAPI::InitAPI()
                         Output(swHeader, "{0} {1}({2});",
                             methodInfo.ReturnType,
                             methodInfo.Name,
-                            methodInfo.Args);
+                            ChangeArgsToGodotVariantTypes(methodInfo, methodInfo.Args));
                     }
                     else
                     {
                         Output(swHeader, "{0} {1}(\r\n\t{2});",
                             methodInfo.ReturnType,
                             methodInfo.Name,
-                            SplitLongLines(methodInfo.Args));
+                            ChangeArgsToGodotVariantTypes(methodInfo, methodInfo.Args));
                     }
 
                 }
@@ -1197,18 +1234,28 @@ int ChromaAnimationAPI::InitAPI()
 
         static bool IsGodotSupported(MetaMethodInfo methodInfo)
         {
-            if (methodInfo.Args.Contains("*") ||
-                methodInfo.Args.Contains("FChromaSDKGuid") ||
-                methodInfo.Args.Contains("DEVICE_INFO_TYPE") ||
-                methodInfo.Args.Contains("RZEFFECTID") ||
-                methodInfo.Name == "SetLogDelegate")
+            if (methodInfo.Name == "SetLogDelegate")
             {
                 return false;
             }
-            else
+            string[] parts = methodInfo.Args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
             {
-                return true;
+                string part = parts[i].Trim();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string strType = ChangeToGodotVariantType(methodInfo, part.Substring(0, indexName + 1).Trim());
+                    if (strType.Contains("*") ||
+                        strType.Contains("FChromaSDKGuid") ||
+                        strType.Contains("DEVICE_INFO_TYPE") ||
+                        strType.Contains("RZEFFECTID"))
+                    {
+                        return false;
+                    }
+                }
             }
+            return true;
         }
 
         static bool WriteGodotImplementation(StreamWriter swImplementation)
@@ -1261,7 +1308,7 @@ int ChromaAnimationAPI::InitAPI()
                     Output(swImplementation, "{0} godot::NodeChromaSDK::{1}({2})",
                             methodInfo.ReturnType,
                             methodInfo.Name,
-                            methodInfo.Args);
+                            ChangeArgsToGodotVariantTypes(methodInfo, methodInfo.Args));
 
                     Output(swImplementation, "{0}", "{");
 
@@ -1270,14 +1317,14 @@ int ChromaAnimationAPI::InitAPI()
                         Output(swImplementation, "\tChromaAnimationAPI::{1}({2});",
                             methodInfo.ReturnType,
                             methodInfo.Name,
-                            GetJavaArgsWithoutType(methodInfo.Args));
+                            GetGodotArgsWithoutType(methodInfo.Args));
                     }
                     else
                     {
                         Output(swImplementation, "\treturn ChromaAnimationAPI::{1}({2});",
                             methodInfo.ReturnType,
                             methodInfo.Name,
-                            GetJavaArgsWithoutType(methodInfo.Args));
+                            GetGodotArgsWithoutType(methodInfo.Args));
                     }
                     Output(swImplementation, "{0}", "}");
 
@@ -2639,6 +2686,33 @@ __UNITY_GET_STREAMING_PATH__
                 {
                     string name = trimPart.Substring(indexSpace);
                     newParts.Add(string.Format("{0}", name.Trim()));
+                }
+                else
+                {
+                    newParts.Add(trimPart); //unexpected format
+                }
+            }
+            return string.Join(", ", newParts.ToArray());
+        }
+
+        static string GetGodotArgsWithoutType(string input)
+        {
+            string[] parts = input.Split(",".ToCharArray());
+            List<string> newParts = new List<string>();
+            foreach (string part in parts)
+            {
+                string trimPart = part.Trim();
+                int indexSpace = trimPart.LastIndexOf(" ");
+                if (indexSpace > 0)
+                {
+                    string name = trimPart.Substring(indexSpace);
+                    string fieldName = name.Trim();
+                    string fieldType = trimPart.Substring(0, indexSpace);
+                    if (fieldType == "const char*")
+                    {
+                        fieldName += ".utf8().get_data()";
+                    }
+                    newParts.Add(string.Format("{0}", fieldName));
                 }
                 else
                 {
