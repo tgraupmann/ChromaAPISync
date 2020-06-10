@@ -703,6 +703,10 @@ namespace ChromaAPISync
             {
                 result = "String";
             }
+            else if (result == "const int*")
+            {
+                result = "Array";
+            }
             return result;
         }
 
@@ -1258,6 +1262,14 @@ int ChromaAnimationAPI::InitAPI()
             return true;
         }
 
+        static void WriteTabs(StreamWriter sw, int tabs)
+        {
+            for (int tab = 0; tab < tabs; ++tab)
+            {
+                sw.Write("\t");
+            }
+        }
+
         static bool WriteGodotImplementation(StreamWriter swImplementation)
         {
             try
@@ -1305,19 +1317,86 @@ int ChromaAnimationAPI::InitAPI()
 
                     Output(swImplementation, "*/");
 
+                    string godotParameters = ChangeArgsToGodotVariantTypes(methodInfo, methodInfo.Args);
+                    //godotParameters = "int animationId, int frameId, Array rzkeys, int keyCount, int color";
                     Output(swImplementation, "{0} godot::NodeChromaSDK::{1}({2})",
                             methodInfo.ReturnType,
                             methodInfo.Name,
-                            ChangeArgsToGodotVariantTypes(methodInfo, methodInfo.Args));
+                            godotParameters);
 
                     Output(swImplementation, "{0}", "{");
 
                     if (methodInfo.ReturnType == "void")
                     {
-                        Output(swImplementation, "\tChromaAnimationAPI::{1}({2});",
-                            methodInfo.ReturnType,
-                            methodInfo.Name,
-                            GetGodotArgsWithoutType(methodInfo.Args));
+                        string godotArgs = GetGodotArgsWithoutType(methodInfo.Args);
+                        //godotArgs = "animationId, frameId, rzkeys, keyCount, color";
+                        if (HasGodotArrayArgs(godotParameters))
+                        {
+                            List<GodotArrayConversion> conversions = new List<GodotArrayConversion>();
+                            
+                            string convertGodotArgs = ConvertGodotArrayArgs(godotParameters, godotArgs, conversions);
+                            int tabs = 0;
+                            for (int i = 0; i < conversions.Count; ++i)
+                            {
+                                GodotArrayConversion conversion = conversions[i];
+                                
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\tif ({0}.size())", conversion.OldField);
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\t{0}", "{");
+                                ++tabs;
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\tint* {0} = new int[{1}.size()];",
+                                    conversion.NewField,
+                                    conversion.OldField);
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\tfor (int i{0} = 0; i{0} < {1}.size(); ++i{0})",
+                                    (i == 0) ? "" : i.ToString(),
+                                    conversion.OldField);
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\t{0}", "{");
+                                ++tabs;
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\t{0}[i{1}] = (int){2}[i{1}];",
+                                    conversion.NewField,
+                                    (i == 0) ? "" : i.ToString(),
+                                    conversion.OldField);
+
+                                --tabs;
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\t{0}", "}");
+                            }
+
+                            WriteTabs(swImplementation, tabs);
+                            Output(swImplementation, "\tChromaAnimationAPI::{1}({2});",
+                                methodInfo.ReturnType,
+                                methodInfo.Name,
+                                convertGodotArgs);
+
+                            for (int i = conversions.Count - 1; i >= 0; --i)
+                            {
+                                GodotArrayConversion conversion = conversions[i];
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\tdelete[] {0};", conversion.NewField);
+                                --tabs;
+
+                                WriteTabs(swImplementation, tabs);
+                                Output(swImplementation, "\t{0}", "}");
+                            }
+                        }
+                        else
+                        {
+                            Output(swImplementation, "\tChromaAnimationAPI::{1}({2});",
+                                methodInfo.ReturnType,
+                                methodInfo.Name,
+                                godotArgs);
+                        }
                     }
                     else
                     {
@@ -2717,6 +2796,63 @@ __UNITY_GET_STREAMING_PATH__
                 else
                 {
                     newParts.Add(trimPart); //unexpected format
+                }
+            }
+            return string.Join(", ", newParts.ToArray());
+        }
+
+        static bool HasGodotArrayArgs(string input)
+        {
+            string[] parts = input.Split(",".ToCharArray());
+            foreach (string part in parts)
+            {
+                string trimPart = part.Trim();
+                int indexSpace = trimPart.IndexOf(" ");
+                if (indexSpace > 0)
+                {
+                    string fieldType = trimPart.Substring(0, indexSpace).Trim();
+                    if (fieldType == "Array")
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        struct GodotArrayConversion
+        {
+            public string OldField;
+            public string NewField;
+        }
+
+        static string ConvertGodotArrayArgs(string parameters, string args, List<GodotArrayConversion> conversions)
+        {
+            string[] paramParts = parameters.Split(",".ToCharArray());
+            string[] argsParts = args.Split(",".ToCharArray());
+            if (paramParts.Length != argsParts.Length)
+            {
+                return args;
+            }
+            List<string> newParts = new List<string>();
+            for (int i = 0; i < paramParts.Length; ++i)
+            {
+                string paramPart = paramParts[i].Trim();
+                string fieldName = argsParts[i].Trim();
+                int paramIndexSpace = paramPart.IndexOf(" ");
+                if (paramIndexSpace > 0)
+                {
+                    string fieldType = paramPart.Substring(0, paramIndexSpace).Trim();
+                    if (fieldType == "Array")
+                    {
+                        GodotArrayConversion conversion;
+                        conversion.OldField = fieldName;
+                        conversion.NewField = "ptr" + UppercaseFirstLetter(fieldName);
+                        conversions.Add(conversion);
+
+                        fieldName = conversion.NewField;
+                    }
+                    newParts.Add(fieldName);
                 }
             }
             return string.Join(", ", newParts.ToArray());
