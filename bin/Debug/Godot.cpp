@@ -50,12 +50,12 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"CopyKeyColorAllFramesOffsetNameD", &NodeChromaSDK::CopyKeyColorAllFramesOffsetNameD);
 	register_method((char*)"CopyKeyColorName", &NodeChromaSDK::CopyKeyColorName);
 	register_method((char*)"CopyKeyColorNameD", &NodeChromaSDK::CopyKeyColorNameD);
-	//register_method((char*)"CopyKeysColor", &NodeChromaSDK::CopyKeysColor);
-	//register_method((char*)"CopyKeysColorAllFrames", &NodeChromaSDK::CopyKeysColorAllFrames);
-	//register_method((char*)"CopyKeysColorAllFramesName", &NodeChromaSDK::CopyKeysColorAllFramesName);
-	//register_method((char*)"CopyKeysColorName", &NodeChromaSDK::CopyKeysColorName);
-	//register_method((char*)"CopyKeysColorOffset", &NodeChromaSDK::CopyKeysColorOffset);
-	//register_method((char*)"CopyKeysColorOffsetName", &NodeChromaSDK::CopyKeysColorOffsetName);
+	register_method((char*)"CopyKeysColor", &NodeChromaSDK::CopyKeysColor);
+	register_method((char*)"CopyKeysColorAllFrames", &NodeChromaSDK::CopyKeysColorAllFrames);
+	register_method((char*)"CopyKeysColorAllFramesName", &NodeChromaSDK::CopyKeysColorAllFramesName);
+	register_method((char*)"CopyKeysColorName", &NodeChromaSDK::CopyKeysColorName);
+	register_method((char*)"CopyKeysColorOffset", &NodeChromaSDK::CopyKeysColorOffset);
+	register_method((char*)"CopyKeysColorOffsetName", &NodeChromaSDK::CopyKeysColorOffsetName);
 	register_method((char*)"CopyNonZeroAllKeys", &NodeChromaSDK::CopyNonZeroAllKeys);
 	register_method((char*)"CopyNonZeroAllKeysAllFrames", &NodeChromaSDK::CopyNonZeroAllKeysAllFrames);
 	register_method((char*)"CopyNonZeroAllKeysAllFramesName", &NodeChromaSDK::CopyNonZeroAllKeysAllFramesName);
@@ -940,27 +940,54 @@ double godot::NodeChromaSDK::CopyKeyColorNameD(String sourceAnimation, String ta
 	target animation for the given frame. Reference the source and target by 
 	id.
 */
-void godot::NodeChromaSDK::CopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size)
+void godot::NodeChromaSDK::CopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, Array keys, int size)
 {
-	ChromaAnimationAPI::CopyKeysColor(sourceAnimationId, targetAnimationId, frameId, keys, size);
+	if (keys.size())
+	{
+		int* ptrKeys = new int[keys.size()];
+		for (int i = 0; i < keys.size(); ++i)
+		{
+			ptrKeys[i] = (int)keys[i];
+		}
+		ChromaAnimationAPI::CopyKeysColor(sourceAnimationId, targetAnimationId, frameId, ptrKeys, size);
+		delete[] ptrKeys;
+	}
 }
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for all frames. Reference the source and target by id.
 */
-void godot::NodeChromaSDK::CopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, int* keys, int size)
+void godot::NodeChromaSDK::CopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, Array keys, int size)
 {
-	ChromaAnimationAPI::CopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, keys, size);
+	if (keys.size())
+	{
+		int* ptrKeys = new int[keys.size()];
+		for (int i = 0; i < keys.size(); ++i)
+		{
+			ptrKeys[i] = (int)keys[i];
+		}
+		ChromaAnimationAPI::CopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, ptrKeys, size);
+		delete[] ptrKeys;
+	}
 }
 
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for all frames. Reference the source and target by name.
 */
-void godot::NodeChromaSDK::CopyKeysColorAllFramesName(String sourceAnimation, String targetAnimation, int* keys, int size)
+void godot::NodeChromaSDK::CopyKeysColorAllFramesName(String sourceAnimation, String targetAnimation, Array keys, int size)
 {
-	ChromaAnimationAPI::CopyKeysColorAllFramesName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), keys, size);
+	if (keys.size())
+	{
+		int* ptrKeys = new int[keys.size()];
+		for (int i = 0; i < keys.size(); ++i)
+		{
+			ptrKeys[i] = (int)keys[i];
+		}
+		ChromaAnimationAPI::CopyKeysColorAllFramesName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), ptrKeys, size);
+		delete[] ptrKeys;
+	}
 }
 
 /*
@@ -968,9 +995,18 @@ void godot::NodeChromaSDK::CopyKeysColorAllFramesName(String sourceAnimation, St
 	target animation for the given frame. Reference the source and target by 
 	name.
 */
-void godot::NodeChromaSDK::CopyKeysColorName(String sourceAnimation, String targetAnimation, int frameId, int* keys, int size)
+void godot::NodeChromaSDK::CopyKeysColorName(String sourceAnimation, String targetAnimation, int frameId, Array keys, int size)
 {
-	ChromaAnimationAPI::CopyKeysColorName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), frameId, keys, size);
+	if (keys.size())
+	{
+		int* ptrKeys = new int[keys.size()];
+		for (int i = 0; i < keys.size(); ++i)
+		{
+			ptrKeys[i] = (int)keys[i];
+		}
+		ChromaAnimationAPI::CopyKeysColorName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), frameId, ptrKeys, size);
+		delete[] ptrKeys;
+	}
 }
 
 /*
@@ -978,9 +1014,18 @@ void godot::NodeChromaSDK::CopyKeysColorName(String sourceAnimation, String targ
 	target animation from the source frame to the target frame. Reference the 
 	source and target by id.
 */
-void godot::NodeChromaSDK::CopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int* keys, int size)
+void godot::NodeChromaSDK::CopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, Array keys, int size)
 {
-	ChromaAnimationAPI::CopyKeysColorOffset(sourceAnimationId, targetAnimationId, sourceFrameId, targetFrameId, keys, size);
+	if (keys.size())
+	{
+		int* ptrKeys = new int[keys.size()];
+		for (int i = 0; i < keys.size(); ++i)
+		{
+			ptrKeys[i] = (int)keys[i];
+		}
+		ChromaAnimationAPI::CopyKeysColorOffset(sourceAnimationId, targetAnimationId, sourceFrameId, targetFrameId, ptrKeys, size);
+		delete[] ptrKeys;
+	}
 }
 
 /*
@@ -988,9 +1033,18 @@ void godot::NodeChromaSDK::CopyKeysColorOffset(int sourceAnimationId, int target
 	target animation from the source frame to the target frame. Reference the 
 	source and target by name.
 */
-void godot::NodeChromaSDK::CopyKeysColorOffsetName(String sourceAnimation, String targetAnimation, int sourceFrameId, int targetFrameId, int* keys, int size)
+void godot::NodeChromaSDK::CopyKeysColorOffsetName(String sourceAnimation, String targetAnimation, int sourceFrameId, int targetFrameId, Array keys, int size)
 {
-	ChromaAnimationAPI::CopyKeysColorOffsetName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), sourceFrameId, targetFrameId, keys, size);
+	if (keys.size())
+	{
+		int* ptrKeys = new int[keys.size()];
+		for (int i = 0; i < keys.size(); ++i)
+		{
+			ptrKeys[i] = (int)keys[i];
+		}
+		ChromaAnimationAPI::CopyKeysColorOffsetName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), sourceFrameId, targetFrameId, ptrKeys, size);
+		delete[] ptrKeys;
+	}
 }
 
 /*

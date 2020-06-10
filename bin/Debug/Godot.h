@@ -285,40 +285,40 @@ double CopyKeyColorNameD(
 	id.
 */
 void CopyKeysColor(
-	int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, int frameId, Array keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for all frames. Reference the source and target by id.
 */
 void CopyKeysColorAllFrames(
-	int sourceAnimationId, int targetAnimationId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, Array keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for all frames. Reference the source and target by name.
 */
 void CopyKeysColorAllFramesName(
-	String sourceAnimation, String targetAnimation, int* keys, int size);
+	String sourceAnimation, String targetAnimation, Array keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation for the given frame. Reference the source and target by 
 	name.
 */
 void CopyKeysColorName(
-	String sourceAnimation, String targetAnimation, int frameId, int* keys, int size);
+	String sourceAnimation, String targetAnimation, int frameId, Array keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation from the source frame to the target frame. Reference the 
 	source and target by id.
 */
 void CopyKeysColorOffset(
-	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, Array keys, int size);
 /*
 	Copy animation color for a set of keys from the source animation to the 
 	target animation from the source frame to the target frame. Reference the 
 	source and target by name.
 */
 void CopyKeysColorOffsetName(
-	String sourceAnimation, String targetAnimation, int sourceFrameId, int targetFrameId, int* keys, int size);
+	String sourceAnimation, String targetAnimation, int sourceFrameId, int targetFrameId, Array keys, int size);
 /*
 	Copy source animation to target animation for the given frame. Source and 
 	target are referenced by id.

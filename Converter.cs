@@ -145,9 +145,6 @@ namespace ChromaAPISync
                 }
             }
 
-            return;
-
-
             if (File.Exists(fileJavaInterface))
             {
                 File.Delete(fileJavaInterface);
@@ -1048,6 +1045,9 @@ namespace ChromaSDK
 {
 	class ChromaAnimationAPI
 	{
+	private:
+		static bool _sIsInitializedAPI;
+
 	public:
 ";
                 Output(swHeader, "{0}", strNamespace);
@@ -1073,7 +1073,8 @@ namespace ChromaSDK
 
                 string footer =
 @"
-static int InitAPI();
+		static int InitAPI();
+		static bool GetIsInitializedAPI();
 	};
 }";
                 Output(swHeader, "{0}", footer);
@@ -1129,6 +1130,8 @@ if (FieldName == nullptr) \
 	return -1; \
 }
 
+bool ChromaAnimationAPI::_sIsInitializedAPI = false;
+
 int ChromaAnimationAPI::InitAPI()
 {
 	HMODULE library = LoadLibrary(CHROMA_EDITOR_DLL);
@@ -1169,8 +1172,14 @@ int ChromaAnimationAPI::InitAPI()
 
                 string footer =
 @"
-	fprintf(stdout, ""Validated all DLL methods [success]\r\n"");
+	//fprintf(stdout, ""Validated all DLL methods [success]\r\n"");
+	_sIsInitializedAPI = true;
 	return 0;
+}
+
+bool ChromaAnimationAPI::GetIsInitializedAPI()
+{
+	return _sIsInitializedAPI;
 }";
                 Output(swImplementation, "{0}", footer);
 

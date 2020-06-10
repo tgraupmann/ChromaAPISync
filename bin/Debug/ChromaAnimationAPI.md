@@ -1322,11 +1322,13 @@ id.
 ```C++
 // DLL Interface
 EXPORT_API void PluginCopyKeysColor(
-	int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, int frameId, const int* keys,
+	int size);
 
 // Class Plugin
 ChromaAnimationAPI::CopyKeysColor(
-	int sourceAnimationId, int targetAnimationId, int frameId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, int frameId, const int* keys,
+	int size);
 ```
 
 ---
@@ -1339,11 +1341,11 @@ target animation for all frames. Reference the source and target by id.
 ```C++
 // DLL Interface
 EXPORT_API void PluginCopyKeysColorAllFrames(
-	int sourceAnimationId, int targetAnimationId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, const int* keys, int size);
 
 // Class Plugin
 ChromaAnimationAPI::CopyKeysColorAllFrames(
-	int sourceAnimationId, int targetAnimationId, int* keys, int size);
+	int sourceAnimationId, int targetAnimationId, const int* keys, int size);
 ```
 
 ---
@@ -1356,11 +1358,13 @@ target animation for all frames. Reference the source and target by name.
 ```C++
 // DLL Interface
 EXPORT_API void PluginCopyKeysColorAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation, int* keys, int size);
+	const char* sourceAnimation, const char* targetAnimation, const int* keys,
+	int size);
 
 // Class Plugin
 ChromaAnimationAPI::CopyKeysColorAllFramesName(
-	const char* sourceAnimation, const char* targetAnimation, int* keys, int size);
+	const char* sourceAnimation, const char* targetAnimation, const int* keys,
+	int size);
 ```
 
 ---
@@ -1374,12 +1378,12 @@ name.
 ```C++
 // DLL Interface
 EXPORT_API void PluginCopyKeysColorName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys,
+	const char* sourceAnimation, const char* targetAnimation, int frameId, const int* keys,
 	int size);
 
 // Class Plugin
 ChromaAnimationAPI::CopyKeysColorName(
-	const char* sourceAnimation, const char* targetAnimation, int frameId, int* keys,
+	const char* sourceAnimation, const char* targetAnimation, int frameId, const int* keys,
 	int size);
 ```
 
@@ -1395,12 +1399,12 @@ source and target by id.
 // DLL Interface
 EXPORT_API void PluginCopyKeysColorOffset(
 	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId,
-	int* keys, int size);
+	const int* keys, int size);
 
 // Class Plugin
 ChromaAnimationAPI::CopyKeysColorOffset(
 	int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId,
-	int* keys, int size);
+	const int* keys, int size);
 ```
 
 ---
@@ -1415,12 +1419,12 @@ source and target by name.
 // DLL Interface
 EXPORT_API void PluginCopyKeysColorOffsetName(
 	const char* sourceAnimation, const char* targetAnimation, int sourceFrameId,
-	int targetFrameId, int* keys, int size);
+	int targetFrameId, const int* keys, int size);
 
 // Class Plugin
 ChromaAnimationAPI::CopyKeysColorOffsetName(
 	const char* sourceAnimation, const char* targetAnimation, int sourceFrameId,
-	int targetFrameId, int* keys, int size);
+	int targetFrameId, const int* keys, int size);
 ```
 
 ---

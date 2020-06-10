@@ -513,6 +513,8 @@ if (FieldName == nullptr) \
 	return -1; \
 }
 
+bool ChromaAnimationAPI::_sIsInitializedAPI = false;
+
 int ChromaAnimationAPI::InitAPI()
 {
 	HMODULE library = LoadLibrary(CHROMA_EDITOR_DLL);
@@ -1036,6 +1038,12 @@ CHROMASDK_VALIDATE_METHOD(PLUGIN_USE_PRELOADING, UsePreloading);
 CHROMASDK_VALIDATE_METHOD(PLUGIN_USE_PRELOADING_NAME, UsePreloadingName);
 #pragma endregion
 
-	fprintf(stdout, "Validated all DLL methods [success]\r\n");
+	//fprintf(stdout, "Validated all DLL methods [success]\r\n");
+	_sIsInitializedAPI = true;
 	return 0;
+}
+
+bool ChromaAnimationAPI::GetIsInitializedAPI()
+{
+	return _sIsInitializedAPI;
 }
