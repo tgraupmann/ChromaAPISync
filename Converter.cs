@@ -1507,6 +1507,66 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
             }
         }
 
+        struct MetaArgsCTF
+        {
+            public string FieldType;
+            public string FieldName;
+        }
+
+        static MetaArgsCTF[] GetCTFArgs(string input)
+        {
+            List<MetaArgsCTF> results = new List<MetaArgsCTF>();
+            string[] parts = input.Split(",".ToCharArray());
+            foreach (string part in parts)
+            {
+                string trimPart = part.Trim();
+                int indexSpace = trimPart.LastIndexOf(" ");
+                if (indexSpace > 0)
+                {
+                    MetaArgsCTF arg = new MetaArgsCTF();
+                    arg.FieldType = trimPart.Substring(0, indexSpace).Trim();
+                    arg.FieldName = trimPart.Substring(indexSpace).Trim();
+                    results.Add(arg);
+                }
+            }
+            return results.ToArray();
+        }
+
+        static bool HasCTFSupportedTypes(MetaArgsCTF[] args)
+        {
+            foreach (MetaArgsCTF arg in args)
+            {
+                switch (arg.FieldType)
+                {
+                    case "const char*":
+                        break;
+                    case "bool":
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        static string GetCTFArgsForAPI(MetaArgsCTF[] args)
+        {
+            List<string> results = new List<string>();
+            foreach (MetaArgsCTF arg in args)
+            {
+                switch (arg.FieldType)
+                {
+                    case "const char*":
+                        results.Add(string.Format("{0}.c_str()", arg.FieldName));
+                        break;
+                    default:
+                        results.Add(arg.FieldName);
+                        break;
+                }
+            }
+            return string.Join(", ", results.ToArray());
+        }
+
         static bool WriteCTFImplementation(StreamWriter swImplementation)
         {
             try
@@ -1556,6 +1616,57 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
 
                     Output(swImplementation, "{0}", "\tif (state)");
                     Output(swImplementation, "{0}", "\t{");
+
+                    // loop through each parameter
+
+                    MetaArgsCTF[] args = GetCTFArgs(methodInfo.Args);
+                    if (HasCTFSupportedTypes(args))
+                    {
+                        int indexArg = 1;
+                        foreach (MetaArgsCTF arg in args)
+                        {
+                            switch (arg.FieldType)
+                            {
+                                case "const char*":
+                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_isstringW(state, {0}))", indexArg);
+                                    break;
+                                case "bool":
+                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_tobooleanW(state, {0}))", indexArg);
+                                    break;
+                            }
+                            Output(swImplementation, "{0}", "\t\t{");
+                            Output(swImplementation, "\t\t\treturn -1;");
+                            Output(swImplementation, "{0}", "\t\t}");
+                            switch (arg.FieldType)
+                            {
+                                case "const char*":
+                                    Output(swImplementation, "\t\tstring {0} = WrapperXLua::lua_tostringW(state, {1});",
+                                        arg.FieldName,
+                                        indexArg);
+                                    break;
+                                case "bool":
+                                    Output(swImplementation, "\t\tbool {0} = WrapperXLua::lua_tobooleanW(state, {1}) == 1;",
+                                        arg.FieldName,
+                                        indexArg);
+                                    break;
+                            }
+                            ++indexArg;
+                        }
+
+                        Output(swImplementation, "\t\tChromaAnimationAPI::{0}({1});",
+                                methodInfo.Name,
+                                GetCTFArgsForAPI(args));
+                    }
+                    else
+                    {
+                        foreach (MetaArgsCTF arg in args)
+                        {
+                            Output(swImplementation, "\t\t// FieldType: {0}",
+                                arg.FieldType);
+                            Output(swImplementation, "\t\t// FieldName: {0}",
+                                arg.FieldName);
+                        }
+                    }
 
                     Output(swImplementation, "\t\treturn 0;");
 

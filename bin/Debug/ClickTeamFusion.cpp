@@ -2500,6 +2500,14 @@ int Extension::LuaAddFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int*
+		// FieldName: colors
+		// FieldType: int
+		// FieldName: length
 		return 0;
 	}
 	else
@@ -2516,6 +2524,10 @@ int Extension::LuaAddNonZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -2532,6 +2544,17 @@ int Extension::LuaAddNonZeroAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::AddNonZeroAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -2547,6 +2570,17 @@ int Extension::LuaAddNonZeroAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::AddNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -2564,6 +2598,12 @@ int Extension::LuaAddNonZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2581,6 +2621,12 @@ int Extension::LuaAddNonZeroAllKeysAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2596,6 +2642,12 @@ int Extension::LuaAddNonZeroAllKeysAllFramesOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2612,6 +2664,14 @@ int Extension::LuaAddNonZeroAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2628,6 +2688,14 @@ int Extension::LuaAddNonZeroAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2643,6 +2711,14 @@ int Extension::LuaAddNonZeroAllKeysOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2659,6 +2735,10 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -2675,6 +2755,17 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -2690,6 +2781,17 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -2707,6 +2809,12 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2724,6 +2832,12 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesOffsetName(lua::lua_State* sta
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2739,6 +2853,12 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesOffsetNameD(lua::lua_State* st
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2755,6 +2875,14 @@ int Extension::LuaAddNonZeroTargetAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2771,6 +2899,14 @@ int Extension::LuaAddNonZeroTargetAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2786,6 +2922,14 @@ int Extension::LuaAddNonZeroTargetAllKeysOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -2802,6 +2946,10 @@ int Extension::LuaAppendAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -2818,6 +2966,17 @@ int Extension::LuaAppendAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::AppendAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -2833,6 +2992,17 @@ int Extension::LuaAppendAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::AppendAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -2848,6 +3018,7 @@ int Extension::LuaClearAll(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::ClearAll();
 		return 0;
 	}
 	else
@@ -2863,6 +3034,10 @@ int Extension::LuaClearAnimationType(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -2879,6 +3054,7 @@ int Extension::LuaCloseAll(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::CloseAll();
 		return 0;
 	}
 	else
@@ -2897,6 +3073,8 @@ int Extension::LuaCloseAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -2912,6 +3090,8 @@ int Extension::LuaCloseAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -2928,6 +3108,12 @@ int Extension::LuaCloseAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::CloseAnimationName(path.c_str());
 		return 0;
 	}
 	else
@@ -2943,6 +3129,12 @@ int Extension::LuaCloseAnimationNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::CloseAnimationNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -2959,6 +3151,12 @@ int Extension::LuaCloseComposite(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::CloseComposite(name.c_str());
 		return 0;
 	}
 	else
@@ -2974,6 +3172,12 @@ int Extension::LuaCloseCompositeD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::CloseCompositeD(name.c_str());
 		return 0;
 	}
 	else
@@ -2990,6 +3194,10 @@ int Extension::LuaCopyAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: const char*
+		// FieldName: targetAnimation
 		return 0;
 	}
 	else
@@ -3006,6 +3214,17 @@ int Extension::LuaCopyAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyAnimationName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3021,6 +3240,17 @@ int Extension::LuaCopyAnimationNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyAnimationNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3037,6 +3267,12 @@ int Extension::LuaCopyBlueChannelAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: float
+		// FieldName: redIntensity
+		// FieldType: float
+		// FieldName: greenIntensity
 		return 0;
 	}
 	else
@@ -3053,6 +3289,12 @@ int Extension::LuaCopyBlueChannelAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: float
+		// FieldName: redIntensity
+		// FieldType: float
+		// FieldName: greenIntensity
 		return 0;
 	}
 	else
@@ -3068,6 +3310,12 @@ int Extension::LuaCopyBlueChannelAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: redIntensity
+		// FieldType: double
+		// FieldName: greenIntensity
 		return 0;
 	}
 	else
@@ -3084,6 +3332,12 @@ int Extension::LuaCopyGreenChannelAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: float
+		// FieldName: redIntensity
+		// FieldType: float
+		// FieldName: blueIntensity
 		return 0;
 	}
 	else
@@ -3100,6 +3354,12 @@ int Extension::LuaCopyGreenChannelAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: float
+		// FieldName: redIntensity
+		// FieldType: float
+		// FieldName: blueIntensity
 		return 0;
 	}
 	else
@@ -3115,6 +3375,12 @@ int Extension::LuaCopyGreenChannelAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: redIntensity
+		// FieldType: double
+		// FieldName: blueIntensity
 		return 0;
 	}
 	else
@@ -3131,6 +3397,14 @@ int Extension::LuaCopyKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3147,6 +3421,12 @@ int Extension::LuaCopyKeyColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3163,6 +3443,12 @@ int Extension::LuaCopyKeyColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3178,6 +3464,12 @@ int Extension::LuaCopyKeyColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3195,6 +3487,14 @@ int Extension::LuaCopyKeyColorAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3212,6 +3512,14 @@ int Extension::LuaCopyKeyColorAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3227,6 +3535,14 @@ int Extension::LuaCopyKeyColorAllFramesOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3243,6 +3559,14 @@ int Extension::LuaCopyKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3258,6 +3582,14 @@ int Extension::LuaCopyKeyColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3275,6 +3607,16 @@ int Extension::LuaCopyKeysColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: keys
+		// FieldType: int
+		// FieldName: size
 		return 0;
 	}
 	else
@@ -3291,6 +3633,14 @@ int Extension::LuaCopyKeysColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: const int*
+		// FieldName: keys
+		// FieldType: int
+		// FieldName: size
 		return 0;
 	}
 	else
@@ -3307,6 +3657,14 @@ int Extension::LuaCopyKeysColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: const int*
+		// FieldName: keys
+		// FieldType: int
+		// FieldName: size
 		return 0;
 	}
 	else
@@ -3324,6 +3682,16 @@ int Extension::LuaCopyKeysColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: keys
+		// FieldType: int
+		// FieldName: size
 		return 0;
 	}
 	else
@@ -3341,6 +3709,18 @@ int Extension::LuaCopyKeysColorOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: sourceFrameId
+		// FieldType: int
+		// FieldName: targetFrameId
+		// FieldType: const int*
+		// FieldName: keys
+		// FieldType: int
+		// FieldName: size
 		return 0;
 	}
 	else
@@ -3358,6 +3738,18 @@ int Extension::LuaCopyKeysColorOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: sourceFrameId
+		// FieldType: int
+		// FieldName: targetFrameId
+		// FieldType: const int*
+		// FieldName: keys
+		// FieldType: int
+		// FieldName: size
 		return 0;
 	}
 	else
@@ -3374,6 +3766,12 @@ int Extension::LuaCopyNonZeroAllKeys(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -3390,6 +3788,10 @@ int Extension::LuaCopyNonZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -3406,6 +3808,17 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3421,6 +3834,17 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3438,6 +3862,12 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3455,6 +3885,12 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3470,6 +3906,12 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3486,6 +3928,12 @@ int Extension::LuaCopyNonZeroAllKeysName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -3501,6 +3949,12 @@ int Extension::LuaCopyNonZeroAllKeysNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -3518,6 +3972,14 @@ int Extension::LuaCopyNonZeroAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3535,6 +3997,14 @@ int Extension::LuaCopyNonZeroAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3550,6 +4020,14 @@ int Extension::LuaCopyNonZeroAllKeysOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3566,6 +4044,14 @@ int Extension::LuaCopyNonZeroKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3582,6 +4068,14 @@ int Extension::LuaCopyNonZeroKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3597,6 +4091,14 @@ int Extension::LuaCopyNonZeroKeyColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -3614,6 +4116,12 @@ int Extension::LuaCopyNonZeroTargetAllKeys(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -3631,6 +4139,10 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -3648,6 +4160,17 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3663,6 +4186,17 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3680,6 +4214,12 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3698,6 +4238,12 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesOffsetName(lua::lua_State* st
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3713,6 +4259,12 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesOffsetNameD(lua::lua_State* s
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3730,6 +4282,12 @@ int Extension::LuaCopyNonZeroTargetAllKeysName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -3745,6 +4303,12 @@ int Extension::LuaCopyNonZeroTargetAllKeysNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -3762,6 +4326,14 @@ int Extension::LuaCopyNonZeroTargetAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3779,6 +4351,14 @@ int Extension::LuaCopyNonZeroTargetAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3794,6 +4374,14 @@ int Extension::LuaCopyNonZeroTargetAllKeysOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3811,6 +4399,10 @@ int Extension::LuaCopyNonZeroTargetZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -3828,6 +4420,17 @@ int Extension::LuaCopyNonZeroTargetZeroAllKeysAllFramesName(lua::lua_State* stat
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3843,6 +4446,17 @@ int Extension::LuaCopyNonZeroTargetZeroAllKeysAllFramesNameD(lua::lua_State* sta
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3859,6 +4473,12 @@ int Extension::LuaCopyRedChannelAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: float
+		// FieldName: greenIntensity
+		// FieldType: float
+		// FieldName: blueIntensity
 		return 0;
 	}
 	else
@@ -3875,6 +4495,12 @@ int Extension::LuaCopyRedChannelAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: float
+		// FieldName: greenIntensity
+		// FieldType: float
+		// FieldName: blueIntensity
 		return 0;
 	}
 	else
@@ -3890,6 +4516,12 @@ int Extension::LuaCopyRedChannelAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: greenIntensity
+		// FieldType: double
+		// FieldName: blueIntensity
 		return 0;
 	}
 	else
@@ -3906,6 +4538,10 @@ int Extension::LuaCopyZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -3922,6 +4558,17 @@ int Extension::LuaCopyZeroAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyZeroAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3937,6 +4584,17 @@ int Extension::LuaCopyZeroAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3954,6 +4612,12 @@ int Extension::LuaCopyZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3971,6 +4635,12 @@ int Extension::LuaCopyZeroAllKeysAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -3986,6 +4656,12 @@ int Extension::LuaCopyZeroAllKeysAllFramesOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -4002,6 +4678,14 @@ int Extension::LuaCopyZeroKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -4018,6 +4702,14 @@ int Extension::LuaCopyZeroKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -4033,6 +4725,14 @@ int Extension::LuaCopyZeroKeyColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -4049,6 +4749,10 @@ int Extension::LuaCopyZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -4065,6 +4769,17 @@ int Extension::LuaCopyZeroTargetAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyZeroTargetAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -4080,6 +4795,17 @@ int Extension::LuaCopyZeroTargetAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -4095,6 +4821,12 @@ int Extension::LuaCoreCreateChromaLinkEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::ChromaLink::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4110,6 +4842,14 @@ int Extension::LuaCoreCreateEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: RZDEVICEID
+		// FieldName: DeviceId
+		// FieldType: ChromaSDK::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4125,6 +4865,12 @@ int Extension::LuaCoreCreateHeadsetEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::Headset::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4140,6 +4886,12 @@ int Extension::LuaCoreCreateKeyboardEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::Keyboard::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4155,6 +4907,12 @@ int Extension::LuaCoreCreateKeypadEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::Keypad::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4170,6 +4928,12 @@ int Extension::LuaCoreCreateMouseEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::Mouse::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4185,6 +4949,12 @@ int Extension::LuaCoreCreateMousepadEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::Mousepad::EFFECT_TYPE
+		// FieldName: Effect
+		// FieldType: PRZPARAM
+		// FieldName: pParam
+		// FieldType: RZEFFECTID*
+		// FieldName: pEffectId
 		return 0;
 	}
 	else
@@ -4200,6 +4970,8 @@ int Extension::LuaCoreDeleteEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: RZEFFECTID
+		// FieldName: EffectId
 		return 0;
 	}
 	else
@@ -4215,6 +4987,7 @@ int Extension::LuaCoreInit(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::CoreInit();
 		return 0;
 	}
 	else
@@ -4230,6 +5003,8 @@ int Extension::LuaCoreInitSDK(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::APPINFOTYPE*
+		// FieldName: AppInfo
 		return 0;
 	}
 	else
@@ -4245,6 +5020,10 @@ int Extension::LuaCoreQueryDevice(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: RZDEVICEID
+		// FieldName: DeviceId
+		// FieldType: ChromaSDK::DEVICE_INFO_TYPE&
+		// FieldName: DeviceInfo
 		return 0;
 	}
 	else
@@ -4260,6 +5039,8 @@ int Extension::LuaCoreSetEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: RZEFFECTID
+		// FieldName: EffectId
 		return 0;
 	}
 	else
@@ -4275,6 +5056,7 @@ int Extension::LuaCoreUnInit(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::CoreUnInit();
 		return 0;
 	}
 	else
@@ -4296,6 +5078,12 @@ int Extension::LuaCreateAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -4316,6 +5104,10 @@ int Extension::LuaCreateAnimationInMemory(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -4331,6 +5123,16 @@ int Extension::LuaCreateEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: RZDEVICEID
+		// FieldName: deviceId
+		// FieldType: ChromaSDK::EFFECT_TYPE
+		// FieldName: effect
+		// FieldType: int*
+		// FieldName: colors
+		// FieldType: int
+		// FieldName: size
+		// FieldType: ChromaSDK::FChromaSDKGuid*
+		// FieldName: effectId
 		return 0;
 	}
 	else
@@ -4346,6 +5148,8 @@ int Extension::LuaDeleteEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const ChromaSDK::FChromaSDKGuid&
+		// FieldName: effectId
 		return 0;
 	}
 	else
@@ -4362,6 +5166,10 @@ int Extension::LuaDuplicateFirstFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameCount
 		return 0;
 	}
 	else
@@ -4378,6 +5186,10 @@ int Extension::LuaDuplicateFirstFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameCount
 		return 0;
 	}
 	else
@@ -4393,6 +5205,10 @@ int Extension::LuaDuplicateFirstFrameNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameCount
 		return 0;
 	}
 	else
@@ -4410,6 +5226,8 @@ int Extension::LuaDuplicateFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -4427,6 +5245,12 @@ int Extension::LuaDuplicateFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::DuplicateFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -4442,6 +5266,12 @@ int Extension::LuaDuplicateFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::DuplicateFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -4458,6 +5288,8 @@ int Extension::LuaDuplicateMirrorFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -4474,6 +5306,12 @@ int Extension::LuaDuplicateMirrorFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::DuplicateMirrorFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -4489,6 +5327,12 @@ int Extension::LuaDuplicateMirrorFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::DuplicateMirrorFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -4505,6 +5349,10 @@ int Extension::LuaFadeEndFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: fade
 		return 0;
 	}
 	else
@@ -4521,6 +5369,10 @@ int Extension::LuaFadeEndFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: fade
 		return 0;
 	}
 	else
@@ -4536,6 +5388,10 @@ int Extension::LuaFadeEndFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: fade
 		return 0;
 	}
 	else
@@ -4552,6 +5408,10 @@ int Extension::LuaFadeStartFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: fade
 		return 0;
 	}
 	else
@@ -4568,6 +5428,10 @@ int Extension::LuaFadeStartFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: fade
 		return 0;
 	}
 	else
@@ -4583,6 +5447,10 @@ int Extension::LuaFadeStartFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: fade
 		return 0;
 	}
 	else
@@ -4599,6 +5467,12 @@ int Extension::LuaFillColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4615,6 +5489,10 @@ int Extension::LuaFillColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4631,6 +5509,10 @@ int Extension::LuaFillColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4646,6 +5528,10 @@ int Extension::LuaFillColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4662,6 +5548,14 @@ int Extension::LuaFillColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4678,6 +5572,14 @@ int Extension::LuaFillColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4693,6 +5595,14 @@ int Extension::LuaFillColorAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4709,6 +5619,12 @@ int Extension::LuaFillColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4724,6 +5640,12 @@ int Extension::LuaFillColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4740,6 +5662,16 @@ int Extension::LuaFillColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4756,6 +5688,16 @@ int Extension::LuaFillColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4771,6 +5713,16 @@ int Extension::LuaFillColorRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4788,6 +5740,12 @@ int Extension::LuaFillNonZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4805,6 +5763,10 @@ int Extension::LuaFillNonZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4822,6 +5784,10 @@ int Extension::LuaFillNonZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4837,6 +5803,10 @@ int Extension::LuaFillNonZeroColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4855,6 +5825,14 @@ int Extension::LuaFillNonZeroColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4873,6 +5851,14 @@ int Extension::LuaFillNonZeroColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4888,6 +5874,14 @@ int Extension::LuaFillNonZeroColorAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4905,6 +5899,12 @@ int Extension::LuaFillNonZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4920,6 +5920,12 @@ int Extension::LuaFillNonZeroColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -4938,6 +5944,16 @@ int Extension::LuaFillNonZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4956,6 +5972,16 @@ int Extension::LuaFillNonZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4971,6 +5997,16 @@ int Extension::LuaFillNonZeroColorRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -4987,6 +6023,10 @@ int Extension::LuaFillRandomColors(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -5003,6 +6043,8 @@ int Extension::LuaFillRandomColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -5019,6 +6061,12 @@ int Extension::LuaFillRandomColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::FillRandomColorsAllFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -5034,6 +6082,12 @@ int Extension::LuaFillRandomColorsAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::FillRandomColorsAllFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -5050,6 +6104,10 @@ int Extension::LuaFillRandomColorsBlackAndWhite(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -5066,6 +6124,8 @@ int Extension::LuaFillRandomColorsBlackAndWhiteAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -5082,6 +6142,12 @@ int Extension::LuaFillRandomColorsBlackAndWhiteAllFramesName(lua::lua_State* sta
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -5097,6 +6163,12 @@ int Extension::LuaFillRandomColorsBlackAndWhiteAllFramesNameD(lua::lua_State* st
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -5113,6 +6185,10 @@ int Extension::LuaFillRandomColorsBlackAndWhiteName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -5128,6 +6204,10 @@ int Extension::LuaFillRandomColorsBlackAndWhiteNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -5144,6 +6224,10 @@ int Extension::LuaFillRandomColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -5159,6 +6243,10 @@ int Extension::LuaFillRandomColorsNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -5175,6 +6263,14 @@ int Extension::LuaFillThresholdColors(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5191,6 +6287,12 @@ int Extension::LuaFillThresholdColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5207,6 +6309,12 @@ int Extension::LuaFillThresholdColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5222,6 +6330,12 @@ int Extension::LuaFillThresholdColorsAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: threshold
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5238,6 +6352,16 @@ int Extension::LuaFillThresholdColorsAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5254,6 +6378,16 @@ int Extension::LuaFillThresholdColorsAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5269,6 +6403,16 @@ int Extension::LuaFillThresholdColorsAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: threshold
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5286,6 +6430,24 @@ int Extension::LuaFillThresholdColorsMinMaxAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: minThreshold
+		// FieldType: int
+		// FieldName: minRed
+		// FieldType: int
+		// FieldName: minGreen
+		// FieldType: int
+		// FieldName: minBlue
+		// FieldType: int
+		// FieldName: maxThreshold
+		// FieldType: int
+		// FieldName: maxRed
+		// FieldType: int
+		// FieldName: maxGreen
+		// FieldType: int
+		// FieldName: maxBlue
 		return 0;
 	}
 	else
@@ -5303,6 +6465,24 @@ int Extension::LuaFillThresholdColorsMinMaxAllFramesRGBName(lua::lua_State* stat
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: minThreshold
+		// FieldType: int
+		// FieldName: minRed
+		// FieldType: int
+		// FieldName: minGreen
+		// FieldType: int
+		// FieldName: minBlue
+		// FieldType: int
+		// FieldName: maxThreshold
+		// FieldType: int
+		// FieldName: maxRed
+		// FieldType: int
+		// FieldName: maxGreen
+		// FieldType: int
+		// FieldName: maxBlue
 		return 0;
 	}
 	else
@@ -5318,6 +6498,24 @@ int Extension::LuaFillThresholdColorsMinMaxAllFramesRGBNameD(lua::lua_State* sta
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: minThreshold
+		// FieldType: double
+		// FieldName: minRed
+		// FieldType: double
+		// FieldName: minGreen
+		// FieldType: double
+		// FieldName: minBlue
+		// FieldType: double
+		// FieldName: maxThreshold
+		// FieldType: double
+		// FieldName: maxRed
+		// FieldType: double
+		// FieldName: maxGreen
+		// FieldType: double
+		// FieldName: maxBlue
 		return 0;
 	}
 	else
@@ -5335,6 +6533,26 @@ int Extension::LuaFillThresholdColorsMinMaxRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: minThreshold
+		// FieldType: int
+		// FieldName: minRed
+		// FieldType: int
+		// FieldName: minGreen
+		// FieldType: int
+		// FieldName: minBlue
+		// FieldType: int
+		// FieldName: maxThreshold
+		// FieldType: int
+		// FieldName: maxRed
+		// FieldType: int
+		// FieldName: maxGreen
+		// FieldType: int
+		// FieldName: maxBlue
 		return 0;
 	}
 	else
@@ -5352,6 +6570,26 @@ int Extension::LuaFillThresholdColorsMinMaxRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: minThreshold
+		// FieldType: int
+		// FieldName: minRed
+		// FieldType: int
+		// FieldName: minGreen
+		// FieldType: int
+		// FieldName: minBlue
+		// FieldType: int
+		// FieldName: maxThreshold
+		// FieldType: int
+		// FieldName: maxRed
+		// FieldType: int
+		// FieldName: maxGreen
+		// FieldType: int
+		// FieldName: maxBlue
 		return 0;
 	}
 	else
@@ -5367,6 +6605,26 @@ int Extension::LuaFillThresholdColorsMinMaxRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: minThreshold
+		// FieldType: double
+		// FieldName: minRed
+		// FieldType: double
+		// FieldName: minGreen
+		// FieldType: double
+		// FieldName: minBlue
+		// FieldType: double
+		// FieldName: maxThreshold
+		// FieldType: double
+		// FieldName: maxRed
+		// FieldType: double
+		// FieldName: maxGreen
+		// FieldType: double
+		// FieldName: maxBlue
 		return 0;
 	}
 	else
@@ -5383,6 +6641,14 @@ int Extension::LuaFillThresholdColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5398,6 +6664,14 @@ int Extension::LuaFillThresholdColorsNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: threshold
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5414,6 +6688,18 @@ int Extension::LuaFillThresholdColorsRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5430,6 +6716,18 @@ int Extension::LuaFillThresholdColorsRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: threshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5445,6 +6743,18 @@ int Extension::LuaFillThresholdColorsRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: threshold
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5461,6 +6771,20 @@ int Extension::LuaFillThresholdRGBColorsAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: redThreshold
+		// FieldType: int
+		// FieldName: greenThreshold
+		// FieldType: int
+		// FieldName: blueThreshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5477,6 +6801,20 @@ int Extension::LuaFillThresholdRGBColorsAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: redThreshold
+		// FieldType: int
+		// FieldName: greenThreshold
+		// FieldType: int
+		// FieldName: blueThreshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5492,6 +6830,20 @@ int Extension::LuaFillThresholdRGBColorsAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: redThreshold
+		// FieldType: double
+		// FieldName: greenThreshold
+		// FieldType: double
+		// FieldName: blueThreshold
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5508,6 +6860,22 @@ int Extension::LuaFillThresholdRGBColorsRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: redThreshold
+		// FieldType: int
+		// FieldName: greenThreshold
+		// FieldType: int
+		// FieldName: blueThreshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5524,6 +6892,22 @@ int Extension::LuaFillThresholdRGBColorsRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: redThreshold
+		// FieldType: int
+		// FieldName: greenThreshold
+		// FieldType: int
+		// FieldName: blueThreshold
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5539,6 +6923,22 @@ int Extension::LuaFillThresholdRGBColorsRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: redThreshold
+		// FieldType: double
+		// FieldName: greenThreshold
+		// FieldType: double
+		// FieldName: blueThreshold
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5555,6 +6955,12 @@ int Extension::LuaFillZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5571,6 +6977,10 @@ int Extension::LuaFillZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5587,6 +6997,10 @@ int Extension::LuaFillZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5602,6 +7016,10 @@ int Extension::LuaFillZeroColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5618,6 +7036,14 @@ int Extension::LuaFillZeroColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5634,6 +7060,14 @@ int Extension::LuaFillZeroColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5649,6 +7083,14 @@ int Extension::LuaFillZeroColorAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5665,6 +7107,12 @@ int Extension::LuaFillZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5680,6 +7128,12 @@ int Extension::LuaFillZeroColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -5696,6 +7150,16 @@ int Extension::LuaFillZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5712,6 +7176,16 @@ int Extension::LuaFillZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5727,6 +7201,16 @@ int Extension::LuaFillZeroColorRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -5744,6 +7228,12 @@ int Extension::LuaGet1DColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: led
 		return 0;
 	}
 	else
@@ -5761,6 +7251,12 @@ int Extension::LuaGet1DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: led
 		return 0;
 	}
 	else
@@ -5776,6 +7272,12 @@ int Extension::LuaGet1DColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: led
 		return 0;
 	}
 	else
@@ -5794,6 +7296,14 @@ int Extension::LuaGet2DColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: row
+		// FieldType: int
+		// FieldName: column
 		return 0;
 	}
 	else
@@ -5812,6 +7322,14 @@ int Extension::LuaGet2DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: row
+		// FieldType: int
+		// FieldName: column
 		return 0;
 	}
 	else
@@ -5827,6 +7345,14 @@ int Extension::LuaGet2DColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: row
+		// FieldType: double
+		// FieldName: column
 		return 0;
 	}
 	else
@@ -5842,6 +7368,12 @@ int Extension::LuaGetAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetAnimation(name.c_str());
 		return 0;
 	}
 	else
@@ -5857,6 +7389,7 @@ int Extension::LuaGetAnimationCount(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::GetAnimationCount();
 		return 0;
 	}
 	else
@@ -5872,6 +7405,12 @@ int Extension::LuaGetAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetAnimationD(name.c_str());
 		return 0;
 	}
 	else
@@ -5890,6 +7429,8 @@ int Extension::LuaGetAnimationId(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: index
 		return 0;
 	}
 	else
@@ -5907,6 +7448,8 @@ int Extension::LuaGetAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -5922,6 +7465,8 @@ int Extension::LuaGetCurrentFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -5937,6 +7482,12 @@ int Extension::LuaGetCurrentFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetCurrentFrameName(path.c_str());
 		return 0;
 	}
 	else
@@ -5952,6 +7503,12 @@ int Extension::LuaGetCurrentFrameNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetCurrentFrameNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -5969,6 +7526,8 @@ int Extension::LuaGetDevice(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -5986,6 +7545,12 @@ int Extension::LuaGetDeviceName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetDeviceName(path.c_str());
 		return 0;
 	}
 	else
@@ -6001,6 +7566,12 @@ int Extension::LuaGetDeviceNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetDeviceNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6017,6 +7588,8 @@ int Extension::LuaGetDeviceType(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6033,6 +7606,12 @@ int Extension::LuaGetDeviceTypeName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetDeviceTypeName(path.c_str());
 		return 0;
 	}
 	else
@@ -6048,6 +7627,12 @@ int Extension::LuaGetDeviceTypeNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetDeviceTypeNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6068,6 +7653,16 @@ int Extension::LuaGetFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameIndex
+		// FieldType: float*
+		// FieldName: duration
+		// FieldType: int*
+		// FieldName: colors
+		// FieldType: int
+		// FieldName: length
 		return 0;
 	}
 	else
@@ -6084,6 +7679,8 @@ int Extension::LuaGetFrameCount(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6100,6 +7697,12 @@ int Extension::LuaGetFrameCountName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetFrameCountName(path.c_str());
 		return 0;
 	}
 	else
@@ -6115,6 +7718,12 @@ int Extension::LuaGetFrameCountNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::GetFrameCountNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6130,6 +7739,12 @@ int Extension::LuaGetKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -6145,6 +7760,12 @@ int Extension::LuaGetKeyColorD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -6160,6 +7781,12 @@ int Extension::LuaGetKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
 		return 0;
 	}
 	else
@@ -6178,6 +7805,7 @@ int Extension::LuaGetLibraryLoadedState(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::GetLibraryLoadedState();
 		return 0;
 	}
 	else
@@ -6193,6 +7821,7 @@ int Extension::LuaGetLibraryLoadedStateD(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::GetLibraryLoadedStateD();
 		return 0;
 	}
 	else
@@ -6209,6 +7838,8 @@ int Extension::LuaGetMaxColumn(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6224,6 +7855,8 @@ int Extension::LuaGetMaxColumnD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6240,6 +7873,8 @@ int Extension::LuaGetMaxLeds(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6255,6 +7890,8 @@ int Extension::LuaGetMaxLedsD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6271,6 +7908,8 @@ int Extension::LuaGetMaxRow(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6286,6 +7925,8 @@ int Extension::LuaGetMaxRowD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6301,6 +7942,7 @@ int Extension::LuaGetPlayingAnimationCount(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::GetPlayingAnimationCount();
 		return 0;
 	}
 	else
@@ -6319,6 +7961,8 @@ int Extension::LuaGetPlayingAnimationId(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: index
 		return 0;
 	}
 	else
@@ -6334,6 +7978,12 @@ int Extension::LuaGetRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -6349,6 +7999,12 @@ int Extension::LuaGetRGBD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -6364,6 +8020,8 @@ int Extension::LuaHasAnimationLoop(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6379,6 +8037,12 @@ int Extension::LuaHasAnimationLoopName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::HasAnimationLoopName(path.c_str());
 		return 0;
 	}
 	else
@@ -6394,6 +8058,12 @@ int Extension::LuaHasAnimationLoopNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::HasAnimationLoopNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6410,6 +8080,7 @@ int Extension::LuaInit(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::Init();
 		return 0;
 	}
 	else
@@ -6425,6 +8096,7 @@ int Extension::LuaInitD(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::InitD();
 		return 0;
 	}
 	else
@@ -6442,6 +8114,8 @@ int Extension::LuaInitSDK(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: ChromaSDK::APPINFOTYPE*
+		// FieldName: AppInfo
 		return 0;
 	}
 	else
@@ -6458,6 +8132,12 @@ int Extension::LuaInsertDelay(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: delay
 		return 0;
 	}
 	else
@@ -6474,6 +8154,12 @@ int Extension::LuaInsertDelayName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: delay
 		return 0;
 	}
 	else
@@ -6489,6 +8175,12 @@ int Extension::LuaInsertDelayNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: delay
 		return 0;
 	}
 	else
@@ -6505,6 +8197,12 @@ int Extension::LuaInsertFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: sourceFrame
+		// FieldType: int
+		// FieldName: targetFrame
 		return 0;
 	}
 	else
@@ -6521,6 +8219,12 @@ int Extension::LuaInsertFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: sourceFrame
+		// FieldType: int
+		// FieldName: targetFrame
 		return 0;
 	}
 	else
@@ -6536,6 +8240,12 @@ int Extension::LuaInsertFrameNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: sourceFrame
+		// FieldType: double
+		// FieldName: targetFrame
 		return 0;
 	}
 	else
@@ -6552,6 +8262,10 @@ int Extension::LuaInvertColors(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -6567,6 +8281,8 @@ int Extension::LuaInvertColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6582,6 +8298,12 @@ int Extension::LuaInvertColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::InvertColorsAllFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -6597,6 +8319,12 @@ int Extension::LuaInvertColorsAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::InvertColorsAllFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6613,6 +8341,10 @@ int Extension::LuaInvertColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -6628,6 +8360,10 @@ int Extension::LuaInvertColorsNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -6643,6 +8379,8 @@ int Extension::LuaIsAnimationPaused(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6658,6 +8396,12 @@ int Extension::LuaIsAnimationPausedName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::IsAnimationPausedName(path.c_str());
 		return 0;
 	}
 	else
@@ -6673,6 +8417,12 @@ int Extension::LuaIsAnimationPausedNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::IsAnimationPausedNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6689,6 +8439,7 @@ int Extension::LuaIsDialogOpen(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::IsDialogOpen();
 		return 0;
 	}
 	else
@@ -6704,6 +8455,7 @@ int Extension::LuaIsDialogOpenD(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::IsDialogOpenD();
 		return 0;
 	}
 	else
@@ -6720,6 +8472,7 @@ int Extension::LuaIsInitialized(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::IsInitialized();
 		return 0;
 	}
 	else
@@ -6735,6 +8488,7 @@ int Extension::LuaIsInitializedD(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::IsInitializedD();
 		return 0;
 	}
 	else
@@ -6750,6 +8504,7 @@ int Extension::LuaIsPlatformSupported(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::IsPlatformSupported();
 		return 0;
 	}
 	else
@@ -6765,6 +8520,7 @@ int Extension::LuaIsPlatformSupportedD(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::IsPlatformSupportedD();
 		return 0;
 	}
 	else
@@ -6783,6 +8539,8 @@ int Extension::LuaIsPlaying(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6798,6 +8556,8 @@ int Extension::LuaIsPlayingD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6816,6 +8576,12 @@ int Extension::LuaIsPlayingName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::IsPlayingName(path.c_str());
 		return 0;
 	}
 	else
@@ -6831,6 +8597,12 @@ int Extension::LuaIsPlayingNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::IsPlayingNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -6848,6 +8620,10 @@ int Extension::LuaIsPlayingType(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6863,6 +8639,10 @@ int Extension::LuaIsPlayingTypeD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: deviceType
+		// FieldType: double
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -6878,6 +8658,12 @@ int Extension::LuaLerp(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: float
+		// FieldName: start
+		// FieldType: float
+		// FieldName: end
+		// FieldType: float
+		// FieldName: amt
 		return 0;
 	}
 	else
@@ -6893,6 +8679,12 @@ int Extension::LuaLerpColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: from
+		// FieldType: int
+		// FieldName: to
+		// FieldType: float
+		// FieldName: t
 		return 0;
 	}
 	else
@@ -6909,6 +8701,8 @@ int Extension::LuaLoadAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6924,6 +8718,8 @@ int Extension::LuaLoadAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -6939,6 +8735,12 @@ int Extension::LuaLoadAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::LoadAnimationName(path.c_str());
 		return 0;
 	}
 	else
@@ -6954,6 +8756,12 @@ int Extension::LuaLoadComposite(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::LoadComposite(name.c_str());
 		return 0;
 	}
 	else
@@ -6971,6 +8779,14 @@ int Extension::LuaMakeBlankFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -6988,6 +8804,14 @@ int Extension::LuaMakeBlankFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7003,6 +8827,14 @@ int Extension::LuaMakeBlankFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameCount
+		// FieldType: double
+		// FieldName: duration
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7020,6 +8852,12 @@ int Extension::LuaMakeBlankFramesRandom(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -7037,6 +8875,12 @@ int Extension::LuaMakeBlankFramesRandomBlackAndWhite(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -7054,6 +8898,12 @@ int Extension::LuaMakeBlankFramesRandomBlackAndWhiteName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -7069,6 +8919,12 @@ int Extension::LuaMakeBlankFramesRandomBlackAndWhiteNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameCount
+		// FieldType: double
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -7086,6 +8942,12 @@ int Extension::LuaMakeBlankFramesRandomName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -7101,6 +8963,12 @@ int Extension::LuaMakeBlankFramesRandomNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameCount
+		// FieldType: double
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -7118,6 +8986,18 @@ int Extension::LuaMakeBlankFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7135,6 +9015,18 @@ int Extension::LuaMakeBlankFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameCount
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7150,6 +9042,18 @@ int Extension::LuaMakeBlankFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameCount
+		// FieldType: double
+		// FieldName: duration
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7166,6 +9070,8 @@ int Extension::LuaMirrorHorizontally(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -7183,6 +9089,8 @@ int Extension::LuaMirrorVertically(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -7200,6 +9108,12 @@ int Extension::LuaMultiplyColorLerpAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7217,6 +9131,12 @@ int Extension::LuaMultiplyColorLerpAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7232,6 +9152,12 @@ int Extension::LuaMultiplyColorLerpAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color1
+		// FieldType: double
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7250,6 +9176,12 @@ int Extension::LuaMultiplyIntensity(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: float
+		// FieldName: intensity
 		return 0;
 	}
 	else
@@ -7268,6 +9200,10 @@ int Extension::LuaMultiplyIntensityAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: float
+		// FieldName: intensity
 		return 0;
 	}
 	else
@@ -7286,6 +9222,10 @@ int Extension::LuaMultiplyIntensityAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: float
+		// FieldName: intensity
 		return 0;
 	}
 	else
@@ -7301,6 +9241,10 @@ int Extension::LuaMultiplyIntensityAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: intensity
 		return 0;
 	}
 	else
@@ -7317,6 +9261,14 @@ int Extension::LuaMultiplyIntensityAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7333,6 +9285,14 @@ int Extension::LuaMultiplyIntensityAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7348,6 +9308,14 @@ int Extension::LuaMultiplyIntensityAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7364,6 +9332,12 @@ int Extension::LuaMultiplyIntensityColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7380,6 +9354,10 @@ int Extension::LuaMultiplyIntensityColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7396,6 +9374,10 @@ int Extension::LuaMultiplyIntensityColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7411,6 +9393,10 @@ int Extension::LuaMultiplyIntensityColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7427,6 +9413,12 @@ int Extension::LuaMultiplyIntensityColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7442,6 +9434,12 @@ int Extension::LuaMultiplyIntensityColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -7460,6 +9458,12 @@ int Extension::LuaMultiplyIntensityName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: float
+		// FieldName: intensity
 		return 0;
 	}
 	else
@@ -7475,6 +9479,12 @@ int Extension::LuaMultiplyIntensityNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: intensity
 		return 0;
 	}
 	else
@@ -7491,6 +9501,16 @@ int Extension::LuaMultiplyIntensityRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7507,6 +9527,16 @@ int Extension::LuaMultiplyIntensityRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7522,6 +9552,16 @@ int Extension::LuaMultiplyIntensityRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7539,6 +9579,14 @@ int Extension::LuaMultiplyNonZeroTargetColorLerp(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7555,6 +9603,12 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7571,6 +9625,12 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesName(lua::lua_State* st
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7586,6 +9646,12 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesNameD(lua::lua_State* s
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color1
+		// FieldType: double
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7603,6 +9669,20 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesRGB(lua::lua_State* sta
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red1
+		// FieldType: int
+		// FieldName: green1
+		// FieldType: int
+		// FieldName: blue1
+		// FieldType: int
+		// FieldName: red2
+		// FieldType: int
+		// FieldName: green2
+		// FieldType: int
+		// FieldName: blue2
 		return 0;
 	}
 	else
@@ -7620,6 +9700,20 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesRGBName(lua::lua_State*
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red1
+		// FieldType: int
+		// FieldName: green1
+		// FieldType: int
+		// FieldName: blue1
+		// FieldType: int
+		// FieldName: red2
+		// FieldType: int
+		// FieldName: green2
+		// FieldType: int
+		// FieldName: blue2
 		return 0;
 	}
 	else
@@ -7635,6 +9729,20 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(lua::lua_State
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red1
+		// FieldType: double
+		// FieldName: green1
+		// FieldType: double
+		// FieldName: blue1
+		// FieldType: double
+		// FieldName: red2
+		// FieldType: double
+		// FieldName: green2
+		// FieldType: double
+		// FieldName: blue2
 		return 0;
 	}
 	else
@@ -7652,6 +9760,14 @@ int Extension::LuaMultiplyTargetColorLerp(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7668,6 +9784,12 @@ int Extension::LuaMultiplyTargetColorLerpAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7684,6 +9806,12 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: color1
+		// FieldType: int
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7699,6 +9827,12 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: color1
+		// FieldType: double
+		// FieldName: color2
 		return 0;
 	}
 	else
@@ -7715,6 +9849,20 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red1
+		// FieldType: int
+		// FieldName: green1
+		// FieldType: int
+		// FieldName: blue1
+		// FieldType: int
+		// FieldName: red2
+		// FieldType: int
+		// FieldName: green2
+		// FieldType: int
+		// FieldName: blue2
 		return 0;
 	}
 	else
@@ -7731,6 +9879,20 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red1
+		// FieldType: int
+		// FieldName: green1
+		// FieldType: int
+		// FieldName: blue1
+		// FieldType: int
+		// FieldName: red2
+		// FieldType: int
+		// FieldName: green2
+		// FieldType: int
+		// FieldName: blue2
 		return 0;
 	}
 	else
@@ -7746,6 +9908,20 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGBNameD(lua::lua_State* state
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red1
+		// FieldType: double
+		// FieldName: green1
+		// FieldType: double
+		// FieldName: blue1
+		// FieldType: double
+		// FieldName: red2
+		// FieldType: double
+		// FieldName: green2
+		// FieldType: double
+		// FieldName: blue2
 		return 0;
 	}
 	else
@@ -7763,6 +9939,16 @@ int Extension::LuaOffsetColors(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7780,6 +9966,14 @@ int Extension::LuaOffsetColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7797,6 +9991,14 @@ int Extension::LuaOffsetColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7812,6 +10014,14 @@ int Extension::LuaOffsetColorsAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7829,6 +10039,16 @@ int Extension::LuaOffsetColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7844,6 +10064,16 @@ int Extension::LuaOffsetColorsNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7862,6 +10092,16 @@ int Extension::LuaOffsetNonZeroColors(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7880,6 +10120,14 @@ int Extension::LuaOffsetNonZeroColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7898,6 +10146,14 @@ int Extension::LuaOffsetNonZeroColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7913,6 +10169,14 @@ int Extension::LuaOffsetNonZeroColorsAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7931,6 +10195,16 @@ int Extension::LuaOffsetNonZeroColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7946,6 +10220,16 @@ int Extension::LuaOffsetNonZeroColorsNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -7963,6 +10247,12 @@ int Extension::LuaOpenAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::OpenAnimation(path.c_str());
 		return 0;
 	}
 	else
@@ -7978,6 +10268,12 @@ int Extension::LuaOpenAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::OpenAnimationD(path.c_str());
 		return 0;
 	}
 	else
@@ -7997,6 +10293,10 @@ int Extension::LuaOpenAnimationFromMemory(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const byte*
+		// FieldName: data
+		// FieldType: const char*
+		// FieldName: name
 		return 0;
 	}
 	else
@@ -8013,6 +10313,12 @@ int Extension::LuaOpenEditorDialog(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::OpenEditorDialog(path.c_str());
 		return 0;
 	}
 	else
@@ -8029,6 +10335,12 @@ int Extension::LuaOpenEditorDialogAndPlay(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::OpenEditorDialogAndPlay(path.c_str());
 		return 0;
 	}
 	else
@@ -8044,6 +10356,12 @@ int Extension::LuaOpenEditorDialogAndPlayD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::OpenEditorDialogAndPlayD(path.c_str());
 		return 0;
 	}
 	else
@@ -8059,6 +10377,12 @@ int Extension::LuaOpenEditorDialogD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::OpenEditorDialogD(path.c_str());
 		return 0;
 	}
 	else
@@ -8075,6 +10399,10 @@ int Extension::LuaOverrideFrameDuration(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: float
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -8090,6 +10418,10 @@ int Extension::LuaOverrideFrameDurationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
+		// FieldType: double
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -8106,6 +10438,10 @@ int Extension::LuaOverrideFrameDurationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: float
+		// FieldName: duration
 		return 0;
 	}
 	else
@@ -8121,6 +10457,8 @@ int Extension::LuaPauseAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8136,6 +10474,12 @@ int Extension::LuaPauseAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::PauseAnimationName(path.c_str());
 		return 0;
 	}
 	else
@@ -8151,6 +10495,12 @@ int Extension::LuaPauseAnimationNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::PauseAnimationNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -8167,6 +10517,8 @@ int Extension::LuaPlayAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8182,6 +10534,8 @@ int Extension::LuaPlayAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8199,6 +10553,12 @@ int Extension::LuaPlayAnimationFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: bool
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8216,6 +10576,12 @@ int Extension::LuaPlayAnimationFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: bool
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8231,6 +10597,12 @@ int Extension::LuaPlayAnimationFrameNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8248,6 +10620,10 @@ int Extension::LuaPlayAnimationLoop(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: bool
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8265,6 +10641,17 @@ int Extension::LuaPlayAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::PlayAnimationName(path.c_str(), loop);
 		return 0;
 	}
 	else
@@ -8280,6 +10667,10 @@ int Extension::LuaPlayAnimationNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8297,6 +10688,17 @@ int Extension::LuaPlayComposite(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::PlayComposite(name.c_str(), loop);
 		return 0;
 	}
 	else
@@ -8312,6 +10714,10 @@ int Extension::LuaPlayCompositeD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: name
+		// FieldType: double
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8328,6 +10734,10 @@ int Extension::LuaPreviewFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameIndex
 		return 0;
 	}
 	else
@@ -8343,6 +10753,10 @@ int Extension::LuaPreviewFrameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
+		// FieldType: double
+		// FieldName: frameIndex
 		return 0;
 	}
 	else
@@ -8359,6 +10773,10 @@ int Extension::LuaPreviewFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameIndex
 		return 0;
 	}
 	else
@@ -8375,6 +10793,10 @@ int Extension::LuaReduceFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: n
 		return 0;
 	}
 	else
@@ -8391,6 +10813,10 @@ int Extension::LuaReduceFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: n
 		return 0;
 	}
 	else
@@ -8406,6 +10832,10 @@ int Extension::LuaReduceFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: n
 		return 0;
 	}
 	else
@@ -8422,6 +10852,8 @@ int Extension::LuaResetAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8437,6 +10869,10 @@ int Extension::LuaResumeAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: bool
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8452,6 +10888,17 @@ int Extension::LuaResumeAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::ResumeAnimationName(path.c_str(), loop);
 		return 0;
 	}
 	else
@@ -8467,6 +10914,10 @@ int Extension::LuaResumeAnimationNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: loop
 		return 0;
 	}
 	else
@@ -8484,6 +10935,8 @@ int Extension::LuaReverse(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8500,6 +10953,8 @@ int Extension::LuaReverseAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8516,6 +10971,12 @@ int Extension::LuaReverseAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::ReverseAllFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -8531,6 +10992,12 @@ int Extension::LuaReverseAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::ReverseAllFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -8546,6 +11013,10 @@ int Extension::LuaSaveAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: const char*
+		// FieldName: path
 		return 0;
 	}
 	else
@@ -8561,6 +11032,17 @@ int Extension::LuaSaveAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::SaveAnimationName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -8578,6 +11060,14 @@ int Extension::LuaSet1DColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: led
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8595,6 +11085,14 @@ int Extension::LuaSet1DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: led
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8610,6 +11108,14 @@ int Extension::LuaSet1DColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: led
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8628,6 +11134,16 @@ int Extension::LuaSet2DColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: row
+		// FieldType: int
+		// FieldName: column
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8646,6 +11162,16 @@ int Extension::LuaSet2DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: row
+		// FieldType: int
+		// FieldName: column
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8661,6 +11187,14 @@ int Extension::LuaSet2DColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rowColumnIndex
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8677,6 +11211,8 @@ int Extension::LuaSetChromaCustomColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8693,6 +11229,12 @@ int Extension::LuaSetChromaCustomColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::SetChromaCustomColorAllFramesName(path.c_str());
 		return 0;
 	}
 	else
@@ -8708,6 +11250,12 @@ int Extension::LuaSetChromaCustomColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::SetChromaCustomColorAllFramesNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -8725,6 +11273,10 @@ int Extension::LuaSetChromaCustomFlag(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: bool
+		// FieldName: flag
 		return 0;
 	}
 	else
@@ -8742,6 +11294,17 @@ int Extension::LuaSetChromaCustomFlagName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool flag = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::SetChromaCustomFlagName(path.c_str(), flag);
 		return 0;
 	}
 	else
@@ -8757,6 +11320,10 @@ int Extension::LuaSetChromaCustomFlagNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: flag
 		return 0;
 	}
 	else
@@ -8772,6 +11339,10 @@ int Extension::LuaSetCurrentFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -8787,6 +11358,10 @@ int Extension::LuaSetCurrentFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -8802,6 +11377,10 @@ int Extension::LuaSetCurrentFrameNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -8819,6 +11398,12 @@ int Extension::LuaSetDevice(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -8834,6 +11419,8 @@ int Extension::LuaSetEffect(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const ChromaSDK::FChromaSDKGuid&
+		// FieldName: effectId
 		return 0;
 	}
 	else
@@ -8850,6 +11437,8 @@ int Extension::LuaSetIdleAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -8866,6 +11455,12 @@ int Extension::LuaSetIdleAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::SetIdleAnimationName(path.c_str());
 		return 0;
 	}
 	else
@@ -8881,6 +11476,14 @@ int Extension::LuaSetKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8897,6 +11500,12 @@ int Extension::LuaSetKeyColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8913,6 +11522,12 @@ int Extension::LuaSetKeyColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8928,6 +11543,12 @@ int Extension::LuaSetKeyColorAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -8944,6 +11565,16 @@ int Extension::LuaSetKeyColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -8960,6 +11591,16 @@ int Extension::LuaSetKeyColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -8975,6 +11616,16 @@ int Extension::LuaSetKeyColorAllFramesRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -8990,6 +11641,14 @@ int Extension::LuaSetKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9005,6 +11664,14 @@ int Extension::LuaSetKeyColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9021,6 +11688,18 @@ int Extension::LuaSetKeyColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9037,6 +11716,18 @@ int Extension::LuaSetKeyColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9052,6 +11743,18 @@ int Extension::LuaSetKeyColorRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9068,6 +11771,14 @@ int Extension::LuaSetKeyNonZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9084,6 +11795,14 @@ int Extension::LuaSetKeyNonZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9099,6 +11818,14 @@ int Extension::LuaSetKeyNonZeroColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9115,6 +11842,18 @@ int Extension::LuaSetKeyNonZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9131,6 +11870,18 @@ int Extension::LuaSetKeyNonZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9146,6 +11897,18 @@ int Extension::LuaSetKeyNonZeroColorRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9162,6 +11925,16 @@ int Extension::LuaSetKeysColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9178,6 +11951,14 @@ int Extension::LuaSetKeysColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9194,6 +11975,14 @@ int Extension::LuaSetKeysColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9210,6 +11999,18 @@ int Extension::LuaSetKeysColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9226,6 +12027,18 @@ int Extension::LuaSetKeysColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9241,6 +12054,16 @@ int Extension::LuaSetKeysColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9257,6 +12080,20 @@ int Extension::LuaSetKeysColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9273,6 +12110,20 @@ int Extension::LuaSetKeysColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9289,6 +12140,16 @@ int Extension::LuaSetKeysNonZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9305,6 +12166,14 @@ int Extension::LuaSetKeysNonZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9321,6 +12190,14 @@ int Extension::LuaSetKeysNonZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9337,6 +12214,16 @@ int Extension::LuaSetKeysNonZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9353,6 +12240,20 @@ int Extension::LuaSetKeysNonZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9369,6 +12270,20 @@ int Extension::LuaSetKeysNonZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9385,6 +12300,16 @@ int Extension::LuaSetKeysZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9401,6 +12326,14 @@ int Extension::LuaSetKeysZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9417,6 +12350,14 @@ int Extension::LuaSetKeysZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9433,6 +12374,18 @@ int Extension::LuaSetKeysZeroColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9449,6 +12402,18 @@ int Extension::LuaSetKeysZeroColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9465,6 +12430,16 @@ int Extension::LuaSetKeysZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9481,6 +12456,20 @@ int Extension::LuaSetKeysZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9497,6 +12486,20 @@ int Extension::LuaSetKeysZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: const int*
+		// FieldName: rzkeys
+		// FieldType: int
+		// FieldName: keyCount
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9513,6 +12516,14 @@ int Extension::LuaSetKeyZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9529,6 +12540,14 @@ int Extension::LuaSetKeyZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9544,6 +12563,14 @@ int Extension::LuaSetKeyZeroColorNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9560,6 +12587,18 @@ int Extension::LuaSetKeyZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9576,6 +12615,18 @@ int Extension::LuaSetKeyZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: rzkey
+		// FieldType: int
+		// FieldName: red
+		// FieldType: int
+		// FieldName: green
+		// FieldType: int
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9591,6 +12642,18 @@ int Extension::LuaSetKeyZeroColorRGBNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: rzkey
+		// FieldType: double
+		// FieldName: red
+		// FieldType: double
+		// FieldName: green
+		// FieldType: double
+		// FieldName: blue
 		return 0;
 	}
 	else
@@ -9608,6 +12671,8 @@ int Extension::LuaSetLogDelegate(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: DebugLogPtr
+		// FieldName: fp
 		return 0;
 	}
 	else
@@ -9623,6 +12688,12 @@ int Extension::LuaStaticColor(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
+		// FieldType: int
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9638,6 +12709,12 @@ int Extension::LuaStaticColorD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: deviceType
+		// FieldType: double
+		// FieldName: device
+		// FieldType: double
+		// FieldName: color
 		return 0;
 	}
 	else
@@ -9653,6 +12730,7 @@ int Extension::LuaStopAll(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::StopAll();
 		return 0;
 	}
 	else
@@ -9669,6 +12747,8 @@ int Extension::LuaStopAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -9684,6 +12764,8 @@ int Extension::LuaStopAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -9701,6 +12783,12 @@ int Extension::LuaStopAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::StopAnimationName(path.c_str());
 		return 0;
 	}
 	else
@@ -9716,6 +12804,12 @@ int Extension::LuaStopAnimationNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::StopAnimationNameD(path.c_str());
 		return 0;
 	}
 	else
@@ -9733,6 +12827,10 @@ int Extension::LuaStopAnimationType(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: deviceType
+		// FieldType: int
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -9748,6 +12846,10 @@ int Extension::LuaStopAnimationTypeD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: deviceType
+		// FieldType: double
+		// FieldName: device
 		return 0;
 	}
 	else
@@ -9765,6 +12867,12 @@ int Extension::LuaStopComposite(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::StopComposite(name.c_str());
 		return 0;
 	}
 	else
@@ -9780,6 +12888,12 @@ int Extension::LuaStopCompositeD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::StopCompositeD(name.c_str());
 		return 0;
 	}
 	else
@@ -9796,6 +12910,10 @@ int Extension::LuaSubtractNonZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -9812,6 +12930,17 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -9827,6 +12956,17 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -9844,6 +12984,12 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -9861,6 +13007,12 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesOffsetName(lua::lua_State* stat
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -9876,6 +13028,12 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesOffsetNameD(lua::lua_State* sta
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -9892,6 +13050,14 @@ int Extension::LuaSubtractNonZeroAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -9908,6 +13074,14 @@ int Extension::LuaSubtractNonZeroAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -9923,6 +13097,14 @@ int Extension::LuaSubtractNonZeroAllKeysOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -9939,6 +13121,10 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
 		return 0;
 	}
 	else
@@ -9955,6 +13141,17 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesName(lua::lua_State* stat
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -9970,6 +13167,17 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesNameD(lua::lua_State* sta
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -9987,6 +13195,12 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesOffset(lua::lua_State* st
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -10004,6 +13218,12 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesOffsetName(lua::lua_State
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -10019,6 +13239,12 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(lua::lua_Stat
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -10036,6 +13262,14 @@ int Extension::LuaSubtractNonZeroTargetAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: sourceAnimationId
+		// FieldType: int
+		// FieldName: targetAnimationId
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -10053,6 +13287,14 @@ int Extension::LuaSubtractNonZeroTargetAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: int
+		// FieldName: frameId
+		// FieldType: int
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -10068,6 +13310,14 @@ int Extension::LuaSubtractNonZeroTargetAllKeysOffsetNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: sourceAnimation
+		// FieldType: const char*
+		// FieldName: targetAnimation
+		// FieldType: double
+		// FieldName: frameId
+		// FieldType: double
+		// FieldName: offset
 		return 0;
 	}
 	else
@@ -10084,6 +13334,10 @@ int Extension::LuaTrimEndFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: lastFrameId
 		return 0;
 	}
 	else
@@ -10100,6 +13354,10 @@ int Extension::LuaTrimEndFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: lastFrameId
 		return 0;
 	}
 	else
@@ -10115,6 +13373,10 @@ int Extension::LuaTrimEndFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: lastFrameId
 		return 0;
 	}
 	else
@@ -10130,6 +13392,10 @@ int Extension::LuaTrimFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -10145,6 +13411,10 @@ int Extension::LuaTrimFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -10160,6 +13430,10 @@ int Extension::LuaTrimFrameNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: frameId
 		return 0;
 	}
 	else
@@ -10176,6 +13450,10 @@ int Extension::LuaTrimStartFrames(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: numberOfFrames
 		return 0;
 	}
 	else
@@ -10192,6 +13470,10 @@ int Extension::LuaTrimStartFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: numberOfFrames
 		return 0;
 	}
 	else
@@ -10207,6 +13489,10 @@ int Extension::LuaTrimStartFramesNameD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: double
+		// FieldName: numberOfFrames
 		return 0;
 	}
 	else
@@ -10222,6 +13508,7 @@ int Extension::LuaUninit(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::Uninit();
 		return 0;
 	}
 	else
@@ -10237,6 +13524,7 @@ int Extension::LuaUninitD(lua::lua_State* state)
 {
 	if (state)
 	{
+		ChromaAnimationAPI::UninitD();
 		return 0;
 	}
 	else
@@ -10253,6 +13541,8 @@ int Extension::LuaUnloadAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -10268,6 +13558,8 @@ int Extension::LuaUnloadAnimationD(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: double
+		// FieldName: animationId
 		return 0;
 	}
 	else
@@ -10283,6 +13575,12 @@ int Extension::LuaUnloadAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::UnloadAnimationName(path.c_str());
 		return 0;
 	}
 	else
@@ -10299,6 +13597,12 @@ int Extension::LuaUnloadComposite(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string name = WrapperXLua::lua_tostringW(state, 1);
+		ChromaAnimationAPI::UnloadComposite(name.c_str());
 		return 0;
 	}
 	else
@@ -10320,6 +13624,16 @@ int Extension::LuaUpdateFrame(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: int
+		// FieldName: frameIndex
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int*
+		// FieldName: colors
+		// FieldType: int
+		// FieldName: length
 		return 0;
 	}
 	else
@@ -10339,6 +13653,10 @@ int Extension::LuaUseIdleAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: device
+		// FieldType: bool
+		// FieldName: flag
 		return 0;
 	}
 	else
@@ -10354,6 +13672,12 @@ int Extension::LuaUseIdleAnimations(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_tobooleanW(state, 1))
+		{
+			return -1;
+		}
+		bool flag = WrapperXLua::lua_tobooleanW(state, 1) == 1;
+		ChromaAnimationAPI::UseIdleAnimations(flag);
 		return 0;
 	}
 	else
@@ -10370,6 +13694,10 @@ int Extension::LuaUsePreloading(lua::lua_State* state)
 {
 	if (state)
 	{
+		// FieldType: int
+		// FieldName: animationId
+		// FieldType: bool
+		// FieldName: flag
 		return 0;
 	}
 	else
@@ -10386,6 +13714,17 @@ int Extension::LuaUsePreloadingName(lua::lua_State* state)
 {
 	if (state)
 	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool flag = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::UsePreloadingName(path.c_str(), flag);
 		return 0;
 	}
 	else
