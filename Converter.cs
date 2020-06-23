@@ -1538,9 +1538,9 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
             {
                 switch (arg.FieldType)
                 {
-                    case "const char*":
-                        break;
                     case "bool":
+                    case "const char*":
+                    case "int":
                         break;
                     default:
                         return false;
@@ -1627,11 +1627,14 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                         {
                             switch (arg.FieldType)
                             {
+                                case "bool":
+                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_tobooleanW(state, {0}))", indexArg);
+                                    break;
                                 case "const char*":
                                     Output(swImplementation, "\t\tif (!WrapperXLua::lua_isstringW(state, {0}))", indexArg);
                                     break;
-                                case "bool":
-                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_tobooleanW(state, {0}))", indexArg);
+                                case "int":
+                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_isnumberW(state, {0}))", indexArg);
                                     break;
                             }
                             Output(swImplementation, "{0}", "\t\t{");
@@ -1639,16 +1642,22 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                             Output(swImplementation, "{0}", "\t\t}");
                             switch (arg.FieldType)
                             {
-                                case "const char*":
-                                    Output(swImplementation, "\t\tstring {0} = WrapperXLua::lua_tostringW(state, {1});",
-                                        arg.FieldName,
-                                        indexArg);
-                                    break;
                                 case "bool":
                                     Output(swImplementation, "\t\tbool {0} = WrapperXLua::lua_tobooleanW(state, {1}) == 1;",
                                         arg.FieldName,
                                         indexArg);
                                     break;
+                                case "const char*":
+                                    Output(swImplementation, "\t\tstring {0} = WrapperXLua::lua_tostringW(state, {1});",
+                                        arg.FieldName,
+                                        indexArg);
+                                    break;
+                                case "int":
+                                    Output(swImplementation, "\t\tint {0} = WrapperXLua::lua_tointegerW(state, {1});",
+                                        arg.FieldName,
+                                        indexArg);
+                                    break;
+
                             }
                             ++indexArg;
                         }

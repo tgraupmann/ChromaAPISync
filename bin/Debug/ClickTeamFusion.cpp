@@ -2524,10 +2524,17 @@ int Extension::LuaAddNonZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::AddNonZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -2598,12 +2605,22 @@ int Extension::LuaAddNonZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::AddNonZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -2621,12 +2638,22 @@ int Extension::LuaAddNonZeroAllKeysAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::AddNonZeroAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -2664,14 +2691,27 @@ int Extension::LuaAddNonZeroAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::AddNonZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 		return 0;
 	}
 	else
@@ -2688,14 +2728,27 @@ int Extension::LuaAddNonZeroAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::AddNonZeroAllKeysOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
 		return 0;
 	}
 	else
@@ -2735,10 +2788,17 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -2809,12 +2869,22 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -2832,12 +2902,22 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesOffsetName(lua::lua_State* sta
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -2875,14 +2955,27 @@ int Extension::LuaAddNonZeroTargetAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 		return 0;
 	}
 	else
@@ -2899,14 +2992,27 @@ int Extension::LuaAddNonZeroTargetAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::AddNonZeroTargetAllKeysOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
 		return 0;
 	}
 	else
@@ -2946,10 +3052,17 @@ int Extension::LuaAppendAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::AppendAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -3034,10 +3147,17 @@ int Extension::LuaClearAnimationType(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::ClearAnimationType(deviceType, device);
 		return 0;
 	}
 	else
@@ -3073,8 +3193,12 @@ int Extension::LuaCloseAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::CloseAnimation(animationId);
 		return 0;
 	}
 	else
@@ -3194,10 +3318,17 @@ int Extension::LuaCopyAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: const char*
-		// FieldName: targetAnimation
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::CopyAnimation(sourceAnimationId, targetAnimation.c_str());
 		return 0;
 	}
 	else
@@ -3397,14 +3528,27 @@ int Extension::LuaCopyKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyKeyColor(sourceAnimationId, targetAnimationId, frameId, rzkey);
 		return 0;
 	}
 	else
@@ -3421,12 +3565,22 @@ int Extension::LuaCopyKeyColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyKeyColorAllFrames(sourceAnimationId, targetAnimationId, rzkey);
 		return 0;
 	}
 	else
@@ -3443,12 +3597,22 @@ int Extension::LuaCopyKeyColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyKeyColorAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str(), rzkey);
 		return 0;
 	}
 	else
@@ -3487,14 +3651,27 @@ int Extension::LuaCopyKeyColorAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyKeyColorAllFramesOffset(sourceAnimationId, targetAnimationId, rzkey, offset);
 		return 0;
 	}
 	else
@@ -3512,14 +3689,27 @@ int Extension::LuaCopyKeyColorAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyKeyColorAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), rzkey, offset);
 		return 0;
 	}
 	else
@@ -3559,14 +3749,27 @@ int Extension::LuaCopyKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyKeyColorName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
 		return 0;
 	}
 	else
@@ -3766,12 +3969,22 @@ int Extension::LuaCopyNonZeroAllKeys(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroAllKeys(sourceAnimationId, targetAnimationId, frameId);
 		return 0;
 	}
 	else
@@ -3788,10 +4001,17 @@ int Extension::LuaCopyNonZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -3862,12 +4082,22 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -3885,12 +4115,22 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -3928,12 +4168,22 @@ int Extension::LuaCopyNonZeroAllKeysName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroAllKeysName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -3972,14 +4222,27 @@ int Extension::LuaCopyNonZeroAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyNonZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 		return 0;
 	}
 	else
@@ -3997,14 +4260,27 @@ int Extension::LuaCopyNonZeroAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyNonZeroAllKeysOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
 		return 0;
 	}
 	else
@@ -4044,14 +4320,27 @@ int Extension::LuaCopyNonZeroKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyNonZeroKeyColor(sourceAnimationId, targetAnimationId, frameId, rzkey);
 		return 0;
 	}
 	else
@@ -4068,14 +4357,27 @@ int Extension::LuaCopyNonZeroKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyNonZeroKeyColorName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
 		return 0;
 	}
 	else
@@ -4116,12 +4418,22 @@ int Extension::LuaCopyNonZeroTargetAllKeys(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeys(sourceAnimationId, targetAnimationId, frameId);
 		return 0;
 	}
 	else
@@ -4139,10 +4451,17 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -4214,12 +4533,22 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -4238,12 +4567,22 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesOffsetName(lua::lua_State* st
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -4282,12 +4621,22 @@ int Extension::LuaCopyNonZeroTargetAllKeysName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -4326,14 +4675,27 @@ int Extension::LuaCopyNonZeroTargetAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 		return 0;
 	}
 	else
@@ -4351,14 +4713,27 @@ int Extension::LuaCopyNonZeroTargetAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
 		return 0;
 	}
 	else
@@ -4399,10 +4774,17 @@ int Extension::LuaCopyNonZeroTargetZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -4538,10 +4920,17 @@ int Extension::LuaCopyZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::CopyZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -4612,12 +5001,22 @@ int Extension::LuaCopyZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -4635,12 +5034,22 @@ int Extension::LuaCopyZeroAllKeysAllFramesOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyZeroAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -4678,14 +5087,27 @@ int Extension::LuaCopyZeroKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyZeroKeyColor(sourceAnimationId, targetAnimationId, frameId, rzkey);
 		return 0;
 	}
 	else
@@ -4702,14 +5124,27 @@ int Extension::LuaCopyZeroKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::CopyZeroKeyColorName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
 		return 0;
 	}
 	else
@@ -4749,10 +5184,17 @@ int Extension::LuaCopyZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::CopyZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -5078,12 +5520,22 @@ int Extension::LuaCreateAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CreateAnimation(path.c_str(), deviceType, device);
 		return 0;
 	}
 	else
@@ -5104,10 +5556,17 @@ int Extension::LuaCreateAnimationInMemory(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::CreateAnimationInMemory(deviceType, device);
 		return 0;
 	}
 	else
@@ -5166,10 +5625,17 @@ int Extension::LuaDuplicateFirstFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameCount
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameCount = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::DuplicateFirstFrame(animationId, frameCount);
 		return 0;
 	}
 	else
@@ -5186,10 +5652,17 @@ int Extension::LuaDuplicateFirstFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameCount
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameCount = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::DuplicateFirstFrameName(path.c_str(), frameCount);
 		return 0;
 	}
 	else
@@ -5226,8 +5699,12 @@ int Extension::LuaDuplicateFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::DuplicateFrames(animationId);
 		return 0;
 	}
 	else
@@ -5288,8 +5765,12 @@ int Extension::LuaDuplicateMirrorFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::DuplicateMirrorFrames(animationId);
 		return 0;
 	}
 	else
@@ -5349,10 +5830,17 @@ int Extension::LuaFadeEndFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: fade
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int fade = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FadeEndFrames(animationId, fade);
 		return 0;
 	}
 	else
@@ -5369,10 +5857,17 @@ int Extension::LuaFadeEndFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: fade
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int fade = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FadeEndFramesName(path.c_str(), fade);
 		return 0;
 	}
 	else
@@ -5408,10 +5903,17 @@ int Extension::LuaFadeStartFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: fade
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int fade = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FadeStartFrames(animationId, fade);
 		return 0;
 	}
 	else
@@ -5428,10 +5930,17 @@ int Extension::LuaFadeStartFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: fade
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int fade = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FadeStartFramesName(path.c_str(), fade);
 		return 0;
 	}
 	else
@@ -5467,12 +5976,22 @@ int Extension::LuaFillColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillColor(animationId, frameId, color);
 		return 0;
 	}
 	else
@@ -5489,10 +6008,17 @@ int Extension::LuaFillColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillColorAllFrames(animationId, color);
 		return 0;
 	}
 	else
@@ -5509,10 +6035,17 @@ int Extension::LuaFillColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillColorAllFramesName(path.c_str(), color);
 		return 0;
 	}
 	else
@@ -5548,14 +6081,27 @@ int Extension::LuaFillColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillColorAllFramesRGB(animationId, red, green, blue);
 		return 0;
 	}
 	else
@@ -5572,14 +6118,27 @@ int Extension::LuaFillColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillColorAllFramesRGBName(path.c_str(), red, green, blue);
 		return 0;
 	}
 	else
@@ -5619,12 +6178,22 @@ int Extension::LuaFillColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillColorName(path.c_str(), frameId, color);
 		return 0;
 	}
 	else
@@ -5662,16 +6231,32 @@ int Extension::LuaFillColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillColorRGB(animationId, frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -5688,16 +6273,32 @@ int Extension::LuaFillColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillColorRGBName(path.c_str(), frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -5740,12 +6341,22 @@ int Extension::LuaFillNonZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillNonZeroColor(animationId, frameId, color);
 		return 0;
 	}
 	else
@@ -5763,10 +6374,17 @@ int Extension::LuaFillNonZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillNonZeroColorAllFrames(animationId, color);
 		return 0;
 	}
 	else
@@ -5784,10 +6402,17 @@ int Extension::LuaFillNonZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillNonZeroColorAllFramesName(path.c_str(), color);
 		return 0;
 	}
 	else
@@ -5825,14 +6450,27 @@ int Extension::LuaFillNonZeroColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillNonZeroColorAllFramesRGB(animationId, red, green, blue);
 		return 0;
 	}
 	else
@@ -5851,14 +6489,27 @@ int Extension::LuaFillNonZeroColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillNonZeroColorAllFramesRGBName(path.c_str(), red, green, blue);
 		return 0;
 	}
 	else
@@ -5899,12 +6550,22 @@ int Extension::LuaFillNonZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillNonZeroColorName(path.c_str(), frameId, color);
 		return 0;
 	}
 	else
@@ -5944,16 +6605,32 @@ int Extension::LuaFillNonZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillNonZeroColorRGB(animationId, frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -5972,16 +6649,32 @@ int Extension::LuaFillNonZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillNonZeroColorRGBName(path.c_str(), frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -6023,10 +6716,17 @@ int Extension::LuaFillRandomColors(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillRandomColors(animationId, frameId);
 		return 0;
 	}
 	else
@@ -6043,8 +6743,12 @@ int Extension::LuaFillRandomColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::FillRandomColorsAllFrames(animationId);
 		return 0;
 	}
 	else
@@ -6104,10 +6808,17 @@ int Extension::LuaFillRandomColorsBlackAndWhite(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillRandomColorsBlackAndWhite(animationId, frameId);
 		return 0;
 	}
 	else
@@ -6124,8 +6835,12 @@ int Extension::LuaFillRandomColorsBlackAndWhiteAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFrames(animationId);
 		return 0;
 	}
 	else
@@ -6185,10 +6900,17 @@ int Extension::LuaFillRandomColorsBlackAndWhiteName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillRandomColorsBlackAndWhiteName(path.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -6224,10 +6946,17 @@ int Extension::LuaFillRandomColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillRandomColorsName(path.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -6263,14 +6992,27 @@ int Extension::LuaFillThresholdColors(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillThresholdColors(animationId, frameId, threshold, color);
 		return 0;
 	}
 	else
@@ -6287,12 +7029,22 @@ int Extension::LuaFillThresholdColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillThresholdColorsAllFrames(animationId, threshold, color);
 		return 0;
 	}
 	else
@@ -6309,12 +7061,22 @@ int Extension::LuaFillThresholdColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillThresholdColorsAllFramesName(path.c_str(), threshold, color);
 		return 0;
 	}
 	else
@@ -6352,16 +7114,32 @@ int Extension::LuaFillThresholdColorsAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillThresholdColorsAllFramesRGB(animationId, threshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6378,16 +7156,32 @@ int Extension::LuaFillThresholdColorsAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillThresholdColorsAllFramesRGBName(path.c_str(), threshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6430,24 +7224,52 @@ int Extension::LuaFillThresholdColorsMinMaxAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: minThreshold
-		// FieldType: int
-		// FieldName: minRed
-		// FieldType: int
-		// FieldName: minGreen
-		// FieldType: int
-		// FieldName: minBlue
-		// FieldType: int
-		// FieldName: maxThreshold
-		// FieldType: int
-		// FieldName: maxRed
-		// FieldType: int
-		// FieldName: maxGreen
-		// FieldType: int
-		// FieldName: maxBlue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int minThreshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int minRed = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int minGreen = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int minBlue = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int maxThreshold = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int maxRed = WrapperXLua::lua_tointegerW(state, 7);
+		if (!WrapperXLua::lua_isnumberW(state, 8))
+		{
+			return -1;
+		}
+		int maxGreen = WrapperXLua::lua_tointegerW(state, 8);
+		if (!WrapperXLua::lua_isnumberW(state, 9))
+		{
+			return -1;
+		}
+		int maxBlue = WrapperXLua::lua_tointegerW(state, 9);
+		ChromaAnimationAPI::FillThresholdColorsMinMaxAllFramesRGB(animationId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 		return 0;
 	}
 	else
@@ -6465,24 +7287,52 @@ int Extension::LuaFillThresholdColorsMinMaxAllFramesRGBName(lua::lua_State* stat
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: minThreshold
-		// FieldType: int
-		// FieldName: minRed
-		// FieldType: int
-		// FieldName: minGreen
-		// FieldType: int
-		// FieldName: minBlue
-		// FieldType: int
-		// FieldName: maxThreshold
-		// FieldType: int
-		// FieldName: maxRed
-		// FieldType: int
-		// FieldName: maxGreen
-		// FieldType: int
-		// FieldName: maxBlue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int minThreshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int minRed = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int minGreen = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int minBlue = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int maxThreshold = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int maxRed = WrapperXLua::lua_tointegerW(state, 7);
+		if (!WrapperXLua::lua_isnumberW(state, 8))
+		{
+			return -1;
+		}
+		int maxGreen = WrapperXLua::lua_tointegerW(state, 8);
+		if (!WrapperXLua::lua_isnumberW(state, 9))
+		{
+			return -1;
+		}
+		int maxBlue = WrapperXLua::lua_tointegerW(state, 9);
+		ChromaAnimationAPI::FillThresholdColorsMinMaxAllFramesRGBName(path.c_str(), minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 		return 0;
 	}
 	else
@@ -6533,26 +7383,57 @@ int Extension::LuaFillThresholdColorsMinMaxRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: minThreshold
-		// FieldType: int
-		// FieldName: minRed
-		// FieldType: int
-		// FieldName: minGreen
-		// FieldType: int
-		// FieldName: minBlue
-		// FieldType: int
-		// FieldName: maxThreshold
-		// FieldType: int
-		// FieldName: maxRed
-		// FieldType: int
-		// FieldName: maxGreen
-		// FieldType: int
-		// FieldName: maxBlue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int minThreshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int minRed = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int minGreen = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int minBlue = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int maxThreshold = WrapperXLua::lua_tointegerW(state, 7);
+		if (!WrapperXLua::lua_isnumberW(state, 8))
+		{
+			return -1;
+		}
+		int maxRed = WrapperXLua::lua_tointegerW(state, 8);
+		if (!WrapperXLua::lua_isnumberW(state, 9))
+		{
+			return -1;
+		}
+		int maxGreen = WrapperXLua::lua_tointegerW(state, 9);
+		if (!WrapperXLua::lua_isnumberW(state, 10))
+		{
+			return -1;
+		}
+		int maxBlue = WrapperXLua::lua_tointegerW(state, 10);
+		ChromaAnimationAPI::FillThresholdColorsMinMaxRGB(animationId, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 		return 0;
 	}
 	else
@@ -6570,26 +7451,57 @@ int Extension::LuaFillThresholdColorsMinMaxRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: minThreshold
-		// FieldType: int
-		// FieldName: minRed
-		// FieldType: int
-		// FieldName: minGreen
-		// FieldType: int
-		// FieldName: minBlue
-		// FieldType: int
-		// FieldName: maxThreshold
-		// FieldType: int
-		// FieldName: maxRed
-		// FieldType: int
-		// FieldName: maxGreen
-		// FieldType: int
-		// FieldName: maxBlue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int minThreshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int minRed = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int minGreen = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int minBlue = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int maxThreshold = WrapperXLua::lua_tointegerW(state, 7);
+		if (!WrapperXLua::lua_isnumberW(state, 8))
+		{
+			return -1;
+		}
+		int maxRed = WrapperXLua::lua_tointegerW(state, 8);
+		if (!WrapperXLua::lua_isnumberW(state, 9))
+		{
+			return -1;
+		}
+		int maxGreen = WrapperXLua::lua_tointegerW(state, 9);
+		if (!WrapperXLua::lua_isnumberW(state, 10))
+		{
+			return -1;
+		}
+		int maxBlue = WrapperXLua::lua_tointegerW(state, 10);
+		ChromaAnimationAPI::FillThresholdColorsMinMaxRGBName(path.c_str(), frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
 		return 0;
 	}
 	else
@@ -6641,14 +7553,27 @@ int Extension::LuaFillThresholdColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillThresholdColorsName(path.c_str(), frameId, threshold, color);
 		return 0;
 	}
 	else
@@ -6688,18 +7613,37 @@ int Extension::LuaFillThresholdColorsRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::FillThresholdColorsRGB(animationId, frameId, threshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6716,18 +7660,37 @@ int Extension::LuaFillThresholdColorsRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: threshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int threshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::FillThresholdColorsRGBName(path.c_str(), frameId, threshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6771,20 +7734,42 @@ int Extension::LuaFillThresholdRGBColorsAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: redThreshold
-		// FieldType: int
-		// FieldName: greenThreshold
-		// FieldType: int
-		// FieldName: blueThreshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int redThreshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int greenThreshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blueThreshold = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		ChromaAnimationAPI::FillThresholdRGBColorsAllFramesRGB(animationId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6801,20 +7786,42 @@ int Extension::LuaFillThresholdRGBColorsAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: redThreshold
-		// FieldType: int
-		// FieldName: greenThreshold
-		// FieldType: int
-		// FieldName: blueThreshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int redThreshold = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int greenThreshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blueThreshold = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		ChromaAnimationAPI::FillThresholdRGBColorsAllFramesRGBName(path.c_str(), redThreshold, greenThreshold, blueThreshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6860,22 +7867,47 @@ int Extension::LuaFillThresholdRGBColorsRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: redThreshold
-		// FieldType: int
-		// FieldName: greenThreshold
-		// FieldType: int
-		// FieldName: blueThreshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int redThreshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int greenThreshold = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blueThreshold = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 7);
+		if (!WrapperXLua::lua_isnumberW(state, 8))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 8);
+		ChromaAnimationAPI::FillThresholdRGBColorsRGB(animationId, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6892,22 +7924,47 @@ int Extension::LuaFillThresholdRGBColorsRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: redThreshold
-		// FieldType: int
-		// FieldName: greenThreshold
-		// FieldType: int
-		// FieldName: blueThreshold
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int redThreshold = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int greenThreshold = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blueThreshold = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 7);
+		if (!WrapperXLua::lua_isnumberW(state, 8))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 8);
+		ChromaAnimationAPI::FillThresholdRGBColorsRGBName(path.c_str(), frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
 		return 0;
 	}
 	else
@@ -6955,12 +8012,22 @@ int Extension::LuaFillZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillZeroColor(animationId, frameId, color);
 		return 0;
 	}
 	else
@@ -6977,10 +8044,17 @@ int Extension::LuaFillZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillZeroColorAllFrames(animationId, color);
 		return 0;
 	}
 	else
@@ -6997,10 +8071,17 @@ int Extension::LuaFillZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::FillZeroColorAllFramesName(path.c_str(), color);
 		return 0;
 	}
 	else
@@ -7036,14 +8117,27 @@ int Extension::LuaFillZeroColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillZeroColorAllFramesRGB(animationId, red, green, blue);
 		return 0;
 	}
 	else
@@ -7060,14 +8154,27 @@ int Extension::LuaFillZeroColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::FillZeroColorAllFramesRGBName(path.c_str(), red, green, blue);
 		return 0;
 	}
 	else
@@ -7107,12 +8214,22 @@ int Extension::LuaFillZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::FillZeroColorName(path.c_str(), frameId, color);
 		return 0;
 	}
 	else
@@ -7150,16 +8267,32 @@ int Extension::LuaFillZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillZeroColorRGB(animationId, frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -7176,16 +8309,32 @@ int Extension::LuaFillZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::FillZeroColorRGBName(path.c_str(), frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -7228,12 +8377,22 @@ int Extension::LuaGet1DColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: led
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int led = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::Get1DColor(animationId, frameId, led);
 		return 0;
 	}
 	else
@@ -7251,12 +8410,22 @@ int Extension::LuaGet1DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: led
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int led = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::Get1DColorName(path.c_str(), frameId, led);
 		return 0;
 	}
 	else
@@ -7296,14 +8465,27 @@ int Extension::LuaGet2DColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: row
-		// FieldType: int
-		// FieldName: column
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int row = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int column = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::Get2DColor(animationId, frameId, row, column);
 		return 0;
 	}
 	else
@@ -7322,14 +8504,27 @@ int Extension::LuaGet2DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: row
-		// FieldType: int
-		// FieldName: column
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int row = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int column = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::Get2DColorName(path.c_str(), frameId, row, column);
 		return 0;
 	}
 	else
@@ -7429,8 +8624,12 @@ int Extension::LuaGetAnimationId(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: index
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int index = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetAnimationId(index);
 		return 0;
 	}
 	else
@@ -7448,8 +8647,12 @@ int Extension::LuaGetAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetAnimationName(animationId);
 		return 0;
 	}
 	else
@@ -7465,8 +8668,12 @@ int Extension::LuaGetCurrentFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetCurrentFrame(animationId);
 		return 0;
 	}
 	else
@@ -7526,8 +8733,12 @@ int Extension::LuaGetDevice(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetDevice(animationId);
 		return 0;
 	}
 	else
@@ -7588,8 +8799,12 @@ int Extension::LuaGetDeviceType(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetDeviceType(animationId);
 		return 0;
 	}
 	else
@@ -7679,8 +8894,12 @@ int Extension::LuaGetFrameCount(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetFrameCount(animationId);
 		return 0;
 	}
 	else
@@ -7739,12 +8958,22 @@ int Extension::LuaGetKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::GetKeyColor(animationId, frameId, rzkey);
 		return 0;
 	}
 	else
@@ -7781,12 +9010,22 @@ int Extension::LuaGetKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::GetKeyColorName(path.c_str(), frameId, rzkey);
 		return 0;
 	}
 	else
@@ -7838,8 +9077,12 @@ int Extension::LuaGetMaxColumn(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetMaxColumn(device);
 		return 0;
 	}
 	else
@@ -7873,8 +9116,12 @@ int Extension::LuaGetMaxLeds(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetMaxLeds(device);
 		return 0;
 	}
 	else
@@ -7908,8 +9155,12 @@ int Extension::LuaGetMaxRow(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetMaxRow(device);
 		return 0;
 	}
 	else
@@ -7961,8 +9212,12 @@ int Extension::LuaGetPlayingAnimationId(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: index
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int index = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::GetPlayingAnimationId(index);
 		return 0;
 	}
 	else
@@ -7978,12 +9233,22 @@ int Extension::LuaGetRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::GetRGB(red, green, blue);
 		return 0;
 	}
 	else
@@ -8020,8 +9285,12 @@ int Extension::LuaHasAnimationLoop(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::HasAnimationLoop(animationId);
 		return 0;
 	}
 	else
@@ -8132,12 +9401,22 @@ int Extension::LuaInsertDelay(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: delay
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int delay = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::InsertDelay(animationId, frameId, delay);
 		return 0;
 	}
 	else
@@ -8154,12 +9433,22 @@ int Extension::LuaInsertDelayName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: delay
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int delay = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::InsertDelayName(path.c_str(), frameId, delay);
 		return 0;
 	}
 	else
@@ -8197,12 +9486,22 @@ int Extension::LuaInsertFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: sourceFrame
-		// FieldType: int
-		// FieldName: targetFrame
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int sourceFrame = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int targetFrame = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::InsertFrame(animationId, sourceFrame, targetFrame);
 		return 0;
 	}
 	else
@@ -8219,12 +9518,22 @@ int Extension::LuaInsertFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: sourceFrame
-		// FieldType: int
-		// FieldName: targetFrame
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int sourceFrame = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int targetFrame = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::InsertFrameName(path.c_str(), sourceFrame, targetFrame);
 		return 0;
 	}
 	else
@@ -8262,10 +9571,17 @@ int Extension::LuaInvertColors(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::InvertColors(animationId, frameId);
 		return 0;
 	}
 	else
@@ -8281,8 +9597,12 @@ int Extension::LuaInvertColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::InvertColorsAllFrames(animationId);
 		return 0;
 	}
 	else
@@ -8341,10 +9661,17 @@ int Extension::LuaInvertColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::InvertColorsName(path.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -8379,8 +9706,12 @@ int Extension::LuaIsAnimationPaused(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::IsAnimationPaused(animationId);
 		return 0;
 	}
 	else
@@ -8539,8 +9870,12 @@ int Extension::LuaIsPlaying(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::IsPlaying(animationId);
 		return 0;
 	}
 	else
@@ -8620,10 +9955,17 @@ int Extension::LuaIsPlayingType(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::IsPlayingType(deviceType, device);
 		return 0;
 	}
 	else
@@ -8701,8 +10043,12 @@ int Extension::LuaLoadAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::LoadAnimation(animationId);
 		return 0;
 	}
 	else
@@ -9070,8 +10416,12 @@ int Extension::LuaMirrorHorizontally(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::MirrorHorizontally(animationId);
 		return 0;
 	}
 	else
@@ -9089,8 +10439,12 @@ int Extension::LuaMirrorVertically(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::MirrorVertically(animationId);
 		return 0;
 	}
 	else
@@ -9108,12 +10462,22 @@ int Extension::LuaMultiplyColorLerpAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyColorLerpAllFrames(animationId, color1, color2);
 		return 0;
 	}
 	else
@@ -9131,12 +10495,22 @@ int Extension::LuaMultiplyColorLerpAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyColorLerpAllFramesName(path.c_str(), color1, color2);
 		return 0;
 	}
 	else
@@ -9261,14 +10635,27 @@ int Extension::LuaMultiplyIntensityAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::MultiplyIntensityAllFramesRGB(animationId, red, green, blue);
 		return 0;
 	}
 	else
@@ -9285,14 +10672,27 @@ int Extension::LuaMultiplyIntensityAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::MultiplyIntensityAllFramesRGBName(path.c_str(), red, green, blue);
 		return 0;
 	}
 	else
@@ -9332,12 +10732,22 @@ int Extension::LuaMultiplyIntensityColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyIntensityColor(animationId, frameId, color);
 		return 0;
 	}
 	else
@@ -9354,10 +10764,17 @@ int Extension::LuaMultiplyIntensityColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::MultiplyIntensityColorAllFrames(animationId, color);
 		return 0;
 	}
 	else
@@ -9374,10 +10791,17 @@ int Extension::LuaMultiplyIntensityColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::MultiplyIntensityColorAllFramesName(path.c_str(), color);
 		return 0;
 	}
 	else
@@ -9413,12 +10837,22 @@ int Extension::LuaMultiplyIntensityColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyIntensityColorName(path.c_str(), frameId, color);
 		return 0;
 	}
 	else
@@ -9501,16 +10935,32 @@ int Extension::LuaMultiplyIntensityRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::MultiplyIntensityRGB(animationId, frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -9527,16 +10977,32 @@ int Extension::LuaMultiplyIntensityRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::MultiplyIntensityRGBName(path.c_str(), frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -9579,14 +11045,27 @@ int Extension::LuaMultiplyNonZeroTargetColorLerp(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerp(animationId, frameId, color1, color2);
 		return 0;
 	}
 	else
@@ -9603,12 +11082,22 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFrames(animationId, color1, color2);
 		return 0;
 	}
 	else
@@ -9625,12 +11114,22 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesName(lua::lua_State* st
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesName(path.c_str(), color1, color2);
 		return 0;
 	}
 	else
@@ -9669,20 +11168,42 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesRGB(lua::lua_State* sta
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red1
-		// FieldType: int
-		// FieldName: green1
-		// FieldType: int
-		// FieldName: blue1
-		// FieldType: int
-		// FieldName: red2
-		// FieldType: int
-		// FieldName: green2
-		// FieldType: int
-		// FieldName: blue2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue1 = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red2 = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green2 = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue2 = WrapperXLua::lua_tointegerW(state, 7);
+		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesRGB(animationId, red1, green1, blue1, red2, green2, blue2);
 		return 0;
 	}
 	else
@@ -9700,20 +11221,42 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesRGBName(lua::lua_State*
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red1
-		// FieldType: int
-		// FieldName: green1
-		// FieldType: int
-		// FieldName: blue1
-		// FieldType: int
-		// FieldName: red2
-		// FieldType: int
-		// FieldName: green2
-		// FieldType: int
-		// FieldName: blue2
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue1 = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red2 = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green2 = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue2 = WrapperXLua::lua_tointegerW(state, 7);
+		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesRGBName(path.c_str(), red1, green1, blue1, red2, green2, blue2);
 		return 0;
 	}
 	else
@@ -9760,14 +11303,27 @@ int Extension::LuaMultiplyTargetColorLerp(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::MultiplyTargetColorLerp(animationId, frameId, color1, color2);
 		return 0;
 	}
 	else
@@ -9784,12 +11340,22 @@ int Extension::LuaMultiplyTargetColorLerpAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyTargetColorLerpAllFrames(animationId, color1, color2);
 		return 0;
 	}
 	else
@@ -9806,12 +11372,22 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: color1
-		// FieldType: int
-		// FieldName: color2
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesName(path.c_str(), color1, color2);
 		return 0;
 	}
 	else
@@ -9849,20 +11425,42 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red1
-		// FieldType: int
-		// FieldName: green1
-		// FieldType: int
-		// FieldName: blue1
-		// FieldType: int
-		// FieldName: red2
-		// FieldType: int
-		// FieldName: green2
-		// FieldType: int
-		// FieldName: blue2
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue1 = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red2 = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green2 = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue2 = WrapperXLua::lua_tointegerW(state, 7);
+		ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGB(animationId, red1, green1, blue1, red2, green2, blue2);
 		return 0;
 	}
 	else
@@ -9879,20 +11477,42 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red1
-		// FieldType: int
-		// FieldName: green1
-		// FieldType: int
-		// FieldName: blue1
-		// FieldType: int
-		// FieldName: red2
-		// FieldType: int
-		// FieldName: green2
-		// FieldType: int
-		// FieldName: blue2
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red1 = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue1 = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red2 = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green2 = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue2 = WrapperXLua::lua_tointegerW(state, 7);
+		ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGBName(path.c_str(), red1, green1, blue1, red2, green2, blue2);
 		return 0;
 	}
 	else
@@ -9939,16 +11559,32 @@ int Extension::LuaOffsetColors(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::OffsetColors(animationId, frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -9966,14 +11602,27 @@ int Extension::LuaOffsetColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::OffsetColorsAllFrames(animationId, red, green, blue);
 		return 0;
 	}
 	else
@@ -9991,14 +11640,27 @@ int Extension::LuaOffsetColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::OffsetColorsAllFramesName(path.c_str(), red, green, blue);
 		return 0;
 	}
 	else
@@ -10039,16 +11701,32 @@ int Extension::LuaOffsetColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::OffsetColorsName(path.c_str(), frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -10092,16 +11770,32 @@ int Extension::LuaOffsetNonZeroColors(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::OffsetNonZeroColors(animationId, frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -10120,14 +11814,27 @@ int Extension::LuaOffsetNonZeroColorsAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::OffsetNonZeroColorsAllFrames(animationId, red, green, blue);
 		return 0;
 	}
 	else
@@ -10146,14 +11853,27 @@ int Extension::LuaOffsetNonZeroColorsAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::OffsetNonZeroColorsAllFramesName(path.c_str(), red, green, blue);
 		return 0;
 	}
 	else
@@ -10195,16 +11915,32 @@ int Extension::LuaOffsetNonZeroColorsName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::OffsetNonZeroColorsName(path.c_str(), frameId, red, green, blue);
 		return 0;
 	}
 	else
@@ -10457,8 +12193,12 @@ int Extension::LuaPauseAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::PauseAnimation(animationId);
 		return 0;
 	}
 	else
@@ -10517,8 +12257,12 @@ int Extension::LuaPlayAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::PlayAnimation(animationId);
 		return 0;
 	}
 	else
@@ -10553,12 +12297,22 @@ int Extension::LuaPlayAnimationFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: bool
-		// FieldName: loop
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_tobooleanW(state, 3))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 3) == 1;
+		ChromaAnimationAPI::PlayAnimationFrame(animationId, frameId, loop);
 		return 0;
 	}
 	else
@@ -10576,12 +12330,22 @@ int Extension::LuaPlayAnimationFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: bool
-		// FieldName: loop
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_tobooleanW(state, 3))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 3) == 1;
+		ChromaAnimationAPI::PlayAnimationFrameName(path.c_str(), frameId, loop);
 		return 0;
 	}
 	else
@@ -10620,10 +12384,17 @@ int Extension::LuaPlayAnimationLoop(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: bool
-		// FieldName: loop
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::PlayAnimationLoop(animationId, loop);
 		return 0;
 	}
 	else
@@ -10734,10 +12505,17 @@ int Extension::LuaPreviewFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameIndex
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameIndex = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::PreviewFrame(animationId, frameIndex);
 		return 0;
 	}
 	else
@@ -10773,10 +12551,17 @@ int Extension::LuaPreviewFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameIndex
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameIndex = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::PreviewFrameName(path.c_str(), frameIndex);
 		return 0;
 	}
 	else
@@ -10793,10 +12578,17 @@ int Extension::LuaReduceFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: n
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int n = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::ReduceFrames(animationId, n);
 		return 0;
 	}
 	else
@@ -10813,10 +12605,17 @@ int Extension::LuaReduceFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: n
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int n = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::ReduceFramesName(path.c_str(), n);
 		return 0;
 	}
 	else
@@ -10852,8 +12651,12 @@ int Extension::LuaResetAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::ResetAnimation(animationId);
 		return 0;
 	}
 	else
@@ -10869,10 +12672,17 @@ int Extension::LuaResumeAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: bool
-		// FieldName: loop
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool loop = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::ResumeAnimation(animationId, loop);
 		return 0;
 	}
 	else
@@ -10935,8 +12745,12 @@ int Extension::LuaReverse(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::Reverse(animationId);
 		return 0;
 	}
 	else
@@ -10953,8 +12767,12 @@ int Extension::LuaReverseAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::ReverseAllFrames(animationId);
 		return 0;
 	}
 	else
@@ -11013,10 +12831,17 @@ int Extension::LuaSaveAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: const char*
-		// FieldName: path
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 2);
+		ChromaAnimationAPI::SaveAnimation(animationId, path.c_str());
 		return 0;
 	}
 	else
@@ -11060,14 +12885,27 @@ int Extension::LuaSet1DColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: led
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int led = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::Set1DColor(animationId, frameId, led, color);
 		return 0;
 	}
 	else
@@ -11085,14 +12923,27 @@ int Extension::LuaSet1DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: led
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int led = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::Set1DColorName(path.c_str(), frameId, led, color);
 		return 0;
 	}
 	else
@@ -11134,16 +12985,32 @@ int Extension::LuaSet2DColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: row
-		// FieldType: int
-		// FieldName: column
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int row = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int column = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::Set2DColor(animationId, frameId, row, column, color);
 		return 0;
 	}
 	else
@@ -11162,16 +13029,32 @@ int Extension::LuaSet2DColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: row
-		// FieldType: int
-		// FieldName: column
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int row = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int column = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::Set2DColorName(path.c_str(), frameId, row, column, color);
 		return 0;
 	}
 	else
@@ -11211,8 +13094,12 @@ int Extension::LuaSetChromaCustomColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::SetChromaCustomColorAllFrames(animationId);
 		return 0;
 	}
 	else
@@ -11273,10 +13160,17 @@ int Extension::LuaSetChromaCustomFlag(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: bool
-		// FieldName: flag
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool flag = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::SetChromaCustomFlag(animationId, flag);
 		return 0;
 	}
 	else
@@ -11339,10 +13233,17 @@ int Extension::LuaSetCurrentFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::SetCurrentFrame(animationId, frameId);
 		return 0;
 	}
 	else
@@ -11358,10 +13259,17 @@ int Extension::LuaSetCurrentFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::SetCurrentFrameName(path.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -11398,12 +13306,22 @@ int Extension::LuaSetDevice(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SetDevice(animationId, deviceType, device);
 		return 0;
 	}
 	else
@@ -11437,8 +13355,12 @@ int Extension::LuaSetIdleAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::SetIdleAnimation(animationId);
 		return 0;
 	}
 	else
@@ -11476,14 +13398,27 @@ int Extension::LuaSetKeyColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SetKeyColor(animationId, frameId, rzkey, color);
 		return 0;
 	}
 	else
@@ -11500,12 +13435,22 @@ int Extension::LuaSetKeyColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SetKeyColorAllFrames(animationId, rzkey, color);
 		return 0;
 	}
 	else
@@ -11522,12 +13467,22 @@ int Extension::LuaSetKeyColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SetKeyColorAllFramesName(path.c_str(), rzkey, color);
 		return 0;
 	}
 	else
@@ -11565,16 +13520,32 @@ int Extension::LuaSetKeyColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::SetKeyColorAllFramesRGB(animationId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -11591,16 +13562,32 @@ int Extension::LuaSetKeyColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::SetKeyColorAllFramesRGBName(path.c_str(), rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -11641,14 +13628,27 @@ int Extension::LuaSetKeyColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SetKeyColorName(path.c_str(), frameId, rzkey, color);
 		return 0;
 	}
 	else
@@ -11688,18 +13688,37 @@ int Extension::LuaSetKeyColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::SetKeyColorRGB(animationId, frameId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -11716,18 +13735,37 @@ int Extension::LuaSetKeyColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::SetKeyColorRGBName(path.c_str(), frameId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -11771,14 +13809,27 @@ int Extension::LuaSetKeyNonZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SetKeyNonZeroColor(animationId, frameId, rzkey, color);
 		return 0;
 	}
 	else
@@ -11795,14 +13846,27 @@ int Extension::LuaSetKeyNonZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SetKeyNonZeroColorName(path.c_str(), frameId, rzkey, color);
 		return 0;
 	}
 	else
@@ -11842,18 +13906,37 @@ int Extension::LuaSetKeyNonZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::SetKeyNonZeroColorRGB(animationId, frameId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -11870,18 +13953,37 @@ int Extension::LuaSetKeyNonZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::SetKeyNonZeroColorRGBName(path.c_str(), frameId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -12516,14 +14618,27 @@ int Extension::LuaSetKeyZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SetKeyZeroColor(animationId, frameId, rzkey, color);
 		return 0;
 	}
 	else
@@ -12540,14 +14655,27 @@ int Extension::LuaSetKeyZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SetKeyZeroColorName(path.c_str(), frameId, rzkey, color);
 		return 0;
 	}
 	else
@@ -12587,18 +14715,37 @@ int Extension::LuaSetKeyZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::SetKeyZeroColorRGB(animationId, frameId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -12615,18 +14762,37 @@ int Extension::LuaSetKeyZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: rzkey
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		ChromaAnimationAPI::SetKeyZeroColorRGBName(path.c_str(), frameId, rzkey, red, green, blue);
 		return 0;
 	}
 	else
@@ -12688,12 +14854,22 @@ int Extension::LuaStaticColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
-		// FieldType: int
-		// FieldName: color
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::StaticColor(deviceType, device, color);
 		return 0;
 	}
 	else
@@ -12747,8 +14923,12 @@ int Extension::LuaStopAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::StopAnimation(animationId);
 		return 0;
 	}
 	else
@@ -12827,10 +15007,17 @@ int Extension::LuaStopAnimationType(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: deviceType
-		// FieldType: int
-		// FieldName: device
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::StopAnimationType(deviceType, device);
 		return 0;
 	}
 	else
@@ -12910,10 +15097,17 @@ int Extension::LuaSubtractNonZeroAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -12984,12 +15178,22 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -13007,12 +15211,22 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesOffsetName(lua::lua_State* stat
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -13050,14 +15264,27 @@ int Extension::LuaSubtractNonZeroAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 		return 0;
 	}
 	else
@@ -13074,14 +15301,27 @@ int Extension::LuaSubtractNonZeroAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SubtractNonZeroAllKeysOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
 		return 0;
 	}
 	else
@@ -13121,10 +15361,17 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFrames(sourceAnimationId, targetAnimationId);
 		return 0;
 	}
 	else
@@ -13195,12 +15442,22 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesOffset(lua::lua_State* st
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId, targetAnimationId, offset);
 		return 0;
 	}
 	else
@@ -13218,12 +15475,22 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesOffsetName(lua::lua_State
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
 		return 0;
 	}
 	else
@@ -13262,14 +15529,27 @@ int Extension::LuaSubtractNonZeroTargetAllKeysOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
 		return 0;
 	}
 	else
@@ -13287,14 +15567,27 @@ int Extension::LuaSubtractNonZeroTargetAllKeysOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: int
-		// FieldName: offset
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int offset = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
 		return 0;
 	}
 	else
@@ -13334,10 +15627,17 @@ int Extension::LuaTrimEndFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: lastFrameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int lastFrameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::TrimEndFrames(animationId, lastFrameId);
 		return 0;
 	}
 	else
@@ -13354,10 +15654,17 @@ int Extension::LuaTrimEndFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: lastFrameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int lastFrameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::TrimEndFramesName(path.c_str(), lastFrameId);
 		return 0;
 	}
 	else
@@ -13392,10 +15699,17 @@ int Extension::LuaTrimFrame(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::TrimFrame(animationId, frameId);
 		return 0;
 	}
 	else
@@ -13411,10 +15725,17 @@ int Extension::LuaTrimFrameName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::TrimFrameName(path.c_str(), frameId);
 		return 0;
 	}
 	else
@@ -13450,10 +15771,17 @@ int Extension::LuaTrimStartFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: numberOfFrames
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int numberOfFrames = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::TrimStartFrames(animationId, numberOfFrames);
 		return 0;
 	}
 	else
@@ -13470,10 +15798,17 @@ int Extension::LuaTrimStartFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: numberOfFrames
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int numberOfFrames = WrapperXLua::lua_tointegerW(state, 2);
+		ChromaAnimationAPI::TrimStartFramesName(path.c_str(), numberOfFrames);
 		return 0;
 	}
 	else
@@ -13541,8 +15876,12 @@ int Extension::LuaUnloadAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::UnloadAnimation(animationId);
 		return 0;
 	}
 	else
@@ -13653,10 +15992,17 @@ int Extension::LuaUseIdleAnimation(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: device
-		// FieldType: bool
-		// FieldName: flag
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool flag = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::UseIdleAnimation(device, flag);
 		return 0;
 	}
 	else
@@ -13694,10 +16040,17 @@ int Extension::LuaUsePreloading(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: bool
-		// FieldName: flag
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		{
+			return -1;
+		}
+		bool flag = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+		ChromaAnimationAPI::UsePreloading(animationId, flag);
 		return 0;
 	}
 	else
