@@ -1541,6 +1541,8 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                     case "bool":
                     case "const char*":
                     case "int":
+                    case "float":
+                    case "double":
                         break;
                     default:
                         return false;
@@ -1634,6 +1636,8 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                                     Output(swImplementation, "\t\tif (!WrapperXLua::lua_isstringW(state, {0}))", indexArg);
                                     break;
                                 case "int":
+                                case "float":
+                                case "double":
                                     Output(swImplementation, "\t\tif (!WrapperXLua::lua_isnumberW(state, {0}))", indexArg);
                                     break;
                             }
@@ -1654,6 +1658,16 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                                     break;
                                 case "int":
                                     Output(swImplementation, "\t\tint {0} = WrapperXLua::lua_tointegerW(state, {1});",
+                                        arg.FieldName,
+                                        indexArg);
+                                    break;
+                                case "float":
+                                    Output(swImplementation, "\t\tfloat {0} = (float)WrapperXLua::lua_tonumberW(state, {1});",
+                                        arg.FieldName,
+                                        indexArg);
+                                    break;
+                                case "double":
+                                    Output(swImplementation, "\t\tdouble {0} = WrapperXLua::lua_tonumberW(state, {1});",
                                         arg.FieldName,
                                         indexArg);
                                     break;
