@@ -1630,7 +1630,7 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                             switch (arg.FieldType)
                             {
                                 case "bool":
-                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_tobooleanW(state, {0}))", indexArg);
+                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_isbooleanW(state, {0}))", indexArg);
                                     break;
                                 case "const char*":
                                     Output(swImplementation, "\t\tif (!WrapperXLua::lua_isstringW(state, {0}))", indexArg);
