@@ -1622,7 +1622,8 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                     // loop through each parameter
 
                     MetaArgsCTF[] args = GetCTFArgs(methodInfo.Args);
-                    if (HasCTFSupportedTypes(args))
+                    bool hasCTFSupportedTypes = HasCTFSupportedTypes(args);
+                    if (hasCTFSupportedTypes)
                     {
                         int indexArg = 1;
                         foreach (MetaArgsCTF arg in args)
@@ -1676,9 +1677,24 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                             ++indexArg;
                         }
 
-                        Output(swImplementation, "\t\tChromaAnimationAPI::{0}({1});",
-                                methodInfo.Name,
-                                GetCTFArgsForAPI(args));
+                        switch (methodInfo.ReturnType)
+                        {
+                            case "bool":
+                            case "const char*":
+                            case "int":
+                            case "float":
+                            case "double":
+                                Output(swImplementation, "\t\t{0} result = ChromaAnimationAPI::{1}({2});",
+                                    methodInfo.ReturnType,
+                                    methodInfo.Name,
+                                    GetCTFArgsForAPI(args));
+                                break;
+                            default:
+                                Output(swImplementation, "\t\tChromaAnimationAPI::{0}({1});",
+                                    methodInfo.Name,
+                                    GetCTFArgsForAPI(args));
+                                break;
+                        }
                     }
                     else
                     {
@@ -1691,7 +1707,49 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                         }
                     }
 
-                    Output(swImplementation, "\t\treturn 0;");
+                    if (hasCTFSupportedTypes)
+                    {
+                        switch (methodInfo.ReturnType)
+                        {
+                            case "bool":
+                                Output(swImplementation, "\t\tlua::lua_pushboolean(state, result);");
+                                break;
+                            case "const char*":
+                                Output(swImplementation, "\t\tlua::lua_pushlstring(state, result, strlen(result));");
+                                break;
+                            case "int":
+                                Output(swImplementation, "\t\tlua::lua_pushinteger(state, result);");
+                                break;
+                            case "float":
+                                Output(swImplementation, "\t\tlua::lua_pushnumber(state, result);");
+                                break;
+                            case "double":
+                                Output(swImplementation, "\t\tlua::lua_pushnumber(state, result);");
+                                break;
+                        }
+                    }
+
+                    if (hasCTFSupportedTypes)
+                    {
+                        switch (methodInfo.ReturnType)
+                        {
+                            case "bool":
+                            case "const char*":
+                            case "int":
+                            case "float":
+                            case "double":
+                                Output(swImplementation, "\t\treturn 1;"); //number of results
+                                break;
+                            default:
+                                Output(swImplementation, "\t\treturn 0;");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Output(swImplementation, "#pragma message(\"TODO - add support for {0}\")", methodInfo.Name);
+                        Output(swImplementation, "\t\treturn 0;");
+                    }
 
                     Output(swImplementation, "{0}", "\t}");
                     Output(swImplementation, "\telse");

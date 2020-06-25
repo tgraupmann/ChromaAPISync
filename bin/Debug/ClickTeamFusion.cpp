@@ -2508,6 +2508,7 @@ int Extension::LuaAddFrame(lua::lua_State* state)
 		// FieldName: colors
 		// FieldType: int
 		// FieldName: length
+#pragma message("TODO - add support for AddFrame")
 		return 0;
 	}
 	else
@@ -2587,8 +2588,9 @@ int Extension::LuaAddNonZeroAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::AddNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::AddNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -2684,8 +2686,9 @@ int Extension::LuaAddNonZeroAllKeysAllFramesOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::AddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::AddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -2794,8 +2797,9 @@ int Extension::LuaAddNonZeroAllKeysOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::AddNonZeroAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
-		return 0;
+		double result = ChromaAnimationAPI::AddNonZeroAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -2874,8 +2878,9 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -2971,8 +2976,9 @@ int Extension::LuaAddNonZeroTargetAllKeysAllFramesOffsetNameD(lua::lua_State* st
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::AddNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3081,8 +3087,9 @@ int Extension::LuaAddNonZeroTargetAllKeysOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::AddNonZeroTargetAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
-		return 0;
+		double result = ChromaAnimationAPI::AddNonZeroTargetAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3161,8 +3168,9 @@ int Extension::LuaAppendAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::AppendAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::AppendAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3244,8 +3252,9 @@ int Extension::LuaCloseAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::CloseAnimation(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::CloseAnimation(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3265,8 +3274,9 @@ int Extension::LuaCloseAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		double animationId = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::CloseAnimationD(animationId);
-		return 0;
+		double result = ChromaAnimationAPI::CloseAnimationD(animationId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3308,8 +3318,9 @@ int Extension::LuaCloseAnimationNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::CloseAnimationNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CloseAnimationNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3351,8 +3362,9 @@ int Extension::LuaCloseCompositeD(lua::lua_State* state)
 			return -1;
 		}
 		string name = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::CloseCompositeD(name.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CloseCompositeD(name.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3378,8 +3390,9 @@ int Extension::LuaCopyAnimation(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyAnimation(sourceAnimationId, targetAnimation.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::CopyAnimation(sourceAnimationId, targetAnimation.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3431,8 +3444,9 @@ int Extension::LuaCopyAnimationNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyAnimationNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CopyAnimationNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3526,8 +3540,9 @@ int Extension::LuaCopyBlueChannelAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double greenIntensity = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyBlueChannelAllFramesNameD(path.c_str(), redIntensity, greenIntensity);
-		return 0;
+		double result = ChromaAnimationAPI::CopyBlueChannelAllFramesNameD(path.c_str(), redIntensity, greenIntensity);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3621,8 +3636,9 @@ int Extension::LuaCopyGreenChannelAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blueIntensity = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyGreenChannelAllFramesNameD(path.c_str(), redIntensity, blueIntensity);
-		return 0;
+		double result = ChromaAnimationAPI::CopyGreenChannelAllFramesNameD(path.c_str(), redIntensity, blueIntensity);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3753,8 +3769,9 @@ int Extension::LuaCopyKeyColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double rzkey = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyKeyColorAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str(), rzkey);
-		return 0;
+		double result = ChromaAnimationAPI::CopyKeyColorAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str(), rzkey);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3865,8 +3882,9 @@ int Extension::LuaCopyKeyColorAllFramesOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::CopyKeyColorAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), rzkey, offset);
-		return 0;
+		double result = ChromaAnimationAPI::CopyKeyColorAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), rzkey, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3938,8 +3956,9 @@ int Extension::LuaCopyKeyColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double rzkey = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::CopyKeyColorNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
-		return 0;
+		double result = ChromaAnimationAPI::CopyKeyColorNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -3966,6 +3985,7 @@ int Extension::LuaCopyKeysColor(lua::lua_State* state)
 		// FieldName: keys
 		// FieldType: int
 		// FieldName: size
+#pragma message("TODO - add support for CopyKeysColor")
 		return 0;
 	}
 	else
@@ -3990,6 +4010,7 @@ int Extension::LuaCopyKeysColorAllFrames(lua::lua_State* state)
 		// FieldName: keys
 		// FieldType: int
 		// FieldName: size
+#pragma message("TODO - add support for CopyKeysColorAllFrames")
 		return 0;
 	}
 	else
@@ -4014,6 +4035,7 @@ int Extension::LuaCopyKeysColorAllFramesName(lua::lua_State* state)
 		// FieldName: keys
 		// FieldType: int
 		// FieldName: size
+#pragma message("TODO - add support for CopyKeysColorAllFramesName")
 		return 0;
 	}
 	else
@@ -4041,6 +4063,7 @@ int Extension::LuaCopyKeysColorName(lua::lua_State* state)
 		// FieldName: keys
 		// FieldType: int
 		// FieldName: size
+#pragma message("TODO - add support for CopyKeysColorName")
 		return 0;
 	}
 	else
@@ -4070,6 +4093,7 @@ int Extension::LuaCopyKeysColorOffset(lua::lua_State* state)
 		// FieldName: keys
 		// FieldType: int
 		// FieldName: size
+#pragma message("TODO - add support for CopyKeysColorOffset")
 		return 0;
 	}
 	else
@@ -4099,6 +4123,7 @@ int Extension::LuaCopyKeysColorOffsetName(lua::lua_State* state)
 		// FieldName: keys
 		// FieldType: int
 		// FieldName: size
+#pragma message("TODO - add support for CopyKeysColorOffsetName")
 		return 0;
 	}
 	else
@@ -4210,8 +4235,9 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4307,8 +4333,9 @@ int Extension::LuaCopyNonZeroAllKeysAllFramesOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4370,8 +4397,9 @@ int Extension::LuaCopyNonZeroAllKeysNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyNonZeroAllKeysNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroAllKeysNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4482,8 +4510,9 @@ int Extension::LuaCopyNonZeroAllKeysOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::CopyNonZeroAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4592,8 +4621,9 @@ int Extension::LuaCopyNonZeroKeyColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double rzkey = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::CopyNonZeroKeyColorNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroKeyColorNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4707,8 +4737,9 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4805,8 +4836,9 @@ int Extension::LuaCopyNonZeroTargetAllKeysAllFramesOffsetNameD(lua::lua_State* s
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4869,8 +4901,9 @@ int Extension::LuaCopyNonZeroTargetAllKeysNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyNonZeroTargetAllKeysNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroTargetAllKeysNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -4981,8 +5014,9 @@ int Extension::LuaCopyNonZeroTargetAllKeysOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroTargetAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5063,8 +5097,9 @@ int Extension::LuaCopyNonZeroTargetZeroAllKeysAllFramesNameD(lua::lua_State* sta
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CopyNonZeroTargetZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5158,8 +5193,9 @@ int Extension::LuaCopyRedChannelAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blueIntensity = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyRedChannelAllFramesNameD(path.c_str(), greenIntensity, blueIntensity);
-		return 0;
+		double result = ChromaAnimationAPI::CopyRedChannelAllFramesNameD(path.c_str(), greenIntensity, blueIntensity);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5238,8 +5274,9 @@ int Extension::LuaCopyZeroAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CopyZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5335,8 +5372,9 @@ int Extension::LuaCopyZeroAllKeysAllFramesOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::CopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::CopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5445,8 +5483,9 @@ int Extension::LuaCopyZeroKeyColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double rzkey = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::CopyZeroKeyColorNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
-		return 0;
+		double result = ChromaAnimationAPI::CopyZeroKeyColorNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, rzkey);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5525,8 +5564,9 @@ int Extension::LuaCopyZeroTargetAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5547,6 +5587,7 @@ int Extension::LuaCoreCreateChromaLinkEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateChromaLinkEffect")
 		return 0;
 	}
 	else
@@ -5570,6 +5611,7 @@ int Extension::LuaCoreCreateEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateEffect")
 		return 0;
 	}
 	else
@@ -5591,6 +5633,7 @@ int Extension::LuaCoreCreateHeadsetEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateHeadsetEffect")
 		return 0;
 	}
 	else
@@ -5612,6 +5655,7 @@ int Extension::LuaCoreCreateKeyboardEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateKeyboardEffect")
 		return 0;
 	}
 	else
@@ -5633,6 +5677,7 @@ int Extension::LuaCoreCreateKeypadEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateKeypadEffect")
 		return 0;
 	}
 	else
@@ -5654,6 +5699,7 @@ int Extension::LuaCoreCreateMouseEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateMouseEffect")
 		return 0;
 	}
 	else
@@ -5675,6 +5721,7 @@ int Extension::LuaCoreCreateMousepadEffect(lua::lua_State* state)
 		// FieldName: pParam
 		// FieldType: RZEFFECTID*
 		// FieldName: pEffectId
+#pragma message("TODO - add support for CoreCreateMousepadEffect")
 		return 0;
 	}
 	else
@@ -5692,6 +5739,7 @@ int Extension::LuaCoreDeleteEffect(lua::lua_State* state)
 	{
 		// FieldType: RZEFFECTID
 		// FieldName: EffectId
+#pragma message("TODO - add support for CoreDeleteEffect")
 		return 0;
 	}
 	else
@@ -5725,6 +5773,7 @@ int Extension::LuaCoreInitSDK(lua::lua_State* state)
 	{
 		// FieldType: ChromaSDK::APPINFOTYPE*
 		// FieldName: AppInfo
+#pragma message("TODO - add support for CoreInitSDK")
 		return 0;
 	}
 	else
@@ -5744,6 +5793,7 @@ int Extension::LuaCoreQueryDevice(lua::lua_State* state)
 		// FieldName: DeviceId
 		// FieldType: ChromaSDK::DEVICE_INFO_TYPE&
 		// FieldName: DeviceInfo
+#pragma message("TODO - add support for CoreQueryDevice")
 		return 0;
 	}
 	else
@@ -5761,6 +5811,7 @@ int Extension::LuaCoreSetEffect(lua::lua_State* state)
 	{
 		// FieldType: RZEFFECTID
 		// FieldName: EffectId
+#pragma message("TODO - add support for CoreSetEffect")
 		return 0;
 	}
 	else
@@ -5813,8 +5864,9 @@ int Extension::LuaCreateAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::CreateAnimation(path.c_str(), deviceType, device);
-		return 0;
+		int result = ChromaAnimationAPI::CreateAnimation(path.c_str(), deviceType, device);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5844,8 +5896,9 @@ int Extension::LuaCreateAnimationInMemory(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 2);
-		ChromaAnimationAPI::CreateAnimationInMemory(deviceType, device);
-		return 0;
+		int result = ChromaAnimationAPI::CreateAnimationInMemory(deviceType, device);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -5870,6 +5923,7 @@ int Extension::LuaCreateEffect(lua::lua_State* state)
 		// FieldName: size
 		// FieldType: ChromaSDK::FChromaSDKGuid*
 		// FieldName: effectId
+#pragma message("TODO - add support for CreateEffect")
 		return 0;
 	}
 	else
@@ -5887,6 +5941,7 @@ int Extension::LuaDeleteEffect(lua::lua_State* state)
 	{
 		// FieldType: const ChromaSDK::FChromaSDKGuid&
 		// FieldName: effectId
+#pragma message("TODO - add support for DeleteEffect")
 		return 0;
 	}
 	else
@@ -5966,8 +6021,9 @@ int Extension::LuaDuplicateFirstFrameNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameCount = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::DuplicateFirstFrameNameD(path.c_str(), frameCount);
-		return 0;
+		double result = ChromaAnimationAPI::DuplicateFirstFrameNameD(path.c_str(), frameCount);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6033,8 +6089,9 @@ int Extension::LuaDuplicateFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::DuplicateFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::DuplicateFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6098,8 +6155,9 @@ int Extension::LuaDuplicateMirrorFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::DuplicateMirrorFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::DuplicateMirrorFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6178,8 +6236,9 @@ int Extension::LuaFadeEndFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double fade = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FadeEndFramesNameD(path.c_str(), fade);
-		return 0;
+		double result = ChromaAnimationAPI::FadeEndFramesNameD(path.c_str(), fade);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6258,8 +6317,9 @@ int Extension::LuaFadeStartFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double fade = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FadeStartFramesNameD(path.c_str(), fade);
-		return 0;
+		double result = ChromaAnimationAPI::FadeStartFramesNameD(path.c_str(), fade);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6370,8 +6430,9 @@ int Extension::LuaFillColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FillColorAllFramesNameD(path.c_str(), color);
-		return 0;
+		double result = ChromaAnimationAPI::FillColorAllFramesNameD(path.c_str(), color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6480,8 +6541,9 @@ int Extension::LuaFillColorAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::FillColorAllFramesRGBNameD(path.c_str(), red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillColorAllFramesRGBNameD(path.c_str(), red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6543,8 +6605,9 @@ int Extension::LuaFillColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::FillColorNameD(path.c_str(), frameId, color);
-		return 0;
+		double result = ChromaAnimationAPI::FillColorNameD(path.c_str(), frameId, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6668,8 +6731,9 @@ int Extension::LuaFillColorRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::FillColorRGBNameD(path.c_str(), frameId, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillColorRGBNameD(path.c_str(), frameId, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6783,8 +6847,9 @@ int Extension::LuaFillNonZeroColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FillNonZeroColorAllFramesNameD(path.c_str(), color);
-		return 0;
+		double result = ChromaAnimationAPI::FillNonZeroColorAllFramesNameD(path.c_str(), color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6897,8 +6962,9 @@ int Extension::LuaFillNonZeroColorAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::FillNonZeroColorAllFramesRGBNameD(path.c_str(), red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillNonZeroColorAllFramesRGBNameD(path.c_str(), red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -6961,8 +7027,9 @@ int Extension::LuaFillNonZeroColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::FillNonZeroColorNameD(path.c_str(), frameId, color);
-		return 0;
+		double result = ChromaAnimationAPI::FillNonZeroColorNameD(path.c_str(), frameId, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7090,8 +7157,9 @@ int Extension::LuaFillNonZeroColorRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::FillNonZeroColorRGBNameD(path.c_str(), frameId, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillNonZeroColorRGBNameD(path.c_str(), frameId, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7182,8 +7250,9 @@ int Extension::LuaFillRandomColorsAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::FillRandomColorsAllFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::FillRandomColorsAllFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7274,8 +7343,9 @@ int Extension::LuaFillRandomColorsBlackAndWhiteAllFramesNameD(lua::lua_State* st
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::FillRandomColorsBlackAndWhiteAllFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7327,8 +7397,9 @@ int Extension::LuaFillRandomColorsBlackAndWhiteNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FillRandomColorsBlackAndWhiteNameD(path.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::FillRandomColorsBlackAndWhiteNameD(path.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7380,8 +7451,9 @@ int Extension::LuaFillRandomColorsNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FillRandomColorsNameD(path.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::FillRandomColorsNameD(path.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7512,8 +7584,9 @@ int Extension::LuaFillThresholdColorsAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::FillThresholdColorsAllFramesNameD(path.c_str(), threshold, color);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdColorsAllFramesNameD(path.c_str(), threshold, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7637,8 +7710,9 @@ int Extension::LuaFillThresholdColorsAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::FillThresholdColorsAllFramesRGBNameD(path.c_str(), threshold, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdColorsAllFramesRGBNameD(path.c_str(), threshold, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -7824,8 +7898,9 @@ int Extension::LuaFillThresholdColorsMinMaxAllFramesRGBNameD(lua::lua_State* sta
 			return -1;
 		}
 		double maxBlue = WrapperXLua::lua_tonumberW(state, 9);
-		ChromaAnimationAPI::FillThresholdColorsMinMaxAllFramesRGBNameD(path.c_str(), minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdColorsMinMaxAllFramesRGBNameD(path.c_str(), minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8026,8 +8101,9 @@ int Extension::LuaFillThresholdColorsMinMaxRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double maxBlue = WrapperXLua::lua_tonumberW(state, 10);
-		ChromaAnimationAPI::FillThresholdColorsMinMaxRGBNameD(path.c_str(), frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdColorsMinMaxRGBNameD(path.c_str(), frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8099,8 +8175,9 @@ int Extension::LuaFillThresholdColorsNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::FillThresholdColorsNameD(path.c_str(), frameId, threshold, color);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdColorsNameD(path.c_str(), frameId, threshold, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8239,8 +8316,9 @@ int Extension::LuaFillThresholdColorsRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 6);
-		ChromaAnimationAPI::FillThresholdColorsRGBNameD(path.c_str(), frameId, threshold, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdColorsRGBNameD(path.c_str(), frameId, threshold, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8394,8 +8472,9 @@ int Extension::LuaFillThresholdRGBColorsAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 7);
-		ChromaAnimationAPI::FillThresholdRGBColorsAllFramesRGBNameD(path.c_str(), redThreshold, greenThreshold, blueThreshold, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdRGBColorsAllFramesRGBNameD(path.c_str(), redThreshold, greenThreshold, blueThreshold, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8564,8 +8643,9 @@ int Extension::LuaFillThresholdRGBColorsRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 8);
-		ChromaAnimationAPI::FillThresholdRGBColorsRGBNameD(path.c_str(), frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillThresholdRGBColorsRGBNameD(path.c_str(), frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8676,8 +8756,9 @@ int Extension::LuaFillZeroColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::FillZeroColorAllFramesNameD(path.c_str(), color);
-		return 0;
+		double result = ChromaAnimationAPI::FillZeroColorAllFramesNameD(path.c_str(), color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8786,8 +8867,9 @@ int Extension::LuaFillZeroColorAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::FillZeroColorAllFramesRGBNameD(path.c_str(), red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillZeroColorAllFramesRGBNameD(path.c_str(), red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8849,8 +8931,9 @@ int Extension::LuaFillZeroColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::FillZeroColorNameD(path.c_str(), frameId, color);
-		return 0;
+		double result = ChromaAnimationAPI::FillZeroColorNameD(path.c_str(), frameId, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -8974,8 +9057,9 @@ int Extension::LuaFillZeroColorRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::FillZeroColorRGBNameD(path.c_str(), frameId, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::FillZeroColorRGBNameD(path.c_str(), frameId, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9007,8 +9091,9 @@ int Extension::LuaGet1DColor(lua::lua_State* state)
 			return -1;
 		}
 		int led = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::Get1DColor(animationId, frameId, led);
-		return 0;
+		int result = ChromaAnimationAPI::Get1DColor(animationId, frameId, led);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9040,8 +9125,9 @@ int Extension::LuaGet1DColorName(lua::lua_State* state)
 			return -1;
 		}
 		int led = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::Get1DColorName(path.c_str(), frameId, led);
-		return 0;
+		int result = ChromaAnimationAPI::Get1DColorName(path.c_str(), frameId, led);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9071,8 +9157,9 @@ int Extension::LuaGet1DColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double led = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::Get1DColorNameD(path.c_str(), frameId, led);
-		return 0;
+		double result = ChromaAnimationAPI::Get1DColorNameD(path.c_str(), frameId, led);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9110,8 +9197,9 @@ int Extension::LuaGet2DColor(lua::lua_State* state)
 			return -1;
 		}
 		int column = WrapperXLua::lua_tointegerW(state, 4);
-		ChromaAnimationAPI::Get2DColor(animationId, frameId, row, column);
-		return 0;
+		int result = ChromaAnimationAPI::Get2DColor(animationId, frameId, row, column);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9149,8 +9237,9 @@ int Extension::LuaGet2DColorName(lua::lua_State* state)
 			return -1;
 		}
 		int column = WrapperXLua::lua_tointegerW(state, 4);
-		ChromaAnimationAPI::Get2DColorName(path.c_str(), frameId, row, column);
-		return 0;
+		int result = ChromaAnimationAPI::Get2DColorName(path.c_str(), frameId, row, column);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9185,8 +9274,9 @@ int Extension::LuaGet2DColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double column = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::Get2DColorNameD(path.c_str(), frameId, row, column);
-		return 0;
+		double result = ChromaAnimationAPI::Get2DColorNameD(path.c_str(), frameId, row, column);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9206,8 +9296,9 @@ int Extension::LuaGetAnimation(lua::lua_State* state)
 			return -1;
 		}
 		string name = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetAnimation(name.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::GetAnimation(name.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9222,8 +9313,9 @@ int Extension::LuaGetAnimationCount(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::GetAnimationCount();
-		return 0;
+		int result = ChromaAnimationAPI::GetAnimationCount();
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9243,8 +9335,9 @@ int Extension::LuaGetAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		string name = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetAnimationD(name.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::GetAnimationD(name.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9267,8 +9360,9 @@ int Extension::LuaGetAnimationId(lua::lua_State* state)
 			return -1;
 		}
 		int index = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetAnimationId(index);
-		return 0;
+		int result = ChromaAnimationAPI::GetAnimationId(index);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9290,8 +9384,9 @@ int Extension::LuaGetAnimationName(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetAnimationName(animationId);
-		return 0;
+		const char* result = ChromaAnimationAPI::GetAnimationName(animationId);
+		lua::lua_pushlstring(state, result, strlen(result));
+		return 1;
 	}
 	else
 	{
@@ -9311,8 +9406,9 @@ int Extension::LuaGetCurrentFrame(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetCurrentFrame(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::GetCurrentFrame(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9332,8 +9428,9 @@ int Extension::LuaGetCurrentFrameName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetCurrentFrameName(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::GetCurrentFrameName(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9353,8 +9450,9 @@ int Extension::LuaGetCurrentFrameNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetCurrentFrameNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::GetCurrentFrameNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9376,8 +9474,9 @@ int Extension::LuaGetDevice(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetDevice(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::GetDevice(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9399,8 +9498,9 @@ int Extension::LuaGetDeviceName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetDeviceName(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::GetDeviceName(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9420,8 +9520,9 @@ int Extension::LuaGetDeviceNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetDeviceNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::GetDeviceNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9442,8 +9543,9 @@ int Extension::LuaGetDeviceType(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetDeviceType(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::GetDeviceType(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9464,8 +9566,9 @@ int Extension::LuaGetDeviceTypeName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetDeviceTypeName(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::GetDeviceTypeName(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9485,8 +9588,9 @@ int Extension::LuaGetDeviceTypeNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetDeviceTypeNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::GetDeviceTypeNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9516,6 +9620,7 @@ int Extension::LuaGetFrame(lua::lua_State* state)
 		// FieldName: colors
 		// FieldType: int
 		// FieldName: length
+#pragma message("TODO - add support for GetFrame")
 		return 0;
 	}
 	else
@@ -9537,8 +9642,9 @@ int Extension::LuaGetFrameCount(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetFrameCount(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::GetFrameCount(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9559,8 +9665,9 @@ int Extension::LuaGetFrameCountName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetFrameCountName(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::GetFrameCountName(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9580,8 +9687,9 @@ int Extension::LuaGetFrameCountNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::GetFrameCountNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::GetFrameCountNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9611,8 +9719,9 @@ int Extension::LuaGetKeyColor(lua::lua_State* state)
 			return -1;
 		}
 		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::GetKeyColor(animationId, frameId, rzkey);
-		return 0;
+		int result = ChromaAnimationAPI::GetKeyColor(animationId, frameId, rzkey);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9642,8 +9751,9 @@ int Extension::LuaGetKeyColorD(lua::lua_State* state)
 			return -1;
 		}
 		double rzkey = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::GetKeyColorD(path.c_str(), frameId, rzkey);
-		return 0;
+		double result = ChromaAnimationAPI::GetKeyColorD(path.c_str(), frameId, rzkey);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9673,8 +9783,9 @@ int Extension::LuaGetKeyColorName(lua::lua_State* state)
 			return -1;
 		}
 		int rzkey = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::GetKeyColorName(path.c_str(), frameId, rzkey);
-		return 0;
+		int result = ChromaAnimationAPI::GetKeyColorName(path.c_str(), frameId, rzkey);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9708,8 +9819,9 @@ int Extension::LuaGetLibraryLoadedStateD(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::GetLibraryLoadedStateD();
-		return 0;
+		double result = ChromaAnimationAPI::GetLibraryLoadedStateD();
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9730,8 +9842,9 @@ int Extension::LuaGetMaxColumn(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetMaxColumn(device);
-		return 0;
+		int result = ChromaAnimationAPI::GetMaxColumn(device);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9751,8 +9864,9 @@ int Extension::LuaGetMaxColumnD(lua::lua_State* state)
 			return -1;
 		}
 		double device = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::GetMaxColumnD(device);
-		return 0;
+		double result = ChromaAnimationAPI::GetMaxColumnD(device);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9773,8 +9887,9 @@ int Extension::LuaGetMaxLeds(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetMaxLeds(device);
-		return 0;
+		int result = ChromaAnimationAPI::GetMaxLeds(device);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9794,8 +9909,9 @@ int Extension::LuaGetMaxLedsD(lua::lua_State* state)
 			return -1;
 		}
 		double device = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::GetMaxLedsD(device);
-		return 0;
+		double result = ChromaAnimationAPI::GetMaxLedsD(device);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9816,8 +9932,9 @@ int Extension::LuaGetMaxRow(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetMaxRow(device);
-		return 0;
+		int result = ChromaAnimationAPI::GetMaxRow(device);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9837,8 +9954,9 @@ int Extension::LuaGetMaxRowD(lua::lua_State* state)
 			return -1;
 		}
 		double device = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::GetMaxRowD(device);
-		return 0;
+		double result = ChromaAnimationAPI::GetMaxRowD(device);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9853,8 +9971,9 @@ int Extension::LuaGetPlayingAnimationCount(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::GetPlayingAnimationCount();
-		return 0;
+		int result = ChromaAnimationAPI::GetPlayingAnimationCount();
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9877,8 +9996,9 @@ int Extension::LuaGetPlayingAnimationId(lua::lua_State* state)
 			return -1;
 		}
 		int index = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::GetPlayingAnimationId(index);
-		return 0;
+		int result = ChromaAnimationAPI::GetPlayingAnimationId(index);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9908,8 +10028,9 @@ int Extension::LuaGetRGB(lua::lua_State* state)
 			return -1;
 		}
 		int blue = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::GetRGB(red, green, blue);
-		return 0;
+		int result = ChromaAnimationAPI::GetRGB(red, green, blue);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9939,8 +10060,9 @@ int Extension::LuaGetRGBD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::GetRGBD(red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::GetRGBD(red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9960,8 +10082,9 @@ int Extension::LuaHasAnimationLoop(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::HasAnimationLoop(animationId);
-		return 0;
+		bool result = ChromaAnimationAPI::HasAnimationLoop(animationId);
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -9981,8 +10104,9 @@ int Extension::LuaHasAnimationLoopName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::HasAnimationLoopName(path.c_str());
-		return 0;
+		bool result = ChromaAnimationAPI::HasAnimationLoopName(path.c_str());
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10002,8 +10126,9 @@ int Extension::LuaHasAnimationLoopNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::HasAnimationLoopNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::HasAnimationLoopNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10035,8 +10160,9 @@ int Extension::LuaInitD(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::InitD();
-		return 0;
+		double result = ChromaAnimationAPI::InitD();
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10055,6 +10181,7 @@ int Extension::LuaInitSDK(lua::lua_State* state)
 	{
 		// FieldType: ChromaSDK::APPINFOTYPE*
 		// FieldName: AppInfo
+#pragma message("TODO - add support for InitSDK")
 		return 0;
 	}
 	else
@@ -10149,8 +10276,9 @@ int Extension::LuaInsertDelayNameD(lua::lua_State* state)
 			return -1;
 		}
 		double delay = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::InsertDelayNameD(path.c_str(), frameId, delay);
-		return 0;
+		double result = ChromaAnimationAPI::InsertDelayNameD(path.c_str(), frameId, delay);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10244,8 +10372,9 @@ int Extension::LuaInsertFrameNameD(lua::lua_State* state)
 			return -1;
 		}
 		double targetFrame = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::InsertFrameNameD(path.c_str(), sourceFrame, targetFrame);
-		return 0;
+		double result = ChromaAnimationAPI::InsertFrameNameD(path.c_str(), sourceFrame, targetFrame);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10334,8 +10463,9 @@ int Extension::LuaInvertColorsAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::InvertColorsAllFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::InvertColorsAllFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10387,8 +10517,9 @@ int Extension::LuaInvertColorsNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::InvertColorsNameD(path.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::InvertColorsNameD(path.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10408,8 +10539,9 @@ int Extension::LuaIsAnimationPaused(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::IsAnimationPaused(animationId);
-		return 0;
+		bool result = ChromaAnimationAPI::IsAnimationPaused(animationId);
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10429,8 +10561,9 @@ int Extension::LuaIsAnimationPausedName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::IsAnimationPausedName(path.c_str());
-		return 0;
+		bool result = ChromaAnimationAPI::IsAnimationPausedName(path.c_str());
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10450,8 +10583,9 @@ int Extension::LuaIsAnimationPausedNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::IsAnimationPausedNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::IsAnimationPausedNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10467,8 +10601,9 @@ int Extension::LuaIsDialogOpen(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::IsDialogOpen();
-		return 0;
+		bool result = ChromaAnimationAPI::IsDialogOpen();
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10483,8 +10618,9 @@ int Extension::LuaIsDialogOpenD(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::IsDialogOpenD();
-		return 0;
+		double result = ChromaAnimationAPI::IsDialogOpenD();
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10500,8 +10636,9 @@ int Extension::LuaIsInitialized(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::IsInitialized();
-		return 0;
+		bool result = ChromaAnimationAPI::IsInitialized();
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10516,8 +10653,9 @@ int Extension::LuaIsInitializedD(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::IsInitializedD();
-		return 0;
+		double result = ChromaAnimationAPI::IsInitializedD();
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10532,8 +10670,9 @@ int Extension::LuaIsPlatformSupported(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::IsPlatformSupported();
-		return 0;
+		bool result = ChromaAnimationAPI::IsPlatformSupported();
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10548,8 +10687,9 @@ int Extension::LuaIsPlatformSupportedD(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::IsPlatformSupportedD();
-		return 0;
+		double result = ChromaAnimationAPI::IsPlatformSupportedD();
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10572,8 +10712,9 @@ int Extension::LuaIsPlaying(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::IsPlaying(animationId);
-		return 0;
+		bool result = ChromaAnimationAPI::IsPlaying(animationId);
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10593,8 +10734,9 @@ int Extension::LuaIsPlayingD(lua::lua_State* state)
 			return -1;
 		}
 		double animationId = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::IsPlayingD(animationId);
-		return 0;
+		double result = ChromaAnimationAPI::IsPlayingD(animationId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10617,8 +10759,9 @@ int Extension::LuaIsPlayingName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::IsPlayingName(path.c_str());
-		return 0;
+		bool result = ChromaAnimationAPI::IsPlayingName(path.c_str());
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10638,8 +10781,9 @@ int Extension::LuaIsPlayingNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::IsPlayingNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::IsPlayingNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10666,8 +10810,9 @@ int Extension::LuaIsPlayingType(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 2);
-		ChromaAnimationAPI::IsPlayingType(deviceType, device);
-		return 0;
+		bool result = ChromaAnimationAPI::IsPlayingType(deviceType, device);
+		lua::lua_pushboolean(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10692,8 +10837,9 @@ int Extension::LuaIsPlayingTypeD(lua::lua_State* state)
 			return -1;
 		}
 		double device = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::IsPlayingTypeD(deviceType, device);
-		return 0;
+		double result = ChromaAnimationAPI::IsPlayingTypeD(deviceType, device);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10723,8 +10869,9 @@ int Extension::LuaLerp(lua::lua_State* state)
 			return -1;
 		}
 		float amt = (float)WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::Lerp(start, end, amt);
-		return 0;
+		float result = ChromaAnimationAPI::Lerp(start, end, amt);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10754,8 +10901,9 @@ int Extension::LuaLerpColor(lua::lua_State* state)
 			return -1;
 		}
 		float t = (float)WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::LerpColor(from, to, t);
-		return 0;
+		int result = ChromaAnimationAPI::LerpColor(from, to, t);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10776,8 +10924,9 @@ int Extension::LuaLoadAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::LoadAnimation(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::LoadAnimation(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10797,8 +10946,9 @@ int Extension::LuaLoadAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		double animationId = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::LoadAnimationD(animationId);
-		return 0;
+		double result = ChromaAnimationAPI::LoadAnimationD(animationId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -10951,8 +11101,9 @@ int Extension::LuaMakeBlankFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::MakeBlankFramesNameD(path.c_str(), frameCount, duration, color);
-		return 0;
+		double result = ChromaAnimationAPI::MakeBlankFramesNameD(path.c_str(), frameCount, duration, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11081,8 +11232,9 @@ int Extension::LuaMakeBlankFramesRandomBlackAndWhiteNameD(lua::lua_State* state)
 			return -1;
 		}
 		double duration = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MakeBlankFramesRandomBlackAndWhiteNameD(path.c_str(), frameCount, duration);
-		return 0;
+		double result = ChromaAnimationAPI::MakeBlankFramesRandomBlackAndWhiteNameD(path.c_str(), frameCount, duration);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11145,8 +11297,9 @@ int Extension::LuaMakeBlankFramesRandomNameD(lua::lua_State* state)
 			return -1;
 		}
 		double duration = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MakeBlankFramesRandomNameD(path.c_str(), frameCount, duration);
-		return 0;
+		double result = ChromaAnimationAPI::MakeBlankFramesRandomNameD(path.c_str(), frameCount, duration);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11287,8 +11440,9 @@ int Extension::LuaMakeBlankFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 6);
-		ChromaAnimationAPI::MakeBlankFramesRGBNameD(path.c_str(), frameCount, duration, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::MakeBlankFramesRGBNameD(path.c_str(), frameCount, duration, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11309,8 +11463,9 @@ int Extension::LuaMirrorHorizontally(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::MirrorHorizontally(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::MirrorHorizontally(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11332,8 +11487,9 @@ int Extension::LuaMirrorVertically(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::MirrorVertically(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::MirrorVertically(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11429,8 +11585,9 @@ int Extension::LuaMultiplyColorLerpAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color2 = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MultiplyColorLerpAllFramesNameD(path.c_str(), color1, color2);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyColorLerpAllFramesNameD(path.c_str(), color1, color2);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11547,8 +11704,9 @@ int Extension::LuaMultiplyIntensityAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double intensity = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::MultiplyIntensityAllFramesNameD(path.c_str(), intensity);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyIntensityAllFramesNameD(path.c_str(), intensity);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11657,8 +11815,9 @@ int Extension::LuaMultiplyIntensityAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::MultiplyIntensityAllFramesRGBNameD(path.c_str(), red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyIntensityAllFramesRGBNameD(path.c_str(), red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11769,8 +11928,9 @@ int Extension::LuaMultiplyIntensityColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::MultiplyIntensityColorAllFramesNameD(path.c_str(), color);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyIntensityColorAllFramesNameD(path.c_str(), color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11832,8 +11992,9 @@ int Extension::LuaMultiplyIntensityColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MultiplyIntensityColorNameD(path.c_str(), frameId, color);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyIntensityColorNameD(path.c_str(), frameId, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -11897,8 +12058,9 @@ int Extension::LuaMultiplyIntensityNameD(lua::lua_State* state)
 			return -1;
 		}
 		double intensity = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MultiplyIntensityNameD(path.c_str(), frameId, intensity);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyIntensityNameD(path.c_str(), frameId, intensity);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12022,8 +12184,9 @@ int Extension::LuaMultiplyIntensityRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::MultiplyIntensityRGBNameD(path.c_str(), frameId, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyIntensityRGBNameD(path.c_str(), frameId, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12155,8 +12318,9 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesNameD(lua::lua_State* s
 			return -1;
 		}
 		double color2 = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesNameD(path.c_str(), color1, color2);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesNameD(path.c_str(), color1, color2);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12312,8 +12476,9 @@ int Extension::LuaMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(lua::lua_State
 			return -1;
 		}
 		double blue2 = WrapperXLua::lua_tonumberW(state, 7);
-		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(path.c_str(), red1, green1, blue1, red2, green2, blue2);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(path.c_str(), red1, green1, blue1, red2, green2, blue2);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12445,8 +12610,9 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color2 = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesNameD(path.c_str(), color1, color2);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesNameD(path.c_str(), color1, color2);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12600,8 +12766,9 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGBNameD(lua::lua_State* state
 			return -1;
 		}
 		double blue2 = WrapperXLua::lua_tonumberW(state, 7);
-		ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGBNameD(path.c_str(), red1, green1, blue1, red2, green2, blue2);
-		return 0;
+		double result = ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGBNameD(path.c_str(), red1, green1, blue1, red2, green2, blue2);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12755,8 +12922,9 @@ int Extension::LuaOffsetColorsAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::OffsetColorsAllFramesNameD(path.c_str(), red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::OffsetColorsAllFramesNameD(path.c_str(), red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12839,8 +13007,9 @@ int Extension::LuaOffsetColorsNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::OffsetColorsNameD(path.c_str(), frameId, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::OffsetColorsNameD(path.c_str(), frameId, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -12997,8 +13166,9 @@ int Extension::LuaOffsetNonZeroColorsAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::OffsetNonZeroColorsAllFramesNameD(path.c_str(), red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::OffsetNonZeroColorsAllFramesNameD(path.c_str(), red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13082,8 +13252,9 @@ int Extension::LuaOffsetNonZeroColorsNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::OffsetNonZeroColorsNameD(path.c_str(), frameId, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::OffsetNonZeroColorsNameD(path.c_str(), frameId, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13105,8 +13276,9 @@ int Extension::LuaOpenAnimation(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::OpenAnimation(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::OpenAnimation(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13126,8 +13298,9 @@ int Extension::LuaOpenAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::OpenAnimationD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::OpenAnimationD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13150,6 +13323,7 @@ int Extension::LuaOpenAnimationFromMemory(lua::lua_State* state)
 		// FieldName: data
 		// FieldType: const char*
 		// FieldName: name
+#pragma message("TODO - add support for OpenAnimationFromMemory")
 		return 0;
 	}
 	else
@@ -13171,8 +13345,9 @@ int Extension::LuaOpenEditorDialog(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::OpenEditorDialog(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::OpenEditorDialog(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13193,8 +13368,9 @@ int Extension::LuaOpenEditorDialogAndPlay(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::OpenEditorDialogAndPlay(path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::OpenEditorDialogAndPlay(path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13214,8 +13390,9 @@ int Extension::LuaOpenEditorDialogAndPlayD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::OpenEditorDialogAndPlayD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::OpenEditorDialogAndPlayD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13235,8 +13412,9 @@ int Extension::LuaOpenEditorDialogD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::OpenEditorDialogD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::OpenEditorDialogD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13262,8 +13440,9 @@ int Extension::LuaOverrideFrameDuration(lua::lua_State* state)
 			return -1;
 		}
 		float duration = (float)WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::OverrideFrameDuration(animationId, duration);
-		return 0;
+		int result = ChromaAnimationAPI::OverrideFrameDuration(animationId, duration);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13288,8 +13467,9 @@ int Extension::LuaOverrideFrameDurationD(lua::lua_State* state)
 			return -1;
 		}
 		double duration = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::OverrideFrameDurationD(animationId, duration);
-		return 0;
+		double result = ChromaAnimationAPI::OverrideFrameDurationD(animationId, duration);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13378,8 +13558,9 @@ int Extension::LuaPauseAnimationNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::PauseAnimationNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::PauseAnimationNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13400,8 +13581,9 @@ int Extension::LuaPlayAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::PlayAnimation(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::PlayAnimation(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13421,8 +13603,9 @@ int Extension::LuaPlayAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		double animationId = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::PlayAnimationD(animationId);
-		return 0;
+		double result = ChromaAnimationAPI::PlayAnimationD(animationId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13518,8 +13701,9 @@ int Extension::LuaPlayAnimationFrameNameD(lua::lua_State* state)
 			return -1;
 		}
 		double loop = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::PlayAnimationFrameNameD(path.c_str(), frameId, loop);
-		return 0;
+		double result = ChromaAnimationAPI::PlayAnimationFrameNameD(path.c_str(), frameId, loop);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13600,8 +13784,9 @@ int Extension::LuaPlayAnimationNameD(lua::lua_State* state)
 			return -1;
 		}
 		double loop = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::PlayAnimationNameD(path.c_str(), loop);
-		return 0;
+		double result = ChromaAnimationAPI::PlayAnimationNameD(path.c_str(), loop);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13654,8 +13839,9 @@ int Extension::LuaPlayCompositeD(lua::lua_State* state)
 			return -1;
 		}
 		double loop = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::PlayCompositeD(name.c_str(), loop);
-		return 0;
+		double result = ChromaAnimationAPI::PlayCompositeD(name.c_str(), loop);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13681,8 +13867,9 @@ int Extension::LuaPreviewFrame(lua::lua_State* state)
 			return -1;
 		}
 		int frameIndex = WrapperXLua::lua_tointegerW(state, 2);
-		ChromaAnimationAPI::PreviewFrame(animationId, frameIndex);
-		return 0;
+		int result = ChromaAnimationAPI::PreviewFrame(animationId, frameIndex);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13707,8 +13894,9 @@ int Extension::LuaPreviewFrameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameIndex = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::PreviewFrameD(animationId, frameIndex);
-		return 0;
+		double result = ChromaAnimationAPI::PreviewFrameD(animationId, frameIndex);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13814,8 +14002,9 @@ int Extension::LuaReduceFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double n = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::ReduceFramesNameD(path.c_str(), n);
-		return 0;
+		double result = ChromaAnimationAPI::ReduceFramesNameD(path.c_str(), n);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13836,8 +14025,9 @@ int Extension::LuaResetAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::ResetAnimation(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::ResetAnimation(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13914,8 +14104,9 @@ int Extension::LuaResumeAnimationNameD(lua::lua_State* state)
 			return -1;
 		}
 		double loop = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::ResumeAnimationNameD(path.c_str(), loop);
-		return 0;
+		double result = ChromaAnimationAPI::ResumeAnimationNameD(path.c_str(), loop);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -13937,8 +14128,9 @@ int Extension::LuaReverse(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::Reverse(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::Reverse(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14002,8 +14194,9 @@ int Extension::LuaReverseAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::ReverseAllFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::ReverseAllFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14028,8 +14221,9 @@ int Extension::LuaSaveAnimation(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::SaveAnimation(animationId, path.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::SaveAnimation(animationId, path.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14054,8 +14248,9 @@ int Extension::LuaSaveAnimationName(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::SaveAnimationName(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		int result = ChromaAnimationAPI::SaveAnimationName(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14166,8 +14361,9 @@ int Extension::LuaSet1DColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::Set1DColorNameD(path.c_str(), frameId, led, color);
-		return 0;
+		double result = ChromaAnimationAPI::Set1DColorNameD(path.c_str(), frameId, led, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14290,8 +14486,9 @@ int Extension::LuaSet2DColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::Set2DColorNameD(path.c_str(), frameId, rowColumnIndex, color);
-		return 0;
+		double result = ChromaAnimationAPI::Set2DColorNameD(path.c_str(), frameId, rowColumnIndex, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14355,8 +14552,9 @@ int Extension::LuaSetChromaCustomColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::SetChromaCustomColorAllFramesNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::SetChromaCustomColorAllFramesNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14437,8 +14635,9 @@ int Extension::LuaSetChromaCustomFlagNameD(lua::lua_State* state)
 			return -1;
 		}
 		double flag = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::SetChromaCustomFlagNameD(path.c_str(), flag);
-		return 0;
+		double result = ChromaAnimationAPI::SetChromaCustomFlagNameD(path.c_str(), flag);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14515,8 +14714,9 @@ int Extension::LuaSetCurrentFrameNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::SetCurrentFrameNameD(path.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::SetCurrentFrameNameD(path.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14548,8 +14748,9 @@ int Extension::LuaSetDevice(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 3);
-		ChromaAnimationAPI::SetDevice(animationId, deviceType, device);
-		return 0;
+		int result = ChromaAnimationAPI::SetDevice(animationId, deviceType, device);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14566,6 +14767,7 @@ int Extension::LuaSetEffect(lua::lua_State* state)
 	{
 		// FieldType: const ChromaSDK::FChromaSDKGuid&
 		// FieldName: effectId
+#pragma message("TODO - add support for SetEffect")
 		return 0;
 	}
 	else
@@ -14740,8 +14942,9 @@ int Extension::LuaSetKeyColorAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::SetKeyColorAllFramesNameD(path.c_str(), rzkey, color);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyColorAllFramesNameD(path.c_str(), rzkey, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14865,8 +15068,9 @@ int Extension::LuaSetKeyColorAllFramesRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 5);
-		ChromaAnimationAPI::SetKeyColorAllFramesRGBNameD(path.c_str(), rzkey, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyColorAllFramesRGBNameD(path.c_str(), rzkey, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -14937,8 +15141,9 @@ int Extension::LuaSetKeyColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::SetKeyColorNameD(path.c_str(), frameId, rzkey, color);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyColorNameD(path.c_str(), frameId, rzkey, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -15077,8 +15282,9 @@ int Extension::LuaSetKeyColorRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 6);
-		ChromaAnimationAPI::SetKeyColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -15187,8 +15393,9 @@ int Extension::LuaSetKeyNonZeroColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::SetKeyNonZeroColorNameD(path.c_str(), frameId, rzkey, color);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyNonZeroColorNameD(path.c_str(), frameId, rzkey, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -15327,8 +15534,9 @@ int Extension::LuaSetKeyNonZeroColorRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 6);
-		ChromaAnimationAPI::SetKeyNonZeroColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyNonZeroColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -15354,6 +15562,7 @@ int Extension::LuaSetKeysColor(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysColor")
 		return 0;
 	}
 	else
@@ -15378,6 +15587,7 @@ int Extension::LuaSetKeysColorAllFrames(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysColorAllFrames")
 		return 0;
 	}
 	else
@@ -15402,6 +15612,7 @@ int Extension::LuaSetKeysColorAllFramesName(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysColorAllFramesName")
 		return 0;
 	}
 	else
@@ -15430,6 +15641,7 @@ int Extension::LuaSetKeysColorAllFramesRGB(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysColorAllFramesRGB")
 		return 0;
 	}
 	else
@@ -15458,6 +15670,7 @@ int Extension::LuaSetKeysColorAllFramesRGBName(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysColorAllFramesRGBName")
 		return 0;
 	}
 	else
@@ -15483,6 +15696,7 @@ int Extension::LuaSetKeysColorName(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysColorName")
 		return 0;
 	}
 	else
@@ -15513,6 +15727,7 @@ int Extension::LuaSetKeysColorRGB(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysColorRGB")
 		return 0;
 	}
 	else
@@ -15543,6 +15758,7 @@ int Extension::LuaSetKeysColorRGBName(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysColorRGBName")
 		return 0;
 	}
 	else
@@ -15569,6 +15785,7 @@ int Extension::LuaSetKeysNonZeroColor(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysNonZeroColor")
 		return 0;
 	}
 	else
@@ -15593,6 +15810,7 @@ int Extension::LuaSetKeysNonZeroColorAllFrames(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysNonZeroColorAllFrames")
 		return 0;
 	}
 	else
@@ -15617,6 +15835,7 @@ int Extension::LuaSetKeysNonZeroColorAllFramesName(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysNonZeroColorAllFramesName")
 		return 0;
 	}
 	else
@@ -15643,6 +15862,7 @@ int Extension::LuaSetKeysNonZeroColorName(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysNonZeroColorName")
 		return 0;
 	}
 	else
@@ -15673,6 +15893,7 @@ int Extension::LuaSetKeysNonZeroColorRGB(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysNonZeroColorRGB")
 		return 0;
 	}
 	else
@@ -15703,6 +15924,7 @@ int Extension::LuaSetKeysNonZeroColorRGBName(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysNonZeroColorRGBName")
 		return 0;
 	}
 	else
@@ -15729,6 +15951,7 @@ int Extension::LuaSetKeysZeroColor(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysZeroColor")
 		return 0;
 	}
 	else
@@ -15753,6 +15976,7 @@ int Extension::LuaSetKeysZeroColorAllFrames(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysZeroColorAllFrames")
 		return 0;
 	}
 	else
@@ -15777,6 +16001,7 @@ int Extension::LuaSetKeysZeroColorAllFramesName(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysZeroColorAllFramesName")
 		return 0;
 	}
 	else
@@ -15805,6 +16030,7 @@ int Extension::LuaSetKeysZeroColorAllFramesRGB(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysZeroColorAllFramesRGB")
 		return 0;
 	}
 	else
@@ -15833,6 +16059,7 @@ int Extension::LuaSetKeysZeroColorAllFramesRGBName(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysZeroColorAllFramesRGBName")
 		return 0;
 	}
 	else
@@ -15859,6 +16086,7 @@ int Extension::LuaSetKeysZeroColorName(lua::lua_State* state)
 		// FieldName: keyCount
 		// FieldType: int
 		// FieldName: color
+#pragma message("TODO - add support for SetKeysZeroColorName")
 		return 0;
 	}
 	else
@@ -15889,6 +16117,7 @@ int Extension::LuaSetKeysZeroColorRGB(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysZeroColorRGB")
 		return 0;
 	}
 	else
@@ -15919,6 +16148,7 @@ int Extension::LuaSetKeysZeroColorRGBName(lua::lua_State* state)
 		// FieldName: green
 		// FieldType: int
 		// FieldName: blue
+#pragma message("TODO - add support for SetKeysZeroColorRGBName")
 		return 0;
 	}
 	else
@@ -16028,8 +16258,9 @@ int Extension::LuaSetKeyZeroColorNameD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::SetKeyZeroColorNameD(path.c_str(), frameId, rzkey, color);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyZeroColorNameD(path.c_str(), frameId, rzkey, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16168,8 +16399,9 @@ int Extension::LuaSetKeyZeroColorRGBNameD(lua::lua_State* state)
 			return -1;
 		}
 		double blue = WrapperXLua::lua_tonumberW(state, 6);
-		ChromaAnimationAPI::SetKeyZeroColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
-		return 0;
+		double result = ChromaAnimationAPI::SetKeyZeroColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16188,6 +16420,7 @@ int Extension::LuaSetLogDelegate(lua::lua_State* state)
 	{
 		// FieldType: DebugLogPtr
 		// FieldName: fp
+#pragma message("TODO - add support for SetLogDelegate")
 		return 0;
 	}
 	else
@@ -16249,8 +16482,9 @@ int Extension::LuaStaticColorD(lua::lua_State* state)
 			return -1;
 		}
 		double color = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::StaticColorD(deviceType, device, color);
-		return 0;
+		double result = ChromaAnimationAPI::StaticColorD(deviceType, device, color);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16287,8 +16521,9 @@ int Extension::LuaStopAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::StopAnimation(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::StopAnimation(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16308,8 +16543,9 @@ int Extension::LuaStopAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		double animationId = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::StopAnimationD(animationId);
-		return 0;
+		double result = ChromaAnimationAPI::StopAnimationD(animationId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16352,8 +16588,9 @@ int Extension::LuaStopAnimationNameD(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::StopAnimationNameD(path.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::StopAnimationNameD(path.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16406,8 +16643,9 @@ int Extension::LuaStopAnimationTypeD(lua::lua_State* state)
 			return -1;
 		}
 		double device = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::StopAnimationTypeD(deviceType, device);
-		return 0;
+		double result = ChromaAnimationAPI::StopAnimationTypeD(deviceType, device);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16450,8 +16688,9 @@ int Extension::LuaStopCompositeD(lua::lua_State* state)
 			return -1;
 		}
 		string name = WrapperXLua::lua_tostringW(state, 1);
-		ChromaAnimationAPI::StopCompositeD(name.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::StopCompositeD(name.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16530,8 +16769,9 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16627,8 +16867,9 @@ int Extension::LuaSubtractNonZeroAllKeysAllFramesOffsetNameD(lua::lua_State* sta
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::SubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16737,8 +16978,9 @@ int Extension::LuaSubtractNonZeroAllKeysOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::SubtractNonZeroAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
-		return 0;
+		double result = ChromaAnimationAPI::SubtractNonZeroAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16817,8 +17059,9 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesNameD(lua::lua_State* sta
 			return -1;
 		}
 		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
-		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
-		return 0;
+		double result = ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation.c_str(), targetAnimation.c_str());
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -16914,8 +17157,9 @@ int Extension::LuaSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(lua::lua_Stat
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 3);
-		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
-		return 0;
+		double result = ChromaAnimationAPI::SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17026,8 +17270,9 @@ int Extension::LuaSubtractNonZeroTargetAllKeysOffsetNameD(lua::lua_State* state)
 			return -1;
 		}
 		double offset = WrapperXLua::lua_tonumberW(state, 4);
-		ChromaAnimationAPI::SubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
-		return 0;
+		double result = ChromaAnimationAPI::SubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, offset);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17106,8 +17351,9 @@ int Extension::LuaTrimEndFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double lastFrameId = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::TrimEndFramesNameD(path.c_str(), lastFrameId);
-		return 0;
+		double result = ChromaAnimationAPI::TrimEndFramesNameD(path.c_str(), lastFrameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17184,8 +17430,9 @@ int Extension::LuaTrimFrameNameD(lua::lua_State* state)
 			return -1;
 		}
 		double frameId = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::TrimFrameNameD(path.c_str(), frameId);
-		return 0;
+		double result = ChromaAnimationAPI::TrimFrameNameD(path.c_str(), frameId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17264,8 +17511,9 @@ int Extension::LuaTrimStartFramesNameD(lua::lua_State* state)
 			return -1;
 		}
 		double numberOfFrames = WrapperXLua::lua_tonumberW(state, 2);
-		ChromaAnimationAPI::TrimStartFramesNameD(path.c_str(), numberOfFrames);
-		return 0;
+		double result = ChromaAnimationAPI::TrimStartFramesNameD(path.c_str(), numberOfFrames);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17296,8 +17544,9 @@ int Extension::LuaUninitD(lua::lua_State* state)
 {
 	if (state)
 	{
-		ChromaAnimationAPI::UninitD();
-		return 0;
+		double result = ChromaAnimationAPI::UninitD();
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17318,8 +17567,9 @@ int Extension::LuaUnloadAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		ChromaAnimationAPI::UnloadAnimation(animationId);
-		return 0;
+		int result = ChromaAnimationAPI::UnloadAnimation(animationId);
+		lua::lua_pushinteger(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17339,8 +17589,9 @@ int Extension::LuaUnloadAnimationD(lua::lua_State* state)
 			return -1;
 		}
 		double animationId = WrapperXLua::lua_tonumberW(state, 1);
-		ChromaAnimationAPI::UnloadAnimationD(animationId);
-		return 0;
+		double result = ChromaAnimationAPI::UnloadAnimationD(animationId);
+		lua::lua_pushnumber(state, result);
+		return 1;
 	}
 	else
 	{
@@ -17414,6 +17665,7 @@ int Extension::LuaUpdateFrame(lua::lua_State* state)
 		// FieldName: colors
 		// FieldType: int
 		// FieldName: length
+#pragma message("TODO - add support for UpdateFrame")
 		return 0;
 	}
 	else
