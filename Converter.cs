@@ -1541,6 +1541,7 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                     case "bool":
                     case "const char*":
                     case "int":
+                    case "const int*":
                     case "float":
                     case "double":
                         break;
@@ -1641,6 +1642,9 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                                 case "double":
                                     Output(swImplementation, "\t\tif (!WrapperXLua::lua_isnumberW(state, {0}))", indexArg);
                                     break;
+                                case "const int*":
+                                    Output(swImplementation, "\t\tif (!WrapperXLua::lua_istableW(state, {0}))", indexArg);
+                                    break;
                             }
                             Output(swImplementation, "{0}", "\t\t{");
                             Output(swImplementation, "\t\t\treturn -1;");
@@ -1677,6 +1681,29 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                             ++indexArg;
                         }
 
+                        indexArg = 1;
+                        foreach (MetaArgsCTF arg in args)
+                        {
+                            switch (arg.FieldType)
+                            {
+                                case "const int*":
+                                    Output(swImplementation, "\t\tint* {0} = new int[{1}];",
+                                        arg.FieldName,
+                                        args[indexArg].FieldName); //index is 1 based, assume next parameter is the size
+                                    Output(swImplementation, "\t\tfor (int i = 0; i < {0}; ++i)",
+                                        args[indexArg].FieldName); //index is 1 based, assume next parameter is the size
+                                    Output(swImplementation, "\t\t{0}", "{");
+                                    Output(swImplementation, "\t\t\t// copy integers from lua type");
+                                    Output(swImplementation, "\t\t\tWrapperXLua::lua_rawgetiW(state, {0}, i);",
+                                        indexArg);
+                                    Output(swImplementation, "\t\t\t{0}[i] = WrapperXLua::lua_tointegerW(state, -1);",
+                                        arg.FieldName);
+                                    Output(swImplementation, "\t\t{0}", "}");
+                                    break;
+                            }
+                            ++indexArg;
+                        }
+
                         switch (methodInfo.ReturnType)
                         {
                             case "bool":
@@ -1694,6 +1721,19 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                                     methodInfo.Name,
                                     GetCTFArgsForAPI(args));
                                 break;
+                        }
+
+                        indexArg = 1;
+                        foreach (MetaArgsCTF arg in args)
+                        {
+                            switch (arg.FieldType)
+                            {
+                                case "const int*":
+                                    Output(swImplementation, "\t\tdelete[] {0};",
+                                        arg.FieldName);
+                                    break;
+                            }
+                            ++indexArg;
                         }
                     }
                     else
