@@ -1694,7 +1694,7 @@ bool ChromaAnimationAPI::GetIsInitializedAPI()
                                         args[indexArg].FieldName); //index is 1 based, assume next parameter is the size
                                     Output(swImplementation, "\t\t{0}", "{");
                                     Output(swImplementation, "\t\t\t// copy integers from lua type");
-                                    Output(swImplementation, "\t\t\tWrapperXLua::lua_rawgetiW(state, {0}, i);",
+                                    Output(swImplementation, "\t\t\tWrapperXLua::lua_rawgetiW(state, {0}, i + 1);",
                                         indexArg);
                                     Output(swImplementation, "\t\t\t{0}[i] = WrapperXLua::lua_tointegerW(state, -1);",
                                         arg.FieldName);

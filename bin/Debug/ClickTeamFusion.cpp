@@ -4003,7 +4003,7 @@ int Extension::LuaCopyKeysColor(lua::lua_State* state)
 		for (int i = 0; i < size; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 4, i);
+			WrapperXLua::lua_rawgetiW(state, 4, i + 1);
 			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::CopyKeysColor(sourceAnimationId, targetAnimationId, frameId, keys, size);
@@ -4047,7 +4047,7 @@ int Extension::LuaCopyKeysColorAllFrames(lua::lua_State* state)
 		for (int i = 0; i < size; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::CopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, keys, size);
@@ -4091,7 +4091,7 @@ int Extension::LuaCopyKeysColorAllFramesName(lua::lua_State* state)
 		for (int i = 0; i < size; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::CopyKeysColorAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str(), keys, size);
@@ -4141,7 +4141,7 @@ int Extension::LuaCopyKeysColorName(lua::lua_State* state)
 		for (int i = 0; i < size; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 4, i);
+			WrapperXLua::lua_rawgetiW(state, 4, i + 1);
 			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::CopyKeysColorName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, keys, size);
@@ -4196,7 +4196,7 @@ int Extension::LuaCopyKeysColorOffset(lua::lua_State* state)
 		for (int i = 0; i < size; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 5, i);
+			WrapperXLua::lua_rawgetiW(state, 5, i + 1);
 			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::CopyKeysColorOffset(sourceAnimationId, targetAnimationId, sourceFrameId, targetFrameId, keys, size);
@@ -4251,7 +4251,7 @@ int Extension::LuaCopyKeysColorOffsetName(lua::lua_State* state)
 		for (int i = 0; i < size; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 5, i);
+			WrapperXLua::lua_rawgetiW(state, 5, i + 1);
 			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::CopyKeysColorOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), sourceFrameId, targetFrameId, keys, size);
@@ -15712,7 +15712,7 @@ int Extension::LuaSetKeysColor(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColor(animationId, frameId, rzkeys, keyCount, color);
@@ -15756,7 +15756,7 @@ int Extension::LuaSetKeysColorAllFrames(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorAllFrames(animationId, rzkeys, keyCount, color);
@@ -15800,7 +15800,7 @@ int Extension::LuaSetKeysColorAllFramesName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorAllFramesName(path.c_str(), rzkeys, keyCount, color);
@@ -15854,7 +15854,7 @@ int Extension::LuaSetKeysColorAllFramesRGB(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
@@ -15908,7 +15908,7 @@ int Extension::LuaSetKeysColorAllFramesRGBName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorAllFramesRGBName(path.c_str(), rzkeys, keyCount, red, green, blue);
@@ -15956,7 +15956,7 @@ int Extension::LuaSetKeysColorName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorName(path.c_str(), frameId, rzkeys, keyCount, color);
@@ -16015,7 +16015,7 @@ int Extension::LuaSetKeysColorRGB(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
@@ -16074,7 +16074,7 @@ int Extension::LuaSetKeysColorRGBName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysColorRGBName(path.c_str(), frameId, rzkeys, keyCount, red, green, blue);
@@ -16123,7 +16123,7 @@ int Extension::LuaSetKeysNonZeroColor(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysNonZeroColor(animationId, frameId, rzkeys, keyCount, color);
@@ -16167,7 +16167,7 @@ int Extension::LuaSetKeysNonZeroColorAllFrames(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysNonZeroColorAllFrames(animationId, rzkeys, keyCount, color);
@@ -16211,7 +16211,7 @@ int Extension::LuaSetKeysNonZeroColorAllFramesName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysNonZeroColorAllFramesName(path.c_str(), rzkeys, keyCount, color);
@@ -16260,7 +16260,7 @@ int Extension::LuaSetKeysNonZeroColorName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysNonZeroColorName(path.c_str(), frameId, rzkeys, keyCount, color);
@@ -16319,7 +16319,7 @@ int Extension::LuaSetKeysNonZeroColorRGB(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysNonZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
@@ -16378,7 +16378,7 @@ int Extension::LuaSetKeysNonZeroColorRGBName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysNonZeroColorRGBName(path.c_str(), frameId, rzkeys, keyCount, red, green, blue);
@@ -16427,7 +16427,7 @@ int Extension::LuaSetKeysZeroColor(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColor(animationId, frameId, rzkeys, keyCount, color);
@@ -16471,7 +16471,7 @@ int Extension::LuaSetKeysZeroColorAllFrames(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorAllFrames(animationId, rzkeys, keyCount, color);
@@ -16515,7 +16515,7 @@ int Extension::LuaSetKeysZeroColorAllFramesName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorAllFramesName(path.c_str(), rzkeys, keyCount, color);
@@ -16569,7 +16569,7 @@ int Extension::LuaSetKeysZeroColorAllFramesRGB(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
@@ -16623,7 +16623,7 @@ int Extension::LuaSetKeysZeroColorAllFramesRGBName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 2, i);
+			WrapperXLua::lua_rawgetiW(state, 2, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorAllFramesRGBName(path.c_str(), rzkeys, keyCount, red, green, blue);
@@ -16672,7 +16672,7 @@ int Extension::LuaSetKeysZeroColorName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorName(path.c_str(), frameId, rzkeys, keyCount, color);
@@ -16731,7 +16731,7 @@ int Extension::LuaSetKeysZeroColorRGB(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
@@ -16790,7 +16790,7 @@ int Extension::LuaSetKeysZeroColorRGBName(lua::lua_State* state)
 		for (int i = 0; i < keyCount; ++i)
 		{
 			// copy integers from lua type
-			WrapperXLua::lua_rawgetiW(state, 3, i);
+			WrapperXLua::lua_rawgetiW(state, 3, i + 1);
 			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
 		}
 		ChromaAnimationAPI::SetKeysZeroColorRGBName(path.c_str(), frameId, rzkeys, keyCount, red, green, blue);
