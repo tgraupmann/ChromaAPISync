@@ -724,6 +724,10 @@ namespace ChromaAPISync
             {
                 result = "IntPtr";
             }
+            else if (result == "ChromaSDK::APPINFOTYPE*")
+            {
+                result = "IntPtr";
+            }
             return result;
         }
 
@@ -811,6 +815,10 @@ namespace ChromaAPISync
                 result = "IntPtr";
             }
             else if (result == "DebugLogPtr")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "ChromaSDK::APPINFOTYPE*")
             {
                 result = "IntPtr";
             }
