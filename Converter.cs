@@ -2438,6 +2438,12 @@ namespace ChromaSDK
 {
     public class Keyboard
     {
+		//! Maximum number of rows in a keyboard.
+		public const int MAX_ROW = 6;
+
+		//! Maximum number of columns in a keyboard.
+		public const int MAX_COLUMN = 22;
+
         //! Definitions of keys.
         public enum RZKEY
         {
