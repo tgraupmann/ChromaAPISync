@@ -30,6 +30,8 @@ namespace ChromaAPISync
             new MetaOverride() { MethodName="CreateEffect", ArgName="effect", OverrideType="EFFECT_TYPE", CastType="int"},
             new MetaOverride() { MethodName="CreateEffect", ArgName="effectId", OverrideType="out FChromaSDKGuid", UseOut=true},
             new MetaOverride() { MethodName="GetFrame", ArgName="duration", OverrideType="out float", UseOut=true},
+            new MetaOverride() { MethodName="CoreInitSDK", ArgName="AppInfo", OverrideType="ref ChromaSDK.APPINFOTYPE", UseRef=true},
+            new MetaOverride() { MethodName="InitSDK", ArgName="AppInfo", OverrideType="ref ChromaSDK.APPINFOTYPE", UseRef=true},
         };
 
         #region Data
@@ -51,6 +53,7 @@ namespace ChromaAPISync
             public string ArgName = string.Empty;
             public string OverrideType = string.Empty;
             public string CastType = string.Empty;
+            public bool UseRef = false;
             public bool UseOut = false;
         }
 
@@ -596,24 +599,28 @@ namespace ChromaAPISync
                     }
                     if (null != argInfo.OverrideInfo)
                     {
-                        if (argInfo.OverrideInfo.UseOut)
+                        if (argInfo.OverrideInfo.UseRef)
                         {
-                            name = "out " + name;
+                            name = "ref " + LowercaseFirstLetter(name);
+                        }
+                        else if (argInfo.OverrideInfo.UseOut)
+                        {
+                            name = "out " + LowercaseFirstLetter(name);
                         }
                         else if (!string.IsNullOrEmpty(argInfo.OverrideInfo.OverrideType))
                         {
-                            name = string.Format("{0}{1}{2}{3}",
+                            name = LowercaseFirstLetter(string.Format("{0}{1}{2}{3}",
                                 string.IsNullOrEmpty(argInfo.OverrideInfo.CastType) ? "" : "(",
                                 argInfo.OverrideInfo.CastType,
                                 string.IsNullOrEmpty(argInfo.OverrideInfo.CastType) ? "" : ")",
-                                name);
+                                LowercaseFirstLetter(name)));
                         }
                     }
                     if (i > 0)
                     {
-                        name = " " + name;
+                        name = " " + LowercaseFirstLetter(name);
                     }
-                    parts[i] = name;
+                    parts[i] = LowercaseFirstLetter(name);
                 }
             }
             return string.Join(",", parts);
@@ -726,7 +733,7 @@ namespace ChromaAPISync
             }
             else if (result == "ChromaSDK::APPINFOTYPE*")
             {
-                result = "IntPtr";
+                result = "ref ChromaSDK.APPINFOTYPE";
             }
             return result;
         }
@@ -820,7 +827,7 @@ namespace ChromaAPISync
             }
             else if (result == "ChromaSDK::APPINFOTYPE*")
             {
-                result = "IntPtr";
+                result = "ref ChromaSDK.APPINFOTYPE";
             }
             return result;
         }
@@ -876,11 +883,11 @@ namespace ChromaAPISync
 
                     if (i == 0)
                     {
-                        parts[i] = strType + " " + name;
+                        parts[i] = strType + " " + LowercaseFirstLetter(name);
                     }
                     else
                     {
-                        parts[i] = " " + strType + " " + name;
+                        parts[i] = " " + strType + " " + LowercaseFirstLetter(name);
 
                     }
                 }
@@ -902,11 +909,11 @@ namespace ChromaAPISync
 
                     if (i == 0)
                     {
-                        parts[i] = strType + " " + name;
+                        parts[i] = strType + " " + LowercaseFirstLetter(name);
                     }
                     else
                     {
-                        parts[i] = " " + strType + " " + name;
+                        parts[i] = " " + strType + " " + LowercaseFirstLetter(name);
 
                     }
                 }
@@ -2436,7 +2443,6 @@ RZKEY_INVALID = 0xFFFF,             /*!< Invalid keys. */
 
         private const string HEADER_CSHARP =
 @"using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -2446,12 +2452,6 @@ namespace ChromaSDK
 {
     public class Keyboard
     {
-		//! Maximum number of rows in a keyboard.
-		public const int MAX_ROW = 6;
-
-		//! Maximum number of columns in a keyboard.
-		public const int MAX_COLUMN = 22;
-
         //! Definitions of keys.
         public enum RZKEY
         {
@@ -2588,6 +2588,26 @@ namespace ChromaSDK
         };
     }
 
+	[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+	public struct APPINFOTYPE
+	{
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+		public string Title; //TCHAR Title[256];
+
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1024)]
+		public string Description; //TCHAR Description[1024];
+
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+		public string Author_Name; //TCHAR Name[256];
+
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+		public string Author_Contact; //TCHAR Contact[256];
+
+		public UInt32 SupportedDevice; //DWORD SupportedDevice;
+
+		public UInt32 Category; //DWORD Category;
+	}
+
     [StructLayout(LayoutKind.Sequential)]
     public struct FChromaSDKGuid
     {
@@ -2718,6 +2738,14 @@ __UNITY_GET_STREAMING_PATH__
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
+
+                    if (methodInfo.Name == "CoreCreateEffect")
+                    {
+                        if (true)
+                        {
+
+                        }
+                    }
 
                     Output(swCSharp, "\t\t{0}", "/// <summary>");
 
