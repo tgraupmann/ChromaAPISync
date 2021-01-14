@@ -1955,6 +1955,10 @@
 	*/
 	static int LuaSetCurrentFrameNameD(lua::lua_State* state);
 	/*
+	Set the custom alpha flag on the color array
+	*/
+	static int LuaSetCustomColorFlag2D(lua::lua_State* state);
+	/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 		is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 		the animation id upon success. Returns -1 upon failure.
@@ -1964,6 +1968,19 @@
 	SetEffect will display the referenced effect id.
 	*/
 	static int LuaSetEffect(lua::lua_State* state);
+	/*
+	SetEffectCustom1D will display the referenced colors immediately
+	*/
+	static int LuaSetEffectCustom1D(lua::lua_State* state);
+	/*
+	SetEffectCustom2D will display the referenced colors immediately
+	*/
+	static int LuaSetEffectCustom2D(lua::lua_State* state);
+	/*
+	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+		immediately
+	*/
+	static int LuaSetEffectKeyboardCustom2D(lua::lua_State* state);
 	/*
 	When the idle animation is used, the named animation will play when no other 
 		animations are playing. Reference the animation by id.
@@ -2416,6 +2433,16 @@
 		failure.
 	*/
 	static int LuaUpdateFrame(lua::lua_State* state);
+	/*
+	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+		(in seconds). The `color` is expected to be an array of the dimensions 
+		for the `deviceType/device`. The `length` parameter is the size of the 
+		`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+		LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+		* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+		failure.
+	*/
+	static int LuaUpdateFrameName(lua::lua_State* state);
 	/*
 	When the idle animation flag is true, when no other animations are playing, 
 		the idle animation will be used. The idle animation will not be affected 

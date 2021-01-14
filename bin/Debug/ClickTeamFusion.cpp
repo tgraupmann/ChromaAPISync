@@ -3374,6 +3374,11 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_setglobal(lState, "SetCurrentFrameNameD");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetCurrentFrameNameD = SetCurrentFrameNameD");
 
+			// SetCustomColorFlag2D
+			lua::lua_pushcfunction(lState, Extension::LuaSetCustomColorFlag2D);
+			lua::lua_setglobal(lState, "SetCustomColorFlag2D");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetCustomColorFlag2D = SetCustomColorFlag2D");
+
 			// SetDevice
 			lua::lua_pushcfunction(lState, Extension::LuaSetDevice);
 			lua::lua_setglobal(lState, "SetDevice");
@@ -3383,6 +3388,21 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_pushcfunction(lState, Extension::LuaSetEffect);
 			lua::lua_setglobal(lState, "SetEffect");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetEffect = SetEffect");
+
+			// SetEffectCustom1D
+			lua::lua_pushcfunction(lState, Extension::LuaSetEffectCustom1D);
+			lua::lua_setglobal(lState, "SetEffectCustom1D");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetEffectCustom1D = SetEffectCustom1D");
+
+			// SetEffectCustom2D
+			lua::lua_pushcfunction(lState, Extension::LuaSetEffectCustom2D);
+			lua::lua_setglobal(lState, "SetEffectCustom2D");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetEffectCustom2D = SetEffectCustom2D");
+
+			// SetEffectKeyboardCustom2D
+			lua::lua_pushcfunction(lState, Extension::LuaSetEffectKeyboardCustom2D);
+			lua::lua_setglobal(lState, "SetEffectKeyboardCustom2D");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetEffectKeyboardCustom2D = SetEffectKeyboardCustom2D");
 
 			// SetIdleAnimation
 			lua::lua_pushcfunction(lState, Extension::LuaSetIdleAnimation);
@@ -3853,6 +3873,11 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_pushcfunction(lState, Extension::LuaUpdateFrame);
 			lua::lua_setglobal(lState, "UpdateFrame");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.UpdateFrame = UpdateFrame");
+
+			// UpdateFrameName
+			lua::lua_pushcfunction(lState, Extension::LuaUpdateFrameName);
+			lua::lua_setglobal(lState, "UpdateFrameName");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.UpdateFrameName = UpdateFrameName");
 
 			// UseIdleAnimation
 			lua::lua_pushcfunction(lState, Extension::LuaUseIdleAnimation);
@@ -16246,6 +16271,26 @@ int Extension::LuaSetCurrentFrameNameD(lua::lua_State* state)
 }
 
 /*
+	Set the custom alpha flag on the color array
+*/
+int Extension::LuaSetCustomColorFlag2D(lua::lua_State* state)
+{
+	if (state)
+	{
+		// FieldType: int
+		// FieldName: device
+		// FieldType: int*
+		// FieldName: colors
+#pragma message("TODO - add support for SetCustomColorFlag2D")
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 	the animation id upon success. Returns -1 upon failure.
@@ -16289,6 +16334,67 @@ int Extension::LuaSetEffect(lua::lua_State* state)
 		// FieldType: const ChromaSDK::FChromaSDKGuid&
 		// FieldName: effectId
 #pragma message("TODO - add support for SetEffect")
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	SetEffectCustom1D will display the referenced colors immediately
+*/
+int Extension::LuaSetEffectCustom1D(lua::lua_State* state)
+{
+	if (state)
+	{
+		// FieldType: const int
+		// FieldName: device
+		// FieldType: const int*
+		// FieldName: colors
+#pragma message("TODO - add support for SetEffectCustom1D")
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	SetEffectCustom2D will display the referenced colors immediately
+*/
+int Extension::LuaSetEffectCustom2D(lua::lua_State* state)
+{
+	if (state)
+	{
+		// FieldType: const int
+		// FieldName: device
+		// FieldType: const int*
+		// FieldName: colors
+#pragma message("TODO - add support for SetEffectCustom2D")
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+	immediately
+*/
+int Extension::LuaSetEffectKeyboardCustom2D(lua::lua_State* state)
+{
+	if (state)
+	{
+		// FieldType: const int
+		// FieldName: device
+		// FieldType: const int*
+		// FieldName: colors
+#pragma message("TODO - add support for SetEffectKeyboardCustom2D")
 		return 0;
 	}
 	else
@@ -19701,6 +19807,38 @@ int Extension::LuaUpdateFrame(lua::lua_State* state)
 		// FieldType: int
 		// FieldName: length
 #pragma message("TODO - add support for UpdateFrame")
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+	(in seconds). The `color` is expected to be an array of the dimensions 
+	for the `deviceType/device`. The `length` parameter is the size of the 
+	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+	failure.
+*/
+int Extension::LuaUpdateFrameName(lua::lua_State* state)
+{
+	if (state)
+	{
+		// FieldType: const char*
+		// FieldName: path
+		// FieldType: int
+		// FieldName: frameIndex
+		// FieldType: float
+		// FieldName: duration
+		// FieldType: int*
+		// FieldName: colors
+		// FieldType: int
+		// FieldName: length
+#pragma message("TODO - add support for UpdateFrameName")
 		return 0;
 	}
 	else

@@ -110,6 +110,7 @@ void NodeChromaSDK::_register_methods() {
 	//register_method((char*)"CoreCreateMousepadEffect", &NodeChromaSDK::CoreCreateMousepadEffect);
 	//register_method((char*)"CoreDeleteEffect", &NodeChromaSDK::CoreDeleteEffect);
 	register_method((char*)"CoreInit", &NodeChromaSDK::CoreInit);
+	//register_method((char*)"CoreInitSDK", &NodeChromaSDK::CoreInitSDK);
 	//register_method((char*)"CoreQueryDevice", &NodeChromaSDK::CoreQueryDevice);
 	//register_method((char*)"CoreSetEffect", &NodeChromaSDK::CoreSetEffect);
 	register_method((char*)"CoreUnInit", &NodeChromaSDK::CoreUnInit);
@@ -248,6 +249,7 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"HasAnimationLoopNameD", &NodeChromaSDK::HasAnimationLoopNameD);
 	register_method((char*)"Init", &NodeChromaSDK::Init);
 	register_method((char*)"InitD", &NodeChromaSDK::InitD);
+	//register_method((char*)"InitSDK", &NodeChromaSDK::InitSDK);
 	register_method((char*)"InsertDelay", &NodeChromaSDK::InsertDelay);
 	register_method((char*)"InsertDelayName", &NodeChromaSDK::InsertDelayName);
 	register_method((char*)"InsertDelayNameD", &NodeChromaSDK::InsertDelayNameD);
@@ -396,8 +398,12 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"SetCurrentFrame", &NodeChromaSDK::SetCurrentFrame);
 	register_method((char*)"SetCurrentFrameName", &NodeChromaSDK::SetCurrentFrameName);
 	register_method((char*)"SetCurrentFrameNameD", &NodeChromaSDK::SetCurrentFrameNameD);
+	//register_method((char*)"SetCustomColorFlag2D", &NodeChromaSDK::SetCustomColorFlag2D);
 	register_method((char*)"SetDevice", &NodeChromaSDK::SetDevice);
 	//register_method((char*)"SetEffect", &NodeChromaSDK::SetEffect);
+	register_method((char*)"SetEffectCustom1D", &NodeChromaSDK::SetEffectCustom1D);
+	register_method((char*)"SetEffectCustom2D", &NodeChromaSDK::SetEffectCustom2D);
+	register_method((char*)"SetEffectKeyboardCustom2D", &NodeChromaSDK::SetEffectKeyboardCustom2D);
 	register_method((char*)"SetIdleAnimation", &NodeChromaSDK::SetIdleAnimation);
 	register_method((char*)"SetIdleAnimationName", &NodeChromaSDK::SetIdleAnimationName);
 	register_method((char*)"SetKeyColor", &NodeChromaSDK::SetKeyColor);
@@ -492,6 +498,7 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"UnloadAnimationName", &NodeChromaSDK::UnloadAnimationName);
 	register_method((char*)"UnloadComposite", &NodeChromaSDK::UnloadComposite);
 	//register_method((char*)"UpdateFrame", &NodeChromaSDK::UpdateFrame);
+	//register_method((char*)"UpdateFrameName", &NodeChromaSDK::UpdateFrameName);
 	register_method((char*)"UseIdleAnimation", &NodeChromaSDK::UseIdleAnimation);
 	register_method((char*)"UseIdleAnimations", &NodeChromaSDK::UseIdleAnimations);
 	register_method((char*)"UsePreloading", &NodeChromaSDK::UsePreloading);
@@ -1524,6 +1531,14 @@ RZRESULT godot::NodeChromaSDK::CoreDeleteEffect(RZEFFECTID EffectId)
 RZRESULT godot::NodeChromaSDK::CoreInit()
 {
 	return ChromaAnimationAPI::CoreInit();
+}
+
+/*
+	Direct access to low level API.
+*/
+RZRESULT godot::NodeChromaSDK::CoreInitSDK(ChromaSDK::APPINFOTYPE* AppInfo)
+{
+	return ChromaAnimationAPI::CoreInitSDK(AppInfo);
 }
 
 /*
@@ -2753,6 +2768,16 @@ RZRESULT godot::NodeChromaSDK::Init()
 double godot::NodeChromaSDK::InitD()
 {
 	return ChromaAnimationAPI::InitD();
+}
+
+/*
+	Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+	indicates  success, otherwise failure. Many API methods auto initialize 
+	the ChromaSDK if not already initialized.
+*/
+RZRESULT godot::NodeChromaSDK::InitSDK(ChromaSDK::APPINFOTYPE* AppInfo)
+{
+	return ChromaAnimationAPI::InitSDK(AppInfo);
 }
 
 /*
@@ -4080,6 +4105,14 @@ double godot::NodeChromaSDK::SetCurrentFrameNameD(String path, double frameId)
 }
 
 /*
+	Set the custom alpha flag on the color array
+*/
+RZRESULT godot::NodeChromaSDK::SetCustomColorFlag2D(int device, int* colors)
+{
+	return ChromaAnimationAPI::SetCustomColorFlag2D(device, colors);
+}
+
+/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 	the animation id upon success. Returns -1 upon failure.
@@ -4095,6 +4128,31 @@ int godot::NodeChromaSDK::SetDevice(int animationId, int deviceType, int device)
 RZRESULT godot::NodeChromaSDK::SetEffect(const ChromaSDK::FChromaSDKGuid& effectId)
 {
 	return ChromaAnimationAPI::SetEffect(effectId);
+}
+
+/*
+	SetEffectCustom1D will display the referenced colors immediately
+*/
+RZRESULT godot::NodeChromaSDK::SetEffectCustom1D(const int device, Array colors)
+{
+	return ChromaAnimationAPI::SetEffectCustom1D(device, colors);
+}
+
+/*
+	SetEffectCustom2D will display the referenced colors immediately
+*/
+RZRESULT godot::NodeChromaSDK::SetEffectCustom2D(const int device, Array colors)
+{
+	return ChromaAnimationAPI::SetEffectCustom2D(device, colors);
+}
+
+/*
+	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+	immediately
+*/
+RZRESULT godot::NodeChromaSDK::SetEffectKeyboardCustom2D(const int device, Array colors)
+{
+	return ChromaAnimationAPI::SetEffectKeyboardCustom2D(device, colors);
 }
 
 /*
@@ -5121,6 +5179,20 @@ void godot::NodeChromaSDK::UnloadComposite(String name)
 int godot::NodeChromaSDK::UpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length)
 {
 	return ChromaAnimationAPI::UpdateFrame(animationId, frameIndex, duration, colors, length);
+}
+
+/*
+	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+	(in seconds). The `color` is expected to be an array of the dimensions 
+	for the `deviceType/device`. The `length` parameter is the size of the 
+	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+	failure.
+*/
+int godot::NodeChromaSDK::UpdateFrameName(String path, int frameIndex, float duration, int* colors, int length)
+{
+	return ChromaAnimationAPI::UpdateFrameName(path.utf8().get_data(), frameIndex, duration, colors, length);
 }
 
 /*

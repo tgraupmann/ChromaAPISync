@@ -110,6 +110,7 @@
 * [CoreCreateMousepadEffect](#CoreCreateMousepadEffect)
 * [CoreDeleteEffect](#CoreDeleteEffect)
 * [CoreInit](#CoreInit)
+* [CoreInitSDK](#CoreInitSDK)
 * [CoreQueryDevice](#CoreQueryDevice)
 * [CoreSetEffect](#CoreSetEffect)
 * [CoreUnInit](#CoreUnInit)
@@ -248,6 +249,7 @@
 * [HasAnimationLoopNameD](#HasAnimationLoopNameD)
 * [Init](#Init)
 * [InitD](#InitD)
+* [InitSDK](#InitSDK)
 * [InsertDelay](#InsertDelay)
 * [InsertDelayName](#InsertDelayName)
 * [InsertDelayNameD](#InsertDelayNameD)
@@ -396,8 +398,12 @@
 * [SetCurrentFrame](#SetCurrentFrame)
 * [SetCurrentFrameName](#SetCurrentFrameName)
 * [SetCurrentFrameNameD](#SetCurrentFrameNameD)
+* [SetCustomColorFlag2D](#SetCustomColorFlag2D)
 * [SetDevice](#SetDevice)
 * [SetEffect](#SetEffect)
+* [SetEffectCustom1D](#SetEffectCustom1D)
+* [SetEffectCustom2D](#SetEffectCustom2D)
+* [SetEffectKeyboardCustom2D](#SetEffectKeyboardCustom2D)
 * [SetIdleAnimation](#SetIdleAnimation)
 * [SetIdleAnimationName](#SetIdleAnimationName)
 * [SetKeyColor](#SetKeyColor)
@@ -492,6 +498,7 @@
 * [UnloadAnimationName](#UnloadAnimationName)
 * [UnloadComposite](#UnloadComposite)
 * [UpdateFrame](#UpdateFrame)
+* [UpdateFrameName](#UpdateFrameName)
 * [UseIdleAnimation](#UseIdleAnimation)
 * [UseIdleAnimations](#UseIdleAnimations)
 * [UsePreloading](#UsePreloading)
@@ -1704,7 +1711,7 @@ double result = UnityNativeChromaSDK.CopyZeroTargetAllKeysAllFramesNameD(string 
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateChromaLinkEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateChromaLinkEffect(int effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1715,7 +1722,7 @@ int result = UnityNativeChromaSDK.CoreCreateChromaLinkEffect(int Effect, IntPtr 
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateEffect(Guid DeviceId, EFFECT_TYPE Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateEffect(Guid deviceId, EFFECT_TYPE effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1726,7 +1733,7 @@ int result = UnityNativeChromaSDK.CoreCreateEffect(Guid DeviceId, EFFECT_TYPE Ef
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateHeadsetEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateHeadsetEffect(int effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1737,7 +1744,7 @@ int result = UnityNativeChromaSDK.CoreCreateHeadsetEffect(int Effect, IntPtr pPa
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateKeyboardEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateKeyboardEffect(int effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1748,7 +1755,7 @@ int result = UnityNativeChromaSDK.CoreCreateKeyboardEffect(int Effect, IntPtr pP
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateKeypadEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateKeypadEffect(int effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1759,7 +1766,7 @@ int result = UnityNativeChromaSDK.CoreCreateKeypadEffect(int Effect, IntPtr pPar
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateMouseEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateMouseEffect(int effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1770,7 +1777,7 @@ int result = UnityNativeChromaSDK.CoreCreateMouseEffect(int Effect, IntPtr pPara
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreCreateMousepadEffect(int Effect, IntPtr pParam, out Guid pEffectId);
+int result = UnityNativeChromaSDK.CoreCreateMousepadEffect(int effect, IntPtr pParam, out Guid pEffectId);
 ```
 
 ---
@@ -1781,7 +1788,7 @@ int result = UnityNativeChromaSDK.CoreCreateMousepadEffect(int Effect, IntPtr pP
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreDeleteEffect(Guid EffectId);
+int result = UnityNativeChromaSDK.CoreDeleteEffect(Guid effectId);
 ```
 
 ---
@@ -1797,13 +1804,24 @@ int result = UnityNativeChromaSDK.CoreInit();
 
 ---
 
+<a name="CoreInitSDK"></a>
+**CoreInitSDK**
+
+Direct access to low level API.
+
+```charp
+int result = UnityNativeChromaSDK.CoreInitSDK(ref ChromaSDK.APPINFOTYPE appInfo);
+```
+
+---
+
 <a name="CoreQueryDevice"></a>
 **CoreQueryDevice**
 
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreQueryDevice(Guid DeviceId, out DEVICE_INFO_TYPE DeviceInfo);
+int result = UnityNativeChromaSDK.CoreQueryDevice(Guid deviceId, out DEVICE_INFO_TYPE deviceInfo);
 ```
 
 ---
@@ -1814,7 +1832,7 @@ int result = UnityNativeChromaSDK.CoreQueryDevice(Guid DeviceId, out DEVICE_INFO
 Direct access to low level API.
 
 ```charp
-int result = UnityNativeChromaSDK.CoreSetEffect(Guid EffectId);
+int result = UnityNativeChromaSDK.CoreSetEffect(Guid effectId);
 ```
 
 ---
@@ -3436,6 +3454,19 @@ D suffix for limited data types.
 
 ```charp
 double result = UnityNativeChromaSDK.InitD();
+```
+
+---
+
+<a name="InitSDK"></a>
+**InitSDK**
+
+Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+indicates  success, otherwise failure. Many API methods auto initialize 
+the ChromaSDK if not already initialized.
+
+```charp
+int result = UnityNativeChromaSDK.InitSDK(ref ChromaSDK.APPINFOTYPE appInfo);
 ```
 
 ---
@@ -5208,6 +5239,17 @@ double result = UnityNativeChromaSDK.SetCurrentFrameNameD(string path, double fr
 
 ---
 
+<a name="SetCustomColorFlag2D"></a>
+**SetCustomColorFlag2D**
+
+Set the custom alpha flag on the color array
+
+```charp
+int result = UnityNativeChromaSDK.SetCustomColorFlag2D(int device, int[] colors);
+```
+
+---
+
 <a name="SetDevice"></a>
 **SetDevice**
 
@@ -5228,6 +5270,40 @@ SetEffect will display the referenced effect id.
 
 ```charp
 int result = UnityNativeChromaSDK.SetEffect(Guid effectId);
+```
+
+---
+
+<a name="SetEffectCustom1D"></a>
+**SetEffectCustom1D**
+
+SetEffectCustom1D will display the referenced colors immediately
+
+```charp
+int result = UnityNativeChromaSDK.SetEffectCustom1D(int device, int[] colors);
+```
+
+---
+
+<a name="SetEffectCustom2D"></a>
+**SetEffectCustom2D**
+
+SetEffectCustom2D will display the referenced colors immediately
+
+```charp
+int result = UnityNativeChromaSDK.SetEffectCustom2D(int device, int[] colors);
+```
+
+---
+
+<a name="SetEffectKeyboardCustom2D"></a>
+**SetEffectKeyboardCustom2D**
+
+SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+immediately
+
+```charp
+int result = UnityNativeChromaSDK.SetEffectKeyboardCustom2D(int device, int[] colors);
 ```
 
 ---
@@ -6338,6 +6414,23 @@ failure.
 
 ```charp
 int result = UnityNativeChromaSDK.UpdateFrame(int animationId, int frameIndex, float duration, int[] colors, int length);
+```
+
+---
+
+<a name="UpdateFrameName"></a>
+**UpdateFrameName**
+
+Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+(in seconds). The `color` is expected to be an array of the dimensions 
+for the `deviceType/device`. The `length` parameter is the size of the 
+`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+failure.
+
+```charp
+int result = UnityNativeChromaSDK.UpdateFrameName(string path, int frameIndex, float duration, int[] colors, int length);
 ```
 
 ---

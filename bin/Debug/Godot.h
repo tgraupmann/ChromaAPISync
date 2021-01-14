@@ -637,6 +637,11 @@ RZRESULT CoreInit();
 /*
 	Direct access to low level API.
 */
+RZRESULT CoreInitSDK(
+	ChromaSDK::APPINFOTYPE* AppInfo);
+/*
+	Direct access to low level API.
+*/
 RZRESULT CoreQueryDevice(
 	RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 /*
@@ -1403,6 +1408,13 @@ RZRESULT Init();
 	D suffix for limited data types.
 */
 double InitD();
+/*
+	Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+	indicates  success, otherwise failure. Many API methods auto initialize 
+	the ChromaSDK if not already initialized.
+*/
+RZRESULT InitSDK(
+	ChromaSDK::APPINFOTYPE* AppInfo);
 /*
 	Insert an animation delay by duplicating the frame by the delay number of 
 	times. Animation is referenced by id.
@@ -2243,6 +2255,11 @@ void SetCurrentFrameName(
 double SetCurrentFrameNameD(
 	String path, double frameId);
 /*
+	Set the custom alpha flag on the color array
+*/
+RZRESULT SetCustomColorFlag2D(
+	int device, int* colors);
+/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 	the animation id upon success. Returns -1 upon failure.
@@ -2254,6 +2271,22 @@ int SetDevice(
 */
 RZRESULT SetEffect(
 	const ChromaSDK::FChromaSDKGuid& effectId);
+/*
+	SetEffectCustom1D will display the referenced colors immediately
+*/
+RZRESULT SetEffectCustom1D(
+	const int device, Array colors);
+/*
+	SetEffectCustom2D will display the referenced colors immediately
+*/
+RZRESULT SetEffectCustom2D(
+	const int device, Array colors);
+/*
+	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+	immediately
+*/
+RZRESULT SetEffectKeyboardCustom2D(
+	const int device, Array colors);
 /*
 	When the idle animation is used, the named animation will play when no other 
 	animations are playing. Reference the animation by id.
@@ -2784,6 +2817,17 @@ void UnloadComposite(String name);
 */
 int UpdateFrame(
 	int animationId, int frameIndex, float duration, int* colors, int length);
+/*
+	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+	(in seconds). The `color` is expected to be an array of the dimensions 
+	for the `deviceType/device`. The `length` parameter is the size of the 
+	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+	failure.
+*/
+int UpdateFrameName(
+	String path, int frameIndex, float duration, int* colors, int length);
 /*
 	When the idle animation flag is true, when no other animations are playing, 
 	the idle animation will be used. The idle animation will not be affected 

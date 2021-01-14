@@ -554,6 +554,10 @@ typedef RZRESULT	(*PLUGIN_CORE_INIT)();
 /*
 	Direct access to low level API.
 */
+typedef RZRESULT	(*PLUGIN_CORE_INIT_SDK)(ChromaSDK::APPINFOTYPE* AppInfo);
+/*
+	Direct access to low level API.
+*/
 typedef RZRESULT	(*PLUGIN_CORE_QUERY_DEVICE)(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 /*
 	Direct access to low level API.
@@ -1228,6 +1232,12 @@ typedef RZRESULT	(*PLUGIN_INIT)();
 	D suffix for limited data types.
 */
 typedef double		(*PLUGIN_INIT_D)();
+/*
+	Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+	indicates  success, otherwise failure. Many API methods auto initialize 
+	the ChromaSDK if not already initialized.
+*/
+typedef RZRESULT	(*PLUGIN_INIT_SDK)(ChromaSDK::APPINFOTYPE* AppInfo);
 /*
 	Insert an animation delay by duplicating the frame by the delay number of 
 	times. Animation is referenced by id.
@@ -1961,6 +1971,10 @@ typedef void		(*PLUGIN_SET_CURRENT_FRAME_NAME)(const char* path, int frameId);
 */
 typedef double		(*PLUGIN_SET_CURRENT_FRAME_NAME_D)(const char* path, double frameId);
 /*
+	Set the custom alpha flag on the color array
+*/
+typedef RZRESULT	(*PLUGIN_SET_CUSTOM_COLOR_FLAG_2D_)(int device, int* colors);
+/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 	the animation id upon success. Returns -1 upon failure.
@@ -1970,6 +1984,19 @@ typedef int			(*PLUGIN_SET_DEVICE)(int animationId, int deviceType, int device);
 	SetEffect will display the referenced effect id.
 */
 typedef RZRESULT	(*PLUGIN_SET_EFFECT)(const ChromaSDK::FChromaSDKGuid& effectId);
+/*
+	SetEffectCustom1D will display the referenced colors immediately
+*/
+typedef RZRESULT	(*PLUGIN_SET_EFFECT_CUSTOM_1D_)(const int device, const int* colors);
+/*
+	SetEffectCustom2D will display the referenced colors immediately
+*/
+typedef RZRESULT	(*PLUGIN_SET_EFFECT_CUSTOM_2D_)(const int device, const int* colors);
+/*
+	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+	immediately
+*/
+typedef RZRESULT	(*PLUGIN_SET_EFFECT_KEYBOARD_CUSTOM_2D_)(const int device, const int* colors);
 /*
 	When the idle animation is used, the named animation will play when no other 
 	animations are playing. Reference the animation by id.
@@ -2422,6 +2449,16 @@ typedef void		(*PLUGIN_UNLOAD_COMPOSITE)(const char* name);
 	failure.
 */
 typedef int			(*PLUGIN_UPDATE_FRAME)(int animationId, int frameIndex, float duration, int* colors, int length);
+/*
+	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+	(in seconds). The `color` is expected to be an array of the dimensions 
+	for the `deviceType/device`. The `length` parameter is the size of the 
+	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+	failure.
+*/
+typedef int			(*PLUGIN_UPDATE_FRAME_NAME)(const char* path, int frameIndex, float duration, int* colors, int length);
 /*
 	When the idle animation flag is true, when no other animations are playing, 
 	the idle animation will be used. The idle animation will not be affected 
@@ -2994,6 +3031,10 @@ namespace ChromaSDK
 			Direct access to low level API.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_INIT, CoreInit);
+		/*
+			Direct access to low level API.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_INIT_SDK, CoreInitSDK);
 		/*
 			Direct access to low level API.
 		*/
@@ -3671,6 +3712,12 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_INIT_D, InitD);
+		/*
+			Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+			indicates  success, otherwise failure. Many API methods auto initialize 
+			the ChromaSDK if not already initialized.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_INIT_SDK, InitSDK);
 		/*
 			Insert an animation delay by duplicating the frame by the delay number of 
 			times. Animation is referenced by id.
@@ -4404,6 +4451,10 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_CURRENT_FRAME_NAME_D, SetCurrentFrameNameD);
 		/*
+			Set the custom alpha flag on the color array
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_CUSTOM_COLOR_FLAG_2D_, SetCustomColorFlag2D);
+		/*
 			Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 			is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 			the animation id upon success. Returns -1 upon failure.
@@ -4413,6 +4464,19 @@ namespace ChromaSDK
 			SetEffect will display the referenced effect id.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_EFFECT, SetEffect);
+		/*
+			SetEffectCustom1D will display the referenced colors immediately
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_EFFECT_CUSTOM_1D_, SetEffectCustom1D);
+		/*
+			SetEffectCustom2D will display the referenced colors immediately
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_EFFECT_CUSTOM_2D_, SetEffectCustom2D);
+		/*
+			SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+			immediately
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_EFFECT_KEYBOARD_CUSTOM_2D_, SetEffectKeyboardCustom2D);
 		/*
 			When the idle animation is used, the named animation will play when no other 
 			animations are playing. Reference the animation by id.
@@ -4865,6 +4929,16 @@ namespace ChromaSDK
 			failure.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_UPDATE_FRAME, UpdateFrame);
+		/*
+			Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+			(in seconds). The `color` is expected to be an array of the dimensions 
+			for the `deviceType/device`. The `length` parameter is the size of the 
+			`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+			LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+			* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+			failure.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_UPDATE_FRAME_NAME, UpdateFrameName);
 		/*
 			When the idle animation flag is true, when no other animations are playing, 
 			the idle animation will be used. The idle animation will not be affected 

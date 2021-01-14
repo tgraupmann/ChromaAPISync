@@ -658,6 +658,11 @@ interface JChromaLib extends Library {
 	/*
 	Direct access to low level API.
 	*/
+	/// EXPORT_API RZRESULT PluginCoreInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
+	int PluginCoreInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
+	/*
+	Direct access to low level API.
+	*/
 	/// EXPORT_API RZRESULT PluginCoreQueryDevice(RZDEVICEID DeviceId, ChromaSDK::DEVICE_INFO_TYPE& DeviceInfo);
 	int PluginCoreQueryDevice(GUIDStruct DeviceId, DeviceInfos.DeviceInfosStruct DeviceInfo);
 	/*
@@ -1470,6 +1475,13 @@ interface JChromaLib extends Library {
 	*/
 	/// EXPORT_API double PluginInitD();
 	double PluginInitD();
+	/*
+	Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+	indicates  success, otherwise failure. Many API methods auto initialize 
+	the ChromaSDK if not already initialized.
+	*/
+	/// EXPORT_API RZRESULT PluginInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
+	int PluginInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
 	/*
 	Insert an animation delay by duplicating the frame by the delay number of 
 	times. Animation is referenced by id.
@@ -2351,6 +2363,11 @@ interface JChromaLib extends Library {
 	/// EXPORT_API double PluginSetCurrentFrameNameD(const char* path, double frameId);
 	double PluginSetCurrentFrameNameD(String path, double frameId);
 	/*
+	Set the custom alpha flag on the color array
+	*/
+	/// EXPORT_API RZRESULT PluginSetCustomColorFlag2D(int device, int* colors);
+	int PluginSetCustomColorFlag2D(int device, Pointer colors);
+	/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
 	the animation id upon success. Returns -1 upon failure.
@@ -2362,6 +2379,22 @@ interface JChromaLib extends Library {
 	*/
 	/// EXPORT_API RZRESULT PluginSetEffect(const ChromaSDK::FChromaSDKGuid& effectId);
 	int PluginSetEffect(GUIDStruct effectId);
+	/*
+	SetEffectCustom1D will display the referenced colors immediately
+	*/
+	/// EXPORT_API RZRESULT PluginSetEffectCustom1D(const int device, const int* colors);
+	int PluginSetEffectCustom1D(const int device, Pointer colors);
+	/*
+	SetEffectCustom2D will display the referenced colors immediately
+	*/
+	/// EXPORT_API RZRESULT PluginSetEffectCustom2D(const int device, const int* colors);
+	int PluginSetEffectCustom2D(const int device, Pointer colors);
+	/*
+	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+	immediately
+	*/
+	/// EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(const int device, const int* colors);
+	int PluginSetEffectKeyboardCustom2D(const int device, Pointer colors);
 	/*
 	When the idle animation is used, the named animation will play when no other 
 	animations are playing. Reference the animation by id.
@@ -2908,6 +2941,17 @@ interface JChromaLib extends Library {
 	*/
 	/// EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length);
 	int PluginUpdateFrame(int animationId, int frameIndex, float duration, Pointer colors, int length);
+	/*
+	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+	(in seconds). The `color` is expected to be an array of the dimensions 
+	for the `deviceType/device`. The `length` parameter is the size of the 
+	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+	failure.
+	*/
+	/// EXPORT_API int PluginUpdateFrameName(const char* path, int frameIndex, float duration, int* colors, int length);
+	int PluginUpdateFrameName(String path, int frameIndex, float duration, Pointer colors, int length);
 	/*
 	When the idle animation flag is true, when no other animations are playing, 
 	the idle animation will be used. The idle animation will not be affected 

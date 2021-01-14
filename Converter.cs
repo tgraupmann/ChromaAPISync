@@ -2269,7 +2269,9 @@ RZKEY_INVALID = 0xFFFF,             /*!< Invalid keys. */
             }
         }
 
-        private const string HEADER_UNITY_INCLUDES = @"using UnityEngine;";
+        private const string HEADER_UNITY_INCLUDES = @"
+using System.Collections.Generic;
+using UnityEngine;";
 
         private const string HEADER_UNITY_DLL_NAME = @"
 #if PLATFORM_XBOXONE
@@ -2446,7 +2448,7 @@ RZKEY_INVALID = 0xFFFF,             /*!< Invalid keys. */
         /// <returns></returns>
         public static string GetStreamingPath(string animation)
         {
-            return string.Format(""{0}/{1}"", Application.streamingAssetsPath, animation);
+            return string.Format(""{0}/{1}"", _sStreamingAssetPath, animation);
         }";
 
         private const string HEADER_CSHARP =
@@ -2900,6 +2902,8 @@ __UNITY_GET_STREAMING_PATH__
                 Output(swUnity, "");
 
                 Output(swUnity, "\t\t#region Public API Methods");
+
+                Output(swUnity, "\t\tpublic static string _sStreamingAssetPath = string.Empty;");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {

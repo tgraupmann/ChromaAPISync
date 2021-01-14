@@ -107,6 +107,7 @@
 * [PluginCoreCreateMousepadEffect](#PluginCoreCreateMousepadEffect)
 * [PluginCoreDeleteEffect](#PluginCoreDeleteEffect)
 * [PluginCoreInit](#PluginCoreInit)
+* [PluginCoreInitSDK](#PluginCoreInitSDK)
 * [PluginCoreQueryDevice](#PluginCoreQueryDevice)
 * [PluginCoreSetEffect](#PluginCoreSetEffect)
 * [PluginCoreUnInit](#PluginCoreUnInit)
@@ -245,6 +246,7 @@
 * [PluginHasAnimationLoopNameD](#PluginHasAnimationLoopNameD)
 * [PluginInit](#PluginInit)
 * [PluginInitD](#PluginInitD)
+* [PluginInitSDK](#PluginInitSDK)
 * [PluginInsertDelay](#PluginInsertDelay)
 * [PluginInsertDelayName](#PluginInsertDelayName)
 * [PluginInsertDelayNameD](#PluginInsertDelayNameD)
@@ -393,8 +395,12 @@
 * [PluginSetCurrentFrame](#PluginSetCurrentFrame)
 * [PluginSetCurrentFrameName](#PluginSetCurrentFrameName)
 * [PluginSetCurrentFrameNameD](#PluginSetCurrentFrameNameD)
+* [PluginSetCustomColorFlag2D](#PluginSetCustomColorFlag2D)
 * [PluginSetDevice](#PluginSetDevice)
 * [PluginSetEffect](#PluginSetEffect)
+* [PluginSetEffectCustom1D](#PluginSetEffectCustom1D)
+* [PluginSetEffectCustom2D](#PluginSetEffectCustom2D)
+* [PluginSetEffectKeyboardCustom2D](#PluginSetEffectKeyboardCustom2D)
 * [PluginSetIdleAnimation](#PluginSetIdleAnimation)
 * [PluginSetIdleAnimationName](#PluginSetIdleAnimationName)
 * [PluginSetKeyColor](#PluginSetKeyColor)
@@ -489,6 +495,7 @@
 * [PluginUnloadAnimationName](#PluginUnloadAnimationName)
 * [PluginUnloadComposite](#PluginUnloadComposite)
 * [PluginUpdateFrame](#PluginUpdateFrame)
+* [PluginUpdateFrameName](#PluginUpdateFrameName)
 * [PluginUseIdleAnimation](#PluginUseIdleAnimation)
 * [PluginUseIdleAnimations](#PluginUseIdleAnimations)
 * [PluginUsePreloading](#PluginUsePreloading)
@@ -2340,6 +2347,22 @@ EXPORT_API RZRESULT PluginCoreInit();
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::CoreInit();
+```
+
+---
+<a name="PluginCoreInitSDK"></a>
+**PluginCoreInitSDK**
+
+Direct access to low level API.
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginCoreInitSDK(
+	ChromaSDK::APPINFOTYPE* AppInfo);
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::CoreInitSDK(
+	ChromaSDK::APPINFOTYPE* AppInfo);
 ```
 
 ---
@@ -4609,6 +4632,24 @@ EXPORT_API double PluginInitD();
 
 // Class Plugin
 double result = ChromaAnimationAPI::InitD();
+```
+
+---
+<a name="PluginInitSDK"></a>
+**PluginInitSDK**
+
+Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
+indicates  success, otherwise failure. Many API methods auto initialize 
+the ChromaSDK if not already initialized.
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginInitSDK(
+	ChromaSDK::APPINFOTYPE* AppInfo);
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::InitSDK(
+	ChromaSDK::APPINFOTYPE* AppInfo);
 ```
 
 ---
@@ -7048,6 +7089,22 @@ double result = ChromaAnimationAPI::SetCurrentFrameNameD(
 ```
 
 ---
+<a name="PluginSetCustomColorFlag2D"></a>
+**PluginSetCustomColorFlag2D**
+
+Set the custom alpha flag on the color array
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginSetCustomColorFlag2D(
+	int device, int* colors);
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::SetCustomColorFlag2D(
+	int device, int* colors);
+```
+
+---
 <a name="PluginSetDevice"></a>
 **PluginSetDevice**
 
@@ -7079,6 +7136,55 @@ EXPORT_API RZRESULT PluginSetEffect(
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::SetEffect(
 	const ChromaSDK::FChromaSDKGuid& effectId);
+```
+
+---
+<a name="PluginSetEffectCustom1D"></a>
+**PluginSetEffectCustom1D**
+
+SetEffectCustom1D will display the referenced colors immediately
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginSetEffectCustom1D(
+	const int device, const int* colors);
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::SetEffectCustom1D(
+	const int device, const int* colors);
+```
+
+---
+<a name="PluginSetEffectCustom2D"></a>
+**PluginSetEffectCustom2D**
+
+SetEffectCustom2D will display the referenced colors immediately
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginSetEffectCustom2D(
+	const int device, const int* colors);
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::SetEffectCustom2D(
+	const int device, const int* colors);
+```
+
+---
+<a name="PluginSetEffectKeyboardCustom2D"></a>
+**PluginSetEffectKeyboardCustom2D**
+
+SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
+immediately
+
+```C++
+// DLL Interface
+EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(
+	const int device, const int* colors);
+
+// Class Plugin
+RZRESULT result = ChromaAnimationAPI::SetEffectKeyboardCustom2D(
+	const int device, const int* colors);
 ```
 
 ---
@@ -8649,6 +8755,28 @@ EXPORT_API int PluginUpdateFrame(
 // Class Plugin
 int result = ChromaAnimationAPI::UpdateFrame(
 	int animationId, int frameIndex, float duration, int* colors, int length);
+```
+
+---
+<a name="PluginUpdateFrameName"></a>
+**PluginUpdateFrameName**
+
+Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
+(in seconds). The `color` is expected to be an array of the dimensions 
+for the `deviceType/device`. The `length` parameter is the size of the 
+`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
+LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
+* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
+failure.
+
+```C++
+// DLL Interface
+EXPORT_API int PluginUpdateFrameName(
+	const char* path, int frameIndex, float duration, int* colors, int length);
+
+// Class Plugin
+int result = ChromaAnimationAPI::UpdateFrameName(
+	const char* path, int frameIndex, float duration, int* colors, int length);
 ```
 
 ---
