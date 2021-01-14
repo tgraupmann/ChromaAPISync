@@ -647,7 +647,11 @@ namespace ChromaAPISync
         {
             // this is for private methods
             string result = TrimArgType(strType);
-            if (result == "int*")
+            if (result == "const int")
+            {
+                result = "int";
+            }
+            else if (result == "int*")
             {
                 result = "int[]";
             }
@@ -757,7 +761,11 @@ namespace ChromaAPISync
         {
             // this is for public methods
             string result = TrimArgType(strType);
-            if (result == "int*")
+            if (result == "const int")
+            {
+                result = "int";
+            }
+            else if (result == "int*")
             {
                 result = "int[]";
             }
