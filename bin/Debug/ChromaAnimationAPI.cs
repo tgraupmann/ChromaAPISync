@@ -4729,6 +4729,17 @@ namespace ChromaSDK
 			return result;
 		}
 		/// <summary>
+		/// Set animation key by row and column to a static color for the given frame. 
+		///
+		/// </summary>
+		public static void SetKeyRowColumnColorName(string path, int frameId, int row, int column, int color)
+		{
+			string pathPath = path;
+			IntPtr lpPath = GetIntPtr(pathPath);
+			PluginSetKeyRowColumnColorName(lpPath, frameId, row, column, color);
+			FreeIntPtr(lpPath);
+		}
+		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame. Animation 
 		/// is referenced by id.
 		/// </summary>
@@ -8481,6 +8492,13 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double PluginSetKeyNonZeroColorRGBNameD(IntPtr path, double frameId, double rzkey, double red, double green, double blue);
+		/// <summary>
+		/// Set animation key by row and column to a static color for the given frame. 
+		///
+		/// EXPORT_API void PluginSetKeyRowColumnColorName(const char* path, int frameId, int row, int column, int color);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginSetKeyRowColumnColorName(IntPtr path, int frameId, int row, int column, int color);
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame. Animation 
 		/// is referenced by id.

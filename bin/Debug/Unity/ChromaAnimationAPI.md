@@ -424,6 +424,7 @@
 * [SetKeyNonZeroColorRGB](#SetKeyNonZeroColorRGB)
 * [SetKeyNonZeroColorRGBName](#SetKeyNonZeroColorRGBName)
 * [SetKeyNonZeroColorRGBNameD](#SetKeyNonZeroColorRGBNameD)
+* [SetKeyRowColumnColorName](#SetKeyRowColumnColorName)
 * [SetKeysColor](#SetKeysColor)
 * [SetKeysColorAllFrames](#SetKeysColorAllFrames)
 * [SetKeysColorAllFramesName](#SetKeysColorAllFramesName)
@@ -5536,6 +5537,17 @@ D suffix for limited data types.
 
 ```charp
 double result = UnityNativeChromaSDK.SetKeyNonZeroColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue);
+```
+
+---
+
+<a name="SetKeyRowColumnColorName"></a>
+**SetKeyRowColumnColorName**
+
+Set animation key by row and column to a static color for the given frame.
+
+```charp
+UnityNativeChromaSDK.SetKeyRowColumnColorName(string path, int frameId, int row, int column, int color);
 ```
 
 ---

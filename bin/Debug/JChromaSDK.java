@@ -3806,6 +3806,14 @@ public class JChromaSDK {
 		return wrapper.PluginSetKeyNonZeroColorRGBNameD(path, frameId, rzkey, red, green, blue);
 	}
 	/*
+	Set animation key by row and column to a static color for the given frame.
+	*/
+	/// EXPORT_API void PluginSetKeyRowColumnColorName(const char* path, int frameId, int row, int column, int color);
+	public void setKeyRowColumnColorName(String path, int frameId, int row, int column, int color)
+	{
+		wrapper.PluginSetKeyRowColumnColorName(path, frameId, row, column, color);
+	}
+	/*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by id.
 	*/

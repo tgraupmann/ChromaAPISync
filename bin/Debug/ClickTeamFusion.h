@@ -2074,6 +2074,10 @@
 	*/
 	static int LuaSetKeyNonZeroColorRGBNameD(lua::lua_State* state);
 	/*
+	Set animation key by row and column to a static color for the given frame.
+	*/
+	static int LuaSetKeyRowColumnColorName(lua::lua_State* state);
+	/*
 	Set an array of animation keys to a static color for the given frame. Animation 
 		is referenced by id.
 	*/

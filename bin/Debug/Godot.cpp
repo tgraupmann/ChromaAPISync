@@ -424,6 +424,7 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"SetKeyNonZeroColorRGB", &NodeChromaSDK::SetKeyNonZeroColorRGB);
 	register_method((char*)"SetKeyNonZeroColorRGBName", &NodeChromaSDK::SetKeyNonZeroColorRGBName);
 	register_method((char*)"SetKeyNonZeroColorRGBNameD", &NodeChromaSDK::SetKeyNonZeroColorRGBNameD);
+	register_method((char*)"SetKeyRowColumnColorName", &NodeChromaSDK::SetKeyRowColumnColorName);
 	register_method((char*)"SetKeysColor", &NodeChromaSDK::SetKeysColor);
 	register_method((char*)"SetKeysColorAllFrames", &NodeChromaSDK::SetKeysColorAllFrames);
 	register_method((char*)"SetKeysColorAllFramesName", &NodeChromaSDK::SetKeysColorAllFramesName);
@@ -4325,6 +4326,14 @@ void godot::NodeChromaSDK::SetKeyNonZeroColorRGBName(String path, int frameId, i
 double godot::NodeChromaSDK::SetKeyNonZeroColorRGBNameD(String path, double frameId, double rzkey, double red, double green, double blue)
 {
 	return ChromaAnimationAPI::SetKeyNonZeroColorRGBNameD(path.utf8().get_data(), frameId, rzkey, red, green, blue);
+}
+
+/*
+	Set animation key by row and column to a static color for the given frame.
+*/
+void godot::NodeChromaSDK::SetKeyRowColumnColorName(String path, int frameId, int row, int column, int color)
+{
+	ChromaAnimationAPI::SetKeyRowColumnColorName(path.utf8().get_data(), frameId, row, column, color);
 }
 
 /*

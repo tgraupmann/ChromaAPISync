@@ -3504,6 +3504,11 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_setglobal(lState, "SetKeyNonZeroColorRGBNameD");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetKeyNonZeroColorRGBNameD = SetKeyNonZeroColorRGBNameD");
 
+			// SetKeyRowColumnColorName
+			lua::lua_pushcfunction(lState, Extension::LuaSetKeyRowColumnColorName);
+			lua::lua_setglobal(lState, "SetKeyRowColumnColorName");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetKeyRowColumnColorName = SetKeyRowColumnColorName");
+
 			// SetKeysColor
 			lua::lua_pushcfunction(lState, Extension::LuaSetKeysColor);
 			lua::lua_setglobal(lState, "SetKeysColor");
@@ -17164,6 +17169,47 @@ int Extension::LuaSetKeyNonZeroColorRGBNameD(lua::lua_State* state)
 		double result = ChromaAnimationAPI::SetKeyNonZeroColorRGBNameD(path.c_str(), frameId, rzkey, red, green, blue);
 		lua::lua_pushnumber(state, result);
 		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Set animation key by row and column to a static color for the given frame.
+*/
+int Extension::LuaSetKeyRowColumnColorName(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int row = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int column = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		ChromaAnimationAPI::SetKeyRowColumnColorName(path.c_str(), frameId, row, column, color);
+		return 0;
 	}
 	else
 	{
