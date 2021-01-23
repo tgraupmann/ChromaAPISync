@@ -792,6 +792,18 @@
 	static FString GetAnimationName(const int32 animationId);
 
 	/*
+	Get the current frame of the animation referenced by id.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetCurrentFrame", Keywords = "Get the current frame"), Category = "ChromaSDK")
+	static int32 GetCurrentFrame(int32 animationId);
+
+	/*
+	Get the current frame of the animation referenced by name.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetCurrentFrameName", Keywords = "Get the current frame"), Category = "ChromaSDK")
+	static int32 GetCurrentFrameName(const FString& animationName);
+
+	/*
 	Returns the frame count of a `Chroma` animation upon success. Returns -1 
 	upon failure.
 	*/
@@ -1221,6 +1233,16 @@
 	static void OffsetNonZeroColorsName(const FString& animationName, int32 frameId, int32 red, int32 green, int32 blue);
 
 	/*
+	Opens a `Chroma` animation data from memory so that it can be played. `Data` 
+	is a pointer to byte array of the loaded animation in memory. `Name` will 
+	be assigned to the animation when loaded. Returns an animation id >= 0 
+	upon success. Returns -1 if there was a failure. The animation id is used 
+	in most of the API methods.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "OpenAnimationFromMemory", Keywords = "Open animation from memory"), Category = "ChromaSDK")
+	static void OpenAnimationFromMemory(const TArray<uint8>& data, const FString& animationName);
+
+	/*
 	Override the duration of all frames with the `duration` value. Animation 
 	is referenced by name.
 	*/
@@ -1306,6 +1328,18 @@
 	static void SetChromaCustomFlagName(const FString& animationName, bool flag);
 
 	/*
+	Set the current frame of the animation referenced by id.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SetCurrentFrame", Keywords = "Set the current frame"), Category = "ChromaSDK")
+	static void SetCurrentFrame(int32 animationId, int32 frameId);
+
+	/*
+	Set the current frame of the animation referenced by name.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SetCurrentFrameName", Keywords = "Set the current frame"), Category = "ChromaSDK")
+	static void SetCurrentFrameName(const FString& animationName, int32 frameId);
+
+	/*
 	When the idle animation is used, the named animation will play when no other 
 	animations are playing. Reference the animation by name.
 	*/
@@ -1360,6 +1394,12 @@
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SetKeyNonZeroColorName", Keywords = "Set the animation frame's key to the supplied color if the key is not already black"), Category = "ChromaSDK")
 	static void SetKeyNonZeroColorName(const FString& animationName, const int32 frameIndex, EChromaSDKKeyboardKey::Type key, const FLinearColor& colorParam);
+
+	/*
+	Set animation key by row and column to a static color for the given frame.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SetKeyRowColumnColorName", Keywords = "Set the animation frame's row/column to the supplied color"), Category = "ChromaSDK")
+	static void SetKeyRowColumnColorName(const FString& animationName, const int32 frameIndex, const int32 row, const int32 column, const FLinearColor& colorParam);
 
 	/*
 	Set an array of animation keys to a static color for the given frame. Animation 
@@ -1609,8 +1649,11 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "UseIdleAnimation", Keywords = "Set device flag for idle animation"), Category = "ChromaSDK")
 	static void UseIdleAnimation(EChromaSDKDeviceEnum::Type device, bool flag);
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "UseIdleAnimationAll", Keywords = "Set all idle animation flags"), Category = "ChromaSDK")
-	static void UseIdleAnimationAll(bool flag);
+	/*
+	Set idle animation flag for all devices.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "UseIdleAnimations", Keywords = "Set all idle animation flags"), Category = "ChromaSDK")
+	static void UseIdleAnimations(bool flag);
 
 	/*
 	Set preloading animation flag, which is set to true by default. Reference 

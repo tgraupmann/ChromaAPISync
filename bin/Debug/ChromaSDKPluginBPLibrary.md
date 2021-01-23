@@ -95,6 +95,8 @@
 * [GetAnimationCount](#GetAnimationCount)
 * [GetAnimationId](#GetAnimationId)
 * [GetAnimationName](#GetAnimationName)
+* [GetCurrentFrame](#GetCurrentFrame)
+* [GetCurrentFrameName](#GetCurrentFrameName)
 * [GetFrameCount](#GetFrameCount)
 * [GetFrameCountName](#GetFrameCountName)
 * [GetKeyColor](#GetKeyColor)
@@ -150,6 +152,7 @@
 * [OffsetNonZeroColorsAllFrames](#OffsetNonZeroColorsAllFrames)
 * [OffsetNonZeroColorsAllFramesName](#OffsetNonZeroColorsAllFramesName)
 * [OffsetNonZeroColorsName](#OffsetNonZeroColorsName)
+* [OpenAnimationFromMemory](#OpenAnimationFromMemory)
 * [OverrideFrameDurationName](#OverrideFrameDurationName)
 * [PlayAnimation](#PlayAnimation)
 * [PlayAnimationName](#PlayAnimationName)
@@ -161,6 +164,8 @@
 * [ReverseAllFramesName](#ReverseAllFramesName)
 * [SetChromaCustomColorAllFramesName](#SetChromaCustomColorAllFramesName)
 * [SetChromaCustomFlagName](#SetChromaCustomFlagName)
+* [SetCurrentFrame](#SetCurrentFrame)
+* [SetCurrentFrameName](#SetCurrentFrameName)
 * [SetIdleAnimationName](#SetIdleAnimationName)
 * [SetKeyColor](#SetKeyColor)
 * [SetKeyColorAllFrames](#SetKeyColorAllFrames)
@@ -168,6 +173,7 @@
 * [SetKeyColorName](#SetKeyColorName)
 * [SetKeyNonZeroColor](#SetKeyNonZeroColor)
 * [SetKeyNonZeroColorName](#SetKeyNonZeroColorName)
+* [SetKeyRowColumnColorName](#SetKeyRowColumnColorName)
 * [SetKeysColor](#SetKeysColor)
 * [SetKeysColorAllFrames](#SetKeysColorAllFrames)
 * [SetKeysColorAllFramesName](#SetKeysColorAllFramesName)
@@ -200,6 +206,7 @@
 * [UnloadAnimation](#UnloadAnimation)
 * [UnloadAnimationName](#UnloadAnimationName)
 * [UseIdleAnimation](#UseIdleAnimation)
+* [UseIdleAnimations](#UseIdleAnimations)
 * [UsePreloading](#UsePreloading)
 * [UsePreloadingName](#UsePreloadingName)
 
@@ -1311,6 +1318,24 @@ FString UChromaSDKPluginBPLibrary::GetAnimationName(const int32 animationId);
 ```
 
 ---
+<a name="GetCurrentFrame"></a>
+**GetCurrentFrame**
+
+Get the current frame of the animation referenced by id.
+```c++
+int32 UChromaSDKPluginBPLibrary::GetCurrentFrame(int32 animationId);
+```
+
+---
+<a name="GetCurrentFrameName"></a>
+**GetCurrentFrameName**
+
+Get the current frame of the animation referenced by name.
+```c++
+int32 UChromaSDKPluginBPLibrary::GetCurrentFrameName(const FString& animationName);
+```
+
+---
 <a name="GetFrameCount"></a>
 **GetFrameCount**
 
@@ -1932,6 +1957,20 @@ void UChromaSDKPluginBPLibrary::OffsetNonZeroColorsName(const FString& animation
 ```
 
 ---
+<a name="OpenAnimationFromMemory"></a>
+**OpenAnimationFromMemory**
+
+Opens a `Chroma` animation data from memory so that it can be played. `Data` 
+is a pointer to byte array of the loaded animation in memory. `Name` will 
+be assigned to the animation when loaded. Returns an animation id >= 0 
+upon success. Returns -1 if there was a failure. The animation id is used 
+in most of the API methods.
+```c++
+void UChromaSDKPluginBPLibrary::OpenAnimationFromMemory(const TArray<uint8>& 
+	data, const FString& animationName);
+```
+
+---
 <a name="OverrideFrameDurationName"></a>
 **OverrideFrameDurationName**
 
@@ -2051,6 +2090,26 @@ void UChromaSDKPluginBPLibrary::SetChromaCustomFlagName(const FString& animation
 ```
 
 ---
+<a name="SetCurrentFrame"></a>
+**SetCurrentFrame**
+
+Set the current frame of the animation referenced by id.
+```c++
+void UChromaSDKPluginBPLibrary::SetCurrentFrame(int32 animationId, int32 
+	frameId);
+```
+
+---
+<a name="SetCurrentFrameName"></a>
+**SetCurrentFrameName**
+
+Set the current frame of the animation referenced by name.
+```c++
+void UChromaSDKPluginBPLibrary::SetCurrentFrameName(const FString& animationName, 
+	int32 frameId);
+```
+
+---
 <a name="SetIdleAnimationName"></a>
 **SetIdleAnimationName**
 
@@ -2124,6 +2183,17 @@ color is not already black.
 void UChromaSDKPluginBPLibrary::SetKeyNonZeroColorName(const FString& animationName, 
 	const int32 frameIndex, EChromaSDKKeyboardKey::Type key, const FLinearColor& 
 	colorParam);
+```
+
+---
+<a name="SetKeyRowColumnColorName"></a>
+**SetKeyRowColumnColorName**
+
+Set animation key by row and column to a static color for the given frame.
+```c++
+void UChromaSDKPluginBPLibrary::SetKeyRowColumnColorName(const FString& 
+	animationName, const int32 frameIndex, const int32 row, const int32 column, 
+	const FLinearColor& colorParam);
 ```
 
 ---
@@ -2487,6 +2557,15 @@ the idle animation is disabled. `Device` uses `EChromaSDKDeviceEnum` enums.
 ```c++
 void UChromaSDKPluginBPLibrary::UseIdleAnimation(EChromaSDKDeviceEnum::Type 
 	device, bool flag);
+```
+
+---
+<a name="UseIdleAnimations"></a>
+**UseIdleAnimations**
+
+Set idle animation flag for all devices.
+```c++
+void UChromaSDKPluginBPLibrary::UseIdleAnimations(bool flag);
 ```
 
 ---

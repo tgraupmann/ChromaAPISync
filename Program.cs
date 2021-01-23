@@ -18,7 +18,7 @@
                 "Godot.cpp",
                 "ClickTeamFusion.h",
                 "ClickTeamFusion.cpp");
-            const string headerUE4 = @"C:\Razer\UE4_XDK_SampleApp\UE4ChromaSDKRT\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
+            const string headerUE4 = @"C:\Public\UE4_XDK_SampleApp\UE4ChromaSDKRT\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
             Converter.SortHeaderUE4(headerUE4,
                 "ChromaSDKPluginBPLibrary.h",
                 "ChromaSDKPluginBPLibrary.md");

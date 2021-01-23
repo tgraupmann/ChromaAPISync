@@ -1,6 +1,4 @@
-﻿#define DEBUG_OUTPUT_FILES
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -103,8 +101,8 @@ namespace ChromaAPISync
         }
 
         private static void OpenClassFiles(string input,
-            string fileHeader, string fileImplementation,
-            string fileDocs,
+            string fileCppHeader, string fileCppImplementation,
+            string fileCppDocs,
             string fileCSharp,
             string fileUnity,
             string fileUnityDocs,
@@ -121,7 +119,77 @@ namespace ChromaAPISync
                 }
             }
 
-#if DEBUG_OUTPUT_FILES
+            #region First
+
+            if (File.Exists(fileCppHeader))
+            {
+                File.Delete(fileCppHeader);
+            }
+            using (FileStream fsCppHeader = File.Open(fileCppHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swHeader = new StreamWriter(fsCppHeader))
+                {
+                    if (!WriteHeader(swHeader))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileCppImplementation))
+            {
+                File.Delete(fileCppImplementation);
+            }
+            using (FileStream fsImplementation = File.Open(fileCppImplementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
+                {
+                    if (!WriteImplementation(swImplementation))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileCppDocs))
+            {
+                File.Delete(fileCppDocs);
+            }
+            using (FileStream fsCppDocs = File.Open(fileCppDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swDocs = new StreamWriter(fsCppDocs))
+                {
+                    if (!WriteDocs(swDocs))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            #endregion
+
+            #region Sort C++ Input
+
+            if (File.Exists(fileSortInput))
+            {
+                File.Delete(fileSortInput);
+            }
+            using (FileStream fsSortInput = File.Open(fileSortInput, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swSortInput = new StreamWriter(fsSortInput))
+                {
+                    if (!WriteSortInput(swSortInput))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            #endregion Sort C++ Input
+
+            //return; // DEBUG SKIP OTHERS
+
+            #region ClickTeamFusion
 
             if (File.Exists(fileCTFHeader))
             {
@@ -153,6 +221,10 @@ namespace ChromaAPISync
                 }
             }
 
+            #endregion ClickTeamFusion
+
+            #region GoDot
+
             if (File.Exists(fileGodotHeader))
             {
                 File.Delete(fileGodotHeader);
@@ -182,6 +254,10 @@ namespace ChromaAPISync
                     }
                 }
             }
+
+            #endregion GoDot
+
+            #region Java
 
             if (File.Exists(fileJavaInterface))
             {
@@ -213,50 +289,11 @@ namespace ChromaAPISync
                 }
             }
 
-            if (File.Exists(fileHeader))
-            {
-                File.Delete(fileHeader);
-            }
-            using (FileStream fsHeader = File.Open(fileHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swHeader = new StreamWriter(fsHeader))
-                {
-                    if (!WriteHeader(swHeader))
-                    {
-                        return;
-                    }
-                }
-            }
+            #endregion Java
 
-            if (File.Exists(fileImplementation))
-            {
-                File.Delete(fileImplementation);
-            }
-            using (FileStream fsImplementation = File.Open(fileImplementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
-                {
-                    if (!WriteImplementation(swImplementation))
-                    {
-                        return;
-                    }
-                }
-            }
 
-            if (File.Exists(fileDocs))
-            {
-                File.Delete(fileDocs);
-            }
-            using (FileStream fsDocs = File.Open(fileDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swDocs = new StreamWriter(fsDocs))
-                {
-                    if (!WriteDocs(swDocs))
-                    {
-                        return;
-                    }
-                }
-            }
+            #region C# and Unity
+
 
             if (File.Exists(fileCSharp))
             {
@@ -303,21 +340,7 @@ namespace ChromaAPISync
                 }
             }
 
-            if (File.Exists(fileSortInput))
-            {
-                File.Delete(fileSortInput);
-            }
-            using (FileStream fsSortInput = File.Open(fileSortInput, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swSortInput = new StreamWriter(fsSortInput))
-                {
-                    if (!WriteSortInput(swSortInput))
-                    {
-                        return;
-                    }
-                }
-            }
-#endif
+            #endregion C# and Unity
         }
 
         static bool Replace(ref string line, string search, string replace)

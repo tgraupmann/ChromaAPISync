@@ -2090,6 +2090,10 @@ typedef void		(*PLUGIN_SET_KEY_NON_ZERO_COLOR_RGB_NAME)(const char* path, int fr
 */
 typedef double		(*PLUGIN_SET_KEY_NON_ZERO_COLOR_RGB_NAME_D)(const char* path, double frameId, double rzkey, double red, double green, double blue);
 /*
+	Set animation key by row and column to a static color for the given frame.
+*/
+typedef void		(*PLUGIN_SET_KEY_ROW_COLUMN_COLOR_NAME)(const char* path, int frameId, int row, int column, int color);
+/*
 	Set an array of animation keys to a static color for the given frame. Animation 
 	is referenced by id.
 */
@@ -4569,6 +4573,10 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_KEY_NON_ZERO_COLOR_RGB_NAME_D, SetKeyNonZeroColorRGBNameD);
+		/*
+			Set animation key by row and column to a static color for the given frame.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_KEY_ROW_COLUMN_COLOR_NAME, SetKeyRowColumnColorName);
 		/*
 			Set an array of animation keys to a static color for the given frame. Animation 
 			is referenced by id.

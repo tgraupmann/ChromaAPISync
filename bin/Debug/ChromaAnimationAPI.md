@@ -421,6 +421,7 @@
 * [PluginSetKeyNonZeroColorRGB](#PluginSetKeyNonZeroColorRGB)
 * [PluginSetKeyNonZeroColorRGBName](#PluginSetKeyNonZeroColorRGBName)
 * [PluginSetKeyNonZeroColorRGBNameD](#PluginSetKeyNonZeroColorRGBNameD)
+* [PluginSetKeyRowColumnColorName](#PluginSetKeyRowColumnColorName)
 * [PluginSetKeysColor](#PluginSetKeysColor)
 * [PluginSetKeysColorAllFrames](#PluginSetKeysColorAllFrames)
 * [PluginSetKeysColorAllFramesName](#PluginSetKeysColorAllFramesName)
@@ -7517,6 +7518,22 @@ EXPORT_API double PluginSetKeyNonZeroColorRGBNameD(
 double result = ChromaAnimationAPI::SetKeyNonZeroColorRGBNameD(
 	const char* path, double frameId, double rzkey, double red, double green,
 	double blue);
+```
+
+---
+<a name="PluginSetKeyRowColumnColorName"></a>
+**PluginSetKeyRowColumnColorName**
+
+Set animation key by row and column to a static color for the given frame.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginSetKeyRowColumnColorName(
+	const char* path, int frameId, int row, int column, int color);
+
+// Class Plugin
+ChromaAnimationAPI::SetKeyRowColumnColorName(
+	const char* path, int frameId, int row, int column, int color);
 ```
 
 ---
