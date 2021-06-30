@@ -32,6 +32,8 @@
 * [CloseAnimationNameD](#CloseAnimationNameD)
 * [CloseComposite](#CloseComposite)
 * [CloseCompositeD](#CloseCompositeD)
+* [CopyAllKeys](#CopyAllKeys)
+* [CopyAllKeysName](#CopyAllKeysName)
 * [CopyAnimation](#CopyAnimation)
 * [CopyAnimationName](#CopyAnimationName)
 * [CopyAnimationNameD](#CopyAnimationNameD)
@@ -332,6 +334,7 @@
 * [MultiplyTargetColorLerpAllFramesRGB](#MultiplyTargetColorLerpAllFramesRGB)
 * [MultiplyTargetColorLerpAllFramesRGBName](#MultiplyTargetColorLerpAllFramesRGBName)
 * [MultiplyTargetColorLerpAllFramesRGBNameD](#MultiplyTargetColorLerpAllFramesRGBNameD)
+* [MultiplyTargetColorLerpName](#MultiplyTargetColorLerpName)
 * [OffsetColors](#OffsetColors)
 * [OffsetColorsAllFrames](#OffsetColorsAllFrames)
 * [OffsetColorsAllFramesName](#OffsetColorsAllFramesName)
@@ -454,7 +457,10 @@
 * [SetKeyZeroColorRGBName](#SetKeyZeroColorRGBName)
 * [SetKeyZeroColorRGBNameD](#SetKeyZeroColorRGBNameD)
 * [SetLogDelegate](#SetLogDelegate)
+* [SetStaticColor](#SetStaticColor)
+* [SetStaticColorAll](#SetStaticColorAll)
 * [StaticColor](#StaticColor)
+* [StaticColorAll](#StaticColorAll)
 * [StaticColorD](#StaticColorD)
 * [StopAll](#StopAll)
 * [StopAnimation](#StopAnimation)
@@ -872,6 +878,30 @@ D suffix for limited data types.
 
 ```charp
 double result = UnityNativeChromaSDK.CloseCompositeD(string name);
+```
+
+---
+
+<a name="CopyAllKeys"></a>
+**CopyAllKeys**
+
+Copy source animation to target animation for the given frame. Source and 
+target are referenced by id.
+
+```charp
+UnityNativeChromaSDK.CopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+```
+
+---
+
+<a name="CopyAllKeysName"></a>
+**CopyAllKeysName**
+
+Copy source animation to target animation for the given frame. Source and 
+target are referenced by id.
+
+```charp
+UnityNativeChromaSDK.CopyAllKeysName(string sourceAnimation, string targetAnimation, int frameId);
 ```
 
 ---
@@ -4448,6 +4478,19 @@ double result = UnityNativeChromaSDK.MultiplyTargetColorLerpAllFramesRGBNameD(st
 
 ---
 
+<a name="MultiplyTargetColorLerpName"></a>
+**MultiplyTargetColorLerpName**
+
+Multiply the specific frame by the color lerp result between color 1 and 
+2 using the frame color value as the `t` value. Animation is referenced 
+by name.
+
+```charp
+UnityNativeChromaSDK.MultiplyTargetColorLerpName(string path, int frameId, int color1, int color2);
+```
+
+---
+
 <a name="OffsetColors"></a>
 **OffsetColors**
 
@@ -5898,13 +5941,46 @@ UnityNativeChromaSDK.SetLogDelegate(IntPtr fp);
 
 ---
 
+<a name="SetStaticColor"></a>
+**SetStaticColor**
+
+Sets the target device to the static color.
+
+```charp
+UnityNativeChromaSDK.SetStaticColor(int deviceType, int device, int color);
+```
+
+---
+
+<a name="SetStaticColorAll"></a>
+**SetStaticColorAll**
+
+Sets all devices to the static color.
+
+```charp
+UnityNativeChromaSDK.SetStaticColorAll(int color);
+```
+
+---
+
 <a name="StaticColor"></a>
 **StaticColor**
 
-`PluginStaticColor` sets the target device to the static color.
+Sets the target device to the static color.
 
 ```charp
 UnityNativeChromaSDK.StaticColor(int deviceType, int device, int color);
+```
+
+---
+
+<a name="StaticColorAll"></a>
+**StaticColorAll**
+
+Sets all devices to the static color.
+
+```charp
+UnityNativeChromaSDK.StaticColorAll(int color);
 ```
 
 ---

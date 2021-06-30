@@ -317,6 +317,24 @@ public class JChromaSDK {
 		return wrapper.PluginCloseCompositeD(name);
 	}
 	/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+	*/
+	/// EXPORT_API void PluginCopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+	public void copyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+	{
+		wrapper.PluginCopyAllKeys(sourceAnimationId, targetAnimationId, frameId);
+	}
+	/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+	*/
+	/// EXPORT_API void PluginCopyAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+	public void copyAllKeysName(String sourceAnimation, String targetAnimation, int frameId)
+	{
+		wrapper.PluginCopyAllKeysName(sourceAnimation, targetAnimation, frameId);
+	}
+	/*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by id.
 	*/
@@ -2989,6 +3007,16 @@ public class JChromaSDK {
 		return wrapper.PluginMultiplyTargetColorLerpAllFramesRGBNameD(path, red1, green1, blue1, red2, green2, blue2);
 	}
 	/*
+	Multiply the specific frame by the color lerp result between color 1 and 
+	2 using the frame color value as the `t` value. Animation is referenced 
+	by name.
+	*/
+	/// EXPORT_API void PluginMultiplyTargetColorLerpName(const char* path, int frameId, int color1, int color2);
+	public void multiplyTargetColorLerpName(String path, int frameId, int color1, int color2)
+	{
+		wrapper.PluginMultiplyTargetColorLerpName(path, frameId, color1, color2);
+	}
+	/*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
@@ -4073,12 +4101,36 @@ public class JChromaSDK {
 		wrapper.PluginSetLogDelegate(fp);
 	}
 	/*
-	`PluginStaticColor` sets the target device to the static color.
+	Sets the target device to the static color.
+	*/
+	/// EXPORT_API void PluginSetStaticColor(int deviceType, int device, int color);
+	public void setStaticColor(int deviceType, int device, int color)
+	{
+		wrapper.PluginSetStaticColor(deviceType, device, color);
+	}
+	/*
+	Sets all devices to the static color.
+	*/
+	/// EXPORT_API void PluginSetStaticColorAll(int color);
+	public void setStaticColorAll(int color)
+	{
+		wrapper.PluginSetStaticColorAll(color);
+	}
+	/*
+	Sets the target device to the static color.
 	*/
 	/// EXPORT_API void PluginStaticColor(int deviceType, int device, int color);
 	public void staticColor(int deviceType, int device, int color)
 	{
 		wrapper.PluginStaticColor(deviceType, device, color);
+	}
+	/*
+	Sets all devices to the static color.
+	*/
+	/// EXPORT_API void PluginStaticColorAll(int color);
+	public void staticColorAll(int color)
+	{
+		wrapper.PluginStaticColorAll(color);
 	}
 	/*
 	D suffix for limited data types.

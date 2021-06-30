@@ -633,6 +633,28 @@ namespace ChromaSDK
 			return result;
 		}
 		/// <summary>
+		/// Copy source animation to target animation for the given frame. Source and 
+		/// target are referenced by id.
+		/// </summary>
+		public static void CopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+		{
+			PluginCopyAllKeys(sourceAnimationId, targetAnimationId, frameId);
+		}
+		/// <summary>
+		/// Copy source animation to target animation for the given frame. Source and 
+		/// target are referenced by id.
+		/// </summary>
+		public static void CopyAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
+		{
+			string pathSourceAnimation = sourceAnimation;
+			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
+			string pathTargetAnimation = targetAnimation;
+			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			PluginCopyAllKeysName(lpSourceAnimation, lpTargetAnimation, frameId);
+			FreeIntPtr(lpSourceAnimation);
+			FreeIntPtr(lpTargetAnimation);
+		}
+		/// <summary>
 		/// Copy animation to named target animation in memory. If target animation 
 		/// exists, close first. Source is referenced by id.
 		/// </summary>
@@ -3786,6 +3808,18 @@ namespace ChromaSDK
 			return result;
 		}
 		/// <summary>
+		/// Multiply the specific frame by the color lerp result between color 1 and 
+		/// 2 using the frame color value as the `t` value. Animation is referenced 
+		/// by name.
+		/// </summary>
+		public static void MultiplyTargetColorLerpName(string path, int frameId, int color1, int color2)
+		{
+			string pathPath = path;
+			IntPtr lpPath = GetIntPtr(pathPath);
+			PluginMultiplyTargetColorLerpName(lpPath, frameId, color1, color2);
+			FreeIntPtr(lpPath);
+		}
+		/// <summary>
 		/// Offset all colors in the frame using the RGB offset. Use the range of -255 
 		/// to 255 for red, green, and blue parameters. Negative values remove color. 
 		/// Positive values add color.
@@ -5017,11 +5051,32 @@ namespace ChromaSDK
 			PluginSetLogDelegate(fp);
 		}
 		/// <summary>
-		/// `PluginStaticColor` sets the target device to the static color.
+		/// Sets the target device to the static color.
+		/// </summary>
+		public static void SetStaticColor(int deviceType, int device, int color)
+		{
+			PluginSetStaticColor(deviceType, device, color);
+		}
+		/// <summary>
+		/// Sets all devices to the static color.
+		/// </summary>
+		public static void SetStaticColorAll(int color)
+		{
+			PluginSetStaticColorAll(color);
+		}
+		/// <summary>
+		/// Sets the target device to the static color.
 		/// </summary>
 		public static void StaticColor(int deviceType, int device, int color)
 		{
 			PluginStaticColor(deviceType, device, color);
+		}
+		/// <summary>
+		/// Sets all devices to the static color.
+		/// </summary>
+		public static void StaticColorAll(int color)
+		{
+			PluginStaticColorAll(color);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
@@ -5775,6 +5830,20 @@ namespace ChromaSDK
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double PluginCloseCompositeD(IntPtr name);
+		/// <summary>
+		/// Copy source animation to target animation for the given frame. Source and 
+		/// target are referenced by id.
+		/// EXPORT_API void PluginCopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+		/// <summary>
+		/// Copy source animation to target animation for the given frame. Source and 
+		/// target are referenced by id.
+		/// EXPORT_API void PluginCopyAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginCopyAllKeysName(IntPtr sourceAnimation, IntPtr targetAnimation, int frameId);
 		/// <summary>
 		/// Copy animation to named target animation in memory. If target animation 
 		/// exists, close first. Source is referenced by id.
@@ -7858,6 +7927,14 @@ namespace ChromaSDK
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern double PluginMultiplyTargetColorLerpAllFramesRGBNameD(IntPtr path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 		/// <summary>
+		/// Multiply the specific frame by the color lerp result between color 1 and 
+		/// 2 using the frame color value as the `t` value. Animation is referenced 
+		/// by name.
+		/// EXPORT_API void PluginMultiplyTargetColorLerpName(const char* path, int frameId, int color1, int color2);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginMultiplyTargetColorLerpName(IntPtr path, int frameId, int color1, int color2);
+		/// <summary>
 		/// Offset all colors in the frame using the RGB offset. Use the range of -255 
 		/// to 255 for red, green, and blue parameters. Negative values remove color. 
 		/// Positive values add color.
@@ -8701,11 +8778,29 @@ namespace ChromaSDK
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void PluginSetLogDelegate(IntPtr fp);
 		/// <summary>
-		/// `PluginStaticColor` sets the target device to the static color.
+		/// Sets the target device to the static color.
+		/// EXPORT_API void PluginSetStaticColor(int deviceType, int device, int color);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginSetStaticColor(int deviceType, int device, int color);
+		/// <summary>
+		/// Sets all devices to the static color.
+		/// EXPORT_API void PluginSetStaticColorAll(int color);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginSetStaticColorAll(int color);
+		/// <summary>
+		/// Sets the target device to the static color.
 		/// EXPORT_API void PluginStaticColor(int deviceType, int device, int color);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
 		private static extern void PluginStaticColor(int deviceType, int device, int color);
+		/// <summary>
+		/// Sets all devices to the static color.
+		/// EXPORT_API void PluginStaticColorAll(int color);
+		/// </summary>
+		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		private static extern void PluginStaticColorAll(int color);
 		/// <summary>
 		/// D suffix for limited data types.
 		/// EXPORT_API double PluginStaticColorD(double deviceType, double device, double color);

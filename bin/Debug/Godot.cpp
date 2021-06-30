@@ -32,6 +32,8 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"CloseAnimationNameD", &NodeChromaSDK::CloseAnimationNameD);
 	register_method((char*)"CloseComposite", &NodeChromaSDK::CloseComposite);
 	register_method((char*)"CloseCompositeD", &NodeChromaSDK::CloseCompositeD);
+	register_method((char*)"CopyAllKeys", &NodeChromaSDK::CopyAllKeys);
+	register_method((char*)"CopyAllKeysName", &NodeChromaSDK::CopyAllKeysName);
 	register_method((char*)"CopyAnimation", &NodeChromaSDK::CopyAnimation);
 	register_method((char*)"CopyAnimationName", &NodeChromaSDK::CopyAnimationName);
 	register_method((char*)"CopyAnimationNameD", &NodeChromaSDK::CopyAnimationNameD);
@@ -332,6 +334,7 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"MultiplyTargetColorLerpAllFramesRGB", &NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGB);
 	register_method((char*)"MultiplyTargetColorLerpAllFramesRGBName", &NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGBName);
 	register_method((char*)"MultiplyTargetColorLerpAllFramesRGBNameD", &NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGBNameD);
+	register_method((char*)"MultiplyTargetColorLerpName", &NodeChromaSDK::MultiplyTargetColorLerpName);
 	register_method((char*)"OffsetColors", &NodeChromaSDK::OffsetColors);
 	register_method((char*)"OffsetColorsAllFrames", &NodeChromaSDK::OffsetColorsAllFrames);
 	register_method((char*)"OffsetColorsAllFramesName", &NodeChromaSDK::OffsetColorsAllFramesName);
@@ -454,7 +457,10 @@ void NodeChromaSDK::_register_methods() {
 	register_method((char*)"SetKeyZeroColorRGBName", &NodeChromaSDK::SetKeyZeroColorRGBName);
 	register_method((char*)"SetKeyZeroColorRGBNameD", &NodeChromaSDK::SetKeyZeroColorRGBNameD);
 	//register_method((char*)"SetLogDelegate", &NodeChromaSDK::SetLogDelegate);
+	register_method((char*)"SetStaticColor", &NodeChromaSDK::SetStaticColor);
+	register_method((char*)"SetStaticColorAll", &NodeChromaSDK::SetStaticColorAll);
 	register_method((char*)"StaticColor", &NodeChromaSDK::StaticColor);
+	register_method((char*)"StaticColorAll", &NodeChromaSDK::StaticColorAll);
 	register_method((char*)"StaticColorD", &NodeChromaSDK::StaticColorD);
 	register_method((char*)"StopAll", &NodeChromaSDK::StopAll);
 	register_method((char*)"StopAnimation", &NodeChromaSDK::StopAnimation);
@@ -783,6 +789,24 @@ void godot::NodeChromaSDK::CloseComposite(String name)
 double godot::NodeChromaSDK::CloseCompositeD(String name)
 {
 	return ChromaAnimationAPI::CloseCompositeD(name.utf8().get_data());
+}
+
+/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+void godot::NodeChromaSDK::CopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+{
+	ChromaAnimationAPI::CopyAllKeys(sourceAnimationId, targetAnimationId, frameId);
+}
+
+/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+void godot::NodeChromaSDK::CopyAllKeysName(String sourceAnimation, String targetAnimation, int frameId)
+{
+	ChromaAnimationAPI::CopyAllKeysName(sourceAnimation.utf8().get_data(), targetAnimation.utf8().get_data(), frameId);
 }
 
 /*
@@ -3512,6 +3536,16 @@ double godot::NodeChromaSDK::MultiplyTargetColorLerpAllFramesRGBNameD(String pat
 }
 
 /*
+	Multiply the specific frame by the color lerp result between color 1 and 
+	2 using the frame color value as the `t` value. Animation is referenced 
+	by name.
+*/
+void godot::NodeChromaSDK::MultiplyTargetColorLerpName(String path, int frameId, int color1, int color2)
+{
+	ChromaAnimationAPI::MultiplyTargetColorLerpName(path.utf8().get_data(), frameId, color1, color2);
+}
+
+/*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
@@ -4794,11 +4828,35 @@ void godot::NodeChromaSDK::SetLogDelegate(DebugLogPtr fp)
 }
 
 /*
-	`PluginStaticColor` sets the target device to the static color.
+	Sets the target device to the static color.
+*/
+void godot::NodeChromaSDK::SetStaticColor(int deviceType, int device, int color)
+{
+	ChromaAnimationAPI::SetStaticColor(deviceType, device, color);
+}
+
+/*
+	Sets all devices to the static color.
+*/
+void godot::NodeChromaSDK::SetStaticColorAll(int color)
+{
+	ChromaAnimationAPI::SetStaticColorAll(color);
+}
+
+/*
+	Sets the target device to the static color.
 */
 void godot::NodeChromaSDK::StaticColor(int deviceType, int device, int color)
 {
 	ChromaAnimationAPI::StaticColor(deviceType, device, color);
+}
+
+/*
+	Sets all devices to the static color.
+*/
+void godot::NodeChromaSDK::StaticColorAll(int color)
+{
+	ChromaAnimationAPI::StaticColorAll(color);
 }
 
 /*

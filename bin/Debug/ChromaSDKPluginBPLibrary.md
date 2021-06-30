@@ -13,6 +13,8 @@
 * [CloseAll](#CloseAll)
 * [CloseAnimation](#CloseAnimation)
 * [CloseAnimationName](#CloseAnimationName)
+* [CopyAllKeys](#CopyAllKeys)
+* [CopyAllKeysName](#CopyAllKeysName)
 * [CopyAnimation](#CopyAnimation)
 * [CopyAnimationName](#CopyAnimationName)
 * [CopyKeyColor](#CopyKeyColor)
@@ -186,6 +188,8 @@
 * [SetKeysNonZeroColorAllFrames](#SetKeysNonZeroColorAllFrames)
 * [SetKeysNonZeroColorAllFramesName](#SetKeysNonZeroColorAllFramesName)
 * [SetKeysNonZeroColorName](#SetKeysNonZeroColorName)
+* [SetStaticColor](#SetStaticColor)
+* [SetStaticColorAll](#SetStaticColorAll)
 * [StopAll](#StopAll)
 * [StopAnimation](#StopAnimation)
 * [StopAnimationType](#StopAnimationType)
@@ -375,6 +379,28 @@ Closes the `Chroma` animation referenced by name so that the animation can
 be reloaded from disk.
 ```c++
 void UChromaSDKPluginBPLibrary::CloseAnimationName(const FString& animationName);
+```
+
+---
+<a name="CopyAllKeys"></a>
+**CopyAllKeys**
+
+Copy source animation to target animation for the given frame. Source and 
+target are referenced by id.
+```c++
+void UChromaSDKPluginBPLibrary::CopyAllKeys(int32 sourceAnimationId, int32 
+	targetAnimationId, int32 frameId);
+```
+
+---
+<a name="CopyAllKeysName"></a>
+**CopyAllKeysName**
+
+Copy source animation to target animation for the given frame. Source and 
+target are referenced by id.
+```c++
+void UChromaSDKPluginBPLibrary::CopyAllKeysName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName, int32 frameId);
 ```
 
 ---
@@ -2337,6 +2363,25 @@ the existing color is not already black. Reference animation by name.
 void UChromaSDKPluginBPLibrary::SetKeysNonZeroColorName(const FString& animationName, 
 	const int32 frameIndex, const TArray<TEnumAsByte<EChromaSDKKeyboardKey::Type>>& 
 	keys, const FLinearColor& colorParam);
+```
+
+---
+<a name="SetStaticColor"></a>
+**SetStaticColor**
+
+Sets the target device to the static color.
+```c++
+void UChromaSDKPluginBPLibrary::SetStaticColor(EChromaSDKDeviceEnum::Type 
+	device, const FLinearColor& color);
+```
+
+---
+<a name="SetStaticColorAll"></a>
+**SetStaticColorAll**
+
+Sets all devices to the static color.
+```c++
+void UChromaSDKPluginBPLibrary::SetStaticColorAll(const FLinearColor& color);
 ```
 
 ---

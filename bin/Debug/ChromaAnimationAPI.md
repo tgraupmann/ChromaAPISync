@@ -29,6 +29,8 @@
 * [PluginCloseAnimationNameD](#PluginCloseAnimationNameD)
 * [PluginCloseComposite](#PluginCloseComposite)
 * [PluginCloseCompositeD](#PluginCloseCompositeD)
+* [PluginCopyAllKeys](#PluginCopyAllKeys)
+* [PluginCopyAllKeysName](#PluginCopyAllKeysName)
 * [PluginCopyAnimation](#PluginCopyAnimation)
 * [PluginCopyAnimationName](#PluginCopyAnimationName)
 * [PluginCopyAnimationNameD](#PluginCopyAnimationNameD)
@@ -329,6 +331,7 @@
 * [PluginMultiplyTargetColorLerpAllFramesRGB](#PluginMultiplyTargetColorLerpAllFramesRGB)
 * [PluginMultiplyTargetColorLerpAllFramesRGBName](#PluginMultiplyTargetColorLerpAllFramesRGBName)
 * [PluginMultiplyTargetColorLerpAllFramesRGBNameD](#PluginMultiplyTargetColorLerpAllFramesRGBNameD)
+* [PluginMultiplyTargetColorLerpName](#PluginMultiplyTargetColorLerpName)
 * [PluginOffsetColors](#PluginOffsetColors)
 * [PluginOffsetColorsAllFrames](#PluginOffsetColorsAllFrames)
 * [PluginOffsetColorsAllFramesName](#PluginOffsetColorsAllFramesName)
@@ -451,7 +454,10 @@
 * [PluginSetKeyZeroColorRGBName](#PluginSetKeyZeroColorRGBName)
 * [PluginSetKeyZeroColorRGBNameD](#PluginSetKeyZeroColorRGBNameD)
 * [PluginSetLogDelegate](#PluginSetLogDelegate)
+* [PluginSetStaticColor](#PluginSetStaticColor)
+* [PluginSetStaticColorAll](#PluginSetStaticColorAll)
 * [PluginStaticColor](#PluginStaticColor)
+* [PluginStaticColorAll](#PluginStaticColorAll)
 * [PluginStaticColorD](#PluginStaticColorD)
 * [PluginStopAll](#PluginStopAll)
 * [PluginStopAnimation](#PluginStopAnimation)
@@ -1013,6 +1019,40 @@ EXPORT_API double PluginCloseCompositeD(const char* name);
 
 // Class Plugin
 double result = ChromaAnimationAPI::CloseCompositeD(const char* name);
+```
+
+---
+<a name="PluginCopyAllKeys"></a>
+**PluginCopyAllKeys**
+
+Copy source animation to target animation for the given frame. Source and 
+target are referenced by id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyAllKeys(
+	int sourceAnimationId, int targetAnimationId, int frameId);
+
+// Class Plugin
+ChromaAnimationAPI::CopyAllKeys(
+	int sourceAnimationId, int targetAnimationId, int frameId);
+```
+
+---
+<a name="PluginCopyAllKeysName"></a>
+**PluginCopyAllKeysName**
+
+Copy source animation to target animation for the given frame. Source and 
+target are referenced by id.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginCopyAllKeysName(
+	const char* sourceAnimation, const char* targetAnimation, int frameId);
+
+// Class Plugin
+ChromaAnimationAPI::CopyAllKeysName(
+	const char* sourceAnimation, const char* targetAnimation, int frameId);
 ```
 
 ---
@@ -6006,6 +6046,24 @@ double result = ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesRGBNameD(
 ```
 
 ---
+<a name="PluginMultiplyTargetColorLerpName"></a>
+**PluginMultiplyTargetColorLerpName**
+
+Multiply the specific frame by the color lerp result between color 1 and 
+2 using the frame color value as the `t` value. Animation is referenced 
+by name.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginMultiplyTargetColorLerpName(
+	const char* path, int frameId, int color1, int color2);
+
+// Class Plugin
+ChromaAnimationAPI::MultiplyTargetColorLerpName(
+	const char* path, int frameId, int color1, int color2);
+```
+
+---
 <a name="PluginOffsetColors"></a>
 **PluginOffsetColors**
 
@@ -8040,10 +8098,40 @@ ChromaAnimationAPI::SetLogDelegate(DebugLogPtr fp);
 ```
 
 ---
+<a name="PluginSetStaticColor"></a>
+**PluginSetStaticColor**
+
+Sets the target device to the static color.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginSetStaticColor(
+	int deviceType, int device, int color);
+
+// Class Plugin
+ChromaAnimationAPI::SetStaticColor(
+	int deviceType, int device, int color);
+```
+
+---
+<a name="PluginSetStaticColorAll"></a>
+**PluginSetStaticColorAll**
+
+Sets all devices to the static color.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginSetStaticColorAll(int color);
+
+// Class Plugin
+ChromaAnimationAPI::SetStaticColorAll(int color);
+```
+
+---
 <a name="PluginStaticColor"></a>
 **PluginStaticColor**
 
-`PluginStaticColor` sets the target device to the static color.
+Sets the target device to the static color.
 
 ```C++
 // DLL Interface
@@ -8053,6 +8141,20 @@ EXPORT_API void PluginStaticColor(
 // Class Plugin
 ChromaAnimationAPI::StaticColor(
 	int deviceType, int device, int color);
+```
+
+---
+<a name="PluginStaticColorAll"></a>
+**PluginStaticColorAll**
+
+Sets all devices to the static color.
+
+```C++
+// DLL Interface
+EXPORT_API void PluginStaticColorAll(int color);
+
+// Class Plugin
+ChromaAnimationAPI::StaticColorAll(int color);
 ```
 
 ---

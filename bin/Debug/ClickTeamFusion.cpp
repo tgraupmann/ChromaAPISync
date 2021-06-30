@@ -1544,6 +1544,16 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_setglobal(lState, "CloseCompositeD");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.CloseCompositeD = CloseCompositeD");
 
+			// CopyAllKeys
+			lua::lua_pushcfunction(lState, Extension::LuaCopyAllKeys);
+			lua::lua_setglobal(lState, "CopyAllKeys");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.CopyAllKeys = CopyAllKeys");
+
+			// CopyAllKeysName
+			lua::lua_pushcfunction(lState, Extension::LuaCopyAllKeysName);
+			lua::lua_setglobal(lState, "CopyAllKeysName");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.CopyAllKeysName = CopyAllKeysName");
+
 			// CopyAnimation
 			lua::lua_pushcfunction(lState, Extension::LuaCopyAnimation);
 			lua::lua_setglobal(lState, "CopyAnimation");
@@ -3044,6 +3054,11 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_setglobal(lState, "MultiplyTargetColorLerpAllFramesRGBNameD");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.MultiplyTargetColorLerpAllFramesRGBNameD = MultiplyTargetColorLerpAllFramesRGBNameD");
 
+			// MultiplyTargetColorLerpName
+			lua::lua_pushcfunction(lState, Extension::LuaMultiplyTargetColorLerpName);
+			lua::lua_setglobal(lState, "MultiplyTargetColorLerpName");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.MultiplyTargetColorLerpName = MultiplyTargetColorLerpName");
+
 			// OffsetColors
 			lua::lua_pushcfunction(lState, Extension::LuaOffsetColors);
 			lua::lua_setglobal(lState, "OffsetColors");
@@ -3654,10 +3669,25 @@ int Extension::ExpGet_RZKEY_INVALID() /*!< Invalid keys. */
 			lua::lua_setglobal(lState, "SetLogDelegate");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetLogDelegate = SetLogDelegate");
 
+			// SetStaticColor
+			lua::lua_pushcfunction(lState, Extension::LuaSetStaticColor);
+			lua::lua_setglobal(lState, "SetStaticColor");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetStaticColor = SetStaticColor");
+
+			// SetStaticColorAll
+			lua::lua_pushcfunction(lState, Extension::LuaSetStaticColorAll);
+			lua::lua_setglobal(lState, "SetStaticColorAll");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.SetStaticColorAll = SetStaticColorAll");
+
 			// StaticColor
 			lua::lua_pushcfunction(lState, Extension::LuaStaticColor);
 			lua::lua_setglobal(lState, "StaticColor");
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.StaticColor = StaticColor");
+
+			// StaticColorAll
+			lua::lua_pushcfunction(lState, Extension::LuaStaticColorAll);
+			lua::lua_setglobal(lState, "StaticColorAll");
+			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI.StaticColorAll = StaticColorAll");
 
 			// StaticColorD
 			lua::lua_pushcfunction(lState, Extension::LuaStaticColorD);
@@ -4784,6 +4814,70 @@ int Extension::LuaCloseCompositeD(lua::lua_State* state)
 		double result = ChromaAnimationAPI::CloseCompositeD(name.c_str());
 		lua::lua_pushnumber(state, result);
 		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+int Extension::LuaCopyAllKeys(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyAllKeys(sourceAnimationId, targetAnimationId, frameId);
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+int Extension::LuaCopyAllKeysName(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::CopyAllKeysName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId);
+		return 0;
 	}
 	else
 	{
@@ -14328,6 +14422,44 @@ int Extension::LuaMultiplyTargetColorLerpAllFramesRGBNameD(lua::lua_State* state
 }
 
 /*
+	Multiply the specific frame by the color lerp result between color 1 and 
+	2 using the frame color value as the `t` value. Animation is referenced 
+	by name.
+*/
+int Extension::LuaMultiplyTargetColorLerpName(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color1 = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color2 = WrapperXLua::lua_tointegerW(state, 4);
+		ChromaAnimationAPI::MultiplyTargetColorLerpName(path.c_str(), frameId, color1, color2);
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
@@ -18617,7 +18749,59 @@ int Extension::LuaSetLogDelegate(lua::lua_State* state)
 }
 
 /*
-	`PluginStaticColor` sets the target device to the static color.
+	Sets the target device to the static color.
+*/
+int Extension::LuaSetStaticColor(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int deviceType = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int device = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 3);
+		ChromaAnimationAPI::SetStaticColor(deviceType, device, color);
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Sets all devices to the static color.
+*/
+int Extension::LuaSetStaticColorAll(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::SetStaticColorAll(color);
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Sets the target device to the static color.
 */
 int Extension::LuaStaticColor(lua::lua_State* state)
 {
@@ -18639,6 +18823,27 @@ int Extension::LuaStaticColor(lua::lua_State* state)
 		}
 		int color = WrapperXLua::lua_tointegerW(state, 3);
 		ChromaAnimationAPI::StaticColor(deviceType, device, color);
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+/*
+	Sets all devices to the static color.
+*/
+int Extension::LuaStaticColorAll(lua::lua_State* state)
+{
+	if (state)
+	{
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 1);
+		ChromaAnimationAPI::StaticColorAll(color);
 		return 0;
 	}
 	else

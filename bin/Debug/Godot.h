@@ -176,6 +176,18 @@ void CloseComposite(String name);
 */
 double CloseCompositeD(String name);
 /*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+void CopyAllKeys(
+	int sourceAnimationId, int targetAnimationId, int frameId);
+/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+void CopyAllKeysName(
+	String sourceAnimation, String targetAnimation, int frameId);
+/*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by id.
 */
@@ -1878,6 +1890,13 @@ void MultiplyTargetColorLerpAllFramesRGBName(
 double MultiplyTargetColorLerpAllFramesRGBNameD(
 	String path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 /*
+	Multiply the specific frame by the color lerp result between color 1 and 
+	2 using the frame color value as the `t` value. Animation is referenced 
+	by name.
+*/
+void MultiplyTargetColorLerpName(
+	String path, int frameId, int color1, int color2);
+/*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
@@ -2574,10 +2593,23 @@ double SetKeyZeroColorRGBNameD(
 */
 void SetLogDelegate(DebugLogPtr fp);
 /*
-	`PluginStaticColor` sets the target device to the static color.
+	Sets the target device to the static color.
+*/
+void SetStaticColor(
+	int deviceType, int device, int color);
+/*
+	Sets all devices to the static color.
+*/
+void SetStaticColorAll(int color);
+/*
+	Sets the target device to the static color.
 */
 void StaticColor(
 	int deviceType, int device, int color);
+/*
+	Sets all devices to the static color.
+*/
+void StaticColorAll(int color);
 /*
 	D suffix for limited data types.
 */

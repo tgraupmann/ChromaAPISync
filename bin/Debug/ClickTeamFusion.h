@@ -153,6 +153,16 @@
 	*/
 	static int LuaCloseCompositeD(lua::lua_State* state);
 	/*
+	Copy source animation to target animation for the given frame. Source and 
+		target are referenced by id.
+	*/
+	static int LuaCopyAllKeys(lua::lua_State* state);
+	/*
+	Copy source animation to target animation for the given frame. Source and 
+		target are referenced by id.
+	*/
+	static int LuaCopyAllKeysName(lua::lua_State* state);
+	/*
 	Copy animation to named target animation in memory. If target animation 
 		exists, close first. Source is referenced by id.
 	*/
@@ -1625,6 +1635,12 @@
 	*/
 	static int LuaMultiplyTargetColorLerpAllFramesRGBNameD(lua::lua_State* state);
 	/*
+	Multiply the specific frame by the color lerp result between color 1 and 
+		2 using the frame color value as the `t` value. Animation is referenced 
+		by name.
+	*/
+	static int LuaMultiplyTargetColorLerpName(lua::lua_State* state);
+	/*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 		to 255 for red, green, and blue parameters. Negative values remove color. 
 		Positive values add color.
@@ -2221,9 +2237,21 @@
 	*/
 	static int LuaSetLogDelegate(lua::lua_State* state);
 	/*
-	`PluginStaticColor` sets the target device to the static color.
+	Sets the target device to the static color.
+	*/
+	static int LuaSetStaticColor(lua::lua_State* state);
+	/*
+	Sets all devices to the static color.
+	*/
+	static int LuaSetStaticColorAll(lua::lua_State* state);
+	/*
+	Sets the target device to the static color.
 	*/
 	static int LuaStaticColor(lua::lua_State* state);
+	/*
+	Sets all devices to the static color.
+	*/
+	static int LuaStaticColorAll(lua::lua_State* state);
 	/*
 	D suffix for limited data types.
 	*/

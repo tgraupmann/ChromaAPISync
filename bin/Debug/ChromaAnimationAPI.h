@@ -169,6 +169,16 @@ typedef void		(*PLUGIN_CLOSE_COMPOSITE)(const char* name);
 */
 typedef double		(*PLUGIN_CLOSE_COMPOSITE_D)(const char* name);
 /*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+typedef void		(*PLUGIN_COPY_ALL_KEYS)(int sourceAnimationId, int targetAnimationId, int frameId);
+/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+*/
+typedef void		(*PLUGIN_COPY_ALL_KEYS_NAME)(const char* sourceAnimation, const char* targetAnimation, int frameId);
+/*
 	Copy animation to named target animation in memory. If target animation 
 	exists, close first. Source is referenced by id.
 */
@@ -1641,6 +1651,12 @@ typedef void		(*PLUGIN_MULTIPLY_TARGET_COLOR_LERP_ALL_FRAMES_RGB_NAME)(const cha
 */
 typedef double		(*PLUGIN_MULTIPLY_TARGET_COLOR_LERP_ALL_FRAMES_RGB_NAME_D)(const char* path, double red1, double green1, double blue1, double red2, double green2, double blue2);
 /*
+	Multiply the specific frame by the color lerp result between color 1 and 
+	2 using the frame color value as the `t` value. Animation is referenced 
+	by name.
+*/
+typedef void		(*PLUGIN_MULTIPLY_TARGET_COLOR_LERP_NAME)(const char* path, int frameId, int color1, int color2);
+/*
 	Offset all colors in the frame using the RGB offset. Use the range of -255 
 	to 255 for red, green, and blue parameters. Negative values remove color. 
 	Positive values add color.
@@ -2237,9 +2253,21 @@ typedef double		(*PLUGIN_SET_KEY_ZERO_COLOR_RGB_NAME_D)(const char* path, double
 */
 typedef void		(*PLUGIN_SET_LOG_DELEGATE)(DebugLogPtr fp);
 /*
-	`PluginStaticColor` sets the target device to the static color.
+	Sets the target device to the static color.
+*/
+typedef void		(*PLUGIN_SET_STATIC_COLOR)(int deviceType, int device, int color);
+/*
+	Sets all devices to the static color.
+*/
+typedef void		(*PLUGIN_SET_STATIC_COLOR_ALL)(int color);
+/*
+	Sets the target device to the static color.
 */
 typedef void		(*PLUGIN_STATIC_COLOR)(int deviceType, int device, int color);
+/*
+	Sets all devices to the static color.
+*/
+typedef void		(*PLUGIN_STATIC_COLOR_ALL)(int color);
 /*
 	D suffix for limited data types.
 */
@@ -2652,6 +2680,16 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_CLOSE_COMPOSITE_D, CloseCompositeD);
+		/*
+			Copy source animation to target animation for the given frame. Source and 
+			target are referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ALL_KEYS, CopyAllKeys);
+		/*
+			Copy source animation to target animation for the given frame. Source and 
+			target are referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ALL_KEYS_NAME, CopyAllKeysName);
 		/*
 			Copy animation to named target animation in memory. If target animation 
 			exists, close first. Source is referenced by id.
@@ -4125,6 +4163,12 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_MULTIPLY_TARGET_COLOR_LERP_ALL_FRAMES_RGB_NAME_D, MultiplyTargetColorLerpAllFramesRGBNameD);
 		/*
+			Multiply the specific frame by the color lerp result between color 1 and 
+			2 using the frame color value as the `t` value. Animation is referenced 
+			by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_MULTIPLY_TARGET_COLOR_LERP_NAME, MultiplyTargetColorLerpName);
+		/*
 			Offset all colors in the frame using the RGB offset. Use the range of -255 
 			to 255 for red, green, and blue parameters. Negative values remove color. 
 			Positive values add color.
@@ -4721,9 +4765,21 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_LOG_DELEGATE, SetLogDelegate);
 		/*
-			`PluginStaticColor` sets the target device to the static color.
+			Sets the target device to the static color.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_STATIC_COLOR, SetStaticColor);
+		/*
+			Sets all devices to the static color.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SET_STATIC_COLOR_ALL, SetStaticColorAll);
+		/*
+			Sets the target device to the static color.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_STATIC_COLOR, StaticColor);
+		/*
+			Sets all devices to the static color.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_STATIC_COLOR_ALL, StaticColorAll);
 		/*
 			D suffix for limited data types.
 		*/

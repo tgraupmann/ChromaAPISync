@@ -145,6 +145,10 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "CloseAnimationName", Keywords = "Close the *.chroma Animation"), Category = "ChromaSDK")
 	static void CloseAnimationName(const FString& animationName);
 
+	/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "CopyAllKeys", Keywords = "Copy color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void CopyAllKeys(int32 sourceAnimationId, int32 targetAnimationId, int32 frameId);
 
@@ -154,6 +158,10 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "CopyAllKeysAllFramesName", Keywords = "Copy color from a source animation to a target animation for all frames"), Category = "ChromaSDK")
 	static void CopyAllKeysAllFramesName(const FString& sourceAnimationName, const FString& targetAnimationName);
 
+	/*
+	Copy source animation to target animation for the given frame. Source and 
+	target are referenced by id.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "CopyAllKeysName", Keywords = "Copy color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void CopyAllKeysName(const FString& sourceAnimationName, const FString& targetAnimationName, int32 frameId);
 
@@ -425,6 +433,9 @@
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "DuplicateMirrorFramesName", Keywords = "Duplicate and mirror the animation"), Category = "ChromaSDK")
 	static void DuplicateMirrorFramesName(const FString& animationName);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetStatus", Keywords = "Get Stream Status"), Category = "ChromaSDK")
+	static const EChromaSDKStreamStatusEnum::Type StreamGetStatus();
 
 	/*
 	Fade the animation to black starting at the fade frame index to the end 
@@ -794,6 +805,9 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetAnimationName", Keywords = "Get the animation name"), Category = "ChromaSDK")
 	static FString GetAnimationName(const int32 animationId);
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetBGRInt", Keywords = "Convert RGB to BGR Int"), Category = "ChromaSDK")
+	static int32 GetBGRInt(int32 red, int32 green, int32 blue);
+
 	/*
 	Get the current frame of the animation referenced by id.
 	*/
@@ -825,6 +839,9 @@
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetKeyboardRazerKey", Keywords = "Convert FKey to RZKEY"), Category = "ChromaSDK")
 	static EChromaSDKKeyboardKey::Type GetKeyboardRazerKey(FKey key);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetKeyboardRzKey", Keywords = "Convert to RZKEY int"), Category = "ChromaSDK")
+	static int32 GetKeyboardRzKey(EChromaSDKKeyboardKey::Type key);
 
 	/*
 	Get the color of an animation key for the given frame referenced by id.
@@ -1491,6 +1508,18 @@
 	static void SetMouseLedColor(EChromaSDKMouseLed::Type led, const FLinearColor& colorParam, UPARAM(ref) TArray<FChromaSDKColors>& colors);
 
 	/*
+	Sets the target device to the static color.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SetStaticColor", Keywords = "Set the target device to the static color"), Category = "ChromaSDK")
+	static void SetStaticColor(EChromaSDKDeviceEnum::Type device, const FLinearColor& color);
+
+	/*
+	Sets all devices to the static color.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SetStaticColorAll", Keywords = "Set the all devices to the static color"), Category = "ChromaSDK")
+	static void SetStaticColorAll(const FLinearColor& color);
+
+	/*
 	`PluginStopAll` will automatically stop all animations that are playing.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StopAll", Keywords = "Stop playing all animations"), Category = "ChromaSDK")
@@ -1516,6 +1545,33 @@
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StopAnimationType", Keywords = "Stop playing the Animation type"), Category = "ChromaSDK")
 	static void StopAnimationType(EChromaSDKDeviceEnum::Type device);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamBroadcast", Keywords = "Start Chroma Broadcasting"), Category = "ChromaSDK")
+	static void StreamBroadcast(const FString& streamId, const FString& streamKey);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamBroadcastEnd", Keywords = "End Chroma Broadcasting"), Category = "ChromaSDK")
+	static void StreamBroadcastEnd();
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetAuthShortcode", Keywords = "Get Stream Shortcode for Authorization"), Category = "ChromaSDK")
+	static FString StreamGetAuthShortcode(const FString& platform, const FString& title);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetId", Keywords = "Get Stream Id"), Category = "ChromaSDK")
+	static FString StreamGetId(const FString& shortcode);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetKey", Keywords = "Get Stream Id"), Category = "ChromaSDK")
+	static FString StreamGetKey(const FString& shortcode);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetStatusString", Keywords = "Get Status Stream String"), Category = "ChromaSDK")
+	static FString StreamGetStatusString(const EChromaSDKStreamStatusEnum::Type status);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamReleaseShortcode", Keywords = "Release Stream Shortcode"), Category = "ChromaSDK")
+	static bool StreamReleaseShortcode(const FString& shortcode);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamWatch", Keywords = "Start Chroma Watching"), Category = "ChromaSDK")
+	static void StreamWatch(const FString& streamId, int32 timestamp);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamWatchEnd", Keywords = "End Chroma Watching"), Category = "ChromaSDK")
+	static void StreamWatchEnd();
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SubtractNonZeroAllKeys", Keywords = "Copy nonzero color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void SubtractNonZeroAllKeys(int32 sourceAnimationId, int32 targetAnimationId, int32 frameId);
@@ -1582,6 +1638,9 @@
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SubtractNonZeroTargetAllKeysAllFramesOffsetName", Keywords = "Subtract nonzero color from a source animation to a target animation for all frames"), Category = "ChromaSDK")
 	static void SubtractNonZeroTargetAllKeysAllFramesOffsetName(const FString& sourceAnimationName, const FString& targetAnimationName, int32 offset);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SupportsStreaming", Keywords = "Release Stream Shortcode"), Category = "ChromaSDK")
+	static bool SupportsStreaming();
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ToBGR", Keywords = "Convert LinearColor to BGR int"), Category = "ChromaSDK")
 	static int32 ToBGR(const FLinearColor& colorParam);
