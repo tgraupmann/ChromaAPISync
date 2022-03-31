@@ -187,7 +187,57 @@ namespace ChromaAPISync
 
             #endregion Sort C++ Input
 
+            #region C# and Unity
+
+
+            if (File.Exists(fileCSharp))
+            {
+                File.Delete(fileCSharp);
+            }
+            using (FileStream fsCSharp = File.Open(fileCSharp, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swCSharp = new StreamWriter(fsCSharp))
+                {
+                    if (!WriteCSharp(swCSharp))
+                    {
+                        return;
+                    }
+                }
+            }
+
             //return; // DEBUG SKIP OTHERS
+
+            if (File.Exists(fileUnity))
+            {
+                File.Delete(fileUnity);
+            }
+            using (FileStream fsUnity = File.Open(fileUnity, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swUnity = new StreamWriter(fsUnity))
+                {
+                    if (!WriteUnity(swUnity))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileUnityDocs))
+            {
+                File.Delete(fileUnityDocs);
+            }
+            using (FileStream fsUnityDocs = File.Open(fileUnityDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swUnityDocs = new StreamWriter(fsUnityDocs))
+                {
+                    if (!WriteUnityDocs(swUnityDocs))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            #endregion C# and Unity
 
             #region ClickTeamFusion
 
@@ -291,56 +341,6 @@ namespace ChromaAPISync
 
             #endregion Java
 
-
-            #region C# and Unity
-
-
-            if (File.Exists(fileCSharp))
-            {
-                File.Delete(fileCSharp);
-            }
-            using (FileStream fsCSharp = File.Open(fileCSharp, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swCSharp = new StreamWriter(fsCSharp))
-                {
-                    if (!WriteCSharp(swCSharp))
-                    {
-                        return;
-                    }
-                }
-            }
-
-            if (File.Exists(fileUnity))
-            {
-                File.Delete(fileUnity);
-            }
-            using (FileStream fsUnity = File.Open(fileUnity, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swUnity = new StreamWriter(fsUnity))
-                {
-                    if (!WriteUnity(swUnity))
-                    {
-                        return;
-                    }
-                }
-            }
-
-            if (File.Exists(fileUnityDocs))
-            {
-                File.Delete(fileUnityDocs);
-            }
-            using (FileStream fsUnityDocs = File.Open(fileUnityDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
-            {
-                using (StreamWriter swUnityDocs = new StreamWriter(fsUnityDocs))
-                {
-                    if (!WriteUnityDocs(swUnityDocs))
-                    {
-                        return;
-                    }
-                }
-            }
-
-            #endregion C# and Unity
         }
 
         static bool Replace(ref string line, string search, string replace)
@@ -614,11 +614,16 @@ namespace ChromaAPISync
                 {
                     string name = part.Substring(indexName + 1);
                     MetaArgInfo argInfo = methodInfo.DetailArgs[i];
-                    if (argInfo.StrType == "const char*" ||
-                        argInfo.StrType == "char*")
+                    if (argInfo.StrType == "char*" ||
+                        argInfo.StrType == "const char*" ||
+                        argInfo.StrType == "const wchar_t*")
                     {
-                        string lpArg = string.Format("lp{0}", UppercaseFirstLetter(name));
+                        string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(name));
                         name = lpArg;
+                    }
+                    else if (argInfo.StrType == "unsigned char*")
+                    {
+                        name = string.Format("out {0}", name);
                     }
                     if (null != argInfo.OverrideInfo)
                     {
@@ -690,9 +695,25 @@ namespace ChromaAPISync
             {
                 result = "IntPtr";
             }
+            else if (result == "const wchar_t*")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "char*")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "unsigned char*")
+            {
+                result = "out byte";
+            }
             else if (result == "float*")
             {
                 result = "out float";
+            }
+            else if (result == "unsigned long long")
+            {
+                result = "ulong";
             }
             else if (result == "RZRESULT")
             {
@@ -762,6 +783,10 @@ namespace ChromaAPISync
             {
                 result = "ref ChromaSDK.APPINFOTYPE";
             }
+            else if (result == "ChromaSDK::Stream::StreamStatusType")
+            {
+                result = "ChromaSDK.Stream.StreamStatusType";
+            }
             return result;
         }
 
@@ -803,6 +828,22 @@ namespace ChromaAPISync
             else if (result == "const char*")
             {
                 result = "string";
+            }
+            else if (result == "char*")
+            {
+                result = "ref string";
+            }
+            else if (result == "unsigned char*")
+            {
+                result = "out byte";
+            }
+            else if (result == "const wchar_t*")
+            {
+                result = "string";
+            }
+            else if (result == "unsigned long long")
+            {
+                result = "ulong";
             }
             else if (result == "RZRESULT")
             {
@@ -859,6 +900,10 @@ namespace ChromaAPISync
             else if (result == "ChromaSDK::APPINFOTYPE*")
             {
                 result = "ref ChromaSDK.APPINFOTYPE";
+            }
+            else if (result == "ChromaSDK::Stream::StreamStatusType")
+            {
+                return "ChromaSDK.Stream.StreamStatusType";
             }
             return result;
         }
@@ -2668,6 +2713,20 @@ namespace ChromaSDK
         CHROMA_INVALID              //!< Invalid effect.
     }
 
+    namespace Stream
+    {
+        public enum StreamStatusType
+        {
+            READY = 0, // ready for commands
+            AUTHORIZING = 1, // the session is being authorized
+            BROADCASTING = 2, // the session is being broadcast
+            WATCHING = 3, // A stream is being watched
+            NOT_AUTHORIZED = 4, // The session is not authorized
+            BROADCAST_DUPLICATE = 5, // The session has duplicate broadcasters
+            SERVICE_OFFLINE = 6, // The service is offline
+        }
+    }
+
     public class ChromaAnimationAPI
     {
 __UNITY_DLL_NAME__
@@ -2718,29 +2777,63 @@ __UNITY_KEY_MAPPING__
 
 #region Helpers (handle path conversions)
 
-        /// <summary>
-        /// Helper to convert string to IntPtr
-        /// </summary>
-        /// <param name=""path""></param>
-        /// <returns></returns>
-        private static IntPtr GetIntPtr(string path)
+    /// <summary>
+    /// Helper to convert path string to IntPtr
+    /// </summary>
+    /// <param name=""path""></param>
+    /// <returns></returns>
+    private static IntPtr GetPathIntPtr(string path)
+    {
+        if (string.IsNullOrEmpty(path))
         {
-            if (string.IsNullOrEmpty(path))
-            {
-                return IntPtr.Zero;
-            }
-            FileInfo fi = new FileInfo(path);
-            byte[] array = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ""\0"");
-            IntPtr lpData = Marshal.AllocHGlobal(array.Length);
-            Marshal.Copy(array, 0, lpData, array.Length);
-            return lpData;
+            return IntPtr.Zero;
         }
+        FileInfo fi = new FileInfo(path);
+        byte[] array = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ""\0"");
+        IntPtr lpData = Marshal.AllocHGlobal(array.Length);
+        Marshal.Copy(array, 0, lpData, array.Length);
+        return lpData;
+    }
 
-        /// <summary>
-        /// Helper to recycle the IntPtr
-        /// </summary>
-        /// <param name=""lpData""></param>
-        private static void FreeIntPtr(IntPtr lpData)
+    /// <summary>
+    /// Helper to Ascii path string to IntPtr
+    /// </summary>
+    /// <param name=""str""></param>
+    /// <returns></returns>
+    private static IntPtr GetAsciiIntPtr(string str)
+    {
+        if (string.IsNullOrEmpty(str))
+        {
+            return IntPtr.Zero;
+        }
+        byte[] array = ASCIIEncoding.ASCII.GetBytes(str + ""\0"");
+        IntPtr lpData = Marshal.AllocHGlobal(array.Length);
+        Marshal.Copy(array, 0, lpData, array.Length);
+        return lpData;
+    }
+
+    /// <summary>
+    /// Helper to Unicode path string to IntPtr
+    /// </summary>
+    /// <param name=""str""></param>
+    /// <returns></returns>
+    private static IntPtr GetUnicodeIntPtr(string str)
+    {
+        if (string.IsNullOrEmpty(str))
+        {
+            return IntPtr.Zero;
+        }
+        byte[] array = UnicodeEncoding.Unicode.GetBytes(str + ""\0"");
+        IntPtr lpData = Marshal.AllocHGlobal(array.Length);
+        Marshal.Copy(array, 0, lpData, array.Length);
+        return lpData;
+    }
+
+    /// <summary>
+    /// Helper to recycle the IntPtr
+    /// </summary>
+    /// <param name=""lpData""></param>
+    private static void FreeIntPtr(IntPtr lpData)
         {
             if (lpData != IntPtr.Zero)
             {
@@ -2797,18 +2890,45 @@ __UNITY_GET_STREAMING_PATH__
                     Output(swCSharp, "\t\t{0}", "{");
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
                     {
-                        if (argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "char*")
+                        if (argInfo.StrType == "char*" ||
+                            argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "const wchar_t*")
                         {
-                            string pathArg = string.Format("path{0}", UppercaseFirstLetter(argInfo.Name));
+                            string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
                             Output(swCSharp, "\t\t\tstring {0} = {1};",
                                 pathArg,
                                 argInfo.Name);
 
-                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swCSharp, "\t\t\tIntPtr {0} = GetIntPtr({1});",
-                                lpArg,
-                                pathArg);
+                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
+                            if (argInfo.StrType == "char*")
+                            {
+                                Output(swCSharp, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                    lpArg,
+                                    pathArg);
+                            }
+                            else if (argInfo.StrType == "const char*")
+                            {
+                                if (argInfo.Name.ToUpper().Contains("PATH") ||
+                                    argInfo.Name.ToUpper().Contains("ANIMATION") ||
+                                    argInfo.Name.ToUpper().Contains("NAME"))
+                                {
+                                    Output(swCSharp, "\t\t\tIntPtr {0} = GetPathIntPtr({1});",
+                                        lpArg,
+                                        pathArg);
+                                }
+                                else
+                                {
+                                    Output(swCSharp, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                        lpArg,
+                                        pathArg);
+                                }
+                            }
+                            else if (argInfo.StrType == "const wchar_t*")
+                            {
+                                Output(swCSharp, "\t\t\tIntPtr {0} = GetUnicodeIntPtr({1});",
+                                    lpArg,
+                                    pathArg);
+                            }
 
                         }
                     }
@@ -2838,10 +2958,20 @@ __UNITY_GET_STREAMING_PATH__
 
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
                     {
-                        if (argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "char*")
+                        if (argInfo.StrType == "char*" || 
+                            argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "const wchar_t*")
                         {
-                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
+                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
+
+                            if (argInfo.StrType == "char*")
+                            {
+                                Output(swCSharp, "\t\t\tif ({0} != IntPtr.Zero)", lpArg);
+                                Output(swCSharp, "\t\t\t{0}", "{");
+                                Output(swCSharp, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1});", argInfo.Name, lpArg);
+                                Output(swCSharp, "\t\t\t{0}", "}");
+                            }
+
                             Output(swCSharp, "\t\t\tFreeIntPtr({0});",
                                 lpArg);
 
