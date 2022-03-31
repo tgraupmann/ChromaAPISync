@@ -67,8 +67,9 @@ namespace ChromaAPISync
 
         public static void ConvertExportsToClass(string input,
             string outputHeader, string outputImplementation,
-            string outputDocs,
+            string outputCppDocs,
             string outputCSharp,
+            string outputCSharpDocs,
             string outputUnity,
             string outputUnityDocs,
             string outputSortInput,
@@ -81,8 +82,9 @@ namespace ChromaAPISync
         {
             OpenClassFiles(input,
                 outputHeader, outputImplementation,
-                outputDocs,
+                outputCppDocs,
                 outputCSharp,
+                outputCSharpDocs,
                 outputUnity,
                 outputUnityDocs,
                 outputSortInput,
@@ -104,6 +106,7 @@ namespace ChromaAPISync
             string fileCppHeader, string fileCppImplementation,
             string fileCppDocs,
             string fileCSharp,
+            string fileCSharpDocs,
             string fileUnity,
             string fileUnityDocs,
             string fileSortInput,
@@ -189,7 +192,10 @@ namespace ChromaAPISync
 
             #region C# and Unity
 
-
+            if (!Directory.Exists(Path.GetDirectoryName(fileCSharp)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(fileCSharp));
+            }
             if (File.Exists(fileCSharp))
             {
                 File.Delete(fileCSharp);
@@ -205,8 +211,27 @@ namespace ChromaAPISync
                 }
             }
 
+            if (File.Exists(fileCSharpDocs))
+            {
+                File.Delete(fileCSharpDocs);
+            }
+            using (FileStream fsCSharpDocs = File.Open(fileCSharpDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swCSharpDocs = new StreamWriter(fsCSharpDocs))
+                {
+                    if (!WriteCSharpDocs(swCSharpDocs, "ChromaAnimationAPI"))
+                    {
+                        return;
+                    }
+                }
+            }
+
             //return; // DEBUG SKIP OTHERS
 
+            if (!Directory.Exists(Path.GetDirectoryName(fileUnity)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(fileUnity));
+            }
             if (File.Exists(fileUnity))
             {
                 File.Delete(fileUnity);
@@ -230,7 +255,7 @@ namespace ChromaAPISync
             {
                 using (StreamWriter swUnityDocs = new StreamWriter(fsUnityDocs))
                 {
-                    if (!WriteUnityDocs(swUnityDocs))
+                    if (!WriteCSharpDocs(swUnityDocs, "UnityNativeChromaSDK"))
                     {
                         return;
                     }
@@ -2725,6 +2750,29 @@ namespace ChromaSDK
             BROADCAST_DUPLICATE = 5, // The session has duplicate broadcasters
             SERVICE_OFFLINE = 6, // The service is offline
         }
+
+        public class Default
+        {
+            const uint LENGTH_SHORTCODE = 6;
+            const uint LENGTH_STREAM_ID = 48;
+            const uint LENGTH_STREAM_KEY = 48;
+            const uint LENGTH_STREAM_FOCUS = 48;
+
+            static string GetDefaultString(uint length)
+            {
+                string result = string.Empty;
+                for (uint i = 0; i < length; ++i)
+                {
+                    result += "" "";
+                }
+                return result;
+            }
+
+            public readonly static string Shortcode = GetDefaultString(LENGTH_SHORTCODE);
+            public readonly static string StreamId = GetDefaultString(LENGTH_STREAM_ID);
+            public readonly static string StreamKey = GetDefaultString(LENGTH_STREAM_KEY);
+            public readonly static string StreamFocus = GetDefaultString(LENGTH_STREAM_FOCUS);
+        }
     }
 
     public class ChromaAnimationAPI
@@ -3194,7 +3242,7 @@ __UNITY_GET_STREAMING_PATH__
             }
         }
 
-        static bool WriteUnityDocs(StreamWriter swUnityDocs)
+        static bool WriteCSharpDocs(StreamWriter swUnityDocs, string apiClass)
         {
             try
             {
@@ -3229,12 +3277,13 @@ __UNITY_GET_STREAMING_PATH__
                     Output(swUnityDocs, "{0}", "```charp");
                     if (methodInfo.ReturnType == "void")
                     {
-                        Output(swUnityDocs, "UnityNativeChromaSDK.{0}({1});", methodInfo.Name, ChangeArgsToManagedTypes(methodInfo));
+                        Output(swUnityDocs, "{0}.{1}({2});", apiClass, methodInfo.Name, ChangeArgsToManagedTypes(methodInfo));
                     }
                     else
                     {
-                        Output(swUnityDocs, "{0} result = UnityNativeChromaSDK.{1}({2});",
+                        Output(swUnityDocs, "{0} result = {1}.{2}({3});",
                                 ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                                apiClass,
                                 methodInfo.Name,
                                 ChangeArgsToManagedTypes(methodInfo));
                     }
