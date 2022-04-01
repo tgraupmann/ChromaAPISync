@@ -66,13 +66,15 @@ namespace ChromaAPISync
         #endregion
 
         public static void ConvertExportsToClass(string input,
-            string outputHeader, string outputImplementation,
+            string outputCppHeader, string outputCppImplementation,
+            string outputCppSortInput,
             string outputCppDocs,
             string outputCSharp,
             string outputCSharpDocs,
             string outputUnity,
             string outputUnityDocs,
-            string outputSortInput,
+            string outputVB,
+            string outputVBDocs,
             string outputJavaInterface,
             string outputJavaSDK,
             string outputGodotHeader,
@@ -81,13 +83,15 @@ namespace ChromaAPISync
             string outputCTFImplementation)
         {
             OpenClassFiles(input,
-                outputHeader, outputImplementation,
+                outputCppSortInput,
+                outputCppHeader, outputCppImplementation,
                 outputCppDocs,
                 outputCSharp,
                 outputCSharpDocs,
                 outputUnity,
                 outputUnityDocs,
-                outputSortInput,
+                outputVB,
+                outputVBDocs,
                 outputJavaInterface,
                 outputJavaSDK,
                 outputGodotHeader,
@@ -103,13 +107,15 @@ namespace ChromaAPISync
         }
 
         private static void OpenClassFiles(string input,
+            string fileCppSortInput,
             string fileCppHeader, string fileCppImplementation,
             string fileCppDocs,
             string fileCSharp,
             string fileCSharpDocs,
             string fileUnity,
             string fileUnityDocs,
-            string fileSortInput,
+            string fileVB,
+            string fileVBDocs,
             string fileJavaInterface, string fileJavaSDK,
             string fileGodotHeader, string fileGodotImplementation,
             string fileCTFHeader, string fileCTFImplementation)
@@ -173,11 +179,11 @@ namespace ChromaAPISync
 
             #region Sort C++ Input
 
-            if (File.Exists(fileSortInput))
+            if (File.Exists(fileCppSortInput))
             {
-                File.Delete(fileSortInput);
+                File.Delete(fileCppSortInput);
             }
-            using (FileStream fsSortInput = File.Open(fileSortInput, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            using (FileStream fsSortInput = File.Open(fileCppSortInput, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
             {
                 using (StreamWriter swSortInput = new StreamWriter(fsSortInput))
                 {
@@ -189,6 +195,46 @@ namespace ChromaAPISync
             }
 
             #endregion Sort C++ Input
+
+            #region VB
+
+            if (!Directory.Exists(Path.GetDirectoryName(fileVB)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(fileVB));
+            }
+            if (File.Exists(fileVB))
+            {
+                File.Delete(fileVB);
+            }
+            using (FileStream fsVB = File.Open(fileVB, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swVB = new StreamWriter(fsVB))
+                {
+                    if (!WriteVB(swVB))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileVBDocs))
+            {
+                File.Delete(fileVBDocs);
+            }
+            using (FileStream fsVBDocs = File.Open(fileVBDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swVBDocs = new StreamWriter(fsVBDocs))
+                {
+                    if (!WriteCSharpDocs(swVBDocs, "ChromaAnimationAPI"))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            #endregion VB
+
+            //return; // DEBUG SKIP OTHERS
 
             #region C# and Unity
 
@@ -225,8 +271,6 @@ namespace ChromaAPISync
                     }
                 }
             }
-
-            //return; // DEBUG SKIP OTHERS
 
             if (!Directory.Exists(Path.GetDirectoryName(fileUnity)))
             {
@@ -3357,6 +3401,583 @@ __UNITY_GET_STREAMING_PATH__
                 return false;
             }
         }
+
+        #region VB
+
+        private const string HEADER_VB =
+@"Imports System
+Imports System.Collections.Generic
+Imports System.IO
+Imports System.Runtime.InteropServices
+Imports System.Text
+
+Namespace ChromaSDK
+
+    Public class Keyboard
+    
+        REM //! Definitions of keys.
+        Public Enum RZKEY
+            RZKEY_ESC = &H0001                 REM /*!< Esc (VK_ESCAPE) */
+            RZKEY_F1 = &H0003                  REM /*!< F1 (VK_F1) */
+            RZKEY_F2 = &H0004                  REM /*!< F2 (VK_F2) */
+            RZKEY_F3 = &H0005                  REM /*!< F3 (VK_F3) */
+            RZKEY_F4 = &H0006                  REM /*!< F4 (VK_F4) */
+            RZKEY_F5 = &H0007                  REM /*!< F5 (VK_F5) */
+            RZKEY_F6 = &H0008                  REM /*!< F6 (VK_F6) */
+            RZKEY_F7 = &H0009                  REM /*!< F7 (VK_F7) */
+            RZKEY_F8 = &H000A                  REM /*!< F8 (VK_F8) */
+            RZKEY_F9 = &H000B                  REM /*!< F9 (VK_F9) */
+            RZKEY_F10 = &H000C                 REM /*!< F10 (VK_F10) */
+            RZKEY_F11 = &H000D                 REM /*!< F11 (VK_F11) */
+            RZKEY_F12 = &H000E                 REM /*!< F12 (VK_F12) */
+            RZKEY_1 = &H0102                   REM /*!< 1 (VK_1) */
+            RZKEY_2 = &H0103                   REM /*!< 2 (VK_2) */
+            RZKEY_3 = &H0104                   REM /*!< 3 (VK_3) */
+            RZKEY_4 = &H0105                   REM /*!< 4 (VK_4) */
+            RZKEY_5 = &H0106                   REM /*!< 5 (VK_5) */
+            RZKEY_6 = &H0107                   REM /*!< 6 (VK_6) */
+            RZKEY_7 = &H0108                   REM /*!< 7 (VK_7) */
+            RZKEY_8 = &H0109                   REM /*!< 8 (VK_8) */
+            RZKEY_9 = &H010A                   REM /*!< 9 (VK_9) */
+            RZKEY_0 = &H010B                   REM /*!< 0 (VK_0) */
+            RZKEY_A = &H0302                   REM /*!< A (VK_A) */
+            RZKEY_B = &H0407                   REM /*!< B (VK_B) */
+            RZKEY_C = &H0405                   REM /*!< C (VK_C) */
+            RZKEY_D = &H0304                   REM /*!< D (VK_D) */
+            RZKEY_E = &H0204                   REM /*!< E (VK_E) */
+            RZKEY_F = &H0305                   REM /*!< F (VK_F) */
+            RZKEY_G = &H0306                   REM /*!< G (VK_G) */
+            RZKEY_H = &H0307                   REM /*!< H (VK_H) */
+            RZKEY_I = &H0209                   REM /*!< I (VK_I) */
+            RZKEY_J = &H0308                   REM /*!< J (VK_J) */
+            RZKEY_K = &H0309                   REM /*!< K (VK_K) */
+            RZKEY_L = &H030A                   REM /*!< L (VK_L) */
+            RZKEY_M = &H0409                   REM /*!< M (VK_M) */
+            RZKEY_N = &H0408                   REM /*!< N (VK_N) */
+            RZKEY_O = &H020A                   REM /*!< O (VK_O) */
+            RZKEY_P = &H020B                   REM /*!< P (VK_P) */
+            RZKEY_Q = &H0202                   REM /*!< Q (VK_Q) */
+            RZKEY_R = &H0205                   REM /*!< R (VK_R) */
+            RZKEY_S = &H0303                   REM /*!< S (VK_S) */
+            RZKEY_T = &H0206                   REM /*!< T (VK_T) */
+            RZKEY_U = &H0208                   REM /*!< U (VK_U) */
+            RZKEY_V = &H0406                   REM /*!< V (VK_V) */
+            RZKEY_W = &H0203                   REM /*!< W (VK_W) */
+            RZKEY_X = &H0404                   REM /*!< X (VK_X) */
+            RZKEY_Y = &H0207                   REM /*!< Y (VK_Y) */
+            RZKEY_Z = &H0403                   REM /*!< Z (VK_Z) */
+            RZKEY_NUMLOCK = &H0112             REM /*!< Numlock (VK_NUMLOCK) */
+            RZKEY_NUMPAD0 = &H0513             REM /*!< Numpad 0 (VK_NUMPAD0) */
+            RZKEY_NUMPAD1 = &H0412             REM /*!< Numpad 1 (VK_NUMPAD1) */
+            RZKEY_NUMPAD2 = &H0413             REM /*!< Numpad 2 (VK_NUMPAD2) */
+            RZKEY_NUMPAD3 = &H0414             REM /*!< Numpad 3 (VK_NUMPAD3) */
+            RZKEY_NUMPAD4 = &H0312             REM /*!< Numpad 4 (VK_NUMPAD4) */
+            RZKEY_NUMPAD5 = &H0313             REM /*!< Numpad 5 (VK_NUMPAD5) */
+            RZKEY_NUMPAD6 = &H0314             REM /*!< Numpad 6 (VK_NUMPAD6) */
+            RZKEY_NUMPAD7 = &H0212             REM /*!< Numpad 7 (VK_NUMPAD7) */
+            RZKEY_NUMPAD8 = &H0213             REM /*!< Numpad 8 (VK_NUMPAD8) */
+            RZKEY_NUMPAD9 = &H0214             REM /*!< Numpad 9 (VK_ NUMPAD9*/
+            RZKEY_NUMPAD_DIVIDE = &H0113       REM /*!< Divide (VK_DIVIDE) */
+            RZKEY_NUMPAD_MULTIPLY = &H0114     REM /*!< Multiply (VK_MULTIPLY) */
+            RZKEY_NUMPAD_SUBTRACT = &H0115     REM /*!< Subtract (VK_SUBTRACT) */
+            RZKEY_NUMPAD_ADD = &H0215          REM /*!< Add (VK_ADD) */
+            RZKEY_NUMPAD_ENTER = &H0415        REM /*!< Enter (VK_RETURN - Extended) */
+            RZKEY_NUMPAD_DECIMAL = &H0514      REM /*!< Decimal (VK_DECIMAL) */
+            RZKEY_PRINTSCREEN = &H000F         REM /*!< Print Screen (VK_PRINT) */
+            RZKEY_SCROLL = &H0010              REM /*!< Scroll Lock (VK_SCROLL) */
+            RZKEY_PAUSE = &H0011               REM /*!< Pause (VK_PAUSE) */
+            RZKEY_INSERT = &H010F              REM /*!< Insert (VK_INSERT) */
+            RZKEY_HOME = &H0110                REM /*!< Home (VK_HOME) */
+            RZKEY_PAGEUP = &H0111              REM /*!< Page Up (VK_PRIOR) */
+            RZKEY_DELETE = &H020f              REM /*!< Delete (VK_DELETE) */
+            RZKEY_END = &H0210                 REM /*!< End (VK_END) */
+            RZKEY_PAGEDOWN = &H0211            REM /*!< Page Down (VK_NEXT) */
+            RZKEY_UP = &H0410                  REM /*!< Up (VK_UP) */
+            RZKEY_LEFT = &H050F                REM /*!< Left (VK_LEFT) */
+            RZKEY_DOWN = &H0510                REM /*!< Down (VK_DOWN) */
+            RZKEY_RIGHT = &H0511               REM /*!< Right (VK_RIGHT) */
+            RZKEY_TAB = &H0201                 REM /*!< Tab (VK_TAB) */
+            RZKEY_CAPSLOCK = &H0301            REM /*!< Caps Lock(VK_CAPITAL) */
+            RZKEY_BACKSPACE = &H010E           REM /*!< Backspace (VK_BACK) */
+            RZKEY_ENTER = &H030E               REM /*!< Enter (VK_RETURN) */
+            RZKEY_LCTRL = &H0501               REM /*!< Left Control(VK_LCONTROL) */
+            RZKEY_LWIN = &H0502                REM /*!< Left Window (VK_LWIN) */
+            RZKEY_LALT = &H0503                REM /*!< Left Alt (VK_LMENU) */
+            RZKEY_SPACE = &H0507               REM /*!< Spacebar (VK_SPACE) */
+            RZKEY_RALT = &H050B                REM /*!< Right Alt (VK_RMENU) */
+            RZKEY_FN = &H050C                  REM /*!< Function key. */
+            RZKEY_RMENU = &H050D               REM /*!< Right Menu (VK_APPS) */
+            RZKEY_RCTRL = &H050E               REM /*!< Right Control (VK_RCONTROL) */
+            RZKEY_LSHIFT = &H0401              REM /*!< Left Shift (VK_LSHIFT) */
+            RZKEY_RSHIFT = &H040E              REM /*!< Right Shift (VK_RSHIFT) */
+            RZKEY_MACRO1 = &H0100              REM /*!< Macro Key 1 */
+            RZKEY_MACRO2 = &H0200              REM /*!< Macro Key 2 */
+            RZKEY_MACRO3 = &H0300              REM /*!< Macro Key 3 */
+            RZKEY_MACRO4 = &H0400              REM /*!< Macro Key 4 */
+            RZKEY_MACRO5 = &H0500              REM /*!< Macro Key 5 */
+            RZKEY_OEM_1 = &H0101               REM /*!< ~ (tilde/半角/全角) (VK_OEM_3) */
+            RZKEY_OEM_2 = &H010C               REM /*!< -- (minus) (VK_OEM_MINUS) */
+            RZKEY_OEM_3 = &H010D               REM /*!< = (equal) (VK_OEM_PLUS) */
+            RZKEY_OEM_4 = &H020C               REM /*!< [ (left sqaure bracket) (VK_OEM_4) */
+            RZKEY_OEM_5 = &H020D               REM /*!< ] (right square bracket) (VK_OEM_6) */
+            RZKEY_OEM_6 = &H020E               REM /*!< \ (backslash) (VK_OEM_5) */
+            RZKEY_OEM_7 = &H030B               REM /*!< ; (semi-colon) (VK_OEM_1) */
+            RZKEY_OEM_8 = &H030C               REM /*!< ' (apostrophe) (VK_OEM_7) */
+            RZKEY_OEM_9 = &H040A               REM /*!< , (comma) (VK_OEM_COMMA) */
+            RZKEY_OEM_10 = &H040B              REM /*!< . (period) (VK_OEM_PERIOD) */
+            RZKEY_OEM_11 = &H040C              REM /*!< / (forward slash) (VK_OEM_2) */
+            RZKEY_EUR_1 = &H030D               REM /*!< ""#"" (VK_OEM_5) */
+            RZKEY_EUR_2 = &H0402               REM /*!< \ (VK_OEM_102) */
+            RZKEY_JPN_1 = &H0015               REM /*!< ¥ (&HFF) */
+            RZKEY_JPN_2 = &H040D               REM /*!< \ (&HC1) */
+            RZKEY_JPN_3 = &H0504               REM /*!< 無変換 (VK_OEM_PA1) */
+            RZKEY_JPN_4 = &H0509               REM /*!< 変換 (&HFF) */
+            RZKEY_JPN_5 = &H050A               REM /*!< ひらがな/カタカナ (&HFF) */
+            RZKEY_KOR_1 = &H0015               REM /*!< | (&HFF) */
+            RZKEY_KOR_2 = &H030D               REM /*!< (VK_OEM_5) */
+            RZKEY_KOR_3 = &H0402               REM /*!< (VK_OEM_102) */
+            RZKEY_KOR_4 = &H040D               REM /*!< (&HC1) */
+            RZKEY_KOR_5 = &H0504               REM /*!< (VK_OEM_PA1) */
+            RZKEY_KOR_6 = &H0509               REM /*!< 한/영 (&HFF) */
+            RZKEY_KOR_7 = &H050A               REM /*!< (&HFF) */
+            RZKEY_INVALID = &HFFFF              REM /*!< Invalid keys. */
+        End Enum
+
+        REM //! Definition of LEDs.
+        Public Enum RZLED
+            RZLED_LOGO = &HE0014                 REM /*!< Razer logo */
+        End Enum
+    End Class
+
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)>
+	Public Structure APPINFOTYPE
+		<MarshalAs(UnmanagedType.ByValTStr, SizeConst := 256)>
+		Public Title As String REM //TCHAR Title[256];
+
+		<MarshalAs(UnmanagedType.ByValTStr, SizeConst := 1024)>
+		Public Description As String REM //TCHAR Description[1024];
+
+		<MarshalAs(UnmanagedType.ByValTStr, SizeConst := 256)>
+		Public Author_Name As String REM //TCHAR Name[256];
+
+		<MarshalAs(UnmanagedType.ByValTStr, SizeConst := 256)>
+		Public Author_Contact As String REM //TCHAR Contact[256];
+
+		Public SupportedDevice As UInt32 REM //DWORD SupportedDevice;
+
+		Public Category As UInt32 REM //DWORD Category;
+	End Structure
+
+    <StructLayout(LayoutKind.Sequential)>
+    Public Structure FChromaSDKGuid
+        Public Data As Guid
+    End Structure
+
+    <StructLayout(LayoutKind.Sequential)>
+    Public Structure DEVICE_INFO_TYPE
+        Public DeviceType as Integer
+        Public Connected as UInteger
+    End Structure
+
+    Public Enum EFFECT_TYPE
+        CHROMA_NONE = 0            REM //!< No effect.
+        CHROMA_WAVE                REM //!< Wave effect (This effect type has deprecated and should not be used).
+        CHROMA_SPECTRUMCYCLING     REM //!< Spectrum cycling effect (This effect type has deprecated and should not be used).
+        CHROMA_BREATHING           REM //!< Breathing effect (This effect type has deprecated and should not be used).
+        CHROMA_BLINKING            REM //!< Blinking effect (This effect type has deprecated and should not be used).
+        CHROMA_REACTIVE            REM //!< Reactive effect (This effect type has deprecated and should not be used).
+        CHROMA_STATIC              REM //!< Static effect.
+        CHROMA_CUSTOM              REM //!< Custom effect. For mice, please see Mouse::CHROMA_CUSTOM2.
+        CHROMA_RESERVED            REM //!< Reserved
+        CHROMA_INVALID             REM //!< Invalid effect.
+    End Enum
+
+    Namespace Stream
+
+        Public Enum StreamStatusType
+            READY = 0                  REM // ready for commands
+            AUTHORIZING = 1            REM // the session is being authorized
+            BROADCASTING = 2           REM // the session is being broadcast
+            WATCHING = 3               REM // A stream is being watched
+            NOT_AUTHORIZED = 4         REM // The session is not authorized
+            BROADCAST_DUPLICATE = 5    REM // The session has duplicate broadcasters
+            SERVICE_OFFLINE = 6        REM // The service is offline
+        End Enum
+
+        Public Class _Default
+            Const LENGTH_SHORTCODE As UInteger = 6
+            Const LENGTH_STREAM_ID As UInteger = 48
+            Const LENGTH_STREAM_KEY As UInteger = 48
+            Const LENGTH_STREAM_FOCUS As UInteger = 48
+
+            Public Shared Function GetDefaultString(length As UInteger) As String
+                Dim result As String = String.Empty
+                For i As UInteger = 0 To length Step 1
+                    result += "" ""
+                Next
+                Return result
+            End Function
+
+            Public Shared ReadOnly Shortcode As String = GetDefaultString(LENGTH_SHORTCODE)
+            Public Shared ReadOnly StreamId As String = GetDefaultString(LENGTH_STREAM_ID)
+            Public Shared ReadOnly StreamKey As String = GetDefaultString(LENGTH_STREAM_KEY)
+            Public Shared ReadOnly StreamFocus As String = GetDefaultString(LENGTH_STREAM_FOCUS)
+        End Class
+    End Namespace
+
+    Module ChromaAnimationAPI
+
+#If X64 Then
+        Const DLL_NAME As String = ""CChromaEditorLibrary64""
+#Else
+        Const DLL_NAME As String = ""CChromaEditorLibrary""
+#End If
+
+#Region ""Data Structures""
+
+        Public Enum DeviceType
+            Invalid = -1
+            DE_1D = 0
+            DE_2D = 1
+            MAX = 2
+        End Enum
+
+        Public Enum Device
+            Invalid = -1
+            ChromaLink = 0
+            Headset = 1
+            Keyboard = 2
+            Keypad = 3
+            Mouse = 4
+            Mousepad = 5
+            MAX = 6
+        End Enum
+
+        Public Enum Device1D
+            Invalid = -1
+            ChromaLink = 0
+            Headset = 1
+            Mousepad = 2
+            MAX = 3
+        End Enum
+
+        Public Enum Device2D
+            Invalid = -1
+            Keyboard = 0
+            Keypad = 1
+            Mouse = 2
+            MAX = 3
+        End Enum
+
+        Public Class FChromaSDKDeviceFrameIndex
+            REM // Index corresponds to EChromaSDKDeviceEnum
+            Public _mFrameIndex() As Integer = New Integer() {0, 0, 0, 0, 0, 0}
+
+            Public Function FChromaSDKDeviceFrameIndex()
+                _mFrameIndex(Device.ChromaLink) = 0
+                _mFrameIndex(Device.Headset) = 0
+                _mFrameIndex(Device.Keyboard) = 0
+                _mFrameIndex(Device.Keypad) = 0
+                _mFrameIndex(Device.Mouse) = 0
+                _mFrameIndex(Device.Mousepad) = 0
+                Return Nothing
+            End Function
+        End Class
+
+		Public Enum EChromaSDKSceneBlend
+			SB_None
+			SB_Invert
+			SB_Threshold
+			SB_Lerp
+		End Enum
+
+		Public Enum EChromaSDKSceneMode
+			SM_Replace
+			SM_Max
+			SM_Min
+			SM_Average
+			SM_Multiply
+			SM_Add
+			SM_Subtract
+		End Enum
+
+        Public Class FChromaSDKSceneEffect
+            Public _mAnimation As String = """"
+            Public _mState As Boolean = False
+            Public _mPrimaryColor As Integer = 0
+            Public _mSecondaryColor As Integer = 0
+            Public _mSpeed As Integer = 1
+            Public _mBlend As EChromaSDKSceneBlend = EChromaSDKSceneBlend.SB_None
+            Public _mMode As EChromaSDKSceneMode = EChromaSDKSceneMode.SM_Replace
+
+            Public _mFrameIndex As FChromaSDKDeviceFrameIndex = New FChromaSDKDeviceFrameIndex()
+        End Class
+
+		Public Class FChromaSDKScene
+			Public _mEffects As List(Of FChromaSDKSceneEffect) = New List(Of FChromaSDKSceneEffect)
+		End Class
+
+#End Region
+
+#Region ""Helpers (handle path conversions)""
+
+    REM /// <summary>
+    REM /// Helper to convert path string to IntPtr
+    REM /// </summary>
+    REM /// <param name=""path""></param>
+    REM /// <returns></returns>
+    Private Function GetPathIntPtr(path As String) As IntPtr
+        If (String.IsNullOrEmpty(path)) Then
+            Return IntPtr.Zero
+        End If
+        Dim fi As FileInfo = New FileInfo(path)
+        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ""\0"")
+        Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
+        Marshal.Copy(array, 0, lpData, array.Length)
+        Return lpData
+    End Function
+
+    REM /// <summary>
+    REM /// Helper to Ascii path string to IntPtr
+    REM /// </summary>
+    REM /// <param name=""str""></param>
+    REM /// <returns></returns>
+    Private Function GetAsciiIntPtr(str As String) As IntPtr
+        If (String.IsNullOrEmpty(str)) Then
+            Return IntPtr.Zero
+        End If
+        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(str + ""\0"")
+        Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
+        Marshal.Copy(array, 0, lpData, array.Length)
+        Return lpData
+    End Function
+
+    REM /// <summary>
+    REM /// Helper to Unicode path string to IntPtr
+    REM /// </summary>
+    REM /// <param name=""str""></param>
+    REM /// <returns></returns>
+    Private Function GetUnicodeIntPtr(str As String) As IntPtr
+        If (String.IsNullOrEmpty(str)) Then
+            Return IntPtr.Zero
+        End If
+        Dim array As Byte() = UnicodeEncoding.Unicode.GetBytes(str + ""\0"")
+        Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
+        Marshal.Copy(array, 0, lpData, array.Length)
+        Return lpData
+    End Function
+
+        REM /// <summary>
+        REM /// Helper to recycle the IntPtr
+        REM /// </summary>
+        REM /// <param name=""lpData""></param>
+        Private Function FreeIntPtr(lpData As IntPtr)
+            If (lpData <> IntPtr.Zero) Then
+                Marshal.FreeHGlobal(lpData)
+            End If
+            Return Nothing
+        End Function
+
+#End Region";
+
+        private const string FOOTER_VB =
+@"  End Class
+End Namespace
+";
+
+        static bool WriteVB(StreamWriter swVB)
+        {
+            try
+            {
+                string headerVB = HEADER_VB;
+                Output(swVB, "{0}", headerVB);
+
+                Output(swVB, "");
+
+                Output(swVB, "\t\t#region Public API Methods");
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    if (methodInfo.Name == "CoreCreateEffect")
+                    {
+                        if (true)
+                        {
+
+                        }
+                    }
+
+                    Output(swVB, "\t\t{0}", "/// <summary>");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swVB, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
+                    }
+
+                    Output(swVB, "\t\t{0}", "/// </summary>");
+
+                    Output(swVB, "\t\tpublic static {0} {1}({2})",
+                        ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                        methodInfo.Name,
+                        ChangeArgsToManagedTypes(methodInfo));
+
+                    Output(swVB, "\t\t{0}", "{");
+                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
+                    {
+                        if (argInfo.StrType == "char*" ||
+                            argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "const wchar_t*")
+                        {
+                            string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
+                            Output(swVB, "\t\t\tstring {0} = {1};",
+                                pathArg,
+                                argInfo.Name);
+
+                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
+                            if (argInfo.StrType == "char*")
+                            {
+                                Output(swVB, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                    lpArg,
+                                    pathArg);
+                            }
+                            else if (argInfo.StrType == "const char*")
+                            {
+                                if (argInfo.Name.ToUpper().Contains("PATH") ||
+                                    argInfo.Name.ToUpper().Contains("ANIMATION") ||
+                                    argInfo.Name.ToUpper().Contains("NAME"))
+                                {
+                                    Output(swVB, "\t\t\tIntPtr {0} = GetPathIntPtr({1});",
+                                        lpArg,
+                                        pathArg);
+                                }
+                                else
+                                {
+                                    Output(swVB, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                        lpArg,
+                                        pathArg);
+                                }
+                            }
+                            else if (argInfo.StrType == "const wchar_t*")
+                            {
+                                Output(swVB, "\t\t\tIntPtr {0} = GetUnicodeIntPtr({1});",
+                                    lpArg,
+                                    pathArg);
+                            }
+
+                        }
+                    }
+                    if (methodInfo.ReturnType == "void")
+                    {
+                        Output(swVB, "\t\t\tPlugin{0}({1});",
+                            methodInfo.Name,
+                            RemoveArgTypes(methodInfo));
+                    }
+                    else
+                    {
+                        if (methodInfo.ReturnType == "const char*")
+                        {
+                            Output(swVB, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
+                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                                methodInfo.Name,
+                                RemoveArgTypes(methodInfo));
+                        }
+                        else
+                        {
+                            Output(swVB, "\t\t\t{0} result = Plugin{1}({2});",
+                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                                methodInfo.Name,
+                                RemoveArgTypes(methodInfo));
+                        }
+                    }
+
+                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
+                    {
+                        if (argInfo.StrType == "char*" ||
+                            argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "const wchar_t*")
+                        {
+                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
+
+                            if (argInfo.StrType == "char*")
+                            {
+                                Output(swVB, "\t\t\tif ({0} != IntPtr.Zero)", lpArg);
+                                Output(swVB, "\t\t\t{0}", "{");
+                                Output(swVB, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1});", argInfo.Name, lpArg);
+                                Output(swVB, "\t\t\t{0}", "}");
+                            }
+
+                            Output(swVB, "\t\t\tFreeIntPtr({0});",
+                                lpArg);
+
+                        }
+                    }
+
+                    if (methodInfo.ReturnType != "void")
+                    {
+                        Output(swVB, "\t\t\treturn result;");
+                    }
+
+                    Output(swVB, "\t\t{0}", "}");
+                }
+
+                Output(swVB, "\t\t#endregion");
+
+                Output(swVB, "");
+
+                Output(swVB, "\t\t#region Private DLL Hooks");
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    if (methodInfo.Name == "CoreCreateEffect")
+                    {
+                        if (true)
+                        {
+
+                        }
+                    }
+
+                    Output(swVB, "\t\t{0}", "/// <summary>");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swVB, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
+                    }
+
+                    Output(swVB, "\t\t/// EXPORT_API {0} Plugin{1}({2});",
+                        methodInfo.ReturnType,
+                        methodInfo.Name,
+                        methodInfo.Args);
+
+                    Output(swVB, "\t\t{0}", "/// </summary>");
+
+                    Output(swVB, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
+
+                    Output(swVB, "\t\tprivate static extern {0} Plugin{1}({2});",
+                        ChangeToManagedImportType(methodInfo, methodInfo.ReturnType),
+                        methodInfo.Name,
+                        ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
+                }
+
+                Output(swVB, "\t\t#endregion");
+
+                Output(swVB, "{0}", FOOTER_VB);
+
+                swVB.Flush();
+                swVB.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write unity!");
+                return false;
+            }
+        }
+
+        #endregion VB
 
         #region Sort UE4 Header
 

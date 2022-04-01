@@ -6,13 +6,15 @@
         {
             const string headerStdafx = @"C:\Public\CChromaEditor\CChromaEditorLibrary\stdafx.h";
             Converter.ConvertExportsToClass(headerStdafx,
+                "stdafx.h",
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
                 @"CSharp\ChromaAnimationAPI.cs",
                 @"CSharp\ChromaAnimationAPI.md",
                 @"Unity\ChromaAnimationAPI.cs",
                 @"Unity\ChromaAnimationAPI.md",
-                "stdafx.h",
+                @"VB\ChromaAnimationAPI.vb",
+                @"VB\ChromaAnimationAPI.md",
                 "JChromaLib.java",
                 "JChromaSDK.java",
                 "Godot.h",
