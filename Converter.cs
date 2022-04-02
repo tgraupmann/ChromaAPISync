@@ -3767,23 +3767,439 @@ Namespace ChromaSDK
         Return lpData
     End Function
 
-        REM /// <summary>
-        REM /// Helper to recycle the IntPtr
-        REM /// </summary>
-        REM /// <param name=""lpData""></param>
-        Private Function FreeIntPtr(lpData As IntPtr)
-            If (lpData <> IntPtr.Zero) Then
-                Marshal.FreeHGlobal(lpData)
-            End If
-            Return Nothing
-        End Function
+    REM /// <summary>
+    REM /// Helper to recycle the IntPtr
+    REM /// </summary>
+    REM /// <param name=""lpData""></param>
+    Private Function FreeIntPtr(lpData As IntPtr)
+        If (lpData <> IntPtr.Zero) Then
+            Marshal.FreeHGlobal(lpData)
+        End If
+        Return Nothing
+    End Function
 
 #End Region";
 
         private const string FOOTER_VB =
-@"  End Class
+@"  End Module
 End Namespace
 ";
+
+        static string ChangeToVBType(string input)
+        {
+            string pre = string.Empty;
+            string result = input;
+
+            const string TOKEN_OUT = "out ";
+            const string TOKEN_REF = "ref ";
+            if (input.StartsWith(TOKEN_OUT) ||
+                input.StartsWith(TOKEN_REF))
+            {
+                pre = input.Substring(0, TOKEN_OUT.Length);
+                result = input.Substring(TOKEN_OUT.Length);
+            }
+            
+            switch (result)
+            {
+                case "bool":
+                    result = "Boolean";
+                    break;
+                case "int":
+                    result = "Integer";
+                    break;
+                case "uint":
+                    result = "UInteger";
+                    break;
+                case "int[]":
+                    result = "Integer()";
+                    break;
+                case "uint[]":
+                    result = "UInteger()";
+                    break;
+                case "float":
+                    result = "Single";
+                    break;
+                case "double":
+                    result = "Double";
+                    break;
+                case "byte[]":
+                    result = "Byte()";
+                    break;
+            }
+            return pre + result;
+        }
+
+        private static string TrimArgTypeVB(string argType)
+        {
+            string result = "";
+            bool hadWhitespace = false;
+            foreach (char c in argType)
+            {
+                if (c == '&' ||
+                    c == '*' ||
+                    c == ':' ||
+                    c == '_' ||
+                    c == '[' ||
+                    c == ']')
+                {
+                    result += c;
+                }
+                else if (char.IsLetterOrDigit(c))
+                {
+                    if (hadWhitespace)
+                    {
+                        hadWhitespace = false;
+                        result += " ";
+                    }
+                    result += c;
+                }
+                else if (char.IsWhiteSpace(c))
+                {
+                    hadWhitespace = true;
+                }
+            }
+            return result;
+        }
+
+        private static string ChangeToVBImportType(MetaMethodInfo methodInfo, string strType)
+        {
+            // this is for private methods
+            if (strType == "int[]")
+            {
+                return "Integer()";
+            }
+            else if (strType == "byte[]")
+            {
+                return "Byte()";
+            }
+            else if (strType == "ChromaSDK.Stream.StreamStatusType")
+            {
+                return strType;
+            }
+            else if (strType == "ref ChromaSDK.APPINFOTYPE")
+            {
+                return strType;
+            }
+            string result = TrimArgTypeVB(strType);
+            if (result == "const int")
+            {
+                result = "int";
+            }
+            else if (result == "int*")
+            {
+                result = "int[]";
+            }
+            else if (result == "const byte*")
+            {
+                result = "byte[]";
+            }
+            else if (result == "const int*")
+            {
+                result = "int[]";
+            }
+            else if (result == "const char*")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "const wchar_t*")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "char*")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "unsigned char*")
+            {
+                result = "out byte";
+            }
+            else if (result == "float*")
+            {
+                result = "out float";
+            }
+            else if (result == "unsigned long long")
+            {
+                result = "ulong";
+            }
+            else if (result == "RZRESULT")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::ChromaLink::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Headset::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Keyboard::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Keypad::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Mouse::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::Mousepad::EFFECT_TYPE")
+            {
+                result = "int";
+            }
+            else if (result == "ChromaSDK::DEVICE_INFO_TYPE&")
+            {
+                result = "out DEVICE_INFO_TYPE";
+            }
+            else if (result == "const ChromaSDK::FChromaSDKGuid&")
+            {
+                result = "Guid";
+            }
+            else if (result == "ChromaSDK::FChromaSDKGuid*")
+            {
+                result = "out FChromaSDKGuid";
+            }
+            else if (result == "RZDEVICEID")
+            {
+                result = "Guid";
+            }
+            else if (result == "RZEFFECTID")
+            {
+                result = "Guid";
+            }
+            else if (result == "RZEFFECTID*")
+            {
+                result = "out Guid";
+            }
+            else if (result == "PRZPARAM")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "DebugLogPtr")
+            {
+                result = "IntPtr";
+            }
+            else if (result == "ChromaSDK::APPINFOTYPE*")
+            {
+                result = "ref ChromaSDK.APPINFOTYPE";
+            }
+            else if (result == "ChromaSDK::Stream::StreamStatusType")
+            {
+                result = "ChromaSDK.Stream.StreamStatusType";
+            }
+
+            if (result == "bool")
+            {
+                return "Boolean";
+            }
+            else if (result == "int")
+            {
+                return "Integer";
+            }
+            else if (result == "float")
+            {
+                return "Single";
+            }
+            else if (result == "double")
+            {
+                return "Double";
+            }
+
+            return result;
+        }
+
+        static string ChangeArgsToVBTypes(MetaMethodInfo methodInfo)
+        {
+            string[] parts = methodInfo.Args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].Trim();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string strType = part.Substring(0, indexName + 1).Trim();
+                    strType = ChangeToManagedType(methodInfo, strType);
+                    string name = part.Substring(indexName + 1).Trim();
+                    if (name == "end") // reserved
+                    {
+                        name = "renamed_end";
+                    }
+                    else if (name == "to") // reserved
+                    {
+                        name = "renamed_to";
+                    }
+                    else if (name == "loop") // reserved
+                    {
+                        name = "renamed_loop";
+                    }
+
+                    MetaArgInfo argInfo = methodInfo.DetailArgs[i];
+                    if (null != argInfo.OverrideInfo &&
+                        !string.IsNullOrEmpty(argInfo.OverrideInfo.OverrideType))
+                    {
+                        strType = argInfo.OverrideInfo.OverrideType;
+                    }
+
+                    string vbType = ChangeToVBType(strType);
+                    const string TOKEN_OUT = "out ";
+                    const string TOKEN_REF = "ref ";
+                    if (vbType.StartsWith(TOKEN_OUT) ||
+                        vbType.StartsWith(TOKEN_REF))
+                    {
+                        vbType = vbType.Substring(TOKEN_OUT.Length);
+                        if (i == 0)
+                        {
+                            parts[i] = "ByRef " + LowercaseFirstLetter(name) + " As " + vbType;
+                        }
+                        else
+                        {
+                            parts[i] = " ByRef " + LowercaseFirstLetter(name) + " As " + vbType;
+                        }
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            parts[i] = LowercaseFirstLetter(name) + " As " + vbType;
+                        }
+                        else
+                        {
+                            parts[i] = " " + LowercaseFirstLetter(name) + " As " + vbType;
+                        }
+                    }
+                }
+            }
+            return string.Join(",", parts);
+        }
+
+        private static string ChangeArgsToVBImportTypes(MetaMethodInfo methodInfo, string args)
+        {
+            string[] parts = args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].Trim();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string strType = ChangeToVBImportType(methodInfo, ChangeToManagedImportType(methodInfo, part.Substring(0, indexName + 1).Trim()));
+                    string name = part.Substring(indexName + 1).Trim();
+                    if (name == "end") // reserved
+                    {
+                        name = "renamed_end";
+                    }
+                    else if (name == "to") // reserved
+                    {
+                        name = "renamed_to";
+                    }
+                    else if (name == "loop") // reserved
+                    {
+                        name = "renamed_loop";
+                    }
+
+                    string vbType = ChangeToVBType(strType);
+                    const string TOKEN_OUT = "out ";
+                    const string TOKEN_REF = "ref ";
+                    if (vbType.StartsWith(TOKEN_OUT) ||
+                        vbType.StartsWith(TOKEN_REF))
+                    {
+                        vbType = vbType.Substring(TOKEN_OUT.Length);
+                        if (i == 0)
+                        {
+                            parts[i] = "ByRef " + LowercaseFirstLetter(name) + " As " + vbType;
+                        }
+                        else
+                        {
+                            parts[i] = " ByRef " + LowercaseFirstLetter(name) + " As " + vbType;
+
+                        }
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            parts[i] = LowercaseFirstLetter(name) + " As " + vbType;
+                        }
+                        else
+                        {
+                            parts[i] = " " + LowercaseFirstLetter(name) + " As " + vbType;
+
+                        }
+                    }
+                }
+            }
+            return string.Join(",", parts);
+        }
+
+        static string RemoveVBArgTypes(MetaMethodInfo methodInfo)
+        {
+            string[] parts = methodInfo.Args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].TrimEnd();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string name = part.Substring(indexName + 1);
+                    if (name == "end") // reserved
+                    {
+                        name = "renamed_end";
+                    }
+                    else if (name == "to") // reserved
+                    {
+                        name = "renamed_to";
+                    }
+                    else if (name == "loop") // reserved
+                    {
+                        name = "renamed_loop";
+                    }
+                    MetaArgInfo argInfo = methodInfo.DetailArgs[i];
+                    if (argInfo.StrType == "char*" ||
+                        argInfo.StrType == "const char*" ||
+                        argInfo.StrType == "const wchar_t*")
+                    {
+                        string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(name));
+                        name = lpArg;
+                    }
+                    else if (argInfo.StrType == "unsigned char*")
+                    {
+                        name = string.Format("{0}", name);
+                    }
+                    if (null != argInfo.OverrideInfo)
+                    {
+                        if (argInfo.OverrideInfo.UseRef)
+                        {
+                            name = LowercaseFirstLetter(name);
+                        }
+                        else if (argInfo.OverrideInfo.UseOut)
+                        {
+                            name = LowercaseFirstLetter(name);
+                        }
+                        /*
+                        else if (!string.IsNullOrEmpty(argInfo.OverrideInfo.OverrideType))
+                        {
+                            name = LowercaseFirstLetter(string.Format("{0}{1}{2}{3}",
+                                string.IsNullOrEmpty(argInfo.OverrideInfo.CastType) ? "" : "(",
+                                argInfo.OverrideInfo.CastType,
+                                string.IsNullOrEmpty(argInfo.OverrideInfo.CastType) ? "" : ")",
+                                LowercaseFirstLetter(name)));
+                        }
+                        */
+                    }
+                    if (i > 0)
+                    {
+                        name = " " + LowercaseFirstLetter(name);
+                    }
+                    parts[i] = LowercaseFirstLetter(name);
+                }
+            }
+            return string.Join(",", parts);
+        }
 
         static bool WriteVB(StreamWriter swVB)
         {
@@ -3794,35 +4210,35 @@ End Namespace
 
                 Output(swVB, "");
 
-                Output(swVB, "\t\t#region Public API Methods");
+                Output(swVB, "\t\t#Region \"Public API Methods\"");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    if (methodInfo.Name == "CoreCreateEffect")
-                    {
-                        if (true)
-                        {
-
-                        }
-                    }
-
-                    Output(swVB, "\t\t{0}", "/// <summary>");
+                    Output(swVB, "\t\tREM {0}", "/// <summary>");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Output(swVB, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
+                        Output(swVB, "\t\tREM /// {0}", SplitLongComments(methodInfo.Comments, "\t\tREM /// "));
                     }
 
-                    Output(swVB, "\t\t{0}", "/// </summary>");
+                    Output(swVB, "\t\tREM {0}", "/// </summary>");
 
-                    Output(swVB, "\t\tpublic static {0} {1}({2})",
-                        ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                        methodInfo.Name,
-                        ChangeArgsToManagedTypes(methodInfo));
+                    if (ChangeToManagedType(methodInfo, methodInfo.ReturnType) == "void")
+                    {
+                        Output(swVB, "\t\tPublic Function {0}({1})",
+                            methodInfo.Name,
+                            ChangeArgsToVBTypes(methodInfo));
+                    }
+                    else
+                    {
+                        Output(swVB, "\t\tPublic Function {0}({1}) As {2}",
+                            methodInfo.Name,
+                            ChangeArgsToVBTypes(methodInfo),
+                            ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)));
+                    }
 
-                    Output(swVB, "\t\t{0}", "{");
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
                     {
                         if (argInfo.StrType == "char*" ||
@@ -3830,14 +4246,14 @@ End Namespace
                             argInfo.StrType == "const wchar_t*")
                         {
                             string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swVB, "\t\t\tstring {0} = {1};",
+                            Output(swVB, "\t\t\tDim {0} As String = {1}",
                                 pathArg,
                                 argInfo.Name);
 
                             string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
                             if (argInfo.StrType == "char*")
                             {
-                                Output(swVB, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                Output(swVB, "\t\t\tDim {0} as IntPtr = GetAsciiIntPtr({1})",
                                     lpArg,
                                     pathArg);
                             }
@@ -3847,20 +4263,20 @@ End Namespace
                                     argInfo.Name.ToUpper().Contains("ANIMATION") ||
                                     argInfo.Name.ToUpper().Contains("NAME"))
                                 {
-                                    Output(swVB, "\t\t\tIntPtr {0} = GetPathIntPtr({1});",
+                                    Output(swVB, "\t\t\tDim {0} As IntPtr = GetPathIntPtr({1})",
                                         lpArg,
                                         pathArg);
                                 }
                                 else
                                 {
-                                    Output(swVB, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                    Output(swVB, "\t\t\tDim {0} As IntPtr = GetAsciiIntPtr({1})",
                                         lpArg,
                                         pathArg);
                                 }
                             }
                             else if (argInfo.StrType == "const wchar_t*")
                             {
-                                Output(swVB, "\t\t\tIntPtr {0} = GetUnicodeIntPtr({1});",
+                                Output(swVB, "\t\t\tDim {0} As IntPtr = GetUnicodeIntPtr({1})",
                                     lpArg,
                                     pathArg);
                             }
@@ -3869,25 +4285,25 @@ End Namespace
                     }
                     if (methodInfo.ReturnType == "void")
                     {
-                        Output(swVB, "\t\t\tPlugin{0}({1});",
+                        Output(swVB, "\t\t\tPlugin{0}({1})",
                             methodInfo.Name,
-                            RemoveArgTypes(methodInfo));
+                            RemoveVBArgTypes(methodInfo));
                     }
                     else
                     {
                         if (methodInfo.ReturnType == "const char*")
                         {
-                            Output(swVB, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
-                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                            Output(swVB, "\t\t\tDim result As {0} = Marshal.PtrToStringAnsi(Plugin{1}({2}))",
+                                ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)),
                                 methodInfo.Name,
-                                RemoveArgTypes(methodInfo));
+                                RemoveVBArgTypes(methodInfo));
                         }
                         else
                         {
-                            Output(swVB, "\t\t\t{0} result = Plugin{1}({2});",
-                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
+                            Output(swVB, "\t\t\tDim result As {0} = Plugin{1}({2})",
+                                ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)),
                                 methodInfo.Name,
-                                RemoveArgTypes(methodInfo));
+                                RemoveVBArgTypes(methodInfo));
                         }
                     }
 
@@ -3901,67 +4317,82 @@ End Namespace
 
                             if (argInfo.StrType == "char*")
                             {
-                                Output(swVB, "\t\t\tif ({0} != IntPtr.Zero)", lpArg);
-                                Output(swVB, "\t\t\t{0}", "{");
-                                Output(swVB, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1});", argInfo.Name, lpArg);
-                                Output(swVB, "\t\t\t{0}", "}");
+                                Output(swVB, "\t\t\tIf ({0} <> IntPtr.Zero)", lpArg);
+                                Output(swVB, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1})", argInfo.Name, lpArg);
+                                Output(swVB, "\t\t\t{0}", "End If");
                             }
 
-                            Output(swVB, "\t\t\tFreeIntPtr({0});",
+                            Output(swVB, "\t\t\tFreeIntPtr({0})",
                                 lpArg);
 
                         }
                     }
 
-                    if (methodInfo.ReturnType != "void")
+                    if (methodInfo.ReturnType == "void")
                     {
-                        Output(swVB, "\t\t\treturn result;");
+                        Output(swVB, "\t\t\tReturn Nothing");
+                    }
+                    else
+                    {
+                        Output(swVB, "\t\t\tReturn result");
                     }
 
-                    Output(swVB, "\t\t{0}", "}");
+                    Output(swVB, "\t\t{0}", "End Function");
+                    Output(swVB, "");
                 }
 
-                Output(swVB, "\t\t#endregion");
+                Output(swVB, "\t\t#End Region");
 
                 Output(swVB, "");
 
-                Output(swVB, "\t\t#region Private DLL Hooks");
+                Output(swVB, "\t\t#Region \"Private DLL Hooks\"");
 
                 foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
                 {
                     MetaMethodInfo methodInfo = method.Value;
 
-                    if (methodInfo.Name == "CoreCreateEffect")
-                    {
-                        if (true)
-                        {
-
-                        }
-                    }
-
-                    Output(swVB, "\t\t{0}", "/// <summary>");
+                    Output(swVB, "\t\t{0}", "REM /// <summary>");
 
                     if (!string.IsNullOrEmpty(methodInfo.Comments))
                     {
-                        Output(swVB, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
+                        Output(swVB, "\t\tREM /// {0}", SplitLongComments(methodInfo.Comments, "\t\tREM /// "));
                     }
 
-                    Output(swVB, "\t\t/// EXPORT_API {0} Plugin{1}({2});",
+                    Output(swVB, "\t\tREM /// EXPORT_API {0} Plugin{1}({2});",
                         methodInfo.ReturnType,
                         methodInfo.Name,
                         methodInfo.Args);
 
-                    Output(swVB, "\t\t{0}", "/// </summary>");
+                    Output(swVB, "\t\t{0}", "REM /// </summary>");
 
-                    Output(swVB, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
+                    Output(swVB, "\t\t{0}", "<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>");
 
-                    Output(swVB, "\t\tprivate static extern {0} Plugin{1}({2});",
-                        ChangeToManagedImportType(methodInfo, methodInfo.ReturnType),
-                        methodInfo.Name,
-                        ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
+                    // for debugging
+                    if (methodInfo.Name == "CoreInitSDK")
+                    {
+                        if (true)
+                        {
+                        }
+                    }
+
+                    if (methodInfo.ReturnType == "void")
+                    {
+                        Output(swVB, "\t\tPrivate Function Plugin{0}({1})",
+                            methodInfo.Name,
+                            ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args));
+                    }
+                    else
+                    {
+                        Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As {2}",
+                            methodInfo.Name,
+                            ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args),
+                            ChangeToVBImportType(methodInfo, methodInfo.ReturnType));
+                    }
+                    Output(swVB, "\t\tEnd Function");
+                    Output(swVB, "");
                 }
 
-                Output(swVB, "\t\t#endregion");
+                Output(swVB, "\t\t#End Region");
 
                 Output(swVB, "{0}", FOOTER_VB);
 
