@@ -3167,8 +3167,14 @@ __UNITY_GET_STREAMING_PATH__
 
                     Output(swCSharp, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
 
+                    string csReturnType = ChangeToManagedImportType(methodInfo, methodInfo.ReturnType);
+
+                    if (csReturnType == "bool")
+                    {
+                        Output(swCSharp, "\t\t{0}", "[return: MarshalAs(UnmanagedType.I1)]");
+                    }
                     Output(swCSharp, "\t\tprivate static extern {0} Plugin{1}({2});",
-                        ChangeToManagedImportType(methodInfo, methodInfo.ReturnType),
+                        csReturnType,
                         methodInfo.Name,
                         ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
                 }
