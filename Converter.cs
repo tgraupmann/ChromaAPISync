@@ -3731,7 +3731,7 @@ Namespace ChromaSDK
             Return IntPtr.Zero
         End If
         Dim fi As FileInfo = New FileInfo(path)
-        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ""\0"")
+        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ControlChars.NullChar)
         Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
         Marshal.Copy(array, 0, lpData, array.Length)
         Return lpData
@@ -3746,7 +3746,7 @@ Namespace ChromaSDK
         If (String.IsNullOrEmpty(str)) Then
             Return IntPtr.Zero
         End If
-        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(str + ""\0"")
+        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(str + ControlChars.NullChar)
         Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
         Marshal.Copy(array, 0, lpData, array.Length)
         Return lpData
@@ -3761,7 +3761,7 @@ Namespace ChromaSDK
         If (String.IsNullOrEmpty(str)) Then
             Return IntPtr.Zero
         End If
-        Dim array As Byte() = UnicodeEncoding.Unicode.GetBytes(str + ""\0"")
+        Dim array As Byte() = UnicodeEncoding.Unicode.GetBytes(str + ControlChars.NullChar)
         Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
         Marshal.Copy(array, 0, lpData, array.Length)
         Return lpData
@@ -4377,7 +4377,7 @@ End Namespace
 
                     if (methodInfo.ReturnType == "void")
                     {
-                        Output(swVB, "\t\tPrivate Function Plugin{0}({1})",
+                        Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As Boolean", // void return type needs a dummy return type
                             methodInfo.Name,
                             ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args));
                     }

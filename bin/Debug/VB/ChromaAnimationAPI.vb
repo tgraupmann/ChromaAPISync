@@ -324,7 +324,7 @@ Namespace ChromaSDK
             Return IntPtr.Zero
         End If
         Dim fi As FileInfo = New FileInfo(path)
-        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(fi.FullName + "\0")
+        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(fi.FullName + ControlChars.NullChar)
         Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
         Marshal.Copy(array, 0, lpData, array.Length)
         Return lpData
@@ -339,7 +339,7 @@ Namespace ChromaSDK
         If (String.IsNullOrEmpty(str)) Then
             Return IntPtr.Zero
         End If
-        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(str + "\0")
+        Dim array As Byte() = ASCIIEncoding.ASCII.GetBytes(str + ControlChars.NullChar)
         Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
         Marshal.Copy(array, 0, lpData, array.Length)
         Return lpData
@@ -354,7 +354,7 @@ Namespace ChromaSDK
         If (String.IsNullOrEmpty(str)) Then
             Return IntPtr.Zero
         End If
-        Dim array As Byte() = UnicodeEncoding.Unicode.GetBytes(str + "\0")
+        Dim array As Byte() = UnicodeEncoding.Unicode.GetBytes(str + ControlChars.NullChar)
         Dim lpData As IntPtr = Marshal.AllocHGlobal(array.Length)
         Marshal.Copy(array, 0, lpData, array.Length)
         Return lpData
@@ -6318,7 +6318,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginAddNonZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6327,7 +6327,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginAddNonZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6345,7 +6345,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginAddNonZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6355,7 +6355,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginAddNonZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6372,7 +6372,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+		Private Function PluginAddNonZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6381,7 +6381,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer)
+		Private Function PluginAddNonZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6398,7 +6398,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginAddNonZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6407,7 +6407,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginAddNonZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6425,7 +6425,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginAddNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6435,7 +6435,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginAddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6452,7 +6452,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroTargetAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+		Private Function PluginAddNonZeroTargetAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6462,7 +6462,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAddNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAddNonZeroTargetAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer)
+		Private Function PluginAddNonZeroTargetAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6479,7 +6479,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAppendAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAppendAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginAppendAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6488,7 +6488,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginAppendAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginAppendAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginAppendAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6504,7 +6504,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginClearAll();
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginClearAll()
+		Private Function PluginClearAll() As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6513,7 +6513,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginClearAnimationType(int deviceType, int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginClearAnimationType(deviceType As Integer, device As Integer)
+		Private Function PluginClearAnimationType(deviceType As Integer, device As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6522,7 +6522,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCloseAll();
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCloseAll()
+		Private Function PluginCloseAll() As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6550,7 +6550,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCloseAnimationName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCloseAnimationName(path As IntPtr)
+		Private Function PluginCloseAnimationName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6567,7 +6567,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCloseComposite(const char* name);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCloseComposite(name As IntPtr)
+		Private Function PluginCloseComposite(name As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6584,7 +6584,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+		Private Function PluginCopyAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6593,7 +6593,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer)
+		Private Function PluginCopyAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6611,7 +6611,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyAnimationName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyAnimationName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginCopyAnimationName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6628,7 +6628,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyBlueChannelAllFrames(int animationId, float redIntensity, float greenIntensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyBlueChannelAllFrames(animationId As Integer, redIntensity As Single, greenIntensity As Single)
+		Private Function PluginCopyBlueChannelAllFrames(animationId As Integer, redIntensity As Single, greenIntensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6637,7 +6637,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyBlueChannelAllFramesName(const char* path, float redIntensity, float greenIntensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyBlueChannelAllFramesName(path As IntPtr, redIntensity As Single, greenIntensity As Single)
+		Private Function PluginCopyBlueChannelAllFramesName(path As IntPtr, redIntensity As Single, greenIntensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6654,7 +6654,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyGreenChannelAllFrames(int animationId, float redIntensity, float blueIntensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyGreenChannelAllFrames(animationId As Integer, redIntensity As Single, blueIntensity As Single)
+		Private Function PluginCopyGreenChannelAllFrames(animationId As Integer, redIntensity As Single, blueIntensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6663,7 +6663,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyGreenChannelAllFramesName(const char* path, float redIntensity, float blueIntensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyGreenChannelAllFramesName(path As IntPtr, redIntensity As Single, blueIntensity As Single)
+		Private Function PluginCopyGreenChannelAllFramesName(path As IntPtr, redIntensity As Single, blueIntensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6680,7 +6680,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeyColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, rzkey As Integer)
+		Private Function PluginCopyKeyColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6689,7 +6689,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeyColorAllFrames(int sourceAnimationId, int targetAnimationId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeyColorAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer, rzkey As Integer)
+		Private Function PluginCopyKeyColorAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6698,7 +6698,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeyColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeyColorAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr, rzkey As Integer)
+		Private Function PluginCopyKeyColorAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6716,7 +6716,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeyColorAllFramesOffset(int sourceAnimationId, int targetAnimationId, int rzkey, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeyColorAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, rzkey As Integer, offset As Integer)
+		Private Function PluginCopyKeyColorAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, rzkey As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6726,7 +6726,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeyColorAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int rzkey, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeyColorAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, rzkey As Integer, offset As Integer)
+		Private Function PluginCopyKeyColorAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, rzkey As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6743,7 +6743,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeyColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, rzkey As Integer)
+		Private Function PluginCopyKeyColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6761,7 +6761,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeysColor(int sourceAnimationId, int targetAnimationId, int frameId, const int* keys, int size);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeysColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, keys As Integer(), size As Integer)
+		Private Function PluginCopyKeysColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, keys As Integer(), size As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6771,7 +6771,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeysColorAllFrames(int sourceAnimationId, int targetAnimationId, const int* keys, int size);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeysColorAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer, keys As Integer(), size As Integer)
+		Private Function PluginCopyKeysColorAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer, keys As Integer(), size As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6781,7 +6781,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeysColorAllFramesName(const char* sourceAnimation, const char* targetAnimation, const int* keys, int size);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeysColorAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr, keys As Integer(), size As Integer)
+		Private Function PluginCopyKeysColorAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr, keys As Integer(), size As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6791,7 +6791,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeysColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, const int* keys, int size);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeysColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, keys As Integer(), size As Integer)
+		Private Function PluginCopyKeysColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, keys As Integer(), size As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6801,7 +6801,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeysColorOffset(int sourceAnimationId, int targetAnimationId, int sourceFrameId, int targetFrameId, const int* keys, int size);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeysColorOffset(sourceAnimationId As Integer, targetAnimationId As Integer, sourceFrameId As Integer, targetFrameId As Integer, keys As Integer(), size As Integer)
+		Private Function PluginCopyKeysColorOffset(sourceAnimationId As Integer, targetAnimationId As Integer, sourceFrameId As Integer, targetFrameId As Integer, keys As Integer(), size As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6811,7 +6811,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyKeysColorOffsetName(const char* sourceAnimation, const char* targetAnimation, int sourceFrameId, int targetFrameId, const int* keys, int size);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyKeysColorOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, sourceFrameId As Integer, targetFrameId As Integer, keys As Integer(), size As Integer)
+		Private Function PluginCopyKeysColorOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, sourceFrameId As Integer, targetFrameId As Integer, keys As Integer(), size As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6820,7 +6820,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+		Private Function PluginCopyNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6829,7 +6829,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginCopyNonZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6838,7 +6838,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginCopyNonZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6856,7 +6856,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginCopyNonZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6866,7 +6866,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginCopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6883,7 +6883,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer)
+		Private Function PluginCopyNonZeroAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6901,7 +6901,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+		Private Function PluginCopyNonZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6911,7 +6911,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer)
+		Private Function PluginCopyNonZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6928,7 +6928,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroKeyColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, rzkey As Integer)
+		Private Function PluginCopyNonZeroKeyColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6937,7 +6937,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroKeyColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, rzkey As Integer)
+		Private Function PluginCopyNonZeroKeyColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6955,7 +6955,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6965,7 +6965,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6975,7 +6975,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginCopyNonZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6993,7 +6993,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7004,7 +7004,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7022,7 +7022,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7040,7 +7040,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7050,7 +7050,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer)
+		Private Function PluginCopyNonZeroTargetAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7068,7 +7068,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginCopyNonZeroTargetZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7078,7 +7078,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyNonZeroTargetZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyNonZeroTargetZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginCopyNonZeroTargetZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7095,7 +7095,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyRedChannelAllFrames(int animationId, float greenIntensity, float blueIntensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyRedChannelAllFrames(animationId As Integer, greenIntensity As Single, blueIntensity As Single)
+		Private Function PluginCopyRedChannelAllFrames(animationId As Integer, greenIntensity As Single, blueIntensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7104,7 +7104,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyRedChannelAllFramesName(const char* path, float greenIntensity, float blueIntensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyRedChannelAllFramesName(path As IntPtr, greenIntensity As Single, blueIntensity As Single)
+		Private Function PluginCopyRedChannelAllFramesName(path As IntPtr, greenIntensity As Single, blueIntensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7121,7 +7121,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginCopyZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7130,7 +7130,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginCopyZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7148,7 +7148,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginCopyZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7158,7 +7158,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginCopyZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7175,7 +7175,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroKeyColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, rzkey As Integer)
+		Private Function PluginCopyZeroKeyColor(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7184,7 +7184,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroKeyColorName(const char* sourceAnimation, const char* targetAnimation, int frameId, int rzkey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroKeyColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, rzkey As Integer)
+		Private Function PluginCopyZeroKeyColorName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, rzkey As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7201,7 +7201,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginCopyZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7210,7 +7210,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCopyZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCopyZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginCopyZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7349,7 +7349,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCoreStreamGetAuthShortcode(char* shortcode, unsigned char* length, const wchar_t* platform, const wchar_t* title);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCoreStreamGetAuthShortcode(shortcode As IntPtr, ByRef length As byte, platform As IntPtr, title As IntPtr)
+		Private Function PluginCoreStreamGetAuthShortcode(shortcode As IntPtr, ByRef length As byte, platform As IntPtr, title As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7379,7 +7379,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCoreStreamGetId(const char* shortcode, char* streamId, unsigned char* length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCoreStreamGetId(shortcode As IntPtr, streamId As IntPtr, ByRef length As byte)
+		Private Function PluginCoreStreamGetId(shortcode As IntPtr, streamId As IntPtr, ByRef length As byte) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7399,7 +7399,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginCoreStreamGetKey(const char* shortcode, char* streamKey, unsigned char* length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginCoreStreamGetKey(shortcode As IntPtr, streamKey As IntPtr, ByRef length As byte)
+		Private Function PluginCoreStreamGetKey(shortcode As IntPtr, streamKey As IntPtr, ByRef length As byte) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7524,7 +7524,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginDuplicateFirstFrame(int animationId, int frameCount);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginDuplicateFirstFrame(animationId As Integer, frameCount As Integer)
+		Private Function PluginDuplicateFirstFrame(animationId As Integer, frameCount As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7533,7 +7533,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginDuplicateFirstFrameName(const char* path, int frameCount);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginDuplicateFirstFrameName(path As IntPtr, frameCount As Integer)
+		Private Function PluginDuplicateFirstFrameName(path As IntPtr, frameCount As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7551,7 +7551,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginDuplicateFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginDuplicateFrames(animationId As Integer)
+		Private Function PluginDuplicateFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7561,7 +7561,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginDuplicateFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginDuplicateFramesName(path As IntPtr)
+		Private Function PluginDuplicateFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7578,7 +7578,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginDuplicateMirrorFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginDuplicateMirrorFrames(animationId As Integer)
+		Private Function PluginDuplicateMirrorFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7587,7 +7587,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginDuplicateMirrorFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginDuplicateMirrorFramesName(path As IntPtr)
+		Private Function PluginDuplicateMirrorFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7604,7 +7604,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFadeEndFrames(int animationId, int fade);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFadeEndFrames(animationId As Integer, fade As Integer)
+		Private Function PluginFadeEndFrames(animationId As Integer, fade As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7613,7 +7613,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFadeEndFramesName(const char* path, int fade);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFadeEndFramesName(path As IntPtr, fade As Integer)
+		Private Function PluginFadeEndFramesName(path As IntPtr, fade As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7630,7 +7630,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFadeStartFrames(int animationId, int fade);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFadeStartFrames(animationId As Integer, fade As Integer)
+		Private Function PluginFadeStartFrames(animationId As Integer, fade As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7639,7 +7639,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFadeStartFramesName(const char* path, int fade);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFadeStartFramesName(path As IntPtr, fade As Integer)
+		Private Function PluginFadeStartFramesName(path As IntPtr, fade As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7656,7 +7656,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColor(int animationId, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColor(animationId As Integer, frameId As Integer, color As Integer)
+		Private Function PluginFillColor(animationId As Integer, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7665,7 +7665,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorAllFrames(int animationId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorAllFrames(animationId As Integer, color As Integer)
+		Private Function PluginFillColorAllFrames(animationId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7674,7 +7674,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorAllFramesName(const char* path, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorAllFramesName(path As IntPtr, color As Integer)
+		Private Function PluginFillColorAllFramesName(path As IntPtr, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7691,7 +7691,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorAllFramesRGB(int animationId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillColorAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7700,7 +7700,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorAllFramesRGBName(const char* path, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillColorAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7717,7 +7717,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorName(const char* path, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorName(path As IntPtr, frameId As Integer, color As Integer)
+		Private Function PluginFillColorName(path As IntPtr, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7734,7 +7734,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorRGB(int animationId, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillColorRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7743,7 +7743,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillColorRGBName(const char* path, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillColorRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillColorRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7761,7 +7761,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColor(int animationId, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColor(animationId As Integer, frameId As Integer, color As Integer)
+		Private Function PluginFillNonZeroColor(animationId As Integer, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7771,7 +7771,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorAllFrames(int animationId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorAllFrames(animationId As Integer, color As Integer)
+		Private Function PluginFillNonZeroColorAllFrames(animationId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7781,7 +7781,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorAllFramesName(const char* path, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorAllFramesName(path As IntPtr, color As Integer)
+		Private Function PluginFillNonZeroColorAllFramesName(path As IntPtr, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7800,7 +7800,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorAllFramesRGB(int animationId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillNonZeroColorAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7811,7 +7811,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorAllFramesRGBName(const char* path, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillNonZeroColorAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7829,7 +7829,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorName(const char* path, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorName(path As IntPtr, frameId As Integer, color As Integer)
+		Private Function PluginFillNonZeroColorName(path As IntPtr, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7848,7 +7848,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorRGB(int animationId, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillNonZeroColorRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7859,7 +7859,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillNonZeroColorRGBName(const char* path, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillNonZeroColorRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillNonZeroColorRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7876,7 +7876,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColors(int animationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColors(animationId As Integer, frameId As Integer)
+		Private Function PluginFillRandomColors(animationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7885,7 +7885,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsAllFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsAllFrames(animationId As Integer)
+		Private Function PluginFillRandomColorsAllFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7894,7 +7894,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsAllFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsAllFramesName(path As IntPtr)
+		Private Function PluginFillRandomColorsAllFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7911,7 +7911,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsBlackAndWhite(int animationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsBlackAndWhite(animationId As Integer, frameId As Integer)
+		Private Function PluginFillRandomColorsBlackAndWhite(animationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7920,7 +7920,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsBlackAndWhiteAllFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsBlackAndWhiteAllFrames(animationId As Integer)
+		Private Function PluginFillRandomColorsBlackAndWhiteAllFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7929,7 +7929,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsBlackAndWhiteAllFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsBlackAndWhiteAllFramesName(path As IntPtr)
+		Private Function PluginFillRandomColorsBlackAndWhiteAllFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7946,7 +7946,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsBlackAndWhiteName(const char* path, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsBlackAndWhiteName(path As IntPtr, frameId As Integer)
+		Private Function PluginFillRandomColorsBlackAndWhiteName(path As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7963,7 +7963,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillRandomColorsName(const char* path, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillRandomColorsName(path As IntPtr, frameId As Integer)
+		Private Function PluginFillRandomColorsName(path As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7980,7 +7980,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColors(int animationId, int frameId, int threshold, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColors(animationId As Integer, frameId As Integer, threshold As Integer, color As Integer)
+		Private Function PluginFillThresholdColors(animationId As Integer, frameId As Integer, threshold As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7989,7 +7989,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsAllFrames(int animationId, int threshold, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsAllFrames(animationId As Integer, threshold As Integer, color As Integer)
+		Private Function PluginFillThresholdColorsAllFrames(animationId As Integer, threshold As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7998,7 +7998,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsAllFramesName(const char* path, int threshold, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsAllFramesName(path As IntPtr, threshold As Integer, color As Integer)
+		Private Function PluginFillThresholdColorsAllFramesName(path As IntPtr, threshold As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8015,7 +8015,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsAllFramesRGB(int animationId, int threshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsAllFramesRGB(animationId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdColorsAllFramesRGB(animationId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8024,7 +8024,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsAllFramesRGBName(const char* path, int threshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsAllFramesRGBName(path As IntPtr, threshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdColorsAllFramesRGBName(path As IntPtr, threshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8042,7 +8042,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsMinMaxAllFramesRGB(int animationId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsMinMaxAllFramesRGB(animationId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginFillThresholdColorsMinMaxAllFramesRGB(animationId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8052,7 +8052,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsMinMaxAllFramesRGBName(const char* path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsMinMaxAllFramesRGBName(path As IntPtr, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginFillThresholdColorsMinMaxAllFramesRGBName(path As IntPtr, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8070,7 +8070,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsMinMaxRGB(int animationId, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsMinMaxRGB(animationId As Integer, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginFillThresholdColorsMinMaxRGB(animationId As Integer, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8080,7 +8080,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsMinMaxRGBName(const char* path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsMinMaxRGBName(path As IntPtr, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginFillThresholdColorsMinMaxRGBName(path As IntPtr, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8097,7 +8097,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsName(const char* path, int frameId, int threshold, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsName(path As IntPtr, frameId As Integer, threshold As Integer, color As Integer)
+		Private Function PluginFillThresholdColorsName(path As IntPtr, frameId As Integer, threshold As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8114,7 +8114,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsRGB(int animationId, int frameId, int threshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsRGB(animationId As Integer, frameId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdColorsRGB(animationId As Integer, frameId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8123,7 +8123,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdColorsRGBName(const char* path, int frameId, int threshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdColorsRGBName(path As IntPtr, frameId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdColorsRGBName(path As IntPtr, frameId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8140,7 +8140,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdRGBColorsAllFramesRGB(int animationId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdRGBColorsAllFramesRGB(animationId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdRGBColorsAllFramesRGB(animationId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8149,7 +8149,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdRGBColorsAllFramesRGBName(const char* path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdRGBColorsAllFramesRGBName(path As IntPtr, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdRGBColorsAllFramesRGBName(path As IntPtr, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8166,7 +8166,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdRGBColorsRGB(int animationId, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdRGBColorsRGB(animationId As Integer, frameId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdRGBColorsRGB(animationId As Integer, frameId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8175,7 +8175,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillThresholdRGBColorsRGBName(const char* path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillThresholdRGBColorsRGBName(path As IntPtr, frameId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillThresholdRGBColorsRGBName(path As IntPtr, frameId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8192,7 +8192,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColor(int animationId, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColor(animationId As Integer, frameId As Integer, color As Integer)
+		Private Function PluginFillZeroColor(animationId As Integer, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8201,7 +8201,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorAllFrames(int animationId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorAllFrames(animationId As Integer, color As Integer)
+		Private Function PluginFillZeroColorAllFrames(animationId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8210,7 +8210,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorAllFramesName(const char* path, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorAllFramesName(path As IntPtr, color As Integer)
+		Private Function PluginFillZeroColorAllFramesName(path As IntPtr, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8227,7 +8227,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorAllFramesRGB(int animationId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillZeroColorAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8236,7 +8236,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorAllFramesRGBName(const char* path, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillZeroColorAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8253,7 +8253,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorName(const char* path, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorName(path As IntPtr, frameId As Integer, color As Integer)
+		Private Function PluginFillZeroColorName(path As IntPtr, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8270,7 +8270,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorRGB(int animationId, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillZeroColorRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8279,7 +8279,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginFillZeroColorRGBName(const char* path, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginFillZeroColorRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginFillZeroColorRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8700,7 +8700,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInsertDelay(int animationId, int frameId, int delay);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInsertDelay(animationId As Integer, frameId As Integer, delay As Integer)
+		Private Function PluginInsertDelay(animationId As Integer, frameId As Integer, delay As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8709,7 +8709,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInsertDelayName(const char* path, int frameId, int delay);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInsertDelayName(path As IntPtr, frameId As Integer, delay As Integer)
+		Private Function PluginInsertDelayName(path As IntPtr, frameId As Integer, delay As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8726,7 +8726,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInsertFrame(int animationId, int sourceFrame, int targetFrame);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInsertFrame(animationId As Integer, sourceFrame As Integer, targetFrame As Integer)
+		Private Function PluginInsertFrame(animationId As Integer, sourceFrame As Integer, targetFrame As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8735,7 +8735,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInsertFrameName(const char* path, int sourceFrame, int targetFrame);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInsertFrameName(path As IntPtr, sourceFrame As Integer, targetFrame As Integer)
+		Private Function PluginInsertFrameName(path As IntPtr, sourceFrame As Integer, targetFrame As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8752,7 +8752,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInvertColors(int animationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInvertColors(animationId As Integer, frameId As Integer)
+		Private Function PluginInvertColors(animationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8760,7 +8760,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInvertColorsAllFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInvertColorsAllFrames(animationId As Integer)
+		Private Function PluginInvertColorsAllFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8768,7 +8768,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInvertColorsAllFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInvertColorsAllFramesName(path As IntPtr)
+		Private Function PluginInvertColorsAllFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8785,7 +8785,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginInvertColorsName(const char* path, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginInvertColorsName(path As IntPtr, frameId As Integer)
+		Private Function PluginInvertColorsName(path As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8964,7 +8964,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginLoadAnimationName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginLoadAnimationName(path As IntPtr)
+		Private Function PluginLoadAnimationName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8972,7 +8972,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginLoadComposite(const char* name);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginLoadComposite(name As IntPtr)
+		Private Function PluginLoadComposite(name As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8982,7 +8982,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFrames(int animationId, int frameCount, float duration, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFrames(animationId As Integer, frameCount As Integer, duration As Single, color As Integer)
+		Private Function PluginMakeBlankFrames(animationId As Integer, frameCount As Integer, duration As Single, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -8992,7 +8992,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesName(const char* path, int frameCount, float duration, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesName(path As IntPtr, frameCount As Integer, duration As Single, color As Integer)
+		Private Function PluginMakeBlankFramesName(path As IntPtr, frameCount As Integer, duration As Single, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9010,7 +9010,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesRandom(int animationId, int frameCount, float duration);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesRandom(animationId As Integer, frameCount As Integer, duration As Single)
+		Private Function PluginMakeBlankFramesRandom(animationId As Integer, frameCount As Integer, duration As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9020,7 +9020,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesRandomBlackAndWhite(int animationId, int frameCount, float duration);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesRandomBlackAndWhite(animationId As Integer, frameCount As Integer, duration As Single)
+		Private Function PluginMakeBlankFramesRandomBlackAndWhite(animationId As Integer, frameCount As Integer, duration As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9030,7 +9030,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesRandomBlackAndWhiteName(const char* path, int frameCount, float duration);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesRandomBlackAndWhiteName(path As IntPtr, frameCount As Integer, duration As Single)
+		Private Function PluginMakeBlankFramesRandomBlackAndWhiteName(path As IntPtr, frameCount As Integer, duration As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9048,7 +9048,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesRandomName(const char* path, int frameCount, float duration);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesRandomName(path As IntPtr, frameCount As Integer, duration As Single)
+		Private Function PluginMakeBlankFramesRandomName(path As IntPtr, frameCount As Integer, duration As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9066,7 +9066,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesRGB(int animationId, int frameCount, float duration, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesRGB(animationId As Integer, frameCount As Integer, duration As Single, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginMakeBlankFramesRGB(animationId As Integer, frameCount As Integer, duration As Single, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9076,7 +9076,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMakeBlankFramesRGBName(const char* path, int frameCount, float duration, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMakeBlankFramesRGBName(path As IntPtr, frameCount As Integer, duration As Single, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginMakeBlankFramesRGBName(path As IntPtr, frameCount As Integer, duration As Single, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9113,7 +9113,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyColorLerpAllFrames(int animationId, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyColorLerpAllFrames(animationId As Integer, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyColorLerpAllFrames(animationId As Integer, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9123,7 +9123,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyColorLerpAllFramesName(const char* path, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyColorLerpAllFramesName(path As IntPtr, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyColorLerpAllFramesName(path As IntPtr, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9142,7 +9142,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensity(int animationId, int frameId, float intensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensity(animationId As Integer, frameId As Integer, intensity As Single)
+		Private Function PluginMultiplyIntensity(animationId As Integer, frameId As Integer, intensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9153,7 +9153,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityAllFrames(int animationId, float intensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityAllFrames(animationId As Integer, intensity As Single)
+		Private Function PluginMultiplyIntensityAllFrames(animationId As Integer, intensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9164,7 +9164,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityAllFramesName(const char* path, float intensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityAllFramesName(path As IntPtr, intensity As Single)
+		Private Function PluginMultiplyIntensityAllFramesName(path As IntPtr, intensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9181,7 +9181,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityAllFramesRGB(int animationId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginMultiplyIntensityAllFramesRGB(animationId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9190,7 +9190,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityAllFramesRGBName(const char* path, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginMultiplyIntensityAllFramesRGBName(path As IntPtr, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9207,7 +9207,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityColor(int animationId, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityColor(animationId As Integer, frameId As Integer, color As Integer)
+		Private Function PluginMultiplyIntensityColor(animationId As Integer, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9216,7 +9216,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityColorAllFrames(int animationId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityColorAllFrames(animationId As Integer, color As Integer)
+		Private Function PluginMultiplyIntensityColorAllFrames(animationId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9225,7 +9225,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityColorAllFramesName(const char* path, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityColorAllFramesName(path As IntPtr, color As Integer)
+		Private Function PluginMultiplyIntensityColorAllFramesName(path As IntPtr, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9242,7 +9242,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityColorName(const char* path, int frameId, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityColorName(path As IntPtr, frameId As Integer, color As Integer)
+		Private Function PluginMultiplyIntensityColorName(path As IntPtr, frameId As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9261,7 +9261,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityName(const char* path, int frameId, float intensity);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityName(path As IntPtr, frameId As Integer, intensity As Single)
+		Private Function PluginMultiplyIntensityName(path As IntPtr, frameId As Integer, intensity As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9278,7 +9278,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityRGB(int animationId, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginMultiplyIntensityRGB(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9287,7 +9287,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyIntensityRGBName(const char* path, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyIntensityRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginMultiplyIntensityRGBName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9305,7 +9305,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyNonZeroTargetColorLerp(int animationId, int frameId, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyNonZeroTargetColorLerp(animationId As Integer, frameId As Integer, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyNonZeroTargetColorLerp(animationId As Integer, frameId As Integer, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9315,7 +9315,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFrames(int animationId, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyNonZeroTargetColorLerpAllFrames(animationId As Integer, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyNonZeroTargetColorLerpAllFrames(animationId As Integer, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9325,7 +9325,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFramesName(const char* path, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyNonZeroTargetColorLerpAllFramesName(path As IntPtr, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyNonZeroTargetColorLerpAllFramesName(path As IntPtr, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9343,7 +9343,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(animationId As Integer, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
+		Private Function PluginMultiplyNonZeroTargetColorLerpAllFramesRGB(animationId As Integer, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9353,7 +9353,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(const char* path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(path As IntPtr, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
+		Private Function PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(path As IntPtr, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9371,7 +9371,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyTargetColorLerp(int animationId, int frameId, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyTargetColorLerp(animationId As Integer, frameId As Integer, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyTargetColorLerp(animationId As Integer, frameId As Integer, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9381,7 +9381,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyTargetColorLerpAllFrames(int animationId, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyTargetColorLerpAllFrames(animationId As Integer, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyTargetColorLerpAllFrames(animationId As Integer, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9391,7 +9391,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyTargetColorLerpAllFramesName(const char* path, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyTargetColorLerpAllFramesName(path As IntPtr, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyTargetColorLerpAllFramesName(path As IntPtr, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9408,7 +9408,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyTargetColorLerpAllFramesRGB(int animationId, int red1, int green1, int blue1, int red2, int green2, int blue2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyTargetColorLerpAllFramesRGB(animationId As Integer, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
+		Private Function PluginMultiplyTargetColorLerpAllFramesRGB(animationId As Integer, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9417,7 +9417,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyTargetColorLerpAllFramesRGBName(const char* path, int red1, int green1, int blue1, int red2, int green2, int blue2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyTargetColorLerpAllFramesRGBName(path As IntPtr, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
+		Private Function PluginMultiplyTargetColorLerpAllFramesRGBName(path As IntPtr, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9435,7 +9435,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginMultiplyTargetColorLerpName(const char* path, int frameId, int color1, int color2);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginMultiplyTargetColorLerpName(path As IntPtr, frameId As Integer, color1 As Integer, color2 As Integer)
+		Private Function PluginMultiplyTargetColorLerpName(path As IntPtr, frameId As Integer, color1 As Integer, color2 As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9445,7 +9445,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetColors(int animationId, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetColors(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetColors(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9455,7 +9455,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetColorsAllFrames(int animationId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetColorsAllFrames(animationId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetColorsAllFrames(animationId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9465,7 +9465,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetColorsAllFramesName(const char* path, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetColorsAllFramesName(path As IntPtr, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetColorsAllFramesName(path As IntPtr, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9483,7 +9483,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetColorsName(const char* path, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetColorsName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetColorsName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9502,7 +9502,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetNonZeroColors(int animationId, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetNonZeroColors(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetNonZeroColors(animationId As Integer, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9513,7 +9513,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetNonZeroColorsAllFrames(int animationId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetNonZeroColorsAllFrames(animationId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetNonZeroColorsAllFrames(animationId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9524,7 +9524,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetNonZeroColorsAllFramesName(const char* path, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetNonZeroColorsAllFramesName(path As IntPtr, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetNonZeroColorsAllFramesName(path As IntPtr, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9543,7 +9543,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOffsetNonZeroColorsName(const char* path, int frameId, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOffsetNonZeroColorsName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginOffsetNonZeroColorsName(path As IntPtr, frameId As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9642,7 +9642,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginOverrideFrameDurationName(const char* path, float duration);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginOverrideFrameDurationName(path As IntPtr, duration As Single)
+		Private Function PluginOverrideFrameDurationName(path As IntPtr, duration As Single) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9650,7 +9650,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPauseAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPauseAnimation(animationId As Integer)
+		Private Function PluginPauseAnimation(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9658,7 +9658,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPauseAnimationName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPauseAnimationName(path As IntPtr)
+		Private Function PluginPauseAnimationName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9694,7 +9694,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPlayAnimationFrame(int animationId, int frameId, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPlayAnimationFrame(animationId As Integer, frameId As Integer, renamed_loop As Boolean)
+		Private Function PluginPlayAnimationFrame(animationId As Integer, frameId As Integer, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9704,7 +9704,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPlayAnimationFrameName(const char* path, int frameId, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPlayAnimationFrameName(path As IntPtr, frameId As Integer, renamed_loop As Boolean)
+		Private Function PluginPlayAnimationFrameName(path As IntPtr, frameId As Integer, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9722,7 +9722,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPlayAnimationLoop(int animationId, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPlayAnimationLoop(animationId As Integer, renamed_loop As Boolean)
+		Private Function PluginPlayAnimationLoop(animationId As Integer, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9732,7 +9732,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPlayAnimationName(const char* path, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPlayAnimationName(path As IntPtr, renamed_loop As Boolean)
+		Private Function PluginPlayAnimationName(path As IntPtr, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9750,7 +9750,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPlayComposite(const char* name, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPlayComposite(name As IntPtr, renamed_loop As Boolean)
+		Private Function PluginPlayComposite(name As IntPtr, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9784,7 +9784,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginPreviewFrameName(const char* path, int frameIndex);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginPreviewFrameName(path As IntPtr, frameIndex As Integer)
+		Private Function PluginPreviewFrameName(path As IntPtr, frameIndex As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9793,7 +9793,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginReduceFrames(int animationId, int n);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginReduceFrames(animationId As Integer, n As Integer)
+		Private Function PluginReduceFrames(animationId As Integer, n As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9802,7 +9802,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginReduceFramesName(const char* path, int n);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginReduceFramesName(path As IntPtr, n As Integer)
+		Private Function PluginReduceFramesName(path As IntPtr, n As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9827,7 +9827,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginResumeAnimation(int animationId, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginResumeAnimation(animationId As Integer, renamed_loop As Boolean)
+		Private Function PluginResumeAnimation(animationId As Integer, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9835,7 +9835,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginResumeAnimationName(const char* path, bool loop);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginResumeAnimationName(path As IntPtr, renamed_loop As Boolean)
+		Private Function PluginResumeAnimationName(path As IntPtr, renamed_loop As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9862,7 +9862,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginReverseAllFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginReverseAllFrames(animationId As Integer)
+		Private Function PluginReverseAllFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9871,7 +9871,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginReverseAllFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginReverseAllFramesName(path As IntPtr)
+		Private Function PluginReverseAllFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9905,7 +9905,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSet1DColor(int animationId, int frameId, int led, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSet1DColor(animationId As Integer, frameId As Integer, led As Integer, color As Integer)
+		Private Function PluginSet1DColor(animationId As Integer, frameId As Integer, led As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9915,7 +9915,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSet1DColorName(const char* path, int frameId, int led, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSet1DColorName(path As IntPtr, frameId As Integer, led As Integer, color As Integer)
+		Private Function PluginSet1DColorName(path As IntPtr, frameId As Integer, led As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9934,7 +9934,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSet2DColor(int animationId, int frameId, int row, int column, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSet2DColor(animationId As Integer, frameId As Integer, row As Integer, column As Integer, color As Integer)
+		Private Function PluginSet2DColor(animationId As Integer, frameId As Integer, row As Integer, column As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9945,7 +9945,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSet2DColorName(const char* path, int frameId, int row, int column, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSet2DColorName(path As IntPtr, frameId As Integer, row As Integer, column As Integer, color As Integer)
+		Private Function PluginSet2DColorName(path As IntPtr, frameId As Integer, row As Integer, column As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9962,7 +9962,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetChromaCustomColorAllFrames(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetChromaCustomColorAllFrames(animationId As Integer)
+		Private Function PluginSetChromaCustomColorAllFrames(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9971,7 +9971,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetChromaCustomColorAllFramesName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetChromaCustomColorAllFramesName(path As IntPtr)
+		Private Function PluginSetChromaCustomColorAllFramesName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9989,7 +9989,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetChromaCustomFlag(int animationId, bool flag);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetChromaCustomFlag(animationId As Integer, flag As Boolean)
+		Private Function PluginSetChromaCustomFlag(animationId As Integer, flag As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -9999,7 +9999,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetChromaCustomFlagName(const char* path, bool flag);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetChromaCustomFlagName(path As IntPtr, flag As Boolean)
+		Private Function PluginSetChromaCustomFlagName(path As IntPtr, flag As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10015,7 +10015,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetCurrentFrame(int animationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetCurrentFrame(animationId As Integer, frameId As Integer)
+		Private Function PluginSetCurrentFrame(animationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10023,7 +10023,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetCurrentFrameName(const char* path, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetCurrentFrameName(path As IntPtr, frameId As Integer)
+		Private Function PluginSetCurrentFrameName(path As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10091,7 +10091,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetIdleAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetIdleAnimation(animationId As Integer)
+		Private Function PluginSetIdleAnimation(animationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10100,7 +10100,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetIdleAnimationName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetIdleAnimationName(path As IntPtr)
+		Private Function PluginSetIdleAnimationName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10108,7 +10108,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColor(int animationId, int frameId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColor(animationId As Integer, frameId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyColor(animationId As Integer, frameId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10117,7 +10117,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorAllFrames(int animationId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorAllFrames(animationId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyColorAllFrames(animationId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10126,7 +10126,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorAllFramesName(const char* path, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorAllFramesName(path As IntPtr, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyColorAllFramesName(path As IntPtr, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10143,7 +10143,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorAllFramesRGB(int animationId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorAllFramesRGB(animationId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyColorAllFramesRGB(animationId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10152,7 +10152,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorAllFramesRGBName(const char* path, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorAllFramesRGBName(path As IntPtr, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyColorAllFramesRGBName(path As IntPtr, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10168,7 +10168,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorName(const char* path, int frameId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorName(path As IntPtr, frameId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyColorName(path As IntPtr, frameId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10185,7 +10185,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorRGB(animationId As Integer, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyColorRGB(animationId As Integer, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10194,7 +10194,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyColorRGBName(path As IntPtr, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyColorRGBName(path As IntPtr, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10211,7 +10211,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyNonZeroColor(int animationId, int frameId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyNonZeroColor(animationId As Integer, frameId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyNonZeroColor(animationId As Integer, frameId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10220,7 +10220,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyNonZeroColorName(const char* path, int frameId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyNonZeroColorName(path As IntPtr, frameId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyNonZeroColorName(path As IntPtr, frameId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10237,7 +10237,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyNonZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyNonZeroColorRGB(animationId As Integer, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyNonZeroColorRGB(animationId As Integer, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10246,7 +10246,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyNonZeroColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyNonZeroColorRGBName(path As IntPtr, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyNonZeroColorRGBName(path As IntPtr, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10263,7 +10263,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyRowColumnColorName(const char* path, int frameId, int row, int column, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyRowColumnColorName(path As IntPtr, frameId As Integer, row As Integer, column As Integer, color As Integer)
+		Private Function PluginSetKeyRowColumnColorName(path As IntPtr, frameId As Integer, row As Integer, column As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10272,7 +10272,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColor(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysColor(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10281,7 +10281,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorAllFrames(animationId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysColorAllFrames(animationId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10290,7 +10290,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorAllFramesName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysColorAllFramesName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10299,7 +10299,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorAllFramesRGB(int animationId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorAllFramesRGB(animationId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysColorAllFramesRGB(animationId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10308,7 +10308,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorAllFramesRGBName(const char* path, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorAllFramesRGBName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysColorAllFramesRGBName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10316,7 +10316,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysColorName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10325,7 +10325,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorRGB(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysColorRGB(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10334,7 +10334,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysColorRGBName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysColorRGBName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10343,7 +10343,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysNonZeroColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysNonZeroColor(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysNonZeroColor(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10352,7 +10352,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysNonZeroColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysNonZeroColorAllFrames(animationId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysNonZeroColorAllFrames(animationId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10361,7 +10361,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysNonZeroColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysNonZeroColorAllFramesName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysNonZeroColorAllFramesName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10370,7 +10370,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysNonZeroColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysNonZeroColorName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysNonZeroColorName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10379,7 +10379,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysNonZeroColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysNonZeroColorRGB(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysNonZeroColorRGB(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10388,7 +10388,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysNonZeroColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysNonZeroColorRGBName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysNonZeroColorRGBName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10397,7 +10397,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColor(int animationId, int frameId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColor(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysZeroColor(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10406,7 +10406,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorAllFrames(int animationId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorAllFrames(animationId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysZeroColorAllFrames(animationId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10415,7 +10415,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorAllFramesName(const char* path, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorAllFramesName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysZeroColorAllFramesName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10424,7 +10424,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorAllFramesRGB(int animationId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorAllFramesRGB(animationId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysZeroColorAllFramesRGB(animationId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10433,7 +10433,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorAllFramesRGBName(const char* path, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorAllFramesRGBName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysZeroColorAllFramesRGBName(path As IntPtr, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10442,7 +10442,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorName(const char* path, int frameId, const int* rzkeys, int keyCount, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Private Function PluginSetKeysZeroColorName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10451,7 +10451,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorRGB(int animationId, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorRGB(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysZeroColorRGB(animationId As Integer, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10460,7 +10460,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeysZeroColorRGBName(const char* path, int frameId, const int* rzkeys, int keyCount, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeysZeroColorRGBName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeysZeroColorRGBName(path As IntPtr, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10469,7 +10469,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyZeroColor(int animationId, int frameId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyZeroColor(animationId As Integer, frameId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyZeroColor(animationId As Integer, frameId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10478,7 +10478,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyZeroColorName(const char* path, int frameId, int rzkey, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyZeroColorName(path As IntPtr, frameId As Integer, rzkey As Integer, color As Integer)
+		Private Function PluginSetKeyZeroColorName(path As IntPtr, frameId As Integer, rzkey As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10495,7 +10495,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyZeroColorRGB(int animationId, int frameId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyZeroColorRGB(animationId As Integer, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyZeroColorRGB(animationId As Integer, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10504,7 +10504,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetKeyZeroColorRGBName(const char* path, int frameId, int rzkey, int red, int green, int blue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetKeyZeroColorRGBName(path As IntPtr, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Private Function PluginSetKeyZeroColorRGBName(path As IntPtr, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10522,7 +10522,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetLogDelegate(DebugLogPtr fp);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetLogDelegate(fp As IntPtr)
+		Private Function PluginSetLogDelegate(fp As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10530,7 +10530,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetStaticColor(int deviceType, int device, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetStaticColor(deviceType As Integer, device As Integer, color As Integer)
+		Private Function PluginSetStaticColor(deviceType As Integer, device As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10538,7 +10538,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSetStaticColorAll(int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetStaticColorAll(color As Integer)
+		Private Function PluginSetStaticColorAll(color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10546,7 +10546,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginStaticColor(int deviceType, int device, int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginStaticColor(deviceType As Integer, device As Integer, color As Integer)
+		Private Function PluginStaticColor(deviceType As Integer, device As Integer, color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10554,7 +10554,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginStaticColorAll(int color);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginStaticColorAll(color As Integer)
+		Private Function PluginStaticColorAll(color As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10571,7 +10571,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginStopAll();
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginStopAll()
+		Private Function PluginStopAll() As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10598,7 +10598,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginStopAnimationName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginStopAnimationName(path As IntPtr)
+		Private Function PluginStopAnimationName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10616,7 +10616,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginStopAnimationType(int deviceType, int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginStopAnimationType(deviceType As Integer, device As Integer)
+		Private Function PluginStopAnimationType(deviceType As Integer, device As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10634,7 +10634,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginStopComposite(const char* name);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginStopComposite(name As IntPtr)
+		Private Function PluginStopComposite(name As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10659,7 +10659,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginSubtractNonZeroAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10668,7 +10668,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginSubtractNonZeroAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10686,7 +10686,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginSubtractNonZeroAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10696,7 +10696,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginSubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10714,7 +10714,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+		Private Function PluginSubtractNonZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10724,7 +10724,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer)
+		Private Function PluginSubtractNonZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10741,7 +10741,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
+		Private Function PluginSubtractNonZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10750,7 +10750,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFramesName(const char* sourceAnimation, const char* targetAnimation);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr)
+		Private Function PluginSubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10768,7 +10768,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFramesOffset(int sourceAnimationId, int targetAnimationId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer)
+		Private Function PluginSubtractNonZeroTargetAllKeysAllFramesOffset(sourceAnimationId As Integer, targetAnimationId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10778,7 +10778,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(const char* sourceAnimation, const char* targetAnimation, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer)
+		Private Function PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10796,7 +10796,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroTargetAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroTargetAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+		Private Function PluginSubtractNonZeroTargetAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10806,7 +10806,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractNonZeroTargetAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractNonZeroTargetAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer)
+		Private Function PluginSubtractNonZeroTargetAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10824,7 +10824,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractThresholdColorsMinMaxAllFramesRGB(const int animationId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractThresholdColorsMinMaxAllFramesRGB(animationId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginSubtractThresholdColorsMinMaxAllFramesRGB(animationId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10834,7 +10834,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractThresholdColorsMinMaxAllFramesRGBName(const char* path, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractThresholdColorsMinMaxAllFramesRGBName(path As IntPtr, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginSubtractThresholdColorsMinMaxAllFramesRGBName(path As IntPtr, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10853,7 +10853,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractThresholdColorsMinMaxRGB(const int animationId, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractThresholdColorsMinMaxRGB(animationId As Integer, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginSubtractThresholdColorsMinMaxRGB(animationId As Integer, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10864,7 +10864,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginSubtractThresholdColorsMinMaxRGBName(const char* path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSubtractThresholdColorsMinMaxRGBName(path As IntPtr, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Private Function PluginSubtractThresholdColorsMinMaxRGBName(path As IntPtr, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10881,7 +10881,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginTrimEndFrames(int animationId, int lastFrameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginTrimEndFrames(animationId As Integer, lastFrameId As Integer)
+		Private Function PluginTrimEndFrames(animationId As Integer, lastFrameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10890,7 +10890,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginTrimEndFramesName(const char* path, int lastFrameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginTrimEndFramesName(path As IntPtr, lastFrameId As Integer)
+		Private Function PluginTrimEndFramesName(path As IntPtr, lastFrameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10906,7 +10906,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginTrimFrame(int animationId, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginTrimFrame(animationId As Integer, frameId As Integer)
+		Private Function PluginTrimFrame(animationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10914,7 +10914,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginTrimFrameName(const char* path, int frameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginTrimFrameName(path As IntPtr, frameId As Integer)
+		Private Function PluginTrimFrameName(path As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10931,7 +10931,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginTrimStartFrames(int animationId, int numberOfFrames);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginTrimStartFrames(animationId As Integer, numberOfFrames As Integer)
+		Private Function PluginTrimStartFrames(animationId As Integer, numberOfFrames As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10940,7 +10940,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginTrimStartFramesName(const char* path, int numberOfFrames);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginTrimStartFramesName(path As IntPtr, numberOfFrames As Integer)
+		Private Function PluginTrimStartFramesName(path As IntPtr, numberOfFrames As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10990,7 +10990,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUnloadAnimationName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUnloadAnimationName(path As IntPtr)
+		Private Function PluginUnloadAnimationName(path As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10999,7 +10999,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUnloadComposite(const char* name);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUnloadComposite(name As IntPtr)
+		Private Function PluginUnloadComposite(name As IntPtr) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -11007,7 +11007,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUnloadLibrarySDK();
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUnloadLibrarySDK()
+		Private Function PluginUnloadLibrarySDK() As Boolean
 		End Function
 
 		REM /// <summary>
@@ -11016,7 +11016,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUnloadLibraryStreamingPlugin();
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUnloadLibraryStreamingPlugin()
+		Private Function PluginUnloadLibraryStreamingPlugin() As Boolean
 		End Function
 
 		REM /// <summary>
@@ -11057,7 +11057,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUseIdleAnimation(int device, bool flag);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUseIdleAnimation(device As Integer, flag As Boolean)
+		Private Function PluginUseIdleAnimation(device As Integer, flag As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -11065,7 +11065,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUseIdleAnimations(bool flag);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUseIdleAnimations(flag As Boolean)
+		Private Function PluginUseIdleAnimations(flag As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -11074,7 +11074,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUsePreloading(int animationId, bool flag);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUsePreloading(animationId As Integer, flag As Boolean)
+		Private Function PluginUsePreloading(animationId As Integer, flag As Boolean) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -11083,7 +11083,7 @@ Namespace ChromaSDK
 		REM /// EXPORT_API void PluginUsePreloadingName(const char* path, bool flag);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUsePreloadingName(path As IntPtr, flag As Boolean)
+		Private Function PluginUsePreloadingName(path As IntPtr, flag As Boolean) As Boolean
 		End Function
 
 		#End Region
