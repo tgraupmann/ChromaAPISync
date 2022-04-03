@@ -408,7 +408,7 @@ Namespace ChromaSDK
 		REM /// Add source color to target where color is not black for all frames, reference 
 		REM /// source and target by name.
 		REM /// </summary>
-		Public Function AddNonZeroAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function AddNonZeroAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -422,7 +422,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AddNonZeroAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function AddNonZeroAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -448,7 +448,7 @@ Namespace ChromaSDK
 		REM /// at offset for the length of the source, reference source and target by 
 		REM /// name.
 		REM /// </summary>
-		Public Function AddNonZeroAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function AddNonZeroAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -462,7 +462,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function AddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -486,7 +486,7 @@ Namespace ChromaSDK
 		REM /// Add source color to target where color is not black for the source frame 
 		REM /// and target offset frame, reference source and target by name.
 		REM /// </summary>
-		Public Function AddNonZeroAllKeysOffsetName(sourceAnimation As string, targetAnimation As string, frameId As Integer, offset As Integer)
+		Public Function AddNonZeroAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -500,7 +500,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AddNonZeroAllKeysOffsetNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, offset As Double) As Double
+		Public Function AddNonZeroAllKeysOffsetNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -524,7 +524,7 @@ Namespace ChromaSDK
 		REM /// Add source color to target where the target color is not black for all frames, 
 		REM /// reference source and target by name.
 		REM /// </summary>
-		Public Function AddNonZeroTargetAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function AddNonZeroTargetAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -538,7 +538,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function AddNonZeroTargetAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -564,7 +564,7 @@ Namespace ChromaSDK
 		REM /// starting at offset for the length of the source, reference source and target 
 		REM /// by name.
 		REM /// </summary>
-		Public Function AddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function AddNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -578,7 +578,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AddNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function AddNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -603,7 +603,7 @@ Namespace ChromaSDK
 		REM /// frame to the target offset frame, reference source and target by name. 
 		REM ///
 		REM /// </summary>
-		Public Function AddNonZeroTargetAllKeysOffsetName(sourceAnimation As string, targetAnimation As string, frameId As Integer, offset As Integer)
+		Public Function AddNonZeroTargetAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -617,7 +617,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AddNonZeroTargetAllKeysOffsetNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, offset As Double) As Double
+		Public Function AddNonZeroTargetAllKeysOffsetNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -641,7 +641,7 @@ Namespace ChromaSDK
 		REM /// Append all source frames to the target animation, reference source and target 
 		REM /// by name.
 		REM /// </summary>
-		Public Function AppendAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function AppendAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -655,7 +655,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function AppendAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function AppendAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -715,7 +715,7 @@ Namespace ChromaSDK
 		REM /// Closes the `Chroma` animation referenced by name so that the animation can 
 		REM /// be reloaded from disk.
 		REM /// </summary>
-		Public Function CloseAnimationName(path As string)
+		Public Function CloseAnimationName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginCloseAnimationName(lp_Path)
@@ -726,7 +726,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CloseAnimationNameD(path As string) As Double
+		Public Function CloseAnimationNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginCloseAnimationNameD(lp_Path)
@@ -738,7 +738,7 @@ Namespace ChromaSDK
 		REM /// `PluginCloseComposite` closes a set of animations so they can be reloaded 
 		REM /// from disk. The set of animations will be stopped if playing.
 		REM /// </summary>
-		Public Function CloseComposite(name As string)
+		Public Function CloseComposite(name As String)
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			PluginCloseComposite(lp_Name)
@@ -749,7 +749,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CloseCompositeD(name As string) As Double
+		Public Function CloseCompositeD(name As String) As Double
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			Dim result As Double = PluginCloseCompositeD(lp_Name)
@@ -770,7 +770,7 @@ Namespace ChromaSDK
 		REM /// Copy source animation to target animation for the given frame. Source and 
 		REM /// target are referenced by id.
 		REM /// </summary>
-		Public Function CopyAllKeysName(sourceAnimation As string, targetAnimation As string, frameId As Integer)
+		Public Function CopyAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -785,7 +785,7 @@ Namespace ChromaSDK
 		REM /// Copy animation to named target animation in memory. If target animation 
 		REM /// exists, close first. Source is referenced by id.
 		REM /// </summary>
-		Public Function CopyAnimation(sourceAnimationId As Integer, targetAnimation As string) As Integer
+		Public Function CopyAnimation(sourceAnimationId As Integer, targetAnimation As String) As Integer
 			Dim str_TargetAnimation As String = targetAnimation
 			Dim lp_TargetAnimation As IntPtr = GetPathIntPtr(str_TargetAnimation)
 			Dim result As Integer = PluginCopyAnimation(sourceAnimationId, lp_TargetAnimation)
@@ -797,7 +797,7 @@ Namespace ChromaSDK
 		REM /// Copy animation to named target animation in memory. If target animation 
 		REM /// exists, close first. Source is referenced by name.
 		REM /// </summary>
-		Public Function CopyAnimationName(sourceAnimation As string, targetAnimation As string)
+		Public Function CopyAnimationName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -811,7 +811,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyAnimationNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function CopyAnimationNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -835,7 +835,7 @@ Namespace ChromaSDK
 		REM /// Copy blue channel to other channels for all frames. Intensity range is 0.0 
 		REM /// to 1.0. Reference the animation by name.
 		REM /// </summary>
-		Public Function CopyBlueChannelAllFramesName(path As string, redIntensity As Single, greenIntensity As Single)
+		Public Function CopyBlueChannelAllFramesName(path As String, redIntensity As Single, greenIntensity As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginCopyBlueChannelAllFramesName(lp_Path, redIntensity, greenIntensity)
@@ -846,7 +846,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyBlueChannelAllFramesNameD(path As string, redIntensity As Double, greenIntensity As Double) As Double
+		Public Function CopyBlueChannelAllFramesNameD(path As String, redIntensity As Double, greenIntensity As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginCopyBlueChannelAllFramesNameD(lp_Path, redIntensity, greenIntensity)
@@ -867,7 +867,7 @@ Namespace ChromaSDK
 		REM /// Copy green channel to other channels for all frames. Intensity range is 
 		REM /// 0.0 to 1.0. Reference the animation by name.
 		REM /// </summary>
-		Public Function CopyGreenChannelAllFramesName(path As string, redIntensity As Single, blueIntensity As Single)
+		Public Function CopyGreenChannelAllFramesName(path As String, redIntensity As Single, blueIntensity As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginCopyGreenChannelAllFramesName(lp_Path, redIntensity, blueIntensity)
@@ -878,7 +878,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyGreenChannelAllFramesNameD(path As string, redIntensity As Double, blueIntensity As Double) As Double
+		Public Function CopyGreenChannelAllFramesNameD(path As String, redIntensity As Double, blueIntensity As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginCopyGreenChannelAllFramesNameD(lp_Path, redIntensity, blueIntensity)
@@ -908,7 +908,7 @@ Namespace ChromaSDK
 		REM /// Copy animation key color from the source animation to the target animation 
 		REM /// for all frames. Reference the source and target by name.
 		REM /// </summary>
-		Public Function CopyKeyColorAllFramesName(sourceAnimation As string, targetAnimation As string, rzkey As Integer)
+		Public Function CopyKeyColorAllFramesName(sourceAnimation As String, targetAnimation As String, rzkey As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -922,7 +922,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyKeyColorAllFramesNameD(sourceAnimation As string, targetAnimation As string, rzkey As Double) As Double
+		Public Function CopyKeyColorAllFramesNameD(sourceAnimation As String, targetAnimation As String, rzkey As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -948,7 +948,7 @@ Namespace ChromaSDK
 		REM /// for all frames, starting at the offset for the length of the source animation. 
 		REM /// Source and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyKeyColorAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, rzkey As Integer, offset As Integer)
+		Public Function CopyKeyColorAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, rzkey As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -962,7 +962,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyKeyColorAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, rzkey As Double, offset As Double) As Double
+		Public Function CopyKeyColorAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, rzkey As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -977,7 +977,7 @@ Namespace ChromaSDK
 		REM /// Copy animation key color from the source animation to the target animation 
 		REM /// for the given frame.
 		REM /// </summary>
-		Public Function CopyKeyColorName(sourceAnimation As string, targetAnimation As string, frameId As Integer, rzkey As Integer)
+		Public Function CopyKeyColorName(sourceAnimation As String, targetAnimation As String, frameId As Integer, rzkey As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -991,7 +991,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyKeyColorNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, rzkey As Double) As Double
+		Public Function CopyKeyColorNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, rzkey As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1027,7 +1027,7 @@ Namespace ChromaSDK
 		REM /// target animation for all frames. Reference the source and target by name. 
 		REM ///
 		REM /// </summary>
-		Public Function CopyKeysColorAllFramesName(sourceAnimation As string, targetAnimation As string, keys As Integer(), size As Integer)
+		Public Function CopyKeysColorAllFramesName(sourceAnimation As String, targetAnimation As String, keys As Integer(), size As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1043,7 +1043,7 @@ Namespace ChromaSDK
 		REM /// target animation for the given frame. Reference the source and target by 
 		REM /// name.
 		REM /// </summary>
-		Public Function CopyKeysColorName(sourceAnimation As string, targetAnimation As string, frameId As Integer, keys As Integer(), size As Integer)
+		Public Function CopyKeysColorName(sourceAnimation As String, targetAnimation As String, frameId As Integer, keys As Integer(), size As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1069,7 +1069,7 @@ Namespace ChromaSDK
 		REM /// target animation from the source frame to the target frame. Reference the 
 		REM /// source and target by name.
 		REM /// </summary>
-		Public Function CopyKeysColorOffsetName(sourceAnimation As string, targetAnimation As string, sourceFrameId As Integer, targetFrameId As Integer, keys As Integer(), size As Integer)
+		Public Function CopyKeysColorOffsetName(sourceAnimation As String, targetAnimation As String, sourceFrameId As Integer, targetFrameId As Integer, keys As Integer(), size As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1102,7 +1102,7 @@ Namespace ChromaSDK
 		REM /// Copy nonzero colors from a source animation to a target animation for all 
 		REM /// frames. Reference source and target by name.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function CopyNonZeroAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1116,7 +1116,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function CopyNonZeroAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1142,7 +1142,7 @@ Namespace ChromaSDK
 		REM /// frames starting at the offset for the length of the source animation. The 
 		REM /// source and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function CopyNonZeroAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1156,7 +1156,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function CopyNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1171,7 +1171,7 @@ Namespace ChromaSDK
 		REM /// Copy nonzero colors from source animation to target animation for the specified 
 		REM /// frame. Source and target are referenced by id.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysName(sourceAnimation As string, targetAnimation As string, frameId As Integer)
+		Public Function CopyNonZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1185,7 +1185,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysNameD(sourceAnimation As string, targetAnimation As string, frameId As Double) As Double
+		Public Function CopyNonZeroAllKeysNameD(sourceAnimation As String, targetAnimation As String, frameId As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1211,7 +1211,7 @@ Namespace ChromaSDK
 		REM /// the source frame to the target offset frame. Source and target are referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysOffsetName(sourceAnimation As string, targetAnimation As string, frameId As Integer, offset As Integer)
+		Public Function CopyNonZeroAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1225,7 +1225,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroAllKeysOffsetNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, offset As Double) As Double
+		Public Function CopyNonZeroAllKeysOffsetNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1249,7 +1249,7 @@ Namespace ChromaSDK
 		REM /// Copy animation key color from the source animation to the target animation 
 		REM /// for the given frame where color is not zero.
 		REM /// </summary>
-		Public Function CopyNonZeroKeyColorName(sourceAnimation As string, targetAnimation As string, frameId As Integer, rzkey As Integer)
+		Public Function CopyNonZeroKeyColorName(sourceAnimation As String, targetAnimation As String, frameId As Integer, rzkey As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1263,7 +1263,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroKeyColorNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, rzkey As Double) As Double
+		Public Function CopyNonZeroKeyColorNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, rzkey As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1299,7 +1299,7 @@ Namespace ChromaSDK
 		REM /// the target color is nonzero for all frames. Source and target are referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function CopyNonZeroTargetAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1313,7 +1313,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function CopyNonZeroTargetAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1340,7 +1340,7 @@ Namespace ChromaSDK
 		REM /// for the length of the source animation. Source and target animations are 
 		REM /// referenced by name.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function CopyNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1354,7 +1354,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function CopyNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1370,7 +1370,7 @@ Namespace ChromaSDK
 		REM /// the target color is nonzero for the specified frame. The source and target 
 		REM /// are referenced by name.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysName(sourceAnimation As string, targetAnimation As string, frameId As Integer)
+		Public Function CopyNonZeroTargetAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1384,7 +1384,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysNameD(sourceAnimation As string, targetAnimation As string, frameId As Double) As Double
+		Public Function CopyNonZeroTargetAllKeysNameD(sourceAnimation As String, targetAnimation As String, frameId As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1410,7 +1410,7 @@ Namespace ChromaSDK
 		REM /// the target color is nonzero for the specified source frame and target offset 
 		REM /// frame. The source and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysOffsetName(sourceAnimation As string, targetAnimation As string, frameId As Integer, offset As Integer)
+		Public Function CopyNonZeroTargetAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1424,7 +1424,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetAllKeysOffsetNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, offset As Double) As Double
+		Public Function CopyNonZeroTargetAllKeysOffsetNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1450,7 +1450,7 @@ Namespace ChromaSDK
 		REM /// the target color is zero for all frames. Source and target are referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetZeroAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function CopyNonZeroTargetZeroAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1464,7 +1464,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyNonZeroTargetZeroAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function CopyNonZeroTargetZeroAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1488,7 +1488,7 @@ Namespace ChromaSDK
 		REM /// Copy green channel to other channels for all frames. Intensity range is 
 		REM /// 0.0 to 1.0. Reference the animation by name.
 		REM /// </summary>
-		Public Function CopyRedChannelAllFramesName(path As string, greenIntensity As Single, blueIntensity As Single)
+		Public Function CopyRedChannelAllFramesName(path As String, greenIntensity As Single, blueIntensity As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginCopyRedChannelAllFramesName(lp_Path, greenIntensity, blueIntensity)
@@ -1499,7 +1499,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyRedChannelAllFramesNameD(path As string, greenIntensity As Double, blueIntensity As Double) As Double
+		Public Function CopyRedChannelAllFramesNameD(path As String, greenIntensity As Double, blueIntensity As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginCopyRedChannelAllFramesNameD(lp_Path, greenIntensity, blueIntensity)
@@ -1520,7 +1520,7 @@ Namespace ChromaSDK
 		REM /// Copy zero colors from source animation to target animation for all frames. 
 		REM /// Source and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyZeroAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function CopyZeroAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1534,7 +1534,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyZeroAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function CopyZeroAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1560,7 +1560,7 @@ Namespace ChromaSDK
 		REM /// starting at the target offset for the length of the source animation. Source 
 		REM /// and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyZeroAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function CopyZeroAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1574,7 +1574,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function CopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1598,7 +1598,7 @@ Namespace ChromaSDK
 		REM /// Copy zero key color from source animation to target animation for the specified 
 		REM /// frame. Source and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyZeroKeyColorName(sourceAnimation As string, targetAnimation As string, frameId As Integer, rzkey As Integer)
+		Public Function CopyZeroKeyColorName(sourceAnimation As String, targetAnimation As String, frameId As Integer, rzkey As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1612,7 +1612,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyZeroKeyColorNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, rzkey As Double) As Double
+		Public Function CopyZeroKeyColorNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, rzkey As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1636,7 +1636,7 @@ Namespace ChromaSDK
 		REM /// Copy nonzero color from source animation to target animation where target 
 		REM /// is zero for all frames. Source and target are referenced by name.
 		REM /// </summary>
-		Public Function CopyZeroTargetAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function CopyZeroTargetAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1650,7 +1650,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -1764,7 +1764,7 @@ Namespace ChromaSDK
 		REM /// string  streamKey is a null terminated string  StreamGetStatus() should 
 		REM /// return the READY status to use this method.
 		REM /// </summary>
-		Public Function CoreStreamBroadcast(streamId As string, streamKey As string) As Boolean
+		Public Function CoreStreamBroadcast(streamId As String, streamKey As String) As Boolean
 			Dim str_StreamId As String = streamId
 			Dim lp_StreamId As IntPtr = GetAsciiIntPtr(str_StreamId)
 			Dim str_StreamKey As String = streamKey
@@ -1793,7 +1793,7 @@ Namespace ChromaSDK
 		REM /// so they can associate the stream with their Razer ID  StreamGetStatus() 
 		REM /// should return the READY status before invoking this method.
 		REM /// </summary>
-		Public Function CoreStreamGetAuthShortcode(ByRef shortcode As string, ByRef length As byte, platform As string, title As string)
+		Public Function CoreStreamGetAuthShortcode(ByRef shortcode As String, ByRef length As byte, platform As String, title As String)
 			Dim str_Shortcode As String = shortcode
 			Dim lp_Shortcode as IntPtr = GetAsciiIntPtr(str_Shortcode)
 			Dim str_Platform As String = platform
@@ -1816,7 +1816,7 @@ Namespace ChromaSDK
 		REM /// as zero if the stream focus could not be obtained. If length is greater 
 		REM /// than zero, it will be the length of the returned stream focus.
 		REM /// </summary>
-		Public Function CoreStreamGetFocus(ByRef focus As string, ByRef length As byte) As Boolean
+		Public Function CoreStreamGetFocus(ByRef focus As String, ByRef length As byte) As Boolean
 			Dim str_Focus As String = focus
 			Dim lp_Focus as IntPtr = GetAsciiIntPtr(str_Focus)
 			Dim result As Boolean = PluginCoreStreamGetFocus(lp_Focus, length)
@@ -1841,7 +1841,7 @@ Namespace ChromaSDK
 		REM /// the source of the stream: { GEFORCE_NOW, LUNA, STADIA, XBOX_GAME_PASS } 
 		REM /// StreamGetStatus() should return the READY status to use this method.
 		REM /// </summary>
-		Public Function CoreStreamGetId(shortcode As string, ByRef streamId As string, ByRef length As byte)
+		Public Function CoreStreamGetId(shortcode As String, ByRef streamId As String, ByRef length As byte)
 			Dim str_Shortcode As String = shortcode
 			Dim lp_Shortcode As IntPtr = GetAsciiIntPtr(str_Shortcode)
 			Dim str_StreamId As String = streamId
@@ -1870,7 +1870,7 @@ Namespace ChromaSDK
 		REM /// expires.  StreamGetStatus() should return the READY status to use this 
 		REM /// method.
 		REM /// </summary>
-		Public Function CoreStreamGetKey(shortcode As string, ByRef streamKey As string, ByRef length As byte)
+		Public Function CoreStreamGetKey(shortcode As String, ByRef streamKey As String, ByRef length As byte)
 			Dim str_Shortcode As String = shortcode
 			Dim lp_Shortcode As IntPtr = GetAsciiIntPtr(str_Shortcode)
 			Dim str_StreamKey As String = streamKey
@@ -1895,8 +1895,8 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Convert StreamStatusType to a printable string
 		REM /// </summary>
-		Public Function CoreStreamGetStatusString(status As ChromaSDK.Stream.StreamStatusType) As string
-			Dim result As string = Marshal.PtrToStringAnsi(PluginCoreStreamGetStatusString(status))
+		Public Function CoreStreamGetStatusString(status As ChromaSDK.Stream.StreamStatusType) As String
+			Dim result As String = Marshal.PtrToStringAnsi(PluginCoreStreamGetStatusString(status))
 			Return result
 		End Function
 
@@ -1906,7 +1906,7 @@ Namespace ChromaSDK
 		REM /// string.  StreamGetStatus() should return the READY status to use this method. 
 		REM /// returns success when shortcode has been released
 		REM /// </summary>
-		Public Function CoreStreamReleaseShortcode(shortcode As string) As Boolean
+		Public Function CoreStreamReleaseShortcode(shortcode As String) As Boolean
 			Dim str_Shortcode As String = shortcode
 			Dim lp_Shortcode As IntPtr = GetAsciiIntPtr(str_Shortcode)
 			Dim result As Boolean = PluginCoreStreamReleaseShortcode(lp_Shortcode)
@@ -1919,7 +1919,7 @@ Namespace ChromaSDK
 		REM /// designated to automatically change the streaming state.  Returns true on 
 		REM /// success.
 		REM /// </summary>
-		Public Function CoreStreamSetFocus(focus As string) As Boolean
+		Public Function CoreStreamSetFocus(focus As String) As Boolean
 			Dim str_Focus As String = focus
 			Dim lp_Focus As IntPtr = GetAsciiIntPtr(str_Focus)
 			Dim result As Boolean = PluginCoreStreamSetFocus(lp_Focus)
@@ -1941,7 +1941,7 @@ Namespace ChromaSDK
 		REM /// a null terminated string.  StreamGetStatus() should return the READY status 
 		REM /// to use this method.
 		REM /// </summary>
-		Public Function CoreStreamWatch(streamId As string, timestamp As ulong) As Boolean
+		Public Function CoreStreamWatch(streamId As String, timestamp As ulong) As Boolean
 			Dim str_StreamId As String = streamId
 			Dim lp_StreamId As IntPtr = GetAsciiIntPtr(str_StreamId)
 			Dim result As Boolean = PluginCoreStreamWatch(lp_StreamId, timestamp)
@@ -1975,7 +1975,7 @@ Namespace ChromaSDK
 		REM /// at the given path. Returns the animation id upon success. Returns -1 upon 
 		REM /// failure.
 		REM /// </summary>
-		Public Function CreateAnimation(path As string, deviceType As Integer, device As Integer) As Integer
+		Public Function CreateAnimation(path As String, deviceType As Integer, device As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginCreateAnimation(lp_Path, deviceType, device)
@@ -2025,7 +2025,7 @@ Namespace ChromaSDK
 		REM /// Duplicate the first animation frame so that the animation length matches 
 		REM /// the frame count. Animation is referenced by name.
 		REM /// </summary>
-		Public Function DuplicateFirstFrameName(path As string, frameCount As Integer)
+		Public Function DuplicateFirstFrameName(path As String, frameCount As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginDuplicateFirstFrameName(lp_Path, frameCount)
@@ -2036,7 +2036,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function DuplicateFirstFrameNameD(path As string, frameCount As Double) As Double
+		Public Function DuplicateFirstFrameNameD(path As String, frameCount As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginDuplicateFirstFrameNameD(lp_Path, frameCount)
@@ -2059,7 +2059,7 @@ Namespace ChromaSDK
 		REM /// Frame 1 becomes frame 1 and 2. Frame 2 becomes frame 3 and 4. And so on. 
 		REM /// The animation is referenced by name.
 		REM /// </summary>
-		Public Function DuplicateFramesName(path As string)
+		Public Function DuplicateFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginDuplicateFramesName(lp_Path)
@@ -2070,7 +2070,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function DuplicateFramesNameD(path As string) As Double
+		Public Function DuplicateFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginDuplicateFramesNameD(lp_Path)
@@ -2091,7 +2091,7 @@ Namespace ChromaSDK
 		REM /// Duplicate all the animation frames in reverse so that the animation plays 
 		REM /// forwards and backwards. Animation is referenced by name.
 		REM /// </summary>
-		Public Function DuplicateMirrorFramesName(path As string)
+		Public Function DuplicateMirrorFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginDuplicateMirrorFramesName(lp_Path)
@@ -2102,7 +2102,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function DuplicateMirrorFramesNameD(path As string) As Double
+		Public Function DuplicateMirrorFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginDuplicateMirrorFramesNameD(lp_Path)
@@ -2123,7 +2123,7 @@ Namespace ChromaSDK
 		REM /// Fade the animation to black starting at the fade frame index to the end 
 		REM /// of the animation. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FadeEndFramesName(path As string, fade As Integer)
+		Public Function FadeEndFramesName(path As String, fade As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFadeEndFramesName(lp_Path, fade)
@@ -2134,7 +2134,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FadeEndFramesNameD(path As string, fade As Double) As Double
+		Public Function FadeEndFramesNameD(path As String, fade As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFadeEndFramesNameD(lp_Path, fade)
@@ -2155,7 +2155,7 @@ Namespace ChromaSDK
 		REM /// Fade the animation from black to full color starting at 0 to the fade frame 
 		REM /// index. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FadeStartFramesName(path As string, fade As Integer)
+		Public Function FadeStartFramesName(path As String, fade As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFadeStartFramesName(lp_Path, fade)
@@ -2166,7 +2166,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FadeStartFramesNameD(path As string, fade As Double) As Double
+		Public Function FadeStartFramesNameD(path As String, fade As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFadeStartFramesNameD(lp_Path, fade)
@@ -2196,7 +2196,7 @@ Namespace ChromaSDK
 		REM /// Set the RGB value for all colors for all frames. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function FillColorAllFramesName(path As string, color As Integer)
+		Public Function FillColorAllFramesName(path As String, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillColorAllFramesName(lp_Path, color)
@@ -2207,7 +2207,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillColorAllFramesNameD(path As string, color As Double) As Double
+		Public Function FillColorAllFramesNameD(path As String, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillColorAllFramesNameD(lp_Path, color)
@@ -2228,7 +2228,7 @@ Namespace ChromaSDK
 		REM /// Set the RGB value for all colors for all frames. Use the range of 0 to 255 
 		REM /// for red, green, and blue parameters. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillColorAllFramesRGBName(path As string, red As Integer, green As Integer, blue As Integer)
+		Public Function FillColorAllFramesRGBName(path As String, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillColorAllFramesRGBName(lp_Path, red, green, blue)
@@ -2239,7 +2239,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillColorAllFramesRGBNameD(path As string, red As Double, green As Double, blue As Double) As Double
+		Public Function FillColorAllFramesRGBNameD(path As String, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillColorAllFramesRGBNameD(lp_Path, red, green, blue)
@@ -2251,7 +2251,7 @@ Namespace ChromaSDK
 		REM /// Set the RGB value for all colors in the specified frame. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function FillColorName(path As string, frameId As Integer, color As Integer)
+		Public Function FillColorName(path As String, frameId As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillColorName(lp_Path, frameId, color)
@@ -2262,7 +2262,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillColorNameD(path As string, frameId As Double, color As Double) As Double
+		Public Function FillColorNameD(path As String, frameId As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillColorNameD(lp_Path, frameId, color)
@@ -2283,7 +2283,7 @@ Namespace ChromaSDK
 		REM /// Set the RGB value for all colors in the specified frame. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function FillColorRGBName(path As string, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillColorRGBName(path As String, frameId As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillColorRGBName(lp_Path, frameId, red, green, blue)
@@ -2294,7 +2294,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillColorRGBNameD(path As string, frameId As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillColorRGBNameD(path As String, frameId As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillColorRGBNameD(lp_Path, frameId, red, green, blue)
@@ -2327,7 +2327,7 @@ Namespace ChromaSDK
 		REM /// set to black. Set the RGB value for a subset of colors for all frames. 
 		REM /// Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillNonZeroColorAllFramesName(path As string, color As Integer)
+		Public Function FillNonZeroColorAllFramesName(path As String, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillNonZeroColorAllFramesName(lp_Path, color)
@@ -2338,7 +2338,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillNonZeroColorAllFramesNameD(path As string, color As Double) As Double
+		Public Function FillNonZeroColorAllFramesNameD(path As String, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillNonZeroColorAllFramesNameD(lp_Path, color)
@@ -2363,7 +2363,7 @@ Namespace ChromaSDK
 		REM /// Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function FillNonZeroColorAllFramesRGBName(path As string, red As Integer, green As Integer, blue As Integer)
+		Public Function FillNonZeroColorAllFramesRGBName(path As String, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillNonZeroColorAllFramesRGBName(lp_Path, red, green, blue)
@@ -2374,7 +2374,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillNonZeroColorAllFramesRGBNameD(path As string, red As Double, green As Double, blue As Double) As Double
+		Public Function FillNonZeroColorAllFramesRGBNameD(path As String, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillNonZeroColorAllFramesRGBNameD(lp_Path, red, green, blue)
@@ -2387,7 +2387,7 @@ Namespace ChromaSDK
 		REM /// set to black. Set the RGB value for a subset of colors in the specified 
 		REM /// frame. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillNonZeroColorName(path As string, frameId As Integer, color As Integer)
+		Public Function FillNonZeroColorName(path As String, frameId As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillNonZeroColorName(lp_Path, frameId, color)
@@ -2398,7 +2398,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillNonZeroColorNameD(path As string, frameId As Double, color As Double) As Double
+		Public Function FillNonZeroColorNameD(path As String, frameId As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillNonZeroColorNameD(lp_Path, frameId, color)
@@ -2423,7 +2423,7 @@ Namespace ChromaSDK
 		REM /// frame. Use the range of 0 to 255 for red, green, and blue parameters. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function FillNonZeroColorRGBName(path As string, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillNonZeroColorRGBName(path As String, frameId As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillNonZeroColorRGBName(lp_Path, frameId, red, green, blue)
@@ -2434,7 +2434,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillNonZeroColorRGBNameD(path As string, frameId As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillNonZeroColorRGBNameD(path As String, frameId As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillNonZeroColorRGBNameD(lp_Path, frameId, red, green, blue)
@@ -2464,7 +2464,7 @@ Namespace ChromaSDK
 		REM /// Fill the frame with random RGB values for all frames. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function FillRandomColorsAllFramesName(path As string)
+		Public Function FillRandomColorsAllFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillRandomColorsAllFramesName(lp_Path)
@@ -2475,7 +2475,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillRandomColorsAllFramesNameD(path As string) As Double
+		Public Function FillRandomColorsAllFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillRandomColorsAllFramesNameD(lp_Path)
@@ -2505,7 +2505,7 @@ Namespace ChromaSDK
 		REM /// Fill the frame with random black and white values for all frames. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function FillRandomColorsBlackAndWhiteAllFramesName(path As string)
+		Public Function FillRandomColorsBlackAndWhiteAllFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillRandomColorsBlackAndWhiteAllFramesName(lp_Path)
@@ -2516,7 +2516,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillRandomColorsBlackAndWhiteAllFramesNameD(path As string) As Double
+		Public Function FillRandomColorsBlackAndWhiteAllFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillRandomColorsBlackAndWhiteAllFramesNameD(lp_Path)
@@ -2528,7 +2528,7 @@ Namespace ChromaSDK
 		REM /// Fill the frame with random black and white values for the specified frame. 
 		REM /// Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillRandomColorsBlackAndWhiteName(path As string, frameId As Integer)
+		Public Function FillRandomColorsBlackAndWhiteName(path As String, frameId As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillRandomColorsBlackAndWhiteName(lp_Path, frameId)
@@ -2539,7 +2539,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillRandomColorsBlackAndWhiteNameD(path As string, frameId As Double) As Double
+		Public Function FillRandomColorsBlackAndWhiteNameD(path As String, frameId As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillRandomColorsBlackAndWhiteNameD(lp_Path, frameId)
@@ -2551,7 +2551,7 @@ Namespace ChromaSDK
 		REM /// Fill the frame with random RGB values for the given frame. Animation is 
 		REM /// referenced by name.
 		REM /// </summary>
-		Public Function FillRandomColorsName(path As string, frameId As Integer)
+		Public Function FillRandomColorsName(path As String, frameId As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillRandomColorsName(lp_Path, frameId)
@@ -2562,7 +2562,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillRandomColorsNameD(path As string, frameId As Double) As Double
+		Public Function FillRandomColorsNameD(path As String, frameId As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillRandomColorsNameD(lp_Path, frameId)
@@ -2592,7 +2592,7 @@ Namespace ChromaSDK
 		REM /// Fill all frames with RGB color where the animation color is less than the 
 		REM /// RGB threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdColorsAllFramesName(path As string, threshold As Integer, color As Integer)
+		Public Function FillThresholdColorsAllFramesName(path As String, threshold As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdColorsAllFramesName(lp_Path, threshold, color)
@@ -2603,7 +2603,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdColorsAllFramesNameD(path As string, threshold As Double, color As Double) As Double
+		Public Function FillThresholdColorsAllFramesNameD(path As String, threshold As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdColorsAllFramesNameD(lp_Path, threshold, color)
@@ -2624,7 +2624,7 @@ Namespace ChromaSDK
 		REM /// Fill all frames with RGB color where the animation color is less than the 
 		REM /// threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdColorsAllFramesRGBName(path As string, threshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillThresholdColorsAllFramesRGBName(path As String, threshold As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdColorsAllFramesRGBName(lp_Path, threshold, red, green, blue)
@@ -2635,7 +2635,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdColorsAllFramesRGBNameD(path As string, threshold As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillThresholdColorsAllFramesRGBNameD(path As String, threshold As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdColorsAllFramesRGBNameD(lp_Path, threshold, red, green, blue)
@@ -2658,7 +2658,7 @@ Namespace ChromaSDK
 		REM /// than the min threshold AND with the max RGB color where the animation is 
 		REM /// more than the max threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdColorsMinMaxAllFramesRGBName(path As string, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Public Function FillThresholdColorsMinMaxAllFramesRGBName(path As String, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdColorsMinMaxAllFramesRGBName(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -2669,7 +2669,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdColorsMinMaxAllFramesRGBNameD(path As string, minThreshold As Double, minRed As Double, minGreen As Double, minBlue As Double, maxThreshold As Double, maxRed As Double, maxGreen As Double, maxBlue As Double) As Double
+		Public Function FillThresholdColorsMinMaxAllFramesRGBNameD(path As String, minThreshold As Double, minRed As Double, minGreen As Double, minBlue As Double, maxThreshold As Double, maxRed As Double, maxGreen As Double, maxBlue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdColorsMinMaxAllFramesRGBNameD(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -2692,7 +2692,7 @@ Namespace ChromaSDK
 		REM /// is less than the min threshold AND with the max RGB color where the animation 
 		REM /// is more than the max threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdColorsMinMaxRGBName(path As string, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Public Function FillThresholdColorsMinMaxRGBName(path As String, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdColorsMinMaxRGBName(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -2703,7 +2703,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdColorsMinMaxRGBNameD(path As string, frameId As Double, minThreshold As Double, minRed As Double, minGreen As Double, minBlue As Double, maxThreshold As Double, maxRed As Double, maxGreen As Double, maxBlue As Double) As Double
+		Public Function FillThresholdColorsMinMaxRGBNameD(path As String, frameId As Double, minThreshold As Double, minRed As Double, minGreen As Double, minBlue As Double, maxThreshold As Double, maxRed As Double, maxGreen As Double, maxBlue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdColorsMinMaxRGBNameD(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -2715,7 +2715,7 @@ Namespace ChromaSDK
 		REM /// Fill the specified frame with RGB color where the animation color is less 
 		REM /// than the RGB threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdColorsName(path As string, frameId As Integer, threshold As Integer, color As Integer)
+		Public Function FillThresholdColorsName(path As String, frameId As Integer, threshold As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdColorsName(lp_Path, frameId, threshold, color)
@@ -2726,7 +2726,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdColorsNameD(path As string, frameId As Double, threshold As Double, color As Double) As Double
+		Public Function FillThresholdColorsNameD(path As String, frameId As Double, threshold As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdColorsNameD(lp_Path, frameId, threshold, color)
@@ -2747,7 +2747,7 @@ Namespace ChromaSDK
 		REM /// Fill the specified frame with RGB color where the animation color is less 
 		REM /// than the RGB threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdColorsRGBName(path As string, frameId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillThresholdColorsRGBName(path As String, frameId As Integer, threshold As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdColorsRGBName(lp_Path, frameId, threshold, red, green, blue)
@@ -2758,7 +2758,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdColorsRGBNameD(path As string, frameId As Double, threshold As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillThresholdColorsRGBNameD(path As String, frameId As Double, threshold As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdColorsRGBNameD(lp_Path, frameId, threshold, red, green, blue)
@@ -2779,7 +2779,7 @@ Namespace ChromaSDK
 		REM /// Fill all frames with RGB color where the animation color is less than the 
 		REM /// RGB threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdRGBColorsAllFramesRGBName(path As string, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillThresholdRGBColorsAllFramesRGBName(path As String, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdRGBColorsAllFramesRGBName(lp_Path, redThreshold, greenThreshold, blueThreshold, red, green, blue)
@@ -2790,7 +2790,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdRGBColorsAllFramesRGBNameD(path As string, redThreshold As Double, greenThreshold As Double, blueThreshold As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillThresholdRGBColorsAllFramesRGBNameD(path As String, redThreshold As Double, greenThreshold As Double, blueThreshold As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdRGBColorsAllFramesRGBNameD(lp_Path, redThreshold, greenThreshold, blueThreshold, red, green, blue)
@@ -2811,7 +2811,7 @@ Namespace ChromaSDK
 		REM /// Fill the specified frame with RGB color where the animation color is less 
 		REM /// than the RGB threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillThresholdRGBColorsRGBName(path As string, frameId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillThresholdRGBColorsRGBName(path As String, frameId As Integer, redThreshold As Integer, greenThreshold As Integer, blueThreshold As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillThresholdRGBColorsRGBName(lp_Path, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue)
@@ -2822,7 +2822,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillThresholdRGBColorsRGBNameD(path As string, frameId As Double, redThreshold As Double, greenThreshold As Double, blueThreshold As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillThresholdRGBColorsRGBNameD(path As String, frameId As Double, redThreshold As Double, greenThreshold As Double, blueThreshold As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillThresholdRGBColorsRGBNameD(lp_Path, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue)
@@ -2852,7 +2852,7 @@ Namespace ChromaSDK
 		REM /// Fill all frames with RGB color where the animation color is zero. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function FillZeroColorAllFramesName(path As string, color As Integer)
+		Public Function FillZeroColorAllFramesName(path As String, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillZeroColorAllFramesName(lp_Path, color)
@@ -2863,7 +2863,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillZeroColorAllFramesNameD(path As string, color As Double) As Double
+		Public Function FillZeroColorAllFramesNameD(path As String, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillZeroColorAllFramesNameD(lp_Path, color)
@@ -2884,7 +2884,7 @@ Namespace ChromaSDK
 		REM /// Fill all frames with RGB color where the animation color is zero. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function FillZeroColorAllFramesRGBName(path As string, red As Integer, green As Integer, blue As Integer)
+		Public Function FillZeroColorAllFramesRGBName(path As String, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillZeroColorAllFramesRGBName(lp_Path, red, green, blue)
@@ -2895,7 +2895,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillZeroColorAllFramesRGBNameD(path As string, red As Double, green As Double, blue As Double) As Double
+		Public Function FillZeroColorAllFramesRGBNameD(path As String, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillZeroColorAllFramesRGBNameD(lp_Path, red, green, blue)
@@ -2907,7 +2907,7 @@ Namespace ChromaSDK
 		REM /// Fill the specified frame with RGB color where the animation color is zero. 
 		REM /// Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillZeroColorName(path As string, frameId As Integer, color As Integer)
+		Public Function FillZeroColorName(path As String, frameId As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillZeroColorName(lp_Path, frameId, color)
@@ -2918,7 +2918,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillZeroColorNameD(path As string, frameId As Double, color As Double) As Double
+		Public Function FillZeroColorNameD(path As String, frameId As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillZeroColorNameD(lp_Path, frameId, color)
@@ -2939,7 +2939,7 @@ Namespace ChromaSDK
 		REM /// Fill the specified frame with RGB color where the animation color is zero. 
 		REM /// Animation is referenced by name.
 		REM /// </summary>
-		Public Function FillZeroColorRGBName(path As string, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function FillZeroColorRGBName(path As String, frameId As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginFillZeroColorRGBName(lp_Path, frameId, red, green, blue)
@@ -2950,7 +2950,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function FillZeroColorRGBNameD(path As string, frameId As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function FillZeroColorRGBNameD(path As String, frameId As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginFillZeroColorRGBNameD(lp_Path, frameId, red, green, blue)
@@ -2973,7 +2973,7 @@ Namespace ChromaSDK
 		REM /// be greater than or equal to 0 and less than the `MaxLeds`. Animation is 
 		REM /// referenced by name.
 		REM /// </summary>
-		Public Function Get1DColorName(path As string, frameId As Integer, led As Integer) As Integer
+		Public Function Get1DColorName(path As String, frameId As Integer, led As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGet1DColorName(lp_Path, frameId, led)
@@ -2984,7 +2984,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function Get1DColorNameD(path As string, frameId As Double, led As Double) As Double
+		Public Function Get1DColorNameD(path As String, frameId As Double, led As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGet1DColorNameD(lp_Path, frameId, led)
@@ -3009,7 +3009,7 @@ Namespace ChromaSDK
 		REM /// The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 		REM /// Animation is referenced by name.
 		REM /// </summary>
-		Public Function Get2DColorName(path As string, frameId As Integer, row As Integer, column As Integer) As Integer
+		Public Function Get2DColorName(path As String, frameId As Integer, row As Integer, column As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGet2DColorName(lp_Path, frameId, row, column)
@@ -3020,7 +3020,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function Get2DColorNameD(path As string, frameId As Double, row As Double, column As Double) As Double
+		Public Function Get2DColorNameD(path As String, frameId As Double, row As Double, column As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGet2DColorNameD(lp_Path, frameId, row, column)
@@ -3031,7 +3031,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Get the animation id for the named animation.
 		REM /// </summary>
-		Public Function GetAnimation(name As string) As Integer
+		Public Function GetAnimation(name As String) As Integer
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			Dim result As Integer = PluginGetAnimation(lp_Name)
@@ -3050,7 +3050,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function GetAnimationD(name As string) As Double
+		Public Function GetAnimationD(name As String) As Double
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			Dim result As Double = PluginGetAnimationD(lp_Name)
@@ -3074,8 +3074,8 @@ Namespace ChromaSDK
 		REM /// the animation of the `.chroma` animation file. If a name is not available 
 		REM /// then an empty string will be returned.
 		REM /// </summary>
-		Public Function GetAnimationName(animationId As Integer) As string
-			Dim result As string = Marshal.PtrToStringAnsi(PluginGetAnimationName(animationId))
+		Public Function GetAnimationName(animationId As Integer) As String
+			Dim result As String = Marshal.PtrToStringAnsi(PluginGetAnimationName(animationId))
 			Return result
 		End Function
 
@@ -3090,7 +3090,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Get the current frame of the animation referenced by name.
 		REM /// </summary>
-		Public Function GetCurrentFrameName(path As string) As Integer
+		Public Function GetCurrentFrameName(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGetCurrentFrameName(lp_Path)
@@ -3101,7 +3101,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function GetCurrentFrameNameD(path As string) As Double
+		Public Function GetCurrentFrameNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGetCurrentFrameNameD(lp_Path)
@@ -3124,7 +3124,7 @@ Namespace ChromaSDK
 		REM /// animation respective to the `deviceType`, as an integer upon success. Returns 
 		REM /// -1 upon failure.
 		REM /// </summary>
-		Public Function GetDeviceName(path As string) As Integer
+		Public Function GetDeviceName(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGetDeviceName(lp_Path)
@@ -3135,7 +3135,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function GetDeviceNameD(path As string) As Double
+		Public Function GetDeviceNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGetDeviceNameD(lp_Path)
@@ -3156,7 +3156,7 @@ Namespace ChromaSDK
 		REM /// Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
 		REM /// upon success. Returns -1 upon failure.
 		REM /// </summary>
-		Public Function GetDeviceTypeName(path As string) As Integer
+		Public Function GetDeviceTypeName(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGetDeviceTypeName(lp_Path)
@@ -3167,7 +3167,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function GetDeviceTypeNameD(path As string) As Double
+		Public Function GetDeviceTypeNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGetDeviceTypeNameD(lp_Path)
@@ -3202,7 +3202,7 @@ Namespace ChromaSDK
 		REM /// Returns the frame count of a `Chroma` animation upon success. Returns -1 
 		REM /// upon failure.
 		REM /// </summary>
-		Public Function GetFrameCountName(path As string) As Integer
+		Public Function GetFrameCountName(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGetFrameCountName(lp_Path)
@@ -3213,7 +3213,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function GetFrameCountNameD(path As string) As Double
+		Public Function GetFrameCountNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGetFrameCountNameD(lp_Path)
@@ -3233,7 +3233,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function GetKeyColorD(path As string, frameId As Double, rzkey As Double) As Double
+		Public Function GetKeyColorD(path As String, frameId As Double, rzkey As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGetKeyColorD(lp_Path, frameId, rzkey)
@@ -3245,7 +3245,7 @@ Namespace ChromaSDK
 		REM /// Get the color of an animation key for the given frame referenced by name. 
 		REM ///
 		REM /// </summary>
-		Public Function GetKeyColorName(path As string, frameId As Integer, rzkey As Integer) As Integer
+		Public Function GetKeyColorName(path As String, frameId As Integer, rzkey As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGetKeyColorName(lp_Path, frameId, rzkey)
@@ -3370,7 +3370,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Check if the animation has loop enabled referenced by name.
 		REM /// </summary>
-		Public Function HasAnimationLoopName(path As string) As Boolean
+		Public Function HasAnimationLoopName(path As String) As Boolean
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Boolean = PluginHasAnimationLoopName(lp_Path)
@@ -3381,7 +3381,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function HasAnimationLoopNameD(path As string) As Double
+		Public Function HasAnimationLoopNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginHasAnimationLoopNameD(lp_Path)
@@ -3429,7 +3429,7 @@ Namespace ChromaSDK
 		REM /// Insert an animation delay by duplicating the frame by the delay number of 
 		REM /// times. Animation is referenced by name.
 		REM /// </summary>
-		Public Function InsertDelayName(path As string, frameId As Integer, delay As Integer)
+		Public Function InsertDelayName(path As String, frameId As Integer, delay As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginInsertDelayName(lp_Path, frameId, delay)
@@ -3440,7 +3440,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function InsertDelayNameD(path As string, frameId As Double, delay As Double) As Double
+		Public Function InsertDelayNameD(path As String, frameId As Double, delay As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginInsertDelayNameD(lp_Path, frameId, delay)
@@ -3461,7 +3461,7 @@ Namespace ChromaSDK
 		REM /// Duplicate the source frame index at the target frame index. Animation is 
 		REM /// referenced by name.
 		REM /// </summary>
-		Public Function InsertFrameName(path As string, sourceFrame As Integer, targetFrame As Integer)
+		Public Function InsertFrameName(path As String, sourceFrame As Integer, targetFrame As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginInsertFrameName(lp_Path, sourceFrame, targetFrame)
@@ -3472,7 +3472,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function InsertFrameNameD(path As string, sourceFrame As Double, targetFrame As Double) As Double
+		Public Function InsertFrameNameD(path As String, sourceFrame As Double, targetFrame As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginInsertFrameNameD(lp_Path, sourceFrame, targetFrame)
@@ -3500,7 +3500,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Invert all the colors for all frames. Animation is referenced by name.
 		REM /// </summary>
-		Public Function InvertColorsAllFramesName(path As string)
+		Public Function InvertColorsAllFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginInvertColorsAllFramesName(lp_Path)
@@ -3511,7 +3511,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function InvertColorsAllFramesNameD(path As string) As Double
+		Public Function InvertColorsAllFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginInvertColorsAllFramesNameD(lp_Path)
@@ -3523,7 +3523,7 @@ Namespace ChromaSDK
 		REM /// Invert all the colors at the specified frame. Animation is referenced by 
 		REM /// name.
 		REM /// </summary>
-		Public Function InvertColorsName(path As string, frameId As Integer)
+		Public Function InvertColorsName(path As String, frameId As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginInvertColorsName(lp_Path, frameId)
@@ -3534,7 +3534,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function InvertColorsNameD(path As string, frameId As Double) As Double
+		Public Function InvertColorsNameD(path As String, frameId As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginInvertColorsNameD(lp_Path, frameId)
@@ -3553,7 +3553,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Check if the animation is paused referenced by name.
 		REM /// </summary>
-		Public Function IsAnimationPausedName(path As string) As Boolean
+		Public Function IsAnimationPausedName(path As String) As Boolean
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Boolean = PluginIsAnimationPausedName(lp_Path)
@@ -3564,7 +3564,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function IsAnimationPausedNameD(path As string) As Double
+		Public Function IsAnimationPausedNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginIsAnimationPausedNameD(lp_Path)
@@ -3647,7 +3647,7 @@ Namespace ChromaSDK
 		REM /// will return whether the animation is playing or not. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function IsPlayingName(path As string) As Boolean
+		Public Function IsPlayingName(path As String) As Boolean
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Boolean = PluginIsPlayingName(lp_Path)
@@ -3658,7 +3658,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function IsPlayingNameD(path As string) As Double
+		Public Function IsPlayingNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginIsPlayingNameD(lp_Path)
@@ -3720,7 +3720,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Load the named animation.
 		REM /// </summary>
-		Public Function LoadAnimationName(path As string)
+		Public Function LoadAnimationName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginLoadAnimationName(lp_Path)
@@ -3731,7 +3731,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Load a composite set of animations.
 		REM /// </summary>
-		Public Function LoadComposite(name As string)
+		Public Function LoadComposite(name As String)
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			PluginLoadComposite(lp_Name)
@@ -3754,7 +3754,7 @@ Namespace ChromaSDK
 		REM /// defaults to the duration. The frame color defaults to color. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function MakeBlankFramesName(path As string, frameCount As Integer, duration As Single, color As Integer)
+		Public Function MakeBlankFramesName(path As String, frameCount As Integer, duration As Single, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMakeBlankFramesName(lp_Path, frameCount, duration, color)
@@ -3765,7 +3765,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MakeBlankFramesNameD(path As string, frameCount As Double, duration As Double, color As Double) As Double
+		Public Function MakeBlankFramesNameD(path As String, frameCount As Double, duration As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMakeBlankFramesNameD(lp_Path, frameCount, duration, color)
@@ -3798,7 +3798,7 @@ Namespace ChromaSDK
 		REM /// defaults to the duration. The frame color is random black and white. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function MakeBlankFramesRandomBlackAndWhiteName(path As string, frameCount As Integer, duration As Single)
+		Public Function MakeBlankFramesRandomBlackAndWhiteName(path As String, frameCount As Integer, duration As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMakeBlankFramesRandomBlackAndWhiteName(lp_Path, frameCount, duration)
@@ -3809,7 +3809,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MakeBlankFramesRandomBlackAndWhiteNameD(path As string, frameCount As Double, duration As Double) As Double
+		Public Function MakeBlankFramesRandomBlackAndWhiteNameD(path As String, frameCount As Double, duration As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMakeBlankFramesRandomBlackAndWhiteNameD(lp_Path, frameCount, duration)
@@ -3822,7 +3822,7 @@ Namespace ChromaSDK
 		REM /// defaults to the duration. The frame color is random. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function MakeBlankFramesRandomName(path As string, frameCount As Integer, duration As Single)
+		Public Function MakeBlankFramesRandomName(path As String, frameCount As Integer, duration As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMakeBlankFramesRandomName(lp_Path, frameCount, duration)
@@ -3833,7 +3833,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MakeBlankFramesRandomNameD(path As string, frameCount As Double, duration As Double) As Double
+		Public Function MakeBlankFramesRandomNameD(path As String, frameCount As Double, duration As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMakeBlankFramesRandomNameD(lp_Path, frameCount, duration)
@@ -3856,7 +3856,7 @@ Namespace ChromaSDK
 		REM /// defaults to the duration. The frame color defaults to color. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function MakeBlankFramesRGBName(path As string, frameCount As Integer, duration As Single, red As Integer, green As Integer, blue As Integer)
+		Public Function MakeBlankFramesRGBName(path As String, frameCount As Integer, duration As Single, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMakeBlankFramesRGBName(lp_Path, frameCount, duration, red, green, blue)
@@ -3867,7 +3867,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MakeBlankFramesRGBNameD(path As string, frameCount As Double, duration As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function MakeBlankFramesRGBNameD(path As String, frameCount As Double, duration As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMakeBlankFramesRGBNameD(lp_Path, frameCount, duration, red, green, blue)
@@ -3909,7 +3909,7 @@ Namespace ChromaSDK
 		REM /// 2 using the frame index divided by the frame count for the `t` parameter. 
 		REM /// Animation is referenced in name.
 		REM /// </summary>
-		Public Function MultiplyColorLerpAllFramesName(path As string, color1 As Integer, color2 As Integer)
+		Public Function MultiplyColorLerpAllFramesName(path As String, color1 As Integer, color2 As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyColorLerpAllFramesName(lp_Path, color1, color2)
@@ -3920,7 +3920,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyColorLerpAllFramesNameD(path As string, color1 As Double, color2 As Double) As Double
+		Public Function MultiplyColorLerpAllFramesNameD(path As String, color1 As Double, color2 As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyColorLerpAllFramesNameD(lp_Path, color1, color2)
@@ -3956,7 +3956,7 @@ Namespace ChromaSDK
 		REM /// equally. An intensity of 0.5 would half the color value. Black colors in 
 		REM /// the frame will not be affected by this method.
 		REM /// </summary>
-		Public Function MultiplyIntensityAllFramesName(path As string, intensity As Single)
+		Public Function MultiplyIntensityAllFramesName(path As String, intensity As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyIntensityAllFramesName(lp_Path, intensity)
@@ -3967,7 +3967,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyIntensityAllFramesNameD(path As string, intensity As Double) As Double
+		Public Function MultiplyIntensityAllFramesNameD(path As String, intensity As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyIntensityAllFramesNameD(lp_Path, intensity)
@@ -3988,7 +3988,7 @@ Namespace ChromaSDK
 		REM /// Multiply all frames by the RBG color intensity. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function MultiplyIntensityAllFramesRGBName(path As string, red As Integer, green As Integer, blue As Integer)
+		Public Function MultiplyIntensityAllFramesRGBName(path As String, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyIntensityAllFramesRGBName(lp_Path, red, green, blue)
@@ -3999,7 +3999,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyIntensityAllFramesRGBNameD(path As string, red As Double, green As Double, blue As Double) As Double
+		Public Function MultiplyIntensityAllFramesRGBNameD(path As String, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyIntensityAllFramesRGBNameD(lp_Path, red, green, blue)
@@ -4029,7 +4029,7 @@ Namespace ChromaSDK
 		REM /// Multiply all frames by the RBG color intensity. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function MultiplyIntensityColorAllFramesName(path As string, color As Integer)
+		Public Function MultiplyIntensityColorAllFramesName(path As String, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyIntensityColorAllFramesName(lp_Path, color)
@@ -4040,7 +4040,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyIntensityColorAllFramesNameD(path As string, color As Double) As Double
+		Public Function MultiplyIntensityColorAllFramesNameD(path As String, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyIntensityColorAllFramesNameD(lp_Path, color)
@@ -4052,7 +4052,7 @@ Namespace ChromaSDK
 		REM /// Multiply the specific frame by the RBG color intensity. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function MultiplyIntensityColorName(path As string, frameId As Integer, color As Integer)
+		Public Function MultiplyIntensityColorName(path As String, frameId As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyIntensityColorName(lp_Path, frameId, color)
@@ -4063,7 +4063,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyIntensityColorNameD(path As string, frameId As Double, color As Double) As Double
+		Public Function MultiplyIntensityColorNameD(path As String, frameId As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyIntensityColorNameD(lp_Path, frameId, color)
@@ -4077,7 +4077,7 @@ Namespace ChromaSDK
 		REM /// An intensity of 0.5 would half the color value. Black colors in the frame 
 		REM /// will not be affected by this method.
 		REM /// </summary>
-		Public Function MultiplyIntensityName(path As string, frameId As Integer, intensity As Single)
+		Public Function MultiplyIntensityName(path As String, frameId As Integer, intensity As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyIntensityName(lp_Path, frameId, intensity)
@@ -4088,7 +4088,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyIntensityNameD(path As string, frameId As Double, intensity As Double) As Double
+		Public Function MultiplyIntensityNameD(path As String, frameId As Double, intensity As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyIntensityNameD(lp_Path, frameId, intensity)
@@ -4109,7 +4109,7 @@ Namespace ChromaSDK
 		REM /// Multiply the specific frame by the RBG color intensity. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function MultiplyIntensityRGBName(path As string, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function MultiplyIntensityRGBName(path As String, frameId As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyIntensityRGBName(lp_Path, frameId, red, green, blue)
@@ -4120,7 +4120,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyIntensityRGBNameD(path As string, frameId As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function MultiplyIntensityRGBNameD(path As String, frameId As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyIntensityRGBNameD(lp_Path, frameId, red, green, blue)
@@ -4153,7 +4153,7 @@ Namespace ChromaSDK
 		REM /// the frame color value as the `t` value. Animation is referenced by name. 
 		REM ///
 		REM /// </summary>
-		Public Function MultiplyNonZeroTargetColorLerpAllFramesName(path As string, color1 As Integer, color2 As Integer)
+		Public Function MultiplyNonZeroTargetColorLerpAllFramesName(path As String, color1 As Integer, color2 As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyNonZeroTargetColorLerpAllFramesName(lp_Path, color1, color2)
@@ -4164,7 +4164,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyNonZeroTargetColorLerpAllFramesNameD(path As string, color1 As Double, color2 As Double) As Double
+		Public Function MultiplyNonZeroTargetColorLerpAllFramesNameD(path As String, color1 As Double, color2 As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyNonZeroTargetColorLerpAllFramesNameD(lp_Path, color1, color2)
@@ -4187,7 +4187,7 @@ Namespace ChromaSDK
 		REM /// using the frame color value as the `t` value. Animation is referenced by 
 		REM /// name.
 		REM /// </summary>
-		Public Function MultiplyNonZeroTargetColorLerpAllFramesRGBName(path As string, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
+		Public Function MultiplyNonZeroTargetColorLerpAllFramesRGBName(path As String, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(lp_Path, red1, green1, blue1, red2, green2, blue2)
@@ -4198,7 +4198,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(path As string, red1 As Double, green1 As Double, blue1 As Double, red2 As Double, green2 As Double, blue2 As Double) As Double
+		Public Function MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(path As String, red1 As Double, green1 As Double, blue1 As Double, red2 As Double, green2 As Double, blue2 As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(lp_Path, red1, green1, blue1, red2, green2, blue2)
@@ -4231,7 +4231,7 @@ Namespace ChromaSDK
 		REM /// the frame color value as the `t` value. Animation is referenced by name. 
 		REM ///
 		REM /// </summary>
-		Public Function MultiplyTargetColorLerpAllFramesName(path As string, color1 As Integer, color2 As Integer)
+		Public Function MultiplyTargetColorLerpAllFramesName(path As String, color1 As Integer, color2 As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyTargetColorLerpAllFramesName(lp_Path, color1, color2)
@@ -4242,7 +4242,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyTargetColorLerpAllFramesNameD(path As string, color1 As Double, color2 As Double) As Double
+		Public Function MultiplyTargetColorLerpAllFramesNameD(path As String, color1 As Double, color2 As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyTargetColorLerpAllFramesNameD(lp_Path, color1, color2)
@@ -4263,7 +4263,7 @@ Namespace ChromaSDK
 		REM /// Multiply all frames by the color lerp result between RGB 1 and 2 using the 
 		REM /// frame color value as the `t` value. Animation is referenced by name.
 		REM /// </summary>
-		Public Function MultiplyTargetColorLerpAllFramesRGBName(path As string, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
+		Public Function MultiplyTargetColorLerpAllFramesRGBName(path As String, red1 As Integer, green1 As Integer, blue1 As Integer, red2 As Integer, green2 As Integer, blue2 As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyTargetColorLerpAllFramesRGBName(lp_Path, red1, green1, blue1, red2, green2, blue2)
@@ -4274,7 +4274,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function MultiplyTargetColorLerpAllFramesRGBNameD(path As string, red1 As Double, green1 As Double, blue1 As Double, red2 As Double, green2 As Double, blue2 As Double) As Double
+		Public Function MultiplyTargetColorLerpAllFramesRGBNameD(path As String, red1 As Double, green1 As Double, blue1 As Double, red2 As Double, green2 As Double, blue2 As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginMultiplyTargetColorLerpAllFramesRGBNameD(lp_Path, red1, green1, blue1, red2, green2, blue2)
@@ -4287,7 +4287,7 @@ Namespace ChromaSDK
 		REM /// 2 using the frame color value as the `t` value. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function MultiplyTargetColorLerpName(path As string, frameId As Integer, color1 As Integer, color2 As Integer)
+		Public Function MultiplyTargetColorLerpName(path As String, frameId As Integer, color1 As Integer, color2 As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginMultiplyTargetColorLerpName(lp_Path, frameId, color1, color2)
@@ -4320,7 +4320,7 @@ Namespace ChromaSDK
 		REM /// -255 to 255 for red, green, and blue parameters. Negative values remove 
 		REM /// color. Positive values add color.
 		REM /// </summary>
-		Public Function OffsetColorsAllFramesName(path As string, red As Integer, green As Integer, blue As Integer)
+		Public Function OffsetColorsAllFramesName(path As String, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginOffsetColorsAllFramesName(lp_Path, red, green, blue)
@@ -4331,7 +4331,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OffsetColorsAllFramesNameD(path As string, red As Double, green As Double, blue As Double) As Double
+		Public Function OffsetColorsAllFramesNameD(path As String, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOffsetColorsAllFramesNameD(lp_Path, red, green, blue)
@@ -4344,7 +4344,7 @@ Namespace ChromaSDK
 		REM /// to 255 for red, green, and blue parameters. Negative values remove color. 
 		REM /// Positive values add color.
 		REM /// </summary>
-		Public Function OffsetColorsName(path As string, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function OffsetColorsName(path As String, frameId As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginOffsetColorsName(lp_Path, frameId, red, green, blue)
@@ -4355,7 +4355,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OffsetColorsNameD(path As string, frameId As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function OffsetColorsNameD(path As String, frameId As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOffsetColorsNameD(lp_Path, frameId, red, green, blue)
@@ -4391,7 +4391,7 @@ Namespace ChromaSDK
 		REM /// Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 		REM /// values remove color. Positive values add color.
 		REM /// </summary>
-		Public Function OffsetNonZeroColorsAllFramesName(path As string, red As Integer, green As Integer, blue As Integer)
+		Public Function OffsetNonZeroColorsAllFramesName(path As String, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginOffsetNonZeroColorsAllFramesName(lp_Path, red, green, blue)
@@ -4402,7 +4402,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OffsetNonZeroColorsAllFramesNameD(path As string, red As Double, green As Double, blue As Double) As Double
+		Public Function OffsetNonZeroColorsAllFramesNameD(path As String, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOffsetNonZeroColorsAllFramesNameD(lp_Path, red, green, blue)
@@ -4416,7 +4416,7 @@ Namespace ChromaSDK
 		REM /// Use the range of -255 to 255 for red, green, and blue parameters. Negative 
 		REM /// values remove color. Positive values add color.
 		REM /// </summary>
-		Public Function OffsetNonZeroColorsName(path As string, frameId As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function OffsetNonZeroColorsName(path As String, frameId As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginOffsetNonZeroColorsName(lp_Path, frameId, red, green, blue)
@@ -4427,7 +4427,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OffsetNonZeroColorsNameD(path As string, frameId As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function OffsetNonZeroColorsNameD(path As String, frameId As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOffsetNonZeroColorsNameD(lp_Path, frameId, red, green, blue)
@@ -4440,7 +4440,7 @@ Namespace ChromaSDK
 		REM /// id >= 0 upon success. Returns -1 if there was a failure. The animation 
 		REM /// id is used in most of the API methods.
 		REM /// </summary>
-		Public Function OpenAnimation(path As string) As Integer
+		Public Function OpenAnimation(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginOpenAnimation(lp_Path)
@@ -4451,7 +4451,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OpenAnimationD(path As string) As Double
+		Public Function OpenAnimationD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOpenAnimationD(lp_Path)
@@ -4466,7 +4466,7 @@ Namespace ChromaSDK
 		REM /// upon success. Returns -1 if there was a failure. The animation id is used 
 		REM /// in most of the API methods.
 		REM /// </summary>
-		Public Function OpenAnimationFromMemory(data As Byte(), name As string) As Integer
+		Public Function OpenAnimationFromMemory(data As Byte(), name As String) As Integer
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			Dim result As Integer = PluginOpenAnimationFromMemory(data, lp_Name)
@@ -4478,7 +4478,7 @@ Namespace ChromaSDK
 		REM /// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 		REM /// upon success. Returns -1 if there was a failure.
 		REM /// </summary>
-		Public Function OpenEditorDialog(path As string) As Integer
+		Public Function OpenEditorDialog(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginOpenEditorDialog(lp_Path)
@@ -4490,7 +4490,7 @@ Namespace ChromaSDK
 		REM /// Open the named animation in the editor dialog and play the animation at 
 		REM /// start.
 		REM /// </summary>
-		Public Function OpenEditorDialogAndPlay(path As string) As Integer
+		Public Function OpenEditorDialogAndPlay(path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginOpenEditorDialogAndPlay(lp_Path)
@@ -4501,7 +4501,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OpenEditorDialogAndPlayD(path As string) As Double
+		Public Function OpenEditorDialogAndPlayD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOpenEditorDialogAndPlayD(lp_Path)
@@ -4512,7 +4512,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function OpenEditorDialogD(path As string) As Double
+		Public Function OpenEditorDialogD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginOpenEditorDialogD(lp_Path)
@@ -4542,7 +4542,7 @@ Namespace ChromaSDK
 		REM /// Override the duration of all frames with the `duration` value. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function OverrideFrameDurationName(path As string, duration As Single)
+		Public Function OverrideFrameDurationName(path As String, duration As Single)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginOverrideFrameDurationName(lp_Path, duration)
@@ -4561,7 +4561,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Pause the current animation referenced by name.
 		REM /// </summary>
-		Public Function PauseAnimationName(path As string)
+		Public Function PauseAnimationName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginPauseAnimationName(lp_Path)
@@ -4572,7 +4572,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function PauseAnimationNameD(path As string) As Double
+		Public Function PauseAnimationNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginPauseAnimationNameD(lp_Path)
@@ -4613,7 +4613,7 @@ Namespace ChromaSDK
 		REM /// The named `.chroma` animation file will be automatically opened. The animation 
 		REM /// will play with looping `on` or `off` starting at the `frameId`.
 		REM /// </summary>
-		Public Function PlayAnimationFrameName(path As string, frameId As Integer, renamed_loop As Boolean)
+		Public Function PlayAnimationFrameName(path As String, frameId As Integer, renamed_loop As Boolean)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginPlayAnimationFrameName(lp_Path, frameId, renamed_loop)
@@ -4624,7 +4624,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function PlayAnimationFrameNameD(path As string, frameId As Double, renamed_loop As Double) As Double
+		Public Function PlayAnimationFrameNameD(path As String, frameId As Double, renamed_loop As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginPlayAnimationFrameNameD(lp_Path, frameId, renamed_loop)
@@ -4647,7 +4647,7 @@ Namespace ChromaSDK
 		REM /// The named `.chroma` animation file will be automatically opened. The animation 
 		REM /// will play with looping `on` or `off`.
 		REM /// </summary>
-		Public Function PlayAnimationName(path As string, renamed_loop As Boolean)
+		Public Function PlayAnimationName(path As String, renamed_loop As Boolean)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginPlayAnimationName(lp_Path, renamed_loop)
@@ -4658,7 +4658,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function PlayAnimationNameD(path As string, renamed_loop As Double) As Double
+		Public Function PlayAnimationNameD(path As String, renamed_loop As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginPlayAnimationNameD(lp_Path, renamed_loop)
@@ -4671,7 +4671,7 @@ Namespace ChromaSDK
 		REM /// The named animation files for the `.chroma` set will be automatically opened. 
 		REM /// The set of animations will play with looping `on` or `off`.
 		REM /// </summary>
-		Public Function PlayComposite(name As string, renamed_loop As Boolean)
+		Public Function PlayComposite(name As String, renamed_loop As Boolean)
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			PluginPlayComposite(lp_Name, renamed_loop)
@@ -4682,7 +4682,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function PlayCompositeD(name As string, renamed_loop As Double) As Double
+		Public Function PlayCompositeD(name As String, renamed_loop As Double) As Double
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			Dim result As Double = PluginPlayCompositeD(lp_Name, renamed_loop)
@@ -4711,7 +4711,7 @@ Namespace ChromaSDK
 		REM /// Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
 		REM /// Animaton is referenced by name.
 		REM /// </summary>
-		Public Function PreviewFrameName(path As string, frameIndex As Integer)
+		Public Function PreviewFrameName(path As String, frameIndex As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginPreviewFrameName(lp_Path, frameIndex)
@@ -4732,7 +4732,7 @@ Namespace ChromaSDK
 		REM /// Reduce the frames of the animation by removing every nth element. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function ReduceFramesName(path As string, n As Integer)
+		Public Function ReduceFramesName(path As String, n As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginReduceFramesName(lp_Path, n)
@@ -4743,7 +4743,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function ReduceFramesNameD(path As string, n As Double) As Double
+		Public Function ReduceFramesNameD(path As String, n As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginReduceFramesNameD(lp_Path, n)
@@ -4771,7 +4771,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Resume the animation with loop `ON` or `OFF` referenced by name.
 		REM /// </summary>
-		Public Function ResumeAnimationName(path As string, renamed_loop As Boolean)
+		Public Function ResumeAnimationName(path As String, renamed_loop As Boolean)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginResumeAnimationName(lp_Path, renamed_loop)
@@ -4782,7 +4782,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function ResumeAnimationNameD(path As string, renamed_loop As Double) As Double
+		Public Function ResumeAnimationNameD(path As String, renamed_loop As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginResumeAnimationNameD(lp_Path, renamed_loop)
@@ -4813,7 +4813,7 @@ Namespace ChromaSDK
 		REM /// Reverse the animation frame order of the `Chroma` animation. Animation is 
 		REM /// referenced by name.
 		REM /// </summary>
-		Public Function ReverseAllFramesName(path As string)
+		Public Function ReverseAllFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginReverseAllFramesName(lp_Path)
@@ -4824,7 +4824,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function ReverseAllFramesNameD(path As string) As Double
+		Public Function ReverseAllFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginReverseAllFramesNameD(lp_Path)
@@ -4835,7 +4835,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Save the animation referenced by id to the path specified.
 		REM /// </summary>
-		Public Function SaveAnimation(animationId As Integer, path As string) As Integer
+		Public Function SaveAnimation(animationId As Integer, path As String) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginSaveAnimation(animationId, lp_Path)
@@ -4846,7 +4846,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Save the named animation to the target path specified.
 		REM /// </summary>
-		Public Function SaveAnimationName(sourceAnimation As string, targetAnimation As string) As Integer
+		Public Function SaveAnimationName(sourceAnimation As String, targetAnimation As String) As Integer
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -4872,7 +4872,7 @@ Namespace ChromaSDK
 		REM /// be greater than or equal to 0 and less than the `MaxLeds`. The animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function Set1DColorName(path As string, frameId As Integer, led As Integer, color As Integer)
+		Public Function Set1DColorName(path As String, frameId As Integer, led As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSet1DColorName(lp_Path, frameId, led, color)
@@ -4883,7 +4883,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function Set1DColorNameD(path As string, frameId As Double, led As Double, color As Double) As Double
+		Public Function Set1DColorNameD(path As String, frameId As Double, led As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSet1DColorNameD(lp_Path, frameId, led, color)
@@ -4908,7 +4908,7 @@ Namespace ChromaSDK
 		REM /// The `column` should be greater than or equal to 0 and less than the `MaxColumn`. 
 		REM /// The animation is referenced by name.
 		REM /// </summary>
-		Public Function Set2DColorName(path As string, frameId As Integer, row As Integer, column As Integer, color As Integer)
+		Public Function Set2DColorName(path As String, frameId As Integer, row As Integer, column As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSet2DColorName(lp_Path, frameId, row, column, color)
@@ -4919,7 +4919,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function Set2DColorNameD(path As string, frameId As Double, rowColumnIndex As Double, color As Double) As Double
+		Public Function Set2DColorNameD(path As String, frameId As Double, rowColumnIndex As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSet2DColorNameD(lp_Path, frameId, rowColumnIndex, color)
@@ -4940,7 +4940,7 @@ Namespace ChromaSDK
 		REM /// When custom color is set, the custom key mode will be used. The animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function SetChromaCustomColorAllFramesName(path As string)
+		Public Function SetChromaCustomColorAllFramesName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetChromaCustomColorAllFramesName(lp_Path)
@@ -4951,7 +4951,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetChromaCustomColorAllFramesNameD(path As string) As Double
+		Public Function SetChromaCustomColorAllFramesNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetChromaCustomColorAllFramesNameD(lp_Path)
@@ -4974,7 +4974,7 @@ Namespace ChromaSDK
 		REM /// from grid to key. `True` changes the layout from key to grid. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function SetChromaCustomFlagName(path As string, flag As Boolean)
+		Public Function SetChromaCustomFlagName(path As String, flag As Boolean)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetChromaCustomFlagName(lp_Path, flag)
@@ -4985,7 +4985,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetChromaCustomFlagNameD(path As string, flag As Double) As Double
+		Public Function SetChromaCustomFlagNameD(path As String, flag As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetChromaCustomFlagNameD(lp_Path, flag)
@@ -5004,7 +5004,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Set the current frame of the animation referenced by name.
 		REM /// </summary>
-		Public Function SetCurrentFrameName(path As string, frameId As Integer)
+		Public Function SetCurrentFrameName(path As String, frameId As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetCurrentFrameName(lp_Path, frameId)
@@ -5015,7 +5015,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetCurrentFrameNameD(path As string, frameId As Double) As Double
+		Public Function SetCurrentFrameNameD(path As String, frameId As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetCurrentFrameNameD(lp_Path, frameId)
@@ -5087,7 +5087,7 @@ Namespace ChromaSDK
 		REM /// When the idle animation is used, the named animation will play when no other 
 		REM /// animations are playing. Reference the animation by name.
 		REM /// </summary>
-		Public Function SetIdleAnimationName(path As string)
+		Public Function SetIdleAnimationName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetIdleAnimationName(lp_Path)
@@ -5116,7 +5116,7 @@ Namespace ChromaSDK
 		REM /// Set the key to the specified key color for all frames. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function SetKeyColorAllFramesName(path As string, rzkey As Integer, color As Integer)
+		Public Function SetKeyColorAllFramesName(path As String, rzkey As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyColorAllFramesName(lp_Path, rzkey, color)
@@ -5127,7 +5127,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyColorAllFramesNameD(path As string, rzkey As Double, color As Double) As Double
+		Public Function SetKeyColorAllFramesNameD(path As String, rzkey As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyColorAllFramesNameD(lp_Path, rzkey, color)
@@ -5148,7 +5148,7 @@ Namespace ChromaSDK
 		REM /// Set the key to the specified key color for all frames. Animation is referenced 
 		REM /// by name.
 		REM /// </summary>
-		Public Function SetKeyColorAllFramesRGBName(path As string, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeyColorAllFramesRGBName(path As String, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyColorAllFramesRGBName(lp_Path, rzkey, red, green, blue)
@@ -5159,7 +5159,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyColorAllFramesRGBNameD(path As string, rzkey As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function SetKeyColorAllFramesRGBNameD(path As String, rzkey As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyColorAllFramesRGBNameD(lp_Path, rzkey, red, green, blue)
@@ -5170,7 +5170,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Set animation key to a static color for the given frame.
 		REM /// </summary>
-		Public Function SetKeyColorName(path As string, frameId As Integer, rzkey As Integer, color As Integer)
+		Public Function SetKeyColorName(path As String, frameId As Integer, rzkey As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyColorName(lp_Path, frameId, rzkey, color)
@@ -5181,7 +5181,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyColorNameD(path As string, frameId As Double, rzkey As Double, color As Double) As Double
+		Public Function SetKeyColorNameD(path As String, frameId As Double, rzkey As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyColorNameD(lp_Path, frameId, rzkey, color)
@@ -5202,7 +5202,7 @@ Namespace ChromaSDK
 		REM /// Set the key to the specified key color for the specified frame. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function SetKeyColorRGBName(path As string, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeyColorRGBName(path As String, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyColorRGBName(lp_Path, frameId, rzkey, red, green, blue)
@@ -5213,7 +5213,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyColorRGBNameD(path As string, frameId As Double, rzkey As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function SetKeyColorRGBNameD(path As String, frameId As Double, rzkey As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyColorRGBNameD(lp_Path, frameId, rzkey, red, green, blue)
@@ -5234,7 +5234,7 @@ Namespace ChromaSDK
 		REM /// Set animation key to a static color for the given frame if the existing 
 		REM /// color is not already black.
 		REM /// </summary>
-		Public Function SetKeyNonZeroColorName(path As string, frameId As Integer, rzkey As Integer, color As Integer)
+		Public Function SetKeyNonZeroColorName(path As String, frameId As Integer, rzkey As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyNonZeroColorName(lp_Path, frameId, rzkey, color)
@@ -5245,7 +5245,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyNonZeroColorNameD(path As string, frameId As Double, rzkey As Double, color As Double) As Double
+		Public Function SetKeyNonZeroColorNameD(path As String, frameId As Double, rzkey As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyNonZeroColorNameD(lp_Path, frameId, rzkey, color)
@@ -5266,7 +5266,7 @@ Namespace ChromaSDK
 		REM /// Set the key to the specified key color for the specified frame where color 
 		REM /// is not black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeyNonZeroColorRGBName(path As string, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeyNonZeroColorRGBName(path As String, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyNonZeroColorRGBName(lp_Path, frameId, rzkey, red, green, blue)
@@ -5277,7 +5277,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyNonZeroColorRGBNameD(path As string, frameId As Double, rzkey As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function SetKeyNonZeroColorRGBNameD(path As String, frameId As Double, rzkey As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyNonZeroColorRGBNameD(lp_Path, frameId, rzkey, red, green, blue)
@@ -5289,7 +5289,7 @@ Namespace ChromaSDK
 		REM /// Set animation key by row and column to a static color for the given frame. 
 		REM ///
 		REM /// </summary>
-		Public Function SetKeyRowColumnColorName(path As string, frameId As Integer, row As Integer, column As Integer, color As Integer)
+		Public Function SetKeyRowColumnColorName(path As String, frameId As Integer, row As Integer, column As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyRowColumnColorName(lp_Path, frameId, row, column, color)
@@ -5319,7 +5319,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for all frames. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysColorAllFramesName(path As string, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Public Function SetKeysColorAllFramesName(path As String, rzkeys As Integer(), keyCount As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysColorAllFramesName(lp_Path, rzkeys, keyCount, color)
@@ -5340,7 +5340,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for all frames. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysColorAllFramesRGBName(path As string, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeysColorAllFramesRGBName(path As String, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysColorAllFramesRGBName(lp_Path, rzkeys, keyCount, red, green, blue)
@@ -5351,7 +5351,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Set an array of animation keys to a static color for the given frame.
 		REM /// </summary>
-		Public Function SetKeysColorName(path As string, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Public Function SetKeysColorName(path As String, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysColorName(lp_Path, frameId, rzkeys, keyCount, color)
@@ -5372,7 +5372,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for the given frame. Animation 
 		REM /// is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysColorRGBName(path As string, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeysColorRGBName(path As String, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysColorRGBName(lp_Path, frameId, rzkeys, keyCount, red, green, blue)
@@ -5402,7 +5402,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for all frames if the existing 
 		REM /// color is not already black. Reference animation by name.
 		REM /// </summary>
-		Public Function SetKeysNonZeroColorAllFramesName(path As string, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Public Function SetKeysNonZeroColorAllFramesName(path As String, rzkeys As Integer(), keyCount As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysNonZeroColorAllFramesName(lp_Path, rzkeys, keyCount, color)
@@ -5414,7 +5414,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for the given frame if 
 		REM /// the existing color is not already black. Reference animation by name.
 		REM /// </summary>
-		Public Function SetKeysNonZeroColorName(path As string, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Public Function SetKeysNonZeroColorName(path As String, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysNonZeroColorName(lp_Path, frameId, rzkeys, keyCount, color)
@@ -5435,7 +5435,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for the given frame where 
 		REM /// the color is not black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysNonZeroColorRGBName(path As string, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeysNonZeroColorRGBName(path As String, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysNonZeroColorRGBName(lp_Path, frameId, rzkeys, keyCount, red, green, blue)
@@ -5465,7 +5465,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for all frames where the 
 		REM /// color is black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysZeroColorAllFramesName(path As string, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Public Function SetKeysZeroColorAllFramesName(path As String, rzkeys As Integer(), keyCount As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysZeroColorAllFramesName(lp_Path, rzkeys, keyCount, color)
@@ -5486,7 +5486,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for all frames where the 
 		REM /// color is black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysZeroColorAllFramesRGBName(path As string, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeysZeroColorAllFramesRGBName(path As String, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysZeroColorAllFramesRGBName(lp_Path, rzkeys, keyCount, red, green, blue)
@@ -5498,7 +5498,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for the given frame where 
 		REM /// the color is black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysZeroColorName(path As string, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
+		Public Function SetKeysZeroColorName(path As String, frameId As Integer, rzkeys As Integer(), keyCount As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysZeroColorName(lp_Path, frameId, rzkeys, keyCount, color)
@@ -5519,7 +5519,7 @@ Namespace ChromaSDK
 		REM /// Set an array of animation keys to a static color for the given frame where 
 		REM /// the color is black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeysZeroColorRGBName(path As string, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeysZeroColorRGBName(path As String, frameId As Integer, rzkeys As Integer(), keyCount As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeysZeroColorRGBName(lp_Path, frameId, rzkeys, keyCount, red, green, blue)
@@ -5540,7 +5540,7 @@ Namespace ChromaSDK
 		REM /// Set animation key to a static color for the given frame where the color 
 		REM /// is black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeyZeroColorName(path As string, frameId As Integer, rzkey As Integer, color As Integer)
+		Public Function SetKeyZeroColorName(path As String, frameId As Integer, rzkey As Integer, color As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyZeroColorName(lp_Path, frameId, rzkey, color)
@@ -5551,7 +5551,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyZeroColorNameD(path As string, frameId As Double, rzkey As Double, color As Double) As Double
+		Public Function SetKeyZeroColorNameD(path As String, frameId As Double, rzkey As Double, color As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyZeroColorNameD(lp_Path, frameId, rzkey, color)
@@ -5572,7 +5572,7 @@ Namespace ChromaSDK
 		REM /// Set animation key to a static color for the given frame where the color 
 		REM /// is black. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SetKeyZeroColorRGBName(path As string, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
+		Public Function SetKeyZeroColorRGBName(path As String, frameId As Integer, rzkey As Integer, red As Integer, green As Integer, blue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSetKeyZeroColorRGBName(lp_Path, frameId, rzkey, red, green, blue)
@@ -5583,7 +5583,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SetKeyZeroColorRGBNameD(path As string, frameId As Double, rzkey As Double, red As Double, green As Double, blue As Double) As Double
+		Public Function SetKeyZeroColorRGBNameD(path As String, frameId As Double, rzkey As Double, red As Double, green As Double, blue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSetKeyZeroColorRGBNameD(lp_Path, frameId, rzkey, red, green, blue)
@@ -5672,7 +5672,7 @@ Namespace ChromaSDK
 		REM /// The named `.chroma` animation file will be automatically opened. The animation 
 		REM /// will stop if playing.
 		REM /// </summary>
-		Public Function StopAnimationName(path As string)
+		Public Function StopAnimationName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginStopAnimationName(lp_Path)
@@ -5683,7 +5683,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function StopAnimationNameD(path As string) As Double
+		Public Function StopAnimationNameD(path As String) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginStopAnimationNameD(lp_Path)
@@ -5714,7 +5714,7 @@ Namespace ChromaSDK
 		REM /// The named animation files for the `.chroma` set will be automatically opened. 
 		REM /// The set of animations will be stopped if playing.
 		REM /// </summary>
-		Public Function StopComposite(name As string)
+		Public Function StopComposite(name As String)
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			PluginStopComposite(lp_Name)
@@ -5725,7 +5725,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function StopCompositeD(name As string) As Double
+		Public Function StopCompositeD(name As String) As Double
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			Dim result As Double = PluginStopCompositeD(lp_Name)
@@ -5754,7 +5754,7 @@ Namespace ChromaSDK
 		REM /// Subtract the source color from the target color for all frames where the 
 		REM /// target color is not black. Source and target are referenced by name.
 		REM /// </summary>
-		Public Function SubtractNonZeroAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function SubtractNonZeroAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5768,7 +5768,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractNonZeroAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function SubtractNonZeroAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5794,7 +5794,7 @@ Namespace ChromaSDK
 		REM /// target color is not black starting at offset for the length of the source. 
 		REM /// Source and target are referenced by name.
 		REM /// </summary>
-		Public Function SubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function SubtractNonZeroAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5808,7 +5808,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function SubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5834,7 +5834,7 @@ Namespace ChromaSDK
 		REM /// source frame and target offset frame, reference source and target by name. 
 		REM ///
 		REM /// </summary>
-		Public Function SubtractNonZeroAllKeysOffsetName(sourceAnimation As string, targetAnimation As string, frameId As Integer, offset As Integer)
+		Public Function SubtractNonZeroAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5848,7 +5848,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractNonZeroAllKeysOffsetNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, offset As Double) As Double
+		Public Function SubtractNonZeroAllKeysOffsetNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5872,7 +5872,7 @@ Namespace ChromaSDK
 		REM /// Subtract the source color from the target color where the target color is 
 		REM /// not black for all frames. Reference source and target by name.
 		REM /// </summary>
-		Public Function SubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation As string, targetAnimation As string)
+		Public Function SubtractNonZeroTargetAllKeysAllFramesName(sourceAnimation As String, targetAnimation As String)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5886,7 +5886,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation As string, targetAnimation As string) As Double
+		Public Function SubtractNonZeroTargetAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5912,7 +5912,7 @@ Namespace ChromaSDK
 		REM /// not black for all frames starting at the target offset for the length of 
 		REM /// the source. Reference source and target by name.
 		REM /// </summary>
-		Public Function SubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As string, targetAnimation As string, offset As Integer)
+		Public Function SubtractNonZeroTargetAllKeysAllFramesOffsetName(sourceAnimation As String, targetAnimation As String, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5926,7 +5926,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation As string, targetAnimation As string, offset As Double) As Double
+		Public Function SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5952,7 +5952,7 @@ Namespace ChromaSDK
 		REM /// not black from the source frame to the target offset frame. Reference source 
 		REM /// and target by name.
 		REM /// </summary>
-		Public Function SubtractNonZeroTargetAllKeysOffsetName(sourceAnimation As string, targetAnimation As string, frameId As Integer, offset As Integer)
+		Public Function SubtractNonZeroTargetAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5966,7 +5966,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation As string, targetAnimation As string, frameId As Double, offset As Double) As Double
+		Public Function SubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation As String, targetAnimation As String, frameId As Double, offset As Double) As Double
 			Dim str_SourceAnimation As String = sourceAnimation
 			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
 			Dim str_TargetAnimation As String = targetAnimation
@@ -5992,7 +5992,7 @@ Namespace ChromaSDK
 		REM /// less than the min threshold AND with the max RGB color where the animation 
 		REM /// is more than the max threshold. Animation is referenced by name.
 		REM /// </summary>
-		Public Function SubtractThresholdColorsMinMaxAllFramesRGBName(path As string, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Public Function SubtractThresholdColorsMinMaxAllFramesRGBName(path As String, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSubtractThresholdColorsMinMaxAllFramesRGBName(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -6003,7 +6003,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractThresholdColorsMinMaxAllFramesRGBNameD(path As string, minThreshold As Double, minRed As Double, minGreen As Double, minBlue As Double, maxThreshold As Double, maxRed As Double, maxGreen As Double, maxBlue As Double) As Double
+		Public Function SubtractThresholdColorsMinMaxAllFramesRGBNameD(path As String, minThreshold As Double, minRed As Double, minGreen As Double, minBlue As Double, maxThreshold As Double, maxRed As Double, maxGreen As Double, maxBlue As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSubtractThresholdColorsMinMaxAllFramesRGBNameD(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -6028,7 +6028,7 @@ Namespace ChromaSDK
 		REM /// animation is more than the max threshold. Animation is referenced by name. 
 		REM ///
 		REM /// </summary>
-		Public Function SubtractThresholdColorsMinMaxRGBName(path As string, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
+		Public Function SubtractThresholdColorsMinMaxRGBName(path As String, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginSubtractThresholdColorsMinMaxRGBName(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -6039,7 +6039,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function SubtractThresholdColorsMinMaxRGBNameD(path As string, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Double
+		Public Function SubtractThresholdColorsMinMaxRGBNameD(path As String, frameId As Integer, minThreshold As Integer, minRed As Integer, minGreen As Integer, minBlue As Integer, maxThreshold As Integer, maxRed As Integer, maxGreen As Integer, maxBlue As Integer) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginSubtractThresholdColorsMinMaxRGBNameD(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue)
@@ -6060,7 +6060,7 @@ Namespace ChromaSDK
 		REM /// Trim the end of the animation. The length of the animation will be the lastFrameId 
 		REM /// + 1. Reference the animation by name.
 		REM /// </summary>
-		Public Function TrimEndFramesName(path As string, lastFrameId As Integer)
+		Public Function TrimEndFramesName(path As String, lastFrameId As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginTrimEndFramesName(lp_Path, lastFrameId)
@@ -6071,7 +6071,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function TrimEndFramesNameD(path As string, lastFrameId As Double) As Double
+		Public Function TrimEndFramesNameD(path As String, lastFrameId As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginTrimEndFramesNameD(lp_Path, lastFrameId)
@@ -6090,7 +6090,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Remove the frame from the animation. Reference animation by name.
 		REM /// </summary>
-		Public Function TrimFrameName(path As string, frameId As Integer)
+		Public Function TrimFrameName(path As String, frameId As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginTrimFrameName(lp_Path, frameId)
@@ -6101,7 +6101,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function TrimFrameNameD(path As string, frameId As Double) As Double
+		Public Function TrimFrameNameD(path As String, frameId As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginTrimFrameNameD(lp_Path, frameId)
@@ -6122,7 +6122,7 @@ Namespace ChromaSDK
 		REM /// Trim the start of the animation starting at frame 0 for the number of frames. 
 		REM /// Reference the animation by name.
 		REM /// </summary>
-		Public Function TrimStartFramesName(path As string, numberOfFrames As Integer)
+		Public Function TrimStartFramesName(path As String, numberOfFrames As Integer)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginTrimStartFramesName(lp_Path, numberOfFrames)
@@ -6133,7 +6133,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// D suffix for limited data types.
 		REM /// </summary>
-		Public Function TrimStartFramesNameD(path As string, numberOfFrames As Double) As Double
+		Public Function TrimStartFramesNameD(path As String, numberOfFrames As Double) As Double
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginTrimStartFramesNameD(lp_Path, numberOfFrames)
@@ -6178,7 +6178,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Unload the animation effects. Reference the animation by name.
 		REM /// </summary>
-		Public Function UnloadAnimationName(path As string)
+		Public Function UnloadAnimationName(path As String)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginUnloadAnimationName(lp_Path)
@@ -6190,7 +6190,7 @@ Namespace ChromaSDK
 		REM /// Unload the the composite set of animation effects. Reference the animation 
 		REM /// by name.
 		REM /// </summary>
-		Public Function UnloadComposite(name As string)
+		Public Function UnloadComposite(name As String)
 			Dim str_Name As String = name
 			Dim lp_Name As IntPtr = GetPathIntPtr(str_Name)
 			PluginUnloadComposite(lp_Name)
@@ -6238,7 +6238,7 @@ Namespace ChromaSDK
 		REM /// * `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
 		REM /// failure.
 		REM /// </summary>
-		Public Function UpdateFrameName(path As string, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
+		Public Function UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginUpdateFrameName(lp_Path, frameIndex, duration, colors, length)
@@ -6280,7 +6280,7 @@ Namespace ChromaSDK
 		REM /// Set preloading animation flag, which is set to true by default. Reference 
 		REM /// animation by name.
 		REM /// </summary>
-		Public Function UsePreloadingName(path As string, flag As Boolean)
+		Public Function UsePreloadingName(path As String, flag As Boolean)
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			PluginUsePreloadingName(lp_Path, flag)

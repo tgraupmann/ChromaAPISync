@@ -225,7 +225,7 @@ namespace ChromaAPISync
             {
                 using (StreamWriter swVBDocs = new StreamWriter(fsVBDocs))
                 {
-                    if (!WriteCSharpDocs(swVBDocs, "ChromaAnimationAPI"))
+                    if (!WriteVBDocs(swVBDocs, "ChromaAnimationAPI"))
                     {
                         return;
                     }
@@ -3831,6 +3831,9 @@ End Namespace
                 case "byte[]":
                     result = "Byte()";
                     break;
+                case "string":
+                    result = "String";
+                    break;
             }
             return pre + result;
         }
@@ -4421,6 +4424,70 @@ End Namespace
             catch (Exception)
             {
                 Console.Error.WriteLine("Failed to write unity!");
+                return false;
+            }
+        }
+
+        static bool WriteVBDocs(StreamWriter swVBDocs, string apiClass)
+        {
+            try
+            {
+                string header = @"<a name=""api""></a>
+## API
+";
+                Output(swVBDocs, header);
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+                    Output(swVBDocs, "* [{0}](#{0})", methodInfo.Name);
+                }
+
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swVBDocs, "---");
+                    Output(swVBDocs, string.Empty);
+
+                    Output(swVBDocs, @"<a name=""{0}""></a>", methodInfo.Name);
+                    Output(swVBDocs, @"**{0}**", methodInfo.Name);
+                    Output(swVBDocs, string.Empty);
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swVBDocs, "{0}", SplitLongComments(methodInfo.Comments, ""));
+                        Output(swVBDocs, string.Empty);
+                    }
+
+                    Output(swVBDocs, "{0}", "```vb");
+                    if (methodInfo.ReturnType == "void")
+                    {
+                        Output(swVBDocs, "{0}.{1}({2})",
+                            apiClass, 
+                            methodInfo.Name,
+                            ChangeArgsToVBTypes(methodInfo));
+                    }
+                    else
+                    {
+                        Output(swVBDocs, "Dim result As {0} = {1}.{2}({3})",
+                                ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)),
+                                apiClass,
+                                methodInfo.Name,
+                                ChangeArgsToVBTypes(methodInfo));
+                    }
+                    Output(swVBDocs, "{0}", "```");
+                    Output(swVBDocs, string.Empty);
+                }
+
+                swVBDocs.Flush();
+                swVBDocs.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write vb docs!");
                 return false;
             }
         }
