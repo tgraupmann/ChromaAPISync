@@ -4383,10 +4383,21 @@ End Namespace
                     }
                     else
                     {
-                        Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As {2}",
-                            methodInfo.Name,
-                            ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args),
-                            ChangeToVBImportType(methodInfo, methodInfo.ReturnType));
+                        string vbReturnType = ChangeToVBImportType(methodInfo, methodInfo.ReturnType);
+                        if (vbReturnType == "Boolean")
+                        {
+                            Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As <MarshalAs(UnmanagedType.I1)> {2}",
+                                methodInfo.Name,
+                                ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args),
+                                vbReturnType);
+                        }
+                        else
+                        {
+                            Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As {2}",
+                                methodInfo.Name,
+                                ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args),
+                                vbReturnType);
+                        }
                     }
                     Output(swVB, "\t\tEnd Function");
                     Output(swVB, "");
