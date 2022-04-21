@@ -196,6 +196,8 @@ namespace ChromaAPISync
 
             #endregion Sort C++ Input
 
+            //return; // DEBUG SKIP OTHERS
+
             #region VB
 
             if (!Directory.Exists(Path.GetDirectoryName(fileVB)))
@@ -233,8 +235,6 @@ namespace ChromaAPISync
             }
 
             #endregion VB
-
-            //return; // DEBUG SKIP OTHERS
 
             #region C# and Unity
 
@@ -4743,10 +4743,14 @@ End Namespace
                         MetaMethodInfo methodInfo = method.Value;
                         if (methodInfo.Name != unrealMethodInfo.Name)
                         {
-                            continue;
+                            string unrealMethodName = string.Format("Core" + unrealMethodInfo.Name);
+                            if (methodInfo.Name != unrealMethodName)
+                            {
+                                continue;
+                            }
                         }
 
-                        Output(swDoc, "* [{0}](#{0})", method.Value.Name);
+                        Output(swDoc, "* [{0}](#{0})", unrealMethodInfo.Name);
                     }
                 }
 
@@ -4764,11 +4768,15 @@ End Namespace
                         MetaMethodInfo methodInfo = method.Value;
                         if (methodInfo.Name != unrealMethodInfo.Name)
                         {
-                            continue;
+                            string unrealMethodName = string.Format("Core" + unrealMethodInfo.Name);
+                            if (methodInfo.Name != unrealMethodName)
+                            {
+                                continue;
+                            }
                         }
 
-                        Output(swDoc, "<a name=\"{0}\"></a>", method.Value.Name);
-                        Output(swDoc, "**{0}**", method.Value.Name);
+                        Output(swDoc, "<a name=\"{0}\"></a>", unrealMethodInfo.Name);
+                        Output(swDoc, "**{0}**", unrealMethodInfo.Name);
                         Output(swDoc, string.Empty);
 
                         if (!string.IsNullOrEmpty(methodInfo.Comments))
