@@ -65,9 +65,9 @@ namespace ChromaAPISync
 
         #endregion
 
-        public static void ConvertExportsToClass(string input,
+        public static void ConvertExportsToClass(
+            string input, string outputCppSortInput,
             string outputCppHeader, string outputCppImplementation,
-            string outputCppSortInput,
             string outputCppDocs,
             string outputCSharp,
             string outputCSharpDocs,
@@ -82,8 +82,8 @@ namespace ChromaAPISync
             string outputCTFHeader,
             string outputCTFImplementation)
         {
-            OpenClassFiles(input,
-                outputCppSortInput,
+            OpenClassFiles(
+                input, outputCppSortInput,
                 outputCppHeader, outputCppImplementation,
                 outputCppDocs,
                 outputCSharp,
@@ -106,8 +106,8 @@ namespace ChromaAPISync
             sw.WriteLine(msg, args);
         }
 
-        private static void OpenClassFiles(string input,
-            string fileCppSortInput,
+        private static void OpenClassFiles(
+            string input, string fileCppSortInput,
             string fileCppHeader, string fileCppImplementation,
             string fileCppDocs,
             string fileCSharp,
@@ -1197,7 +1197,7 @@ namespace ChromaAPISync
                 string header =
 @"#pragma once
 
-#include ""..\CChromaEditorLibrary\ChromaSDKPluginTypes.h""
+#include ""ChromaSDKPluginTypes.h""
 
 # ifdef _WIN64
 #define CHROMA_EDITOR_DLL	_T(""CChromaEditorLibrary64.dll"")
@@ -1242,6 +1242,7 @@ namespace ChromaSDK
 	{
 	private:
 		static bool _sIsInitializedAPI;
+		static HMODULE _sLibrary;
 
 	public:
 ";
@@ -1269,6 +1270,7 @@ namespace ChromaSDK
                 string footer =
 @"
 		static int InitAPI();
+		static int UninitAPI();
 		static bool GetIsInitializedAPI();
 	};
 }";
@@ -1293,13 +1295,17 @@ namespace ChromaSDK
                 Console.WriteLine();
 
                 string header =
-@"#include ""stdafx.h""
-#include ""ChromaAnimationAPI.h""
-#if false
-#include ""..\CChromaEditorLibrary\VerifyLibrarySignature.h""
-#endif
+@"#include ""ChromaAnimationAPI.h""
+#include ""ChromaLogger.h""
+#include ""VerifyLibrarySignature.h""
+#include <iostream>
+#include <tchar.h>
 
 using namespace ChromaSDK;
+using namespace std;
+
+HMODULE ChromaAnimationAPI::_sLibrary = nullptr;
+bool ChromaAnimationAPI::_sIsInitializedAPI = false;
 
 #define CHROMASDK_DECLARE_METHOD_IMPL(Signature, FieldName) Signature ChromaAnimationAPI::FieldName = nullptr;
 ";
@@ -1321,26 +1327,29 @@ using namespace ChromaSDK;
 @"#define CHROMASDK_VALIDATE_METHOD(Signature, FieldName) FieldName = (Signature) GetProcAddress(library, ""Plugin"" #FieldName); \
 if (FieldName == nullptr) \
 { \
-	fprintf(stderr, ""Failed to find method: %s!\r\n"", ""Plugin"" #FieldName); \
-	return -1; \
+	cerr << ""Failed to find method: "" << (""Plugin"" #FieldName) << endl; \
+    return -1; \
 }
-
-bool ChromaAnimationAPI::_sIsInitializedAPI = false;
 
 int ChromaAnimationAPI::InitAPI()
 {
+	if (_sIsInitializedAPI)
+	{
+		return 0;
+	}
+
 	HMODULE library = LoadLibrary(CHROMA_EDITOR_DLL);
 	if (library == NULL)
 	{
-		fprintf(stderr, ""Failed to load Chroma Editor Library!\r\n"");
-		return -1;
+		//ChromaLogger::fprintf(stderr, ""Failed to load Chroma Editor Library!\r\n"");
+        return RZRESULT_DLL_NOT_FOUND;
 	}
 
 #if false
 	// when editor DLL is digitally signed
 	if (!VerifyLibrarySignature::VerifyModule(library))
 	{
-		fprintf(stderr, ""Failed to load Chroma Editor Library reason: invalid signature!\r\n"");
+		ChromaLogger::fprintf(stderr, ""Failed to load Chroma Editor Library reason: invalid signature!\r\n"");
 
 		// unload the library
 		FreeLibrary(library);
@@ -1350,7 +1359,9 @@ int ChromaAnimationAPI::InitAPI()
 	}
 #endif
 
-	//fprintf(stderr, ""Loaded Chroma Editor DLL!\r\n"");
+	_sLibrary = library;
+	
+	//ChromaLogger::fprintf(stderr, ""Loaded Chroma Editor DLL!\r\n"");
 ";
 
                 Output(swImplementation, "{0}", definition);
@@ -1365,9 +1376,9 @@ int ChromaAnimationAPI::InitAPI()
                 }
                 Output(swImplementation, "#pragma endregion");
 
-                string footer =
+                string cpp_footer_start =
 @"
-	//fprintf(stdout, ""Validated all DLL methods [success]\r\n"");
+	//ChromaLogger::printf(stdout, ""Validated all DLL methods [success]\r\n"");
 	_sIsInitializedAPI = true;
 	return 0;
 }
@@ -1375,8 +1386,52 @@ int ChromaAnimationAPI::InitAPI()
 bool ChromaAnimationAPI::GetIsInitializedAPI()
 {
 	return _sIsInitializedAPI;
+}
+
+#undef CHROMASDK_DECLARE_METHOD_CLEAR
+#define CHROMASDK_DECLARE_METHOD_CLEAR(FieldName) ChromaAnimationAPI::FieldName = nullptr;
+
+int ChromaAnimationAPI::UninitAPI()
+{
+	if (nullptr != UnloadLibrarySDK)
+	{
+		UnloadLibrarySDK();
+	}
+
+	if (nullptr != UnloadLibraryStreamingPlugin)
+	{
+		UnloadLibraryStreamingPlugin();
+	}
+
+	if (nullptr != _sLibrary)
+	{
+		FreeLibrary(_sLibrary);
+		_sLibrary = nullptr;
+	}
+
+#pragma region Free API Methods
+";
+                Output(swImplementation, "{0}", cpp_footer_start);
+
+                string cpp_footer_end =
+                @"
+#pragma endregion
+
+	_sIsInitializedAPI = false;
+	
+	return 0;
 }";
-                Output(swImplementation, "{0}", footer);
+
+                // loop through methods to free
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swImplementation, "\tCHROMASDK_DECLARE_METHOD_CLEAR({0});",
+                        methodInfo.Name);
+                }
+
+                Output(swImplementation, "{0}", cpp_footer_end);
 
                 swImplementation.Flush();
                 swImplementation.Close();

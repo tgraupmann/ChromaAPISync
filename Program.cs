@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             const string headerStdafx = @"C:\Public\CChromaEditor\CChromaEditorLibrary\stdafx.h";
-            Converter.ConvertExportsToClass(headerStdafx,
-                "stdafx.h",
+            Converter.ConvertExportsToClass(
+                headerStdafx, "stdafx.h",
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
                 @"CSharp\ChromaAnimationAPI.cs",
