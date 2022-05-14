@@ -1,12 +1,6 @@
 #pragma once
 
-#include "..\CChromaEditorLibrary\ChromaSDKPluginTypes.h"
-
-# ifdef _WIN64
-#define CHROMA_EDITOR_DLL	_T("CChromaEditorLibrary64.dll")
-#else
-#define CHROMA_EDITOR_DLL	_T("CChromaEditorLibrary.dll")
-#endif
+#include "ChromaSDKPluginTypes.h"
 
 /* Setup log mechanism */
 typedef void(*DebugLogPtr)(const char*);
@@ -16,6 +10,10 @@ void LogError(const char* text, ...);
                 
 #pragma region API typedefs
 /*
+	Return the sum of colors
+*/
+typedef int			(*PLUGIN_ADD_COLOR)(const int color1, const int color2);
+/*
 	Adds a frame to the `Chroma` animation and sets the `duration` (in seconds). 
 	The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 	The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
@@ -24,6 +22,11 @@ void LogError(const char* text, ...);
 	success. Returns -1 upon failure.
 */
 typedef int			(*PLUGIN_ADD_FRAME)(int animationId, float duration, int* colors, int length);
+/*
+	Add source color to target where color is not black for frame id, reference 
+	source and target by id.
+*/
+typedef void		(*PLUGIN_ADD_NON_ZERO_ALL_KEYS)(int sourceAnimationId, int targetAnimationId, int frameId);
 /*
 	Add source color to target where color is not black for all frames, reference 
 	source and target by id.
@@ -54,6 +57,11 @@ typedef void		(*PLUGIN_ADD_NON_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME)(const char*
 	D suffix for limited data types.
 */
 typedef double		(*PLUGIN_ADD_NON_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME_D)(const char* sourceAnimation, const char* targetAnimation, double offset);
+/*
+	Add source color to target where color is not black for frame id, reference 
+	source and target by name.
+*/
+typedef void		(*PLUGIN_ADD_NON_ZERO_ALL_KEYS_NAME)(const char* sourceAnimation, const char* targetAnimation, int frameId);
 /*
 	Add source color to target where color is not black for the source frame 
 	and target offset frame, reference source and target by id.
@@ -468,6 +476,11 @@ typedef void		(*PLUGIN_COPY_RED_CHANNEL_ALL_FRAMES_NAME)(const char* path, float
 */
 typedef double		(*PLUGIN_COPY_RED_CHANNEL_ALL_FRAMES_NAME_D)(const char* path, double greenIntensity, double blueIntensity);
 /*
+	Copy zero colors from source animation to target animation for the frame. 
+	Source and target are referenced by id.
+*/
+typedef void		(*PLUGIN_COPY_ZERO_ALL_KEYS)(int sourceAnimationId, int targetAnimationId, int frameId);
+/*
 	Copy zero colors from source animation to target animation for all frames. 
 	Source and target are referenced by id.
 */
@@ -498,6 +511,23 @@ typedef void		(*PLUGIN_COPY_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME)(const char* so
 */
 typedef double		(*PLUGIN_COPY_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME_D)(const char* sourceAnimation, const char* targetAnimation, double offset);
 /*
+	Copy zero colors from source animation to target animation for the frame. 
+	Source and target are referenced by name.
+*/
+typedef void		(*PLUGIN_COPY_ZERO_ALL_KEYS_NAME)(const char* sourceAnimation, const char* targetAnimation, int frameId);
+/*
+	Copy zero colors from source animation to target animation for the frame 
+	id starting at the target offset for the length of the source animation. 
+	Source and target are referenced by id.
+*/
+typedef void		(*PLUGIN_COPY_ZERO_ALL_KEYS_OFFSET)(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
+/*
+	Copy zero colors from source animation to target animation for the frame 
+	id starting at the target offset for the length of the source animation. 
+	Source and target are referenced by name.
+*/
+typedef void		(*PLUGIN_COPY_ZERO_ALL_KEYS_OFFSET_NAME)(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+/*
 	Copy zero key color from source animation to target animation for the specified 
 	frame. Source and target are referenced by id.
 */
@@ -513,6 +543,11 @@ typedef void		(*PLUGIN_COPY_ZERO_KEY_COLOR_NAME)(const char* sourceAnimation, co
 typedef double		(*PLUGIN_COPY_ZERO_KEY_COLOR_NAME_D)(const char* sourceAnimation, const char* targetAnimation, double frameId, double rzkey);
 /*
 	Copy nonzero color from source animation to target animation where target 
+	is zero for the frame. Source and target are referenced by id.
+*/
+typedef void		(*PLUGIN_COPY_ZERO_TARGET_ALL_KEYS)(int sourceAnimationId, int targetAnimationId, int frameId);
+/*
+	Copy nonzero color from source animation to target animation where target 
 	is zero for all frames. Source and target are referenced by id.
 */
 typedef void		(*PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_ALL_FRAMES)(int sourceAnimationId, int targetAnimationId);
@@ -525,6 +560,11 @@ typedef void		(*PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_ALL_FRAMES_NAME)(const char* so
 	D suffix for limited data types.
 */
 typedef double		(*PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_ALL_FRAMES_NAME_D)(const char* sourceAnimation, const char* targetAnimation);
+/*
+	Copy nonzero color from source animation to target animation where target 
+	is zero for the frame. Source and target are referenced by name.
+*/
+typedef void		(*PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_NAME)(const char* sourceAnimation, const char* targetAnimation, int frameId);
 /*
 	Direct access to low level API.
 */
@@ -573,6 +613,106 @@ typedef RZRESULT	(*PLUGIN_CORE_QUERY_DEVICE)(RZDEVICEID DeviceId, ChromaSDK::DEV
 	Direct access to low level API.
 */
 typedef RZRESULT	(*PLUGIN_CORE_SET_EFFECT)(RZEFFECTID EffectId);
+/*
+	Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
+	Intended for Cloud Gaming Platforms,  restore the streaming key when the 
+	game instance is launched to continue streaming.  streamId is a null terminated 
+	string  streamKey is a null terminated string  StreamGetStatus() should 
+	return the READY status to use this method.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_BROADCAST)(const char* streamId, const char* streamKey);
+/*
+	End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+	status to use this method.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_BROADCAST_END)();
+/*
+	shortcode: Pass the address of a preallocated character buffer to get the 
+	streaming auth code. The buffer should have a minimum length of 6.  length: 
+	Length will return as zero if the streaming auth code could not be obtained. 
+	If length is greater than zero, it will be the length of the returned streaming 
+	auth code.  Once you have the shortcode, it should be shown to the user 
+	so they can associate the stream with their Razer ID  StreamGetStatus() 
+	should return the READY status before invoking this method. platform: is 
+	the null terminated string that identifies the source of the stream: { 
+	GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+	that identifies the application or game.
+*/
+typedef void		(*PLUGIN_CORE_STREAM_GET_AUTH_SHORTCODE)(char* shortcode, unsigned char* length, const wchar_t* platform, const wchar_t* title);
+/*
+	focus: Pass the address of a preallocated character buffer to get the stream 
+	focus. The buffer should have a length of 48  length: Length will return 
+	as zero if the stream focus could not be obtained. If length is greater 
+	than zero, it will be the length of the returned stream focus.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_GET_FOCUS)(char* focus, unsigned char* length);
+/*
+	Intended for Cloud Gaming Platforms, store the stream id to persist in user 
+	preferences to continue streaming if the game is suspended or closed. shortcode: 
+	The shortcode is a null terminated string. Use the shortcode that authorized 
+	the stream to obtain the stream id.  streamId should be a preallocated 
+	buffer to get the stream key. The buffer should have a length of 48.  length: 
+	Length will return zero if the key could not be obtained. If the length 
+	is greater than zero, it will be the length of the returned streaming id. 
+	Retrieve the stream id after authorizing the shortcode. The authorization 
+	window will expire in 5 minutes. Be sure to save the stream key before 
+	the window expires. StreamGetStatus() should return the READY status to 
+	use this method.
+*/
+typedef void		(*PLUGIN_CORE_STREAM_GET_ID)(const char* shortcode, char* streamId, unsigned char* length);
+/*
+	Intended for Cloud Gaming Platforms, store the streaming key to persist 
+	in user preferences to continue streaming if the game is suspended or closed. 
+	shortcode: The shortcode is a null terminated string. Use the shortcode 
+	that authorized the stream to obtain the stream key.  If the status is 
+	in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+	the active streamId.  streamKey should be a preallocated buffer to get 
+	the stream key. The buffer should have a length of 48.  length: Length 
+	will return zero if the key could not be obtained. If the length is greater 
+	than zero, it will be the length of the returned streaming key.  Retrieve 
+	the stream key after authorizing the shortcode. The authorization window 
+	will expire in 5 minutes. Be sure to save the stream key before the window 
+	expires.  StreamGetStatus() should return the READY status to use this 
+	method.
+*/
+typedef void		(*PLUGIN_CORE_STREAM_GET_KEY)(const char* shortcode, char* streamKey, unsigned char* length);
+/*
+	Returns StreamStatus, the current status of the service
+*/
+typedef ChromaSDK::Stream::StreamStatusType	(*PLUGIN_CORE_STREAM_GET_STATUS)();
+/*
+	Convert StreamStatusType to a printable string
+*/
+typedef const char*	(*PLUGIN_CORE_STREAM_GET_STATUS_STRING)(ChromaSDK::Stream::StreamStatusType status);
+/*
+	This prevents the stream id and stream key from being obtained through the 
+	shortcode. This closes the auth window.  shortcode is a null terminated 
+	string.  StreamGetStatus() should return the READY status to use this method. 
+	returns success when shortcode has been released
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_RELEASE_SHORTCODE)(const char* shortcode);
+/*
+	The focus is a null terminated string. Set the focus identifer for the application 
+	designated to automatically change the streaming state.  Returns true on 
+	success.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_SET_FOCUS)(const char* focus);
+/*
+	Returns true if the Chroma streaming is supported. If false is returned, 
+	avoid calling stream methods.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_SUPPORTS_STREAMING)();
+/*
+	Begin watching the Chroma RGB data using streamID parameter.  streamId is 
+	a null terminated string.  StreamGetStatus() should return the READY status 
+	to use this method.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_WATCH)(const char* streamId, unsigned long long timestamp);
+/*
+	End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+	WATCHING status to use this method.
+*/
+typedef bool		(*PLUGIN_CORE_STREAM_WATCH_END)();
 /*
 	Direct access to low level API.
 */
@@ -1736,12 +1876,12 @@ typedef int			(*PLUGIN_OPEN_ANIMATION)(const char* path);
 typedef double		(*PLUGIN_OPEN_ANIMATION_D)(const char* path);
 /*
 	Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-	is a pointer to byte array of the loaded animation in memory. `Name` will 
+	is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 	be assigned to the animation when loaded. Returns an animation id >= 0 
 	upon success. Returns -1 if there was a failure. The animation id is used 
 	in most of the API methods.
 */
-typedef int			(*PLUGIN_OPEN_ANIMATION_FROM_MEMORY)(const byte* data, const char* name);
+typedef int			(*PLUGIN_OPEN_ANIMATION_FROM_MEMORY)(const BYTE* data, const char* name);
 /*
 	Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 	upon success. Returns -1 if there was a failure.
@@ -2316,6 +2456,15 @@ typedef void		(*PLUGIN_STOP_COMPOSITE)(const char* name);
 */
 typedef double		(*PLUGIN_STOP_COMPOSITE_D)(const char* name);
 /*
+	Return color1 - color2
+*/
+typedef int			(*PLUGIN_SUBTRACT_COLOR)(const int color1, const int color2);
+/*
+	Subtract the source color from the target color for the frame where the 
+	target color is not black. Source and target are referenced by id.
+*/
+typedef void		(*PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS)(int sourceAnimationId, int targetAnimationId, int frameId);
+/*
 	Subtract the source color from the target color for all frames where the 
 	target color is not black. Source and target are referenced by id.
 */
@@ -2345,6 +2494,11 @@ typedef void		(*PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME)(const 
 	D suffix for limited data types.
 */
 typedef double		(*PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME_D)(const char* sourceAnimation, const char* targetAnimation, double offset);
+/*
+	Subtract the source color from the target color for the frame where the 
+	target color is not black. Source and target are referenced by name.
+*/
+typedef void		(*PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS_NAME)(const char* sourceAnimation, const char* targetAnimation, int frameId);
 /*
 	Subtract the source color from the target where color is not black for the 
 	source frame and target offset frame, reference source and target by id.
@@ -2405,6 +2559,38 @@ typedef void		(*PLUGIN_SUBTRACT_NON_ZERO_TARGET_ALL_KEYS_OFFSET_NAME)(const char
 	D suffix for limited data types.
 */
 typedef double		(*PLUGIN_SUBTRACT_NON_ZERO_TARGET_ALL_KEYS_OFFSET_NAME_D)(const char* sourceAnimation, const char* targetAnimation, double frameId, double offset);
+/*
+	Subtract all frames with the min RGB color where the animation color is 
+	less than the min threshold AND with the max RGB color where the animation 
+	is more than the max threshold. Animation is referenced by id.
+*/
+typedef void		(*PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_ALL_FRAMES_RGB)(const int animationId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+/*
+	Subtract all frames with the min RGB color where the animation color is 
+	less than the min threshold AND with the max RGB color where the animation 
+	is more than the max threshold. Animation is referenced by name.
+*/
+typedef void		(*PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_ALL_FRAMES_RGB_NAME)(const char* path, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+/*
+	D suffix for limited data types.
+*/
+typedef double		(*PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_ALL_FRAMES_RGB_NAME_D)(const char* path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
+/*
+	Subtract the specified frame with the min RGB color where the animation 
+	color is less than the min threshold AND with the max RGB color where the 
+	animation is more than the max threshold. Animation is referenced by id.
+*/
+typedef void		(*PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_RGB)(const int animationId, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+/*
+	Subtract the specified frame with the min RGB color where the animation 
+	color is less than the min threshold AND with the max RGB color where the 
+	animation is more than the max threshold. Animation is referenced by name.
+*/
+typedef void		(*PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_RGB_NAME)(const char* path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+/*
+	D suffix for limited data types.
+*/
+typedef double		(*PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_RGB_NAME_D)(const char* path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
 /*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
 	+ 1. Reference the animation by id.
@@ -2472,6 +2658,14 @@ typedef void		(*PLUGIN_UNLOAD_ANIMATION_NAME)(const char* path);
 */
 typedef void		(*PLUGIN_UNLOAD_COMPOSITE)(const char* name);
 /*
+	Unload the Razer Chroma SDK Library before exiting the application.
+*/
+typedef void		(*PLUGIN_UNLOAD_LIBRARY_SDK)();
+/*
+	Unload the Razer Chroma Streaming Plugin Library before exiting the application.
+*/
+typedef void		(*PLUGIN_UNLOAD_LIBRARY_STREAMING_PLUGIN)();
+/*
 	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
 	(in seconds). The `color` is expected to be an array of the dimensions 
 	for the `deviceType/device`. The `length` parameter is the size of the 
@@ -2523,10 +2717,16 @@ namespace ChromaSDK
 	{
 	private:
 		static bool _sIsInitializedAPI;
+		static bool _sInvalidSignature;
+		static HMODULE _sLibrary;
 
 	public:
 
 #pragma region API declare prototypes
+		/*
+			Return the sum of colors
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_ADD_COLOR, AddColor);
 		/*
 			Adds a frame to the `Chroma` animation and sets the `duration` (in seconds). 
 			The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
@@ -2536,6 +2736,11 @@ namespace ChromaSDK
 			success. Returns -1 upon failure.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_ADD_FRAME, AddFrame);
+		/*
+			Add source color to target where color is not black for frame id, reference 
+			source and target by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_ADD_NON_ZERO_ALL_KEYS, AddNonZeroAllKeys);
 		/*
 			Add source color to target where color is not black for all frames, reference 
 			source and target by id.
@@ -2566,6 +2771,11 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_ADD_NON_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME_D, AddNonZeroAllKeysAllFramesOffsetNameD);
+		/*
+			Add source color to target where color is not black for frame id, reference 
+			source and target by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_ADD_NON_ZERO_ALL_KEYS_NAME, AddNonZeroAllKeysName);
 		/*
 			Add source color to target where color is not black for the source frame 
 			and target offset frame, reference source and target by id.
@@ -2980,6 +3190,11 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_RED_CHANNEL_ALL_FRAMES_NAME_D, CopyRedChannelAllFramesNameD);
 		/*
+			Copy zero colors from source animation to target animation for the frame. 
+			Source and target are referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_ALL_KEYS, CopyZeroAllKeys);
+		/*
 			Copy zero colors from source animation to target animation for all frames. 
 			Source and target are referenced by id.
 		*/
@@ -3010,6 +3225,23 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME_D, CopyZeroAllKeysAllFramesOffsetNameD);
 		/*
+			Copy zero colors from source animation to target animation for the frame. 
+			Source and target are referenced by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_ALL_KEYS_NAME, CopyZeroAllKeysName);
+		/*
+			Copy zero colors from source animation to target animation for the frame 
+			id starting at the target offset for the length of the source animation. 
+			Source and target are referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_ALL_KEYS_OFFSET, CopyZeroAllKeysOffset);
+		/*
+			Copy zero colors from source animation to target animation for the frame 
+			id starting at the target offset for the length of the source animation. 
+			Source and target are referenced by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_ALL_KEYS_OFFSET_NAME, CopyZeroAllKeysOffsetName);
+		/*
 			Copy zero key color from source animation to target animation for the specified 
 			frame. Source and target are referenced by id.
 		*/
@@ -3025,6 +3257,11 @@ namespace ChromaSDK
 		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_KEY_COLOR_NAME_D, CopyZeroKeyColorNameD);
 		/*
 			Copy nonzero color from source animation to target animation where target 
+			is zero for the frame. Source and target are referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_TARGET_ALL_KEYS, CopyZeroTargetAllKeys);
+		/*
+			Copy nonzero color from source animation to target animation where target 
 			is zero for all frames. Source and target are referenced by id.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_ALL_FRAMES, CopyZeroTargetAllKeysAllFrames);
@@ -3037,6 +3274,11 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_ALL_FRAMES_NAME_D, CopyZeroTargetAllKeysAllFramesNameD);
+		/*
+			Copy nonzero color from source animation to target animation where target 
+			is zero for the frame. Source and target are referenced by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_COPY_ZERO_TARGET_ALL_KEYS_NAME, CopyZeroTargetAllKeysName);
 		/*
 			Direct access to low level API.
 		*/
@@ -3085,6 +3327,106 @@ namespace ChromaSDK
 			Direct access to low level API.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_SET_EFFECT, CoreSetEffect);
+		/*
+			Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
+			Intended for Cloud Gaming Platforms,  restore the streaming key when the 
+			game instance is launched to continue streaming.  streamId is a null terminated 
+			string  streamKey is a null terminated string  StreamGetStatus() should 
+			return the READY status to use this method.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_BROADCAST, CoreStreamBroadcast);
+		/*
+			End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+			status to use this method.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_BROADCAST_END, CoreStreamBroadcastEnd);
+		/*
+			shortcode: Pass the address of a preallocated character buffer to get the 
+			streaming auth code. The buffer should have a minimum length of 6.  length: 
+			Length will return as zero if the streaming auth code could not be obtained. 
+			If length is greater than zero, it will be the length of the returned streaming 
+			auth code.  Once you have the shortcode, it should be shown to the user 
+			so they can associate the stream with their Razer ID  StreamGetStatus() 
+			should return the READY status before invoking this method. platform: is 
+			the null terminated string that identifies the source of the stream: { 
+			GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+			that identifies the application or game.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_GET_AUTH_SHORTCODE, CoreStreamGetAuthShortcode);
+		/*
+			focus: Pass the address of a preallocated character buffer to get the stream 
+			focus. The buffer should have a length of 48  length: Length will return 
+			as zero if the stream focus could not be obtained. If length is greater 
+			than zero, it will be the length of the returned stream focus.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_GET_FOCUS, CoreStreamGetFocus);
+		/*
+			Intended for Cloud Gaming Platforms, store the stream id to persist in user 
+			preferences to continue streaming if the game is suspended or closed. shortcode: 
+			The shortcode is a null terminated string. Use the shortcode that authorized 
+			the stream to obtain the stream id.  streamId should be a preallocated 
+			buffer to get the stream key. The buffer should have a length of 48.  length: 
+			Length will return zero if the key could not be obtained. If the length 
+			is greater than zero, it will be the length of the returned streaming id. 
+			Retrieve the stream id after authorizing the shortcode. The authorization 
+			window will expire in 5 minutes. Be sure to save the stream key before 
+			the window expires. StreamGetStatus() should return the READY status to 
+			use this method.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_GET_ID, CoreStreamGetId);
+		/*
+			Intended for Cloud Gaming Platforms, store the streaming key to persist 
+			in user preferences to continue streaming if the game is suspended or closed. 
+			shortcode: The shortcode is a null terminated string. Use the shortcode 
+			that authorized the stream to obtain the stream key.  If the status is 
+			in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+			the active streamId.  streamKey should be a preallocated buffer to get 
+			the stream key. The buffer should have a length of 48.  length: Length 
+			will return zero if the key could not be obtained. If the length is greater 
+			than zero, it will be the length of the returned streaming key.  Retrieve 
+			the stream key after authorizing the shortcode. The authorization window 
+			will expire in 5 minutes. Be sure to save the stream key before the window 
+			expires.  StreamGetStatus() should return the READY status to use this 
+			method.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_GET_KEY, CoreStreamGetKey);
+		/*
+			Returns StreamStatus, the current status of the service
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_GET_STATUS, CoreStreamGetStatus);
+		/*
+			Convert StreamStatusType to a printable string
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_GET_STATUS_STRING, CoreStreamGetStatusString);
+		/*
+			This prevents the stream id and stream key from being obtained through the 
+			shortcode. This closes the auth window.  shortcode is a null terminated 
+			string.  StreamGetStatus() should return the READY status to use this method. 
+			returns success when shortcode has been released
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_RELEASE_SHORTCODE, CoreStreamReleaseShortcode);
+		/*
+			The focus is a null terminated string. Set the focus identifer for the application 
+			designated to automatically change the streaming state.  Returns true on 
+			success.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_SET_FOCUS, CoreStreamSetFocus);
+		/*
+			Returns true if the Chroma streaming is supported. If false is returned, 
+			avoid calling stream methods.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_SUPPORTS_STREAMING, CoreStreamSupportsStreaming);
+		/*
+			Begin watching the Chroma RGB data using streamID parameter.  streamId is 
+			a null terminated string.  StreamGetStatus() should return the READY status 
+			to use this method.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_WATCH, CoreStreamWatch);
+		/*
+			End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+			WATCHING status to use this method.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_CORE_STREAM_WATCH_END, CoreStreamWatchEnd);
 		/*
 			Direct access to low level API.
 		*/
@@ -4248,7 +4590,7 @@ namespace ChromaSDK
 		CHROMASDK_DECLARE_METHOD(PLUGIN_OPEN_ANIMATION_D, OpenAnimationD);
 		/*
 			Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-			is a pointer to byte array of the loaded animation in memory. `Name` will 
+			is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 			be assigned to the animation when loaded. Returns an animation id >= 0 
 			upon success. Returns -1 if there was a failure. The animation id is used 
 			in most of the API methods.
@@ -4828,6 +5170,15 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_STOP_COMPOSITE_D, StopCompositeD);
 		/*
+			Return color1 - color2
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_COLOR, SubtractColor);
+		/*
+			Subtract the source color from the target color for the frame where the 
+			target color is not black. Source and target are referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS, SubtractNonZeroAllKeys);
+		/*
 			Subtract the source color from the target color for all frames where the 
 			target color is not black. Source and target are referenced by id.
 		*/
@@ -4857,6 +5208,11 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS_ALL_FRAMES_OFFSET_NAME_D, SubtractNonZeroAllKeysAllFramesOffsetNameD);
+		/*
+			Subtract the source color from the target color for the frame where the 
+			target color is not black. Source and target are referenced by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_NON_ZERO_ALL_KEYS_NAME, SubtractNonZeroAllKeysName);
 		/*
 			Subtract the source color from the target where color is not black for the 
 			source frame and target offset frame, reference source and target by id.
@@ -4917,6 +5273,38 @@ namespace ChromaSDK
 			D suffix for limited data types.
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_NON_ZERO_TARGET_ALL_KEYS_OFFSET_NAME_D, SubtractNonZeroTargetAllKeysOffsetNameD);
+		/*
+			Subtract all frames with the min RGB color where the animation color is 
+			less than the min threshold AND with the max RGB color where the animation 
+			is more than the max threshold. Animation is referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_ALL_FRAMES_RGB, SubtractThresholdColorsMinMaxAllFramesRGB);
+		/*
+			Subtract all frames with the min RGB color where the animation color is 
+			less than the min threshold AND with the max RGB color where the animation 
+			is more than the max threshold. Animation is referenced by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_ALL_FRAMES_RGB_NAME, SubtractThresholdColorsMinMaxAllFramesRGBName);
+		/*
+			D suffix for limited data types.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_ALL_FRAMES_RGB_NAME_D, SubtractThresholdColorsMinMaxAllFramesRGBNameD);
+		/*
+			Subtract the specified frame with the min RGB color where the animation 
+			color is less than the min threshold AND with the max RGB color where the 
+			animation is more than the max threshold. Animation is referenced by id.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_RGB, SubtractThresholdColorsMinMaxRGB);
+		/*
+			Subtract the specified frame with the min RGB color where the animation 
+			color is less than the min threshold AND with the max RGB color where the 
+			animation is more than the max threshold. Animation is referenced by name.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_RGB_NAME, SubtractThresholdColorsMinMaxRGBName);
+		/*
+			D suffix for limited data types.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_SUBTRACT_THRESHOLD_COLORS_MIN_MAX_RGB_NAME_D, SubtractThresholdColorsMinMaxRGBNameD);
 		/*
 			Trim the end of the animation. The length of the animation will be the lastFrameId 
 			+ 1. Reference the animation by id.
@@ -4984,6 +5372,14 @@ namespace ChromaSDK
 		*/
 		CHROMASDK_DECLARE_METHOD(PLUGIN_UNLOAD_COMPOSITE, UnloadComposite);
 		/*
+			Unload the Razer Chroma SDK Library before exiting the application.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_UNLOAD_LIBRARY_SDK, UnloadLibrarySDK);
+		/*
+			Unload the Razer Chroma Streaming Plugin Library before exiting the application.
+		*/
+		CHROMASDK_DECLARE_METHOD(PLUGIN_UNLOAD_LIBRARY_STREAMING_PLUGIN, UnloadLibraryStreamingPlugin);
+		/*
 			Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
 			(in seconds). The `color` is expected to be an array of the dimensions 
 			for the `deviceType/device`. The `length` parameter is the size of the 
@@ -5028,6 +5424,7 @@ namespace ChromaSDK
 #pragma endregion
 
 		static int InitAPI();
+		static int UninitAPI();
 		static bool GetIsInitializedAPI();
 	};
 }
