@@ -2500,7 +2500,6 @@ RZKEY_INVALID = 0xFFFF,             /*!< Invalid keys. */
         }
 
         private const string HEADER_UNITY_INCLUDES = @"
-using System.Collections.Generic;
 using UnityEngine;";
 
         private const string HEADER_UNITY_DLL_NAME = @"
@@ -2513,7 +2512,7 @@ using UnityEngine;";
 #else
     #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
         const string DLL_NAME = ""CChromaEditorLibrary3"";
-    #elif UNITY_64
+    #elif UNITY_64 || UNITY_EDITOR
         const string DLL_NAME = ""CChromaEditorLibrary64"";
     #else
         const string DLL_NAME = ""CChromaEditorLibrary"";

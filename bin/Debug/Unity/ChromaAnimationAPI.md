@@ -1,13 +1,16 @@
 <a name="api"></a>
 ## API
 
+* [AddColor](#AddColor)
 * [AddFrame](#AddFrame)
+* [AddNonZeroAllKeys](#AddNonZeroAllKeys)
 * [AddNonZeroAllKeysAllFrames](#AddNonZeroAllKeysAllFrames)
 * [AddNonZeroAllKeysAllFramesName](#AddNonZeroAllKeysAllFramesName)
 * [AddNonZeroAllKeysAllFramesNameD](#AddNonZeroAllKeysAllFramesNameD)
 * [AddNonZeroAllKeysAllFramesOffset](#AddNonZeroAllKeysAllFramesOffset)
 * [AddNonZeroAllKeysAllFramesOffsetName](#AddNonZeroAllKeysAllFramesOffsetName)
 * [AddNonZeroAllKeysAllFramesOffsetNameD](#AddNonZeroAllKeysAllFramesOffsetNameD)
+* [AddNonZeroAllKeysName](#AddNonZeroAllKeysName)
 * [AddNonZeroAllKeysOffset](#AddNonZeroAllKeysOffset)
 * [AddNonZeroAllKeysOffsetName](#AddNonZeroAllKeysOffsetName)
 * [AddNonZeroAllKeysOffsetNameD](#AddNonZeroAllKeysOffsetNameD)
@@ -91,18 +94,24 @@
 * [CopyRedChannelAllFrames](#CopyRedChannelAllFrames)
 * [CopyRedChannelAllFramesName](#CopyRedChannelAllFramesName)
 * [CopyRedChannelAllFramesNameD](#CopyRedChannelAllFramesNameD)
+* [CopyZeroAllKeys](#CopyZeroAllKeys)
 * [CopyZeroAllKeysAllFrames](#CopyZeroAllKeysAllFrames)
 * [CopyZeroAllKeysAllFramesName](#CopyZeroAllKeysAllFramesName)
 * [CopyZeroAllKeysAllFramesNameD](#CopyZeroAllKeysAllFramesNameD)
 * [CopyZeroAllKeysAllFramesOffset](#CopyZeroAllKeysAllFramesOffset)
 * [CopyZeroAllKeysAllFramesOffsetName](#CopyZeroAllKeysAllFramesOffsetName)
 * [CopyZeroAllKeysAllFramesOffsetNameD](#CopyZeroAllKeysAllFramesOffsetNameD)
+* [CopyZeroAllKeysName](#CopyZeroAllKeysName)
+* [CopyZeroAllKeysOffset](#CopyZeroAllKeysOffset)
+* [CopyZeroAllKeysOffsetName](#CopyZeroAllKeysOffsetName)
 * [CopyZeroKeyColor](#CopyZeroKeyColor)
 * [CopyZeroKeyColorName](#CopyZeroKeyColorName)
 * [CopyZeroKeyColorNameD](#CopyZeroKeyColorNameD)
+* [CopyZeroTargetAllKeys](#CopyZeroTargetAllKeys)
 * [CopyZeroTargetAllKeysAllFrames](#CopyZeroTargetAllKeysAllFrames)
 * [CopyZeroTargetAllKeysAllFramesName](#CopyZeroTargetAllKeysAllFramesName)
 * [CopyZeroTargetAllKeysAllFramesNameD](#CopyZeroTargetAllKeysAllFramesNameD)
+* [CopyZeroTargetAllKeysName](#CopyZeroTargetAllKeysName)
 * [CoreCreateChromaLinkEffect](#CoreCreateChromaLinkEffect)
 * [CoreCreateEffect](#CoreCreateEffect)
 * [CoreCreateHeadsetEffect](#CoreCreateHeadsetEffect)
@@ -115,6 +124,19 @@
 * [CoreInitSDK](#CoreInitSDK)
 * [CoreQueryDevice](#CoreQueryDevice)
 * [CoreSetEffect](#CoreSetEffect)
+* [CoreStreamBroadcast](#CoreStreamBroadcast)
+* [CoreStreamBroadcastEnd](#CoreStreamBroadcastEnd)
+* [CoreStreamGetAuthShortcode](#CoreStreamGetAuthShortcode)
+* [CoreStreamGetFocus](#CoreStreamGetFocus)
+* [CoreStreamGetId](#CoreStreamGetId)
+* [CoreStreamGetKey](#CoreStreamGetKey)
+* [CoreStreamGetStatus](#CoreStreamGetStatus)
+* [CoreStreamGetStatusString](#CoreStreamGetStatusString)
+* [CoreStreamReleaseShortcode](#CoreStreamReleaseShortcode)
+* [CoreStreamSetFocus](#CoreStreamSetFocus)
+* [CoreStreamSupportsStreaming](#CoreStreamSupportsStreaming)
+* [CoreStreamWatch](#CoreStreamWatch)
+* [CoreStreamWatchEnd](#CoreStreamWatchEnd)
 * [CoreUnInit](#CoreUnInit)
 * [CreateAnimation](#CreateAnimation)
 * [CreateAnimationInMemory](#CreateAnimationInMemory)
@@ -471,12 +493,15 @@
 * [StopAnimationTypeD](#StopAnimationTypeD)
 * [StopComposite](#StopComposite)
 * [StopCompositeD](#StopCompositeD)
+* [SubtractColor](#SubtractColor)
+* [SubtractNonZeroAllKeys](#SubtractNonZeroAllKeys)
 * [SubtractNonZeroAllKeysAllFrames](#SubtractNonZeroAllKeysAllFrames)
 * [SubtractNonZeroAllKeysAllFramesName](#SubtractNonZeroAllKeysAllFramesName)
 * [SubtractNonZeroAllKeysAllFramesNameD](#SubtractNonZeroAllKeysAllFramesNameD)
 * [SubtractNonZeroAllKeysAllFramesOffset](#SubtractNonZeroAllKeysAllFramesOffset)
 * [SubtractNonZeroAllKeysAllFramesOffsetName](#SubtractNonZeroAllKeysAllFramesOffsetName)
 * [SubtractNonZeroAllKeysAllFramesOffsetNameD](#SubtractNonZeroAllKeysAllFramesOffsetNameD)
+* [SubtractNonZeroAllKeysName](#SubtractNonZeroAllKeysName)
 * [SubtractNonZeroAllKeysOffset](#SubtractNonZeroAllKeysOffset)
 * [SubtractNonZeroAllKeysOffsetName](#SubtractNonZeroAllKeysOffsetName)
 * [SubtractNonZeroAllKeysOffsetNameD](#SubtractNonZeroAllKeysOffsetNameD)
@@ -489,6 +514,12 @@
 * [SubtractNonZeroTargetAllKeysOffset](#SubtractNonZeroTargetAllKeysOffset)
 * [SubtractNonZeroTargetAllKeysOffsetName](#SubtractNonZeroTargetAllKeysOffsetName)
 * [SubtractNonZeroTargetAllKeysOffsetNameD](#SubtractNonZeroTargetAllKeysOffsetNameD)
+* [SubtractThresholdColorsMinMaxAllFramesRGB](#SubtractThresholdColorsMinMaxAllFramesRGB)
+* [SubtractThresholdColorsMinMaxAllFramesRGBName](#SubtractThresholdColorsMinMaxAllFramesRGBName)
+* [SubtractThresholdColorsMinMaxAllFramesRGBNameD](#SubtractThresholdColorsMinMaxAllFramesRGBNameD)
+* [SubtractThresholdColorsMinMaxRGB](#SubtractThresholdColorsMinMaxRGB)
+* [SubtractThresholdColorsMinMaxRGBName](#SubtractThresholdColorsMinMaxRGBName)
+* [SubtractThresholdColorsMinMaxRGBNameD](#SubtractThresholdColorsMinMaxRGBNameD)
 * [TrimEndFrames](#TrimEndFrames)
 * [TrimEndFramesName](#TrimEndFramesName)
 * [TrimEndFramesNameD](#TrimEndFramesNameD)
@@ -504,12 +535,25 @@
 * [UnloadAnimationD](#UnloadAnimationD)
 * [UnloadAnimationName](#UnloadAnimationName)
 * [UnloadComposite](#UnloadComposite)
+* [UnloadLibrarySDK](#UnloadLibrarySDK)
+* [UnloadLibraryStreamingPlugin](#UnloadLibraryStreamingPlugin)
 * [UpdateFrame](#UpdateFrame)
 * [UpdateFrameName](#UpdateFrameName)
 * [UseIdleAnimation](#UseIdleAnimation)
 * [UseIdleAnimations](#UseIdleAnimations)
 * [UsePreloading](#UsePreloading)
 * [UsePreloadingName](#UsePreloadingName)
+---
+
+<a name="AddColor"></a>
+**AddColor**
+
+Return the sum of colors
+
+```charp
+int result = UnityNativeChromaSDK.AddColor(int color1, int color2);
+```
+
 ---
 
 <a name="AddFrame"></a>
@@ -519,11 +563,23 @@ Adds a frame to the `Chroma` animation and sets the `duration` (in seconds).
 The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
 the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
-size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
-success. Returns -1 upon failure.
+size should be `MAX ROW` times `MAX COLUMN`. Returns the animation id upon 
+success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.AddFrame(int animationId, float duration, int[] colors, int length);
+```
+
+---
+
+<a name="AddNonZeroAllKeys"></a>
+**AddNonZeroAllKeys**
+
+Add source color to target where color is not black for frame id, reference 
+source and target by id.
+
+```charp
+UnityNativeChromaSDK.AddNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
 ```
 
 ---
@@ -596,6 +652,18 @@ D suffix for limited data types.
 
 ```charp
 double result = UnityNativeChromaSDK.AddNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset);
+```
+
+---
+
+<a name="AddNonZeroAllKeysName"></a>
+**AddNonZeroAllKeysName**
+
+Add source color to target where color is not black for frame id, reference 
+source and target by name.
+
+```charp
+UnityNativeChromaSDK.AddNonZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId);
 ```
 
 ---
@@ -815,9 +883,9 @@ UnityNativeChromaSDK.CloseAll();
 **CloseAnimation**
 
 Closes the `Chroma` animation to free up resources referenced by id. Returns 
-the animation id upon success. Returns -1 upon failure. This might be used 
-while authoring effects if there was a change necessitating re-opening 
-the animation. The animation id can no longer be used once closed.
+the animation id upon success. Returns negative one upon failure. This 
+might be used while authoring effects if there was a change necessitating 
+re-opening the animation. The animation id can no longer be used once closed.
 
 ```charp
 int result = UnityNativeChromaSDK.CloseAnimation(int animationId);
@@ -1594,6 +1662,18 @@ double result = UnityNativeChromaSDK.CopyRedChannelAllFramesNameD(string path, d
 
 ---
 
+<a name="CopyZeroAllKeys"></a>
+**CopyZeroAllKeys**
+
+Copy zero colors from source animation to target animation for the frame. 
+Source and target are referenced by id.
+
+```charp
+UnityNativeChromaSDK.CopyZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+```
+
+---
+
 <a name="CopyZeroAllKeysAllFrames"></a>
 **CopyZeroAllKeysAllFrames**
 
@@ -1666,6 +1746,44 @@ double result = UnityNativeChromaSDK.CopyZeroAllKeysAllFramesOffsetNameD(string 
 
 ---
 
+<a name="CopyZeroAllKeysName"></a>
+**CopyZeroAllKeysName**
+
+Copy zero colors from source animation to target animation for the frame. 
+Source and target are referenced by name.
+
+```charp
+UnityNativeChromaSDK.CopyZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId);
+```
+
+---
+
+<a name="CopyZeroAllKeysOffset"></a>
+**CopyZeroAllKeysOffset**
+
+Copy zero colors from source animation to target animation for the frame 
+id starting at the target offset for the length of the source animation. 
+Source and target are referenced by id.
+
+```charp
+UnityNativeChromaSDK.CopyZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
+```
+
+---
+
+<a name="CopyZeroAllKeysOffsetName"></a>
+**CopyZeroAllKeysOffsetName**
+
+Copy zero colors from source animation to target animation for the frame 
+id starting at the target offset for the length of the source animation. 
+Source and target are referenced by name.
+
+```charp
+UnityNativeChromaSDK.CopyZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset);
+```
+
+---
+
 <a name="CopyZeroKeyColor"></a>
 **CopyZeroKeyColor**
 
@@ -1701,6 +1819,18 @@ double result = UnityNativeChromaSDK.CopyZeroKeyColorNameD(string sourceAnimatio
 
 ---
 
+<a name="CopyZeroTargetAllKeys"></a>
+**CopyZeroTargetAllKeys**
+
+Copy nonzero color from source animation to target animation where target 
+is zero for the frame. Source and target are referenced by id.
+
+```charp
+UnityNativeChromaSDK.CopyZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+```
+
+---
+
 <a name="CopyZeroTargetAllKeysAllFrames"></a>
 **CopyZeroTargetAllKeysAllFrames**
 
@@ -1732,6 +1862,18 @@ D suffix for limited data types.
 
 ```charp
 double result = UnityNativeChromaSDK.CopyZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation);
+```
+
+---
+
+<a name="CopyZeroTargetAllKeysName"></a>
+**CopyZeroTargetAllKeysName**
+
+Copy nonzero color from source animation to target animation where target 
+is zero for the frame. Source and target are referenced by name.
+
+```charp
+UnityNativeChromaSDK.CopyZeroTargetAllKeysName(string sourceAnimation, string targetAnimation, int frameId);
 ```
 
 ---
@@ -1868,6 +2010,197 @@ int result = UnityNativeChromaSDK.CoreSetEffect(Guid effectId);
 
 ---
 
+<a name="CoreStreamBroadcast"></a>
+**CoreStreamBroadcast**
+
+Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
+Intended for Cloud Gaming Platforms,  restore the streaming key when the 
+game instance is launched to continue streaming.  streamId is a null terminated 
+string  streamKey is a null terminated string  StreamGetStatus() should 
+return the READY status to use this method.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamBroadcast(string streamId, string streamKey);
+```
+
+---
+
+<a name="CoreStreamBroadcastEnd"></a>
+**CoreStreamBroadcastEnd**
+
+End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+status to use this method.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamBroadcastEnd();
+```
+
+---
+
+<a name="CoreStreamGetAuthShortcode"></a>
+**CoreStreamGetAuthShortcode**
+
+shortcode: Pass the address of a preallocated character buffer to get the 
+streaming auth code. The buffer should have a minimum length of 6.  length: 
+Length will return as zero if the streaming auth code could not be obtained. 
+If length is greater than zero, it will be the length of the returned streaming 
+auth code.  Once you have the shortcode, it should be shown to the user 
+so they can associate the stream with their Razer ID  StreamGetStatus() 
+should return the READY status before invoking this method. platform: is 
+the null terminated string that identifies the source of the stream: { 
+GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+that identifies the application or game.
+
+```charp
+UnityNativeChromaSDK.CoreStreamGetAuthShortcode(ref string shortcode, out byte length, string platform, string title);
+```
+
+---
+
+<a name="CoreStreamGetFocus"></a>
+**CoreStreamGetFocus**
+
+focus: Pass the address of a preallocated character buffer to get the stream 
+focus. The buffer should have a length of 48  length: Length will return 
+as zero if the stream focus could not be obtained. If length is greater 
+than zero, it will be the length of the returned stream focus.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamGetFocus(ref string focus, out byte length);
+```
+
+---
+
+<a name="CoreStreamGetId"></a>
+**CoreStreamGetId**
+
+Intended for Cloud Gaming Platforms, store the stream id to persist in user 
+preferences to continue streaming if the game is suspended or closed. shortcode: 
+The shortcode is a null terminated string. Use the shortcode that authorized 
+the stream to obtain the stream id.  streamId should be a preallocated 
+buffer to get the stream key. The buffer should have a length of 48.  length: 
+Length will return zero if the key could not be obtained. If the length 
+is greater than zero, it will be the length of the returned streaming id. 
+Retrieve the stream id after authorizing the shortcode. The authorization 
+window will expire in 5 minutes. Be sure to save the stream key before 
+the window expires. StreamGetStatus() should return the READY status to 
+use this method.
+
+```charp
+UnityNativeChromaSDK.CoreStreamGetId(string shortcode, ref string streamId, out byte length);
+```
+
+---
+
+<a name="CoreStreamGetKey"></a>
+**CoreStreamGetKey**
+
+Intended for Cloud Gaming Platforms, store the streaming key to persist 
+in user preferences to continue streaming if the game is suspended or closed. 
+shortcode: The shortcode is a null terminated string. Use the shortcode 
+that authorized the stream to obtain the stream key.  If the status is 
+in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+the active streamId.  streamKey should be a preallocated buffer to get 
+the stream key. The buffer should have a length of 48.  length: Length 
+will return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming key.  Retrieve 
+the stream key after authorizing the shortcode. The authorization window 
+will expire in 5 minutes. Be sure to save the stream key before the window 
+expires.  StreamGetStatus() should return the READY status to use this 
+method.
+
+```charp
+UnityNativeChromaSDK.CoreStreamGetKey(string shortcode, ref string streamKey, out byte length);
+```
+
+---
+
+<a name="CoreStreamGetStatus"></a>
+**CoreStreamGetStatus**
+
+Returns StreamStatus, the current status of the service
+
+```charp
+ChromaSDK.Stream.StreamStatusType result = UnityNativeChromaSDK.CoreStreamGetStatus();
+```
+
+---
+
+<a name="CoreStreamGetStatusString"></a>
+**CoreStreamGetStatusString**
+
+Convert StreamStatusType to a printable string
+
+```charp
+string result = UnityNativeChromaSDK.CoreStreamGetStatusString(ChromaSDK.Stream.StreamStatusType status);
+```
+
+---
+
+<a name="CoreStreamReleaseShortcode"></a>
+**CoreStreamReleaseShortcode**
+
+This prevents the stream id and stream key from being obtained through the 
+shortcode. This closes the auth window.  shortcode is a null terminated 
+string.  StreamGetStatus() should return the READY status to use this method. 
+returns success when shortcode has been released
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamReleaseShortcode(string shortcode);
+```
+
+---
+
+<a name="CoreStreamSetFocus"></a>
+**CoreStreamSetFocus**
+
+The focus is a null terminated string. Set the focus identifer for the application 
+designated to automatically change the streaming state.  Returns true on 
+success.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamSetFocus(string focus);
+```
+
+---
+
+<a name="CoreStreamSupportsStreaming"></a>
+**CoreStreamSupportsStreaming**
+
+Returns true if the Chroma streaming is supported. If false is returned, 
+avoid calling stream methods.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamSupportsStreaming();
+```
+
+---
+
+<a name="CoreStreamWatch"></a>
+**CoreStreamWatch**
+
+Begin watching the Chroma RGB data using streamID parameter.  streamId is 
+a null terminated string.  StreamGetStatus() should return the READY status 
+to use this method.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamWatch(string streamId, ulong timestamp);
+```
+
+---
+
+<a name="CoreStreamWatchEnd"></a>
+**CoreStreamWatchEnd**
+
+End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+WATCHING status to use this method.
+
+```charp
+bool result = UnityNativeChromaSDK.CoreStreamWatchEnd();
+```
+
+---
+
 <a name="CoreUnInit"></a>
 **CoreUnInit**
 
@@ -1885,10 +2218,10 @@ int result = UnityNativeChromaSDK.CoreUnInit();
 Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
 `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, respective 
-to the `deviceType`. Returns the animation id upon success. Returns -1 
-upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
-at the given path. Returns the animation id upon success. Returns -1 upon 
-failure.
+to the `deviceType`. Returns the animation id upon success. Returns negative 
+one upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
+at the given path. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.CreateAnimation(string path, int deviceType, int device);
@@ -1903,8 +2236,8 @@ Creates a `Chroma` animation in memory without creating a file. The `deviceType`
 parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
 uses `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, 
 respective to the `deviceType`. Returns the animation id upon success. 
-Returns -1 upon failure. Returns the animation id upon success. Returns 
--1 upon failure.
+Returns negative one upon failure. Returns the animation id upon success. 
+Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.CreateAnimationInMemory(int deviceType, int device);
@@ -3141,7 +3474,7 @@ double result = UnityNativeChromaSDK.GetCurrentFrameNameD(string path);
 
 Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 animation respective to the `deviceType`, as an integer upon success. Returns 
--1 upon failure.
+negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetDevice(int animationId);
@@ -3154,7 +3487,7 @@ int result = UnityNativeChromaSDK.GetDevice(int animationId);
 
 Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 animation respective to the `deviceType`, as an integer upon success. Returns 
--1 upon failure.
+negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetDeviceName(string path);
@@ -3177,7 +3510,7 @@ double result = UnityNativeChromaSDK.GetDeviceNameD(string path);
 **GetDeviceType**
 
 Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetDeviceType(int animationId);
@@ -3189,7 +3522,7 @@ int result = UnityNativeChromaSDK.GetDeviceType(int animationId);
 **GetDeviceTypeName**
 
 Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetDeviceTypeName(string path);
@@ -3216,7 +3549,8 @@ The `color` is expected to be an array of the expected dimensions for the
 `deviceType/device`. The `length` parameter is the size of the `color` 
 array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
 For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-COLUMN`. Returns the animation id upon success. Returns -1 upon failure.
+COLUMN`. Returns the animation id upon success. Returns negative one upon 
+failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetFrame(int animationId, int frameIndex, out float duration, int[] colors, int length);
@@ -3227,8 +3561,8 @@ int result = UnityNativeChromaSDK.GetFrame(int animationId, int frameIndex, out 
 <a name="GetFrameCount"></a>
 **GetFrameCount**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetFrameCount(int animationId);
@@ -3239,8 +3573,8 @@ int result = UnityNativeChromaSDK.GetFrameCount(int animationId);
 <a name="GetFrameCountName"></a>
 **GetFrameCountName**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetFrameCountName(string path);
@@ -3321,7 +3655,7 @@ double result = UnityNativeChromaSDK.GetLibraryLoadedStateD();
 **GetMaxColumn**
 
 Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-integer upon success. Returns -1 upon failure.
+integer upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetMaxColumn(Device2D device);
@@ -3344,7 +3678,7 @@ double result = UnityNativeChromaSDK.GetMaxColumnD(double device);
 **GetMaxLeds**
 
 Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetMaxLeds(Device1D device);
@@ -3367,7 +3701,7 @@ double result = UnityNativeChromaSDK.GetMaxLedsD(double device);
 **GetMaxRow**
 
 Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.GetMaxRow(Device2D device);
@@ -3841,7 +4175,7 @@ int result = UnityNativeChromaSDK.LerpColor(int from, int to, float t);
 **LoadAnimation**
 
 Loads `Chroma` effects so that the animation can be played immediately. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.LoadAnimation(int animationId);
@@ -4034,7 +4368,7 @@ double result = UnityNativeChromaSDK.MakeBlankFramesRGBNameD(string path, double
 **MirrorHorizontally**
 
 Flips the color grid horizontally for all `Chroma` animation frames. Returns 
-the animation id upon success. Returns -1 upon failure.
+the animation id upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.MirrorHorizontally(int animationId);
@@ -4047,7 +4381,7 @@ int result = UnityNativeChromaSDK.MirrorHorizontally(int animationId);
 
 Flips the color grid vertically for all `Chroma` animation frames. This 
 method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
-animation id upon success. Returns -1 upon failure.
+animation id upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.MirrorVertically(int animationId);
@@ -4647,8 +4981,8 @@ double result = UnityNativeChromaSDK.OffsetNonZeroColorsNameD(string path, doubl
 **OpenAnimation**
 
 Opens a `Chroma` animation file so that it can be played. Returns an animation 
-id >= 0 upon success. Returns -1 if there was a failure. The animation 
-id is used in most of the API methods.
+id >= 0 upon success. Returns negative one if there was a failure. The 
+animation id is used in most of the API methods.
 
 ```charp
 int result = UnityNativeChromaSDK.OpenAnimation(string path);
@@ -4671,10 +5005,10 @@ double result = UnityNativeChromaSDK.OpenAnimationD(string path);
 **OpenAnimationFromMemory**
 
 Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-is a pointer to byte array of the loaded animation in memory. `Name` will 
+is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 be assigned to the animation when loaded. Returns an animation id >= 0 
-upon success. Returns -1 if there was a failure. The animation id is used 
-in most of the API methods.
+upon success. Returns negative one if there was a failure. The animation 
+id is used in most of the API methods.
 
 ```charp
 int result = UnityNativeChromaSDK.OpenAnimationFromMemory(byte[] data, string name);
@@ -4686,7 +5020,7 @@ int result = UnityNativeChromaSDK.OpenAnimationFromMemory(byte[] data, string na
 **OpenEditorDialog**
 
 Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
-upon success. Returns -1 if there was a failure.
+upon success. Returns negative one if there was a failure.
 
 ```charp
 int result = UnityNativeChromaSDK.OpenEditorDialog(string path);
@@ -4732,7 +5066,8 @@ double result = UnityNativeChromaSDK.OpenEditorDialogD(string path);
 **OverrideFrameDuration**
 
 Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
-parameter. Returns the animation id upon success. Returns -1 upon failure.
+parameter. Returns the animation id upon success. Returns negative one 
+upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.OverrideFrameDuration(int animationId, float duration);
@@ -4800,7 +5135,8 @@ double result = UnityNativeChromaSDK.PauseAnimationNameD(string path);
 **PlayAnimation**
 
 Plays the `Chroma` animation. This will load the animation, if not loaded 
-previously. Returns the animation id upon success. Returns -1 upon failure.
+previously. Returns the animation id upon success. Returns negative one 
+upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.PlayAnimation(int animationId);
@@ -4921,7 +5257,7 @@ double result = UnityNativeChromaSDK.PlayCompositeD(string name, double loop);
 **PreviewFrame**
 
 Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.PreviewFrame(int animationId, int frameIndex);
@@ -4991,7 +5327,7 @@ double result = UnityNativeChromaSDK.ReduceFramesNameD(string path, double n);
 **ResetAnimation**
 
 Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.ResetAnimation(int animationId);
@@ -5036,8 +5372,8 @@ double result = UnityNativeChromaSDK.ResumeAnimationNameD(string path, double lo
 **Reverse**
 
 Reverse the animation frame order of the `Chroma` animation. Returns the 
-animation id upon success. Returns -1 upon failure. Animation is referenced 
-by id.
+animation id upon success. Returns negative one upon failure. Animation 
+is referenced by id.
 
 ```charp
 int result = UnityNativeChromaSDK.Reverse(int animationId);
@@ -5299,7 +5635,7 @@ int result = UnityNativeChromaSDK.SetCustomColorFlag2D(int device, int[] colors)
 
 Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
-the animation id upon success. Returns -1 upon failure.
+the animation id upon success. Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.SetDevice(int animationId, int deviceType, int device);
@@ -6011,7 +6347,7 @@ UnityNativeChromaSDK.StopAll();
 **StopAnimation**
 
 Stops animation playback if in progress. Returns the animation id upon success. 
-Returns -1 upon failure.
+Returns negative one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.StopAnimation(int animationId);
@@ -6102,6 +6438,29 @@ double result = UnityNativeChromaSDK.StopCompositeD(string name);
 
 ---
 
+<a name="SubtractColor"></a>
+**SubtractColor**
+
+Return color1 - color2
+
+```charp
+int result = UnityNativeChromaSDK.SubtractColor(int color1, int color2);
+```
+
+---
+
+<a name="SubtractNonZeroAllKeys"></a>
+**SubtractNonZeroAllKeys**
+
+Subtract the source color from the target color for the frame where the 
+target color is not black. Source and target are referenced by id.
+
+```charp
+UnityNativeChromaSDK.SubtractNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+```
+
+---
+
 <a name="SubtractNonZeroAllKeysAllFrames"></a>
 **SubtractNonZeroAllKeysAllFrames**
 
@@ -6170,6 +6529,18 @@ D suffix for limited data types.
 
 ```charp
 double result = UnityNativeChromaSDK.SubtractNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset);
+```
+
+---
+
+<a name="SubtractNonZeroAllKeysName"></a>
+**SubtractNonZeroAllKeysName**
+
+Subtract the source color from the target color for the frame where the 
+target color is not black. Source and target are referenced by name.
+
+```charp
+UnityNativeChromaSDK.SubtractNonZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId);
 ```
 
 ---
@@ -6318,11 +6689,85 @@ double result = UnityNativeChromaSDK.SubtractNonZeroTargetAllKeysOffsetNameD(str
 
 ---
 
+<a name="SubtractThresholdColorsMinMaxAllFramesRGB"></a>
+**SubtractThresholdColorsMinMaxAllFramesRGB**
+
+Subtract all frames with the min RGB color where the animation color is 
+less than the min threshold AND with the max RGB color where the animation 
+is more than the max threshold. Animation is referenced by id.
+
+```charp
+UnityNativeChromaSDK.SubtractThresholdColorsMinMaxAllFramesRGB(int animationId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+```
+
+---
+
+<a name="SubtractThresholdColorsMinMaxAllFramesRGBName"></a>
+**SubtractThresholdColorsMinMaxAllFramesRGBName**
+
+Subtract all frames with the min RGB color where the animation color is 
+less than the min threshold AND with the max RGB color where the animation 
+is more than the max threshold. Animation is referenced by name.
+
+```charp
+UnityNativeChromaSDK.SubtractThresholdColorsMinMaxAllFramesRGBName(string path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+```
+
+---
+
+<a name="SubtractThresholdColorsMinMaxAllFramesRGBNameD"></a>
+**SubtractThresholdColorsMinMaxAllFramesRGBNameD**
+
+D suffix for limited data types.
+
+```charp
+double result = UnityNativeChromaSDK.SubtractThresholdColorsMinMaxAllFramesRGBNameD(string path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
+```
+
+---
+
+<a name="SubtractThresholdColorsMinMaxRGB"></a>
+**SubtractThresholdColorsMinMaxRGB**
+
+Subtract the specified frame with the min RGB color where the animation 
+color is less than the min threshold AND with the max RGB color where the 
+animation is more than the max threshold. Animation is referenced by id.
+
+```charp
+UnityNativeChromaSDK.SubtractThresholdColorsMinMaxRGB(int animationId, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+```
+
+---
+
+<a name="SubtractThresholdColorsMinMaxRGBName"></a>
+**SubtractThresholdColorsMinMaxRGBName**
+
+Subtract the specified frame with the min RGB color where the animation 
+color is less than the min threshold AND with the max RGB color where the 
+animation is more than the max threshold. Animation is referenced by name.
+
+```charp
+UnityNativeChromaSDK.SubtractThresholdColorsMinMaxRGBName(string path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+```
+
+---
+
+<a name="SubtractThresholdColorsMinMaxRGBNameD"></a>
+**SubtractThresholdColorsMinMaxRGBNameD**
+
+D suffix for limited data types.
+
+```charp
+double result = UnityNativeChromaSDK.SubtractThresholdColorsMinMaxRGBNameD(string path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue);
+```
+
+---
+
 <a name="TrimEndFrames"></a>
 **TrimEndFrames**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by id.
+plus one. Reference the animation by id.
 
 ```charp
 UnityNativeChromaSDK.TrimEndFrames(int animationId, int lastFrameId);
@@ -6334,7 +6779,7 @@ UnityNativeChromaSDK.TrimEndFrames(int animationId, int lastFrameId);
 **TrimEndFramesName**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by name.
+plus one. Reference the animation by name.
 
 ```charp
 UnityNativeChromaSDK.TrimEndFramesName(string path, int lastFrameId);
@@ -6424,7 +6869,8 @@ double result = UnityNativeChromaSDK.TrimStartFramesNameD(string path, double nu
 <a name="Uninit"></a>
 **Uninit**
 
-Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
+Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns negative 
+one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.Uninit();
@@ -6447,7 +6893,8 @@ double result = UnityNativeChromaSDK.UninitD();
 **UnloadAnimation**
 
 Unloads `Chroma` effects to free up resources. Returns the animation id 
-upon success. Returns -1 upon failure. Reference the animation by id.
+upon success. Returns negative one upon failure. Reference the animation 
+by id.
 
 ```charp
 int result = UnityNativeChromaSDK.UnloadAnimation(int animationId);
@@ -6489,6 +6936,28 @@ UnityNativeChromaSDK.UnloadComposite(string name);
 
 ---
 
+<a name="UnloadLibrarySDK"></a>
+**UnloadLibrarySDK**
+
+Unload the Razer Chroma SDK Library before exiting the application.
+
+```charp
+UnityNativeChromaSDK.UnloadLibrarySDK();
+```
+
+---
+
+<a name="UnloadLibraryStreamingPlugin"></a>
+**UnloadLibraryStreamingPlugin**
+
+Unload the Razer Chroma Streaming Plugin Library before exiting the application.
+
+```charp
+UnityNativeChromaSDK.UnloadLibraryStreamingPlugin();
+```
+
+---
+
 <a name="UpdateFrame"></a>
 **UpdateFrame**
 
@@ -6497,8 +6966,8 @@ Updates the `frameIndex` of the `Chroma` animation and sets the `duration`
 for the `deviceType/device`. The `length` parameter is the size of the 
 `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-failure.
+times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.UpdateFrame(int animationId, int frameIndex, float duration, int[] colors, int length);
@@ -6514,8 +6983,8 @@ Updates the `frameIndex` of the `Chroma` animation and sets the `duration`
 for the `deviceType/device`. The `length` parameter is the size of the 
 `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-failure.
+times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```charp
 int result = UnityNativeChromaSDK.UpdateFrameName(string path, int frameIndex, float duration, int[] colors, int length);

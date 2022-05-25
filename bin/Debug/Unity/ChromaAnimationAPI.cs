@@ -4,7 +4,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ChromaSDK
@@ -243,7 +242,7 @@ namespace ChromaSDK
 #else
     #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
         const string DLL_NAME = "CChromaEditorLibrary3";
-    #elif UNITY_64
+    #elif UNITY_64 || UNITY_EDITOR
         const string DLL_NAME = "CChromaEditorLibrary64";
     #else
         const string DLL_NAME = "CChromaEditorLibrary";
@@ -546,12 +545,21 @@ namespace ChromaSDK
     /// </summary>
     /// <param name="lpData"></param>
     private static void FreeIntPtr(IntPtr lpData)
+    {
+        if (lpData != IntPtr.Zero)
         {
-            if (lpData != IntPtr.Zero)
-            {
-                Marshal.FreeHGlobal(lpData);
-            }
+            Marshal.FreeHGlobal(lpData);
         }
+    }
+
+    public static int UninitAPI()
+    {
+        UnloadLibrarySDK();
+        UnloadLibraryStreamingPlugin();
+
+        return 0;
+    }
+
 
         /// <summary>
         /// Get the streaming path for the animation given the relative path from Assets/StreamingAssets
@@ -563,6 +571,7 @@ namespace ChromaSDK
             return string.Format("{0}/{1}", _sStreamingAssetPath, animation);
         }
 #endregion
+
 
 		#region Public API Methods
 		public static string _sStreamingAssetPath = string.Empty;
@@ -609,26 +618,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AddNonZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAddNonZeroAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -647,26 +656,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AddNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAddNonZeroAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -675,13 +684,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Add source color to target where color is not black for the source frame 
@@ -697,26 +706,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AddNonZeroAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAddNonZeroAllKeysOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -733,26 +742,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroTargetAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AddNonZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAddNonZeroTargetAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -771,26 +780,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroTargetAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroTargetAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AddNonZeroTargetAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAddNonZeroTargetAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -808,26 +817,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AddNonZeroTargetAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAddNonZeroTargetAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AddNonZeroTargetAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAddNonZeroTargetAllKeysOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -844,26 +853,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void AppendAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginAppendAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double AppendAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginAppendAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -915,20 +924,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CloseAnimationName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginCloseAnimationName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CloseAnimationNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginCloseAnimationNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -937,20 +946,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CloseComposite(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			PluginCloseComposite(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CloseCompositeD(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			double result = PluginCloseCompositeD(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 			return result;
 		}
 		/// <summary>
@@ -967,13 +976,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Copy animation to named target animation in memory. If target animation 
@@ -981,10 +990,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int CopyAnimation(int sourceAnimationId, string targetAnimation)
 		{
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			int result = PluginCopyAnimation(sourceAnimationId, lp_TargetAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -993,26 +1002,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyAnimationName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyAnimationName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyAnimationNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyAnimationNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1029,20 +1038,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyBlueChannelAllFramesName(string path, float redIntensity, float greenIntensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginCopyBlueChannelAllFramesName(lp_Path, redIntensity, greenIntensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyBlueChannelAllFramesNameD(string path, double redIntensity, double greenIntensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginCopyBlueChannelAllFramesNameD(lp_Path, redIntensity, greenIntensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -1059,20 +1068,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyGreenChannelAllFramesName(string path, float redIntensity, float blueIntensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginCopyGreenChannelAllFramesName(lp_Path, redIntensity, blueIntensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyGreenChannelAllFramesNameD(string path, double redIntensity, double blueIntensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginCopyGreenChannelAllFramesNameD(lp_Path, redIntensity, blueIntensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -1097,26 +1106,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyKeyColorAllFramesName(string sourceAnimation, string targetAnimation, int rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyKeyColorAllFramesName(lp_SourceAnimation, lp_TargetAnimation, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyKeyColorAllFramesNameD(string sourceAnimation, string targetAnimation, double rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyKeyColorAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1135,26 +1144,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyKeyColorAllFramesOffsetName(string sourceAnimation, string targetAnimation, int rzkey, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyKeyColorAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, rzkey, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyKeyColorAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double rzkey, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyKeyColorAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, rzkey, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1163,26 +1172,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyKeyColorName(string sourceAnimation, string targetAnimation, int frameId, int rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyKeyColorName(lp_SourceAnimation, lp_TargetAnimation, frameId, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyKeyColorNameD(string sourceAnimation, string targetAnimation, double frameId, double rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyKeyColorNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1210,13 +1219,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyKeysColorAllFramesName(string sourceAnimation, string targetAnimation, int[] keys, int size)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyKeysColorAllFramesName(lp_SourceAnimation, lp_TargetAnimation, keys, size);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Copy animation color for a set of keys from the source animation to the 
@@ -1225,13 +1234,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyKeysColorName(string sourceAnimation, string targetAnimation, int frameId, int[] keys, int size)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyKeysColorName(lp_SourceAnimation, lp_TargetAnimation, frameId, keys, size);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Copy animation color for a set of keys from the source animation to the 
@@ -1249,13 +1258,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyKeysColorOffsetName(string sourceAnimation, string targetAnimation, int sourceFrameId, int targetFrameId, int[] keys, int size)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyKeysColorOffsetName(lp_SourceAnimation, lp_TargetAnimation, sourceFrameId, targetFrameId, keys, size);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Copy source animation to target animation for the given frame. Source and 
@@ -1279,26 +1288,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1317,26 +1326,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1345,26 +1354,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroAllKeysNameD(string sourceAnimation, string targetAnimation, double frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroAllKeysNameD(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1383,26 +1392,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroAllKeysOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1419,26 +1428,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroKeyColorName(string sourceAnimation, string targetAnimation, int frameId, int rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroKeyColorName(lp_SourceAnimation, lp_TargetAnimation, frameId, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroKeyColorNameD(string sourceAnimation, string targetAnimation, double frameId, double rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroKeyColorNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1466,26 +1475,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroTargetAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroTargetAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1505,26 +1514,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroTargetAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroTargetAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroTargetAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroTargetAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1534,26 +1543,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroTargetAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroTargetAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroTargetAllKeysNameD(string sourceAnimation, string targetAnimation, double frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroTargetAllKeysNameD(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1572,26 +1581,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroTargetAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroTargetAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroTargetAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroTargetAllKeysOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1610,26 +1619,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyNonZeroTargetZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyNonZeroTargetZeroAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyNonZeroTargetZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyNonZeroTargetZeroAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1646,20 +1655,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyRedChannelAllFramesName(string path, float greenIntensity, float blueIntensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginCopyRedChannelAllFramesName(lp_Path, greenIntensity, blueIntensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyRedChannelAllFramesNameD(string path, double greenIntensity, double blueIntensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginCopyRedChannelAllFramesNameD(lp_Path, greenIntensity, blueIntensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -1684,26 +1693,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyZeroAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1722,26 +1731,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyZeroAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1750,13 +1759,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Copy zero colors from source animation to target animation for the frame 
@@ -1774,13 +1783,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Copy zero key color from source animation to target animation for the specified 
@@ -1796,26 +1805,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroKeyColorName(string sourceAnimation, string targetAnimation, int frameId, int rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroKeyColorName(lp_SourceAnimation, lp_TargetAnimation, frameId, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyZeroKeyColorNameD(string sourceAnimation, string targetAnimation, double frameId, double rzkey)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyZeroKeyColorNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, rzkey);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1840,26 +1849,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroTargetAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double CopyZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginCopyZeroTargetAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -1868,13 +1877,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CopyZeroTargetAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginCopyZeroTargetAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Direct access to low level API.
@@ -1981,13 +1990,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamBroadcast(string streamId, string streamKey)
 		{
-			string pathStreamId = GetStreamingPath(streamId);
-			IntPtr lpStreamId = GetIntPtr(pathStreamId);
-			string pathStreamKey = GetStreamingPath(streamKey);
-			IntPtr lpStreamKey = GetIntPtr(pathStreamKey);
+			string str_StreamId = GetStreamingPath(streamId);
+			IntPtr lp_StreamId = GetAsciiIntPtr(str_StreamId);
+			string str_StreamKey = GetStreamingPath(streamKey);
+			IntPtr lp_StreamKey = GetAsciiIntPtr(str_StreamKey);
 			bool result = PluginCoreStreamBroadcast(lp_StreamId, lp_StreamKey);
-			FreeIntPtr(lpStreamId);
-			FreeIntPtr(lpStreamKey);
+			FreeIntPtr(lp_StreamId);
+			FreeIntPtr(lp_StreamKey);
 			return result;
 		}
 		/// <summary>
@@ -2013,10 +2022,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CoreStreamGetAuthShortcode(ref string shortcode, out byte length, string platform, string title)
 		{
-			string pathShortcode = GetStreamingPath(shortcode);
-			IntPtr lpShortcode = GetIntPtr(pathShortcode);
+			string str_Shortcode = shortcode;
+			IntPtr lp_Shortcode = GetAsciiIntPtr(str_Shortcode);
+			string str_Platform = platform;
+			IntPtr lp_Platform = GetUnicodeIntPtr(str_Platform);
+			string str_Title = title;
+			IntPtr lp_Title = GetUnicodeIntPtr(str_Title);
 			PluginCoreStreamGetAuthShortcode(lp_Shortcode, out length, lp_Platform, lp_Title);
-			FreeIntPtr(lpShortcode);
+			if (lp_Shortcode != IntPtr.Zero)
+			{
+				shortcode = Marshal.PtrToStringAnsi(lp_Shortcode);
+			}
+			FreeIntPtr(lp_Shortcode);
+			FreeIntPtr(lp_Platform);
+			FreeIntPtr(lp_Title);
 		}
 		/// <summary>
 		/// focus: Pass the address of a preallocated character buffer to get the stream 
@@ -2026,10 +2045,14 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamGetFocus(ref string focus, out byte length)
 		{
-			string pathFocus = GetStreamingPath(focus);
-			IntPtr lpFocus = GetIntPtr(pathFocus);
+			string str_Focus = GetStreamingPath(focus);
+			IntPtr lp_Focus = GetAsciiIntPtr(str_Focus);
 			bool result = PluginCoreStreamGetFocus(lp_Focus, out length);
-			FreeIntPtr(lpFocus);
+			if (lp_Focus != IntPtr.Zero)
+			{
+				focus = Marshal.PtrToStringAnsi(lp_Focus);
+			}
+			FreeIntPtr(lp_Focus);
 			return result;
 		}
 		/// <summary>
@@ -2047,13 +2070,17 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CoreStreamGetId(string shortcode, ref string streamId, out byte length)
 		{
-			string pathShortcode = GetStreamingPath(shortcode);
-			IntPtr lpShortcode = GetIntPtr(pathShortcode);
-			string pathStreamId = GetStreamingPath(streamId);
-			IntPtr lpStreamId = GetIntPtr(pathStreamId);
+			string str_Shortcode = shortcode;
+			IntPtr lp_Shortcode = GetAsciiIntPtr(str_Shortcode);
+			string str_StreamId = GetStreamingPath(streamId);
+			IntPtr lp_StreamId = GetAsciiIntPtr(str_StreamId);
 			PluginCoreStreamGetId(lp_Shortcode, lp_StreamId, out length);
-			FreeIntPtr(lpShortcode);
-			FreeIntPtr(lpStreamId);
+			FreeIntPtr(lp_Shortcode);
+			if (lp_StreamId != IntPtr.Zero)
+			{
+				streamId = Marshal.PtrToStringAnsi(lp_StreamId);
+			}
+			FreeIntPtr(lp_StreamId);
 		}
 		/// <summary>
 		/// Intended for Cloud Gaming Platforms, store the streaming key to persist 
@@ -2072,13 +2099,17 @@ namespace ChromaSDK
 		/// </summary>
 		public static void CoreStreamGetKey(string shortcode, ref string streamKey, out byte length)
 		{
-			string pathShortcode = GetStreamingPath(shortcode);
-			IntPtr lpShortcode = GetIntPtr(pathShortcode);
-			string pathStreamKey = GetStreamingPath(streamKey);
-			IntPtr lpStreamKey = GetIntPtr(pathStreamKey);
+			string str_Shortcode = shortcode;
+			IntPtr lp_Shortcode = GetAsciiIntPtr(str_Shortcode);
+			string str_StreamKey = GetStreamingPath(streamKey);
+			IntPtr lp_StreamKey = GetAsciiIntPtr(str_StreamKey);
 			PluginCoreStreamGetKey(lp_Shortcode, lp_StreamKey, out length);
-			FreeIntPtr(lpShortcode);
-			FreeIntPtr(lpStreamKey);
+			FreeIntPtr(lp_Shortcode);
+			if (lp_StreamKey != IntPtr.Zero)
+			{
+				streamKey = Marshal.PtrToStringAnsi(lp_StreamKey);
+			}
+			FreeIntPtr(lp_StreamKey);
 		}
 		/// <summary>
 		/// Returns StreamStatus, the current status of the service
@@ -2104,10 +2135,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamReleaseShortcode(string shortcode)
 		{
-			string pathShortcode = GetStreamingPath(shortcode);
-			IntPtr lpShortcode = GetIntPtr(pathShortcode);
+			string str_Shortcode = shortcode;
+			IntPtr lp_Shortcode = GetAsciiIntPtr(str_Shortcode);
 			bool result = PluginCoreStreamReleaseShortcode(lp_Shortcode);
-			FreeIntPtr(lpShortcode);
+			FreeIntPtr(lp_Shortcode);
 			return result;
 		}
 		/// <summary>
@@ -2117,10 +2148,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamSetFocus(string focus)
 		{
-			string pathFocus = GetStreamingPath(focus);
-			IntPtr lpFocus = GetIntPtr(pathFocus);
+			string str_Focus = GetStreamingPath(focus);
+			IntPtr lp_Focus = GetAsciiIntPtr(str_Focus);
 			bool result = PluginCoreStreamSetFocus(lp_Focus);
-			FreeIntPtr(lpFocus);
+			FreeIntPtr(lp_Focus);
 			return result;
 		}
 		/// <summary>
@@ -2139,10 +2170,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamWatch(string streamId, ulong timestamp)
 		{
-			string pathStreamId = GetStreamingPath(streamId);
-			IntPtr lpStreamId = GetIntPtr(pathStreamId);
+			string str_StreamId = GetStreamingPath(streamId);
+			IntPtr lp_StreamId = GetAsciiIntPtr(str_StreamId);
 			bool result = PluginCoreStreamWatch(lp_StreamId, timestamp);
-			FreeIntPtr(lpStreamId);
+			FreeIntPtr(lp_StreamId);
 			return result;
 		}
 		/// <summary>
@@ -2173,10 +2204,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int CreateAnimation(string path, int deviceType, int device)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginCreateAnimation(lp_Path, deviceType, device);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2222,20 +2253,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void DuplicateFirstFrameName(string path, int frameCount)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginDuplicateFirstFrameName(lp_Path, frameCount);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double DuplicateFirstFrameNameD(string path, double frameCount)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginDuplicateFirstFrameNameD(lp_Path, frameCount);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2254,20 +2285,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void DuplicateFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginDuplicateFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double DuplicateFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginDuplicateFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2284,20 +2315,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void DuplicateMirrorFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginDuplicateMirrorFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double DuplicateMirrorFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginDuplicateMirrorFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2314,20 +2345,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FadeEndFramesName(string path, int fade)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFadeEndFramesName(lp_Path, fade);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FadeEndFramesNameD(string path, double fade)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFadeEndFramesNameD(lp_Path, fade);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2344,20 +2375,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FadeStartFramesName(string path, int fade)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFadeStartFramesName(lp_Path, fade);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FadeStartFramesNameD(string path, double fade)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFadeStartFramesNameD(lp_Path, fade);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2382,20 +2413,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillColorAllFramesName(string path, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillColorAllFramesName(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillColorAllFramesNameD(string path, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillColorAllFramesNameD(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2412,20 +2443,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillColorAllFramesRGBName(string path, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillColorAllFramesRGBName(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillColorAllFramesRGBNameD(string path, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillColorAllFramesRGBNameD(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2434,20 +2465,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillColorName(string path, int frameId, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillColorName(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillColorNameD(string path, double frameId, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillColorNameD(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2464,20 +2495,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillColorRGBName(string path, int frameId, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillColorRGBName(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillColorRGBNameD(string path, double frameId, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillColorRGBNameD(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2505,20 +2536,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillNonZeroColorAllFramesName(string path, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillNonZeroColorAllFramesName(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillNonZeroColorAllFramesNameD(string path, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillNonZeroColorAllFramesNameD(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2539,20 +2570,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillNonZeroColorAllFramesRGBName(string path, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillNonZeroColorAllFramesRGBName(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillNonZeroColorAllFramesRGBNameD(string path, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillNonZeroColorAllFramesRGBNameD(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2562,20 +2593,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillNonZeroColorName(string path, int frameId, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillNonZeroColorName(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillNonZeroColorNameD(string path, double frameId, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillNonZeroColorNameD(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2596,20 +2627,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillNonZeroColorRGBName(string path, int frameId, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillNonZeroColorRGBName(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillNonZeroColorRGBNameD(string path, double frameId, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillNonZeroColorRGBNameD(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2634,20 +2665,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillRandomColorsAllFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillRandomColorsAllFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillRandomColorsAllFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillRandomColorsAllFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2672,20 +2703,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillRandomColorsBlackAndWhiteAllFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillRandomColorsBlackAndWhiteAllFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillRandomColorsBlackAndWhiteAllFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillRandomColorsBlackAndWhiteAllFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2694,20 +2725,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillRandomColorsBlackAndWhiteName(string path, int frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillRandomColorsBlackAndWhiteName(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillRandomColorsBlackAndWhiteNameD(string path, double frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillRandomColorsBlackAndWhiteNameD(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2716,20 +2747,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillRandomColorsName(string path, int frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillRandomColorsName(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillRandomColorsNameD(string path, double frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillRandomColorsNameD(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2754,20 +2785,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdColorsAllFramesName(string path, int threshold, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdColorsAllFramesName(lp_Path, threshold, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdColorsAllFramesNameD(string path, double threshold, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdColorsAllFramesNameD(lp_Path, threshold, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2784,20 +2815,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdColorsAllFramesRGBName(string path, int threshold, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdColorsAllFramesRGBName(lp_Path, threshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdColorsAllFramesRGBNameD(string path, double threshold, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdColorsAllFramesRGBNameD(lp_Path, threshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2816,20 +2847,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdColorsMinMaxAllFramesRGBName(string path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdColorsMinMaxAllFramesRGBName(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdColorsMinMaxAllFramesRGBNameD(string path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdColorsMinMaxAllFramesRGBNameD(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2848,20 +2879,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdColorsMinMaxRGBName(string path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdColorsMinMaxRGBName(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdColorsMinMaxRGBNameD(string path, double frameId, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdColorsMinMaxRGBNameD(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2870,20 +2901,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdColorsName(string path, int frameId, int threshold, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdColorsName(lp_Path, frameId, threshold, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdColorsNameD(string path, double frameId, double threshold, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdColorsNameD(lp_Path, frameId, threshold, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2900,20 +2931,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdColorsRGBName(string path, int frameId, int threshold, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdColorsRGBName(lp_Path, frameId, threshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdColorsRGBNameD(string path, double frameId, double threshold, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdColorsRGBNameD(lp_Path, frameId, threshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2930,20 +2961,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdRGBColorsAllFramesRGBName(string path, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdRGBColorsAllFramesRGBName(lp_Path, redThreshold, greenThreshold, blueThreshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdRGBColorsAllFramesRGBNameD(string path, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdRGBColorsAllFramesRGBNameD(lp_Path, redThreshold, greenThreshold, blueThreshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2960,20 +2991,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillThresholdRGBColorsRGBName(string path, int frameId, int redThreshold, int greenThreshold, int blueThreshold, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillThresholdRGBColorsRGBName(lp_Path, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillThresholdRGBColorsRGBNameD(string path, double frameId, double redThreshold, double greenThreshold, double blueThreshold, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillThresholdRGBColorsRGBNameD(lp_Path, frameId, redThreshold, greenThreshold, blueThreshold, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -2998,20 +3029,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillZeroColorAllFramesName(string path, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillZeroColorAllFramesName(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillZeroColorAllFramesNameD(string path, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillZeroColorAllFramesNameD(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3028,20 +3059,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillZeroColorAllFramesRGBName(string path, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillZeroColorAllFramesRGBName(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillZeroColorAllFramesRGBNameD(string path, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillZeroColorAllFramesRGBNameD(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3050,20 +3081,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillZeroColorName(string path, int frameId, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillZeroColorName(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillZeroColorNameD(string path, double frameId, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillZeroColorNameD(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3080,20 +3111,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void FillZeroColorRGBName(string path, int frameId, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginFillZeroColorRGBName(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double FillZeroColorRGBNameD(string path, double frameId, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginFillZeroColorRGBNameD(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3113,10 +3144,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int Get1DColorName(string path, int frameId, int led)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGet1DColorName(lp_Path, frameId, led);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3124,10 +3155,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double Get1DColorNameD(string path, double frameId, double led)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGet1DColorNameD(lp_Path, frameId, led);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3149,10 +3180,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int Get2DColorName(string path, int frameId, int row, int column)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGet2DColorName(lp_Path, frameId, row, column);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3160,10 +3191,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double Get2DColorNameD(string path, double frameId, double row, double column)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGet2DColorNameD(lp_Path, frameId, row, column);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3171,10 +3202,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int GetAnimation(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			int result = PluginGetAnimation(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 			return result;
 		}
 		/// <summary>
@@ -3190,10 +3221,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double GetAnimationD(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			double result = PluginGetAnimationD(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 			return result;
 		}
 		/// <summary>
@@ -3230,10 +3261,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int GetCurrentFrameName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGetCurrentFrameName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3241,10 +3272,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double GetCurrentFrameNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGetCurrentFrameNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3264,10 +3295,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int GetDeviceName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGetDeviceName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3275,10 +3306,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double GetDeviceNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGetDeviceNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3296,10 +3327,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int GetDeviceTypeName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGetDeviceTypeName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3307,10 +3338,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double GetDeviceTypeNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGetDeviceTypeNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3342,10 +3373,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int GetFrameCountName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGetFrameCountName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3353,10 +3384,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double GetFrameCountNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGetFrameCountNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3373,10 +3404,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double GetKeyColorD(string path, double frameId, double rzkey)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginGetKeyColorD(lp_Path, frameId, rzkey);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3385,10 +3416,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int GetKeyColorName(string path, int frameId, int rzkey)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginGetKeyColorName(lp_Path, frameId, rzkey);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3510,10 +3541,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool HasAnimationLoopName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			bool result = PluginHasAnimationLoopName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3521,10 +3552,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double HasAnimationLoopNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginHasAnimationLoopNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3568,20 +3599,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void InsertDelayName(string path, int frameId, int delay)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginInsertDelayName(lp_Path, frameId, delay);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double InsertDelayNameD(string path, double frameId, double delay)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginInsertDelayNameD(lp_Path, frameId, delay);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3598,20 +3629,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void InsertFrameName(string path, int sourceFrame, int targetFrame)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginInsertFrameName(lp_Path, sourceFrame, targetFrame);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double InsertFrameNameD(string path, double sourceFrame, double targetFrame)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginInsertFrameNameD(lp_Path, sourceFrame, targetFrame);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3634,20 +3665,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void InvertColorsAllFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginInvertColorsAllFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double InvertColorsAllFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginInvertColorsAllFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3656,20 +3687,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void InvertColorsName(string path, int frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginInvertColorsName(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double InvertColorsNameD(string path, double frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginInvertColorsNameD(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3685,10 +3716,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool IsAnimationPausedName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			bool result = PluginIsAnimationPausedName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3696,10 +3727,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double IsAnimationPausedNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginIsAnimationPausedNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3779,10 +3810,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool IsPlayingName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			bool result = PluginIsPlayingName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3790,10 +3821,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double IsPlayingNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginIsPlayingNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3853,20 +3884,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void LoadAnimationName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginLoadAnimationName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Load a composite set of animations.
 		/// </summary>
 		public static void LoadComposite(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			PluginLoadComposite(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 		}
 		/// <summary>
 		/// Make a blank animation for the length of the frame count. Frame duration 
@@ -3884,20 +3915,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MakeBlankFramesName(string path, int frameCount, float duration, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMakeBlankFramesName(lp_Path, frameCount, duration, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MakeBlankFramesNameD(string path, double frameCount, double duration, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMakeBlankFramesNameD(lp_Path, frameCount, duration, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3925,20 +3956,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MakeBlankFramesRandomBlackAndWhiteName(string path, int frameCount, float duration)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMakeBlankFramesRandomBlackAndWhiteName(lp_Path, frameCount, duration);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MakeBlankFramesRandomBlackAndWhiteNameD(string path, double frameCount, double duration)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMakeBlankFramesRandomBlackAndWhiteNameD(lp_Path, frameCount, duration);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3948,20 +3979,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MakeBlankFramesRandomName(string path, int frameCount, float duration)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMakeBlankFramesRandomName(lp_Path, frameCount, duration);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MakeBlankFramesRandomNameD(string path, double frameCount, double duration)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMakeBlankFramesRandomNameD(lp_Path, frameCount, duration);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -3980,20 +4011,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MakeBlankFramesRGBName(string path, int frameCount, float duration, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMakeBlankFramesRGBName(lp_Path, frameCount, duration, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MakeBlankFramesRGBNameD(string path, double frameCount, double duration, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMakeBlankFramesRGBNameD(lp_Path, frameCount, duration, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4031,20 +4062,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyColorLerpAllFramesName(string path, int color1, int color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyColorLerpAllFramesName(lp_Path, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyColorLerpAllFramesNameD(string path, double color1, double color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyColorLerpAllFramesNameD(lp_Path, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4075,20 +4106,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyIntensityAllFramesName(string path, float intensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyIntensityAllFramesName(lp_Path, intensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyIntensityAllFramesNameD(string path, double intensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyIntensityAllFramesNameD(lp_Path, intensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4105,20 +4136,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyIntensityAllFramesRGBName(string path, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyIntensityAllFramesRGBName(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyIntensityAllFramesRGBNameD(string path, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyIntensityAllFramesRGBNameD(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4143,20 +4174,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyIntensityColorAllFramesName(string path, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyIntensityColorAllFramesName(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyIntensityColorAllFramesNameD(string path, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyIntensityColorAllFramesNameD(lp_Path, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4165,20 +4196,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyIntensityColorName(string path, int frameId, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyIntensityColorName(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyIntensityColorNameD(string path, double frameId, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyIntensityColorNameD(lp_Path, frameId, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4189,20 +4220,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyIntensityName(string path, int frameId, float intensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyIntensityName(lp_Path, frameId, intensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyIntensityNameD(string path, double frameId, double intensity)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyIntensityNameD(lp_Path, frameId, intensity);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4219,20 +4250,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyIntensityRGBName(string path, int frameId, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyIntensityRGBName(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyIntensityRGBNameD(string path, double frameId, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyIntensityRGBNameD(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4260,20 +4291,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyNonZeroTargetColorLerpAllFramesName(string path, int color1, int color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyNonZeroTargetColorLerpAllFramesName(lp_Path, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyNonZeroTargetColorLerpAllFramesNameD(string path, double color1, double color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyNonZeroTargetColorLerpAllFramesNameD(lp_Path, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4292,20 +4323,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyNonZeroTargetColorLerpAllFramesRGBName(string path, int red1, int green1, int blue1, int red2, int green2, int blue2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyNonZeroTargetColorLerpAllFramesRGBName(lp_Path, red1, green1, blue1, red2, green2, blue2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyNonZeroTargetColorLerpAllFramesRGBNameD(string path, double red1, double green1, double blue1, double red2, double green2, double blue2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyNonZeroTargetColorLerpAllFramesRGBNameD(lp_Path, red1, green1, blue1, red2, green2, blue2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4333,20 +4364,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyTargetColorLerpAllFramesName(string path, int color1, int color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyTargetColorLerpAllFramesName(lp_Path, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyTargetColorLerpAllFramesNameD(string path, double color1, double color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyTargetColorLerpAllFramesNameD(lp_Path, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4363,20 +4394,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyTargetColorLerpAllFramesRGBName(string path, int red1, int green1, int blue1, int red2, int green2, int blue2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyTargetColorLerpAllFramesRGBName(lp_Path, red1, green1, blue1, red2, green2, blue2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double MultiplyTargetColorLerpAllFramesRGBNameD(string path, double red1, double green1, double blue1, double red2, double green2, double blue2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginMultiplyTargetColorLerpAllFramesRGBNameD(lp_Path, red1, green1, blue1, red2, green2, blue2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4386,10 +4417,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void MultiplyTargetColorLerpName(string path, int frameId, int color1, int color2)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginMultiplyTargetColorLerpName(lp_Path, frameId, color1, color2);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Offset all colors in the frame using the RGB offset. Use the range of -255 
@@ -4416,20 +4447,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void OffsetColorsAllFramesName(string path, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginOffsetColorsAllFramesName(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double OffsetColorsAllFramesNameD(string path, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOffsetColorsAllFramesNameD(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4439,20 +4470,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void OffsetColorsName(string path, int frameId, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginOffsetColorsName(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double OffsetColorsNameD(string path, double frameId, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOffsetColorsNameD(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4483,20 +4514,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void OffsetNonZeroColorsAllFramesName(string path, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginOffsetNonZeroColorsAllFramesName(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double OffsetNonZeroColorsAllFramesNameD(string path, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOffsetNonZeroColorsAllFramesNameD(lp_Path, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4507,20 +4538,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void OffsetNonZeroColorsName(string path, int frameId, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginOffsetNonZeroColorsName(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double OffsetNonZeroColorsNameD(string path, double frameId, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOffsetNonZeroColorsNameD(lp_Path, frameId, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4530,10 +4561,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int OpenAnimation(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginOpenAnimation(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4541,10 +4572,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double OpenAnimationD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOpenAnimationD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4554,12 +4585,12 @@ namespace ChromaSDK
 		/// upon success. Returns negative one if there was a failure. The animation 
 		/// id is used in most of the API methods.
 		/// </summary>
-		public static int OpenAnimationFromMemory(const BYTE* data, string name)
+		public static int OpenAnimationFromMemory(byte[] data, string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			int result = PluginOpenAnimationFromMemory(data, lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 			return result;
 		}
 		/// <summary>
@@ -4568,10 +4599,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int OpenEditorDialog(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginOpenEditorDialog(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4580,10 +4611,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int OpenEditorDialogAndPlay(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginOpenEditorDialogAndPlay(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4591,10 +4622,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double OpenEditorDialogAndPlayD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOpenEditorDialogAndPlayD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4602,10 +4633,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static double OpenEditorDialogD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginOpenEditorDialogD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4632,10 +4663,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void OverrideFrameDurationName(string path, float duration)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginOverrideFrameDurationName(lp_Path, duration);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Pause the current animation referenced by id.
@@ -4649,20 +4680,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void PauseAnimationName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginPauseAnimationName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double PauseAnimationNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginPauseAnimationNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4699,20 +4730,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void PlayAnimationFrameName(string path, int frameId, bool loop)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginPlayAnimationFrameName(lp_Path, frameId, loop);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double PlayAnimationFrameNameD(string path, double frameId, double loop)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginPlayAnimationFrameNameD(lp_Path, frameId, loop);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4731,20 +4762,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void PlayAnimationName(string path, bool loop)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginPlayAnimationName(lp_Path, loop);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double PlayAnimationNameD(string path, double loop)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginPlayAnimationNameD(lp_Path, loop);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4754,20 +4785,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void PlayComposite(string name, bool loop)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			PluginPlayComposite(lp_Name, loop);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double PlayCompositeD(string name, double loop)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			double result = PluginPlayCompositeD(lp_Name, loop);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 			return result;
 		}
 		/// <summary>
@@ -4794,10 +4825,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void PreviewFrameName(string path, int frameIndex)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginPreviewFrameName(lp_Path, frameIndex);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Reduce the frames of the animation by removing every nth element. Animation 
@@ -4813,20 +4844,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void ReduceFramesName(string path, int n)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginReduceFramesName(lp_Path, n);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double ReduceFramesNameD(string path, double n)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginReduceFramesNameD(lp_Path, n);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4850,20 +4881,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void ResumeAnimationName(string path, bool loop)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginResumeAnimationName(lp_Path, loop);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double ResumeAnimationNameD(string path, double loop)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginResumeAnimationNameD(lp_Path, loop);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4890,20 +4921,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void ReverseAllFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginReverseAllFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double ReverseAllFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginReverseAllFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4911,10 +4942,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int SaveAnimation(int animationId, string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginSaveAnimation(animationId, lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4922,13 +4953,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static int SaveAnimationName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			int result = PluginSaveAnimationName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -4947,20 +4978,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void Set1DColorName(string path, int frameId, int led, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSet1DColorName(lp_Path, frameId, led, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double Set1DColorNameD(string path, double frameId, double led, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSet1DColorNameD(lp_Path, frameId, led, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -4981,20 +5012,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void Set2DColorName(string path, int frameId, int row, int column, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSet2DColorName(lp_Path, frameId, row, column, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double Set2DColorNameD(string path, double frameId, double rowColumnIndex, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSet2DColorNameD(lp_Path, frameId, rowColumnIndex, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5011,20 +5042,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetChromaCustomColorAllFramesName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetChromaCustomColorAllFramesName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetChromaCustomColorAllFramesNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetChromaCustomColorAllFramesNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5043,20 +5074,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetChromaCustomFlagName(string path, bool flag)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetChromaCustomFlagName(lp_Path, flag);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetChromaCustomFlagNameD(string path, double flag)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetChromaCustomFlagNameD(lp_Path, flag);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5071,20 +5102,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetCurrentFrameName(string path, int frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetCurrentFrameName(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetCurrentFrameNameD(string path, double frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetCurrentFrameNameD(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5152,10 +5183,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetIdleAnimationName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetIdleAnimationName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set animation key to a static color for the given frame.
@@ -5178,20 +5209,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyColorAllFramesName(string path, int rzkey, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyColorAllFramesName(lp_Path, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyColorAllFramesNameD(string path, double rzkey, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyColorAllFramesNameD(lp_Path, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5208,20 +5239,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyColorAllFramesRGBName(string path, int rzkey, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyColorAllFramesRGBName(lp_Path, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyColorAllFramesRGBNameD(string path, double rzkey, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyColorAllFramesRGBNameD(lp_Path, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5229,20 +5260,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyColorName(string path, int frameId, int rzkey, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyColorName(lp_Path, frameId, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyColorNameD(string path, double frameId, double rzkey, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyColorNameD(lp_Path, frameId, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5259,20 +5290,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyColorRGBName(string path, int frameId, int rzkey, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyColorRGBName(lp_Path, frameId, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyColorRGBNameD(lp_Path, frameId, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5289,20 +5320,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyNonZeroColorName(string path, int frameId, int rzkey, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyNonZeroColorName(lp_Path, frameId, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyNonZeroColorNameD(string path, double frameId, double rzkey, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyNonZeroColorNameD(lp_Path, frameId, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5319,20 +5350,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyNonZeroColorRGBName(string path, int frameId, int rzkey, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyNonZeroColorRGBName(lp_Path, frameId, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyNonZeroColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyNonZeroColorRGBNameD(lp_Path, frameId, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5341,10 +5372,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyRowColumnColorName(string path, int frameId, int row, int column, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyRowColumnColorName(lp_Path, frameId, row, column, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame. Animation 
@@ -5368,10 +5399,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysColorAllFramesName(string path, int[] rzkeys, int keyCount, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysColorAllFramesName(lp_Path, rzkeys, keyCount, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for all frames. Animation 
@@ -5387,20 +5418,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysColorAllFramesRGBName(string path, int[] rzkeys, int keyCount, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysColorAllFramesRGBName(lp_Path, rzkeys, keyCount, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame.
 		/// </summary>
 		public static void SetKeysColorName(string path, int frameId, int[] rzkeys, int keyCount, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysColorName(lp_Path, frameId, rzkeys, keyCount, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame. Animation 
@@ -5416,10 +5447,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysColorRGBName(string path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysColorRGBName(lp_Path, frameId, rzkeys, keyCount, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame if 
@@ -5443,10 +5474,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysNonZeroColorAllFramesName(string path, int[] rzkeys, int keyCount, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysNonZeroColorAllFramesName(lp_Path, rzkeys, keyCount, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame if 
@@ -5454,10 +5485,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysNonZeroColorName(string path, int frameId, int[] rzkeys, int keyCount, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysNonZeroColorName(lp_Path, frameId, rzkeys, keyCount, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame where 
@@ -5473,10 +5504,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysNonZeroColorRGBName(string path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysNonZeroColorRGBName(lp_Path, frameId, rzkeys, keyCount, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame where 
@@ -5500,10 +5531,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysZeroColorAllFramesName(string path, int[] rzkeys, int keyCount, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysZeroColorAllFramesName(lp_Path, rzkeys, keyCount, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for all frames where the 
@@ -5519,10 +5550,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysZeroColorAllFramesRGBName(string path, int[] rzkeys, int keyCount, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysZeroColorAllFramesRGBName(lp_Path, rzkeys, keyCount, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame where 
@@ -5530,10 +5561,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysZeroColorName(string path, int frameId, int[] rzkeys, int keyCount, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysZeroColorName(lp_Path, frameId, rzkeys, keyCount, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set an array of animation keys to a static color for the given frame where 
@@ -5549,10 +5580,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeysZeroColorRGBName(string path, int frameId, int[] rzkeys, int keyCount, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeysZeroColorRGBName(lp_Path, frameId, rzkeys, keyCount, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Set animation key to a static color for the given frame where the color 
@@ -5568,20 +5599,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyZeroColorName(string path, int frameId, int rzkey, int color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyZeroColorName(lp_Path, frameId, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyZeroColorNameD(string path, double frameId, double rzkey, double color)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyZeroColorNameD(lp_Path, frameId, rzkey, color);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5598,20 +5629,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SetKeyZeroColorRGBName(string path, int frameId, int rzkey, int red, int green, int blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSetKeyZeroColorRGBName(lp_Path, frameId, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SetKeyZeroColorRGBNameD(string path, double frameId, double rzkey, double red, double green, double blue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSetKeyZeroColorRGBNameD(lp_Path, frameId, rzkey, red, green, blue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5691,20 +5722,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void StopAnimationName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginStopAnimationName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double StopAnimationNameD(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginStopAnimationNameD(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -5731,20 +5762,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void StopComposite(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			PluginStopComposite(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double StopCompositeD(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			double result = PluginStopCompositeD(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 			return result;
 		}
 		/// <summary>
@@ -5777,26 +5808,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractNonZeroAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginSubtractNonZeroAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -5815,26 +5846,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractNonZeroAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -5843,13 +5874,13 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroAllKeysName(string sourceAnimation, string targetAnimation, int frameId)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// Subtract the source color from the target where color is not black for the 
@@ -5867,26 +5898,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractNonZeroAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginSubtractNonZeroAllKeysOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -5903,26 +5934,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroTargetAllKeysAllFramesName(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroTargetAllKeysAllFramesName(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractNonZeroTargetAllKeysAllFramesNameD(string sourceAnimation, string targetAnimation)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginSubtractNonZeroTargetAllKeysAllFramesNameD(lp_SourceAnimation, lp_TargetAnimation);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -5941,26 +5972,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroTargetAllKeysAllFramesOffsetName(string sourceAnimation, string targetAnimation, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroTargetAllKeysAllFramesOffsetName(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractNonZeroTargetAllKeysAllFramesOffsetNameD(string sourceAnimation, string targetAnimation, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginSubtractNonZeroTargetAllKeysAllFramesOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -5979,26 +6010,26 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractNonZeroTargetAllKeysOffsetName(string sourceAnimation, string targetAnimation, int frameId, int offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			PluginSubtractNonZeroTargetAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractNonZeroTargetAllKeysOffsetNameD(string sourceAnimation, string targetAnimation, double frameId, double offset)
 		{
-			string pathSourceAnimation = GetStreamingPath(sourceAnimation);
-			IntPtr lpSourceAnimation = GetIntPtr(pathSourceAnimation);
-			string pathTargetAnimation = GetStreamingPath(targetAnimation);
-			IntPtr lpTargetAnimation = GetIntPtr(pathTargetAnimation);
+			string str_SourceAnimation = GetStreamingPath(sourceAnimation);
+			IntPtr lp_SourceAnimation = GetPathIntPtr(str_SourceAnimation);
+			string str_TargetAnimation = GetStreamingPath(targetAnimation);
+			IntPtr lp_TargetAnimation = GetPathIntPtr(str_TargetAnimation);
 			double result = PluginSubtractNonZeroTargetAllKeysOffsetNameD(lp_SourceAnimation, lp_TargetAnimation, frameId, offset);
-			FreeIntPtr(lpSourceAnimation);
-			FreeIntPtr(lpTargetAnimation);
+			FreeIntPtr(lp_SourceAnimation);
+			FreeIntPtr(lp_TargetAnimation);
 			return result;
 		}
 		/// <summary>
@@ -6017,20 +6048,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractThresholdColorsMinMaxAllFramesRGBName(string path, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSubtractThresholdColorsMinMaxAllFramesRGBName(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractThresholdColorsMinMaxAllFramesRGBNameD(string path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSubtractThresholdColorsMinMaxAllFramesRGBNameD(lp_Path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -6051,20 +6082,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void SubtractThresholdColorsMinMaxRGBName(string path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginSubtractThresholdColorsMinMaxRGBName(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double SubtractThresholdColorsMinMaxRGBNameD(string path, int frameId, int minThreshold, int minRed, int minGreen, int minBlue, int maxThreshold, int maxRed, int maxGreen, int maxBlue)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginSubtractThresholdColorsMinMaxRGBNameD(lp_Path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -6081,20 +6112,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void TrimEndFramesName(string path, int lastFrameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginTrimEndFramesName(lp_Path, lastFrameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double TrimEndFramesNameD(string path, double lastFrameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginTrimEndFramesNameD(lp_Path, lastFrameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -6109,20 +6140,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void TrimFrameName(string path, int frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginTrimFrameName(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double TrimFrameNameD(string path, double frameId)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginTrimFrameNameD(lp_Path, frameId);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -6139,20 +6170,20 @@ namespace ChromaSDK
 		/// </summary>
 		public static void TrimStartFramesName(string path, int numberOfFrames)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginTrimStartFramesName(lp_Path, numberOfFrames);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// D suffix for limited data types.
 		/// </summary>
 		public static double TrimStartFramesNameD(string path, double numberOfFrames)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			double result = PluginTrimStartFramesNameD(lp_Path, numberOfFrames);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -6195,10 +6226,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void UnloadAnimationName(string path)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginUnloadAnimationName(lp_Path);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		/// <summary>
 		/// Unload the the composite set of animation effects. Reference the animation 
@@ -6206,10 +6237,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void UnloadComposite(string name)
 		{
-			string pathName = GetStreamingPath(name);
-			IntPtr lpName = GetIntPtr(pathName);
+			string str_Name = GetStreamingPath(name);
+			IntPtr lp_Name = GetPathIntPtr(str_Name);
 			PluginUnloadComposite(lp_Name);
-			FreeIntPtr(lpName);
+			FreeIntPtr(lp_Name);
 		}
 		/// <summary>
 		/// Unload the Razer Chroma SDK Library before exiting the application.
@@ -6251,10 +6282,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static int UpdateFrameName(string path, int frameIndex, float duration, int[] colors, int length)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			int result = PluginUpdateFrameName(lp_Path, frameIndex, duration, colors, length);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 			return result;
 		}
 		/// <summary>
@@ -6290,10 +6321,10 @@ namespace ChromaSDK
 		/// </summary>
 		public static void UsePreloadingName(string path, bool flag)
 		{
-			string pathPath = GetStreamingPath(path);
-			IntPtr lpPath = GetIntPtr(pathPath);
+			string str_Path = GetStreamingPath(path);
+			IntPtr lp_Path = GetPathIntPtr(str_Path);
 			PluginUsePreloadingName(lp_Path, flag);
-			FreeIntPtr(lpPath);
+			FreeIntPtr(lp_Path);
 		}
 		#endregion
 
@@ -7162,6 +7193,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamBroadcast(const char* streamId, const char* streamKey);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamBroadcast(IntPtr streamId, IntPtr streamKey);
 		/// <summary>
 		/// End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
@@ -7169,6 +7201,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamBroadcastEnd();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamBroadcastEnd();
 		/// <summary>
 		/// shortcode: Pass the address of a preallocated character buffer to get the 
@@ -7193,6 +7226,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamGetFocus(char* focus, unsigned char* length);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamGetFocus(IntPtr focus, out byte length);
 		/// <summary>
 		/// Intended for Cloud Gaming Platforms, store the stream id to persist in user 
@@ -7248,6 +7282,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamReleaseShortcode(const char* shortcode);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamReleaseShortcode(IntPtr shortcode);
 		/// <summary>
 		/// The focus is a null terminated string. Set the focus identifer for the application 
@@ -7256,6 +7291,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamSetFocus(const char* focus);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamSetFocus(IntPtr focus);
 		/// <summary>
 		/// Returns true if the Chroma streaming is supported. If false is returned, 
@@ -7263,6 +7299,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamSupportsStreaming();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamSupportsStreaming();
 		/// <summary>
 		/// Begin watching the Chroma RGB data using streamID parameter.  streamId is 
@@ -7271,6 +7308,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamWatch(const char* streamId, unsigned long long timestamp);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamWatch(IntPtr streamId, ulong timestamp);
 		/// <summary>
 		/// End watching Chroma RGB data stream.  StreamGetStatus() should return the 
@@ -7278,6 +7316,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginCoreStreamWatchEnd();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginCoreStreamWatchEnd();
 		/// <summary>
 		/// Direct access to low level API.
@@ -8198,12 +8237,14 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginHasAnimationLoop(int animationId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginHasAnimationLoop(int animationId);
 		/// <summary>
 		/// Check if the animation has loop enabled referenced by name.
 		/// EXPORT_API bool PluginHasAnimationLoopName(const char* path);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginHasAnimationLoopName(IntPtr path);
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8315,12 +8356,14 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsAnimationPaused(int animationId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsAnimationPaused(int animationId);
 		/// <summary>
 		/// Check if the animation is paused referenced by name.
 		/// EXPORT_API bool PluginIsAnimationPausedName(const char* path);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsAnimationPausedName(IntPtr path);
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8334,6 +8377,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsDialogOpen();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsDialogOpen();
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8347,6 +8391,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsInitialized();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsInitialized();
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8359,6 +8404,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsPlatformSupported();
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsPlatformSupported();
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8374,6 +8420,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsPlaying(int animationId);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsPlaying(int animationId);
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8389,6 +8436,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsPlayingName(const char* path);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsPlayingName(IntPtr path);
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8403,6 +8451,7 @@ namespace ChromaSDK
 		/// EXPORT_API bool PluginIsPlayingType(int deviceType, int device);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
+		[return: MarshalAs(UnmanagedType.I1)]
 		private static extern bool PluginIsPlayingType(int deviceType, int device);
 		/// <summary>
 		/// D suffix for limited data types.
@@ -8926,7 +8975,7 @@ namespace ChromaSDK
 		/// EXPORT_API int PluginOpenAnimationFromMemory(const BYTE* data, const char* name);
 		/// </summary>
 		[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
-		private static extern int PluginOpenAnimationFromMemory(const BYTE* data, IntPtr name);
+		private static extern int PluginOpenAnimationFromMemory(byte[] data, IntPtr name);
 		/// <summary>
 		/// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
 		/// upon success. Returns negative one if there was a failure.

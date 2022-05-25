@@ -43,18 +43,57 @@ namespace ChromaAPISync
                     Output(sw, "\t\t{0}", "{");
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
                     {
-                        if (argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "char*")
+                        if (argInfo.StrType == "char*" ||
+                            argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "const wchar_t*")
                         {
-                            string pathArg = string.Format("path{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(sw, "\t\t\tstring {0} = GetStreamingPath({1});",
-                                pathArg,
-                                argInfo.Name);
+                            string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
+                            switch (argInfo.Name)
+                            {
+                                case "shortcode":
+                                case "platform":
+                                case "title":
+                                    Output(sw, "\t\t\tstring {0} = {1};",
+                                        pathArg,
+                                        argInfo.Name);
+                                    break;
+                                default:
+                                    Output(sw, "\t\t\tstring {0} = GetStreamingPath({1});",
+                                        pathArg,
+                                        argInfo.Name);
+                                    break;
+                            }
 
-                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(sw, "\t\t\tIntPtr {0} = GetIntPtr({1});",
+                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
+                            if (argInfo.StrType == "char*")
+                            {
+                                Output(sw, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
                                 lpArg,
                                 pathArg);
+                            }
+                            else if (argInfo.StrType == "const char*")
+                            {
+                                if (argInfo.Name.ToUpper().Contains("PATH") ||
+                                    argInfo.Name.ToUpper().Contains("ANIMATION") ||
+                                    argInfo.Name.ToUpper().Contains("NAME"))
+                                {
+                                    Output(sw, "\t\t\tIntPtr {0} = GetPathIntPtr({1});",
+                                        lpArg,
+                                        pathArg);
+                                }
+                                else
+                                {
+                                    Output(sw, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
+                                        lpArg,
+                                        pathArg);
+                                }
+                            }
+                            else if (argInfo.StrType == "const wchar_t*")
+                            {
+                                Output(sw, "\t\t\tIntPtr {0} = GetUnicodeIntPtr({1});",
+                                    lpArg,
+                                    pathArg);
+                            }
 
                         }
                     }
@@ -84,10 +123,20 @@ namespace ChromaAPISync
 
                     foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
                     {
-                        if (argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "char*")
+                        if (argInfo.StrType == "char*" ||
+                            argInfo.StrType == "const char*" ||
+                            argInfo.StrType == "const wchar_t*")
                         {
-                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
+                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
+
+                            if (argInfo.StrType == "char*")
+                            {
+                                Output(sw, "\t\t\tif ({0} != IntPtr.Zero)", lpArg);
+                                Output(sw, "\t\t\t{0}", "{");
+                                Output(sw, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1});", argInfo.Name, lpArg);
+                                Output(sw, "\t\t\t{0}", "}");
+                            }
+
                             Output(sw, "\t\t\tFreeIntPtr({0});",
                                 lpArg);
 
@@ -136,8 +185,14 @@ namespace ChromaAPISync
 
                     Output(sw, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
 
+                    string csReturnType = ChangeToManagedImportType(methodInfo, methodInfo.ReturnType);
+
+                    if (csReturnType == "bool")
+                    {
+                        Output(sw, "\t\t{0}", "[return: MarshalAs(UnmanagedType.I1)]");
+                    }
                     Output(sw, "\t\tprivate static extern {0} Plugin{1}({2});",
-                        ChangeToManagedImportType(methodInfo, methodInfo.ReturnType),
+                        csReturnType,
                         methodInfo.Name,
                         ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
                 }
