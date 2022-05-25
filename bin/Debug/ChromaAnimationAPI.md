@@ -565,8 +565,8 @@ Adds a frame to the `Chroma` animation and sets the `duration` (in seconds).
 The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
 the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
-size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
-success. Returns -1 upon failure.
+size should be `MAX ROW` times `MAX COLUMN`. Returns the animation id upon 
+success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -1020,9 +1020,9 @@ ChromaAnimationAPI::CloseAll();
 **PluginCloseAnimation**
 
 Closes the `Chroma` animation to free up resources referenced by id. Returns 
-the animation id upon success. Returns -1 upon failure. This might be used 
-while authoring effects if there was a change necessitating re-opening 
-the animation. The animation id can no longer be used once closed.
+the animation id upon success. Returns negative one upon failure. This 
+might be used while authoring effects if there was a change necessitating 
+re-opening the animation. The animation id can no longer be used once closed.
 
 ```C++
 // DLL Interface
@@ -2890,10 +2890,10 @@ RZRESULT result = ChromaAnimationAPI::CoreUnInit();
 Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
 `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, respective 
-to the `deviceType`. Returns the animation id upon success. Returns -1 
-upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
-at the given path. Returns the animation id upon success. Returns -1 upon 
-failure.
+to the `deviceType`. Returns the animation id upon success. Returns negative 
+one upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
+at the given path. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```C++
 // DLL Interface
@@ -2913,8 +2913,8 @@ Creates a `Chroma` animation in memory without creating a file. The `deviceType`
 parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
 uses `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, 
 respective to the `deviceType`. Returns the animation id upon success. 
-Returns -1 upon failure. Returns the animation id upon success. Returns 
--1 upon failure.
+Returns negative one upon failure. Returns the animation id upon success. 
+Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4659,7 +4659,7 @@ double result = ChromaAnimationAPI::GetCurrentFrameNameD(const char* path);
 
 Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 animation respective to the `deviceType`, as an integer upon success. Returns 
--1 upon failure.
+negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4675,7 +4675,7 @@ int result = ChromaAnimationAPI::GetDevice(int animationId);
 
 Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 animation respective to the `deviceType`, as an integer upon success. Returns 
--1 upon failure.
+negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4704,7 +4704,7 @@ double result = ChromaAnimationAPI::GetDeviceNameD(const char* path);
 **PluginGetDeviceType**
 
 Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4719,7 +4719,7 @@ int result = ChromaAnimationAPI::GetDeviceType(int animationId);
 **PluginGetDeviceTypeName**
 
 Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4752,7 +4752,8 @@ The `color` is expected to be an array of the expected dimensions for the
 `deviceType/device`. The `length` parameter is the size of the `color` 
 array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
 For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-COLUMN`. Returns the animation id upon success. Returns -1 upon failure.
+COLUMN`. Returns the animation id upon success. Returns negative one upon 
+failure.
 
 ```C++
 // DLL Interface
@@ -4768,8 +4769,8 @@ int result = ChromaAnimationAPI::GetFrame(
 <a name="PluginGetFrameCount"></a>
 **PluginGetFrameCount**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 
 ```C++
 // DLL Interface
@@ -4783,8 +4784,8 @@ int result = ChromaAnimationAPI::GetFrameCount(int animationId);
 <a name="PluginGetFrameCountName"></a>
 **PluginGetFrameCountName**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 
 ```C++
 // DLL Interface
@@ -4892,7 +4893,7 @@ double result = ChromaAnimationAPI::GetLibraryLoadedStateD();
 **PluginGetMaxColumn**
 
 Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-integer upon success. Returns -1 upon failure.
+integer upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4921,7 +4922,7 @@ double result = ChromaAnimationAPI::GetMaxColumnD(double device);
 **PluginGetMaxLeds**
 
 Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -4950,7 +4951,7 @@ double result = ChromaAnimationAPI::GetMaxLedsD(double device);
 **PluginGetMaxRow**
 
 Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -5579,7 +5580,7 @@ int result = ChromaAnimationAPI::LerpColor(
 **PluginLoadAnimation**
 
 Loads `Chroma` effects so that the animation can be played immediately. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -5846,7 +5847,7 @@ double result = ChromaAnimationAPI::MakeBlankFramesRGBNameD(
 **PluginMirrorHorizontally**
 
 Flips the color grid horizontally for all `Chroma` animation frames. Returns 
-the animation id upon success. Returns -1 upon failure.
+the animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -5862,7 +5863,7 @@ int result = ChromaAnimationAPI::MirrorHorizontally(int animationId);
 
 Flips the color grid vertically for all `Chroma` animation frames. This 
 method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
-animation id upon success. Returns -1 upon failure.
+animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -6713,8 +6714,8 @@ double result = ChromaAnimationAPI::OffsetNonZeroColorsNameD(
 **PluginOpenAnimation**
 
 Opens a `Chroma` animation file so that it can be played. Returns an animation 
-id >= 0 upon success. Returns -1 if there was a failure. The animation 
-id is used in most of the API methods.
+id >= 0 upon success. Returns negative one if there was a failure. The 
+animation id is used in most of the API methods.
 
 ```C++
 // DLL Interface
@@ -6745,8 +6746,8 @@ double result = ChromaAnimationAPI::OpenAnimationD(const char* path);
 Opens a `Chroma` animation data from memory so that it can be played. `Data` 
 is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 be assigned to the animation when loaded. Returns an animation id >= 0 
-upon success. Returns -1 if there was a failure. The animation id is used 
-in most of the API methods.
+upon success. Returns negative one if there was a failure. The animation 
+id is used in most of the API methods.
 
 ```C++
 // DLL Interface
@@ -6763,7 +6764,7 @@ int result = ChromaAnimationAPI::OpenAnimationFromMemory(
 **PluginOpenEditorDialog**
 
 Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
-upon success. Returns -1 if there was a failure.
+upon success. Returns negative one if there was a failure.
 
 ```C++
 // DLL Interface
@@ -6821,7 +6822,8 @@ double result = ChromaAnimationAPI::OpenEditorDialogD(const char* path);
 **PluginOverrideFrameDuration**
 
 Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
-parameter. Returns the animation id upon success. Returns -1 upon failure.
+parameter. Returns the animation id upon success. Returns negative one 
+upon failure.
 
 ```C++
 // DLL Interface
@@ -6913,7 +6915,8 @@ double result = ChromaAnimationAPI::PauseAnimationNameD(const char* path);
 **PluginPlayAnimation**
 
 Plays the `Chroma` animation. This will load the animation, if not loaded 
-previously. Returns the animation id upon success. Returns -1 upon failure.
+previously. Returns the animation id upon success. Returns negative one 
+upon failure.
 
 ```C++
 // DLL Interface
@@ -7080,7 +7083,7 @@ double result = ChromaAnimationAPI::PlayCompositeD(
 **PluginPreviewFrame**
 
 Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -7180,7 +7183,7 @@ double result = ChromaAnimationAPI::ReduceFramesNameD(
 **PluginResetAnimation**
 
 Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -7243,8 +7246,8 @@ double result = ChromaAnimationAPI::ResumeAnimationNameD(
 **PluginReverse**
 
 Reverse the animation frame order of the `Chroma` animation. Returns the 
-animation id upon success. Returns -1 upon failure. Animation is referenced 
-by id.
+animation id upon success. Returns negative one upon failure. Animation 
+is referenced by id.
 
 ```C++
 // DLL Interface
@@ -7602,7 +7605,7 @@ RZRESULT result = ChromaAnimationAPI::SetCustomColorFlag2D(
 
 Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
-the animation id upon success. Returns -1 upon failure.
+the animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -8625,7 +8628,7 @@ ChromaAnimationAPI::StopAll();
 **PluginStopAnimation**
 
 Stops animation playback if in progress. Returns the animation id upon success. 
-Returns -1 upon failure.
+Returns negative one upon failure.
 
 ```C++
 // DLL Interface
@@ -9234,7 +9237,7 @@ double result = ChromaAnimationAPI::SubtractThresholdColorsMinMaxRGBNameD(
 **PluginTrimEndFrames**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by id.
+plus one. Reference the animation by id.
 
 ```C++
 // DLL Interface
@@ -9251,7 +9254,7 @@ ChromaAnimationAPI::TrimEndFrames(
 **PluginTrimEndFramesName**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by name.
+plus one. Reference the animation by name.
 
 ```C++
 // DLL Interface
@@ -9381,7 +9384,8 @@ double result = ChromaAnimationAPI::TrimStartFramesNameD(
 <a name="PluginUninit"></a>
 **PluginUninit**
 
-Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
+Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns negative 
+one upon failure.
 
 ```C++
 // DLL Interface
@@ -9410,7 +9414,8 @@ double result = ChromaAnimationAPI::UninitD();
 **PluginUnloadAnimation**
 
 Unloads `Chroma` effects to free up resources. Returns the animation id 
-upon success. Returns -1 upon failure. Reference the animation by id.
+upon success. Returns negative one upon failure. Reference the animation 
+by id.
 
 ```C++
 // DLL Interface
@@ -9500,8 +9505,8 @@ Updates the `frameIndex` of the `Chroma` animation and sets the `duration`
 for the `deviceType/device`. The `length` parameter is the size of the 
 `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-failure.
+times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```C++
 // DLL Interface
@@ -9522,8 +9527,8 @@ Updates the `frameIndex` of the `Chroma` animation and sets the `duration`
 for the `deviceType/device`. The `length` parameter is the size of the 
 `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-failure.
+times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```C++
 // DLL Interface

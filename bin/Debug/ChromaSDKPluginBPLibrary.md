@@ -1,7 +1,9 @@
+* [AddNonZeroAllKeys](#AddNonZeroAllKeys)
 * [AddNonZeroAllKeysAllFrames](#AddNonZeroAllKeysAllFrames)
 * [AddNonZeroAllKeysAllFramesName](#AddNonZeroAllKeysAllFramesName)
 * [AddNonZeroAllKeysAllFramesOffset](#AddNonZeroAllKeysAllFramesOffset)
 * [AddNonZeroAllKeysAllFramesOffsetName](#AddNonZeroAllKeysAllFramesOffsetName)
+* [AddNonZeroAllKeysName](#AddNonZeroAllKeysName)
 * [AddNonZeroTargetAllKeysAllFrames](#AddNonZeroTargetAllKeysAllFrames)
 * [AddNonZeroTargetAllKeysAllFramesName](#AddNonZeroTargetAllKeysAllFramesName)
 * [AddNonZeroTargetAllKeysAllFramesOffset](#AddNonZeroTargetAllKeysAllFramesOffset)
@@ -193,10 +195,23 @@
 * [StopAll](#StopAll)
 * [StopAnimation](#StopAnimation)
 * [StopAnimationType](#StopAnimationType)
+* [StreamBroadcast](#StreamBroadcast)
+* [StreamBroadcastEnd](#StreamBroadcastEnd)
+* [StreamGetAuthShortcode](#StreamGetAuthShortcode)
+* [StreamGetFocus](#StreamGetFocus)
+* [StreamGetId](#StreamGetId)
+* [StreamGetKey](#StreamGetKey)
+* [StreamGetStatusString](#StreamGetStatusString)
+* [StreamReleaseShortcode](#StreamReleaseShortcode)
+* [StreamSetFocus](#StreamSetFocus)
+* [StreamWatch](#StreamWatch)
+* [StreamWatchEnd](#StreamWatchEnd)
+* [SubtractNonZeroAllKeys](#SubtractNonZeroAllKeys)
 * [SubtractNonZeroAllKeysAllFrames](#SubtractNonZeroAllKeysAllFrames)
 * [SubtractNonZeroAllKeysAllFramesName](#SubtractNonZeroAllKeysAllFramesName)
 * [SubtractNonZeroAllKeysAllFramesOffset](#SubtractNonZeroAllKeysAllFramesOffset)
 * [SubtractNonZeroAllKeysAllFramesOffsetName](#SubtractNonZeroAllKeysAllFramesOffsetName)
+* [SubtractNonZeroAllKeysName](#SubtractNonZeroAllKeysName)
 * [SubtractNonZeroTargetAllKeysAllFrames](#SubtractNonZeroTargetAllKeysAllFrames)
 * [SubtractNonZeroTargetAllKeysAllFramesName](#SubtractNonZeroTargetAllKeysAllFramesName)
 * [SubtractNonZeroTargetAllKeysAllFramesOffset](#SubtractNonZeroTargetAllKeysAllFramesOffset)
@@ -213,6 +228,17 @@
 * [UseIdleAnimations](#UseIdleAnimations)
 * [UsePreloading](#UsePreloading)
 * [UsePreloadingName](#UsePreloadingName)
+
+---
+<a name="AddNonZeroAllKeys"></a>
+**AddNonZeroAllKeys**
+
+Add source color to target where color is not black for frame id, reference 
+source and target by id.
+```c++
+void UChromaSDKPluginBPLibrary::AddNonZeroAllKeys(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 frameId);
+```
 
 ---
 <a name="AddNonZeroAllKeysAllFrames"></a>
@@ -259,6 +285,17 @@ name.
 void UChromaSDKPluginBPLibrary::AddNonZeroAllKeysAllFramesOffsetName(const 
 	FString& sourceAnimationName, const FString& targetAnimationName, int32 
 	offset);
+```
+
+---
+<a name="AddNonZeroAllKeysName"></a>
+**AddNonZeroAllKeysName**
+
+Add source color to target where color is not black for frame id, reference 
+source and target by name.
+```c++
+void UChromaSDKPluginBPLibrary::AddNonZeroAllKeysName(const FString& sourceAnimationName, 
+	const FString& targetAnimationName, int32 frameId);
 ```
 
 ---
@@ -364,9 +401,9 @@ void UChromaSDKPluginBPLibrary::CloseAll();
 **CloseAnimation**
 
 Closes the `Chroma` animation to free up resources referenced by id. Returns 
-the animation id upon success. Returns -1 upon failure. This might be used 
-while authoring effects if there was a change necessitating re-opening 
-the animation. The animation id can no longer be used once closed.
+the animation id upon success. Returns negative one upon failure. This 
+might be used while authoring effects if there was a change necessitating 
+re-opening the animation. The animation id can no longer be used once closed.
 ```c++
 void UChromaSDKPluginBPLibrary::CloseAnimation(const int32 animationId);
 ```
@@ -1365,8 +1402,8 @@ int32 UChromaSDKPluginBPLibrary::GetCurrentFrameName(const FString& animationNam
 <a name="GetFrameCount"></a>
 **GetFrameCount**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 ```c++
 int32 UChromaSDKPluginBPLibrary::GetFrameCount(const int32 animationId);
 ```
@@ -1375,8 +1412,8 @@ int32 UChromaSDKPluginBPLibrary::GetFrameCount(const int32 animationId);
 <a name="GetFrameCountName"></a>
 **GetFrameCountName**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 ```c++
 int32 UChromaSDKPluginBPLibrary::GetFrameCountName(const FString& animationName);
 ```
@@ -1406,7 +1443,7 @@ FLinearColor UChromaSDKPluginBPLibrary::GetKeyColorName(const FString& animation
 **GetMaxColumn**
 
 Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-integer upon success. Returns -1 upon failure.
+integer upon success. Returns negative one upon failure.
 ```c++
 int32 UChromaSDKPluginBPLibrary::GetMaxColumn(EChromaSDKDevice2DEnum::Type 
 	device);
@@ -1417,7 +1454,7 @@ int32 UChromaSDKPluginBPLibrary::GetMaxColumn(EChromaSDKDevice2DEnum::Type
 **GetMaxLeds**
 
 Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 ```c++
 int32 UChromaSDKPluginBPLibrary::GetMaxLeds(EChromaSDKDevice1DEnum::Type 
 	device);
@@ -1428,7 +1465,7 @@ int32 UChromaSDKPluginBPLibrary::GetMaxLeds(EChromaSDKDevice1DEnum::Type
 **GetMaxRow**
 
 Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 ```c++
 int32 UChromaSDKPluginBPLibrary::GetMaxRow(EChromaSDKDevice2DEnum::Type 
 	device);
@@ -1562,7 +1599,7 @@ FLinearColor UChromaSDKPluginBPLibrary::LerpColor(FLinearColor colorParam1,
 **LoadAnimation**
 
 Loads `Chroma` effects so that the animation can be played immediately. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 ```c++
 void UChromaSDKPluginBPLibrary::LoadAnimation(const int32 animationId);
 ```
@@ -1987,10 +2024,10 @@ void UChromaSDKPluginBPLibrary::OffsetNonZeroColorsName(const FString& animation
 **OpenAnimationFromMemory**
 
 Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-is a pointer to byte array of the loaded animation in memory. `Name` will 
+is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 be assigned to the animation when loaded. Returns an animation id >= 0 
-upon success. Returns -1 if there was a failure. The animation id is used 
-in most of the API methods.
+upon success. Returns negative one if there was a failure. The animation 
+id is used in most of the API methods.
 ```c++
 void UChromaSDKPluginBPLibrary::OpenAnimationFromMemory(const TArray<uint8>& 
 	data, const FString& animationName);
@@ -2012,7 +2049,8 @@ void UChromaSDKPluginBPLibrary::OverrideFrameDurationName(const FString&
 **PlayAnimation**
 
 Plays the `Chroma` animation. This will load the animation, if not loaded 
-previously. Returns the animation id upon success. Returns -1 upon failure.
+previously. Returns the animation id upon success. Returns negative one 
+upon failure.
 ```c++
 void UChromaSDKPluginBPLibrary::PlayAnimation(const FString& animationName, 
 	bool loop);
@@ -2035,7 +2073,7 @@ void UChromaSDKPluginBPLibrary::PlayAnimationName(const FString& animationName,
 **PreviewFrame**
 
 Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 ```c++
 int32 UChromaSDKPluginBPLibrary::PreviewFrame(int32 animationId, int32 frameId);
 ```
@@ -2398,7 +2436,7 @@ void UChromaSDKPluginBPLibrary::StopAll();
 **StopAnimation**
 
 Stops animation playback if in progress. Returns the animation id upon success. 
-Returns -1 upon failure.
+Returns negative one upon failure.
 ```c++
 void UChromaSDKPluginBPLibrary::StopAnimation(const FString& animationName);
 ```
@@ -2413,6 +2451,167 @@ it will be stopped.
 ```c++
 void UChromaSDKPluginBPLibrary::StopAnimationType(EChromaSDKDeviceEnum::Type 
 	device);
+```
+
+---
+<a name="StreamBroadcast"></a>
+**StreamBroadcast**
+
+Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
+Intended for Cloud Gaming Platforms,  restore the streaming key when the 
+game instance is launched to continue streaming.  streamId is a null terminated 
+string  streamKey is a null terminated string  StreamGetStatus() should 
+return the READY status to use this method.
+```c++
+void UChromaSDKPluginBPLibrary::StreamBroadcast(const FString& streamId, 
+	const FString& streamKey);
+```
+
+---
+<a name="StreamBroadcastEnd"></a>
+**StreamBroadcastEnd**
+
+End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+status to use this method.
+```c++
+void UChromaSDKPluginBPLibrary::StreamBroadcastEnd();
+```
+
+---
+<a name="StreamGetAuthShortcode"></a>
+**StreamGetAuthShortcode**
+
+shortcode: Pass the address of a preallocated character buffer to get the 
+streaming auth code. The buffer should have a minimum length of 6.  length: 
+Length will return as zero if the streaming auth code could not be obtained. 
+If length is greater than zero, it will be the length of the returned streaming 
+auth code.  Once you have the shortcode, it should be shown to the user 
+so they can associate the stream with their Razer ID  StreamGetStatus() 
+should return the READY status before invoking this method. platform: is 
+the null terminated string that identifies the source of the stream: { 
+GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+that identifies the application or game.
+```c++
+FString UChromaSDKPluginBPLibrary::StreamGetAuthShortcode(const FString& 
+	platform, const FString& title);
+```
+
+---
+<a name="StreamGetFocus"></a>
+**StreamGetFocus**
+
+focus: Pass the address of a preallocated character buffer to get the stream 
+focus. The buffer should have a length of 48  length: Length will return 
+as zero if the stream focus could not be obtained. If length is greater 
+than zero, it will be the length of the returned stream focus.
+```c++
+FString UChromaSDKPluginBPLibrary::StreamGetFocus();
+```
+
+---
+<a name="StreamGetId"></a>
+**StreamGetId**
+
+Intended for Cloud Gaming Platforms, store the stream id to persist in user 
+preferences to continue streaming if the game is suspended or closed. shortcode: 
+The shortcode is a null terminated string. Use the shortcode that authorized 
+the stream to obtain the stream id.  streamId should be a preallocated 
+buffer to get the stream key. The buffer should have a length of 48.  length: 
+Length will return zero if the key could not be obtained. If the length 
+is greater than zero, it will be the length of the returned streaming id. 
+Retrieve the stream id after authorizing the shortcode. The authorization 
+window will expire in 5 minutes. Be sure to save the stream key before 
+the window expires. StreamGetStatus() should return the READY status to 
+use this method.
+```c++
+FString UChromaSDKPluginBPLibrary::StreamGetId(const FString& shortcode);
+```
+
+---
+<a name="StreamGetKey"></a>
+**StreamGetKey**
+
+Intended for Cloud Gaming Platforms, store the streaming key to persist 
+in user preferences to continue streaming if the game is suspended or closed. 
+shortcode: The shortcode is a null terminated string. Use the shortcode 
+that authorized the stream to obtain the stream key.  If the status is 
+in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+the active streamId.  streamKey should be a preallocated buffer to get 
+the stream key. The buffer should have a length of 48.  length: Length 
+will return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming key.  Retrieve 
+the stream key after authorizing the shortcode. The authorization window 
+will expire in 5 minutes. Be sure to save the stream key before the window 
+expires.  StreamGetStatus() should return the READY status to use this 
+method.
+```c++
+FString UChromaSDKPluginBPLibrary::StreamGetKey(const FString& shortcode);
+```
+
+---
+<a name="StreamGetStatusString"></a>
+**StreamGetStatusString**
+
+Convert StreamStatusType to a printable string
+```c++
+FString UChromaSDKPluginBPLibrary::StreamGetStatusString(const EChromaSDKStreamStatusEnum::Type 
+	status);
+```
+
+---
+<a name="StreamReleaseShortcode"></a>
+**StreamReleaseShortcode**
+
+This prevents the stream id and stream key from being obtained through the 
+shortcode. This closes the auth window.  shortcode is a null terminated 
+string.  StreamGetStatus() should return the READY status to use this method. 
+returns success when shortcode has been released
+```c++
+bool UChromaSDKPluginBPLibrary::StreamReleaseShortcode(const FString& shortcode);
+```
+
+---
+<a name="StreamSetFocus"></a>
+**StreamSetFocus**
+
+The focus is a null terminated string. Set the focus identifer for the application 
+designated to automatically change the streaming state.  Returns true on 
+success.
+```c++
+bool UChromaSDKPluginBPLibrary::StreamSetFocus(const FString& streamFocus);
+```
+
+---
+<a name="StreamWatch"></a>
+**StreamWatch**
+
+Begin watching the Chroma RGB data using streamID parameter.  streamId is 
+a null terminated string.  StreamGetStatus() should return the READY status 
+to use this method.
+```c++
+void UChromaSDKPluginBPLibrary::StreamWatch(const FString& streamId, int32 
+	timestamp);
+```
+
+---
+<a name="StreamWatchEnd"></a>
+**StreamWatchEnd**
+
+End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+WATCHING status to use this method.
+```c++
+void UChromaSDKPluginBPLibrary::StreamWatchEnd();
+```
+
+---
+<a name="SubtractNonZeroAllKeys"></a>
+**SubtractNonZeroAllKeys**
+
+Subtract the source color from the target color for the frame where the 
+target color is not black. Source and target are referenced by id.
+```c++
+void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeys(int32 sourceAnimationId, 
+	int32 targetAnimationId, int32 frameId);
 ```
 
 ---
@@ -2460,6 +2659,17 @@ Source and target are referenced by name.
 void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeysAllFramesOffsetName(const 
 	FString& sourceAnimationName, const FString& targetAnimationName, int32 
 	offset);
+```
+
+---
+<a name="SubtractNonZeroAllKeysName"></a>
+**SubtractNonZeroAllKeysName**
+
+Subtract the source color from the target color for the frame where the 
+target color is not black. Source and target are referenced by name.
+```c++
+void UChromaSDKPluginBPLibrary::SubtractNonZeroAllKeysName(const FString& 
+	sourceAnimationName, const FString& targetAnimationName, int32 frameId);
 ```
 
 ---
@@ -2514,7 +2724,7 @@ void UChromaSDKPluginBPLibrary::SubtractNonZeroTargetAllKeysAllFramesOffsetName(
 **TrimEndFrames**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by id.
+plus one. Reference the animation by id.
 ```c++
 void UChromaSDKPluginBPLibrary::TrimEndFrames(int32 animationId, int32 lastFrameId);
 ```
@@ -2524,7 +2734,7 @@ void UChromaSDKPluginBPLibrary::TrimEndFrames(int32 animationId, int32 lastFrame
 **TrimEndFramesName**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by name.
+plus one. Reference the animation by name.
 ```c++
 void UChromaSDKPluginBPLibrary::TrimEndFramesName(const FString& animationName, 
 	int32 lastFrameId);
@@ -2576,7 +2786,8 @@ void UChromaSDKPluginBPLibrary::TrimStartFramesName(const FString& animationName
 **UnloadAnimation**
 
 Unloads `Chroma` effects to free up resources. Returns the animation id 
-upon success. Returns -1 upon failure. Reference the animation by id.
+upon success. Returns negative one upon failure. Reference the animation 
+by id.
 ```c++
 void UChromaSDKPluginBPLibrary::UnloadAnimation(const int32 animationId);
 ```

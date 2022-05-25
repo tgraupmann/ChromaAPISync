@@ -1,5 +1,9 @@
 #pragma region Auto sort blueprint methods
 
+	/*
+	Add source color to target where color is not black for frame id, reference 
+	source and target by id.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "AddNonZeroAllKeys", Keywords = "Copy nonzero color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void AddNonZeroAllKeys(int32 sourceAnimationId, int32 targetAnimationId, int32 frameId);
 
@@ -33,6 +37,10 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "AddNonZeroAllKeysAllFramesOffsetName", Keywords = "Add nonzero color from a source animation to a target animation for all frames"), Category = "ChromaSDK")
 	static void AddNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName, const FString& targetAnimationName, int32 offset);
 
+	/*
+	Add source color to target where color is not black for frame id, reference 
+	source and target by name.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "AddNonZeroAllKeysName", Keywords = "Copy nonzero color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void AddNonZeroAllKeysName(const FString& sourceAnimationName, const FString& targetAnimationName, int32 frameId);
 
@@ -131,9 +139,9 @@
 
 	/*
 	Closes the `Chroma` animation to free up resources referenced by id. Returns 
-	the animation id upon success. Returns -1 upon failure. This might be used 
-	while authoring effects if there was a change necessitating re-opening 
-	the animation. The animation id can no longer be used once closed.
+	the animation id upon success. Returns negative one upon failure. This 
+	might be used while authoring effects if there was a change necessitating 
+	re-opening the animation. The animation id can no longer be used once closed.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "CloseAnimation", Keywords = "Close the *.chroma Animation"), Category = "ChromaSDK")
 	static void CloseAnimation(const int32 animationId);
@@ -821,15 +829,15 @@
 	static int32 GetCurrentFrameName(const FString& animationName);
 
 	/*
-	Returns the frame count of a `Chroma` animation upon success. Returns -1 
-	upon failure.
+	Returns the frame count of a `Chroma` animation upon success. Returns negative 
+	one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetFrameCount", Keywords = "Get the .chroma animation frame count"), Category = "ChromaSDK")
 	static int32 GetFrameCount(const int32 animationId);
 
 	/*
-	Returns the frame count of a `Chroma` animation upon success. Returns -1 
-	upon failure.
+	Returns the frame count of a `Chroma` animation upon success. Returns negative 
+	one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetFrameCountName", Keywords = "Get the .chroma animation frame count"), Category = "ChromaSDK")
 	static int32 GetFrameCountName(const FString& animationName);
@@ -857,21 +865,21 @@
 
 	/*
 	Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-	integer upon success. Returns -1 upon failure.
+	integer upon success. Returns negative one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetMaxColumn", Keywords = "Get the max column size for the device"), Category = "ChromaSDK")
 	static int32 GetMaxColumn(EChromaSDKDevice2DEnum::Type device);
 
 	/*
 	Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetMaxLeds", Keywords = "Get the max led size for the device"), Category = "ChromaSDK")
 	static int32 GetMaxLeds(EChromaSDKDevice1DEnum::Type device);
 
 	/*
 	Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetMaxRow", Keywords = "Get the max row size for the device"), Category = "ChromaSDK")
 	static int32 GetMaxRow(EChromaSDKDevice2DEnum::Type device);
@@ -973,7 +981,7 @@
 
 	/*
 	Loads `Chroma` effects so that the animation can be played immediately. 
-	Returns the animation id upon success. Returns -1 upon failure.
+	Returns the animation id upon success. Returns negative one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "LoadAnimation", Keywords = "Load the *.chroma Animation"), Category = "ChromaSDK")
 	static void LoadAnimation(const int32 animationId);
@@ -1254,10 +1262,10 @@
 
 	/*
 	Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-	is a pointer to byte array of the loaded animation in memory. `Name` will 
+	is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 	be assigned to the animation when loaded. Returns an animation id >= 0 
-	upon success. Returns -1 if there was a failure. The animation id is used 
-	in most of the API methods.
+	upon success. Returns negative one if there was a failure. The animation 
+	id is used in most of the API methods.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "OpenAnimationFromMemory", Keywords = "Open animation from memory"), Category = "ChromaSDK")
 	static void OpenAnimationFromMemory(const TArray<uint8>& data, const FString& animationName);
@@ -1271,7 +1279,8 @@
 
 	/*
 	Plays the `Chroma` animation. This will load the animation, if not loaded 
-	previously. Returns the animation id upon success. Returns -1 upon failure.
+	previously. Returns the animation id upon success. Returns negative one 
+	upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PlayAnimation", Keywords = "Play the *.chroma Animation"), Category = "ChromaSDK")
 	static void PlayAnimation(const FString& animationName, bool loop);
@@ -1292,7 +1301,7 @@
 
 	/*
 	Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-	Returns the animation id upon success. Returns -1 upon failure.
+	Returns the animation id upon success. Returns negative one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PreviewFrame", Keywords = "Display a specific animation frame"), Category = "ChromaSDK")
 	static int32 PreviewFrame(int32 animationId, int32 frameId);
@@ -1527,7 +1536,7 @@
 
 	/*
 	Stops animation playback if in progress. Returns the animation id upon success. 
-	Returns -1 upon failure.
+	Returns negative one upon failure.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StopAnimation", Keywords = "Stop the *.chroma Animation"), Category = "ChromaSDK")
 	static void StopAnimation(const FString& animationName);
@@ -1555,6 +1564,9 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetAuthShortcode", Keywords = "Get Stream Shortcode for Authorization"), Category = "ChromaSDK")
 	static FString StreamGetAuthShortcode(const FString& platform, const FString& title);
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetFocus", Keywords = "Get Stream Focus"), Category = "ChromaSDK")
+	static FString StreamGetFocus();
+
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamGetId", Keywords = "Get Stream Id"), Category = "ChromaSDK")
 	static FString StreamGetId(const FString& shortcode);
 
@@ -1567,12 +1579,19 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamReleaseShortcode", Keywords = "Release Stream Shortcode"), Category = "ChromaSDK")
 	static bool StreamReleaseShortcode(const FString& shortcode);
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamSetFocus", Keywords = "Stream Set Focus"), Category = "ChromaSDK")
+	static bool StreamSetFocus(const FString& streamFocus);
+
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamWatch", Keywords = "Start Chroma Watching"), Category = "ChromaSDK")
 	static void StreamWatch(const FString& streamId, int32 timestamp);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "StreamWatchEnd", Keywords = "End Chroma Watching"), Category = "ChromaSDK")
 	static void StreamWatchEnd();
 
+	/*
+	Subtract the source color from the target color for the frame where the 
+	target color is not black. Source and target are referenced by id.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SubtractNonZeroAllKeys", Keywords = "Copy nonzero color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void SubtractNonZeroAllKeys(int32 sourceAnimationId, int32 targetAnimationId, int32 frameId);
 
@@ -1606,6 +1625,10 @@
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SubtractNonZeroAllKeysAllFramesOffsetName", Keywords = "Remove nonzero color from a source animation to a target animation for all frames"), Category = "ChromaSDK")
 	static void SubtractNonZeroAllKeysAllFramesOffsetName(const FString& sourceAnimationName, const FString& targetAnimationName, int32 offset);
 
+	/*
+	Subtract the source color from the target color for the frame where the 
+	target color is not black. Source and target are referenced by name.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SubtractNonZeroAllKeysName", Keywords = "Copy nonzero color from a source animation to a target animation for a frame"), Category = "ChromaSDK")
 	static void SubtractNonZeroAllKeysName(const FString& sourceAnimationName, const FString& targetAnimationName, int32 frameId);
 
@@ -1650,14 +1673,14 @@
 
 	/*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
-	+ 1. Reference the animation by id.
+	plus one. Reference the animation by id.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "TrimEndFrames", Keywords = "Trim the end of the animation"), Category = "ChromaSDK")
 	static void TrimEndFrames(int32 animationId, int32 lastFrameId);
 
 	/*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
-	+ 1. Reference the animation by name.
+	plus one. Reference the animation by name.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "TrimEndFramesName", Keywords = "Trim the end of the animation"), Category = "ChromaSDK")
 	static void TrimEndFramesName(const FString& animationName, int32 lastFrameId);
@@ -1690,7 +1713,8 @@
 
 	/*
 	Unloads `Chroma` effects to free up resources. Returns the animation id 
-	upon success. Returns -1 upon failure. Reference the animation by id.
+	upon success. Returns negative one upon failure. Reference the animation 
+	by id.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "UnloadAnimation", Keywords = "Unload the *.chroma Animation"), Category = "ChromaSDK")
 	static void UnloadAnimation(const int32 animationId);

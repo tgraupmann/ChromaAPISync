@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChromaAPISync
 {
-    class Converter
+    partial class Converter
     {
         // Collect information from stdafx.h
         private static SortedList<string, MetaMethodInfo> _sMethods = new SortedList<string, MetaMethodInfo>();
@@ -756,6 +756,10 @@ namespace ChromaAPISync
             {
                 result = "byte[]";
             }
+            else if (result == "const BYTE*")
+            {
+                result = "byte[]";
+            }
             else if (result == "const int*")
             {
                 result = "int[]";
@@ -887,6 +891,10 @@ namespace ChromaAPISync
                 result = "int[]";
             }
             else if (result == "const byte*")
+            {
+                result = "byte[]";
+            }
+            else if (result == "const BYTE*")
             {
                 result = "byte[]";
             }
@@ -3066,371 +3074,28 @@ __UNITY_KEY_MAPPING__
     /// </summary>
     /// <param name=""lpData""></param>
     private static void FreeIntPtr(IntPtr lpData)
+    {
+        if (lpData != IntPtr.Zero)
         {
-            if (lpData != IntPtr.Zero)
-            {
-                Marshal.FreeHGlobal(lpData);
-            }
+            Marshal.FreeHGlobal(lpData);
         }
+    }
+
+    public static int UninitAPI()
+    {
+        UnloadLibrarySDK();
+        UnloadLibraryStreamingPlugin();
+
+        return 0;
+    }
+
 __UNITY_GET_STREAMING_PATH__
-#endregion";
+#endregion
+";
 
         private const string FOOTER_UNITY =
 @"  }
 }";
-
-        static bool WriteCSharp(StreamWriter swCSharp)
-        {
-            try
-            {
-                string headerCSharp = HEADER_CSHARP.Replace("__UNITY_INCLUDES__\r\n", string.Empty);
-                headerCSharp = headerCSharp.Replace("__UNITY_DLL_NAME__\r\n", HEADER_CSHARP_DLL_NAME);
-                headerCSharp = headerCSharp.Replace("__UNITY_KEY_MAPPING__\r\n", string.Empty);
-                headerCSharp = headerCSharp.Replace("__UNITY_GET_STREAMING_PATH__\r\n", string.Empty);
-                Output(swCSharp, "{0}", headerCSharp);
-
-                Output(swCSharp, "");
-
-                Output(swCSharp, "\t\t#region Public API Methods");
-
-                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
-                {
-                    MetaMethodInfo methodInfo = method.Value;
-
-                    if (methodInfo.Name == "CoreCreateEffect")
-                    {
-                        if (true)
-                        {
-
-                        }
-                    }
-
-                    Output(swCSharp, "\t\t{0}", "/// <summary>");
-
-                    if (!string.IsNullOrEmpty(methodInfo.Comments))
-                    {
-                        Output(swCSharp, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
-                    }
-
-                    Output(swCSharp, "\t\t{0}", "/// </summary>");
-
-                    Output(swCSharp, "\t\tpublic static {0} {1}({2})",
-                        ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                        methodInfo.Name,
-                        ChangeArgsToManagedTypes(methodInfo));
-
-                    Output(swCSharp, "\t\t{0}", "{");
-                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
-                    {
-                        if (argInfo.StrType == "char*" ||
-                            argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "const wchar_t*")
-                        {
-                            string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swCSharp, "\t\t\tstring {0} = {1};",
-                                pathArg,
-                                argInfo.Name);
-
-                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
-                            if (argInfo.StrType == "char*")
-                            {
-                                Output(swCSharp, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
-                                    lpArg,
-                                    pathArg);
-                            }
-                            else if (argInfo.StrType == "const char*")
-                            {
-                                if (argInfo.Name.ToUpper().Contains("PATH") ||
-                                    argInfo.Name.ToUpper().Contains("ANIMATION") ||
-                                    argInfo.Name.ToUpper().Contains("NAME"))
-                                {
-                                    Output(swCSharp, "\t\t\tIntPtr {0} = GetPathIntPtr({1});",
-                                        lpArg,
-                                        pathArg);
-                                }
-                                else
-                                {
-                                    Output(swCSharp, "\t\t\tIntPtr {0} = GetAsciiIntPtr({1});",
-                                        lpArg,
-                                        pathArg);
-                                }
-                            }
-                            else if (argInfo.StrType == "const wchar_t*")
-                            {
-                                Output(swCSharp, "\t\t\tIntPtr {0} = GetUnicodeIntPtr({1});",
-                                    lpArg,
-                                    pathArg);
-                            }
-
-                        }
-                    }
-                    if (methodInfo.ReturnType == "void")
-                    {
-                        Output(swCSharp, "\t\t\tPlugin{0}({1});",
-                            methodInfo.Name,
-                            RemoveArgTypes(methodInfo));
-                    }
-                    else
-                    {
-                        if (methodInfo.ReturnType == "const char*")
-                        {
-                            Output(swCSharp, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
-                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                                methodInfo.Name,
-                                RemoveArgTypes(methodInfo));
-                        }
-                        else
-                        {
-                            Output(swCSharp, "\t\t\t{0} result = Plugin{1}({2});",
-                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                                methodInfo.Name,
-                                RemoveArgTypes(methodInfo));
-                        }
-                    }
-
-                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
-                    {
-                        if (argInfo.StrType == "char*" || 
-                            argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "const wchar_t*")
-                        {
-                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
-
-                            if (argInfo.StrType == "char*")
-                            {
-                                Output(swCSharp, "\t\t\tif ({0} != IntPtr.Zero)", lpArg);
-                                Output(swCSharp, "\t\t\t{0}", "{");
-                                Output(swCSharp, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1});", argInfo.Name, lpArg);
-                                Output(swCSharp, "\t\t\t{0}", "}");
-                            }
-
-                            Output(swCSharp, "\t\t\tFreeIntPtr({0});",
-                                lpArg);
-
-                        }
-                    }
-
-                    if (methodInfo.ReturnType != "void")
-                    {
-                        Output(swCSharp, "\t\t\treturn result;");
-                    }
-
-                    Output(swCSharp, "\t\t{0}", "}");
-                }
-
-                Output(swCSharp, "\t\t#endregion");
-
-                Output(swCSharp, "");
-
-                Output(swCSharp, "\t\t#region Private DLL Hooks");
-
-                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
-                {
-                    MetaMethodInfo methodInfo = method.Value;
-
-                    if (methodInfo.Name == "CoreCreateEffect")
-                    {
-                        if (true)
-                        {
-
-                        }
-                    }
-
-                    Output(swCSharp, "\t\t{0}", "/// <summary>");
-
-                    if (!string.IsNullOrEmpty(methodInfo.Comments))
-                    {
-                        Output(swCSharp, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
-                    }
-
-                    Output(swCSharp, "\t\t/// EXPORT_API {0} Plugin{1}({2});",
-                        methodInfo.ReturnType,
-                        methodInfo.Name,
-                        methodInfo.Args);
-
-                    Output(swCSharp, "\t\t{0}", "/// </summary>");
-
-                    Output(swCSharp, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
-
-                    string csReturnType = ChangeToManagedImportType(methodInfo, methodInfo.ReturnType);
-
-                    if (csReturnType == "bool")
-                    {
-                        Output(swCSharp, "\t\t{0}", "[return: MarshalAs(UnmanagedType.I1)]");
-                    }
-                    Output(swCSharp, "\t\tprivate static extern {0} Plugin{1}({2});",
-                        csReturnType,
-                        methodInfo.Name,
-                        ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
-                }
-
-                Output(swCSharp, "\t\t#endregion");
-
-                Output(swCSharp, "{0}", FOOTER_UNITY);
-
-                swCSharp.Flush();
-                swCSharp.Close();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                Console.Error.WriteLine("Failed to write unity!");
-                return false;
-            }
-        }
-
-        static bool WriteUnity(StreamWriter swUnity)
-        {
-            try
-            {
-                string headerUnity = HEADER_CSHARP.Replace("__UNITY_INCLUDES__", HEADER_UNITY_INCLUDES);
-                headerUnity = headerUnity.Replace("__UNITY_DLL_NAME__", HEADER_UNITY_DLL_NAME);
-                headerUnity = headerUnity.Replace("__UNITY_KEY_MAPPING__", HEADER_UNITY_KEY_MAPPING);
-                headerUnity = headerUnity.Replace("__UNITY_GET_STREAMING_PATH__", HEADER_UNITY_GET_STREAMING_PATH);
-                Output(swUnity, "{0}", headerUnity);
-
-                Output(swUnity, "");
-
-                Output(swUnity, "\t\t#region Public API Methods");
-
-                Output(swUnity, "\t\tpublic static string _sStreamingAssetPath = string.Empty;");
-
-                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
-                {
-                    MetaMethodInfo methodInfo = method.Value;
-
-                    Output(swUnity, "\t\t{0}", "/// <summary>");
-
-                    if (!string.IsNullOrEmpty(methodInfo.Comments))
-                    {
-                        Output(swUnity, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
-                    }
-
-                    Output(swUnity, "\t\t{0}", "/// </summary>");
-
-                    Output(swUnity, "\t\tpublic static {0} {1}({2})",
-                        ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                        methodInfo.Name,
-                        ChangeArgsToManagedTypes(methodInfo));
-
-                    Output(swUnity, "\t\t{0}", "{");
-                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
-                    {
-                        if (argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "char*")
-                        {
-                            string pathArg = string.Format("path{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swUnity, "\t\t\tstring {0} = GetStreamingPath({1});",
-                                pathArg,
-                                argInfo.Name);
-  
-                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swUnity, "\t\t\tIntPtr {0} = GetIntPtr({1});",
-                                lpArg,
-                                pathArg);
-
-                        }
-                    }
-                    if (methodInfo.ReturnType == "void")
-                    {
-                        Output(swUnity, "\t\t\tPlugin{0}({1});",
-                            methodInfo.Name,
-                            RemoveArgTypes(methodInfo));
-                    }
-                    else
-                    {
-                        if (methodInfo.ReturnType == "const char*")
-                        {
-                            Output(swUnity, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
-                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                                methodInfo.Name,
-                                RemoveArgTypes(methodInfo));
-                        }
-                        else
-                        {
-                            Output(swUnity, "\t\t\t{0} result = Plugin{1}({2});",
-                                ChangeToManagedType(methodInfo, methodInfo.ReturnType),
-                                methodInfo.Name,
-                                RemoveArgTypes(methodInfo));
-                        }
-                    }
-
-                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
-                    {
-                        if (argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "char*")
-                        {
-                            string lpArg = string.Format("lp{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swUnity, "\t\t\tFreeIntPtr({0});",
-                                lpArg);
-
-                        }
-                    }
-
-                    if (methodInfo.ReturnType != "void")
-                    {
-                        Output(swUnity, "\t\t\treturn result;");
-                    }
-
-                    Output(swUnity, "\t\t{0}", "}");
-                }
-
-                Output(swUnity, "\t\t#endregion");
-
-                Output(swUnity, "");
-
-                Output(swUnity, "\t\t#region Private DLL Hooks");
-
-                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
-                {
-                    MetaMethodInfo methodInfo = method.Value;
-
-                    if (methodInfo.Name == "CoreCreateEffect")
-                    {
-                        if (true)
-                        {
-
-                        }
-                    }
-
-                    Output(swUnity, "\t\t{0}", "/// <summary>");
-
-                    if (!string.IsNullOrEmpty(methodInfo.Comments))
-                    {
-                        Output(swUnity, "\t\t/// {0}", SplitLongComments(methodInfo.Comments, "\t\t/// "));
-                    }
-
-                    Output(swUnity, "\t\t/// EXPORT_API {0} Plugin{1}({2});",
-                        methodInfo.ReturnType,
-                        methodInfo.Name,
-                        methodInfo.Args);
-
-                    Output(swUnity, "\t\t{0}", "/// </summary>");
-
-                    Output(swUnity, "\t\t{0}", "[DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]");
-
-                    Output(swUnity, "\t\tprivate static extern {0} Plugin{1}({2});",
-                        ChangeToManagedImportType(methodInfo, methodInfo.ReturnType),
-                        methodInfo.Name,
-                        ChangeArgsToManagedImportTypes(methodInfo, methodInfo.Args));
-                }
-
-                Output(swUnity, "\t\t#endregion");
-
-                Output(swUnity, "{0}", FOOTER_UNITY);
-
-                swUnity.Flush();
-                swUnity.Close();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                Console.Error.WriteLine("Failed to write unity!");
-                return false;
-            }
-        }
 
         static bool WriteCSharpDocs(StreamWriter swUnityDocs, string apiClass)
         {
@@ -3984,6 +3649,10 @@ End Namespace
                 result = "int[]";
             }
             else if (result == "const byte*")
+            {
+                result = "byte[]";
+            }
+            else if (result == "const BYTE*")
             {
                 result = "byte[]";
             }
@@ -4916,6 +4585,7 @@ End Namespace
                 case "RZRESULT":
                     return "int";
                 case "const byte*":
+                case "const BYTE*":
                 case "int*":
                 case "const int*":
                 case "float*":
