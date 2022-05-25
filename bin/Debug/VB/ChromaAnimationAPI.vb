@@ -6,134 +6,134 @@ Imports System.Text
 
 Namespace ChromaSDK
 
-    Public class Keyboard
+    Public Class Keyboard
     
         REM //! Definitions of keys.
         Public Enum RZKEY
-            RZKEY_ESC = &H0001                 REM /*!< Esc (VK_ESCAPE) */
-            RZKEY_F1 = &H0003                  REM /*!< F1 (VK_F1) */
-            RZKEY_F2 = &H0004                  REM /*!< F2 (VK_F2) */
-            RZKEY_F3 = &H0005                  REM /*!< F3 (VK_F3) */
-            RZKEY_F4 = &H0006                  REM /*!< F4 (VK_F4) */
-            RZKEY_F5 = &H0007                  REM /*!< F5 (VK_F5) */
-            RZKEY_F6 = &H0008                  REM /*!< F6 (VK_F6) */
-            RZKEY_F7 = &H0009                  REM /*!< F7 (VK_F7) */
-            RZKEY_F8 = &H000A                  REM /*!< F8 (VK_F8) */
-            RZKEY_F9 = &H000B                  REM /*!< F9 (VK_F9) */
-            RZKEY_F10 = &H000C                 REM /*!< F10 (VK_F10) */
-            RZKEY_F11 = &H000D                 REM /*!< F11 (VK_F11) */
-            RZKEY_F12 = &H000E                 REM /*!< F12 (VK_F12) */
-            RZKEY_1 = &H0102                   REM /*!< 1 (VK_1) */
-            RZKEY_2 = &H0103                   REM /*!< 2 (VK_2) */
-            RZKEY_3 = &H0104                   REM /*!< 3 (VK_3) */
-            RZKEY_4 = &H0105                   REM /*!< 4 (VK_4) */
-            RZKEY_5 = &H0106                   REM /*!< 5 (VK_5) */
-            RZKEY_6 = &H0107                   REM /*!< 6 (VK_6) */
-            RZKEY_7 = &H0108                   REM /*!< 7 (VK_7) */
-            RZKEY_8 = &H0109                   REM /*!< 8 (VK_8) */
-            RZKEY_9 = &H010A                   REM /*!< 9 (VK_9) */
-            RZKEY_0 = &H010B                   REM /*!< 0 (VK_0) */
-            RZKEY_A = &H0302                   REM /*!< A (VK_A) */
-            RZKEY_B = &H0407                   REM /*!< B (VK_B) */
-            RZKEY_C = &H0405                   REM /*!< C (VK_C) */
-            RZKEY_D = &H0304                   REM /*!< D (VK_D) */
-            RZKEY_E = &H0204                   REM /*!< E (VK_E) */
-            RZKEY_F = &H0305                   REM /*!< F (VK_F) */
-            RZKEY_G = &H0306                   REM /*!< G (VK_G) */
-            RZKEY_H = &H0307                   REM /*!< H (VK_H) */
-            RZKEY_I = &H0209                   REM /*!< I (VK_I) */
-            RZKEY_J = &H0308                   REM /*!< J (VK_J) */
-            RZKEY_K = &H0309                   REM /*!< K (VK_K) */
-            RZKEY_L = &H030A                   REM /*!< L (VK_L) */
-            RZKEY_M = &H0409                   REM /*!< M (VK_M) */
-            RZKEY_N = &H0408                   REM /*!< N (VK_N) */
-            RZKEY_O = &H020A                   REM /*!< O (VK_O) */
-            RZKEY_P = &H020B                   REM /*!< P (VK_P) */
-            RZKEY_Q = &H0202                   REM /*!< Q (VK_Q) */
-            RZKEY_R = &H0205                   REM /*!< R (VK_R) */
-            RZKEY_S = &H0303                   REM /*!< S (VK_S) */
-            RZKEY_T = &H0206                   REM /*!< T (VK_T) */
-            RZKEY_U = &H0208                   REM /*!< U (VK_U) */
-            RZKEY_V = &H0406                   REM /*!< V (VK_V) */
-            RZKEY_W = &H0203                   REM /*!< W (VK_W) */
-            RZKEY_X = &H0404                   REM /*!< X (VK_X) */
-            RZKEY_Y = &H0207                   REM /*!< Y (VK_Y) */
-            RZKEY_Z = &H0403                   REM /*!< Z (VK_Z) */
-            RZKEY_NUMLOCK = &H0112             REM /*!< Numlock (VK_NUMLOCK) */
-            RZKEY_NUMPAD0 = &H0513             REM /*!< Numpad 0 (VK_NUMPAD0) */
-            RZKEY_NUMPAD1 = &H0412             REM /*!< Numpad 1 (VK_NUMPAD1) */
-            RZKEY_NUMPAD2 = &H0413             REM /*!< Numpad 2 (VK_NUMPAD2) */
-            RZKEY_NUMPAD3 = &H0414             REM /*!< Numpad 3 (VK_NUMPAD3) */
-            RZKEY_NUMPAD4 = &H0312             REM /*!< Numpad 4 (VK_NUMPAD4) */
-            RZKEY_NUMPAD5 = &H0313             REM /*!< Numpad 5 (VK_NUMPAD5) */
-            RZKEY_NUMPAD6 = &H0314             REM /*!< Numpad 6 (VK_NUMPAD6) */
-            RZKEY_NUMPAD7 = &H0212             REM /*!< Numpad 7 (VK_NUMPAD7) */
-            RZKEY_NUMPAD8 = &H0213             REM /*!< Numpad 8 (VK_NUMPAD8) */
-            RZKEY_NUMPAD9 = &H0214             REM /*!< Numpad 9 (VK_ NUMPAD9*/
-            RZKEY_NUMPAD_DIVIDE = &H0113       REM /*!< Divide (VK_DIVIDE) */
-            RZKEY_NUMPAD_MULTIPLY = &H0114     REM /*!< Multiply (VK_MULTIPLY) */
-            RZKEY_NUMPAD_SUBTRACT = &H0115     REM /*!< Subtract (VK_SUBTRACT) */
-            RZKEY_NUMPAD_ADD = &H0215          REM /*!< Add (VK_ADD) */
-            RZKEY_NUMPAD_ENTER = &H0415        REM /*!< Enter (VK_RETURN - Extended) */
-            RZKEY_NUMPAD_DECIMAL = &H0514      REM /*!< Decimal (VK_DECIMAL) */
-            RZKEY_PRINTSCREEN = &H000F         REM /*!< Print Screen (VK_PRINT) */
-            RZKEY_SCROLL = &H0010              REM /*!< Scroll Lock (VK_SCROLL) */
-            RZKEY_PAUSE = &H0011               REM /*!< Pause (VK_PAUSE) */
-            RZKEY_INSERT = &H010F              REM /*!< Insert (VK_INSERT) */
-            RZKEY_HOME = &H0110                REM /*!< Home (VK_HOME) */
-            RZKEY_PAGEUP = &H0111              REM /*!< Page Up (VK_PRIOR) */
-            RZKEY_DELETE = &H020f              REM /*!< Delete (VK_DELETE) */
-            RZKEY_END = &H0210                 REM /*!< End (VK_END) */
-            RZKEY_PAGEDOWN = &H0211            REM /*!< Page Down (VK_NEXT) */
-            RZKEY_UP = &H0410                  REM /*!< Up (VK_UP) */
-            RZKEY_LEFT = &H050F                REM /*!< Left (VK_LEFT) */
-            RZKEY_DOWN = &H0510                REM /*!< Down (VK_DOWN) */
-            RZKEY_RIGHT = &H0511               REM /*!< Right (VK_RIGHT) */
-            RZKEY_TAB = &H0201                 REM /*!< Tab (VK_TAB) */
-            RZKEY_CAPSLOCK = &H0301            REM /*!< Caps Lock(VK_CAPITAL) */
-            RZKEY_BACKSPACE = &H010E           REM /*!< Backspace (VK_BACK) */
-            RZKEY_ENTER = &H030E               REM /*!< Enter (VK_RETURN) */
-            RZKEY_LCTRL = &H0501               REM /*!< Left Control(VK_LCONTROL) */
-            RZKEY_LWIN = &H0502                REM /*!< Left Window (VK_LWIN) */
-            RZKEY_LALT = &H0503                REM /*!< Left Alt (VK_LMENU) */
-            RZKEY_SPACE = &H0507               REM /*!< Spacebar (VK_SPACE) */
-            RZKEY_RALT = &H050B                REM /*!< Right Alt (VK_RMENU) */
-            RZKEY_FN = &H050C                  REM /*!< Function key. */
-            RZKEY_RMENU = &H050D               REM /*!< Right Menu (VK_APPS) */
-            RZKEY_RCTRL = &H050E               REM /*!< Right Control (VK_RCONTROL) */
-            RZKEY_LSHIFT = &H0401              REM /*!< Left Shift (VK_LSHIFT) */
-            RZKEY_RSHIFT = &H040E              REM /*!< Right Shift (VK_RSHIFT) */
-            RZKEY_MACRO1 = &H0100              REM /*!< Macro Key 1 */
-            RZKEY_MACRO2 = &H0200              REM /*!< Macro Key 2 */
-            RZKEY_MACRO3 = &H0300              REM /*!< Macro Key 3 */
-            RZKEY_MACRO4 = &H0400              REM /*!< Macro Key 4 */
-            RZKEY_MACRO5 = &H0500              REM /*!< Macro Key 5 */
-            RZKEY_OEM_1 = &H0101               REM /*!< ~ (tilde/半角/全角) (VK_OEM_3) */
-            RZKEY_OEM_2 = &H010C               REM /*!< -- (minus) (VK_OEM_MINUS) */
-            RZKEY_OEM_3 = &H010D               REM /*!< = (equal) (VK_OEM_PLUS) */
-            RZKEY_OEM_4 = &H020C               REM /*!< [ (left sqaure bracket) (VK_OEM_4) */
-            RZKEY_OEM_5 = &H020D               REM /*!< ] (right square bracket) (VK_OEM_6) */
-            RZKEY_OEM_6 = &H020E               REM /*!< \ (backslash) (VK_OEM_5) */
-            RZKEY_OEM_7 = &H030B               REM /*!< ; (semi-colon) (VK_OEM_1) */
-            RZKEY_OEM_8 = &H030C               REM /*!< ' (apostrophe) (VK_OEM_7) */
-            RZKEY_OEM_9 = &H040A               REM /*!< , (comma) (VK_OEM_COMMA) */
-            RZKEY_OEM_10 = &H040B              REM /*!< . (period) (VK_OEM_PERIOD) */
-            RZKEY_OEM_11 = &H040C              REM /*!< / (forward slash) (VK_OEM_2) */
-            RZKEY_EUR_1 = &H030D               REM /*!< "#" (VK_OEM_5) */
-            RZKEY_EUR_2 = &H0402               REM /*!< \ (VK_OEM_102) */
-            RZKEY_JPN_1 = &H0015               REM /*!< ¥ (&HFF) */
-            RZKEY_JPN_2 = &H040D               REM /*!< \ (&HC1) */
-            RZKEY_JPN_3 = &H0504               REM /*!< 無変換 (VK_OEM_PA1) */
-            RZKEY_JPN_4 = &H0509               REM /*!< 変換 (&HFF) */
-            RZKEY_JPN_5 = &H050A               REM /*!< ひらがな/カタカナ (&HFF) */
-            RZKEY_KOR_1 = &H0015               REM /*!< | (&HFF) */
-            RZKEY_KOR_2 = &H030D               REM /*!< (VK_OEM_5) */
-            RZKEY_KOR_3 = &H0402               REM /*!< (VK_OEM_102) */
-            RZKEY_KOR_4 = &H040D               REM /*!< (&HC1) */
-            RZKEY_KOR_5 = &H0504               REM /*!< (VK_OEM_PA1) */
-            RZKEY_KOR_6 = &H0509               REM /*!< 한/영 (&HFF) */
-            RZKEY_KOR_7 = &H050A               REM /*!< (&HFF) */
-            RZKEY_INVALID = &HFFFF              REM /*!< Invalid keys. */
+            RZKEY_ESC = &H1                 REM /*!< Esc (VK_ESCAPE) */
+            RZKEY_F1 = &H3                  REM /*!< F1 (VK_F1) */
+            RZKEY_F2 = &H4                  REM /*!< F2 (VK_F2) */
+            RZKEY_F3 = &H5                  REM /*!< F3 (VK_F3) */
+            RZKEY_F4 = &H6                  REM /*!< F4 (VK_F4) */
+            RZKEY_F5 = &H7                  REM /*!< F5 (VK_F5) */
+            RZKEY_F6 = &H8                  REM /*!< F6 (VK_F6) */
+            RZKEY_F7 = &H9                  REM /*!< F7 (VK_F7) */
+            RZKEY_F8 = &HA                  REM /*!< F8 (VK_F8) */
+            RZKEY_F9 = &HB                  REM /*!< F9 (VK_F9) */
+            RZKEY_F10 = &HC                 REM /*!< F10 (VK_F10) */
+            RZKEY_F11 = &HD                 REM /*!< F11 (VK_F11) */
+            RZKEY_F12 = &HE                 REM /*!< F12 (VK_F12) */
+            RZKEY_1 = &H102                   REM /*!< 1 (VK_1) */
+            RZKEY_2 = &H103                   REM /*!< 2 (VK_2) */
+            RZKEY_3 = &H104                   REM /*!< 3 (VK_3) */
+            RZKEY_4 = &H105                   REM /*!< 4 (VK_4) */
+            RZKEY_5 = &H106                   REM /*!< 5 (VK_5) */
+            RZKEY_6 = &H107                   REM /*!< 6 (VK_6) */
+            RZKEY_7 = &H108                   REM /*!< 7 (VK_7) */
+            RZKEY_8 = &H109                   REM /*!< 8 (VK_8) */
+            RZKEY_9 = &H10A                   REM /*!< 9 (VK_9) */
+            RZKEY_0 = &H10B                   REM /*!< 0 (VK_0) */
+            RZKEY_A = &H302                   REM /*!< A (VK_A) */
+            RZKEY_B = &H407                   REM /*!< B (VK_B) */
+            RZKEY_C = &H405                   REM /*!< C (VK_C) */
+            RZKEY_D = &H304                   REM /*!< D (VK_D) */
+            RZKEY_E = &H204                   REM /*!< E (VK_E) */
+            RZKEY_F = &H305                   REM /*!< F (VK_F) */
+            RZKEY_G = &H306                   REM /*!< G (VK_G) */
+            RZKEY_H = &H307                   REM /*!< H (VK_H) */
+            RZKEY_I = &H209                   REM /*!< I (VK_I) */
+            RZKEY_J = &H308                   REM /*!< J (VK_J) */
+            RZKEY_K = &H309                   REM /*!< K (VK_K) */
+            RZKEY_L = &H30A                   REM /*!< L (VK_L) */
+            RZKEY_M = &H409                   REM /*!< M (VK_M) */
+            RZKEY_N = &H408                   REM /*!< N (VK_N) */
+            RZKEY_O = &H20A                   REM /*!< O (VK_O) */
+            RZKEY_P = &H20B                   REM /*!< P (VK_P) */
+            RZKEY_Q = &H202                   REM /*!< Q (VK_Q) */
+            RZKEY_R = &H205                   REM /*!< R (VK_R) */
+            RZKEY_S = &H303                   REM /*!< S (VK_S) */
+            RZKEY_T = &H206                   REM /*!< T (VK_T) */
+            RZKEY_U = &H208                   REM /*!< U (VK_U) */
+            RZKEY_V = &H406                   REM /*!< V (VK_V) */
+            RZKEY_W = &H203                   REM /*!< W (VK_W) */
+            RZKEY_X = &H404                   REM /*!< X (VK_X) */
+            RZKEY_Y = &H207                   REM /*!< Y (VK_Y) */
+            RZKEY_Z = &H403                   REM /*!< Z (VK_Z) */
+            RZKEY_NUMLOCK = &H112             REM /*!< Numlock (VK_NUMLOCK) */
+            RZKEY_NUMPAD0 = &H513             REM /*!< Numpad 0 (VK_NUMPAD0) */
+            RZKEY_NUMPAD1 = &H412             REM /*!< Numpad 1 (VK_NUMPAD1) */
+            RZKEY_NUMPAD2 = &H413             REM /*!< Numpad 2 (VK_NUMPAD2) */
+            RZKEY_NUMPAD3 = &H414             REM /*!< Numpad 3 (VK_NUMPAD3) */
+            RZKEY_NUMPAD4 = &H312             REM /*!< Numpad 4 (VK_NUMPAD4) */
+            RZKEY_NUMPAD5 = &H313             REM /*!< Numpad 5 (VK_NUMPAD5) */
+            RZKEY_NUMPAD6 = &H314             REM /*!< Numpad 6 (VK_NUMPAD6) */
+            RZKEY_NUMPAD7 = &H212             REM /*!< Numpad 7 (VK_NUMPAD7) */
+            RZKEY_NUMPAD8 = &H213             REM /*!< Numpad 8 (VK_NUMPAD8) */
+            RZKEY_NUMPAD9 = &H214             REM /*!< Numpad 9 (VK_ NUMPAD9*/
+            RZKEY_NUMPAD_DIVIDE = &H113       REM /*!< Divide (VK_DIVIDE) */
+            RZKEY_NUMPAD_MULTIPLY = &H114     REM /*!< Multiply (VK_MULTIPLY) */
+            RZKEY_NUMPAD_SUBTRACT = &H115     REM /*!< Subtract (VK_SUBTRACT) */
+            RZKEY_NUMPAD_ADD = &H215          REM /*!< Add (VK_ADD) */
+            RZKEY_NUMPAD_ENTER = &H415        REM /*!< Enter (VK_RETURN - Extended) */
+            RZKEY_NUMPAD_DECIMAL = &H514      REM /*!< Decimal (VK_DECIMAL) */
+            RZKEY_PRINTSCREEN = &HF         REM /*!< Print Screen (VK_PRINT) */
+            RZKEY_SCROLL = &H10              REM /*!< Scroll Lock (VK_SCROLL) */
+            RZKEY_PAUSE = &H11               REM /*!< Pause (VK_PAUSE) */
+            RZKEY_INSERT = &H10F              REM /*!< Insert (VK_INSERT) */
+            RZKEY_HOME = &H110                REM /*!< Home (VK_HOME) */
+            RZKEY_PAGEUP = &H111              REM /*!< Page Up (VK_PRIOR) */
+            RZKEY_DELETE = &H20F              REM /*!< Delete (VK_DELETE) */
+            RZKEY_END = &H210                 REM /*!< End (VK_END) */
+            RZKEY_PAGEDOWN = &H211            REM /*!< Page Down (VK_NEXT) */
+            RZKEY_UP = &H410                  REM /*!< Up (VK_UP) */
+            RZKEY_LEFT = &H50F                REM /*!< Left (VK_LEFT) */
+            RZKEY_DOWN = &H510                REM /*!< Down (VK_DOWN) */
+            RZKEY_RIGHT = &H511               REM /*!< Right (VK_RIGHT) */
+            RZKEY_TAB = &H201                 REM /*!< Tab (VK_TAB) */
+            RZKEY_CAPSLOCK = &H301            REM /*!< Caps Lock(VK_CAPITAL) */
+            RZKEY_BACKSPACE = &H10E           REM /*!< Backspace (VK_BACK) */
+            RZKEY_ENTER = &H30E               REM /*!< Enter (VK_RETURN) */
+            RZKEY_LCTRL = &H501               REM /*!< Left Control(VK_LCONTROL) */
+            RZKEY_LWIN = &H502                REM /*!< Left Window (VK_LWIN) */
+            RZKEY_LALT = &H503                REM /*!< Left Alt (VK_LMENU) */
+            RZKEY_SPACE = &H507               REM /*!< Spacebar (VK_SPACE) */
+            RZKEY_RALT = &H50B                REM /*!< Right Alt (VK_RMENU) */
+            RZKEY_FN = &H50C                  REM /*!< Function key. */
+            RZKEY_RMENU = &H50D               REM /*!< Right Menu (VK_APPS) */
+            RZKEY_RCTRL = &H50E               REM /*!< Right Control (VK_RCONTROL) */
+            RZKEY_LSHIFT = &H401              REM /*!< Left Shift (VK_LSHIFT) */
+            RZKEY_RSHIFT = &H40E              REM /*!< Right Shift (VK_RSHIFT) */
+            RZKEY_MACRO1 = &H100              REM /*!< Macro Key 1 */
+            RZKEY_MACRO2 = &H200              REM /*!< Macro Key 2 */
+            RZKEY_MACRO3 = &H300              REM /*!< Macro Key 3 */
+            RZKEY_MACRO4 = &H400              REM /*!< Macro Key 4 */
+            RZKEY_MACRO5 = &H500              REM /*!< Macro Key 5 */
+            RZKEY_OEM_1 = &H101               REM /*!< ~ (tilde/半角/全角) (VK_OEM_3) */
+            RZKEY_OEM_2 = &H10C               REM /*!< -- (minus) (VK_OEM_MINUS) */
+            RZKEY_OEM_3 = &H10D               REM /*!< = (equal) (VK_OEM_PLUS) */
+            RZKEY_OEM_4 = &H20C               REM /*!< [ (left sqaure bracket) (VK_OEM_4) */
+            RZKEY_OEM_5 = &H20D               REM /*!< ] (right square bracket) (VK_OEM_6) */
+            RZKEY_OEM_6 = &H20E               REM /*!< \ (backslash) (VK_OEM_5) */
+            RZKEY_OEM_7 = &H30B               REM /*!< ; (semi-colon) (VK_OEM_1) */
+            RZKEY_OEM_8 = &H30C               REM /*!< ' (apostrophe) (VK_OEM_7) */
+            RZKEY_OEM_9 = &H40A               REM /*!< , (comma) (VK_OEM_COMMA) */
+            RZKEY_OEM_10 = &H40B              REM /*!< . (period) (VK_OEM_PERIOD) */
+            RZKEY_OEM_11 = &H40C              REM /*!< / (forward slash) (VK_OEM_2) */
+            RZKEY_EUR_1 = &H30D               REM /*!< "#" (VK_OEM_5) */
+            RZKEY_EUR_2 = &H402               REM /*!< \ (VK_OEM_102) */
+            RZKEY_JPN_1 = &H15                REM /*!< ¥ (&HFF) */
+            RZKEY_JPN_2 = &H40D               REM /*!< \ (&HC1) */
+            RZKEY_JPN_3 = &H504               REM /*!< 無変換 (VK_OEM_PA1) */
+            RZKEY_JPN_4 = &H509               REM /*!< 変換 (&HFF) */
+            RZKEY_JPN_5 = &H50A               REM /*!< ひらがな/カタカナ (&HFF) */
+            RZKEY_KOR_1 = &H15                REM /*!< | (&HFF) */
+            RZKEY_KOR_2 = &H30D               REM /*!< (VK_OEM_5) */
+            RZKEY_KOR_3 = &H402               REM /*!< (VK_OEM_102) */
+            RZKEY_KOR_4 = &H40D               REM /*!< (&HC1) */
+            RZKEY_KOR_5 = &H504               REM /*!< (VK_OEM_PA1) */
+            RZKEY_KOR_6 = &H509               REM /*!< 한/영 (&HFF) */
+            RZKEY_KOR_7 = &H50A               REM /*!< (&HFF) */
+            RZKEY_INVALID = &HFFFF            REM /*!< Invalid keys. */
         End Enum
 
         REM //! Definition of LEDs.
@@ -168,8 +168,8 @@ Namespace ChromaSDK
 
     <StructLayout(LayoutKind.Sequential)>
     Public Structure DEVICE_INFO_TYPE
-        Public DeviceType as Integer
-        Public Connected as UInteger
+        Public DeviceType As Integer
+        Public Connected As UInteger
     End Structure
 
     Public Enum EFFECT_TYPE
@@ -371,6 +371,12 @@ Namespace ChromaSDK
         Return Nothing
     End Function
 
+    Public Function UninitAPI() As Integer
+        UnloadLibrarySDK()
+        UnloadLibraryStreamingPlugin()
+        Return 0
+    End Function
+
 #End Region
 
 		#Region "Public API Methods"
@@ -387,12 +393,21 @@ Namespace ChromaSDK
 		REM /// The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 		REM /// The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
 		REM /// the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
-		REM /// size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
-		REM /// success. Returns -1 upon failure.
+		REM /// size should be `MAX ROW` times `MAX COLUMN`. Returns the animation id upon 
+		REM /// success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function AddFrame(animationId As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
 			Dim result As Integer = PluginAddFrame(animationId, duration, colors, length)
 			Return result
+		End Function
+
+		REM /// <summary>
+		REM /// Add source color to target where color is not black for frame id, reference 
+		REM /// source and target by id.
+		REM /// </summary>
+		Public Function AddNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+			PluginAddNonZeroAllKeys(sourceAnimationId, targetAnimationId, frameId)
+			Return Nothing
 		End Function
 
 		REM /// <summary>
@@ -471,6 +486,21 @@ Namespace ChromaSDK
 			FreeIntPtr(lp_SourceAnimation)
 			FreeIntPtr(lp_TargetAnimation)
 			Return result
+		End Function
+
+		REM /// <summary>
+		REM /// Add source color to target where color is not black for frame id, reference 
+		REM /// source and target by name.
+		REM /// </summary>
+		Public Function AddNonZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
+			Dim str_SourceAnimation As String = sourceAnimation
+			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
+			Dim str_TargetAnimation As String = targetAnimation
+			Dim lp_TargetAnimation As IntPtr = GetPathIntPtr(str_TargetAnimation)
+			PluginAddNonZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId)
+			FreeIntPtr(lp_SourceAnimation)
+			FreeIntPtr(lp_TargetAnimation)
+			Return Nothing
 		End Function
 
 		REM /// <summary>
@@ -694,9 +724,10 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Closes the `Chroma` animation to free up resources referenced by id. Returns 
-		REM /// the animation id upon success. Returns -1 upon failure. This might be used 
-		REM /// while authoring effects if there was a change necessitating re-opening 
-		REM /// the animation. The animation id can no longer be used once closed.
+		REM /// the animation id upon success. Returns negative one upon failure. This 
+		REM /// might be used while authoring effects if there was a change necessitating 
+		REM /// re-opening the animation. The animation id can no longer be used once closed. 
+		REM ///
 		REM /// </summary>
 		Public Function CloseAnimation(animationId As Integer) As Integer
 			Dim result As Integer = PluginCloseAnimation(animationId)
@@ -1508,6 +1539,15 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame. 
+		REM /// Source and target are referenced by id.
+		REM /// </summary>
+		Public Function CopyZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+			PluginCopyZeroAllKeys(sourceAnimationId, targetAnimationId, frameId)
+			Return Nothing
+		End Function
+
+		REM /// <summary>
 		REM /// Copy zero colors from source animation to target animation for all frames. 
 		REM /// Source and target are referenced by id.
 		REM /// </summary>
@@ -1586,6 +1626,47 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame. 
+		REM /// Source and target are referenced by name.
+		REM /// </summary>
+		Public Function CopyZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
+			Dim str_SourceAnimation As String = sourceAnimation
+			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
+			Dim str_TargetAnimation As String = targetAnimation
+			Dim lp_TargetAnimation As IntPtr = GetPathIntPtr(str_TargetAnimation)
+			PluginCopyZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId)
+			FreeIntPtr(lp_SourceAnimation)
+			FreeIntPtr(lp_TargetAnimation)
+			Return Nothing
+		End Function
+
+		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame 
+		REM /// id starting at the target offset for the length of the source animation. 
+		REM /// Source and target are referenced by id.
+		REM /// </summary>
+		Public Function CopyZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+			PluginCopyZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset)
+			Return Nothing
+		End Function
+
+		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame 
+		REM /// id starting at the target offset for the length of the source animation. 
+		REM /// Source and target are referenced by name.
+		REM /// </summary>
+		Public Function CopyZeroAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
+			Dim str_SourceAnimation As String = sourceAnimation
+			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
+			Dim str_TargetAnimation As String = targetAnimation
+			Dim lp_TargetAnimation As IntPtr = GetPathIntPtr(str_TargetAnimation)
+			PluginCopyZeroAllKeysOffsetName(lp_SourceAnimation, lp_TargetAnimation, frameId, offset)
+			FreeIntPtr(lp_SourceAnimation)
+			FreeIntPtr(lp_TargetAnimation)
+			Return Nothing
+		End Function
+
+		REM /// <summary>
 		REM /// Copy zero key color from source animation to target animation for the specified 
 		REM /// frame. Source and target are referenced by id.
 		REM /// </summary>
@@ -1625,6 +1706,15 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Copy nonzero color from source animation to target animation where target 
+		REM /// is zero for the frame. Source and target are referenced by id.
+		REM /// </summary>
+		Public Function CopyZeroTargetAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+			PluginCopyZeroTargetAllKeys(sourceAnimationId, targetAnimationId, frameId)
+			Return Nothing
+		End Function
+
+		REM /// <summary>
+		REM /// Copy nonzero color from source animation to target animation where target 
 		REM /// is zero for all frames. Source and target are referenced by id.
 		REM /// </summary>
 		Public Function CopyZeroTargetAllKeysAllFrames(sourceAnimationId As Integer, targetAnimationId As Integer)
@@ -1659,6 +1749,21 @@ Namespace ChromaSDK
 			FreeIntPtr(lp_SourceAnimation)
 			FreeIntPtr(lp_TargetAnimation)
 			Return result
+		End Function
+
+		REM /// <summary>
+		REM /// Copy nonzero color from source animation to target animation where target 
+		REM /// is zero for the frame. Source and target are referenced by name.
+		REM /// </summary>
+		Public Function CopyZeroTargetAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
+			Dim str_SourceAnimation As String = sourceAnimation
+			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
+			Dim str_TargetAnimation As String = targetAnimation
+			Dim lp_TargetAnimation As IntPtr = GetPathIntPtr(str_TargetAnimation)
+			PluginCopyZeroTargetAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId)
+			FreeIntPtr(lp_SourceAnimation)
+			FreeIntPtr(lp_TargetAnimation)
+			Return Nothing
 		End Function
 
 		REM /// <summary>
@@ -1791,7 +1896,10 @@ Namespace ChromaSDK
 		REM /// If length is greater than zero, it will be the length of the returned streaming 
 		REM /// auth code.  Once you have the shortcode, it should be shown to the user 
 		REM /// so they can associate the stream with their Razer ID  StreamGetStatus() 
-		REM /// should return the READY status before invoking this method.
+		REM /// should return the READY status before invoking this method. platform: is 
+		REM /// the null terminated string that identifies the source of the stream: { 
+		REM /// GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+		REM /// that identifies the application or game.
 		REM /// </summary>
 		Public Function CoreStreamGetAuthShortcode(ByRef shortcode As String, ByRef length As byte, platform As String, title As String)
 			Dim str_Shortcode As String = shortcode
@@ -1801,7 +1909,7 @@ Namespace ChromaSDK
 			Dim str_Title As String = title
 			Dim lp_Title As IntPtr = GetUnicodeIntPtr(str_Title)
 			PluginCoreStreamGetAuthShortcode(lp_Shortcode, length, lp_Platform, lp_Title)
-			If (lp_Shortcode <> IntPtr.Zero)
+			If (lp_Shortcode <> IntPtr.Zero) Then
 				shortcode = Marshal.PtrToStringAnsi(lp_Shortcode)
 			End If
 			FreeIntPtr(lp_Shortcode)
@@ -1820,7 +1928,7 @@ Namespace ChromaSDK
 			Dim str_Focus As String = focus
 			Dim lp_Focus as IntPtr = GetAsciiIntPtr(str_Focus)
 			Dim result As Boolean = PluginCoreStreamGetFocus(lp_Focus, length)
-			If (lp_Focus <> IntPtr.Zero)
+			If (lp_Focus <> IntPtr.Zero) Then
 				focus = Marshal.PtrToStringAnsi(lp_Focus)
 			End If
 			FreeIntPtr(lp_Focus)
@@ -1837,9 +1945,8 @@ Namespace ChromaSDK
 		REM /// is greater than zero, it will be the length of the returned streaming id. 
 		REM /// Retrieve the stream id after authorizing the shortcode. The authorization 
 		REM /// window will expire in 5 minutes. Be sure to save the stream key before 
-		REM /// the window expires.  platform: is the null terminated string that identifies 
-		REM /// the source of the stream: { GEFORCE_NOW, LUNA, STADIA, XBOX_GAME_PASS } 
-		REM /// StreamGetStatus() should return the READY status to use this method.
+		REM /// the window expires. StreamGetStatus() should return the READY status to 
+		REM /// use this method.
 		REM /// </summary>
 		Public Function CoreStreamGetId(shortcode As String, ByRef streamId As String, ByRef length As byte)
 			Dim str_Shortcode As String = shortcode
@@ -1848,7 +1955,7 @@ Namespace ChromaSDK
 			Dim lp_StreamId as IntPtr = GetAsciiIntPtr(str_StreamId)
 			PluginCoreStreamGetId(lp_Shortcode, lp_StreamId, length)
 			FreeIntPtr(lp_Shortcode)
-			If (lp_StreamId <> IntPtr.Zero)
+			If (lp_StreamId <> IntPtr.Zero) Then
 				streamId = Marshal.PtrToStringAnsi(lp_StreamId)
 			End If
 			FreeIntPtr(lp_StreamId)
@@ -1877,7 +1984,7 @@ Namespace ChromaSDK
 			Dim lp_StreamKey as IntPtr = GetAsciiIntPtr(str_StreamKey)
 			PluginCoreStreamGetKey(lp_Shortcode, lp_StreamKey, length)
 			FreeIntPtr(lp_Shortcode)
-			If (lp_StreamKey <> IntPtr.Zero)
+			If (lp_StreamKey <> IntPtr.Zero) Then
 				streamKey = Marshal.PtrToStringAnsi(lp_StreamKey)
 			End If
 			FreeIntPtr(lp_StreamKey)
@@ -1970,10 +2077,10 @@ Namespace ChromaSDK
 		REM /// Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 		REM /// uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
 		REM /// `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, respective 
-		REM /// to the `deviceType`. Returns the animation id upon success. Returns -1 
-		REM /// upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
-		REM /// at the given path. Returns the animation id upon success. Returns -1 upon 
-		REM /// failure.
+		REM /// to the `deviceType`. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
+		REM /// at the given path. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// </summary>
 		Public Function CreateAnimation(path As String, deviceType As Integer, device As Integer) As Integer
 			Dim str_Path As String = path
@@ -1988,8 +2095,8 @@ Namespace ChromaSDK
 		REM /// parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
 		REM /// uses `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, 
 		REM /// respective to the `deviceType`. Returns the animation id upon success. 
-		REM /// Returns -1 upon failure. Returns the animation id upon success. Returns 
-		REM /// -1 upon failure.
+		REM /// Returns negative one upon failure. Returns the animation id upon success. 
+		REM /// Returns negative one upon failure.
 		REM /// </summary>
 		Public Function CreateAnimationInMemory(deviceType As Integer, device As Integer) As Integer
 			Dim result As Integer = PluginCreateAnimationInMemory(deviceType, device)
@@ -3112,7 +3219,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 		REM /// animation respective to the `deviceType`, as an integer upon success. Returns 
-		REM /// -1 upon failure.
+		REM /// negative one upon failure.
 		REM /// </summary>
 		Public Function GetDevice(animationId As Integer) As Integer
 			Dim result As Integer = PluginGetDevice(animationId)
@@ -3122,7 +3229,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 		REM /// animation respective to the `deviceType`, as an integer upon success. Returns 
-		REM /// -1 upon failure.
+		REM /// negative one upon failure.
 		REM /// </summary>
 		Public Function GetDeviceName(path As String) As Integer
 			Dim str_Path As String = path
@@ -3145,7 +3252,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function GetDeviceType(animationId As Integer) As Integer
 			Dim result As Integer = PluginGetDeviceType(animationId)
@@ -3154,7 +3261,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function GetDeviceTypeName(path As String) As Integer
 			Dim str_Path As String = path
@@ -3181,8 +3288,8 @@ Namespace ChromaSDK
 		REM /// `deviceType/device`. The `length` parameter is the size of the `color` 
 		REM /// array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
 		REM /// For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-		REM /// COLUMN`. Returns the animation id upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// COLUMN`. Returns the animation id upon success. Returns negative one upon 
+		REM /// failure.
 		REM /// </summary>
 		Public Function GetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer) As Integer
 			Dim result As Integer = PluginGetFrame(animationId, frameIndex, duration, colors, length)
@@ -3190,8 +3297,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Returns the frame count of a `Chroma` animation upon success. Returns -1 
-		REM /// upon failure.
+		REM /// Returns the frame count of a `Chroma` animation upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// </summary>
 		Public Function GetFrameCount(animationId As Integer) As Integer
 			Dim result As Integer = PluginGetFrameCount(animationId)
@@ -3199,8 +3306,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Returns the frame count of a `Chroma` animation upon success. Returns -1 
-		REM /// upon failure.
+		REM /// Returns the frame count of a `Chroma` animation upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// </summary>
 		Public Function GetFrameCountName(path As String) As Integer
 			Dim str_Path As String = path
@@ -3274,7 +3381,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-		REM /// integer upon success. Returns -1 upon failure.
+		REM /// integer upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function GetMaxColumn(device As Device2D) As Integer
 			Dim result As Integer = PluginGetMaxColumn(device)
@@ -3291,7 +3398,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function GetMaxLeds(device As Device1D) As Integer
 			Dim result As Integer = PluginGetMaxLeds(device)
@@ -3308,7 +3415,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function GetMaxRow(device As Device2D) As Integer
 			Dim result As Integer = PluginGetMaxRow(device)
@@ -3702,7 +3809,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Loads `Chroma` effects so that the animation can be played immediately. 
-		REM /// Returns the animation id upon success. Returns -1 upon failure.
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
 		REM /// </summary>
 		Public Function LoadAnimation(animationId As Integer) As Integer
 			Dim result As Integer = PluginLoadAnimation(animationId)
@@ -3877,7 +3985,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Flips the color grid horizontally for all `Chroma` animation frames. Returns 
-		REM /// the animation id upon success. Returns -1 upon failure.
+		REM /// the animation id upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function MirrorHorizontally(animationId As Integer) As Integer
 			Dim result As Integer = PluginMirrorHorizontally(animationId)
@@ -3887,7 +3995,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Flips the color grid vertically for all `Chroma` animation frames. This 
 		REM /// method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
-		REM /// animation id upon success. Returns -1 upon failure.
+		REM /// animation id upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function MirrorVertically(animationId As Integer) As Integer
 			Dim result As Integer = PluginMirrorVertically(animationId)
@@ -4437,8 +4545,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Opens a `Chroma` animation file so that it can be played. Returns an animation 
-		REM /// id >= 0 upon success. Returns -1 if there was a failure. The animation 
-		REM /// id is used in most of the API methods.
+		REM /// id >= 0 upon success. Returns negative one if there was a failure. The 
+		REM /// animation id is used in most of the API methods.
 		REM /// </summary>
 		Public Function OpenAnimation(path As String) As Integer
 			Dim str_Path As String = path
@@ -4461,10 +4569,10 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-		REM /// is a pointer to byte array of the loaded animation in memory. `Name` will 
+		REM /// is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 		REM /// be assigned to the animation when loaded. Returns an animation id >= 0 
-		REM /// upon success. Returns -1 if there was a failure. The animation id is used 
-		REM /// in most of the API methods.
+		REM /// upon success. Returns negative one if there was a failure. The animation 
+		REM /// id is used in most of the API methods.
 		REM /// </summary>
 		Public Function OpenAnimationFromMemory(data As Byte(), name As String) As Integer
 			Dim str_Name As String = name
@@ -4476,7 +4584,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
-		REM /// upon success. Returns -1 if there was a failure.
+		REM /// upon success. Returns negative one if there was a failure.
 		REM /// </summary>
 		Public Function OpenEditorDialog(path As String) As Integer
 			Dim str_Path As String = path
@@ -4522,8 +4630,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
-		REM /// parameter. Returns the animation id upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// parameter. Returns the animation id upon success. Returns negative one 
+		REM /// upon failure.
 		REM /// </summary>
 		Public Function OverrideFrameDuration(animationId As Integer, duration As Single) As Integer
 			Dim result As Integer = PluginOverrideFrameDuration(animationId, duration)
@@ -4582,8 +4690,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Plays the `Chroma` animation. This will load the animation, if not loaded 
-		REM /// previously. Returns the animation id upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// previously. Returns the animation id upon success. Returns negative one 
+		REM /// upon failure.
 		REM /// </summary>
 		Public Function PlayAnimation(animationId As Integer) As Integer
 			Dim result As Integer = PluginPlayAnimation(animationId)
@@ -4692,7 +4800,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-		REM /// Returns the animation id upon success. Returns -1 upon failure.
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
 		REM /// </summary>
 		Public Function PreviewFrame(animationId As Integer, frameIndex As Integer) As Integer
 			Dim result As Integer = PluginPreviewFrame(animationId, frameIndex)
@@ -4753,7 +4862,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function ResetAnimation(animationId As Integer) As Integer
 			Dim result As Integer = PluginResetAnimation(animationId)
@@ -4792,8 +4901,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Reverse the animation frame order of the `Chroma` animation. Returns the 
-		REM /// animation id upon success. Returns -1 upon failure. Animation is referenced 
-		REM /// by id.
+		REM /// animation id upon success. Returns negative one upon failure. Animation 
+		REM /// is referenced by id.
 		REM /// </summary>
 		Public Function Reverse(animationId As Integer) As Integer
 			Dim result As Integer = PluginReverse(animationId)
@@ -5034,7 +5143,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 		REM /// is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
-		REM /// the animation id upon success. Returns -1 upon failure.
+		REM /// the animation id upon success. Returns negative one upon failure.
 		REM /// </summary>
 		Public Function SetDevice(animationId As Integer, deviceType As Integer, device As Integer) As Integer
 			Dim result As Integer = PluginSetDevice(animationId, deviceType, device)
@@ -5652,7 +5761,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Stops animation playback if in progress. Returns the animation id upon success. 
-		REM /// Returns -1 upon failure.
+		REM /// Returns negative one upon failure.
 		REM /// </summary>
 		Public Function StopAnimation(animationId As Integer) As Integer
 			Dim result As Integer = PluginStopAnimation(animationId)
@@ -5742,6 +5851,15 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
+		REM /// Subtract the source color from the target color for the frame where the 
+		REM /// target color is not black. Source and target are referenced by id.
+		REM /// </summary>
+		Public Function SubtractNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+			PluginSubtractNonZeroAllKeys(sourceAnimationId, targetAnimationId, frameId)
+			Return Nothing
+		End Function
+
+		REM /// <summary>
 		REM /// Subtract the source color from the target color for all frames where the 
 		REM /// target color is not black. Source and target are referenced by id.
 		REM /// </summary>
@@ -5817,6 +5935,21 @@ Namespace ChromaSDK
 			FreeIntPtr(lp_SourceAnimation)
 			FreeIntPtr(lp_TargetAnimation)
 			Return result
+		End Function
+
+		REM /// <summary>
+		REM /// Subtract the source color from the target color for the frame where the 
+		REM /// target color is not black. Source and target are referenced by name.
+		REM /// </summary>
+		Public Function SubtractNonZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
+			Dim str_SourceAnimation As String = sourceAnimation
+			Dim lp_SourceAnimation As IntPtr = GetPathIntPtr(str_SourceAnimation)
+			Dim str_TargetAnimation As String = targetAnimation
+			Dim lp_TargetAnimation As IntPtr = GetPathIntPtr(str_TargetAnimation)
+			PluginSubtractNonZeroAllKeysName(lp_SourceAnimation, lp_TargetAnimation, frameId)
+			FreeIntPtr(lp_SourceAnimation)
+			FreeIntPtr(lp_TargetAnimation)
+			Return Nothing
 		End Function
 
 		REM /// <summary>
@@ -6049,7 +6182,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Trim the end of the animation. The length of the animation will be the lastFrameId 
-		REM /// + 1. Reference the animation by id.
+		REM /// plus one. Reference the animation by id.
 		REM /// </summary>
 		Public Function TrimEndFrames(animationId As Integer, lastFrameId As Integer)
 			PluginTrimEndFrames(animationId, lastFrameId)
@@ -6058,7 +6191,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Trim the end of the animation. The length of the animation will be the lastFrameId 
-		REM /// + 1. Reference the animation by name.
+		REM /// plus one. Reference the animation by name.
 		REM /// </summary>
 		Public Function TrimEndFramesName(path As String, lastFrameId As Integer)
 			Dim str_Path As String = path
@@ -6142,8 +6275,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// </summary>
 		Public Function Uninit() As Integer
 			Dim result As Integer = PluginUninit()
@@ -6160,7 +6293,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Unloads `Chroma` effects to free up resources. Returns the animation id 
-		REM /// upon success. Returns -1 upon failure. Reference the animation by id.
+		REM /// upon success. Returns negative one upon failure. Reference the animation 
+		REM /// by id.
 		REM /// </summary>
 		Public Function UnloadAnimation(animationId As Integer) As Integer
 			Dim result As Integer = PluginUnloadAnimation(animationId)
@@ -6221,8 +6355,8 @@ Namespace ChromaSDK
 		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
 		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// * `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-		REM /// failure.
+		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// </summary>
 		Public Function UpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
 			Dim result As Integer = PluginUpdateFrame(animationId, frameIndex, duration, colors, length)
@@ -6235,8 +6369,8 @@ Namespace ChromaSDK
 		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
 		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// * `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-		REM /// failure.
+		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// </summary>
 		Public Function UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
 			Dim str_Path As String = path
@@ -6304,12 +6438,21 @@ Namespace ChromaSDK
 		REM /// The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 		REM /// The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
 		REM /// the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
-		REM /// size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
-		REM /// success. Returns -1 upon failure.
+		REM /// size should be `MAX ROW` times `MAX COLUMN`. Returns the animation id upon 
+		REM /// success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginAddFrame(int animationId, float duration, int* colors, int length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
 		Private Function PluginAddFrame(animationId As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
+		End Function
+
+		REM /// <summary>
+		REM /// Add source color to target where color is not black for frame id, reference 
+		REM /// source and target by id.
+		REM /// EXPORT_API void PluginAddNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginAddNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6364,6 +6507,15 @@ Namespace ChromaSDK
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
 		Private Function PluginAddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Double) As Double
+		End Function
+
+		REM /// <summary>
+		REM /// Add source color to target where color is not black for frame id, reference 
+		REM /// source and target by name.
+		REM /// EXPORT_API void PluginAddNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginAddNonZeroAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -6527,9 +6679,10 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Closes the `Chroma` animation to free up resources referenced by id. Returns 
-		REM /// the animation id upon success. Returns -1 upon failure. This might be used 
-		REM /// while authoring effects if there was a change necessitating re-opening 
-		REM /// the animation. The animation id can no longer be used once closed.
+		REM /// the animation id upon success. Returns negative one upon failure. This 
+		REM /// might be used while authoring effects if there was a change necessitating 
+		REM /// re-opening the animation. The animation id can no longer be used once closed. 
+		REM ///
 		REM /// EXPORT_API int PluginCloseAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7116,6 +7269,15 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame. 
+		REM /// Source and target are referenced by id.
+		REM /// EXPORT_API void PluginCopyZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginCopyZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
+		End Function
+
+		REM /// <summary>
 		REM /// Copy zero colors from source animation to target animation for all frames. 
 		REM /// Source and target are referenced by id.
 		REM /// EXPORT_API void PluginCopyZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
@@ -7170,6 +7332,35 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame. 
+		REM /// Source and target are referenced by name.
+		REM /// EXPORT_API void PluginCopyZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginCopyZeroAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
+		End Function
+
+		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame 
+		REM /// id starting at the target offset for the length of the source animation. 
+		REM /// Source and target are referenced by id.
+		REM /// EXPORT_API void PluginCopyZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginCopyZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer) As Boolean
+		End Function
+
+		REM /// <summary>
+		REM /// Copy zero colors from source animation to target animation for the frame 
+		REM /// id starting at the target offset for the length of the source animation. 
+		REM /// Source and target are referenced by name.
+		REM /// EXPORT_API void PluginCopyZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginCopyZeroAllKeysOffsetName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer, offset As Integer) As Boolean
+		End Function
+
+		REM /// <summary>
 		REM /// Copy zero key color from source animation to target animation for the specified 
 		REM /// frame. Source and target are referenced by id.
 		REM /// EXPORT_API void PluginCopyZeroKeyColor(int sourceAnimationId, int targetAnimationId, int frameId, int rzkey);
@@ -7197,6 +7388,15 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Copy nonzero color from source animation to target animation where target 
+		REM /// is zero for the frame. Source and target are referenced by id.
+		REM /// EXPORT_API void PluginCopyZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginCopyZeroTargetAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
+		End Function
+
+		REM /// <summary>
+		REM /// Copy nonzero color from source animation to target animation where target 
 		REM /// is zero for all frames. Source and target are referenced by id.
 		REM /// EXPORT_API void PluginCopyZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
 		REM /// </summary>
@@ -7219,6 +7419,15 @@ Namespace ChromaSDK
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
 		Private Function PluginCopyZeroTargetAllKeysAllFramesNameD(sourceAnimation As IntPtr, targetAnimation As IntPtr) As Double
+		End Function
+
+		REM /// <summary>
+		REM /// Copy nonzero color from source animation to target animation where target 
+		REM /// is zero for the frame. Source and target are referenced by name.
+		REM /// EXPORT_API void PluginCopyZeroTargetAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginCopyZeroTargetAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -7345,7 +7554,10 @@ Namespace ChromaSDK
 		REM /// If length is greater than zero, it will be the length of the returned streaming 
 		REM /// auth code.  Once you have the shortcode, it should be shown to the user 
 		REM /// so they can associate the stream with their Razer ID  StreamGetStatus() 
-		REM /// should return the READY status before invoking this method.
+		REM /// should return the READY status before invoking this method. platform: is 
+		REM /// the null terminated string that identifies the source of the stream: { 
+		REM /// GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+		REM /// that identifies the application or game.
 		REM /// EXPORT_API void PluginCoreStreamGetAuthShortcode(char* shortcode, unsigned char* length, const wchar_t* platform, const wchar_t* title);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7373,9 +7585,8 @@ Namespace ChromaSDK
 		REM /// is greater than zero, it will be the length of the returned streaming id. 
 		REM /// Retrieve the stream id after authorizing the shortcode. The authorization 
 		REM /// window will expire in 5 minutes. Be sure to save the stream key before 
-		REM /// the window expires.  platform: is the null terminated string that identifies 
-		REM /// the source of the stream: { GEFORCE_NOW, LUNA, STADIA, XBOX_GAME_PASS } 
-		REM /// StreamGetStatus() should return the READY status to use this method.
+		REM /// the window expires. StreamGetStatus() should return the READY status to 
+		REM /// use this method.
 		REM /// EXPORT_API void PluginCoreStreamGetId(const char* shortcode, char* streamId, unsigned char* length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7479,10 +7690,10 @@ Namespace ChromaSDK
 		REM /// Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 		REM /// uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
 		REM /// `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, respective 
-		REM /// to the `deviceType`. Returns the animation id upon success. Returns -1 
-		REM /// upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
-		REM /// at the given path. Returns the animation id upon success. Returns -1 upon 
-		REM /// failure.
+		REM /// to the `deviceType`. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
+		REM /// at the given path. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// EXPORT_API int PluginCreateAnimation(const char* path, int deviceType, int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7494,8 +7705,8 @@ Namespace ChromaSDK
 		REM /// parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
 		REM /// uses `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, 
 		REM /// respective to the `deviceType`. Returns the animation id upon success. 
-		REM /// Returns -1 upon failure. Returns the animation id upon success. Returns 
-		REM /// -1 upon failure.
+		REM /// Returns negative one upon failure. Returns the animation id upon success. 
+		REM /// Returns negative one upon failure.
 		REM /// EXPORT_API int PluginCreateAnimationInMemory(int deviceType, int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8420,7 +8631,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 		REM /// animation respective to the `deviceType`, as an integer upon success. Returns 
-		REM /// -1 upon failure.
+		REM /// negative one upon failure.
 		REM /// EXPORT_API int PluginGetDevice(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8430,7 +8641,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 		REM /// animation respective to the `deviceType`, as an integer upon success. Returns 
-		REM /// -1 upon failure.
+		REM /// negative one upon failure.
 		REM /// EXPORT_API int PluginGetDeviceName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8447,7 +8658,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginGetDeviceType(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8456,7 +8667,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginGetDeviceTypeName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8477,8 +8688,8 @@ Namespace ChromaSDK
 		REM /// `deviceType/device`. The `length` parameter is the size of the `color` 
 		REM /// array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
 		REM /// For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-		REM /// COLUMN`. Returns the animation id upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// COLUMN`. Returns the animation id upon success. Returns negative one upon 
+		REM /// failure.
 		REM /// EXPORT_API int PluginGetFrame(int animationId, int frameIndex, float* duration, int* colors, int length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8486,8 +8697,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Returns the frame count of a `Chroma` animation upon success. Returns -1 
-		REM /// upon failure.
+		REM /// Returns the frame count of a `Chroma` animation upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// EXPORT_API int PluginGetFrameCount(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8495,8 +8706,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Returns the frame count of a `Chroma` animation upon success. Returns -1 
-		REM /// upon failure.
+		REM /// Returns the frame count of a `Chroma` animation upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// EXPORT_API int PluginGetFrameCountName(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8558,7 +8769,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-		REM /// integer upon success. Returns -1 upon failure.
+		REM /// integer upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginGetMaxColumn(int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8575,7 +8786,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginGetMaxLeds(int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8592,7 +8803,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginGetMaxRow(int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -8944,7 +9155,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Loads `Chroma` effects so that the animation can be played immediately. 
-		REM /// Returns the animation id upon success. Returns -1 upon failure.
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
 		REM /// EXPORT_API int PluginLoadAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9089,7 +9301,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Flips the color grid horizontally for all `Chroma` animation frames. Returns 
-		REM /// the animation id upon success. Returns -1 upon failure.
+		REM /// the animation id upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginMirrorHorizontally(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9099,7 +9311,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Flips the color grid vertically for all `Chroma` animation frames. This 
 		REM /// method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
-		REM /// animation id upon success. Returns -1 upon failure.
+		REM /// animation id upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginMirrorVertically(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9556,8 +9768,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Opens a `Chroma` animation file so that it can be played. Returns an animation 
-		REM /// id >= 0 upon success. Returns -1 if there was a failure. The animation 
-		REM /// id is used in most of the API methods.
+		REM /// id >= 0 upon success. Returns negative one if there was a failure. The 
+		REM /// animation id is used in most of the API methods.
 		REM /// EXPORT_API int PluginOpenAnimation(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9574,11 +9786,11 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-		REM /// is a pointer to byte array of the loaded animation in memory. `Name` will 
+		REM /// is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 		REM /// be assigned to the animation when loaded. Returns an animation id >= 0 
-		REM /// upon success. Returns -1 if there was a failure. The animation id is used 
-		REM /// in most of the API methods.
-		REM /// EXPORT_API int PluginOpenAnimationFromMemory(const byte* data, const char* name);
+		REM /// upon success. Returns negative one if there was a failure. The animation 
+		REM /// id is used in most of the API methods.
+		REM /// EXPORT_API int PluginOpenAnimationFromMemory(const BYTE* data, const char* name);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
 		Private Function PluginOpenAnimationFromMemory(data As Byte(), name As IntPtr) As Integer
@@ -9586,7 +9798,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
-		REM /// upon success. Returns -1 if there was a failure.
+		REM /// upon success. Returns negative one if there was a failure.
 		REM /// EXPORT_API int PluginOpenEditorDialog(const char* path);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9620,8 +9832,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
-		REM /// parameter. Returns the animation id upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// parameter. Returns the animation id upon success. Returns negative one 
+		REM /// upon failure.
 		REM /// EXPORT_API int PluginOverrideFrameDuration(int animationId, float duration);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9671,8 +9883,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Plays the `Chroma` animation. This will load the animation, if not loaded 
-		REM /// previously. Returns the animation id upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// previously. Returns the animation id upon success. Returns negative one 
+		REM /// upon failure.
 		REM /// EXPORT_API int PluginPlayAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9763,7 +9975,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-		REM /// Returns the animation id upon success. Returns -1 upon failure.
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
 		REM /// EXPORT_API int PluginPreviewFrame(int animationId, int frameIndex);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9815,7 +10028,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
-		REM /// upon success. Returns -1 upon failure.
+		REM /// upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginResetAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -9848,8 +10061,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Reverse the animation frame order of the `Chroma` animation. Returns the 
-		REM /// animation id upon success. Returns -1 upon failure. Animation is referenced 
-		REM /// by id.
+		REM /// animation id upon success. Returns negative one upon failure. Animation 
+		REM /// is referenced by id.
 		REM /// EXPORT_API int PluginReverse(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10045,7 +10258,7 @@ Namespace ChromaSDK
 		REM /// <summary>
 		REM /// Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 		REM /// is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
-		REM /// the animation id upon success. Returns -1 upon failure.
+		REM /// the animation id upon success. Returns negative one upon failure.
 		REM /// EXPORT_API int PluginSetDevice(int animationId, int deviceType, int device);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10576,7 +10789,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Stops animation playback if in progress. Returns the animation id upon success. 
-		REM /// Returns -1 upon failure.
+		REM /// Returns negative one upon failure.
 		REM /// EXPORT_API int PluginStopAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10654,6 +10867,15 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
+		REM /// Subtract the source color from the target color for the frame where the 
+		REM /// target color is not black. Source and target are referenced by id.
+		REM /// EXPORT_API void PluginSubtractNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginSubtractNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer) As Boolean
+		End Function
+
+		REM /// <summary>
 		REM /// Subtract the source color from the target color for all frames where the 
 		REM /// target color is not black. Source and target are referenced by id.
 		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
@@ -10705,6 +10927,15 @@ Namespace ChromaSDK
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
 		Private Function PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As IntPtr, targetAnimation As IntPtr, offset As Double) As Double
+		End Function
+
+		REM /// <summary>
+		REM /// Subtract the source color from the target color for the frame where the 
+		REM /// target color is not black. Source and target are referenced by name.
+		REM /// EXPORT_API void PluginSubtractNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginSubtractNonZeroAllKeysName(sourceAnimation As IntPtr, targetAnimation As IntPtr, frameId As Integer) As Boolean
 		End Function
 
 		REM /// <summary>
@@ -10877,7 +11108,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Trim the end of the animation. The length of the animation will be the lastFrameId 
-		REM /// + 1. Reference the animation by id.
+		REM /// plus one. Reference the animation by id.
 		REM /// EXPORT_API void PluginTrimEndFrames(int animationId, int lastFrameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10886,7 +11117,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Trim the end of the animation. The length of the animation will be the lastFrameId 
-		REM /// + 1. Reference the animation by name.
+		REM /// plus one. Reference the animation by name.
 		REM /// EXPORT_API void PluginTrimEndFramesName(const char* path, int lastFrameId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10952,8 +11183,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure. 
-		REM ///
+		REM /// Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// EXPORT_API RZRESULT PluginUninit();
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10970,7 +11201,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Unloads `Chroma` effects to free up resources. Returns the animation id 
-		REM /// upon success. Returns -1 upon failure. Reference the animation by id.
+		REM /// upon success. Returns negative one upon failure. Reference the animation 
+		REM /// by id.
 		REM /// EXPORT_API int PluginUnloadAnimation(int animationId);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -11025,8 +11257,8 @@ Namespace ChromaSDK
 		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
 		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// * `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-		REM /// failure.
+		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -11039,8 +11271,8 @@ Namespace ChromaSDK
 		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
 		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// * `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-		REM /// failure.
+		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+		REM /// one upon failure.
 		REM /// EXPORT_API int PluginUpdateFrameName(const char* path, int frameIndex, float duration, int* colors, int length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>

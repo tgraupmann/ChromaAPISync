@@ -3,12 +3,14 @@
 
 * [AddColor](#AddColor)
 * [AddFrame](#AddFrame)
+* [AddNonZeroAllKeys](#AddNonZeroAllKeys)
 * [AddNonZeroAllKeysAllFrames](#AddNonZeroAllKeysAllFrames)
 * [AddNonZeroAllKeysAllFramesName](#AddNonZeroAllKeysAllFramesName)
 * [AddNonZeroAllKeysAllFramesNameD](#AddNonZeroAllKeysAllFramesNameD)
 * [AddNonZeroAllKeysAllFramesOffset](#AddNonZeroAllKeysAllFramesOffset)
 * [AddNonZeroAllKeysAllFramesOffsetName](#AddNonZeroAllKeysAllFramesOffsetName)
 * [AddNonZeroAllKeysAllFramesOffsetNameD](#AddNonZeroAllKeysAllFramesOffsetNameD)
+* [AddNonZeroAllKeysName](#AddNonZeroAllKeysName)
 * [AddNonZeroAllKeysOffset](#AddNonZeroAllKeysOffset)
 * [AddNonZeroAllKeysOffsetName](#AddNonZeroAllKeysOffsetName)
 * [AddNonZeroAllKeysOffsetNameD](#AddNonZeroAllKeysOffsetNameD)
@@ -92,18 +94,24 @@
 * [CopyRedChannelAllFrames](#CopyRedChannelAllFrames)
 * [CopyRedChannelAllFramesName](#CopyRedChannelAllFramesName)
 * [CopyRedChannelAllFramesNameD](#CopyRedChannelAllFramesNameD)
+* [CopyZeroAllKeys](#CopyZeroAllKeys)
 * [CopyZeroAllKeysAllFrames](#CopyZeroAllKeysAllFrames)
 * [CopyZeroAllKeysAllFramesName](#CopyZeroAllKeysAllFramesName)
 * [CopyZeroAllKeysAllFramesNameD](#CopyZeroAllKeysAllFramesNameD)
 * [CopyZeroAllKeysAllFramesOffset](#CopyZeroAllKeysAllFramesOffset)
 * [CopyZeroAllKeysAllFramesOffsetName](#CopyZeroAllKeysAllFramesOffsetName)
 * [CopyZeroAllKeysAllFramesOffsetNameD](#CopyZeroAllKeysAllFramesOffsetNameD)
+* [CopyZeroAllKeysName](#CopyZeroAllKeysName)
+* [CopyZeroAllKeysOffset](#CopyZeroAllKeysOffset)
+* [CopyZeroAllKeysOffsetName](#CopyZeroAllKeysOffsetName)
 * [CopyZeroKeyColor](#CopyZeroKeyColor)
 * [CopyZeroKeyColorName](#CopyZeroKeyColorName)
 * [CopyZeroKeyColorNameD](#CopyZeroKeyColorNameD)
+* [CopyZeroTargetAllKeys](#CopyZeroTargetAllKeys)
 * [CopyZeroTargetAllKeysAllFrames](#CopyZeroTargetAllKeysAllFrames)
 * [CopyZeroTargetAllKeysAllFramesName](#CopyZeroTargetAllKeysAllFramesName)
 * [CopyZeroTargetAllKeysAllFramesNameD](#CopyZeroTargetAllKeysAllFramesNameD)
+* [CopyZeroTargetAllKeysName](#CopyZeroTargetAllKeysName)
 * [CoreCreateChromaLinkEffect](#CoreCreateChromaLinkEffect)
 * [CoreCreateEffect](#CoreCreateEffect)
 * [CoreCreateHeadsetEffect](#CoreCreateHeadsetEffect)
@@ -486,12 +494,14 @@
 * [StopComposite](#StopComposite)
 * [StopCompositeD](#StopCompositeD)
 * [SubtractColor](#SubtractColor)
+* [SubtractNonZeroAllKeys](#SubtractNonZeroAllKeys)
 * [SubtractNonZeroAllKeysAllFrames](#SubtractNonZeroAllKeysAllFrames)
 * [SubtractNonZeroAllKeysAllFramesName](#SubtractNonZeroAllKeysAllFramesName)
 * [SubtractNonZeroAllKeysAllFramesNameD](#SubtractNonZeroAllKeysAllFramesNameD)
 * [SubtractNonZeroAllKeysAllFramesOffset](#SubtractNonZeroAllKeysAllFramesOffset)
 * [SubtractNonZeroAllKeysAllFramesOffsetName](#SubtractNonZeroAllKeysAllFramesOffsetName)
 * [SubtractNonZeroAllKeysAllFramesOffsetNameD](#SubtractNonZeroAllKeysAllFramesOffsetNameD)
+* [SubtractNonZeroAllKeysName](#SubtractNonZeroAllKeysName)
 * [SubtractNonZeroAllKeysOffset](#SubtractNonZeroAllKeysOffset)
 * [SubtractNonZeroAllKeysOffsetName](#SubtractNonZeroAllKeysOffsetName)
 * [SubtractNonZeroAllKeysOffsetNameD](#SubtractNonZeroAllKeysOffsetNameD)
@@ -553,11 +563,23 @@ Adds a frame to the `Chroma` animation and sets the `duration` (in seconds).
 The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
 the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
-size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
-success. Returns -1 upon failure.
+size should be `MAX ROW` times `MAX COLUMN`. Returns the animation id upon 
+success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.AddFrame(animationId As Integer, duration As Single, colors As Integer(), length As Integer)
+```
+
+---
+
+<a name="AddNonZeroAllKeys"></a>
+**AddNonZeroAllKeys**
+
+Add source color to target where color is not black for frame id, reference 
+source and target by id.
+
+```vb
+ChromaAnimationAPI.AddNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
 ```
 
 ---
@@ -630,6 +652,18 @@ D suffix for limited data types.
 
 ```vb
 Dim result As Double = ChromaAnimationAPI.AddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double)
+```
+
+---
+
+<a name="AddNonZeroAllKeysName"></a>
+**AddNonZeroAllKeysName**
+
+Add source color to target where color is not black for frame id, reference 
+source and target by name.
+
+```vb
+ChromaAnimationAPI.AddNonZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
 ```
 
 ---
@@ -849,9 +883,9 @@ ChromaAnimationAPI.CloseAll()
 **CloseAnimation**
 
 Closes the `Chroma` animation to free up resources referenced by id. Returns 
-the animation id upon success. Returns -1 upon failure. This might be used 
-while authoring effects if there was a change necessitating re-opening 
-the animation. The animation id can no longer be used once closed.
+the animation id upon success. Returns negative one upon failure. This 
+might be used while authoring effects if there was a change necessitating 
+re-opening the animation. The animation id can no longer be used once closed.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.CloseAnimation(animationId As Integer)
@@ -1628,6 +1662,18 @@ Dim result As Double = ChromaAnimationAPI.CopyRedChannelAllFramesNameD(path As S
 
 ---
 
+<a name="CopyZeroAllKeys"></a>
+**CopyZeroAllKeys**
+
+Copy zero colors from source animation to target animation for the frame. 
+Source and target are referenced by id.
+
+```vb
+ChromaAnimationAPI.CopyZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+```
+
+---
+
 <a name="CopyZeroAllKeysAllFrames"></a>
 **CopyZeroAllKeysAllFrames**
 
@@ -1700,6 +1746,44 @@ Dim result As Double = ChromaAnimationAPI.CopyZeroAllKeysAllFramesOffsetNameD(so
 
 ---
 
+<a name="CopyZeroAllKeysName"></a>
+**CopyZeroAllKeysName**
+
+Copy zero colors from source animation to target animation for the frame. 
+Source and target are referenced by name.
+
+```vb
+ChromaAnimationAPI.CopyZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
+```
+
+---
+
+<a name="CopyZeroAllKeysOffset"></a>
+**CopyZeroAllKeysOffset**
+
+Copy zero colors from source animation to target animation for the frame 
+id starting at the target offset for the length of the source animation. 
+Source and target are referenced by id.
+
+```vb
+ChromaAnimationAPI.CopyZeroAllKeysOffset(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer, offset As Integer)
+```
+
+---
+
+<a name="CopyZeroAllKeysOffsetName"></a>
+**CopyZeroAllKeysOffsetName**
+
+Copy zero colors from source animation to target animation for the frame 
+id starting at the target offset for the length of the source animation. 
+Source and target are referenced by name.
+
+```vb
+ChromaAnimationAPI.CopyZeroAllKeysOffsetName(sourceAnimation As String, targetAnimation As String, frameId As Integer, offset As Integer)
+```
+
+---
+
 <a name="CopyZeroKeyColor"></a>
 **CopyZeroKeyColor**
 
@@ -1735,6 +1819,18 @@ Dim result As Double = ChromaAnimationAPI.CopyZeroKeyColorNameD(sourceAnimation 
 
 ---
 
+<a name="CopyZeroTargetAllKeys"></a>
+**CopyZeroTargetAllKeys**
+
+Copy nonzero color from source animation to target animation where target 
+is zero for the frame. Source and target are referenced by id.
+
+```vb
+ChromaAnimationAPI.CopyZeroTargetAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+```
+
+---
+
 <a name="CopyZeroTargetAllKeysAllFrames"></a>
 **CopyZeroTargetAllKeysAllFrames**
 
@@ -1766,6 +1862,18 @@ D suffix for limited data types.
 
 ```vb
 Dim result As Double = ChromaAnimationAPI.CopyZeroTargetAllKeysAllFramesNameD(sourceAnimation As String, targetAnimation As String)
+```
+
+---
+
+<a name="CopyZeroTargetAllKeysName"></a>
+**CopyZeroTargetAllKeysName**
+
+Copy nonzero color from source animation to target animation where target 
+is zero for the frame. Source and target are referenced by name.
+
+```vb
+ChromaAnimationAPI.CopyZeroTargetAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
 ```
 
 ---
@@ -1938,7 +2046,10 @@ Length will return as zero if the streaming auth code could not be obtained.
 If length is greater than zero, it will be the length of the returned streaming 
 auth code.  Once you have the shortcode, it should be shown to the user 
 so they can associate the stream with their Razer ID  StreamGetStatus() 
-should return the READY status before invoking this method.
+should return the READY status before invoking this method. platform: is 
+the null terminated string that identifies the source of the stream: { 
+GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+that identifies the application or game.
 
 ```vb
 ChromaAnimationAPI.CoreStreamGetAuthShortcode(ByRef shortcode As String, ByRef length As byte, platform As String, title As String)
@@ -1972,9 +2083,8 @@ Length will return zero if the key could not be obtained. If the length
 is greater than zero, it will be the length of the returned streaming id. 
 Retrieve the stream id after authorizing the shortcode. The authorization 
 window will expire in 5 minutes. Be sure to save the stream key before 
-the window expires.  platform: is the null terminated string that identifies 
-the source of the stream: { GEFORCE_NOW, LUNA, STADIA, XBOX_GAME_PASS } 
-StreamGetStatus() should return the READY status to use this method.
+the window expires. StreamGetStatus() should return the READY status to 
+use this method.
 
 ```vb
 ChromaAnimationAPI.CoreStreamGetId(shortcode As String, ByRef streamId As String, ByRef length As byte)
@@ -2108,10 +2218,10 @@ Dim result As Integer = ChromaAnimationAPI.CoreUnInit()
 Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
 `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, respective 
-to the `deviceType`. Returns the animation id upon success. Returns -1 
-upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
-at the given path. Returns the animation id upon success. Returns -1 upon 
-failure.
+to the `deviceType`. Returns the animation id upon success. Returns negative 
+one upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
+at the given path. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.CreateAnimation(path As String, deviceType As Integer, device As Integer)
@@ -2126,8 +2236,8 @@ Creates a `Chroma` animation in memory without creating a file. The `deviceType`
 parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
 uses `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, 
 respective to the `deviceType`. Returns the animation id upon success. 
-Returns -1 upon failure. Returns the animation id upon success. Returns 
--1 upon failure.
+Returns negative one upon failure. Returns the animation id upon success. 
+Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.CreateAnimationInMemory(deviceType As Integer, device As Integer)
@@ -3364,7 +3474,7 @@ Dim result As Double = ChromaAnimationAPI.GetCurrentFrameNameD(path As String)
 
 Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 animation respective to the `deviceType`, as an integer upon success. Returns 
--1 upon failure.
+negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetDevice(animationId As Integer)
@@ -3377,7 +3487,7 @@ Dim result As Integer = ChromaAnimationAPI.GetDevice(animationId As Integer)
 
 Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 animation respective to the `deviceType`, as an integer upon success. Returns 
--1 upon failure.
+negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetDeviceName(path As String)
@@ -3400,7 +3510,7 @@ Dim result As Double = ChromaAnimationAPI.GetDeviceNameD(path As String)
 **GetDeviceType**
 
 Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetDeviceType(animationId As Integer)
@@ -3412,7 +3522,7 @@ Dim result As Integer = ChromaAnimationAPI.GetDeviceType(animationId As Integer)
 **GetDeviceTypeName**
 
 Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetDeviceTypeName(path As String)
@@ -3439,7 +3549,8 @@ The `color` is expected to be an array of the expected dimensions for the
 `deviceType/device`. The `length` parameter is the size of the `color` 
 array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
 For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-COLUMN`. Returns the animation id upon success. Returns -1 upon failure.
+COLUMN`. Returns the animation id upon success. Returns negative one upon 
+failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer)
@@ -3450,8 +3561,8 @@ Dim result As Integer = ChromaAnimationAPI.GetFrame(animationId As Integer, fram
 <a name="GetFrameCount"></a>
 **GetFrameCount**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetFrameCount(animationId As Integer)
@@ -3462,8 +3573,8 @@ Dim result As Integer = ChromaAnimationAPI.GetFrameCount(animationId As Integer)
 <a name="GetFrameCountName"></a>
 **GetFrameCountName**
 
-Returns the frame count of a `Chroma` animation upon success. Returns -1 
-upon failure.
+Returns the frame count of a `Chroma` animation upon success. Returns negative 
+one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetFrameCountName(path As String)
@@ -3544,7 +3655,7 @@ Dim result As Double = ChromaAnimationAPI.GetLibraryLoadedStateD()
 **GetMaxColumn**
 
 Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-integer upon success. Returns -1 upon failure.
+integer upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetMaxColumn(device As Device2D)
@@ -3567,7 +3678,7 @@ Dim result As Double = ChromaAnimationAPI.GetMaxColumnD(device As Double)
 **GetMaxLeds**
 
 Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetMaxLeds(device As Device1D)
@@ -3590,7 +3701,7 @@ Dim result As Double = ChromaAnimationAPI.GetMaxLedsD(device As Double)
 **GetMaxRow**
 
 Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.GetMaxRow(device As Device2D)
@@ -4064,7 +4175,7 @@ Dim result As Integer = ChromaAnimationAPI.LerpColor(from As Integer, renamed_to
 **LoadAnimation**
 
 Loads `Chroma` effects so that the animation can be played immediately. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.LoadAnimation(animationId As Integer)
@@ -4257,7 +4368,7 @@ Dim result As Double = ChromaAnimationAPI.MakeBlankFramesRGBNameD(path As String
 **MirrorHorizontally**
 
 Flips the color grid horizontally for all `Chroma` animation frames. Returns 
-the animation id upon success. Returns -1 upon failure.
+the animation id upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.MirrorHorizontally(animationId As Integer)
@@ -4270,7 +4381,7 @@ Dim result As Integer = ChromaAnimationAPI.MirrorHorizontally(animationId As Int
 
 Flips the color grid vertically for all `Chroma` animation frames. This 
 method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
-animation id upon success. Returns -1 upon failure.
+animation id upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.MirrorVertically(animationId As Integer)
@@ -4870,8 +4981,8 @@ Dim result As Double = ChromaAnimationAPI.OffsetNonZeroColorsNameD(path As Strin
 **OpenAnimation**
 
 Opens a `Chroma` animation file so that it can be played. Returns an animation 
-id >= 0 upon success. Returns -1 if there was a failure. The animation 
-id is used in most of the API methods.
+id >= 0 upon success. Returns negative one if there was a failure. The 
+animation id is used in most of the API methods.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.OpenAnimation(path As String)
@@ -4894,10 +5005,10 @@ Dim result As Double = ChromaAnimationAPI.OpenAnimationD(path As String)
 **OpenAnimationFromMemory**
 
 Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-is a pointer to byte array of the loaded animation in memory. `Name` will 
+is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 be assigned to the animation when loaded. Returns an animation id >= 0 
-upon success. Returns -1 if there was a failure. The animation id is used 
-in most of the API methods.
+upon success. Returns negative one if there was a failure. The animation 
+id is used in most of the API methods.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.OpenAnimationFromMemory(data As Byte(), name As String)
@@ -4909,7 +5020,7 @@ Dim result As Integer = ChromaAnimationAPI.OpenAnimationFromMemory(data As Byte(
 **OpenEditorDialog**
 
 Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
-upon success. Returns -1 if there was a failure.
+upon success. Returns negative one if there was a failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.OpenEditorDialog(path As String)
@@ -4955,7 +5066,8 @@ Dim result As Double = ChromaAnimationAPI.OpenEditorDialogD(path As String)
 **OverrideFrameDuration**
 
 Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
-parameter. Returns the animation id upon success. Returns -1 upon failure.
+parameter. Returns the animation id upon success. Returns negative one 
+upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.OverrideFrameDuration(animationId As Integer, duration As Single)
@@ -5023,7 +5135,8 @@ Dim result As Double = ChromaAnimationAPI.PauseAnimationNameD(path As String)
 **PlayAnimation**
 
 Plays the `Chroma` animation. This will load the animation, if not loaded 
-previously. Returns the animation id upon success. Returns -1 upon failure.
+previously. Returns the animation id upon success. Returns negative one 
+upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.PlayAnimation(animationId As Integer)
@@ -5144,7 +5257,7 @@ Dim result As Double = ChromaAnimationAPI.PlayCompositeD(name As String, renamed
 **PreviewFrame**
 
 Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-Returns the animation id upon success. Returns -1 upon failure.
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.PreviewFrame(animationId As Integer, frameIndex As Integer)
@@ -5214,7 +5327,7 @@ Dim result As Double = ChromaAnimationAPI.ReduceFramesNameD(path As String, n As
 **ResetAnimation**
 
 Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
-upon success. Returns -1 upon failure.
+upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.ResetAnimation(animationId As Integer)
@@ -5259,8 +5372,8 @@ Dim result As Double = ChromaAnimationAPI.ResumeAnimationNameD(path As String, r
 **Reverse**
 
 Reverse the animation frame order of the `Chroma` animation. Returns the 
-animation id upon success. Returns -1 upon failure. Animation is referenced 
-by id.
+animation id upon success. Returns negative one upon failure. Animation 
+is referenced by id.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.Reverse(animationId As Integer)
@@ -5522,7 +5635,7 @@ Dim result As Integer = ChromaAnimationAPI.SetCustomColorFlag2D(device As Intege
 
 Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
-the animation id upon success. Returns -1 upon failure.
+the animation id upon success. Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.SetDevice(animationId As Integer, deviceType As Integer, device As Integer)
@@ -6234,7 +6347,7 @@ ChromaAnimationAPI.StopAll()
 **StopAnimation**
 
 Stops animation playback if in progress. Returns the animation id upon success. 
-Returns -1 upon failure.
+Returns negative one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.StopAnimation(animationId As Integer)
@@ -6336,6 +6449,18 @@ Dim result As Integer = ChromaAnimationAPI.SubtractColor(color1 As Integer, colo
 
 ---
 
+<a name="SubtractNonZeroAllKeys"></a>
+**SubtractNonZeroAllKeys**
+
+Subtract the source color from the target color for the frame where the 
+target color is not black. Source and target are referenced by id.
+
+```vb
+ChromaAnimationAPI.SubtractNonZeroAllKeys(sourceAnimationId As Integer, targetAnimationId As Integer, frameId As Integer)
+```
+
+---
+
 <a name="SubtractNonZeroAllKeysAllFrames"></a>
 **SubtractNonZeroAllKeysAllFrames**
 
@@ -6404,6 +6529,18 @@ D suffix for limited data types.
 
 ```vb
 Dim result As Double = ChromaAnimationAPI.SubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation As String, targetAnimation As String, offset As Double)
+```
+
+---
+
+<a name="SubtractNonZeroAllKeysName"></a>
+**SubtractNonZeroAllKeysName**
+
+Subtract the source color from the target color for the frame where the 
+target color is not black. Source and target are referenced by name.
+
+```vb
+ChromaAnimationAPI.SubtractNonZeroAllKeysName(sourceAnimation As String, targetAnimation As String, frameId As Integer)
 ```
 
 ---
@@ -6630,7 +6767,7 @@ Dim result As Double = ChromaAnimationAPI.SubtractThresholdColorsMinMaxRGBNameD(
 **TrimEndFrames**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by id.
+plus one. Reference the animation by id.
 
 ```vb
 ChromaAnimationAPI.TrimEndFrames(animationId As Integer, lastFrameId As Integer)
@@ -6642,7 +6779,7 @@ ChromaAnimationAPI.TrimEndFrames(animationId As Integer, lastFrameId As Integer)
 **TrimEndFramesName**
 
 Trim the end of the animation. The length of the animation will be the lastFrameId 
-+ 1. Reference the animation by name.
+plus one. Reference the animation by name.
 
 ```vb
 ChromaAnimationAPI.TrimEndFramesName(path As String, lastFrameId As Integer)
@@ -6732,7 +6869,8 @@ Dim result As Double = ChromaAnimationAPI.TrimStartFramesNameD(path As String, n
 <a name="Uninit"></a>
 **Uninit**
 
-Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
+Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns negative 
+one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.Uninit()
@@ -6755,7 +6893,8 @@ Dim result As Double = ChromaAnimationAPI.UninitD()
 **UnloadAnimation**
 
 Unloads `Chroma` effects to free up resources. Returns the animation id 
-upon success. Returns -1 upon failure. Reference the animation by id.
+upon success. Returns negative one upon failure. Reference the animation 
+by id.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.UnloadAnimation(animationId As Integer)
@@ -6827,8 +6966,8 @@ Updates the `frameIndex` of the `Chroma` animation and sets the `duration`
 for the `deviceType/device`. The `length` parameter is the size of the 
 `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-failure.
+times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.UpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer)
@@ -6844,8 +6983,8 @@ Updates the `frameIndex` of the `Chroma` animation and sets the `duration`
 for the `deviceType/device`. The `length` parameter is the size of the 
 `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
 LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-failure.
+times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
+one upon failure.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer)

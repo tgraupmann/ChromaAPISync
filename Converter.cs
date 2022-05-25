@@ -3168,134 +3168,134 @@ Imports System.Text
 
 Namespace ChromaSDK
 
-    Public class Keyboard
+    Public Class Keyboard
     
         REM //! Definitions of keys.
         Public Enum RZKEY
-            RZKEY_ESC = &H0001                 REM /*!< Esc (VK_ESCAPE) */
-            RZKEY_F1 = &H0003                  REM /*!< F1 (VK_F1) */
-            RZKEY_F2 = &H0004                  REM /*!< F2 (VK_F2) */
-            RZKEY_F3 = &H0005                  REM /*!< F3 (VK_F3) */
-            RZKEY_F4 = &H0006                  REM /*!< F4 (VK_F4) */
-            RZKEY_F5 = &H0007                  REM /*!< F5 (VK_F5) */
-            RZKEY_F6 = &H0008                  REM /*!< F6 (VK_F6) */
-            RZKEY_F7 = &H0009                  REM /*!< F7 (VK_F7) */
-            RZKEY_F8 = &H000A                  REM /*!< F8 (VK_F8) */
-            RZKEY_F9 = &H000B                  REM /*!< F9 (VK_F9) */
-            RZKEY_F10 = &H000C                 REM /*!< F10 (VK_F10) */
-            RZKEY_F11 = &H000D                 REM /*!< F11 (VK_F11) */
-            RZKEY_F12 = &H000E                 REM /*!< F12 (VK_F12) */
-            RZKEY_1 = &H0102                   REM /*!< 1 (VK_1) */
-            RZKEY_2 = &H0103                   REM /*!< 2 (VK_2) */
-            RZKEY_3 = &H0104                   REM /*!< 3 (VK_3) */
-            RZKEY_4 = &H0105                   REM /*!< 4 (VK_4) */
-            RZKEY_5 = &H0106                   REM /*!< 5 (VK_5) */
-            RZKEY_6 = &H0107                   REM /*!< 6 (VK_6) */
-            RZKEY_7 = &H0108                   REM /*!< 7 (VK_7) */
-            RZKEY_8 = &H0109                   REM /*!< 8 (VK_8) */
-            RZKEY_9 = &H010A                   REM /*!< 9 (VK_9) */
-            RZKEY_0 = &H010B                   REM /*!< 0 (VK_0) */
-            RZKEY_A = &H0302                   REM /*!< A (VK_A) */
-            RZKEY_B = &H0407                   REM /*!< B (VK_B) */
-            RZKEY_C = &H0405                   REM /*!< C (VK_C) */
-            RZKEY_D = &H0304                   REM /*!< D (VK_D) */
-            RZKEY_E = &H0204                   REM /*!< E (VK_E) */
-            RZKEY_F = &H0305                   REM /*!< F (VK_F) */
-            RZKEY_G = &H0306                   REM /*!< G (VK_G) */
-            RZKEY_H = &H0307                   REM /*!< H (VK_H) */
-            RZKEY_I = &H0209                   REM /*!< I (VK_I) */
-            RZKEY_J = &H0308                   REM /*!< J (VK_J) */
-            RZKEY_K = &H0309                   REM /*!< K (VK_K) */
-            RZKEY_L = &H030A                   REM /*!< L (VK_L) */
-            RZKEY_M = &H0409                   REM /*!< M (VK_M) */
-            RZKEY_N = &H0408                   REM /*!< N (VK_N) */
-            RZKEY_O = &H020A                   REM /*!< O (VK_O) */
-            RZKEY_P = &H020B                   REM /*!< P (VK_P) */
-            RZKEY_Q = &H0202                   REM /*!< Q (VK_Q) */
-            RZKEY_R = &H0205                   REM /*!< R (VK_R) */
-            RZKEY_S = &H0303                   REM /*!< S (VK_S) */
-            RZKEY_T = &H0206                   REM /*!< T (VK_T) */
-            RZKEY_U = &H0208                   REM /*!< U (VK_U) */
-            RZKEY_V = &H0406                   REM /*!< V (VK_V) */
-            RZKEY_W = &H0203                   REM /*!< W (VK_W) */
-            RZKEY_X = &H0404                   REM /*!< X (VK_X) */
-            RZKEY_Y = &H0207                   REM /*!< Y (VK_Y) */
-            RZKEY_Z = &H0403                   REM /*!< Z (VK_Z) */
-            RZKEY_NUMLOCK = &H0112             REM /*!< Numlock (VK_NUMLOCK) */
-            RZKEY_NUMPAD0 = &H0513             REM /*!< Numpad 0 (VK_NUMPAD0) */
-            RZKEY_NUMPAD1 = &H0412             REM /*!< Numpad 1 (VK_NUMPAD1) */
-            RZKEY_NUMPAD2 = &H0413             REM /*!< Numpad 2 (VK_NUMPAD2) */
-            RZKEY_NUMPAD3 = &H0414             REM /*!< Numpad 3 (VK_NUMPAD3) */
-            RZKEY_NUMPAD4 = &H0312             REM /*!< Numpad 4 (VK_NUMPAD4) */
-            RZKEY_NUMPAD5 = &H0313             REM /*!< Numpad 5 (VK_NUMPAD5) */
-            RZKEY_NUMPAD6 = &H0314             REM /*!< Numpad 6 (VK_NUMPAD6) */
-            RZKEY_NUMPAD7 = &H0212             REM /*!< Numpad 7 (VK_NUMPAD7) */
-            RZKEY_NUMPAD8 = &H0213             REM /*!< Numpad 8 (VK_NUMPAD8) */
-            RZKEY_NUMPAD9 = &H0214             REM /*!< Numpad 9 (VK_ NUMPAD9*/
-            RZKEY_NUMPAD_DIVIDE = &H0113       REM /*!< Divide (VK_DIVIDE) */
-            RZKEY_NUMPAD_MULTIPLY = &H0114     REM /*!< Multiply (VK_MULTIPLY) */
-            RZKEY_NUMPAD_SUBTRACT = &H0115     REM /*!< Subtract (VK_SUBTRACT) */
-            RZKEY_NUMPAD_ADD = &H0215          REM /*!< Add (VK_ADD) */
-            RZKEY_NUMPAD_ENTER = &H0415        REM /*!< Enter (VK_RETURN - Extended) */
-            RZKEY_NUMPAD_DECIMAL = &H0514      REM /*!< Decimal (VK_DECIMAL) */
-            RZKEY_PRINTSCREEN = &H000F         REM /*!< Print Screen (VK_PRINT) */
-            RZKEY_SCROLL = &H0010              REM /*!< Scroll Lock (VK_SCROLL) */
-            RZKEY_PAUSE = &H0011               REM /*!< Pause (VK_PAUSE) */
-            RZKEY_INSERT = &H010F              REM /*!< Insert (VK_INSERT) */
-            RZKEY_HOME = &H0110                REM /*!< Home (VK_HOME) */
-            RZKEY_PAGEUP = &H0111              REM /*!< Page Up (VK_PRIOR) */
-            RZKEY_DELETE = &H020f              REM /*!< Delete (VK_DELETE) */
-            RZKEY_END = &H0210                 REM /*!< End (VK_END) */
-            RZKEY_PAGEDOWN = &H0211            REM /*!< Page Down (VK_NEXT) */
-            RZKEY_UP = &H0410                  REM /*!< Up (VK_UP) */
-            RZKEY_LEFT = &H050F                REM /*!< Left (VK_LEFT) */
-            RZKEY_DOWN = &H0510                REM /*!< Down (VK_DOWN) */
-            RZKEY_RIGHT = &H0511               REM /*!< Right (VK_RIGHT) */
-            RZKEY_TAB = &H0201                 REM /*!< Tab (VK_TAB) */
-            RZKEY_CAPSLOCK = &H0301            REM /*!< Caps Lock(VK_CAPITAL) */
-            RZKEY_BACKSPACE = &H010E           REM /*!< Backspace (VK_BACK) */
-            RZKEY_ENTER = &H030E               REM /*!< Enter (VK_RETURN) */
-            RZKEY_LCTRL = &H0501               REM /*!< Left Control(VK_LCONTROL) */
-            RZKEY_LWIN = &H0502                REM /*!< Left Window (VK_LWIN) */
-            RZKEY_LALT = &H0503                REM /*!< Left Alt (VK_LMENU) */
-            RZKEY_SPACE = &H0507               REM /*!< Spacebar (VK_SPACE) */
-            RZKEY_RALT = &H050B                REM /*!< Right Alt (VK_RMENU) */
-            RZKEY_FN = &H050C                  REM /*!< Function key. */
-            RZKEY_RMENU = &H050D               REM /*!< Right Menu (VK_APPS) */
-            RZKEY_RCTRL = &H050E               REM /*!< Right Control (VK_RCONTROL) */
-            RZKEY_LSHIFT = &H0401              REM /*!< Left Shift (VK_LSHIFT) */
-            RZKEY_RSHIFT = &H040E              REM /*!< Right Shift (VK_RSHIFT) */
-            RZKEY_MACRO1 = &H0100              REM /*!< Macro Key 1 */
-            RZKEY_MACRO2 = &H0200              REM /*!< Macro Key 2 */
-            RZKEY_MACRO3 = &H0300              REM /*!< Macro Key 3 */
-            RZKEY_MACRO4 = &H0400              REM /*!< Macro Key 4 */
-            RZKEY_MACRO5 = &H0500              REM /*!< Macro Key 5 */
-            RZKEY_OEM_1 = &H0101               REM /*!< ~ (tilde/半角/全角) (VK_OEM_3) */
-            RZKEY_OEM_2 = &H010C               REM /*!< -- (minus) (VK_OEM_MINUS) */
-            RZKEY_OEM_3 = &H010D               REM /*!< = (equal) (VK_OEM_PLUS) */
-            RZKEY_OEM_4 = &H020C               REM /*!< [ (left sqaure bracket) (VK_OEM_4) */
-            RZKEY_OEM_5 = &H020D               REM /*!< ] (right square bracket) (VK_OEM_6) */
-            RZKEY_OEM_6 = &H020E               REM /*!< \ (backslash) (VK_OEM_5) */
-            RZKEY_OEM_7 = &H030B               REM /*!< ; (semi-colon) (VK_OEM_1) */
-            RZKEY_OEM_8 = &H030C               REM /*!< ' (apostrophe) (VK_OEM_7) */
-            RZKEY_OEM_9 = &H040A               REM /*!< , (comma) (VK_OEM_COMMA) */
-            RZKEY_OEM_10 = &H040B              REM /*!< . (period) (VK_OEM_PERIOD) */
-            RZKEY_OEM_11 = &H040C              REM /*!< / (forward slash) (VK_OEM_2) */
-            RZKEY_EUR_1 = &H030D               REM /*!< ""#"" (VK_OEM_5) */
-            RZKEY_EUR_2 = &H0402               REM /*!< \ (VK_OEM_102) */
-            RZKEY_JPN_1 = &H0015               REM /*!< ¥ (&HFF) */
-            RZKEY_JPN_2 = &H040D               REM /*!< \ (&HC1) */
-            RZKEY_JPN_3 = &H0504               REM /*!< 無変換 (VK_OEM_PA1) */
-            RZKEY_JPN_4 = &H0509               REM /*!< 変換 (&HFF) */
-            RZKEY_JPN_5 = &H050A               REM /*!< ひらがな/カタカナ (&HFF) */
-            RZKEY_KOR_1 = &H0015               REM /*!< | (&HFF) */
-            RZKEY_KOR_2 = &H030D               REM /*!< (VK_OEM_5) */
-            RZKEY_KOR_3 = &H0402               REM /*!< (VK_OEM_102) */
-            RZKEY_KOR_4 = &H040D               REM /*!< (&HC1) */
-            RZKEY_KOR_5 = &H0504               REM /*!< (VK_OEM_PA1) */
-            RZKEY_KOR_6 = &H0509               REM /*!< 한/영 (&HFF) */
-            RZKEY_KOR_7 = &H050A               REM /*!< (&HFF) */
-            RZKEY_INVALID = &HFFFF              REM /*!< Invalid keys. */
+            RZKEY_ESC = &H1                 REM /*!< Esc (VK_ESCAPE) */
+            RZKEY_F1 = &H3                  REM /*!< F1 (VK_F1) */
+            RZKEY_F2 = &H4                  REM /*!< F2 (VK_F2) */
+            RZKEY_F3 = &H5                  REM /*!< F3 (VK_F3) */
+            RZKEY_F4 = &H6                  REM /*!< F4 (VK_F4) */
+            RZKEY_F5 = &H7                  REM /*!< F5 (VK_F5) */
+            RZKEY_F6 = &H8                  REM /*!< F6 (VK_F6) */
+            RZKEY_F7 = &H9                  REM /*!< F7 (VK_F7) */
+            RZKEY_F8 = &HA                  REM /*!< F8 (VK_F8) */
+            RZKEY_F9 = &HB                  REM /*!< F9 (VK_F9) */
+            RZKEY_F10 = &HC                 REM /*!< F10 (VK_F10) */
+            RZKEY_F11 = &HD                 REM /*!< F11 (VK_F11) */
+            RZKEY_F12 = &HE                 REM /*!< F12 (VK_F12) */
+            RZKEY_1 = &H102                   REM /*!< 1 (VK_1) */
+            RZKEY_2 = &H103                   REM /*!< 2 (VK_2) */
+            RZKEY_3 = &H104                   REM /*!< 3 (VK_3) */
+            RZKEY_4 = &H105                   REM /*!< 4 (VK_4) */
+            RZKEY_5 = &H106                   REM /*!< 5 (VK_5) */
+            RZKEY_6 = &H107                   REM /*!< 6 (VK_6) */
+            RZKEY_7 = &H108                   REM /*!< 7 (VK_7) */
+            RZKEY_8 = &H109                   REM /*!< 8 (VK_8) */
+            RZKEY_9 = &H10A                   REM /*!< 9 (VK_9) */
+            RZKEY_0 = &H10B                   REM /*!< 0 (VK_0) */
+            RZKEY_A = &H302                   REM /*!< A (VK_A) */
+            RZKEY_B = &H407                   REM /*!< B (VK_B) */
+            RZKEY_C = &H405                   REM /*!< C (VK_C) */
+            RZKEY_D = &H304                   REM /*!< D (VK_D) */
+            RZKEY_E = &H204                   REM /*!< E (VK_E) */
+            RZKEY_F = &H305                   REM /*!< F (VK_F) */
+            RZKEY_G = &H306                   REM /*!< G (VK_G) */
+            RZKEY_H = &H307                   REM /*!< H (VK_H) */
+            RZKEY_I = &H209                   REM /*!< I (VK_I) */
+            RZKEY_J = &H308                   REM /*!< J (VK_J) */
+            RZKEY_K = &H309                   REM /*!< K (VK_K) */
+            RZKEY_L = &H30A                   REM /*!< L (VK_L) */
+            RZKEY_M = &H409                   REM /*!< M (VK_M) */
+            RZKEY_N = &H408                   REM /*!< N (VK_N) */
+            RZKEY_O = &H20A                   REM /*!< O (VK_O) */
+            RZKEY_P = &H20B                   REM /*!< P (VK_P) */
+            RZKEY_Q = &H202                   REM /*!< Q (VK_Q) */
+            RZKEY_R = &H205                   REM /*!< R (VK_R) */
+            RZKEY_S = &H303                   REM /*!< S (VK_S) */
+            RZKEY_T = &H206                   REM /*!< T (VK_T) */
+            RZKEY_U = &H208                   REM /*!< U (VK_U) */
+            RZKEY_V = &H406                   REM /*!< V (VK_V) */
+            RZKEY_W = &H203                   REM /*!< W (VK_W) */
+            RZKEY_X = &H404                   REM /*!< X (VK_X) */
+            RZKEY_Y = &H207                   REM /*!< Y (VK_Y) */
+            RZKEY_Z = &H403                   REM /*!< Z (VK_Z) */
+            RZKEY_NUMLOCK = &H112             REM /*!< Numlock (VK_NUMLOCK) */
+            RZKEY_NUMPAD0 = &H513             REM /*!< Numpad 0 (VK_NUMPAD0) */
+            RZKEY_NUMPAD1 = &H412             REM /*!< Numpad 1 (VK_NUMPAD1) */
+            RZKEY_NUMPAD2 = &H413             REM /*!< Numpad 2 (VK_NUMPAD2) */
+            RZKEY_NUMPAD3 = &H414             REM /*!< Numpad 3 (VK_NUMPAD3) */
+            RZKEY_NUMPAD4 = &H312             REM /*!< Numpad 4 (VK_NUMPAD4) */
+            RZKEY_NUMPAD5 = &H313             REM /*!< Numpad 5 (VK_NUMPAD5) */
+            RZKEY_NUMPAD6 = &H314             REM /*!< Numpad 6 (VK_NUMPAD6) */
+            RZKEY_NUMPAD7 = &H212             REM /*!< Numpad 7 (VK_NUMPAD7) */
+            RZKEY_NUMPAD8 = &H213             REM /*!< Numpad 8 (VK_NUMPAD8) */
+            RZKEY_NUMPAD9 = &H214             REM /*!< Numpad 9 (VK_ NUMPAD9*/
+            RZKEY_NUMPAD_DIVIDE = &H113       REM /*!< Divide (VK_DIVIDE) */
+            RZKEY_NUMPAD_MULTIPLY = &H114     REM /*!< Multiply (VK_MULTIPLY) */
+            RZKEY_NUMPAD_SUBTRACT = &H115     REM /*!< Subtract (VK_SUBTRACT) */
+            RZKEY_NUMPAD_ADD = &H215          REM /*!< Add (VK_ADD) */
+            RZKEY_NUMPAD_ENTER = &H415        REM /*!< Enter (VK_RETURN - Extended) */
+            RZKEY_NUMPAD_DECIMAL = &H514      REM /*!< Decimal (VK_DECIMAL) */
+            RZKEY_PRINTSCREEN = &HF         REM /*!< Print Screen (VK_PRINT) */
+            RZKEY_SCROLL = &H10              REM /*!< Scroll Lock (VK_SCROLL) */
+            RZKEY_PAUSE = &H11               REM /*!< Pause (VK_PAUSE) */
+            RZKEY_INSERT = &H10F              REM /*!< Insert (VK_INSERT) */
+            RZKEY_HOME = &H110                REM /*!< Home (VK_HOME) */
+            RZKEY_PAGEUP = &H111              REM /*!< Page Up (VK_PRIOR) */
+            RZKEY_DELETE = &H20F              REM /*!< Delete (VK_DELETE) */
+            RZKEY_END = &H210                 REM /*!< End (VK_END) */
+            RZKEY_PAGEDOWN = &H211            REM /*!< Page Down (VK_NEXT) */
+            RZKEY_UP = &H410                  REM /*!< Up (VK_UP) */
+            RZKEY_LEFT = &H50F                REM /*!< Left (VK_LEFT) */
+            RZKEY_DOWN = &H510                REM /*!< Down (VK_DOWN) */
+            RZKEY_RIGHT = &H511               REM /*!< Right (VK_RIGHT) */
+            RZKEY_TAB = &H201                 REM /*!< Tab (VK_TAB) */
+            RZKEY_CAPSLOCK = &H301            REM /*!< Caps Lock(VK_CAPITAL) */
+            RZKEY_BACKSPACE = &H10E           REM /*!< Backspace (VK_BACK) */
+            RZKEY_ENTER = &H30E               REM /*!< Enter (VK_RETURN) */
+            RZKEY_LCTRL = &H501               REM /*!< Left Control(VK_LCONTROL) */
+            RZKEY_LWIN = &H502                REM /*!< Left Window (VK_LWIN) */
+            RZKEY_LALT = &H503                REM /*!< Left Alt (VK_LMENU) */
+            RZKEY_SPACE = &H507               REM /*!< Spacebar (VK_SPACE) */
+            RZKEY_RALT = &H50B                REM /*!< Right Alt (VK_RMENU) */
+            RZKEY_FN = &H50C                  REM /*!< Function key. */
+            RZKEY_RMENU = &H50D               REM /*!< Right Menu (VK_APPS) */
+            RZKEY_RCTRL = &H50E               REM /*!< Right Control (VK_RCONTROL) */
+            RZKEY_LSHIFT = &H401              REM /*!< Left Shift (VK_LSHIFT) */
+            RZKEY_RSHIFT = &H40E              REM /*!< Right Shift (VK_RSHIFT) */
+            RZKEY_MACRO1 = &H100              REM /*!< Macro Key 1 */
+            RZKEY_MACRO2 = &H200              REM /*!< Macro Key 2 */
+            RZKEY_MACRO3 = &H300              REM /*!< Macro Key 3 */
+            RZKEY_MACRO4 = &H400              REM /*!< Macro Key 4 */
+            RZKEY_MACRO5 = &H500              REM /*!< Macro Key 5 */
+            RZKEY_OEM_1 = &H101               REM /*!< ~ (tilde/半角/全角) (VK_OEM_3) */
+            RZKEY_OEM_2 = &H10C               REM /*!< -- (minus) (VK_OEM_MINUS) */
+            RZKEY_OEM_3 = &H10D               REM /*!< = (equal) (VK_OEM_PLUS) */
+            RZKEY_OEM_4 = &H20C               REM /*!< [ (left sqaure bracket) (VK_OEM_4) */
+            RZKEY_OEM_5 = &H20D               REM /*!< ] (right square bracket) (VK_OEM_6) */
+            RZKEY_OEM_6 = &H20E               REM /*!< \ (backslash) (VK_OEM_5) */
+            RZKEY_OEM_7 = &H30B               REM /*!< ; (semi-colon) (VK_OEM_1) */
+            RZKEY_OEM_8 = &H30C               REM /*!< ' (apostrophe) (VK_OEM_7) */
+            RZKEY_OEM_9 = &H40A               REM /*!< , (comma) (VK_OEM_COMMA) */
+            RZKEY_OEM_10 = &H40B              REM /*!< . (period) (VK_OEM_PERIOD) */
+            RZKEY_OEM_11 = &H40C              REM /*!< / (forward slash) (VK_OEM_2) */
+            RZKEY_EUR_1 = &H30D               REM /*!< ""#"" (VK_OEM_5) */
+            RZKEY_EUR_2 = &H402               REM /*!< \ (VK_OEM_102) */
+            RZKEY_JPN_1 = &H15                REM /*!< ¥ (&HFF) */
+            RZKEY_JPN_2 = &H40D               REM /*!< \ (&HC1) */
+            RZKEY_JPN_3 = &H504               REM /*!< 無変換 (VK_OEM_PA1) */
+            RZKEY_JPN_4 = &H509               REM /*!< 変換 (&HFF) */
+            RZKEY_JPN_5 = &H50A               REM /*!< ひらがな/カタカナ (&HFF) */
+            RZKEY_KOR_1 = &H15                REM /*!< | (&HFF) */
+            RZKEY_KOR_2 = &H30D               REM /*!< (VK_OEM_5) */
+            RZKEY_KOR_3 = &H402               REM /*!< (VK_OEM_102) */
+            RZKEY_KOR_4 = &H40D               REM /*!< (&HC1) */
+            RZKEY_KOR_5 = &H504               REM /*!< (VK_OEM_PA1) */
+            RZKEY_KOR_6 = &H509               REM /*!< 한/영 (&HFF) */
+            RZKEY_KOR_7 = &H50A               REM /*!< (&HFF) */
+            RZKEY_INVALID = &HFFFF            REM /*!< Invalid keys. */
         End Enum
 
         REM //! Definition of LEDs.
@@ -3330,8 +3330,8 @@ Namespace ChromaSDK
 
     <StructLayout(LayoutKind.Sequential)>
     Public Structure DEVICE_INFO_TYPE
-        Public DeviceType as Integer
-        Public Connected as UInteger
+        Public DeviceType As Integer
+        Public Connected As UInteger
     End Structure
 
     Public Enum EFFECT_TYPE
@@ -3531,6 +3531,12 @@ Namespace ChromaSDK
             Marshal.FreeHGlobal(lpData)
         End If
         Return Nothing
+    End Function
+
+    Public Function UninitAPI() As Integer
+        UnloadLibrarySDK()
+        UnloadLibraryStreamingPlugin()
+        Return 0
     End Function
 
 #End Region";
@@ -3961,224 +3967,6 @@ End Namespace
                 }
             }
             return string.Join(",", parts);
-        }
-
-        static bool WriteVB(StreamWriter swVB)
-        {
-            try
-            {
-                string headerVB = HEADER_VB;
-                Output(swVB, "{0}", headerVB);
-
-                Output(swVB, "");
-
-                Output(swVB, "\t\t#Region \"Public API Methods\"");
-
-                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
-                {
-                    MetaMethodInfo methodInfo = method.Value;
-
-                    Output(swVB, "\t\tREM {0}", "/// <summary>");
-
-                    if (!string.IsNullOrEmpty(methodInfo.Comments))
-                    {
-                        Output(swVB, "\t\tREM /// {0}", SplitLongComments(methodInfo.Comments, "\t\tREM /// "));
-                    }
-
-                    Output(swVB, "\t\tREM {0}", "/// </summary>");
-
-                    if (ChangeToManagedType(methodInfo, methodInfo.ReturnType) == "void")
-                    {
-                        Output(swVB, "\t\tPublic Function {0}({1})",
-                            methodInfo.Name,
-                            ChangeArgsToVBTypes(methodInfo));
-                    }
-                    else
-                    {
-                        Output(swVB, "\t\tPublic Function {0}({1}) As {2}",
-                            methodInfo.Name,
-                            ChangeArgsToVBTypes(methodInfo),
-                            ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)));
-                    }
-
-                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
-                    {
-                        if (argInfo.StrType == "char*" ||
-                            argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "const wchar_t*")
-                        {
-                            string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(swVB, "\t\t\tDim {0} As String = {1}",
-                                pathArg,
-                                argInfo.Name);
-
-                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
-                            if (argInfo.StrType == "char*")
-                            {
-                                Output(swVB, "\t\t\tDim {0} as IntPtr = GetAsciiIntPtr({1})",
-                                    lpArg,
-                                    pathArg);
-                            }
-                            else if (argInfo.StrType == "const char*")
-                            {
-                                if (argInfo.Name.ToUpper().Contains("PATH") ||
-                                    argInfo.Name.ToUpper().Contains("ANIMATION") ||
-                                    argInfo.Name.ToUpper().Contains("NAME"))
-                                {
-                                    Output(swVB, "\t\t\tDim {0} As IntPtr = GetPathIntPtr({1})",
-                                        lpArg,
-                                        pathArg);
-                                }
-                                else
-                                {
-                                    Output(swVB, "\t\t\tDim {0} As IntPtr = GetAsciiIntPtr({1})",
-                                        lpArg,
-                                        pathArg);
-                                }
-                            }
-                            else if (argInfo.StrType == "const wchar_t*")
-                            {
-                                Output(swVB, "\t\t\tDim {0} As IntPtr = GetUnicodeIntPtr({1})",
-                                    lpArg,
-                                    pathArg);
-                            }
-
-                        }
-                    }
-                    if (methodInfo.ReturnType == "void")
-                    {
-                        Output(swVB, "\t\t\tPlugin{0}({1})",
-                            methodInfo.Name,
-                            RemoveVBArgTypes(methodInfo));
-                    }
-                    else
-                    {
-                        if (methodInfo.ReturnType == "const char*")
-                        {
-                            Output(swVB, "\t\t\tDim result As {0} = Marshal.PtrToStringAnsi(Plugin{1}({2}))",
-                                ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)),
-                                methodInfo.Name,
-                                RemoveVBArgTypes(methodInfo));
-                        }
-                        else
-                        {
-                            Output(swVB, "\t\t\tDim result As {0} = Plugin{1}({2})",
-                                ChangeToVBType(ChangeToManagedType(methodInfo, methodInfo.ReturnType)),
-                                methodInfo.Name,
-                                RemoveVBArgTypes(methodInfo));
-                        }
-                    }
-
-                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
-                    {
-                        if (argInfo.StrType == "char*" ||
-                            argInfo.StrType == "const char*" ||
-                            argInfo.StrType == "const wchar_t*")
-                        {
-                            string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
-
-                            if (argInfo.StrType == "char*")
-                            {
-                                Output(swVB, "\t\t\tIf ({0} <> IntPtr.Zero)", lpArg);
-                                Output(swVB, "\t\t\t\t{0} = Marshal.PtrToStringAnsi({1})", argInfo.Name, lpArg);
-                                Output(swVB, "\t\t\t{0}", "End If");
-                            }
-
-                            Output(swVB, "\t\t\tFreeIntPtr({0})",
-                                lpArg);
-
-                        }
-                    }
-
-                    if (methodInfo.ReturnType == "void")
-                    {
-                        Output(swVB, "\t\t\tReturn Nothing");
-                    }
-                    else
-                    {
-                        Output(swVB, "\t\t\tReturn result");
-                    }
-
-                    Output(swVB, "\t\t{0}", "End Function");
-                    Output(swVB, "");
-                }
-
-                Output(swVB, "\t\t#End Region");
-
-                Output(swVB, "");
-
-                Output(swVB, "\t\t#Region \"Private DLL Hooks\"");
-
-                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
-                {
-                    MetaMethodInfo methodInfo = method.Value;
-
-                    Output(swVB, "\t\t{0}", "REM /// <summary>");
-
-                    if (!string.IsNullOrEmpty(methodInfo.Comments))
-                    {
-                        Output(swVB, "\t\tREM /// {0}", SplitLongComments(methodInfo.Comments, "\t\tREM /// "));
-                    }
-
-                    Output(swVB, "\t\tREM /// EXPORT_API {0} Plugin{1}({2});",
-                        methodInfo.ReturnType,
-                        methodInfo.Name,
-                        methodInfo.Args);
-
-                    Output(swVB, "\t\t{0}", "REM /// </summary>");
-
-                    Output(swVB, "\t\t{0}", "<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>");
-
-                    // for debugging
-                    if (methodInfo.Name == "CoreInitSDK")
-                    {
-                        if (true)
-                        {
-                        }
-                    }
-
-                    if (methodInfo.ReturnType == "void")
-                    {
-                        Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As Boolean", // void return type needs a dummy return type
-                            methodInfo.Name,
-                            ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args));
-                    }
-                    else
-                    {
-                        string vbReturnType = ChangeToVBImportType(methodInfo, methodInfo.ReturnType);
-                        if (vbReturnType == "Boolean")
-                        {
-                            Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As <MarshalAs(UnmanagedType.I1)> {2}",
-                                methodInfo.Name,
-                                ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args),
-                                vbReturnType);
-                        }
-                        else
-                        {
-                            Output(swVB, "\t\tPrivate Function Plugin{0}({1}) As {2}",
-                                methodInfo.Name,
-                                ChangeArgsToVBImportTypes(methodInfo, methodInfo.Args),
-                                vbReturnType);
-                        }
-                    }
-                    Output(swVB, "\t\tEnd Function");
-                    Output(swVB, "");
-                }
-
-                Output(swVB, "\t\t#End Region");
-
-                Output(swVB, "{0}", FOOTER_VB);
-
-                swVB.Flush();
-                swVB.Close();
-
-                return true;
-            }
-            catch (Exception)
-            {
-                Console.Error.WriteLine("Failed to write unity!");
-                return false;
-            }
         }
 
         static bool WriteVBDocs(StreamWriter swVBDocs, string apiClass)
