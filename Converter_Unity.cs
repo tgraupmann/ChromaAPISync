@@ -53,6 +53,9 @@ namespace ChromaAPISync
                                 case "shortcode":
                                 case "platform":
                                 case "title":
+                                case "streamId":
+                                case "streamKey":
+                                case "focus":
                                     Output(sw, "\t\t\tstring {0} = {1};",
                                         pathArg,
                                         argInfo.Name);

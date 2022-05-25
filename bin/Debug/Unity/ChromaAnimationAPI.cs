@@ -1990,9 +1990,9 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamBroadcast(string streamId, string streamKey)
 		{
-			string str_StreamId = GetStreamingPath(streamId);
+			string str_StreamId = streamId;
 			IntPtr lp_StreamId = GetAsciiIntPtr(str_StreamId);
-			string str_StreamKey = GetStreamingPath(streamKey);
+			string str_StreamKey = streamKey;
 			IntPtr lp_StreamKey = GetAsciiIntPtr(str_StreamKey);
 			bool result = PluginCoreStreamBroadcast(lp_StreamId, lp_StreamKey);
 			FreeIntPtr(lp_StreamId);
@@ -2045,7 +2045,7 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamGetFocus(ref string focus, out byte length)
 		{
-			string str_Focus = GetStreamingPath(focus);
+			string str_Focus = focus;
 			IntPtr lp_Focus = GetAsciiIntPtr(str_Focus);
 			bool result = PluginCoreStreamGetFocus(lp_Focus, out length);
 			if (lp_Focus != IntPtr.Zero)
@@ -2072,7 +2072,7 @@ namespace ChromaSDK
 		{
 			string str_Shortcode = shortcode;
 			IntPtr lp_Shortcode = GetAsciiIntPtr(str_Shortcode);
-			string str_StreamId = GetStreamingPath(streamId);
+			string str_StreamId = streamId;
 			IntPtr lp_StreamId = GetAsciiIntPtr(str_StreamId);
 			PluginCoreStreamGetId(lp_Shortcode, lp_StreamId, out length);
 			FreeIntPtr(lp_Shortcode);
@@ -2101,7 +2101,7 @@ namespace ChromaSDK
 		{
 			string str_Shortcode = shortcode;
 			IntPtr lp_Shortcode = GetAsciiIntPtr(str_Shortcode);
-			string str_StreamKey = GetStreamingPath(streamKey);
+			string str_StreamKey = streamKey;
 			IntPtr lp_StreamKey = GetAsciiIntPtr(str_StreamKey);
 			PluginCoreStreamGetKey(lp_Shortcode, lp_StreamKey, out length);
 			FreeIntPtr(lp_Shortcode);
@@ -2148,7 +2148,7 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamSetFocus(string focus)
 		{
-			string str_Focus = GetStreamingPath(focus);
+			string str_Focus = focus;
 			IntPtr lp_Focus = GetAsciiIntPtr(str_Focus);
 			bool result = PluginCoreStreamSetFocus(lp_Focus);
 			FreeIntPtr(lp_Focus);
@@ -2170,7 +2170,7 @@ namespace ChromaSDK
 		/// </summary>
 		public static bool CoreStreamWatch(string streamId, ulong timestamp)
 		{
-			string str_StreamId = GetStreamingPath(streamId);
+			string str_StreamId = streamId;
 			IntPtr lp_StreamId = GetAsciiIntPtr(str_StreamId);
 			bool result = PluginCoreStreamWatch(lp_StreamId, timestamp);
 			FreeIntPtr(lp_StreamId);
