@@ -4,9 +4,16 @@
     {
         static void Main(string[] args)
         {
-            const string headerStdafx = @"C:\Public\CChromaEditor\CChromaEditorLibrary\stdafx.h";
+            // ascii branch
+            const string headerStdafx = @"C:\Public\CChromaEditor_Debug\CChromaEditorLibrary\stdafx.h";
+
+            // unicode branch
+            //const string headerStdafx = @"C:\Public\CChromaEditor_Unicode\CChromaEditorLibrary\stdafx.h";
+
+            bool upgradeToUnicode = true;
+
             Converter.ConvertExportsToClass(
-                headerStdafx, "stdafx.h",
+                headerStdafx, "stdafx.h", upgradeToUnicode,
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
                 @"CSharp\ChromaAnimationAPI.cs",

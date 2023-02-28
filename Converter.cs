@@ -66,7 +66,7 @@ namespace ChromaAPISync
         #endregion
 
         public static void ConvertExportsToClass(
-            string input, string outputCppSortInput,
+            string input, string outputCppSortInput, bool upgradeToUnicode,
             string outputCppHeader, string outputCppImplementation,
             string outputCppDocs,
             string outputCSharp,
@@ -83,7 +83,7 @@ namespace ChromaAPISync
             string outputCTFImplementation)
         {
             OpenClassFiles(
-                input, outputCppSortInput,
+                input, outputCppSortInput, upgradeToUnicode,
                 outputCppHeader, outputCppImplementation,
                 outputCppDocs,
                 outputCSharp,
@@ -107,7 +107,7 @@ namespace ChromaAPISync
         }
 
         private static void OpenClassFiles(
-            string input, string fileCppSortInput,
+            string input, string fileCppSortInput, bool upgradeToUnicode,
             string fileCppHeader, string fileCppImplementation,
             string fileCppDocs,
             string fileCSharp,
@@ -122,7 +122,7 @@ namespace ChromaAPISync
         {
             if (File.Exists(input))
             {
-                if (!ProcessStdafx(input))
+                if (!ProcessStdafx(input, upgradeToUnicode))
                 {
                     return;
                 }
@@ -1112,7 +1112,7 @@ namespace ChromaAPISync
             return string.Join(",", parts);
         }
 
-        static bool ProcessStdafx(string fileInput)
+        static bool ProcessStdafx(string fileInput, bool upgradeToUnicode)
         {
             try
             {
@@ -1177,6 +1177,11 @@ namespace ChromaAPISync
                             //Console.WriteLine("Method: {0}", methodInfo.Name);
                             methodInfo.Line = line;
                             _sMethods[methodInfo.Name] = methodInfo;
+
+                            if (upgradeToUnicode && !line.Contains("Stream"))
+                            {
+                                Replace(ref line, "const char*", "const wchar_t*");
+                            }
 
                             if (!GetReturnType(line, out methodInfo.ReturnType))
                             {
