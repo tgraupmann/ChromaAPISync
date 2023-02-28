@@ -253,6 +253,7 @@
 * [GetFrameCount](#GetFrameCount)
 * [GetFrameCountName](#GetFrameCountName)
 * [GetFrameCountNameD](#GetFrameCountNameD)
+* [GetFrameName](#GetFrameName)
 * [GetKeyColor](#GetKeyColor)
 * [GetKeyColorD](#GetKeyColorD)
 * [GetKeyColorName](#GetKeyColorName)
@@ -2014,10 +2015,10 @@ Dim result As Integer = ChromaAnimationAPI.CoreSetEffect(effectId As Guid)
 **CoreStreamBroadcast**
 
 Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
-Intended for Cloud Gaming Platforms,  restore the streaming key when the 
-game instance is launched to continue streaming.  streamId is a null terminated 
-string  streamKey is a null terminated string  StreamGetStatus() should 
-return the READY status to use this method.
+Intended for Cloud Gaming Platforms, restore the streaming key when the 
+game instance is launched to continue streaming. streamId is a null terminated 
+string streamKey is a null terminated string StreamGetStatus() should return 
+the READY status to use this method.
 
 ```vb
 Dim result As Boolean = ChromaAnimationAPI.CoreStreamBroadcast(streamId As String, streamKey As String)
@@ -2028,7 +2029,7 @@ Dim result As Boolean = ChromaAnimationAPI.CoreStreamBroadcast(streamId As Strin
 <a name="CoreStreamBroadcastEnd"></a>
 **CoreStreamBroadcastEnd**
 
-End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+End broadcasting Chroma RGB data. StreamGetStatus() should return the BROADCASTING 
 status to use this method.
 
 ```vb
@@ -2041,11 +2042,11 @@ Dim result As Boolean = ChromaAnimationAPI.CoreStreamBroadcastEnd()
 **CoreStreamGetAuthShortcode**
 
 shortcode: Pass the address of a preallocated character buffer to get the 
-streaming auth code. The buffer should have a minimum length of 6.  length: 
+streaming auth code. The buffer should have a minimum length of 6. length: 
 Length will return as zero if the streaming auth code could not be obtained. 
 If length is greater than zero, it will be the length of the returned streaming 
-auth code.  Once you have the shortcode, it should be shown to the user 
-so they can associate the stream with their Razer ID  StreamGetStatus() 
+auth code. Once you have the shortcode, it should be shown to the user 
+so they can associate the stream with their Razer ID StreamGetStatus() 
 should return the READY status before invoking this method. platform: is 
 the null terminated string that identifies the source of the stream: { 
 GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
@@ -2061,7 +2062,7 @@ ChromaAnimationAPI.CoreStreamGetAuthShortcode(ByRef shortcode As String, ByRef l
 **CoreStreamGetFocus**
 
 focus: Pass the address of a preallocated character buffer to get the stream 
-focus. The buffer should have a length of 48  length: Length will return 
+focus. The buffer should have a length of 48 length: Length will return 
 as zero if the stream focus could not be obtained. If length is greater 
 than zero, it will be the length of the returned stream focus.
 
@@ -2077,14 +2078,13 @@ Dim result As Boolean = ChromaAnimationAPI.CoreStreamGetFocus(ByRef focus As Str
 Intended for Cloud Gaming Platforms, store the stream id to persist in user 
 preferences to continue streaming if the game is suspended or closed. shortcode: 
 The shortcode is a null terminated string. Use the shortcode that authorized 
-the stream to obtain the stream id.  streamId should be a preallocated 
-buffer to get the stream key. The buffer should have a length of 48.  length: 
-Length will return zero if the key could not be obtained. If the length 
-is greater than zero, it will be the length of the returned streaming id. 
-Retrieve the stream id after authorizing the shortcode. The authorization 
-window will expire in 5 minutes. Be sure to save the stream key before 
-the window expires. StreamGetStatus() should return the READY status to 
-use this method.
+the stream to obtain the stream id. streamId should be a preallocated buffer 
+to get the stream key. The buffer should have a length of 48. length: Length 
+will return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming id. Retrieve 
+the stream id after authorizing the shortcode. The authorization window 
+will expire in 5 minutes. Be sure to save the stream key before the window 
+expires. StreamGetStatus() should return the READY status to use this method.
 
 ```vb
 ChromaAnimationAPI.CoreStreamGetId(shortcode As String, ByRef streamId As String, ByRef length As byte)
@@ -2098,16 +2098,15 @@ ChromaAnimationAPI.CoreStreamGetId(shortcode As String, ByRef streamId As String
 Intended for Cloud Gaming Platforms, store the streaming key to persist 
 in user preferences to continue streaming if the game is suspended or closed. 
 shortcode: The shortcode is a null terminated string. Use the shortcode 
-that authorized the stream to obtain the stream key.  If the status is 
-in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
-the active streamId.  streamKey should be a preallocated buffer to get 
-the stream key. The buffer should have a length of 48.  length: Length 
-will return zero if the key could not be obtained. If the length is greater 
-than zero, it will be the length of the returned streaming key.  Retrieve 
+that authorized the stream to obtain the stream key. If the status is in 
+the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+the active streamId. streamKey should be a preallocated buffer to get the 
+stream key. The buffer should have a length of 48. length: Length will 
+return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming key. Retrieve 
 the stream key after authorizing the shortcode. The authorization window 
 will expire in 5 minutes. Be sure to save the stream key before the window 
-expires.  StreamGetStatus() should return the READY status to use this 
-method.
+expires. StreamGetStatus() should return the READY status to use this method.
 
 ```vb
 ChromaAnimationAPI.CoreStreamGetKey(shortcode As String, ByRef streamKey As String, ByRef length As byte)
@@ -2141,8 +2140,8 @@ Dim result As String = ChromaAnimationAPI.CoreStreamGetStatusString(status As Ch
 **CoreStreamReleaseShortcode**
 
 This prevents the stream id and stream key from being obtained through the 
-shortcode. This closes the auth window.  shortcode is a null terminated 
-string.  StreamGetStatus() should return the READY status to use this method. 
+shortcode. This closes the auth window. shortcode is a null terminated 
+string. StreamGetStatus() should return the READY status to use this method. 
 returns success when shortcode has been released
 
 ```vb
@@ -2155,7 +2154,7 @@ Dim result As Boolean = ChromaAnimationAPI.CoreStreamReleaseShortcode(shortcode 
 **CoreStreamSetFocus**
 
 The focus is a null terminated string. Set the focus identifer for the application 
-designated to automatically change the streaming state.  Returns true on 
+designated to automatically change the streaming state. Returns true on 
 success.
 
 ```vb
@@ -2179,8 +2178,8 @@ Dim result As Boolean = ChromaAnimationAPI.CoreStreamSupportsStreaming()
 <a name="CoreStreamWatch"></a>
 **CoreStreamWatch**
 
-Begin watching the Chroma RGB data using streamID parameter.  streamId is 
-a null terminated string.  StreamGetStatus() should return the READY status 
+Begin watching the Chroma RGB data using streamID parameter. streamId is 
+a null terminated string. StreamGetStatus() should return the READY status 
 to use this method.
 
 ```vb
@@ -2192,7 +2191,7 @@ Dim result As Boolean = ChromaAnimationAPI.CoreStreamWatch(streamId As String, t
 <a name="CoreStreamWatchEnd"></a>
 **CoreStreamWatchEnd**
 
-End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+End watching Chroma RGB data stream. StreamGetStatus() should return the 
 WATCHING status to use this method.
 
 ```vb
@@ -3544,16 +3543,18 @@ Dim result As Double = ChromaAnimationAPI.GetDeviceTypeNameD(path As String)
 <a name="GetFrame"></a>
 **GetFrame**
 
-Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
-The `color` is expected to be an array of the expected dimensions for the 
-`deviceType/device`. The `length` parameter is the size of the `color` 
-array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
-For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-COLUMN`. Returns the animation id upon success. Returns negative one upon 
-failure.
+Get the frame colors and duration (in seconds) for a `Chroma` animation 
+referenced by id. The `color` is expected to be an array of the expected 
+dimensions for the `deviceType/device`. The `length` parameter is the size 
+of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```vb
-Dim result As Integer = ChromaAnimationAPI.GetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer)
+Dim result As Integer = ChromaAnimationAPI.GetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer)
 ```
 
 ---
@@ -3589,6 +3590,25 @@ D suffix for limited data types.
 
 ```vb
 Dim result As Double = ChromaAnimationAPI.GetFrameCountNameD(path As String)
+```
+
+---
+
+<a name="GetFrameName"></a>
+**GetFrameName**
+
+Get the frame colors and duration (in seconds) for a `Chroma` animation 
+referenced by name. The `color` is expected to be an array of the expected 
+dimensions for the `deviceType/device`. The `length` parameter is the size 
+of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+Returns the animation id upon success. Returns negative one upon failure.
+
+```vb
+Dim result As Integer = ChromaAnimationAPI.GetFrameName(path As String, frameIndex As Integer, duration As float*, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer)
 ```
 
 ---
@@ -3803,7 +3823,7 @@ Dim result As Double = ChromaAnimationAPI.HasAnimationLoopNameD(path As String)
 <a name="Init"></a>
 **Init**
 
-Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
+Initialize the ChromaSDK. Zero indicates success, otherwise failure. Many 
 API methods auto initialize the ChromaSDK if not already initialized.
 
 ```vb
@@ -3827,7 +3847,7 @@ Dim result As Double = ChromaAnimationAPI.InitD()
 **InitSDK**
 
 Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
-indicates  success, otherwise failure. Many API methods auto initialize 
+indicates success, otherwise failure. Many API methods auto initialize 
 the ChromaSDK if not already initialized.
 
 ```vb
@@ -5668,7 +5688,7 @@ Dim result As Integer = ChromaAnimationAPI.SetEffectCustom1D(device As Integer, 
 <a name="SetEffectCustom2D"></a>
 **SetEffectCustom2D**
 
-SetEffectCustom2D will display the referenced colors immediately
+SetEffectCustom2D will display the referenced colors immediately.
 
 ```vb
 Dim result As Integer = ChromaAnimationAPI.SetEffectCustom2D(device As Integer, colors As Integer())
@@ -5680,10 +5700,11 @@ Dim result As Integer = ChromaAnimationAPI.SetEffectCustom2D(device As Integer, 
 **SetEffectKeyboardCustom2D**
 
 SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
-immediately
+immediately. Colors represent a visual grid layout. Keys represent the 
+hotkeys for any layout.
 
 ```vb
-Dim result As Integer = ChromaAnimationAPI.SetEffectKeyboardCustom2D(device As Integer, colors As Integer())
+Dim result As Integer = ChromaAnimationAPI.SetEffectKeyboardCustom2D(device As Integer, colors As Integer(), keys As Integer())
 ```
 
 ---
@@ -6961,16 +6982,17 @@ ChromaAnimationAPI.UnloadLibraryStreamingPlugin()
 <a name="UpdateFrame"></a>
 **UpdateFrame**
 
-Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-(in seconds). The `color` is expected to be an array of the dimensions 
-for the `deviceType/device`. The `length` parameter is the size of the 
-`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-one upon failure.
+Updates the `frameIndex` of the `Chroma` animation referenced by id and 
+sets the `duration` (in seconds). The `color` is expected to be an array 
+of the dimensions for the `deviceType/device`. The `length` parameter is 
+the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength.
 
 ```vb
-Dim result As Integer = ChromaAnimationAPI.UpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer)
+Dim result As Integer = ChromaAnimationAPI.UpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer)
 ```
 
 ---
@@ -6978,16 +7000,18 @@ Dim result As Integer = ChromaAnimationAPI.UpdateFrame(animationId As Integer, f
 <a name="UpdateFrameName"></a>
 **UpdateFrameName**
 
-Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-(in seconds). The `color` is expected to be an array of the dimensions 
-for the `deviceType/device`. The `length` parameter is the size of the 
-`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-one upon failure.
+Update the `frameIndex` of the `Chroma` animation referenced by name and 
+sets the `duration` (in seconds). The `color` is expected to be an array 
+of the dimensions for the `deviceType/device`. The `length` parameter is 
+the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```vb
-Dim result As Integer = ChromaAnimationAPI.UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer)
+Dim result As Integer = ChromaAnimationAPI.UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer)
 ```
 
 ---

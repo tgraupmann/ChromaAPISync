@@ -40,17 +40,34 @@ public class JChromaSDK {
     }
                 
 	/*
+	Return the sum of colors
+	*/
+	/// EXPORT_API int PluginAddColor(const int color1, const int color2);
+	public int addColor(const int color1, const int color2)
+	{
+		return wrapper.PluginAddColor(color1, color2);
+	}
+	/*
 	Adds a frame to the `Chroma` animation and sets the `duration` (in seconds). 
 	The `color` is expected to be an array of the dimensions for the `deviceType/device`. 
 	The `length` parameter is the size of the `color` array. For `EChromaSDKDevice1DEnum` 
 	the array size should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array 
-	size should be `MAX ROW` * `MAX COLUMN`. Returns the animation id upon 
-	success. Returns -1 upon failure.
+	size should be `MAX ROW` times `MAX COLUMN`. Returns the animation id upon 
+	success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginAddFrame(int animationId, float duration, int* colors, int length);
 	public int addFrame(int animationId, float duration, Pointer colors, int length)
 	{
 		return wrapper.PluginAddFrame(animationId, duration, colors, length);
+	}
+	/*
+	Add source color to target where color is not black for frame id, reference 
+	source and target by id.
+	*/
+	/// EXPORT_API void PluginAddNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+	public void addNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+	{
+		wrapper.PluginAddNonZeroAllKeys(sourceAnimationId, targetAnimationId, frameId);
 	}
 	/*
 	Add source color to target where color is not black for all frames, reference 
@@ -105,6 +122,15 @@ public class JChromaSDK {
 	public double addNonZeroAllKeysAllFramesOffsetNameD(String sourceAnimation, String targetAnimation, double offset)
 	{
 		return wrapper.PluginAddNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
+	}
+	/*
+	Add source color to target where color is not black for frame id, reference 
+	source and target by name.
+	*/
+	/// EXPORT_API void PluginAddNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+	public void addNonZeroAllKeysName(String sourceAnimation, String targetAnimation, int frameId)
+	{
+		wrapper.PluginAddNonZeroAllKeysName(sourceAnimation, targetAnimation, frameId);
 	}
 	/*
 	Add source color to target where color is not black for the source frame 
@@ -265,9 +291,9 @@ public class JChromaSDK {
 	}
 	/*
 	Closes the `Chroma` animation to free up resources referenced by id. Returns 
-	the animation id upon success. Returns -1 upon failure. This might be used 
-	while authoring effects if there was a change necessitating re-opening 
-	the animation. The animation id can no longer be used once closed.
+	the animation id upon success. Returns negative one upon failure. This 
+	might be used while authoring effects if there was a change necessitating 
+	re-opening the animation. The animation id can no longer be used once closed.
 	*/
 	/// EXPORT_API int PluginCloseAnimation(int animationId);
 	public int closeAnimation(int animationId)
@@ -852,6 +878,15 @@ public class JChromaSDK {
 		return wrapper.PluginCopyRedChannelAllFramesNameD(path, greenIntensity, blueIntensity);
 	}
 	/*
+	Copy zero colors from source animation to target animation for the frame. 
+	Source and target are referenced by id.
+	*/
+	/// EXPORT_API void PluginCopyZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+	public void copyZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+	{
+		wrapper.PluginCopyZeroAllKeys(sourceAnimationId, targetAnimationId, frameId);
+	}
+	/*
 	Copy zero colors from source animation to target animation for all frames. 
 	Source and target are referenced by id.
 	*/
@@ -906,6 +941,35 @@ public class JChromaSDK {
 		return wrapper.PluginCopyZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
 	}
 	/*
+	Copy zero colors from source animation to target animation for the frame. 
+	Source and target are referenced by name.
+	*/
+	/// EXPORT_API void PluginCopyZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+	public void copyZeroAllKeysName(String sourceAnimation, String targetAnimation, int frameId)
+	{
+		wrapper.PluginCopyZeroAllKeysName(sourceAnimation, targetAnimation, frameId);
+	}
+	/*
+	Copy zero colors from source animation to target animation for the frame 
+	id starting at the target offset for the length of the source animation. 
+	Source and target are referenced by id.
+	*/
+	/// EXPORT_API void PluginCopyZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset);
+	public void copyZeroAllKeysOffset(int sourceAnimationId, int targetAnimationId, int frameId, int offset)
+	{
+		wrapper.PluginCopyZeroAllKeysOffset(sourceAnimationId, targetAnimationId, frameId, offset);
+	}
+	/*
+	Copy zero colors from source animation to target animation for the frame 
+	id starting at the target offset for the length of the source animation. 
+	Source and target are referenced by name.
+	*/
+	/// EXPORT_API void PluginCopyZeroAllKeysOffsetName(const char* sourceAnimation, const char* targetAnimation, int frameId, int offset);
+	public void copyZeroAllKeysOffsetName(String sourceAnimation, String targetAnimation, int frameId, int offset)
+	{
+		wrapper.PluginCopyZeroAllKeysOffsetName(sourceAnimation, targetAnimation, frameId, offset);
+	}
+	/*
 	Copy zero key color from source animation to target animation for the specified 
 	frame. Source and target are referenced by id.
 	*/
@@ -933,6 +997,15 @@ public class JChromaSDK {
 	}
 	/*
 	Copy nonzero color from source animation to target animation where target 
+	is zero for the frame. Source and target are referenced by id.
+	*/
+	/// EXPORT_API void PluginCopyZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+	public void copyZeroTargetAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+	{
+		wrapper.PluginCopyZeroTargetAllKeys(sourceAnimationId, targetAnimationId, frameId);
+	}
+	/*
+	Copy nonzero color from source animation to target animation where target 
 	is zero for all frames. Source and target are referenced by id.
 	*/
 	/// EXPORT_API void PluginCopyZeroTargetAllKeysAllFrames(int sourceAnimationId, int targetAnimationId);
@@ -956,6 +1029,15 @@ public class JChromaSDK {
 	public double copyZeroTargetAllKeysAllFramesNameD(String sourceAnimation, String targetAnimation)
 	{
 		return wrapper.PluginCopyZeroTargetAllKeysAllFramesNameD(sourceAnimation, targetAnimation);
+	}
+	/*
+	Copy nonzero color from source animation to target animation where target 
+	is zero for the frame. Source and target are referenced by name.
+	*/
+	/// EXPORT_API void PluginCopyZeroTargetAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+	public void copyZeroTargetAllKeysName(String sourceAnimation, String targetAnimation, int frameId)
+	{
+		wrapper.PluginCopyZeroTargetAllKeysName(sourceAnimation, targetAnimation, frameId);
 	}
 	/*
 	Direct access to low level API.
@@ -1054,6 +1136,156 @@ public class JChromaSDK {
 		return wrapper.PluginCoreSetEffect(EffectId);
 	}
 	/*
+	Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
+	Intended for Cloud Gaming Platforms, restore the streaming key when the 
+	game instance is launched to continue streaming. streamId is a null terminated 
+	string streamKey is a null terminated string StreamGetStatus() should return 
+	the READY status to use this method.
+	*/
+	/// EXPORT_API bool PluginCoreStreamBroadcast(const char* streamId, const char* streamKey);
+	public boolean coreStreamBroadcast(String streamId, String streamKey)
+	{
+		return wrapper.PluginCoreStreamBroadcast(streamId, streamKey);
+	}
+	/*
+	End broadcasting Chroma RGB data. StreamGetStatus() should return the BROADCASTING 
+	status to use this method.
+	*/
+	/// EXPORT_API bool PluginCoreStreamBroadcastEnd();
+	public boolean coreStreamBroadcastEnd()
+	{
+		return wrapper.PluginCoreStreamBroadcastEnd();
+	}
+	/*
+	shortcode: Pass the address of a preallocated character buffer to get the 
+	streaming auth code. The buffer should have a minimum length of 6. length: 
+	Length will return as zero if the streaming auth code could not be obtained. 
+	If length is greater than zero, it will be the length of the returned streaming 
+	auth code. Once you have the shortcode, it should be shown to the user 
+	so they can associate the stream with their Razer ID StreamGetStatus() 
+	should return the READY status before invoking this method. platform: is 
+	the null terminated string that identifies the source of the stream: { 
+	GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
+	that identifies the application or game.
+	*/
+	/// EXPORT_API void PluginCoreStreamGetAuthShortcode(char* shortcode, unsigned char* length, const wchar_t* platform, const wchar_t* title);
+	public void coreStreamGetAuthShortcode(char* shortcode, unsigned char* length, const wchar_t* platform, const wchar_t* title)
+	{
+		wrapper.PluginCoreStreamGetAuthShortcode(shortcode, length, platform, title);
+	}
+	/*
+	focus: Pass the address of a preallocated character buffer to get the stream 
+	focus. The buffer should have a length of 48 length: Length will return 
+	as zero if the stream focus could not be obtained. If length is greater 
+	than zero, it will be the length of the returned stream focus.
+	*/
+	/// EXPORT_API bool PluginCoreStreamGetFocus(char* focus, unsigned char* length);
+	public boolean coreStreamGetFocus(char* focus, unsigned char* length)
+	{
+		return wrapper.PluginCoreStreamGetFocus(focus, length);
+	}
+	/*
+	Intended for Cloud Gaming Platforms, store the stream id to persist in user 
+	preferences to continue streaming if the game is suspended or closed. shortcode: 
+	The shortcode is a null terminated string. Use the shortcode that authorized 
+	the stream to obtain the stream id. streamId should be a preallocated buffer 
+	to get the stream key. The buffer should have a length of 48. length: Length 
+	will return zero if the key could not be obtained. If the length is greater 
+	than zero, it will be the length of the returned streaming id. Retrieve 
+	the stream id after authorizing the shortcode. The authorization window 
+	will expire in 5 minutes. Be sure to save the stream key before the window 
+	expires. StreamGetStatus() should return the READY status to use this method.
+	*/
+	/// EXPORT_API void PluginCoreStreamGetId(const char* shortcode, char* streamId, unsigned char* length);
+	public void coreStreamGetId(String shortcode, char* streamId, unsigned char* length)
+	{
+		wrapper.PluginCoreStreamGetId(shortcode, streamId, length);
+	}
+	/*
+	Intended for Cloud Gaming Platforms, store the streaming key to persist 
+	in user preferences to continue streaming if the game is suspended or closed. 
+	shortcode: The shortcode is a null terminated string. Use the shortcode 
+	that authorized the stream to obtain the stream key. If the status is in 
+	the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+	the active streamId. streamKey should be a preallocated buffer to get the 
+	stream key. The buffer should have a length of 48. length: Length will 
+	return zero if the key could not be obtained. If the length is greater 
+	than zero, it will be the length of the returned streaming key. Retrieve 
+	the stream key after authorizing the shortcode. The authorization window 
+	will expire in 5 minutes. Be sure to save the stream key before the window 
+	expires. StreamGetStatus() should return the READY status to use this method.
+	*/
+	/// EXPORT_API void PluginCoreStreamGetKey(const char* shortcode, char* streamKey, unsigned char* length);
+	public void coreStreamGetKey(String shortcode, char* streamKey, unsigned char* length)
+	{
+		wrapper.PluginCoreStreamGetKey(shortcode, streamKey, length);
+	}
+	/*
+	Returns StreamStatus, the current status of the service
+	*/
+	/// EXPORT_API ChromaSDK::Stream::StreamStatusType PluginCoreStreamGetStatus();
+	public ChromaSDK::Stream::StreamStatusType coreStreamGetStatus()
+	{
+		return wrapper.PluginCoreStreamGetStatus();
+	}
+	/*
+	Convert StreamStatusType to a printable string
+	*/
+	/// EXPORT_API const char* PluginCoreStreamGetStatusString(ChromaSDK::Stream::StreamStatusType status);
+	public String coreStreamGetStatusString(ChromaSDK::Stream::StreamStatusType status)
+	{
+		return wrapper.PluginCoreStreamGetStatusString(status);
+	}
+	/*
+	This prevents the stream id and stream key from being obtained through the 
+	shortcode. This closes the auth window. shortcode is a null terminated 
+	string. StreamGetStatus() should return the READY status to use this method. 
+	returns success when shortcode has been released
+	*/
+	/// EXPORT_API bool PluginCoreStreamReleaseShortcode(const char* shortcode);
+	public boolean coreStreamReleaseShortcode(String shortcode)
+	{
+		return wrapper.PluginCoreStreamReleaseShortcode(shortcode);
+	}
+	/*
+	The focus is a null terminated string. Set the focus identifer for the application 
+	designated to automatically change the streaming state. Returns true on 
+	success.
+	*/
+	/// EXPORT_API bool PluginCoreStreamSetFocus(const char* focus);
+	public boolean coreStreamSetFocus(String focus)
+	{
+		return wrapper.PluginCoreStreamSetFocus(focus);
+	}
+	/*
+	Returns true if the Chroma streaming is supported. If false is returned, 
+	avoid calling stream methods.
+	*/
+	/// EXPORT_API bool PluginCoreStreamSupportsStreaming();
+	public boolean coreStreamSupportsStreaming()
+	{
+		return wrapper.PluginCoreStreamSupportsStreaming();
+	}
+	/*
+	Begin watching the Chroma RGB data using streamID parameter. streamId is 
+	a null terminated string. StreamGetStatus() should return the READY status 
+	to use this method.
+	*/
+	/// EXPORT_API bool PluginCoreStreamWatch(const char* streamId, unsigned long long timestamp);
+	public boolean coreStreamWatch(String streamId, unsigned long long timestamp)
+	{
+		return wrapper.PluginCoreStreamWatch(streamId, timestamp);
+	}
+	/*
+	End watching Chroma RGB data stream. StreamGetStatus() should return the 
+	WATCHING status to use this method.
+	*/
+	/// EXPORT_API bool PluginCoreStreamWatchEnd();
+	public boolean coreStreamWatchEnd()
+	{
+		return wrapper.PluginCoreStreamWatchEnd();
+	}
+	/*
 	Direct access to low level API.
 	*/
 	/// EXPORT_API RZRESULT PluginCoreUnInit();
@@ -1065,10 +1297,10 @@ public class JChromaSDK {
 	Creates a `Chroma` animation at the given path. The `deviceType` parameter 
 	uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter uses 
 	`EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, respective 
-	to the `deviceType`. Returns the animation id upon success. Returns -1 
-	upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
-	at the given path. Returns the animation id upon success. Returns -1 upon 
-	failure.
+	to the `deviceType`. Returns the animation id upon success. Returns negative 
+	one upon failure. Saves a `Chroma` animation file with the `.chroma` extension 
+	at the given path. Returns the animation id upon success. Returns negative 
+	one upon failure.
 	*/
 	/// EXPORT_API int PluginCreateAnimation(const char* path, int deviceType, int device);
 	public int createAnimation(String path, int deviceType, int device)
@@ -1080,8 +1312,8 @@ public class JChromaSDK {
 	parameter uses `EChromaSDKDeviceTypeEnum` as an integer. The `device` parameter 
 	uses `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` as an integer, 
 	respective to the `deviceType`. Returns the animation id upon success. 
-	Returns -1 upon failure. Returns the animation id upon success. Returns 
-	-1 upon failure.
+	Returns negative one upon failure. Returns the animation id upon success. 
+	Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginCreateAnimationInMemory(int deviceType, int device);
 	public int createAnimationInMemory(int deviceType, int device)
@@ -2006,7 +2238,7 @@ public class JChromaSDK {
 	/*
 	Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 	animation respective to the `deviceType`, as an integer upon success. Returns 
-	-1 upon failure.
+	negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetDevice(int animationId);
 	public int getDevice(int animationId)
@@ -2016,7 +2248,7 @@ public class JChromaSDK {
 	/*
 	Returns the `EChromaSDKDevice1DEnum` or `EChromaSDKDevice2DEnum` of a `Chroma` 
 	animation respective to the `deviceType`, as an integer upon success. Returns 
-	-1 upon failure.
+	negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetDeviceName(const char* path);
 	public int getDeviceName(String path)
@@ -2033,7 +2265,7 @@ public class JChromaSDK {
 	}
 	/*
 	Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetDeviceType(int animationId);
 	public int getDeviceType(int animationId)
@@ -2042,7 +2274,7 @@ public class JChromaSDK {
 	}
 	/*
 	Returns the `EChromaSDKDeviceTypeEnum` of a `Chroma` animation as an integer 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetDeviceTypeName(const char* path);
 	public int getDeviceTypeName(String path)
@@ -2058,21 +2290,24 @@ public class JChromaSDK {
 		return wrapper.PluginGetDeviceTypeNameD(path);
 	}
 	/*
-	Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
-	The `color` is expected to be an array of the expected dimensions for the 
-	`deviceType/device`. The `length` parameter is the size of the `color` 
-	array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
-	For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-	COLUMN`. Returns the animation id upon success. Returns -1 upon failure.
+	Get the frame colors and duration (in seconds) for a `Chroma` animation 
+	referenced by id. The `color` is expected to be an array of the expected 
+	dimensions for the `deviceType/device`. The `length` parameter is the size 
+	of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+	be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+	ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+	and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+	EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+	Returns the animation id upon success. Returns negative one upon failure.
 	*/
-	/// EXPORT_API int PluginGetFrame(int animationId, int frameIndex, float* duration, int* colors, int length);
-	public int getFrame(int animationId, int frameIndex, Pointer duration, Pointer colors, int length)
+	/// EXPORT_API int PluginGetFrame(int animationId, int frameIndex, float* duration, int* colors, int length, int* keys, int keysLength);
+	public int getFrame(int animationId, int frameIndex, Pointer duration, Pointer colors, int length, Pointer keys, int keysLength)
 	{
-		return wrapper.PluginGetFrame(animationId, frameIndex, duration, colors, length);
+		return wrapper.PluginGetFrame(animationId, frameIndex, duration, colors, length, keys, keysLength);
 	}
 	/*
-	Returns the frame count of a `Chroma` animation upon success. Returns -1 
-	upon failure.
+	Returns the frame count of a `Chroma` animation upon success. Returns negative 
+	one upon failure.
 	*/
 	/// EXPORT_API int PluginGetFrameCount(int animationId);
 	public int getFrameCount(int animationId)
@@ -2080,8 +2315,8 @@ public class JChromaSDK {
 		return wrapper.PluginGetFrameCount(animationId);
 	}
 	/*
-	Returns the frame count of a `Chroma` animation upon success. Returns -1 
-	upon failure.
+	Returns the frame count of a `Chroma` animation upon success. Returns negative 
+	one upon failure.
 	*/
 	/// EXPORT_API int PluginGetFrameCountName(const char* path);
 	public int getFrameCountName(String path)
@@ -2095,6 +2330,22 @@ public class JChromaSDK {
 	public double getFrameCountNameD(String path)
 	{
 		return wrapper.PluginGetFrameCountNameD(path);
+	}
+	/*
+	Get the frame colors and duration (in seconds) for a `Chroma` animation 
+	referenced by name. The `color` is expected to be an array of the expected 
+	dimensions for the `deviceType/device`. The `length` parameter is the size 
+	of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+	be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+	ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+	and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+	EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+	Returns the animation id upon success. Returns negative one upon failure.
+	*/
+	/// EXPORT_API int PluginGetFrameName(const char* path, int frameIndex, float* duration, int* colors, int length, int* keys, int keysLength);
+	public int getFrameName(String path, int frameIndex, Pointer duration, Pointer colors, int length, Pointer keys, int keysLength)
+	{
+		return wrapper.PluginGetFrameName(path, frameIndex, duration, colors, length, keys, keysLength);
 	}
 	/*
 	Get the color of an animation key for the given frame referenced by id.
@@ -2141,7 +2392,7 @@ public class JChromaSDK {
 	}
 	/*
 	Returns the `MAX COLUMN` given the `EChromaSDKDevice2DEnum` device as an 
-	integer upon success. Returns -1 upon failure.
+	integer upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetMaxColumn(int device);
 	public int getMaxColumn(int device)
@@ -2158,7 +2409,7 @@ public class JChromaSDK {
 	}
 	/*
 	Returns the MAX LEDS given the `EChromaSDKDevice1DEnum` device as an integer 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetMaxLeds(int device);
 	public int getMaxLeds(int device)
@@ -2175,7 +2426,7 @@ public class JChromaSDK {
 	}
 	/*
 	Returns the `MAX ROW` given the `EChromaSDKDevice2DEnum` device as an integer 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginGetMaxRow(int device);
 	public int getMaxRow(int device)
@@ -2250,7 +2501,7 @@ public class JChromaSDK {
 		return wrapper.PluginHasAnimationLoopNameD(path);
 	}
 	/*
-	Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
+	Initialize the ChromaSDK. Zero indicates success, otherwise failure. Many 
 	API methods auto initialize the ChromaSDK if not already initialized.
 	*/
 	/// EXPORT_API RZRESULT PluginInit();
@@ -2268,7 +2519,7 @@ public class JChromaSDK {
 	}
 	/*
 	Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
-	indicates  success, otherwise failure. Many API methods auto initialize 
+	indicates success, otherwise failure. Many API methods auto initialize 
 	the ChromaSDK if not already initialized.
 	*/
 	/// EXPORT_API RZRESULT PluginInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
@@ -2526,7 +2777,7 @@ public class JChromaSDK {
 	}
 	/*
 	Loads `Chroma` effects so that the animation can be played immediately. 
-	Returns the animation id upon success. Returns -1 upon failure.
+	Returns the animation id upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginLoadAnimation(int animationId);
 	public int loadAnimation(int animationId)
@@ -2671,7 +2922,7 @@ public class JChromaSDK {
 	}
 	/*
 	Flips the color grid horizontally for all `Chroma` animation frames. Returns 
-	the animation id upon success. Returns -1 upon failure.
+	the animation id upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginMirrorHorizontally(int animationId);
 	public int mirrorHorizontally(int animationId)
@@ -2681,7 +2932,7 @@ public class JChromaSDK {
 	/*
 	Flips the color grid vertically for all `Chroma` animation frames. This 
 	method has no effect for `EChromaSDKDevice1DEnum` devices. Returns the 
-	animation id upon success. Returns -1 upon failure.
+	animation id upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginMirrorVertically(int animationId);
 	public int mirrorVertically(int animationId)
@@ -3134,8 +3385,8 @@ public class JChromaSDK {
 	}
 	/*
 	Opens a `Chroma` animation file so that it can be played. Returns an animation 
-	id >= 0 upon success. Returns -1 if there was a failure. The animation 
-	id is used in most of the API methods.
+	id >= 0 upon success. Returns negative one if there was a failure. The 
+	animation id is used in most of the API methods.
 	*/
 	/// EXPORT_API int PluginOpenAnimation(const char* path);
 	public int openAnimation(String path)
@@ -3152,19 +3403,19 @@ public class JChromaSDK {
 	}
 	/*
 	Opens a `Chroma` animation data from memory so that it can be played. `Data` 
-	is a pointer to byte array of the loaded animation in memory. `Name` will 
+	is a pointer to BYTE array of the loaded animation in memory. `Name` will 
 	be assigned to the animation when loaded. Returns an animation id >= 0 
-	upon success. Returns -1 if there was a failure. The animation id is used 
-	in most of the API methods.
+	upon success. Returns negative one if there was a failure. The animation 
+	id is used in most of the API methods.
 	*/
-	/// EXPORT_API int PluginOpenAnimationFromMemory(const byte* data, const char* name);
+	/// EXPORT_API int PluginOpenAnimationFromMemory(const BYTE* data, const char* name);
 	public int openAnimationFromMemory(Pointer data, String name)
 	{
 		return wrapper.PluginOpenAnimationFromMemory(data, name);
 	}
 	/*
 	Opens a `Chroma` animation file with the `.chroma` extension. Returns zero 
-	upon success. Returns -1 if there was a failure.
+	upon success. Returns negative one if there was a failure.
 	*/
 	/// EXPORT_API int PluginOpenEditorDialog(const char* path);
 	public int openEditorDialog(String path)
@@ -3198,7 +3449,8 @@ public class JChromaSDK {
 	}
 	/*
 	Sets the `duration` for all grames in the `Chroma` animation to the `duration` 
-	parameter. Returns the animation id upon success. Returns -1 upon failure.
+	parameter. Returns the animation id upon success. Returns negative one 
+	upon failure.
 	*/
 	/// EXPORT_API int PluginOverrideFrameDuration(int animationId, float duration);
 	public int overrideFrameDuration(int animationId, float duration)
@@ -3248,7 +3500,8 @@ public class JChromaSDK {
 	}
 	/*
 	Plays the `Chroma` animation. This will load the animation, if not loaded 
-	previously. Returns the animation id upon success. Returns -1 upon failure.
+	previously. Returns the animation id upon success. Returns negative one 
+	upon failure.
 	*/
 	/// EXPORT_API int PluginPlayAnimation(int animationId);
 	public int playAnimation(int animationId)
@@ -3339,7 +3592,7 @@ public class JChromaSDK {
 	}
 	/*
 	Displays the `Chroma` animation frame on `Chroma` hardware given the `frameIndex`. 
-	Returns the animation id upon success. Returns -1 upon failure.
+	Returns the animation id upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginPreviewFrame(int animationId, int frameIndex);
 	public int previewFrame(int animationId, int frameIndex)
@@ -3391,7 +3644,7 @@ public class JChromaSDK {
 	}
 	/*
 	Resets the `Chroma` animation to 1 blank frame. Returns the animation id 
-	upon success. Returns -1 upon failure.
+	upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginResetAnimation(int animationId);
 	public int resetAnimation(int animationId)
@@ -3424,8 +3677,8 @@ public class JChromaSDK {
 	}
 	/*
 	Reverse the animation frame order of the `Chroma` animation. Returns the 
-	animation id upon success. Returns -1 upon failure. Animation is referenced 
-	by id.
+	animation id upon success. Returns negative one upon failure. Animation 
+	is referenced by id.
 	*/
 	/// EXPORT_API int PluginReverse(int animationId);
 	public int reverse(int animationId)
@@ -3621,7 +3874,7 @@ public class JChromaSDK {
 	/*
 	Changes the `deviceType` and `device` of a `Chroma` animation. If the device 
 	is changed, the `Chroma` animation will be reset with 1 blank frame. Returns 
-	the animation id upon success. Returns -1 upon failure.
+	the animation id upon success. Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginSetDevice(int animationId, int deviceType, int device);
 	public int setDevice(int animationId, int deviceType, int device)
@@ -3645,7 +3898,7 @@ public class JChromaSDK {
 		return wrapper.PluginSetEffectCustom1D(device, colors);
 	}
 	/*
-	SetEffectCustom2D will display the referenced colors immediately
+	SetEffectCustom2D will display the referenced colors immediately.
 	*/
 	/// EXPORT_API RZRESULT PluginSetEffectCustom2D(const int device, const int* colors);
 	public int setEffectCustom2D(const int device, Pointer colors)
@@ -3654,12 +3907,13 @@ public class JChromaSDK {
 	}
 	/*
 	SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
-	immediately
+	immediately. Colors represent a visual grid layout. Keys represent the 
+	hotkeys for any layout.
 	*/
-	/// EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(const int device, const int* colors);
-	public int setEffectKeyboardCustom2D(const int device, Pointer colors)
+	/// EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(const int device, const int* colors, const int* keys);
+	public int setEffectKeyboardCustom2D(const int device, Pointer colors, Pointer keys)
 	{
-		return wrapper.PluginSetEffectKeyboardCustom2D(device, colors);
+		return wrapper.PluginSetEffectKeyboardCustom2D(device, colors, keys);
 	}
 	/*
 	When the idle animation is used, the named animation will play when no other 
@@ -4150,7 +4404,7 @@ public class JChromaSDK {
 	}
 	/*
 	Stops animation playback if in progress. Returns the animation id upon success. 
-	Returns -1 upon failure.
+	Returns negative one upon failure.
 	*/
 	/// EXPORT_API int PluginStopAnimation(int animationId);
 	public int stopAnimation(int animationId)
@@ -4220,6 +4474,23 @@ public class JChromaSDK {
 		return wrapper.PluginStopCompositeD(name);
 	}
 	/*
+	Return color1 - color2
+	*/
+	/// EXPORT_API int PluginSubtractColor(const int color1, const int color2);
+	public int subtractColor(const int color1, const int color2)
+	{
+		return wrapper.PluginSubtractColor(color1, color2);
+	}
+	/*
+	Subtract the source color from the target color for the frame where the 
+	target color is not black. Source and target are referenced by id.
+	*/
+	/// EXPORT_API void PluginSubtractNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId);
+	public void subtractNonZeroAllKeys(int sourceAnimationId, int targetAnimationId, int frameId)
+	{
+		wrapper.PluginSubtractNonZeroAllKeys(sourceAnimationId, targetAnimationId, frameId);
+	}
+	/*
 	Subtract the source color from the target color for all frames where the 
 	target color is not black. Source and target are referenced by id.
 	*/
@@ -4272,6 +4543,15 @@ public class JChromaSDK {
 	public double subtractNonZeroAllKeysAllFramesOffsetNameD(String sourceAnimation, String targetAnimation, double offset)
 	{
 		return wrapper.PluginSubtractNonZeroAllKeysAllFramesOffsetNameD(sourceAnimation, targetAnimation, offset);
+	}
+	/*
+	Subtract the source color from the target color for the frame where the 
+	target color is not black. Source and target are referenced by name.
+	*/
+	/// EXPORT_API void PluginSubtractNonZeroAllKeysName(const char* sourceAnimation, const char* targetAnimation, int frameId);
+	public void subtractNonZeroAllKeysName(String sourceAnimation, String targetAnimation, int frameId)
+	{
+		wrapper.PluginSubtractNonZeroAllKeysName(sourceAnimation, targetAnimation, frameId);
 	}
 	/*
 	Subtract the source color from the target where color is not black for the 
@@ -4382,8 +4662,64 @@ public class JChromaSDK {
 		return wrapper.PluginSubtractNonZeroTargetAllKeysOffsetNameD(sourceAnimation, targetAnimation, frameId, offset);
 	}
 	/*
+	Subtract all frames with the min RGB color where the animation color is 
+	less than the min threshold AND with the max RGB color where the animation 
+	is more than the max threshold. Animation is referenced by id.
+	*/
+	/// EXPORT_API void PluginSubtractThresholdColorsMinMaxAllFramesRGB(const int animationId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+	public void subtractThresholdColorsMinMaxAllFramesRGB(const int animationId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue)
+	{
+		wrapper.PluginSubtractThresholdColorsMinMaxAllFramesRGB(animationId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+	}
+	/*
+	Subtract all frames with the min RGB color where the animation color is 
+	less than the min threshold AND with the max RGB color where the animation 
+	is more than the max threshold. Animation is referenced by name.
+	*/
+	/// EXPORT_API void PluginSubtractThresholdColorsMinMaxAllFramesRGBName(const char* path, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+	public void subtractThresholdColorsMinMaxAllFramesRGBName(String path, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue)
+	{
+		wrapper.PluginSubtractThresholdColorsMinMaxAllFramesRGBName(path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+	}
+	/*
+	D suffix for limited data types.
+	*/
+	/// EXPORT_API double PluginSubtractThresholdColorsMinMaxAllFramesRGBNameD(const char* path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue);
+	public double subtractThresholdColorsMinMaxAllFramesRGBNameD(String path, double minThreshold, double minRed, double minGreen, double minBlue, double maxThreshold, double maxRed, double maxGreen, double maxBlue)
+	{
+		return wrapper.PluginSubtractThresholdColorsMinMaxAllFramesRGBNameD(path, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+	}
+	/*
+	Subtract the specified frame with the min RGB color where the animation 
+	color is less than the min threshold AND with the max RGB color where the 
+	animation is more than the max threshold. Animation is referenced by id.
+	*/
+	/// EXPORT_API void PluginSubtractThresholdColorsMinMaxRGB(const int animationId, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+	public void subtractThresholdColorsMinMaxRGB(const int animationId, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue)
+	{
+		wrapper.PluginSubtractThresholdColorsMinMaxRGB(animationId, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+	}
+	/*
+	Subtract the specified frame with the min RGB color where the animation 
+	color is less than the min threshold AND with the max RGB color where the 
+	animation is more than the max threshold. Animation is referenced by name.
+	*/
+	/// EXPORT_API void PluginSubtractThresholdColorsMinMaxRGBName(const char* path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+	public void subtractThresholdColorsMinMaxRGBName(String path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue)
+	{
+		wrapper.PluginSubtractThresholdColorsMinMaxRGBName(path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+	}
+	/*
+	D suffix for limited data types.
+	*/
+	/// EXPORT_API double PluginSubtractThresholdColorsMinMaxRGBNameD(const char* path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue);
+	public double subtractThresholdColorsMinMaxRGBNameD(String path, const int frameId, const int minThreshold, const int minRed, const int minGreen, const int minBlue, const int maxThreshold, const int maxRed, const int maxGreen, const int maxBlue)
+	{
+		return wrapper.PluginSubtractThresholdColorsMinMaxRGBNameD(path, frameId, minThreshold, minRed, minGreen, minBlue, maxThreshold, maxRed, maxGreen, maxBlue);
+	}
+	/*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
-	+ 1. Reference the animation by id.
+	plus one. Reference the animation by id.
 	*/
 	/// EXPORT_API void PluginTrimEndFrames(int animationId, int lastFrameId);
 	public void trimEndFrames(int animationId, int lastFrameId)
@@ -4392,7 +4728,7 @@ public class JChromaSDK {
 	}
 	/*
 	Trim the end of the animation. The length of the animation will be the lastFrameId 
-	+ 1. Reference the animation by name.
+	plus one. Reference the animation by name.
 	*/
 	/// EXPORT_API void PluginTrimEndFramesName(const char* path, int lastFrameId);
 	public void trimEndFramesName(String path, int lastFrameId)
@@ -4458,7 +4794,8 @@ public class JChromaSDK {
 		return wrapper.PluginTrimStartFramesNameD(path, numberOfFrames);
 	}
 	/*
-	Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns -1 upon failure.
+	Uninitializes the `ChromaSDK`. Returns 0 upon success. Returns negative 
+	one upon failure.
 	*/
 	/// EXPORT_API RZRESULT PluginUninit();
 	public int uninit()
@@ -4475,7 +4812,8 @@ public class JChromaSDK {
 	}
 	/*
 	Unloads `Chroma` effects to free up resources. Returns the animation id 
-	upon success. Returns -1 upon failure. Reference the animation by id.
+	upon success. Returns negative one upon failure. Reference the animation 
+	by id.
 	*/
 	/// EXPORT_API int PluginUnloadAnimation(int animationId);
 	public int unloadAnimation(int animationId)
@@ -4508,32 +4846,51 @@ public class JChromaSDK {
 		wrapper.PluginUnloadComposite(name);
 	}
 	/*
-	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-	(in seconds). The `color` is expected to be an array of the dimensions 
-	for the `deviceType/device`. The `length` parameter is the size of the 
-	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-	failure.
+	Unload the Razer Chroma SDK Library before exiting the application.
 	*/
-	/// EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length);
-	public int updateFrame(int animationId, int frameIndex, float duration, Pointer colors, int length)
+	/// EXPORT_API void PluginUnloadLibrarySDK();
+	public void unloadLibrarySDK()
 	{
-		return wrapper.PluginUpdateFrame(animationId, frameIndex, duration, colors, length);
+		wrapper.PluginUnloadLibrarySDK();
 	}
 	/*
-	Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-	(in seconds). The `color` is expected to be an array of the dimensions 
-	for the `deviceType/device`. The `length` parameter is the size of the 
-	`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-	LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-	* `MAX COLUMN`. Returns the animation id upon success. Returns -1 upon 
-	failure.
+	Unload the Razer Chroma Streaming Plugin Library before exiting the application.
 	*/
-	/// EXPORT_API int PluginUpdateFrameName(const char* path, int frameIndex, float duration, int* colors, int length);
-	public int updateFrameName(String path, int frameIndex, float duration, Pointer colors, int length)
+	/// EXPORT_API void PluginUnloadLibraryStreamingPlugin();
+	public void unloadLibraryStreamingPlugin()
 	{
-		return wrapper.PluginUpdateFrameName(path, frameIndex, duration, colors, length);
+		wrapper.PluginUnloadLibraryStreamingPlugin();
+	}
+	/*
+	Updates the `frameIndex` of the `Chroma` animation referenced by id and 
+	sets the `duration` (in seconds). The `color` is expected to be an array 
+	of the dimensions for the `deviceType/device`. The `length` parameter is 
+	the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+	should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+	be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+	and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+	EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength.
+	*/
+	/// EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length, int* keys, int keysLength);
+	public int updateFrame(int animationId, int frameIndex, float duration, Pointer colors, int length, Pointer keys, int keysLength)
+	{
+		return wrapper.PluginUpdateFrame(animationId, frameIndex, duration, colors, length, keys, keysLength);
+	}
+	/*
+	Update the `frameIndex` of the `Chroma` animation referenced by name and 
+	sets the `duration` (in seconds). The `color` is expected to be an array 
+	of the dimensions for the `deviceType/device`. The `length` parameter is 
+	the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+	should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+	be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+	and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+	EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+	Returns the animation id upon success. Returns negative one upon failure.
+	*/
+	/// EXPORT_API int PluginUpdateFrameName(const char* path, int frameIndex, float duration, int* colors, int length, int* keys, int keysLength);
+	public int updateFrameName(String path, int frameIndex, float duration, Pointer colors, int length, Pointer keys, int keysLength)
+	{
+		return wrapper.PluginUpdateFrameName(path, frameIndex, duration, colors, length, keys, keysLength);
 	}
 	/*
 	When the idle animation flag is true, when no other animations are playing, 

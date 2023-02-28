@@ -1864,10 +1864,10 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
-		REM /// Intended for Cloud Gaming Platforms,  restore the streaming key when the 
-		REM /// game instance is launched to continue streaming.  streamId is a null terminated 
-		REM /// string  streamKey is a null terminated string  StreamGetStatus() should 
-		REM /// return the READY status to use this method.
+		REM /// Intended for Cloud Gaming Platforms, restore the streaming key when the 
+		REM /// game instance is launched to continue streaming. streamId is a null terminated 
+		REM /// string streamKey is a null terminated string StreamGetStatus() should return 
+		REM /// the READY status to use this method.
 		REM /// </summary>
 		Public Function CoreStreamBroadcast(streamId As String, streamKey As String) As Boolean
 			Dim str_StreamId As String = streamId
@@ -1881,7 +1881,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+		REM /// End broadcasting Chroma RGB data. StreamGetStatus() should return the BROADCASTING 
 		REM /// status to use this method.
 		REM /// </summary>
 		Public Function CoreStreamBroadcastEnd() As Boolean
@@ -1891,11 +1891,11 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// shortcode: Pass the address of a preallocated character buffer to get the 
-		REM /// streaming auth code. The buffer should have a minimum length of 6.  length: 
+		REM /// streaming auth code. The buffer should have a minimum length of 6. length: 
 		REM /// Length will return as zero if the streaming auth code could not be obtained. 
 		REM /// If length is greater than zero, it will be the length of the returned streaming 
-		REM /// auth code.  Once you have the shortcode, it should be shown to the user 
-		REM /// so they can associate the stream with their Razer ID  StreamGetStatus() 
+		REM /// auth code. Once you have the shortcode, it should be shown to the user 
+		REM /// so they can associate the stream with their Razer ID StreamGetStatus() 
 		REM /// should return the READY status before invoking this method. platform: is 
 		REM /// the null terminated string that identifies the source of the stream: { 
 		REM /// GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
@@ -1920,7 +1920,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// focus: Pass the address of a preallocated character buffer to get the stream 
-		REM /// focus. The buffer should have a length of 48  length: Length will return 
+		REM /// focus. The buffer should have a length of 48 length: Length will return 
 		REM /// as zero if the stream focus could not be obtained. If length is greater 
 		REM /// than zero, it will be the length of the returned stream focus.
 		REM /// </summary>
@@ -1939,14 +1939,14 @@ Namespace ChromaSDK
 		REM /// Intended for Cloud Gaming Platforms, store the stream id to persist in user 
 		REM /// preferences to continue streaming if the game is suspended or closed. shortcode: 
 		REM /// The shortcode is a null terminated string. Use the shortcode that authorized 
-		REM /// the stream to obtain the stream id.  streamId should be a preallocated 
-		REM /// buffer to get the stream key. The buffer should have a length of 48.  length: 
-		REM /// Length will return zero if the key could not be obtained. If the length 
-		REM /// is greater than zero, it will be the length of the returned streaming id. 
-		REM /// Retrieve the stream id after authorizing the shortcode. The authorization 
-		REM /// window will expire in 5 minutes. Be sure to save the stream key before 
-		REM /// the window expires. StreamGetStatus() should return the READY status to 
-		REM /// use this method.
+		REM /// the stream to obtain the stream id. streamId should be a preallocated buffer 
+		REM /// to get the stream key. The buffer should have a length of 48. length: Length 
+		REM /// will return zero if the key could not be obtained. If the length is greater 
+		REM /// than zero, it will be the length of the returned streaming id. Retrieve 
+		REM /// the stream id after authorizing the shortcode. The authorization window 
+		REM /// will expire in 5 minutes. Be sure to save the stream key before the window 
+		REM /// expires. StreamGetStatus() should return the READY status to use this method. 
+		REM ///
 		REM /// </summary>
 		Public Function CoreStreamGetId(shortcode As String, ByRef streamId As String, ByRef length As byte)
 			Dim str_Shortcode As String = shortcode
@@ -1966,16 +1966,16 @@ Namespace ChromaSDK
 		REM /// Intended for Cloud Gaming Platforms, store the streaming key to persist 
 		REM /// in user preferences to continue streaming if the game is suspended or closed. 
 		REM /// shortcode: The shortcode is a null terminated string. Use the shortcode 
-		REM /// that authorized the stream to obtain the stream key.  If the status is 
-		REM /// in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
-		REM /// the active streamId.  streamKey should be a preallocated buffer to get 
-		REM /// the stream key. The buffer should have a length of 48.  length: Length 
-		REM /// will return zero if the key could not be obtained. If the length is greater 
-		REM /// than zero, it will be the length of the returned streaming key.  Retrieve 
+		REM /// that authorized the stream to obtain the stream key. If the status is in 
+		REM /// the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+		REM /// the active streamId. streamKey should be a preallocated buffer to get the 
+		REM /// stream key. The buffer should have a length of 48. length: Length will 
+		REM /// return zero if the key could not be obtained. If the length is greater 
+		REM /// than zero, it will be the length of the returned streaming key. Retrieve 
 		REM /// the stream key after authorizing the shortcode. The authorization window 
 		REM /// will expire in 5 minutes. Be sure to save the stream key before the window 
-		REM /// expires.  StreamGetStatus() should return the READY status to use this 
-		REM /// method.
+		REM /// expires. StreamGetStatus() should return the READY status to use this method. 
+		REM ///
 		REM /// </summary>
 		Public Function CoreStreamGetKey(shortcode As String, ByRef streamKey As String, ByRef length As byte)
 			Dim str_Shortcode As String = shortcode
@@ -2009,8 +2009,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// This prevents the stream id and stream key from being obtained through the 
-		REM /// shortcode. This closes the auth window.  shortcode is a null terminated 
-		REM /// string.  StreamGetStatus() should return the READY status to use this method. 
+		REM /// shortcode. This closes the auth window. shortcode is a null terminated 
+		REM /// string. StreamGetStatus() should return the READY status to use this method. 
 		REM /// returns success when shortcode has been released
 		REM /// </summary>
 		Public Function CoreStreamReleaseShortcode(shortcode As String) As Boolean
@@ -2023,7 +2023,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// The focus is a null terminated string. Set the focus identifer for the application 
-		REM /// designated to automatically change the streaming state.  Returns true on 
+		REM /// designated to automatically change the streaming state. Returns true on 
 		REM /// success.
 		REM /// </summary>
 		Public Function CoreStreamSetFocus(focus As String) As Boolean
@@ -2044,8 +2044,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Begin watching the Chroma RGB data using streamID parameter.  streamId is 
-		REM /// a null terminated string.  StreamGetStatus() should return the READY status 
+		REM /// Begin watching the Chroma RGB data using streamID parameter. streamId is 
+		REM /// a null terminated string. StreamGetStatus() should return the READY status 
 		REM /// to use this method.
 		REM /// </summary>
 		Public Function CoreStreamWatch(streamId As String, timestamp As ulong) As Boolean
@@ -2057,7 +2057,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+		REM /// End watching Chroma RGB data stream. StreamGetStatus() should return the 
 		REM /// WATCHING status to use this method.
 		REM /// </summary>
 		Public Function CoreStreamWatchEnd() As Boolean
@@ -3283,16 +3283,19 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
-		REM /// The `color` is expected to be an array of the expected dimensions for the 
-		REM /// `deviceType/device`. The `length` parameter is the size of the `color` 
-		REM /// array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
-		REM /// For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-		REM /// COLUMN`. Returns the animation id upon success. Returns negative one upon 
-		REM /// failure.
+		REM /// Get the frame colors and duration (in seconds) for a `Chroma` animation 
+		REM /// referenced by id. The `color` is expected to be an array of the expected 
+		REM /// dimensions for the `deviceType/device`. The `length` parameter is the size 
+		REM /// of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+		REM /// be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+		REM /// ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
 		REM /// </summary>
-		Public Function GetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer) As Integer
-			Dim result As Integer = PluginGetFrame(animationId, frameIndex, duration, colors, length)
+		Public Function GetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
+			Dim result As Integer = PluginGetFrame(animationId, frameIndex, duration, colors, length, keys, keysLength)
 			Return result
 		End Function
 
@@ -3324,6 +3327,26 @@ Namespace ChromaSDK
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Double = PluginGetFrameCountNameD(lp_Path)
+			FreeIntPtr(lp_Path)
+			Return result
+		End Function
+
+		REM /// <summary>
+		REM /// Get the frame colors and duration (in seconds) for a `Chroma` animation 
+		REM /// referenced by name. The `color` is expected to be an array of the expected 
+		REM /// dimensions for the `deviceType/device`. The `length` parameter is the size 
+		REM /// of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+		REM /// be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+		REM /// ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
+		REM /// </summary>
+		Public Function GetFrameName(path As String, frameIndex As Integer, duration As float*, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
+			Dim str_Path As String = path
+			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
+			Dim result As Integer = PluginGetFrameName(lp_Path, frameIndex, duration, colors, length, keys, keysLength)
 			FreeIntPtr(lp_Path)
 			Return result
 		End Function
@@ -3497,7 +3520,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
+		REM /// Initialize the ChromaSDK. Zero indicates success, otherwise failure. Many 
 		REM /// API methods auto initialize the ChromaSDK if not already initialized.
 		REM /// </summary>
 		Public Function Init() As Integer
@@ -3515,7 +3538,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
-		REM /// indicates  success, otherwise failure. Many API methods auto initialize 
+		REM /// indicates success, otherwise failure. Many API methods auto initialize 
 		REM /// the ChromaSDK if not already initialized.
 		REM /// </summary>
 		Public Function InitSDK(ByRef appInfo As ChromaSDK.APPINFOTYPE) As Integer
@@ -5167,7 +5190,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// SetEffectCustom2D will display the referenced colors immediately
+		REM /// SetEffectCustom2D will display the referenced colors immediately.
 		REM /// </summary>
 		Public Function SetEffectCustom2D(device As Integer, colors As Integer()) As Integer
 			Dim result As Integer = PluginSetEffectCustom2D(device, colors)
@@ -5176,10 +5199,11 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
-		REM /// immediately
+		REM /// immediately. Colors represent a visual grid layout. Keys represent the 
+		REM /// hotkeys for any layout.
 		REM /// </summary>
-		Public Function SetEffectKeyboardCustom2D(device As Integer, colors As Integer()) As Integer
-			Dim result As Integer = PluginSetEffectKeyboardCustom2D(device, colors)
+		Public Function SetEffectKeyboardCustom2D(device As Integer, colors As Integer(), keys As Integer()) As Integer
+			Dim result As Integer = PluginSetEffectKeyboardCustom2D(device, colors, keys)
 			Return result
 		End Function
 
@@ -6350,32 +6374,37 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-		REM /// (in seconds). The `color` is expected to be an array of the dimensions 
-		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
-		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-		REM /// one upon failure.
+		REM /// Updates the `frameIndex` of the `Chroma` animation referenced by id and 
+		REM /// sets the `duration` (in seconds). The `color` is expected to be an array 
+		REM /// of the dimensions for the `deviceType/device`. The `length` parameter is 
+		REM /// the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+		REM /// should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+		REM /// be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM ///
 		REM /// </summary>
-		Public Function UpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
-			Dim result As Integer = PluginUpdateFrame(animationId, frameIndex, duration, colors, length)
+		Public Function UpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
+			Dim result As Integer = PluginUpdateFrame(animationId, frameIndex, duration, colors, length, keys, keysLength)
 			Return result
 		End Function
 
 		REM /// <summary>
-		REM /// Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-		REM /// (in seconds). The `color` is expected to be an array of the dimensions 
-		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
-		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-		REM /// one upon failure.
+		REM /// Update the `frameIndex` of the `Chroma` animation referenced by name and 
+		REM /// sets the `duration` (in seconds). The `color` is expected to be an array 
+		REM /// of the dimensions for the `deviceType/device`. The `length` parameter is 
+		REM /// the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+		REM /// should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+		REM /// be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
 		REM /// </summary>
-		Public Function UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
+		Public Function UpdateFrameName(path As String, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
-			Dim result As Integer = PluginUpdateFrameName(lp_Path, frameIndex, duration, colors, length)
+			Dim result As Integer = PluginUpdateFrameName(lp_Path, frameIndex, duration, colors, length, keys, keysLength)
 			FreeIntPtr(lp_Path)
 			Return result
 		End Function
@@ -7528,10 +7557,10 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
-		REM /// Intended for Cloud Gaming Platforms,  restore the streaming key when the 
-		REM /// game instance is launched to continue streaming.  streamId is a null terminated 
-		REM /// string  streamKey is a null terminated string  StreamGetStatus() should 
-		REM /// return the READY status to use this method.
+		REM /// Intended for Cloud Gaming Platforms, restore the streaming key when the 
+		REM /// game instance is launched to continue streaming. streamId is a null terminated 
+		REM /// string streamKey is a null terminated string StreamGetStatus() should return 
+		REM /// the READY status to use this method.
 		REM /// EXPORT_API bool PluginCoreStreamBroadcast(const char* streamId, const char* streamKey);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7539,7 +7568,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+		REM /// End broadcasting Chroma RGB data. StreamGetStatus() should return the BROADCASTING 
 		REM /// status to use this method.
 		REM /// EXPORT_API bool PluginCoreStreamBroadcastEnd();
 		REM /// </summary>
@@ -7549,11 +7578,11 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// shortcode: Pass the address of a preallocated character buffer to get the 
-		REM /// streaming auth code. The buffer should have a minimum length of 6.  length: 
+		REM /// streaming auth code. The buffer should have a minimum length of 6. length: 
 		REM /// Length will return as zero if the streaming auth code could not be obtained. 
 		REM /// If length is greater than zero, it will be the length of the returned streaming 
-		REM /// auth code.  Once you have the shortcode, it should be shown to the user 
-		REM /// so they can associate the stream with their Razer ID  StreamGetStatus() 
+		REM /// auth code. Once you have the shortcode, it should be shown to the user 
+		REM /// so they can associate the stream with their Razer ID StreamGetStatus() 
 		REM /// should return the READY status before invoking this method. platform: is 
 		REM /// the null terminated string that identifies the source of the stream: { 
 		REM /// GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
@@ -7566,7 +7595,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// focus: Pass the address of a preallocated character buffer to get the stream 
-		REM /// focus. The buffer should have a length of 48  length: Length will return 
+		REM /// focus. The buffer should have a length of 48 length: Length will return 
 		REM /// as zero if the stream focus could not be obtained. If length is greater 
 		REM /// than zero, it will be the length of the returned stream focus.
 		REM /// EXPORT_API bool PluginCoreStreamGetFocus(char* focus, unsigned char* length);
@@ -7579,14 +7608,14 @@ Namespace ChromaSDK
 		REM /// Intended for Cloud Gaming Platforms, store the stream id to persist in user 
 		REM /// preferences to continue streaming if the game is suspended or closed. shortcode: 
 		REM /// The shortcode is a null terminated string. Use the shortcode that authorized 
-		REM /// the stream to obtain the stream id.  streamId should be a preallocated 
-		REM /// buffer to get the stream key. The buffer should have a length of 48.  length: 
-		REM /// Length will return zero if the key could not be obtained. If the length 
-		REM /// is greater than zero, it will be the length of the returned streaming id. 
-		REM /// Retrieve the stream id after authorizing the shortcode. The authorization 
-		REM /// window will expire in 5 minutes. Be sure to save the stream key before 
-		REM /// the window expires. StreamGetStatus() should return the READY status to 
-		REM /// use this method.
+		REM /// the stream to obtain the stream id. streamId should be a preallocated buffer 
+		REM /// to get the stream key. The buffer should have a length of 48. length: Length 
+		REM /// will return zero if the key could not be obtained. If the length is greater 
+		REM /// than zero, it will be the length of the returned streaming id. Retrieve 
+		REM /// the stream id after authorizing the shortcode. The authorization window 
+		REM /// will expire in 5 minutes. Be sure to save the stream key before the window 
+		REM /// expires. StreamGetStatus() should return the READY status to use this method. 
+		REM ///
 		REM /// EXPORT_API void PluginCoreStreamGetId(const char* shortcode, char* streamId, unsigned char* length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7597,16 +7626,16 @@ Namespace ChromaSDK
 		REM /// Intended for Cloud Gaming Platforms, store the streaming key to persist 
 		REM /// in user preferences to continue streaming if the game is suspended or closed. 
 		REM /// shortcode: The shortcode is a null terminated string. Use the shortcode 
-		REM /// that authorized the stream to obtain the stream key.  If the status is 
-		REM /// in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
-		REM /// the active streamId.  streamKey should be a preallocated buffer to get 
-		REM /// the stream key. The buffer should have a length of 48.  length: Length 
-		REM /// will return zero if the key could not be obtained. If the length is greater 
-		REM /// than zero, it will be the length of the returned streaming key.  Retrieve 
+		REM /// that authorized the stream to obtain the stream key. If the status is in 
+		REM /// the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+		REM /// the active streamId. streamKey should be a preallocated buffer to get the 
+		REM /// stream key. The buffer should have a length of 48. length: Length will 
+		REM /// return zero if the key could not be obtained. If the length is greater 
+		REM /// than zero, it will be the length of the returned streaming key. Retrieve 
 		REM /// the stream key after authorizing the shortcode. The authorization window 
 		REM /// will expire in 5 minutes. Be sure to save the stream key before the window 
-		REM /// expires.  StreamGetStatus() should return the READY status to use this 
-		REM /// method.
+		REM /// expires. StreamGetStatus() should return the READY status to use this method. 
+		REM ///
 		REM /// EXPORT_API void PluginCoreStreamGetKey(const char* shortcode, char* streamKey, unsigned char* length);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -7631,8 +7660,8 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// This prevents the stream id and stream key from being obtained through the 
-		REM /// shortcode. This closes the auth window.  shortcode is a null terminated 
-		REM /// string.  StreamGetStatus() should return the READY status to use this method. 
+		REM /// shortcode. This closes the auth window. shortcode is a null terminated 
+		REM /// string. StreamGetStatus() should return the READY status to use this method. 
 		REM /// returns success when shortcode has been released
 		REM /// EXPORT_API bool PluginCoreStreamReleaseShortcode(const char* shortcode);
 		REM /// </summary>
@@ -7642,7 +7671,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// The focus is a null terminated string. Set the focus identifer for the application 
-		REM /// designated to automatically change the streaming state.  Returns true on 
+		REM /// designated to automatically change the streaming state. Returns true on 
 		REM /// success.
 		REM /// EXPORT_API bool PluginCoreStreamSetFocus(const char* focus);
 		REM /// </summary>
@@ -7660,8 +7689,8 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Begin watching the Chroma RGB data using streamID parameter.  streamId is 
-		REM /// a null terminated string.  StreamGetStatus() should return the READY status 
+		REM /// Begin watching the Chroma RGB data using streamID parameter. streamId is 
+		REM /// a null terminated string. StreamGetStatus() should return the READY status 
 		REM /// to use this method.
 		REM /// EXPORT_API bool PluginCoreStreamWatch(const char* streamId, unsigned long long timestamp);
 		REM /// </summary>
@@ -7670,7 +7699,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+		REM /// End watching Chroma RGB data stream. StreamGetStatus() should return the 
 		REM /// WATCHING status to use this method.
 		REM /// EXPORT_API bool PluginCoreStreamWatchEnd();
 		REM /// </summary>
@@ -8683,17 +8712,20 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
-		REM /// The `color` is expected to be an array of the expected dimensions for the 
-		REM /// `deviceType/device`. The `length` parameter is the size of the `color` 
-		REM /// array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
-		REM /// For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-		REM /// COLUMN`. Returns the animation id upon success. Returns negative one upon 
-		REM /// failure.
-		REM /// EXPORT_API int PluginGetFrame(int animationId, int frameIndex, float* duration, int* colors, int length);
+		REM /// Get the frame colors and duration (in seconds) for a `Chroma` animation 
+		REM /// referenced by id. The `color` is expected to be an array of the expected 
+		REM /// dimensions for the `deviceType/device`. The `length` parameter is the size 
+		REM /// of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+		REM /// be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+		REM /// ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
+		REM /// EXPORT_API int PluginGetFrame(int animationId, int frameIndex, float* duration, int* colors, int length, int* keys, int keysLength);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginGetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer) As Integer
+		Private Function PluginGetFrame(animationId As Integer, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
 		End Function
 
 		REM /// <summary>
@@ -8720,6 +8752,23 @@ Namespace ChromaSDK
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
 		Private Function PluginGetFrameCountNameD(path As IntPtr) As Double
+		End Function
+
+		REM /// <summary>
+		REM /// Get the frame colors and duration (in seconds) for a `Chroma` animation 
+		REM /// referenced by name. The `color` is expected to be an array of the expected 
+		REM /// dimensions for the `deviceType/device`. The `length` parameter is the size 
+		REM /// of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+		REM /// be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+		REM /// ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
+		REM /// EXPORT_API int PluginGetFrameName(const char* path, int frameIndex, float* duration, int* colors, int length, int* keys, int keysLength);
+		REM /// </summary>
+		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
+		Private Function PluginGetFrameName(path As IntPtr, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
 		End Function
 
 		REM /// <summary>
@@ -8879,7 +8928,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
+		REM /// Initialize the ChromaSDK. Zero indicates success, otherwise failure. Many 
 		REM /// API methods auto initialize the ChromaSDK if not already initialized.
 		REM /// EXPORT_API RZRESULT PluginInit();
 		REM /// </summary>
@@ -8897,7 +8946,7 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
-		REM /// indicates  success, otherwise failure. Many API methods auto initialize 
+		REM /// indicates success, otherwise failure. Many API methods auto initialize 
 		REM /// the ChromaSDK if not already initialized.
 		REM /// EXPORT_API RZRESULT PluginInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
 		REM /// </summary>
@@ -10282,7 +10331,7 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// SetEffectCustom2D will display the referenced colors immediately
+		REM /// SetEffectCustom2D will display the referenced colors immediately.
 		REM /// EXPORT_API RZRESULT PluginSetEffectCustom2D(const int device, const int* colors);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
@@ -10291,11 +10340,12 @@ Namespace ChromaSDK
 
 		REM /// <summary>
 		REM /// SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
-		REM /// immediately
-		REM /// EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(const int device, const int* colors);
+		REM /// immediately. Colors represent a visual grid layout. Keys represent the 
+		REM /// hotkeys for any layout.
+		REM /// EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(const int device, const int* colors, const int* keys);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginSetEffectKeyboardCustom2D(device As Integer, colors As Integer()) As Integer
+		Private Function PluginSetEffectKeyboardCustom2D(device As Integer, colors As Integer(), keys As Integer()) As Integer
 		End Function
 
 		REM /// <summary>
@@ -11252,31 +11302,36 @@ Namespace ChromaSDK
 		End Function
 
 		REM /// <summary>
-		REM /// Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-		REM /// (in seconds). The `color` is expected to be an array of the dimensions 
-		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
-		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-		REM /// one upon failure.
-		REM /// EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length);
+		REM /// Updates the `frameIndex` of the `Chroma` animation referenced by id and 
+		REM /// sets the `duration` (in seconds). The `color` is expected to be an array 
+		REM /// of the dimensions for the `deviceType/device`. The `length` parameter is 
+		REM /// the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+		REM /// should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+		REM /// be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM ///
+		REM /// EXPORT_API int PluginUpdateFrame(int animationId, int frameIndex, float duration, int* colors, int length, int* keys, int keysLength);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
+		Private Function PluginUpdateFrame(animationId As Integer, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
 		End Function
 
 		REM /// <summary>
-		REM /// Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-		REM /// (in seconds). The `color` is expected to be an array of the dimensions 
-		REM /// for the `deviceType/device`. The `length` parameter is the size of the 
-		REM /// `color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-		REM /// LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-		REM /// times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-		REM /// one upon failure.
-		REM /// EXPORT_API int PluginUpdateFrameName(const char* path, int frameIndex, float duration, int* colors, int length);
+		REM /// Update the `frameIndex` of the `Chroma` animation referenced by name and 
+		REM /// sets the `duration` (in seconds). The `color` is expected to be an array 
+		REM /// of the dimensions for the `deviceType/device`. The `length` parameter is 
+		REM /// the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+		REM /// should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+		REM /// be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+		REM /// and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+		REM /// EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+		REM /// Returns the animation id upon success. Returns negative one upon failure. 
+		REM ///
+		REM /// EXPORT_API int PluginUpdateFrameName(const char* path, int frameIndex, float duration, int* colors, int length, int* keys, int keysLength);
 		REM /// </summary>
 		<DllImport(DLL_NAME, CallingConvention:=CallingConvention.Cdecl)>
-		Private Function PluginUpdateFrameName(path As IntPtr, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer) As Integer
+		Private Function PluginUpdateFrameName(path As IntPtr, frameIndex As Integer, duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
 		End Function
 
 		REM /// <summary>

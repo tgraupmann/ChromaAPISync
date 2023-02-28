@@ -2458,10 +2458,10 @@ void UChromaSDKPluginBPLibrary::StopAnimationType(EChromaSDKDeviceEnum::Type
 **StreamBroadcast**
 
 Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
-Intended for Cloud Gaming Platforms,  restore the streaming key when the 
-game instance is launched to continue streaming.  streamId is a null terminated 
-string  streamKey is a null terminated string  StreamGetStatus() should 
-return the READY status to use this method.
+Intended for Cloud Gaming Platforms, restore the streaming key when the 
+game instance is launched to continue streaming. streamId is a null terminated 
+string streamKey is a null terminated string StreamGetStatus() should return 
+the READY status to use this method.
 ```c++
 void UChromaSDKPluginBPLibrary::StreamBroadcast(const FString& streamId, 
 	const FString& streamKey);
@@ -2471,7 +2471,7 @@ void UChromaSDKPluginBPLibrary::StreamBroadcast(const FString& streamId,
 <a name="StreamBroadcastEnd"></a>
 **StreamBroadcastEnd**
 
-End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+End broadcasting Chroma RGB data. StreamGetStatus() should return the BROADCASTING 
 status to use this method.
 ```c++
 void UChromaSDKPluginBPLibrary::StreamBroadcastEnd();
@@ -2482,11 +2482,11 @@ void UChromaSDKPluginBPLibrary::StreamBroadcastEnd();
 **StreamGetAuthShortcode**
 
 shortcode: Pass the address of a preallocated character buffer to get the 
-streaming auth code. The buffer should have a minimum length of 6.  length: 
+streaming auth code. The buffer should have a minimum length of 6. length: 
 Length will return as zero if the streaming auth code could not be obtained. 
 If length is greater than zero, it will be the length of the returned streaming 
-auth code.  Once you have the shortcode, it should be shown to the user 
-so they can associate the stream with their Razer ID  StreamGetStatus() 
+auth code. Once you have the shortcode, it should be shown to the user 
+so they can associate the stream with their Razer ID StreamGetStatus() 
 should return the READY status before invoking this method. platform: is 
 the null terminated string that identifies the source of the stream: { 
 GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
@@ -2501,7 +2501,7 @@ FString UChromaSDKPluginBPLibrary::StreamGetAuthShortcode(const FString&
 **StreamGetFocus**
 
 focus: Pass the address of a preallocated character buffer to get the stream 
-focus. The buffer should have a length of 48  length: Length will return 
+focus. The buffer should have a length of 48 length: Length will return 
 as zero if the stream focus could not be obtained. If length is greater 
 than zero, it will be the length of the returned stream focus.
 ```c++
@@ -2515,14 +2515,13 @@ FString UChromaSDKPluginBPLibrary::StreamGetFocus();
 Intended for Cloud Gaming Platforms, store the stream id to persist in user 
 preferences to continue streaming if the game is suspended or closed. shortcode: 
 The shortcode is a null terminated string. Use the shortcode that authorized 
-the stream to obtain the stream id.  streamId should be a preallocated 
-buffer to get the stream key. The buffer should have a length of 48.  length: 
-Length will return zero if the key could not be obtained. If the length 
-is greater than zero, it will be the length of the returned streaming id. 
-Retrieve the stream id after authorizing the shortcode. The authorization 
-window will expire in 5 minutes. Be sure to save the stream key before 
-the window expires. StreamGetStatus() should return the READY status to 
-use this method.
+the stream to obtain the stream id. streamId should be a preallocated buffer 
+to get the stream key. The buffer should have a length of 48. length: Length 
+will return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming id. Retrieve 
+the stream id after authorizing the shortcode. The authorization window 
+will expire in 5 minutes. Be sure to save the stream key before the window 
+expires. StreamGetStatus() should return the READY status to use this method.
 ```c++
 FString UChromaSDKPluginBPLibrary::StreamGetId(const FString& shortcode);
 ```
@@ -2534,16 +2533,15 @@ FString UChromaSDKPluginBPLibrary::StreamGetId(const FString& shortcode);
 Intended for Cloud Gaming Platforms, store the streaming key to persist 
 in user preferences to continue streaming if the game is suspended or closed. 
 shortcode: The shortcode is a null terminated string. Use the shortcode 
-that authorized the stream to obtain the stream key.  If the status is 
-in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
-the active streamId.  streamKey should be a preallocated buffer to get 
-the stream key. The buffer should have a length of 48.  length: Length 
-will return zero if the key could not be obtained. If the length is greater 
-than zero, it will be the length of the returned streaming key.  Retrieve 
+that authorized the stream to obtain the stream key. If the status is in 
+the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+the active streamId. streamKey should be a preallocated buffer to get the 
+stream key. The buffer should have a length of 48. length: Length will 
+return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming key. Retrieve 
 the stream key after authorizing the shortcode. The authorization window 
 will expire in 5 minutes. Be sure to save the stream key before the window 
-expires.  StreamGetStatus() should return the READY status to use this 
-method.
+expires. StreamGetStatus() should return the READY status to use this method.
 ```c++
 FString UChromaSDKPluginBPLibrary::StreamGetKey(const FString& shortcode);
 ```
@@ -2563,8 +2561,8 @@ FString UChromaSDKPluginBPLibrary::StreamGetStatusString(const EChromaSDKStreamS
 **StreamReleaseShortcode**
 
 This prevents the stream id and stream key from being obtained through the 
-shortcode. This closes the auth window.  shortcode is a null terminated 
-string.  StreamGetStatus() should return the READY status to use this method. 
+shortcode. This closes the auth window. shortcode is a null terminated 
+string. StreamGetStatus() should return the READY status to use this method. 
 returns success when shortcode has been released
 ```c++
 bool UChromaSDKPluginBPLibrary::StreamReleaseShortcode(const FString& shortcode);
@@ -2575,7 +2573,7 @@ bool UChromaSDKPluginBPLibrary::StreamReleaseShortcode(const FString& shortcode)
 **StreamSetFocus**
 
 The focus is a null terminated string. Set the focus identifer for the application 
-designated to automatically change the streaming state.  Returns true on 
+designated to automatically change the streaming state. Returns true on 
 success.
 ```c++
 bool UChromaSDKPluginBPLibrary::StreamSetFocus(const FString& streamFocus);
@@ -2585,8 +2583,8 @@ bool UChromaSDKPluginBPLibrary::StreamSetFocus(const FString& streamFocus);
 <a name="StreamWatch"></a>
 **StreamWatch**
 
-Begin watching the Chroma RGB data using streamID parameter.  streamId is 
-a null terminated string.  StreamGetStatus() should return the READY status 
+Begin watching the Chroma RGB data using streamID parameter. streamId is 
+a null terminated string. StreamGetStatus() should return the READY status 
 to use this method.
 ```c++
 void UChromaSDKPluginBPLibrary::StreamWatch(const FString& streamId, int32 
@@ -2597,7 +2595,7 @@ void UChromaSDKPluginBPLibrary::StreamWatch(const FString& streamId, int32
 <a name="StreamWatchEnd"></a>
 **StreamWatchEnd**
 
-End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+End watching Chroma RGB data stream. StreamGetStatus() should return the 
 WATCHING status to use this method.
 ```c++
 void UChromaSDKPluginBPLibrary::StreamWatchEnd();

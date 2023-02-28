@@ -250,6 +250,7 @@
 * [PluginGetFrameCount](#PluginGetFrameCount)
 * [PluginGetFrameCountName](#PluginGetFrameCountName)
 * [PluginGetFrameCountNameD](#PluginGetFrameCountNameD)
+* [PluginGetFrameName](#PluginGetFrameName)
 * [PluginGetKeyColor](#PluginGetKeyColor)
 * [PluginGetKeyColorD](#PluginGetKeyColorD)
 * [PluginGetKeyColorName](#PluginGetKeyColorName)
@@ -2628,10 +2629,10 @@ RZRESULT result = ChromaAnimationAPI::CoreSetEffect(RZEFFECTID EffectId);
 **PluginCoreStreamBroadcast**
 
 Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
-Intended for Cloud Gaming Platforms,  restore the streaming key when the 
-game instance is launched to continue streaming.  streamId is a null terminated 
-string  streamKey is a null terminated string  StreamGetStatus() should 
-return the READY status to use this method.
+Intended for Cloud Gaming Platforms, restore the streaming key when the 
+game instance is launched to continue streaming. streamId is a null terminated 
+string streamKey is a null terminated string StreamGetStatus() should return 
+the READY status to use this method.
 
 ```C++
 // DLL Interface
@@ -2647,7 +2648,7 @@ bool result = ChromaAnimationAPI::CoreStreamBroadcast(
 <a name="PluginCoreStreamBroadcastEnd"></a>
 **PluginCoreStreamBroadcastEnd**
 
-End broadcasting Chroma RGB data.  StreamGetStatus() should return the BROADCASTING 
+End broadcasting Chroma RGB data. StreamGetStatus() should return the BROADCASTING 
 status to use this method.
 
 ```C++
@@ -2663,11 +2664,11 @@ bool result = ChromaAnimationAPI::CoreStreamBroadcastEnd();
 **PluginCoreStreamGetAuthShortcode**
 
 shortcode: Pass the address of a preallocated character buffer to get the 
-streaming auth code. The buffer should have a minimum length of 6.  length: 
+streaming auth code. The buffer should have a minimum length of 6. length: 
 Length will return as zero if the streaming auth code could not be obtained. 
 If length is greater than zero, it will be the length of the returned streaming 
-auth code.  Once you have the shortcode, it should be shown to the user 
-so they can associate the stream with their Razer ID  StreamGetStatus() 
+auth code. Once you have the shortcode, it should be shown to the user 
+so they can associate the stream with their Razer ID StreamGetStatus() 
 should return the READY status before invoking this method. platform: is 
 the null terminated string that identifies the source of the stream: { 
 GEFORCE_NOW, LUNA, STADIA, GAME_PASS } title: is the null terminated string 
@@ -2688,7 +2689,7 @@ ChromaAnimationAPI::CoreStreamGetAuthShortcode(
 **PluginCoreStreamGetFocus**
 
 focus: Pass the address of a preallocated character buffer to get the stream 
-focus. The buffer should have a length of 48  length: Length will return 
+focus. The buffer should have a length of 48 length: Length will return 
 as zero if the stream focus could not be obtained. If length is greater 
 than zero, it will be the length of the returned stream focus.
 
@@ -2709,14 +2710,13 @@ bool result = ChromaAnimationAPI::CoreStreamGetFocus(
 Intended for Cloud Gaming Platforms, store the stream id to persist in user 
 preferences to continue streaming if the game is suspended or closed. shortcode: 
 The shortcode is a null terminated string. Use the shortcode that authorized 
-the stream to obtain the stream id.  streamId should be a preallocated 
-buffer to get the stream key. The buffer should have a length of 48.  length: 
-Length will return zero if the key could not be obtained. If the length 
-is greater than zero, it will be the length of the returned streaming id. 
-Retrieve the stream id after authorizing the shortcode. The authorization 
-window will expire in 5 minutes. Be sure to save the stream key before 
-the window expires. StreamGetStatus() should return the READY status to 
-use this method.
+the stream to obtain the stream id. streamId should be a preallocated buffer 
+to get the stream key. The buffer should have a length of 48. length: Length 
+will return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming id. Retrieve 
+the stream id after authorizing the shortcode. The authorization window 
+will expire in 5 minutes. Be sure to save the stream key before the window 
+expires. StreamGetStatus() should return the READY status to use this method.
 
 ```C++
 // DLL Interface
@@ -2735,16 +2735,15 @@ ChromaAnimationAPI::CoreStreamGetId(
 Intended for Cloud Gaming Platforms, store the streaming key to persist 
 in user preferences to continue streaming if the game is suspended or closed. 
 shortcode: The shortcode is a null terminated string. Use the shortcode 
-that authorized the stream to obtain the stream key.  If the status is 
-in the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
-the active streamId.  streamKey should be a preallocated buffer to get 
-the stream key. The buffer should have a length of 48.  length: Length 
-will return zero if the key could not be obtained. If the length is greater 
-than zero, it will be the length of the returned streaming key.  Retrieve 
+that authorized the stream to obtain the stream key. If the status is in 
+the BROADCASTING or WATCHING state, passing a NULL shortcode will return 
+the active streamId. streamKey should be a preallocated buffer to get the 
+stream key. The buffer should have a length of 48. length: Length will 
+return zero if the key could not be obtained. If the length is greater 
+than zero, it will be the length of the returned streaming key. Retrieve 
 the stream key after authorizing the shortcode. The authorization window 
 will expire in 5 minutes. Be sure to save the stream key before the window 
-expires.  StreamGetStatus() should return the READY status to use this 
-method.
+expires. StreamGetStatus() should return the READY status to use this method.
 
 ```C++
 // DLL Interface
@@ -2791,8 +2790,8 @@ const char* result = ChromaAnimationAPI::CoreStreamGetStatusString(
 **PluginCoreStreamReleaseShortcode**
 
 This prevents the stream id and stream key from being obtained through the 
-shortcode. This closes the auth window.  shortcode is a null terminated 
-string.  StreamGetStatus() should return the READY status to use this method. 
+shortcode. This closes the auth window. shortcode is a null terminated 
+string. StreamGetStatus() should return the READY status to use this method. 
 returns success when shortcode has been released
 
 ```C++
@@ -2810,7 +2809,7 @@ bool result = ChromaAnimationAPI::CoreStreamReleaseShortcode(
 **PluginCoreStreamSetFocus**
 
 The focus is a null terminated string. Set the focus identifer for the application 
-designated to automatically change the streaming state.  Returns true on 
+designated to automatically change the streaming state. Returns true on 
 success.
 
 ```C++
@@ -2840,8 +2839,8 @@ bool result = ChromaAnimationAPI::CoreStreamSupportsStreaming();
 <a name="PluginCoreStreamWatch"></a>
 **PluginCoreStreamWatch**
 
-Begin watching the Chroma RGB data using streamID parameter.  streamId is 
-a null terminated string.  StreamGetStatus() should return the READY status 
+Begin watching the Chroma RGB data using streamID parameter. streamId is 
+a null terminated string. StreamGetStatus() should return the READY status 
 to use this method.
 
 ```C++
@@ -2858,7 +2857,7 @@ bool result = ChromaAnimationAPI::CoreStreamWatch(
 <a name="PluginCoreStreamWatchEnd"></a>
 **PluginCoreStreamWatchEnd**
 
-End watching Chroma RGB data stream.  StreamGetStatus() should return the 
+End watching Chroma RGB data stream. StreamGetStatus() should return the 
 WATCHING status to use this method.
 
 ```C++
@@ -4747,22 +4746,26 @@ double result = ChromaAnimationAPI::GetDeviceTypeNameD(const char* path);
 <a name="PluginGetFrame"></a>
 **PluginGetFrame**
 
-Gets the frame colors and duration (in seconds) for a `Chroma` animation. 
-The `color` is expected to be an array of the expected dimensions for the 
-`deviceType/device`. The `length` parameter is the size of the `color` 
-array. For `EChromaSDKDevice1DEnum` the array size should be `MAX LEDS`. 
-For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` * `MAX 
-COLUMN`. Returns the animation id upon success. Returns negative one upon 
-failure.
+Get the frame colors and duration (in seconds) for a `Chroma` animation 
+referenced by id. The `color` is expected to be an array of the expected 
+dimensions for the `deviceType/device`. The `length` parameter is the size 
+of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
 EXPORT_API int PluginGetFrame(
-	int animationId, int frameIndex, float* duration, int* colors, int length);
+	int animationId, int frameIndex, float* duration, int* colors, int length,
+	int* keys, int keysLength);
 
 // Class Plugin
 int result = ChromaAnimationAPI::GetFrame(
-	int animationId, int frameIndex, float* duration, int* colors, int length);
+	int animationId, int frameIndex, float* duration, int* colors, int length,
+	int* keys, int keysLength);
 ```
 
 ---
@@ -4807,6 +4810,32 @@ EXPORT_API double PluginGetFrameCountNameD(const char* path);
 
 // Class Plugin
 double result = ChromaAnimationAPI::GetFrameCountNameD(const char* path);
+```
+
+---
+<a name="PluginGetFrameName"></a>
+**PluginGetFrameName**
+
+Get the frame colors and duration (in seconds) for a `Chroma` animation 
+referenced by name. The `color` is expected to be an array of the expected 
+dimensions for the `deviceType/device`. The `length` parameter is the size 
+of the `color` array. For `EChromaSDKDevice1DEnum` the array size should 
+be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX 
+ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+Returns the animation id upon success. Returns negative one upon failure.
+
+```C++
+// DLL Interface
+EXPORT_API int PluginGetFrameName(
+	const char* path, int frameIndex, float* duration, int* colors, int length,
+	int* keys, int keysLength);
+
+// Class Plugin
+int result = ChromaAnimationAPI::GetFrameName(
+	const char* path, int frameIndex, float* duration, int* colors, int length,
+	int* keys, int keysLength);
 ```
 
 ---
@@ -5084,7 +5113,7 @@ double result = ChromaAnimationAPI::HasAnimationLoopNameD(const char* path);
 <a name="PluginInit"></a>
 **PluginInit**
 
-Initialize the ChromaSDK. Zero indicates  success, otherwise failure. Many 
+Initialize the ChromaSDK. Zero indicates success, otherwise failure. Many 
 API methods auto initialize the ChromaSDK if not already initialized.
 
 ```C++
@@ -5114,7 +5143,7 @@ double result = ChromaAnimationAPI::InitD();
 **PluginInitSDK**
 
 Initialize the ChromaSDK. AppInfo populates the details in Synapse. Zero 
-indicates  success, otherwise failure. Many API methods auto initialize 
+indicates success, otherwise failure. Many API methods auto initialize 
 the ChromaSDK if not already initialized.
 
 ```C++
@@ -7653,7 +7682,7 @@ RZRESULT result = ChromaAnimationAPI::SetEffectCustom1D(
 <a name="PluginSetEffectCustom2D"></a>
 **PluginSetEffectCustom2D**
 
-SetEffectCustom2D will display the referenced colors immediately
+SetEffectCustom2D will display the referenced colors immediately.
 
 ```C++
 // DLL Interface
@@ -7670,16 +7699,17 @@ RZRESULT result = ChromaAnimationAPI::SetEffectCustom2D(
 **PluginSetEffectKeyboardCustom2D**
 
 SetEffectKeyboardCustom2D will display the referenced custom keyboard colors 
-immediately
+immediately. Colors represent a visual grid layout. Keys represent the 
+hotkeys for any layout.
 
 ```C++
 // DLL Interface
 EXPORT_API RZRESULT PluginSetEffectKeyboardCustom2D(
-	const int device, const int* colors);
+	const int device, const int* colors, const int* keys);
 
 // Class Plugin
 RZRESULT result = ChromaAnimationAPI::SetEffectKeyboardCustom2D(
-	const int device, const int* colors);
+	const int device, const int* colors, const int* keys);
 ```
 
 ---
@@ -9500,44 +9530,51 @@ ChromaAnimationAPI::UnloadLibraryStreamingPlugin();
 <a name="PluginUpdateFrame"></a>
 **PluginUpdateFrame**
 
-Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-(in seconds). The `color` is expected to be an array of the dimensions 
-for the `deviceType/device`. The `length` parameter is the size of the 
-`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-one upon failure.
+Updates the `frameIndex` of the `Chroma` animation referenced by id and 
+sets the `duration` (in seconds). The `color` is expected to be an array 
+of the dimensions for the `deviceType/device`. The `length` parameter is 
+the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength.
 
 ```C++
 // DLL Interface
 EXPORT_API int PluginUpdateFrame(
-	int animationId, int frameIndex, float duration, int* colors, int length);
+	int animationId, int frameIndex, float duration, int* colors, int length,
+	int* keys, int keysLength);
 
 // Class Plugin
 int result = ChromaAnimationAPI::UpdateFrame(
-	int animationId, int frameIndex, float duration, int* colors, int length);
+	int animationId, int frameIndex, float duration, int* colors, int length,
+	int* keys, int keysLength);
 ```
 
 ---
 <a name="PluginUpdateFrameName"></a>
 **PluginUpdateFrameName**
 
-Updates the `frameIndex` of the `Chroma` animation and sets the `duration` 
-(in seconds). The `color` is expected to be an array of the dimensions 
-for the `deviceType/device`. The `length` parameter is the size of the 
-`color` array. For `EChromaSDKDevice1DEnum` the array size should be `MAX 
-LEDS`. For `EChromaSDKDevice2DEnum` the array size should be `MAX ROW` 
-times `MAX COLUMN`. Returns the animation id upon success. Returns negative 
-one upon failure.
+Update the `frameIndex` of the `Chroma` animation referenced by name and 
+sets the `duration` (in seconds). The `color` is expected to be an array 
+of the dimensions for the `deviceType/device`. The `length` parameter is 
+the size of the `color` array. For `EChromaSDKDevice1DEnum` the array size 
+should be `MAX LEDS`. For `EChromaSDKDevice2DEnum` the array size should 
+be `MAX ROW` times `MAX COLUMN`. Keys are populated only for EChromaSDKDevice2DEnum::DE_Keyboard 
+and EChromaSDKDevice2DEnum::DE_KeyboardExtended. Keys will only use the 
+EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength. 
+Returns the animation id upon success. Returns negative one upon failure.
 
 ```C++
 // DLL Interface
 EXPORT_API int PluginUpdateFrameName(
-	const char* path, int frameIndex, float duration, int* colors, int length);
+	const char* path, int frameIndex, float duration, int* colors, int length,
+	int* keys, int keysLength);
 
 // Class Plugin
 int result = ChromaAnimationAPI::UpdateFrameName(
-	const char* path, int frameIndex, float duration, int* colors, int length);
+	const char* path, int frameIndex, float duration, int* colors, int length,
+	int* keys, int keysLength);
 ```
 
 ---
