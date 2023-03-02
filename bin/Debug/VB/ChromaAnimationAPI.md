@@ -3608,7 +3608,7 @@ EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength.
 Returns the animation id upon success. Returns negative one upon failure.
 
 ```vb
-Dim result As Integer = ChromaAnimationAPI.GetFrameName(path As String, frameIndex As Integer, duration As float*, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer)
+Dim result As Integer = ChromaAnimationAPI.GetFrameName(path As String, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer)
 ```
 
 ---

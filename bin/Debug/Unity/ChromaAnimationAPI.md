@@ -3608,7 +3608,7 @@ EChromaSDKDevice2DEnum::DE_Keyboard `MAX_ROW` times `MAX_COLUMN` keysLength.
 Returns the animation id upon success. Returns negative one upon failure.
 
 ```charp
-int result = UnityNativeChromaSDK.GetFrameName(string path, int frameIndex, float* duration, int[] colors, int length, int[] keys, int keysLength);
+int result = UnityNativeChromaSDK.GetFrameName(string path, int frameIndex, out float duration, int[] colors, int length, int[] keys, int keysLength);
 ```
 
 ---

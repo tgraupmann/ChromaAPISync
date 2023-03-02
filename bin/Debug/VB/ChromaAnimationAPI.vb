@@ -3343,7 +3343,7 @@ Namespace ChromaSDK
 		REM /// Returns the animation id upon success. Returns negative one upon failure. 
 		REM ///
 		REM /// </summary>
-		Public Function GetFrameName(path As String, frameIndex As Integer, duration As float*, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
+		Public Function GetFrameName(path As String, frameIndex As Integer, ByRef duration As Single, colors As Integer(), length As Integer, keys As Integer(), keysLength As Integer) As Integer
 			Dim str_Path As String = path
 			Dim lp_Path As IntPtr = GetPathIntPtr(str_Path)
 			Dim result As Integer = PluginGetFrameName(lp_Path, frameIndex, duration, colors, length, keys, keysLength)

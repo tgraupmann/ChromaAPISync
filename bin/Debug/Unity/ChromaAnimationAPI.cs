@@ -3405,11 +3405,11 @@ namespace ChromaSDK
 		/// Returns the animation id upon success. Returns negative one upon failure. 
 		///
 		/// </summary>
-		public static int GetFrameName(string path, int frameIndex, float* duration, int[] colors, int length, int[] keys, int keysLength)
+		public static int GetFrameName(string path, int frameIndex, out float duration, int[] colors, int length, int[] keys, int keysLength)
 		{
 			string str_Path = GetStreamingPath(path);
 			IntPtr lp_Path = GetPathIntPtr(str_Path);
-			int result = PluginGetFrameName(lp_Path, frameIndex, duration, colors, length, keys, keysLength);
+			int result = PluginGetFrameName(lp_Path, frameIndex, out duration, colors, length, keys, keysLength);
 			FreeIntPtr(lp_Path);
 			return result;
 		}

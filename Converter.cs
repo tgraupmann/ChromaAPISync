@@ -27,7 +27,6 @@ namespace ChromaAPISync
             new MetaOverride() { MethodName="CoreQueryDevice", ArgName="DeviceInfo", OverrideType="out DEVICE_INFO_TYPE", UseOut=true},
             new MetaOverride() { MethodName="CreateEffect", ArgName="effect", OverrideType="EFFECT_TYPE", CastType="int"},
             new MetaOverride() { MethodName="CreateEffect", ArgName="effectId", OverrideType="out FChromaSDKGuid", UseOut=true},
-            new MetaOverride() { MethodName="GetFrame", ArgName="duration", OverrideType="out float", UseOut=true},
             new MetaOverride() { MethodName="CoreInitSDK", ArgName="AppInfo", OverrideType="ref ChromaSDK.APPINFOTYPE", UseRef=true},
             new MetaOverride() { MethodName="InitSDK", ArgName="AppInfo", OverrideType="ref ChromaSDK.APPINFOTYPE", UseRef=true},
         };
@@ -706,6 +705,10 @@ namespace ChromaAPISync
                     {
                         name = string.Format("out {0}", name);
                     }
+                    else if (argInfo.StrType == "float*")
+                    {
+                        name = string.Format("out {0}", name);
+                    }
                     if (null != argInfo.OverrideInfo)
                     {
                         if (argInfo.OverrideInfo.UseRef)
@@ -921,6 +924,10 @@ namespace ChromaAPISync
             else if (result == "char*")
             {
                 result = "ref string";
+            }
+            else if (result == "float*")
+            {
+                result = "out float";
             }
             else if (result == "unsigned char*")
             {
