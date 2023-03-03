@@ -10,7 +10,7 @@
             // unicode branch
             //const string headerStdafx = @"C:\Public\CChromaEditor_Unicode\CChromaEditorLibrary\stdafx.h";
 
-            bool upgradeToUnicode = true;
+            bool upgradeToUnicode = false;
 
             Converter.ConvertExportsToClass(
                 headerStdafx, "stdafx.h", upgradeToUnicode,
