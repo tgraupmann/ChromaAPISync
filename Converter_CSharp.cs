@@ -46,9 +46,24 @@ namespace ChromaAPISync
                             argInfo.StrType == "const wchar_t*")
                         {
                             string pathArg = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
-                            Output(sw, "\t\t\tstring {0} = {1};",
-                                pathArg,
-                                argInfo.Name);
+                            switch (argInfo.Name)
+                            {
+                                case "shortcode":
+                                case "platform":
+                                case "title":
+                                case "streamId":
+                                case "streamKey":
+                                case "focus":
+                                    Output(sw, "\t\t\tstring {0} = {1};",
+                                        pathArg,
+                                        argInfo.Name);
+                                    break;
+                                default:
+                                    Output(sw, "\t\t\tstring {0} = GetStreamingPath({1});",
+                                        pathArg,
+                                        argInfo.Name);
+                                    break;
+                            }
 
                             string lpArg = string.Format("lp_{0}", UppercaseFirstLetter(argInfo.Name));
                             if (argInfo.StrType == "char*")
@@ -83,6 +98,7 @@ namespace ChromaAPISync
 
                         }
                     }
+
                     if (methodInfo.ReturnType == "void")
                     {
                         Output(sw, "\t\t\tPlugin{0}({1});",
@@ -91,7 +107,8 @@ namespace ChromaAPISync
                     }
                     else
                     {
-                        if (methodInfo.ReturnType == "const char*")
+                        if (methodInfo.ReturnType == "const char*" ||
+                            methodInfo.ReturnType == "const wchar_t*")
                         {
                             Output(sw, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
                                 ChangeToManagedType(methodInfo, methodInfo.ReturnType),

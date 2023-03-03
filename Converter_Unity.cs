@@ -100,6 +100,7 @@ namespace ChromaAPISync
 
                         }
                     }
+
                     if (methodInfo.ReturnType == "void")
                     {
                         Output(sw, "\t\t\tPlugin{0}({1});",
@@ -108,7 +109,8 @@ namespace ChromaAPISync
                     }
                     else
                     {
-                        if (methodInfo.ReturnType == "const char*")
+                        if (methodInfo.ReturnType == "const char*" ||
+                            methodInfo.ReturnType == "const wchar_t*")
                         {
                             Output(sw, "\t\t\t{0} result = Marshal.PtrToStringAnsi(Plugin{1}({2}));",
                                 ChangeToManagedType(methodInfo, methodInfo.ReturnType),
