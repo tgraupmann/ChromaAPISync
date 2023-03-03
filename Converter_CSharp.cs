@@ -54,12 +54,9 @@ namespace ChromaAPISync
                                 case "streamId":
                                 case "streamKey":
                                 case "focus":
-                                    Output(sw, "\t\t\tstring {0} = {1};",
-                                        pathArg,
-                                        argInfo.Name);
-                                    break;
                                 default:
-                                    Output(sw, "\t\t\tstring {0} = GetStreamingPath({1});",
+                                    // only Unity adds the streaming path
+                                    Output(sw, "\t\t\tstring {0} = {1};",
                                         pathArg,
                                         argInfo.Name);
                                     break;

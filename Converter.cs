@@ -2955,7 +2955,8 @@ __UNITY_DLL_NAME__
             Keypad = 3,
             Mouse = 4,
             Mousepad = 5,
-            MAX = 6,
+            KeyboardExtended = 6,
+            MAX = 7,
         }
 
         public enum Device1D
@@ -2973,13 +2974,14 @@ __UNITY_DLL_NAME__
             Keyboard = 0,
             Keypad = 1,
             Mouse = 2,
-            MAX = 3,
+            KeyboardExtended = 3,
+            MAX = 4,
         }
 
 		public class FChromaSDKDeviceFrameIndex
 		{
 			// Index corresponds to EChromaSDKDeviceEnum;
-			public int[] _mFrameIndex = new int[6];
+			public int[] _mFrameIndex = new int[(int)Device.MAX];
 
 			public FChromaSDKDeviceFrameIndex()
 			{
@@ -2989,6 +2991,7 @@ __UNITY_DLL_NAME__
 				_mFrameIndex[(int)Device.Keypad] = 0;
 				_mFrameIndex[(int)Device.Mouse] = 0;
 				_mFrameIndex[(int)Device.Mousepad] = 0;
+				_mFrameIndex[(int)Device.KeyboardExtended] = 0;
 			}
 		}
 
@@ -3024,10 +3027,27 @@ __UNITY_DLL_NAME__
 			public FChromaSDKDeviceFrameIndex _mFrameIndex = new FChromaSDKDeviceFrameIndex();
 		}
 
-
 		public class FChromaSDKScene
 		{
 			public List<FChromaSDKSceneEffect> _mEffects = new List<FChromaSDKSceneEffect>();
+            public bool GetState(int effect)
+            {
+                if (effect >= 0 && effect < _mEffects.Count)
+                {
+                    return _mEffects[effect]._mState;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            public void ToggleState(int effect)
+            {
+                if (effect >= 0 && effect < _mEffects.Count)
+                {
+                    _mEffects[effect]._mState = !_mEffects[effect]._mState;
+                }
+            }
 		}
 
 __UNITY_KEY_MAPPING__
