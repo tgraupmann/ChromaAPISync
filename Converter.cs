@@ -2936,6 +2936,90 @@ namespace ChromaSDK
     {
 __UNITY_DLL_NAME__
 
+        /// <summary>
+        /// Check if the ChromaSDK DLL exists before calling API Methods
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsChromaSDKAvailable()
+        {
+#if PLATFORM_XBOXONE
+			return true;
+#endif
+            try
+            {
+                String fileName;
+#if UNITY_64
+                fileName = @""C:\Program Files\Razer Chroma SDK\bin\RzChromaSDK64.dll"";
+#else
+                fileName = @""C:\Program Files (x86)\Razer Chroma SDK\bin\RzChromaSDK.dll"";
+#endif
+                FileInfo fi = new FileInfo(fileName);
+                if (!fi.Exists)
+                {
+                    return false;
+                }
+
+                System.Diagnostics.FileVersionInfo versionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(fileName);
+                //Debug.LogFormat(""ChromaSDK Version={0}"", versionInfo.ProductVersion);
+                String productVersion = versionInfo.ProductVersion;
+                String[] versionParts = productVersion.Split(""."".ToCharArray());
+                if (versionParts.Length < 3)
+                {
+                    return false;
+                }
+
+                if (versionParts.Length < 3)
+                {
+                    return false;
+                }
+
+                int major;
+                if (!int.TryParse(versionParts[0], out major))
+                {
+                    return false;
+                }
+
+                int minor;
+                if (!int.TryParse(versionParts[1], out minor))
+                {
+                    return false;
+                }
+
+                int revision;
+                if (!int.TryParse(versionParts[2], out revision))
+                {
+                    return false;
+                }
+
+                // Anything less than the min version returns false
+                const int minMajor = 3;
+                const int minMinor = 20;
+                const int minRevision = 2;
+
+                if (major < minMajor) // Less than 3.X.X
+                {
+                    return false;
+                }
+
+                if (major == minMajor && minor < minMinor) // Less than 3.20
+                {
+                    return false;
+                }
+
+                if (major == minMajor && minor == minMinor && revision < minRevision) // Less than 3.20.2
+                {
+                    return false;
+                }
+
+                return true; // production version or better
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(string.Format(""The ChromaSDK is not available! Exception={0}"", ex));
+            }
+            return false;
+        }
+
 #region Data Structures
 
         public enum DeviceType
