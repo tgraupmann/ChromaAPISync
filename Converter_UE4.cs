@@ -8,9 +8,9 @@ namespace ChromaAPISync
     {
         static bool WriteUe4ChromaAPIHeader(StreamReader sr, StreamWriter sw)
         {
+            string line;
             try
             {
-                string line;
                 do
                 {
                     line = sr.ReadLine();
@@ -19,12 +19,24 @@ namespace ChromaAPISync
                     {
                         break;
                     }
-                    Output(sw, line);
+
+                    Replace(ref line, "#pragma once", @"#pragma once
+
+#include ""Logging/LogMacros.h""
+DECLARE_LOG_CATEGORY_EXTERN(LogChromaAnimationAPI, Log, All);");
+
+                    Replace(ref line, "ChromaSDK::FChromaSDKGuid", "FChromaSDKGuid");
+
+                    Output(sw, "{0}", line);
                 }
                 while (line != null);
+
+                sw.Flush();
+                sw.Close();
             }
-            catch
+            catch (Exception ex)
             {
+                Console.Error.WriteLine("Failed to write UE4 header exception: {0}", ex);
 
             }
             return true;
@@ -32,9 +44,9 @@ namespace ChromaAPISync
 
         static bool WriteUe4ChromaAPIImplementation(StreamReader sr, StreamWriter sw)
         {
+            string line;
             try
             {
-                string line;
                 do
                 {
                     line = sr.ReadLine();
@@ -43,13 +55,16 @@ namespace ChromaAPISync
                     {
                         break;
                     }
-                    Output(sw, line);
+                    Output(sw, "{0}", line);
                 }
                 while (line != null);
-            }
-            catch
-            {
 
+                sw.Flush();
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Failed to write UE4 implementaiton exception: {0}", ex);
             }
             return true;
         }
