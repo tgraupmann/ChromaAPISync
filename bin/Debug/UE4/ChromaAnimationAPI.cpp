@@ -1,14 +1,26 @@
 #include "ChromaAnimationAPI.h"
 #include "ChromaLogger.h"
+#if !PLATFORM_XBOXONE
 #include "VerifyLibrarySignature.h"
+#endif
 #include <iostream>
 #include <tchar.h>
 
 
-# ifdef _WIN64
+DEFINE_LOG_CATEGORY(LogChromaAnimationAPI);
+
+
+#if PLATFORM_XBOXONE
+#define CHROMA_EDITOR_DLL	L"CChromaEditorLibrary64.dll"
+#else
+
+#ifdef _WIN64
 #define CHROMA_EDITOR_DLL	L"CChromaEditorLibrary64.dll"
 #else
 #define CHROMA_EDITOR_DLL	L"CChromaEditorLibrary.dll"
+#endif
+
+
 #endif
 
 
@@ -567,7 +579,7 @@ CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_USE_PRELOADING, UsePreloading);
 CHROMASDK_DECLARE_METHOD_IMPL(PLUGIN_USE_PRELOADING_NAME, UsePreloadingName);
 #pragma endregion
 
-#define CHROMASDK_VALIDATE_METHOD(Signature, FieldName) FieldName = (Signature) GetProcAddress(library, "Plugin" #FieldName); \
+#define CHROMASDK_VALIDATE_METHOD(Signature, FieldName) FieldName = reinterpret_cast<Signature>(reinterpret_cast<void*>(GetProcAddress(library, "Plugin" #FieldName))); \
 if (FieldName == nullptr) \
 { \
 	cerr << "Failed to find method: " << ("Plugin" #FieldName) << endl; \
@@ -587,15 +599,29 @@ int ChromaAnimationAPI::InitAPI()
 		return 0;
 	}
 
+		std::wstring path;
+
+#if PLATFORM_XBOXONE
+	path = CHROMA_EDITOR_DLL;
+#else
+
+	
+#if PLATFORM_WINDOWS && WITH_EDITOR
+	FString projectDir = FPaths::ProjectDir();
+	projectDir = projectDir.Replace(TEXT("/"), TEXT("\\"));
+	path = TCHAR_TO_WCHAR(*projectDir);
+	path += L"Binaries\\Win64";
+#else
 	wchar_t filename[MAX_PATH]; //this is a char buffer
 	GetModuleFileNameW(NULL, filename, sizeof(filename));
 
-	std::wstring path;
 	const size_t last_slash_idx = std::wstring(filename).rfind('\\');
 	if (std::string::npos != last_slash_idx)
 	{
 		path = std::wstring(filename).substr(0, last_slash_idx);
 	}
+
+	#endif
 
 	path += L"\\";
 	path += CHROMA_EDITOR_DLL;
@@ -617,9 +643,16 @@ int ChromaAnimationAPI::InitAPI()
 		return RZRESULT_DLL_INVALID_SIGNATURE;
 	}
 
+	#endif
+
+#if PLATFORM_XBOXONE
+	//UE_LOG(LogChromaAnimationAPI, Log, TEXT("Load CChromaEditorLibrary64 at: %s"), *FString(path.c_str()));
+#endif
+
 	HMODULE library = LoadLibrary(path.c_str());
 	if (library == NULL)
 	{ 
+		UE_LOG(LogChromaAnimationAPI, Error, TEXT("Failed to load Chroma Editor Library!"));
 		ChromaLogger::fprintf(stderr, "Failed to load Chroma Editor Library!\r\n");
         return RZRESULT_DLL_NOT_FOUND;
 	}
@@ -627,6 +660,7 @@ int ChromaAnimationAPI::InitAPI()
 	_sLibrary = library;
 	
 	//ChromaLogger::fprintf(stderr, "Loaded Chroma Editor DLL!\r\n");
+	//UE_LOG(LogChromaAnimationAPI, Log, TEXT("Loaded Chroma Editor DLL!"));	
 
 #pragma region API validation
 CHROMASDK_VALIDATE_METHOD(PLUGIN_ADD_COLOR, AddColor);
@@ -1175,6 +1209,7 @@ CHROMASDK_VALIDATE_METHOD(PLUGIN_USE_PRELOADING_NAME, UsePreloadingName);
 #pragma endregion
 
 	//ChromaLogger::printf(stdout, "Validated all DLL methods [success]\r\n");
+	//UE_LOG(LogChromaAnimationAPI, Log, TEXT("Validated all DLL methods [success]"));
 	_sIsInitializedAPI = true;
 	return 0;
 }

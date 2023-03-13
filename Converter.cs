@@ -1381,7 +1381,7 @@ namespace ChromaSDK
 #include <tchar.h>
 
 
-# ifdef _WIN64
+#ifdef _WIN64
 #define CHROMA_EDITOR_DLL	L""CChromaEditorLibrary64.dll""
 #else
 #define CHROMA_EDITOR_DLL	L""CChromaEditorLibrary.dll""
