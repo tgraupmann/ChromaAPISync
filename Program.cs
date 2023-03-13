@@ -16,6 +16,7 @@
                 headerStdafx, "stdafx.h", upgradeToUnicode,
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
+                @"UE4\ChromaAnimationAPI.h", @"UE4\ChromaAnimationAPI.cpp",
                 @"CSharp\ChromaAnimationAPI.cs",
                 @"CSharp\ChromaAnimationAPI.md",
                 @"Unity\ChromaAnimationAPI.cs",

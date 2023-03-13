@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace ChromaAPISync
 {
@@ -68,6 +66,7 @@ namespace ChromaAPISync
             string input, string outputCppSortInput, bool upgradeToUnicode,
             string outputCppHeader, string outputCppImplementation,
             string outputCppDocs,
+            string outputUe4Header, string outputUe4Implementation,
             string outputCSharp,
             string outputCSharpDocs,
             string outputUnity,
@@ -85,6 +84,7 @@ namespace ChromaAPISync
                 input, outputCppSortInput, upgradeToUnicode,
                 outputCppHeader, outputCppImplementation,
                 outputCppDocs,
+                outputUe4Header, outputUe4Implementation,
                 outputCSharp,
                 outputCSharpDocs,
                 outputUnity,
@@ -109,6 +109,7 @@ namespace ChromaAPISync
             string input, string fileCppSortInput, bool upgradeToUnicode,
             string fileCppHeader, string fileCppImplementation,
             string fileCppDocs,
+            string fileUe4Header, string fileUe4Implementation,
             string fileCSharp,
             string fileCSharpDocs,
             string fileUnity,
@@ -127,7 +128,7 @@ namespace ChromaAPISync
                 }
             }
 
-            #region First
+            #region First, C++
 
             if (File.Exists(fileCppHeader))
             {
@@ -195,7 +196,58 @@ namespace ChromaAPISync
 
             #endregion Sort C++ Input
 
-            //return; // DEBUG SKIP OTHERS
+            #region UE4
+
+            if (!Directory.Exists("UE4"))
+            {
+                Directory.CreateDirectory("UE4");
+            }
+
+            if (File.Exists(fileUe4Header))
+            {
+                File.Delete(fileUe4Header);
+            }
+            using (FileStream fsCppHeader = File.Open(fileCppHeader, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (StreamReader srHeader = new StreamReader(fsCppHeader))
+                {
+                    using (FileStream fsUe4Header = File.Open(fileUe4Header, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        using (StreamWriter swHeader = new StreamWriter(fsUe4Header))
+                        {
+                            if (!WriteUe4ChromaAPIHeader(srHeader, swHeader))
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (File.Exists(fileUe4Implementation))
+            {
+                File.Delete(fileUe4Implementation);
+            }
+            using (FileStream fsImplementation = File.Open(fileCppImplementation, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (StreamReader srImplementation = new StreamReader(fsImplementation))
+                {
+                    using (FileStream fsUe4Implementation = File.Open(fileUe4Implementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        using (StreamWriter swImplementation = new StreamWriter(fsUe4Implementation))
+                        {
+                            if (!WriteUe4ChromaAPIImplementation(srImplementation, swImplementation))
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #endregion UE4
+
+            return; // DEBUG SKIP OTHERS
 
             #region VB
 

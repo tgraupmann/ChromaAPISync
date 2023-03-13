@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Converter.cs" />
     <Compile Include="Converter_CSharp.cs" />
+    <Compile Include="Converter_UE4.cs" />
     <Compile Include="Converter_Unity.cs" />
     <Compile Include="Converter_VB.cs" />
     <Compile Include="Program.cs" />
