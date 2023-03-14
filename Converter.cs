@@ -247,7 +247,7 @@ namespace ChromaAPISync
 
             #endregion UE4
 
-            return; // DEBUG SKIP OTHERS
+            // return; // DEBUG SKIP OTHERS
 
             #region VB
 
