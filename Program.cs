@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             // ascii branch
-            const string headerStdafx = @"C:\Public\CChromaEditor_Debug\CChromaEditorLibrary\stdafx.h";
+            const string headerStdafx = @"C:\Public\CChromaEditor_Ascii\CChromaEditorLibrary\stdafx.h";
 
             bool upgradeToUnicode = false;
 
@@ -16,7 +16,7 @@
                 headerStdafx, "stdafx.h", upgradeToUnicode,
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
-                @"UE4\ChromaAnimationAPI.h", @"UE4\ChromaAnimationAPI.cpp",
+                @"UE\ChromaAnimationAPI.h", @"UE\ChromaAnimationAPI.cpp",
                 @"CSharp\ChromaAnimationAPI.cs",
                 @"CSharp\ChromaAnimationAPI.md",
                 @"Unity\ChromaAnimationAPI.cs",
@@ -29,7 +29,7 @@
                 "Godot.cpp",
                 "ClickTeamFusion.h",
                 "ClickTeamFusion.cpp");
-            const string headerUE4 = @"D:\Public\UE4_XDK_SampleApp\UE4ChromaSDKRT\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
+            const string headerUE4 = @"C:\Public\Unreal_ChromaSDK_Unicode\Chroma_Sample\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
             Converter.SortHeaderUE4(headerUE4,
                 "ChromaSDKPluginBPLibrary.h",
                 "ChromaSDKPluginBPLibrary.md");

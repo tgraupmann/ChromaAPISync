@@ -198,9 +198,9 @@ namespace ChromaAPISync
 
             #region UE4
 
-            if (!Directory.Exists("UE4"))
+            if (!Directory.Exists("UE"))
             {
-                Directory.CreateDirectory("UE4");
+                Directory.CreateDirectory("UE");
             }
 
             if (File.Exists(fileUe4Header))
@@ -350,7 +350,7 @@ namespace ChromaAPISync
             {
                 using (StreamWriter swUnityDocs = new StreamWriter(fsUnityDocs))
                 {
-                    if (!WriteCSharpDocs(swUnityDocs, "UnityNativeChromaSDK"))
+                    if (!WriteCSharpDocs(swUnityDocs, "ChromaAnimationAPI"))
                     {
                         return;
                     }
@@ -2929,8 +2929,17 @@ namespace ChromaSDK
     [StructLayout(LayoutKind.Sequential)]
     public struct DEVICE_INFO_TYPE
     {
-        int DeviceType;
-        uint Connected;
+        // DEVICE_KEYBOARD = 1
+        // DEVICE_MOUSE = 2
+		// DEVICE_HEADSET = 3
+		// DEVICE_MOUSEPAD = 4
+		// DEVICE_KEYPAD = 5
+		// DEVICE_SYSTEM = 6
+		// DEVICE_SPEAKERS = 7
+		// DEVICE_CHROMALINK = 8
+		// DEVICE_ALL = 255,
+        public int DeviceType;
+        public uint Connected;
     }
 
     public enum EFFECT_TYPE
@@ -2988,6 +2997,39 @@ namespace ChromaSDK
     {
 __UNITY_DLL_NAME__
 
+#if ENABLE_IL2CPP
+
+		[DllImport(""version.dll"", CharSet = CharSet.Unicode)]
+		private static extern int GetFileVersionInfoSize(string lptstrFilename, out uint lpdwHandle);
+		[DllImport(""version.dll"", CharSet = CharSet.Unicode)]
+		private static extern bool GetFileVersionInfo(string lptstrFilename, uint dwHandle, uint dwLen, IntPtr lpData);
+		[DllImport(""version.dll"", CharSet = CharSet.Unicode)]
+		private static extern bool VerQueryValue(IntPtr pBlock, string lpSubBlock, out IntPtr lplpBuffer, out uint puLen);
+		public static string GetProductVersion(string filePath)
+		{
+			string fileVersion = null;
+			uint handle;
+			int size = GetFileVersionInfoSize(filePath, out handle);
+			if (size > 0)
+			{
+				IntPtr buffer = Marshal.AllocHGlobal(size);
+				if (GetFileVersionInfo(filePath, handle, (uint)size, buffer))
+				{
+					IntPtr pValue;
+					uint len;
+					if (VerQueryValue(buffer, ""\\StringFileInfo\\040904b0\\FileVersion"", out pValue, out len))
+					{
+						fileVersion = Marshal.PtrToStringUni(pValue);
+						//Debug.Log(""File Version: "" + fileVersion);
+					}
+				}
+				Marshal.FreeHGlobal(buffer);
+			}
+			return fileVersion;
+		}
+
+#endif
+
         /// <summary>
         /// Check if the ChromaSDK DLL exists before calling API Methods
         /// </summary>
@@ -3001,9 +3043,9 @@ __UNITY_DLL_NAME__
             {
                 String fileName;
 #if UNITY_64
-                fileName = @""C:\Program Files\Razer Chroma SDK\bin\RzChromaSDK64.dll"";
+                fileName = @""C:\Program Files\Razer Chroma SDK\bin\RzChromatic64.dll"";
 #else
-                fileName = @""C:\Program Files (x86)\Razer Chroma SDK\bin\RzChromaSDK.dll"";
+                fileName = @""C:\Program Files (x86)\Razer Chroma SDK\bin\RzChromatic.dll"";
 #endif
                 FileInfo fi = new FileInfo(fileName);
                 if (!fi.Exists)
@@ -3276,8 +3318,8 @@ __UNITY_GET_STREAMING_PATH__
         {
             try
             {
-                string header = @"<a name=""api""></a>
-## API
+                string header = @"<a name=""full-api""></a>
+## Full API
 ";
                 Output(swUnityDocs, header);
 
