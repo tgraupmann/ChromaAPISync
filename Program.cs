@@ -29,7 +29,13 @@
                 "Godot.cpp",
                 "ClickTeamFusion.h",
                 "ClickTeamFusion.cpp");
-            const string headerUE4 = @"C:\Public\Unreal_ChromaSDK_Unicode\Chroma_Sample\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
+
+            // ascii branch
+            const string headerUE4 = @"C:\Public\Unreal_ChromaSDK_Ascii\Chroma_Sample\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
+
+            // unicode branch
+            //const string headerUE4 = @"C:\Public\Unreal_ChromaSDK_Unicode\Chroma_Sample\Plugins\ChromaSDKPlugin\Source\ChromaSDKPlugin\Public\ChromaSDKPluginBPLibrary.h";
+
             Converter.SortHeaderUE4(headerUE4,
                 "ChromaSDKPluginBPLibrary.h",
                 "ChromaSDKPluginBPLibrary.md");
