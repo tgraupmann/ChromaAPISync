@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 
 namespace ChromaAPISync
 {
@@ -65,6 +66,7 @@ namespace ChromaAPISync
         public static void ConvertExportsToClass(
             string input, string outputCppSortInput, bool upgradeToUnicode,
             string outputCppHeader, string outputCppImplementation,
+            string outputChromaticCppHeader, string outputChromaticCppImplementation,
             string outputCppDocs,
             string outputUe4Header, string outputUe4Implementation,
             string outputCSharp,
@@ -83,6 +85,7 @@ namespace ChromaAPISync
             OpenClassFiles(
                 input, outputCppSortInput, upgradeToUnicode,
                 outputCppHeader, outputCppImplementation,
+                outputChromaticCppHeader, outputChromaticCppImplementation,
                 outputCppDocs,
                 outputUe4Header, outputUe4Implementation,
                 outputCSharp,
@@ -108,6 +111,7 @@ namespace ChromaAPISync
         private static void OpenClassFiles(
             string input, string fileCppSortInput, bool upgradeToUnicode,
             string fileCppHeader, string fileCppImplementation,
+            string fileChromaticCppHeader, string fileChromaticCppImplementation,
             string fileCppDocs,
             string fileUe4Header, string fileUe4Implementation,
             string fileCSharp,
@@ -154,6 +158,60 @@ namespace ChromaAPISync
                 using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
                 {
                     if (!WriteImplementation(swImplementation))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileCppDocs))
+            {
+                File.Delete(fileCppDocs);
+            }
+            using (FileStream fsCppDocs = File.Open(fileCppDocs, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swDocs = new StreamWriter(fsCppDocs))
+                {
+                    if (!WriteDocs(swDocs))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            #endregion
+
+            #region Chromatic, C++
+
+            if (!Directory.Exists("Chromatic"))
+            {
+                Directory.CreateDirectory("Chromatic");
+            }
+
+            if (File.Exists(fileChromaticCppHeader))
+            {
+                File.Delete(fileChromaticCppHeader);
+            }
+            using (FileStream fsCppHeader = File.Open(fileChromaticCppHeader, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swHeader = new StreamWriter(fsCppHeader))
+                {
+                    if (!WriteChromaticHeader(swHeader))
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (File.Exists(fileChromaticCppImplementation))
+            {
+                File.Delete(fileChromaticCppImplementation);
+            }
+            using (FileStream fsImplementation = File.Open(fileChromaticCppImplementation, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter swImplementation = new StreamWriter(fsImplementation))
+                {
+                    if (!WriteChromaticImplementation(swImplementation))
                     {
                         return;
                     }
@@ -733,6 +791,65 @@ namespace ChromaAPISync
                 ++j;
             }
             return returnStr.TrimEnd();
+        }
+
+        private static string LowercaseFirstLetterArgTypes(MetaMethodInfo methodInfo)
+        {
+            string[] parts = methodInfo.Args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].TrimEnd();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string name = part.Substring(indexName + 1);
+                    MetaArgInfo argInfo = methodInfo.DetailArgs[i];
+
+                    string nextPart = argInfo.StrType + " " + LowercaseFirstLetter(name);
+                    if (i > 0)
+                    {
+                        nextPart = " " + nextPart;
+                    }
+                    parts[i] = nextPart;
+                }
+            }
+            return string.Join(",", parts);
+        }
+
+        private static string RemoveArgTypesCppUnicodeToAscii(MetaMethodInfo methodInfo)
+        {
+            string[] parts = methodInfo.Args.Split(",".ToCharArray());
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                string part = parts[i].TrimEnd();
+                int indexName = GetIndexArgumentBeforeName(part);
+                if (indexName > 0)
+                {
+                    string name = part.Substring(indexName + 1);
+                    MetaArgInfo argInfo = methodInfo.DetailArgs[i];
+                    switch (argInfo.Name)
+                    {
+                        case "streamId":
+                        case "streamKey":
+                        case "shortcode":
+                        case "focus":
+                            break;
+                        default:
+                            if (argInfo.StrType == "const char*")
+                            {
+                                string wstrArg = string.Format("wstr_{0}.c_str()", UppercaseFirstLetter(name));
+                                name = wstrArg;
+                            }
+                            break;
+                    }
+                    if (i > 0)
+                    {
+                        name = " " + LowercaseFirstLetter(name);
+                    }
+                    parts[i] = LowercaseFirstLetter(name);
+                }
+            }
+            return string.Join(",", parts);
         }
 
         private static string RemoveArgTypes(MetaMethodInfo methodInfo)
@@ -1554,6 +1671,188 @@ int ChromaAnimationAPI::UninitAPI()
                 return false;
             }
         }
+
+        static bool WriteChromaticHeader(StreamWriter swHeader)
+        {
+            try
+            {
+                string header =
+@"#pragma once
+
+#include ""ChromaSDKPluginTypes.h""
+
+namespace ChromaSDK
+{
+	/* Setup log mechanism */
+	typedef void (*DebugLogPtr)(const char *);
+	void LogDebug(const char *text, ...);
+	void LogError(const char *text, ...);
+	/* End of setup log mechanism */
+
+	class ChromaAnimationAPI
+	{
+	public:
+
+                ";
+                Output(swHeader, "{0}", header);
+                Output(swHeader, "#pragma region API declare prototypes");
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swHeader, "\t\t/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swHeader, "\t\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t\t"));
+                    }
+
+                    Output(swHeader, "\t\t*/");
+
+                    Output(swHeader, "\t\tstatic {0} {1}({2});",
+                        methodInfo.ReturnType, methodInfo.Name, methodInfo.Args);
+                }
+                Output(swHeader, "#pragma endregion");
+
+                Output(swHeader, "");
+
+                string footer =
+@"
+		static int InitAPI();
+		static int UninitAPI();
+		static bool GetIsInitializedAPI();
+	};
+}";
+                Output(swHeader, "{0}", footer);
+
+                swHeader.Flush();
+                swHeader.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write header!");
+                return false;
+            }
+        }
+
+        static bool WriteChromaticImplementation(StreamWriter swImplementation)
+        {
+            try
+            {
+                Console.WriteLine();
+
+                string header =
+@"#include ""ChromaAnimationAPI.h""
+#include ""UnicodeChromaAnimationAPI.h""
+#include ""ChromaLogger.h""
+#include ""VerifyLibrarySignature.h""
+#include <iostream>
+#include <tchar.h>
+
+
+using namespace std;
+
+namespace ChromaSDK {
+
+	int ChromaAnimationAPI::InitAPI()
+	{
+		return UnicodeChromaAnimationAPI::InitAPI();
+	}
+
+	bool ChromaAnimationAPI::GetIsInitializedAPI()
+	{
+		return UnicodeChromaAnimationAPI::GetIsInitializedAPI();
+	}
+
+	int ChromaAnimationAPI::UninitAPI()
+	{
+		return UnicodeChromaAnimationAPI::UninitAPI();
+	}
+";
+                Output(swImplementation, "{0}", header);
+
+                Output(swImplementation, "#pragma region API declare prototypes");
+                Output(swImplementation, "");
+                foreach (KeyValuePair<string, MetaMethodInfo> method in _sMethods)
+                {
+                    MetaMethodInfo methodInfo = method.Value;
+
+                    Output(swImplementation, "\t/*");
+
+                    if (!string.IsNullOrEmpty(methodInfo.Comments))
+                    {
+                        Output(swImplementation, "\t\t{0}", SplitLongComments(methodInfo.Comments, "\t\t"));
+                    }
+
+                    Output(swImplementation, "\t*/");
+
+                    Output(swImplementation, "\t{0} ChromaAnimationAPI::{1}({2})",
+                        methodInfo.ReturnType, methodInfo.Name, LowercaseFirstLetterArgTypes(methodInfo));
+                    
+                    Output(swImplementation, "\t{0}", "{");
+
+                    // convert const char* to wchar_t*
+
+                    foreach (MetaArgInfo argInfo in methodInfo.DetailArgs)
+                    {
+                        if (argInfo.StrType == "const char*")
+                        {
+                            switch(argInfo.Name)
+                            {
+                                case "streamId":
+                                case "streamKey":
+                                case "shortcode":
+                                case "focus":
+                                    break;
+                                default:
+                                    string pathStr = string.Format("str_{0}", UppercaseFirstLetter(argInfo.Name));
+                                    string pathWStr = string.Format("wstr_{0}", UppercaseFirstLetter(argInfo.Name));
+                                    Output(swImplementation, "\t\tstring {0} = {1};",
+                                                pathStr,
+                                                argInfo.Name);
+                                    Output(swImplementation, "\t\twstring {0}({1}.begin(), {1}.end());",
+                                                pathWStr,
+                                                pathStr);
+                                    break;
+                            }
+                        }
+                    }
+
+                    if (methodInfo.ReturnType == "void")
+                    {
+                        Output(swImplementation, "\t\tUnicodeChromaAnimationAPI::{0}({1});",
+                            methodInfo.Name,
+                            RemoveArgTypesCppUnicodeToAscii(methodInfo));
+                    }
+                    else
+                    {
+                        Output(swImplementation, "\t\treturn UnicodeChromaAnimationAPI::{0}({1});",
+                            methodInfo.Name,
+                            RemoveArgTypesCppUnicodeToAscii(methodInfo));
+                    }
+
+                    Output(swImplementation, "\t{0}", "}");
+                }
+                Output(swImplementation, "#pragma endregion");
+
+                Output(swImplementation, "");
+
+                Output(swImplementation, "{0}", "}");
+
+                swImplementation.Flush();
+                swImplementation.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.Error.WriteLine("Failed to write implementation!");
+                return false;
+            }
+        }
+
 
         #region Godot
 
@@ -4638,6 +4937,27 @@ End Namespace
                     string name = trimPart.Substring(indexSpace);
                     string newType = GetJavaReturnType(type);
                     newParts.Add(string.Format("{0}{1}", newType, name));
+                }
+                else
+                {
+                    newParts.Add(trimPart); //unexpected format
+                }
+            }
+            return string.Join(", ", newParts.ToArray());
+        }
+
+        static string GetCppArgsWithoutType(string input)
+        {
+            string[] parts = input.Split(",".ToCharArray());
+            List<string> newParts = new List<string>();
+            foreach (string part in parts)
+            {
+                string trimPart = part.Trim();
+                int indexSpace = trimPart.LastIndexOf(" ");
+                if (indexSpace > 0)
+                {
+                    string name = trimPart.Substring(indexSpace);
+                    newParts.Add(string.Format("{0}", name.Trim()));
                 }
                 else
                 {

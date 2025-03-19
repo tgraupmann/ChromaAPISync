@@ -15,6 +15,7 @@
             Converter.ConvertExportsToClass(
                 headerStdafx, "stdafx.h", upgradeToUnicode,
                 "ChromaAnimationAPI.h", "ChromaAnimationAPI.cpp",
+                @"Chromatic\ChromaAnimationAPI.h", @"Chromatic\ChromaAnimationAPI.cpp",
                 "ChromaAnimationAPI.md",
                 @"UE\ChromaAnimationAPI.h", @"UE\ChromaAnimationAPI.cpp",
                 @"CSharp\ChromaAnimationAPI.cs",
